@@ -1,0 +1,142 @@
+<div>
+  <section id="sp-top-bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-9">{{ today | date: "fullDate" | titlecase }}</div>
+        <div class="col-3">
+          <i class="far fa-envelope"></i
+          ><a style="color: aliceblue;" [href]="emailstring" target="_top">
+            doctoradoencienciasdelasalud@usco.edu.co</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div id="sp-logo-wrap">
+  <div class="container">
+    <div class="row">
+      <div class="col" style="display: flex; justify-content: center;">
+        <a
+          class="float-left"
+          title="Universidad Surcolombiana Facultad de Salud"
+          [routerLink]="['/home']"
+        >
+          <img
+            style="width: 80%;"
+            src="assets/salud.png"
+            alt="Universidad Surcolombiana Facultad de Salud"
+          />
+        </a>
+      </div>
+      <div
+        class="col text-center"
+        style="
+          padding-top: 30px;
+          padding-left: 50px;
+          color: #292929;
+          font-family: inherit;
+        "
+      >
+        <h5 style="font-size: 100%;">DOCTORADO EN CIENCIAS DE LA SALUD</h5>
+        <hr />
+        <h5 style="font-size: 100%;">
+          SNIES 105543
+        </h5>
+      </div>
+      <div class="col">
+        <a
+          class="float-right"
+          title="Universidad Surcolombiana Facultad de Salud"
+          [routerLink]="['/home']"
+        >
+          <img
+            src="assets/escudo_colombia.png"
+            alt="Universidad Surcolombiana Facultad de Salud"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="header">
+  <nav class="navbar menu navbar-expand-lg" style="background-color: #8f141b;">
+    <div class="container">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li>
+            <a
+              routerLinkActive="active"
+              class="nav-link navlinkin"
+              [routerLink]="['#']"
+              >Inicio</a
+            >
+          </li>
+          <li>
+            <a
+              routerLinkActive="active"
+              class="nav-link navlinkin"
+              [routerLink]="['#']"
+              >Formación</a
+            >
+          </li>
+          <li>
+            <a
+              routerLinkActive="active"
+              class="nav-link navlinkin"
+              [routerLink]="['#']"
+              >Docentes</a
+            >
+          </li>
+          <li>
+            <a
+              routerLinkActive="active"
+              class="nav-link navlinkin"
+              [routerLink]="['#']"
+              >Contactos</a
+            >
+          </li>
+          <li>
+            <a
+              routerLinkActive="active"
+              class="nav-link navlinkin"
+              [routerLink]="['#']"
+              >Noticias</a
+            >
+          </li>
+          <li class="nav-item dropdown navlinkin">
+            <a
+              class="nav-link dropdown-toggle navlinkin"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
