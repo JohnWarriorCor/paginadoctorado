@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -27,7 +29,9 @@ registerLocaleData(localeEsCO, 'es-CO');
     BrowserModule,
     APP_ROUTING,
     NgbPaginationModule,
-    NgbAlertModule
+    NgbAlertModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-CO' }],
   bootstrap: [AppComponent]

@@ -3,11 +3,29 @@
 * {
   box-sizing: border-box;
 }
-body, html{ margin:0; padding:0;}
-.header{ border-top:1px solid white; height:50px; width:100%;}
-.menu{ height:50px; width:100%;z-index: 100;}
-.wrapper{ width:100%; padding-top:0px}
-.fixed{position:fixed; top:0}
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+.header {
+  border-top: 1px solid white;
+  height: 50px;
+  width: 100%;
+}
+.menu {
+  height: 50px;
+  width: 100%;
+  z-index: 100;
+}
+.wrapper {
+  width: 100%;
+  padding-top: 0px;
+}
+.fixed {
+  position: fixed;
+  top: 0;
+}
 body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
   background: #fff;
@@ -37,13 +55,14 @@ body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 .centro {
-  clear: both;
-  margin: 0 auto;
-  width: 990px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 #sp-logo-wrap {
-    padding: 37px 0;
-    background-color: #fff;
+  padding: 37px 0;
+  background-color: #fff;
 }
 .txtcenter {
   text-align: center;
@@ -367,7 +386,7 @@ a.activeTab:hover {
 }
 .navlinkin:hover {
   background-color: rgb(255, 242, 191);
-  color:  rgb(179, 27, 34);
+  color: rgb(179, 27, 34);
 }
 .navlinkout:hover {
   color: #dfd4a6;
@@ -476,8 +495,8 @@ a.activeTab:hover {
   border-top-color: #8f141b;
 }
 #sp-top-bar {
-    padding: 6px 0;
-    background: #4D626C;
-    color: rgba(255,255,255,0.6);
-    font-size: 12px;
+  padding: 6px 0;
+  background: #4d626c;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
 }
