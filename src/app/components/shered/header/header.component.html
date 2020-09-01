@@ -2,8 +2,8 @@
   <section id="sp-top-bar">
     <div class="container">
       <div class="row">
-        <div class="col-9">{{ today | date: "fullDate" | titlecase }}</div>
-        <div class="col-3">
+        <div class="col">{{ today | date: "fullDate" | titlecase }}</div>
+        <div class="col text-right">
           <i class="far fa-envelope"></i
           ><a style="color: aliceblue;" [href]="emailstring" target="_top">
             doctoradoencienciasdelasalud@usco.edu.co</a
@@ -20,7 +20,7 @@
         <a
           class="float-left"
           title="Universidad Surcolombiana Facultad de Salud"
-          [routerLink]="['/home']"
+          [routerLink]="['/inicio']"
         >
           <img
             style="width: 80%;"
@@ -48,7 +48,6 @@
         <a
           class="float-right"
           title="Universidad Surcolombiana Facultad de Salud"
-          [routerLink]="['/home']"
         >
           <img
             src="assets/escudo_colombia.png"
@@ -63,7 +62,7 @@
   <nav class="navbar menu navbar-expand-lg" style="background-color: #8f141b;">
     <div class="container">
       <button
-        class="navbar-toggler"
+        class="navbar-toggler navlinkin"
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
@@ -71,53 +70,45 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+      <i class="fas fa-bars"></i>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
           <li>
-            <a
-              routerLinkActive="active"
+            <a style="padding: 10px;"
               class="nav-link navlinkin"
-              [routerLink]="['#']"
-              >Inicio</a
+              [routerLink]="['/inicio']"
+              routerLinkActive="navlinkout"
+              ><i class="fas fa-home"></i> Inicio</a
             >
           </li>
           <li>
-            <a
+            <a style="padding: 10px;"
               routerLinkActive="active"
               class="nav-link navlinkin"
               [routerLink]="['#']"
-              >Formación</a
+              ><i class="fas fa-user-graduate"></i> Formación</a
             >
           </li>
           <li>
-            <a
+            <a style="padding: 10px;"
               routerLinkActive="active"
               class="nav-link navlinkin"
               [routerLink]="['#']"
-              >Docentes</a
+              ><i class="fas fa-users"></i> Docentes</a
             >
           </li>
           <li>
-            <a
+            <a style="padding: 10px;"
               routerLinkActive="active"
               class="nav-link navlinkin"
               [routerLink]="['#']"
-              >Contactos</a
-            >
-          </li>
-          <li>
-            <a
-              routerLinkActive="active"
-              class="nav-link navlinkin"
-              [routerLink]="['#']"
-              >Noticias</a
+              ><i class="far fa-newspaper"></i> Noticias</a
             >
           </li>
           <li class="nav-item dropdown navlinkin">
-            <a
+            <a style="padding: 10px;"
               class="nav-link dropdown-toggle navlinkin"
               href="#"
               id="navbarDropdown"
@@ -126,7 +117,7 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Dropdown
+            <i class="fas fa-cubes"></i> Documentación
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>

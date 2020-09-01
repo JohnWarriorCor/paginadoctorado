@@ -39,47 +39,128 @@
       <span class="sr-only">Next</span>
     </a>
   </div><br>  
-  <div class="container">
+  <div class="container" style="margin-top: 30px;">
     <div class="row">
       <div class="col">
-        <ngb-tabset [justify]="currentJustify">
-          <ngb-tab title="Simple">
+        <ngb-tabset [justify]="currentJustify" class="tabset1">
+          <ngb-tab>
+            <ng-template ngbTabTitle><i class="fas fa-list-ul"></i> Programa</ng-template>
             <ng-template ngbTabContent>
-              <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-              master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh
-              dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum
-              iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+              <p style="padding: 20px;">
+                <span style="color: #8d191d;">Título a otorgar:</span> <span style="color: #4e6470;"> Doctor en Ciencias de la Salud.</span><br>
+                <span style="color: #8d191d;">Registro Calificado:</span> <span style="color: #4e6470;"> Resolución Ministerio de Educación Nacional No. 09862 de 2016</span><br>
+                <span style="color: #8d191d;">Periodicidad de admisión:</span> <span style="color: #4e6470;"> Anual</span><br>
+                <span style="color: #8d191d;">Número de créditos:</span> <span style="color: #4e6470;"> 128</span><br>
+                <span style="color: #8d191d;">Duración:</span> <span style="color: #4e6470;"> (4) Cuatro años</span><br>
+                <span style="color: #8d191d;">Costo de matrícula:</span> <span style="color: #4e6470;"> 9 SMMLV</span><br>
+                <span style="color: #8d191d;">Número de estudiantes:</span> <span style="color: #4e6470;"> Dos (2)</span><br>
+              </p>
             </ng-template>
           </ngb-tab>
           <ngb-tab>
-            <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>
-            <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-              <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-              craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl
-              cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-              yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
-              shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero
-              sint qui sapiente accusamus tattooed echo park.</p>
+            <ng-template ngbTabTitle><i class="fas fa-flag"></i> Misión</ng-template>
+            <ng-template ngbTabContent>
+              <p style="padding: 20px;color: #4e6470;" class="text-justify">
+                El Doctorado en Ciencias de la Salud de la Universidad Surcolombiana tiene por misión la formación integral de investigadores al más alto nivel, con capacidad de desarrollar y orientar, en forma autónoma y ética, procesos académicos, investigativos y de proyección social conducentes a la generación de conocimiento y a la solución de problemas de salud y sus determinantes en el contexto local, regional y nacional, con accionar coordinado entre el Estado, las instituciones y la sociedad. Para ello contará con docentes altamente calificados y con una infraestructura que promueva el trabajo interdisciplinar e intersectorial para dar respuesta acertada a los cada vez más complejos problemas de la salud humana.
+              </p>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="A very long nav title">
+          <ngb-tab>
+            <ng-template ngbTabTitle><i class="far fa-eye"></i> Visión</ng-template>
             <ng-template ngbTabContent>
-              <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+              <p style="padding: 20px;color: #4e6470;" class="text-justify">
+                Para el 2027 el Doctorado en Ciencias de la Salud habrá consolidado su comunidad académica; estará posicionado en el contexto local, regional y nacional como uno de los mejores por sus aportes al desarrollo científico y a la solución de los problemas sanitarios prevalentes; contará con acreditación académica y social y será ampliamente reconocido por su incidencia en la formulación de política pública incluyente que contribuya a la promoción del bienestar de la sociedad, en armonía con el entorno.
+              </p>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+        <ngb-tabset [justify]="currentJustify" class="tabset1">
+          <ngb-tab>
+            <ng-template ngbTabTitle><i class="fas fa-user-md"></i> Propósito</ng-template>
+            <ng-template ngbTabContent>
+              <p style="padding: 20px;color: #4e6470;" class="text-justify">
+                El Doctorado en Ciencias de la Salud tiene como propósito: Formar científicos al más alto nivel, "con capacidad de desarrollar y orientar, en forma autónoma, procesos académicos e investigativos" conducentes a la intervención en Ciencias de la Salud en el contexto local, regional, nacional e internacional, con accionar coordinado entre el Estado, las instituciones y la sociedad. Ello exige comprender que la salud está ligada a la vida como valor universalmente reconocido, que hay diferentes grados de salud y que es posible que la salud y la enfermedad coexistan.
+              </p>
             </ng-template>
           </ngb-tab>
         </ngb-tabset>
       </div>
       <div class="col">
-        <div class="card">
-          <h5 class="card-header">Featured</h5>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="card-deck">
+                <div class="card">
+                  <img src="/assets/new1.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
+                    <p class="card-text" style="color: #4e6470;">Estamos reacreditándonos a nivel nacional y acreditándonos a nivel internacional, por lo cual necesitamos del apoyo de todos los egresados del programa de Medicina diligenciando la siguiente encuesta de autoevaluación.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <img src="/assets/new2.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
+                    <p class="card-text" style="color: #4e6470;">Dirigido a médicos generales, profesionales en enfermería, psicología, trabajadores sociales, gerontòlogos, cuidadores de personas mayores y estudiantes de último semestre de programas de ciencias de la salud.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="card-deck">
+                <div class="card">
+                  <img src="/assets/new3.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
+                    <p class="card-text" style="color: #4e6470;">Dirigido a médicos generales, profesionales en enfermería, psicología, trabajadores sociales, gerontòlogos, cuidadores de personas mayores y estudiantes de último semestre de programas de ciencias de la salud.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <img src="/assets/new4.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
+                    <p class="card-text" style="color: #4e6470;">Dirigido a médicos generales, profesionales en enfermería, psicología, trabajadores sociales, gerontòlogos, cuidadores de personas mayores y estudiantes de último semestre de programas de ciencias de la salud.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="card-deck">
+                <div class="card">
+                  <img src="/assets/new5.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
+                    <p class="card-text" style="color: #4e6470;">Dirigido a médicos generales, profesionales en enfermería, psicología, trabajadores sociales, gerontòlogos, cuidadores de personas mayores y estudiantes de último semestre de programas de ciencias de la salud.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <img src="/assets/new6.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
+                    <p class="card-text" style="color: #4e6470;">Dirigido a médicos generales, profesionales en enfermería, psicología, trabajadores sociales, gerontòlogos, cuidadores de personas mayores y estudiantes de último semestre de programas de ciencias de la salud.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
       </div>
     </div>
+    <hr>
   </div>
   <br>
 </div>
