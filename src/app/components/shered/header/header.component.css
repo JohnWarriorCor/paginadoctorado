@@ -1,0 +1,153 @@
+/* 
+=====
+EFFECT FADING OUT FOR SIBLINGS MENU OPTIONS 
+=====
+*/
+
+.menu:hover .menu__link:not(:hover) {
+  color: #dfd4a6bd;
+  background-color: #8f141b;
+}
+
+/* 
+  =====
+  MENU STYLES
+  =====
+  */
+
+/* core styles */
+
+.menu__list {
+  display: flex;
+  text-align: center;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.menu__group {
+  flex-grow: 1;
+}
+
+.menu__link {
+  display: block;
+}
+
+/* skin */
+
+.menu {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+}
+
+.menu__link {
+  padding: 2rem 1.5rem;
+
+  font-weight: 700;
+  color: #dfd4a6;
+  background-color: #8f141b;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* states */
+.menu__link:focus {
+  background-color: #6e1216;
+  border-bottom: solid 3px #dfd4a6;
+}
+
+/* hover animation */
+
+.menu__link {
+  position: relative;
+  overflow: hidden;
+  will-change: color;
+  transition: color 0.25s ease-out;
+}
+
+.menu__link::before,
+.menu__link::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: #dfd4a6;
+
+  will-change: width;
+  transition: width 0.1s ease-out;
+
+  position: absolute;
+  bottom: 0;
+}
+
+.menu__link::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.menu__link::after {
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.menu__link:hover::before,
+.menu__link:hover::after {
+  width: 100%;
+  transition-duration: 0.2s;
+}
+
+/*
+  =====
+  LinkedIn
+  =====
+  */
+
+.linkedin {
+  width: 100%;
+  background-color: #dfd4a6;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.linkedin__container {
+  max-width: 1000px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.linkedin__text {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #dfd4a6;
+  background-color: #8f141b;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #6e1216;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

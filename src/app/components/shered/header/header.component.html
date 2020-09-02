@@ -1,8 +1,23 @@
 <div>
   <section id="sp-top-bar">
     <div class="container">
-      <div class="row">
+      <div class="row" style="color: aliceblue;">
         <div class="col">{{ today | date: "fullDate" | titlecase }}</div>
+        <div class="col text-right">
+            <!-- Facebook -->
+            <a style="color: aliceblue;" href="https://www.facebook.com/pg/FacSaludUsco/posts/?ref=page_internal" target="_blanck" class="fb-ic">
+              <i class="fab fa-facebook-f white-text mr-4"> </i>
+            </a>
+            <!-- Twitter -->
+            <a style="color: aliceblue;" href="https://twitter.com/FACSALUD_USCO" target="_blanck" class="tw-ic">
+              <i class="fab fa-twitter white-text mr-4"> </i>
+            </a>
+            <!--Instagram-->
+            <a style="color: aliceblue;" href="https://www.instagram.com/fac_saludusco/" target="_blanck" class="ins-ic">
+              <i class="fab fa-instagram white-text"> </i>
+            </a>
+  
+        </div>
         <div class="col text-right">
           <i class="far fa-envelope"></i
           ><a style="color: aliceblue;" [href]="emailstring" target="_top">
@@ -50,6 +65,7 @@
           title="Universidad Surcolombiana Facultad de Salud"
         >
           <img
+            style="width: 100%;"
             src="assets/escudo_colombia.png"
             alt="Universidad Surcolombiana Facultad de Salud"
           />
@@ -59,7 +75,7 @@
   </div>
 </div>
 <header class="header">
-  <nav class="navbar menu navbar-expand-lg" style="background-color: #8f141b;">
+  <nav class="navbar menu navbar-expand-lg menu" style="background-color: #8f141b;">
     <div class="container">
       <button
         class="navbar-toggler navlinkin"
@@ -74,56 +90,50 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-          <li>
+        <ul class="navbar-nav mx-auto menu__list">
+          <li class="menu__group">
             <a style="padding: 10px;"
-              class="nav-link navlinkin"
+              class="nav-link menu__link"
               [routerLink]="['/inicio']"
-              routerLinkActive="navlinkout"
+              routerLinkActive="router-link-active"
               ><i class="fas fa-home"></i> Inicio</a
             >
           </li>
-          <li>
+          <li class="menu__group">
             <a style="padding: 10px;"
-              routerLinkActive="active"
-              class="nav-link navlinkin"
-              [routerLink]="['#']"
+              routerLinkActive="router-link-active"
+              class="nav-link menu__link"
+              [routerLink]="['formacion']"
               ><i class="fas fa-user-graduate"></i> Formación</a
             >
           </li>
-          <li>
+          <li class="menu__group">
             <a style="padding: 10px;"
-              routerLinkActive="active"
-              class="nav-link navlinkin"
-              [routerLink]="['#']"
+              routerLinkActive="router-link-active"
+              class="nav-link menu__link"
+              [routerLink]="['docentes']"
               ><i class="fas fa-users"></i> Docentes</a
             >
           </li>
-          <li>
+          <li class="menu__group">
             <a style="padding: 10px;"
-              routerLinkActive="active"
-              class="nav-link navlinkin"
+              routerLinkActive="router-link-active"
+              class="nav-link menu__link"
               [routerLink]="['#']"
               ><i class="far fa-newspaper"></i> Noticias</a
             >
           </li>
-          <li class="nav-item dropdown navlinkin">
+          <li class="nav-item dropdown menu__group">
             <a style="padding: 10px;"
-              class="nav-link dropdown-toggle navlinkin"
+              class="nav-link dropdown-toggle menu__link dropbtn"
               href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
             >
             <i class="fas fa-cubes"></i> Documentación
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-content">
+              <a href="#" class="menu__link">Link 1</a>
+              <a href="#" class="menu__link">Link 2</a>
+              <a href="#" class="menu__link">Link 3</a>
             </div>
           </li>
         </ul>

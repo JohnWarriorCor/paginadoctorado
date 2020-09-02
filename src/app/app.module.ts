@@ -11,9 +11,13 @@ import { HomeComponent } from './components/home.component';
 import { FooterComponent } from './components/shered/footer/footer.component';
 import { HeaderComponent } from './components/shered/header/header.component';
 import { APP_ROUTING } from './app.routing';
+import { RouterModule } from '@angular/router';
+
 
 // importar locales
 import localeEsCO from '@angular/common/locales/es-CO';
+import { FormacionComponent } from './components/pages/formacion/formacion.component';
+import { DocentesComponent } from './components/pages/docentes/docentes.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -23,7 +27,9 @@ registerLocaleData(localeEsCO, 'es-CO');
     AppComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    FormacionComponent,
+    DocentesComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,8 @@ registerLocaleData(localeEsCO, 'es-CO');
     NgbPaginationModule,
     NgbAlertModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-CO' }],
   bootstrap: [AppComponent]
