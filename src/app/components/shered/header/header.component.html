@@ -104,7 +104,7 @@
               routerLinkActive="router-link-active"
               class="nav-link menu__link"
               [routerLink]="['formacion']"
-              ><i class="fas fa-user-graduate"></i> Formación</a
+              ><i class="fas fa-university"></i> Formación</a
             >
           </li>
           <li class="menu__group">
@@ -120,7 +120,15 @@
               routerLinkActive="router-link-active"
               class="nav-link menu__link"
               [routerLink]="['#']"
-              ><i class="far fa-newspaper"></i> Noticias</a
+              ><i class="far fa-newspaper"></i> Actividades</a
+            >
+          </li>
+          <li class="menu__group">
+            <a style="padding: 10px;"
+              routerLinkActive="router-link-active"
+              class="nav-link menu__link"
+              [routerLink]="['#']"
+              ><i class="fas fa-microscope"></i> Grupos de investigación</a
             >
           </li>
           <li class="nav-item dropdown menu__group">
@@ -128,12 +136,12 @@
               class="nav-link dropdown-toggle menu__link dropbtn"
               href="#"
             >
-            <i class="fas fa-cubes"></i> Documentación
+            <i class="fas fa-user-circle"></i> Estudiantes
             </a>
             <div class="dropdown-content">
-              <a href="#" class="menu__link">Link 1</a>
-              <a href="#" class="menu__link">Link 2</a>
-              <a href="#" class="menu__link">Link 3</a>
+              <a href="#" class="menu__link"><i class="fas fa-user-graduate"></i> Egresados</a>
+              <a href="#" class="menu__link"><i class="fas fa-file-pdf"></i> Tesis</a>
+              <a href="#" class="menu__link"><i class="fas fa-flask"></i> Investigación</a>
             </div>
           </li>
         </ul>

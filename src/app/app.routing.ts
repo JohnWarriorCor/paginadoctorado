@@ -10,4 +10,4 @@ const routes: Routes = [
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
 
-export const APP_ROUTING = RouterModule.forRoot(routes, {useHash: true});
+export const APP_ROUTING = RouterModule.forRoot(routes, {useHash: true, onSameUrlNavigation: 'reload'});

@@ -41,7 +41,8 @@
   </div><br>  
   <div class="container" style="margin-top: 30px;">
     <div class="row">
-      <div class="col">
+      <div class="col fondodivleft shadow">
+        <h3 class="redinst">Denominación del programa</h3>
         <ngb-tabset [justify]="currentJustify" class="tabset1">
           <ngb-tab>
             <ng-template ngbTabTitle><i class="fas fa-list-ul"></i> Programa</ng-template>
@@ -85,12 +86,13 @@
           </ngb-tab>
         </ngb-tabset>
       </div>
-      <div class="col">
+      <div class="col fondodivright shadow">
+        <h3 class="redinst">Agéndate</h3>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="card-deck">
-                <div class="card">
+                <div class="card shadow">
                   <img src="/assets/new1.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
@@ -98,7 +100,7 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card shadow">
                   <img src="/assets/new2.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
@@ -110,15 +112,15 @@
             </div>
             <div class="carousel-item">
               <div class="card-deck">
-                <div class="card">
+                <div class="card shadow">
                   <img src="/assets/new3.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
-                    <p class="card-text" style="color: #4e6470;">Dirigido a médicos generales, profesionales en enfermería, psicología, trabajadores sociales, gerontòlogos, cuidadores de personas mayores y estudiantes de último semestre de programas de ciencias de la salud.</p>
+                    <h6 class="card-title redinst"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
+                    <p class="card-text parinst" >Dirigido a médicos generales, profesionales en enfermería, psicología, trabajadores sociales, gerontòlogos, cuidadores de personas mayores y estudiantes de último semestre de programas de ciencias de la salud.</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card shadow">
                   <img src="/assets/new4.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
@@ -130,7 +132,7 @@
             </div>
             <div class="carousel-item">
               <div class="card-deck">
-                <div class="card">
+                <div class="card shadow">
                   <img src="/assets/new5.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
@@ -138,7 +140,7 @@
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card shadow">
                   <img src="/assets/new6.jpg" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h6 class="card-title" style="color: #8d191d;"><i class="far fa-calendar-alt"></i> {{ today | date: "fullDate" | titlecase }}</h6>
@@ -160,7 +162,63 @@
         </div>
       </div>
     </div>
+    <br>
     <hr>
+    <br>
+    <div class="row">
+      <div class="col-8 fondodivleft shadow">
+        <img src="/assets/gruposinves.jpg" class="img-fluid" alt="">
+        <h3 class="redinst" style="margin-top: 30px;">
+          Artículos y Publicaciones
+        </h3>
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col mb-4">
+            <div class="card">
+              <img src="/assets/pdf.png" style="width: 50px;margin: auto;" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img src="/assets/pdf.png" style="width: 50px;margin: auto;" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img src="/assets/pdf.png" style="width: 50px;margin: auto;" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col mb-4">
+            <div class="card">
+              <img src="/assets/pdf.png" style="width: 50px;margin: auto;" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-auto fondodivright shadow">
+        <div>
+          <a class="twitter-timeline" data-lang="es" data-height="500" data-theme="light" href="https://twitter.com/FACSALUD_USCO?ref_src=twsrc%5Etfw">Tweets de FACSALUD_USCO</a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <br>
   </div>
   <br>
 </div>

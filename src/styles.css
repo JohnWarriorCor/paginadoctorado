@@ -1,5 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
+
+/*RESTRUCTURACIÓN DEL CSS*/
 * {
   box-sizing: border-box;
 }
@@ -7,6 +7,9 @@ body,
 html {
   margin: 0;
   padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  background: #f5f5f5;
 }
 .header {
   border-top: 1px solid white;
@@ -26,10 +29,26 @@ html {
   position: fixed;
   top: 0;
 }
-body {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
-  background: #fff;
+.redinst {
+  color: #8f141b;
+  margin-bottom: 20px;
 }
+.parinst{
+  color: #4e6470;
+}
+.fondodivleft{
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+}
+.fondodivright{
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-left: 10px;
+}
+
+/*FIN RESTRUCTURACIÓN DEL CSS*/
 
 @media print {
   .table {
