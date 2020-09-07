@@ -355,6 +355,8 @@ a.activeTab:hover {
 .fadeIn {
   animation-name: fadeIn;
 }
+
+/* Animaciones */
 .caki {
   color: #dfd4a6;
 }

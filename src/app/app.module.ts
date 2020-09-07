@@ -18,6 +18,9 @@ import { RouterModule } from '@angular/router';
 import localeEsCO from '@angular/common/locales/es-CO';
 import { FormacionComponent } from './components/pages/formacion/formacion.component';
 import { DocentesComponent } from './components/pages/docentes/docentes.component';
+import { AgendaComponent } from './components/pages/agenda/agenda.component';
+import { EstudiantesComponent } from './components/pages/estudiantes/estudiantes.component';
+import { GruposinvesComponent } from './components/pages/gruposinves/gruposinves.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -29,7 +32,10 @@ registerLocaleData(localeEsCO, 'es-CO');
     FooterComponent,
     HeaderComponent,
     FormacionComponent,
-    DocentesComponent
+    DocentesComponent,
+    AgendaComponent,
+    EstudiantesComponent,
+    GruposinvesComponent
   ],
   imports: [
     BrowserModule,
