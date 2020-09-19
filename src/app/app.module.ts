@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+export { MDBBootstrapModule };
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
 import { FooterComponent } from './components/shered/footer/footer.component';
@@ -35,7 +37,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     DocentesComponent,
     AgendaComponent,
     EstudiantesComponent,
-    GruposinvesComponent
+    GruposinvesComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,8 +47,13 @@ registerLocaleData(localeEsCO, 'es-CO');
     NgbModule,
     FormsModule,
     RouterModule,
+    MDBBootstrapModule.forRoot(),
+  ],
+  exports: [
+    MDBBootstrapModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es-CO' }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

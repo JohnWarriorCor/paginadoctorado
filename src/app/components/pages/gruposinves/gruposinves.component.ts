@@ -1,74 +1,4 @@
-import { Component, OnInit, AfterViewInit, Directive, EventEmitter, Input, Output, QueryList, ViewChildren } from '@angular/core';
-
-
-interface Country {
-  id: number;
-  name: string;
-  flag: string;
-  area: number;
-  population: number;
-}
-
-const COUNTRIES: Country[] = [
-  {
-    id: 1,
-    name: 'Russia',
-    flag: 'f/f3/Flag_of_Russia.svg',
-    area: 17075200,
-    population: 146989754
-  },
-  {
-    id: 2,
-    name: 'Canada',
-    flag: 'c/cf/Flag_of_Canada.svg',
-    area: 9976140,
-    population: 36624199
-  },
-  {
-    id: 3,
-    name: 'United States',
-    flag: 'a/a4/Flag_of_the_United_States.svg',
-    area: 9629091,
-    population: 324459463
-  },
-  {
-    id: 4,
-    name: 'China',
-    flag: 'f/fa/Flag_of_the_People%27s_Republic_of_China.svg',
-    area: 9596960,
-    population: 1409517397
-  }
-];
-export type SortColumn = keyof Country | '';
-export type SortDirection = 'asc' | 'desc' | '';
-// tslint:disable-next-line:object-literal-key-quotes
-const rotate: {[key: string]: SortDirection} = { 'asc': 'desc', 'desc': '', '': 'asc' };
-
-const compare = (v1: string | number, v2: string | number) => v1 < v2 ? -1 : v1 > v2 ? 1 : 0;
-
-export interface SortEvent {
-  column: SortColumn;
-  direction: SortDirection;
-}
-
-@Directive({
-  // tslint:disable-next-line:directive-selector
-  selector: 'th[sortable]',
-  // tslint:disable-next-line:use-host-property-decorator
-  host: {'[class.asc]': 'direction === "asc"', '[class.desc]': 'direction === "desc"', '(click)': 'rotate()' }
-})
-// tslint:disable-next-line:directive-class-suffix
-export class NgbdSortableHeader {
-
-  @Input() sortable: SortColumn = '';
-  @Input() direction: SortDirection = '';
-  @Output() sort = new EventEmitter<SortEvent>();
-
-  rotate() {
-    this.direction = rotate[this.direction];
-    this.sort.emit({column: this.sortable, direction: this.direction});
-  }
-}
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-gruposinves',
@@ -76,36 +6,86 @@ export class NgbdSortableHeader {
   styleUrls: ['./gruposinves.component.css']
 })
 
-
 // tslint:disable-next-line:directive-class-suffix
 export class GruposinvesComponent implements OnInit, AfterViewInit {
-  countries = COUNTRIES;
-
-  @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>;
-
-  onSort({column, direction}: SortEvent) {
-
-    // resetting other headers
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
-
-    // sorting countries
-    if (direction === '' || column === '') {
-      this.countries = COUNTRIES;
-    } else {
-      this.countries = [...COUNTRIES].sort((a, b) => {
-        const res = compare(a[column], b[column]);
-        return direction === 'asc' ? res : -res;
-      });
-    }
-  }
-
+  gruposInv: any = [];
   constructor() { }
 
   ngOnInit() {
+    this.gruposInv.push(
+      {
+        id: 'COL0019991',
+        nombre: 'Carlos Finlay',
+        lider: 'Nicolás Arturo Núñez Gómez',
+        clasi: 'A1'
+      },
+      {
+        id: 'COL0024427',
+        nombre: 'Mi Dneuropsy',
+        lider: 'Efraín Amaya Vargas	',
+        clasi: 'A1'
+      },
+      {
+        id: 'COL0014556',
+        nombre: 'Parasitología y medicina tropical',
+        lider: 'Jairo Antonio Rodríguez Rodríguez	',
+        clasi: 'A1'
+      },
+      {
+        id: 'COL0035331',
+        nombre: 'Laboratorio de medicina genómica',
+        lider: 'Henry Ostos Alfonso',
+        clasi: 'A1'
+      },
+      {
+        id: 'COL0022253',
+        nombre: 'Agroindustria',
+        lider: 'Nelson Gutiérrez Guzmán',
+        clasi: 'A'
+      },
+      {
+        id: 'COL0029379',
+        nombre: 'Cuidar',
+        lider: 'Dolly Orfilia Arias	',
+        clasi: 'A'
+      },
+      {
+        id: 'COL0088925',
+        nombre: 'Neurored',
+        lider: 'Jairo Antonio Rodríguez Rodríguez	',
+        clasi: 'A1'
+      },
+      {
+        id: 'COL0022244',
+        nombre: 'Ecosistemas sur-colombianos',
+        lider: 'Alfredo Olaya Amaya',
+        clasi: 'B'
+      },
+      {
+        id: 'COL0001627',
+        nombre: 'Culturas, conflictos y subjetividades',
+        lider: 'William Fernando Torres S',
+        clasi: 'B'
+      },
+      {
+        id: 'COL0044063',
+        nombre: 'Nuevas visiones del derecho',
+        lider: 'German Alfonso López Daza',
+        clasi: 'B'
+      },
+      {
+        id: 'COL0101419',
+        nombre: 'Biología de la re-producción',
+        lider: 'Manuel García Flórez',
+        clasi: 'C'
+      },
+      {
+        id: 'COL0047038',
+        nombre: 'Salud y grupos vulnerables',
+        lider: 'Claudia Andrea Ramírez',
+        clasi: 'D'
+      },
+    );
   }
   ngAfterViewInit(): void {
     (window as any).twttr.widgets.load();
