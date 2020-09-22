@@ -33,19 +33,21 @@ html {
   color: #8f141b;
   margin-bottom: 20px;
 }
-.parinst{
+.grayinst{
   color: #4e6470;
 }
 .fondodivleft{
   background-color: white;
   border-radius: 12px;
   padding: 30px;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
 .fondodivright{
   background-color: white;
   border-radius: 12px;
   padding: 30px;
-  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 /*FIN RESTRUCTURACIÓN DEL CSS*/
