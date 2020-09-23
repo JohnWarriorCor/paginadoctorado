@@ -23,6 +23,8 @@ import { DocentesComponent } from './components/pages/docentes/docentes.componen
 import { AgendaComponent } from './components/pages/agenda/agenda.component';
 import { EstudiantesComponent } from './components/pages/estudiantes/estudiantes.component';
 import { GruposinvesComponent } from './components/pages/gruposinves/gruposinves.component';
+import { EgresadosComponent } from './components/pages/egresados/egresados.component';
+import { TesisComponent } from './components/pages/tesis/tesis.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -38,6 +40,8 @@ registerLocaleData(localeEsCO, 'es-CO');
     AgendaComponent,
     EstudiantesComponent,
     GruposinvesComponent,
+    EgresadosComponent,
+    TesisComponent,
   ],
   imports: [
     BrowserModule,
