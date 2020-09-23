@@ -20,9 +20,9 @@
         </div>
         <div class="col text-right">
           <i class="far fa-envelope"></i
-          ><a style="color: aliceblue;" [href]="emailstring" target="_top">
-            doctoradoencienciasdelasalud@usco.edu.co</a
-          >
+            ><a style="color: aliceblue;" [href]="emailstring" target="_top">
+              doctoradoencienciasdelasalud@usco.edu.co</a
+            >
         </div>
       </div>
     </div>
@@ -107,7 +107,7 @@
               routerLinkActive="router-link-active"
               class="nav-link menu__link"
               [routerLink]="['/docentes']"
-              ><i class="fas fa-users"></i> Docentes</a
+              ><i class="fas fa-users"></i> Profesores</a
             >
           </li>
           <li class="menu__group">
@@ -134,9 +134,8 @@
             <i class="fas fa-user-circle"></i> Estudiantes
             </a>
             <div class="dropdown-content">
-              <a href="#" class="menu__link" [routerLink]="['/#']"><i class="fas fa-user-graduate"></i> Egresados</a>
-              <a href="#" class="menu__link" [routerLink]="['/#']"><i class="fas fa-file-pdf"></i> Tesis</a>
-              <a href="#" class="menu__link" [routerLink]="['/#']"><i class="fas fa-flask"></i> Investigación</a>
+              <a href="#" class="menu__link" [routerLink]="['/egresados']"><i class="fas fa-user-graduate"></i> Egresados</a>
+              <a href="#" class="menu__link" [routerLink]="['/tesis']"><i class="fas fa-file-pdf"></i> Tesis</a>
             </div>
           </li>
         </ul>

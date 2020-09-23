@@ -49,6 +49,31 @@ html {
   padding: 30px;
   margin-bottom: 10px;
 }
+.fondodivlogin{
+  background-color: white;
+  border-radius: 12px;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.lineredinst{
+  border: solid #8f141b 2px;
+}
+.ir-arriba {
+  display: inline-block;
+  padding: 10px;
+  background-color: #8f141b;
+  color: #fff;
+  cursor: pointer;
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  float: none;
+  z-index: 100;
+  border-radius: 100px;
+}
 
 /*FIN RESTRUCTURACIÓN DEL CSS*/
 
@@ -459,18 +484,6 @@ a.activeTab:hover {
     width: 90%;
     max-width: 1200px; /* or 90% or whatever */
   }
-}
-.ir-arriba {
-  display: inline-block;
-  padding: 10px;
-  background-color: #8f141b;
-  color: #fff;
-  cursor: pointer;
-  position: fixed;
-  bottom: 20px;
-  right: 10px;
-  float: none;
-  z-index: 100;
 }
 .pre {
   word-wrap: break-word; /* IE 5.5-7 */

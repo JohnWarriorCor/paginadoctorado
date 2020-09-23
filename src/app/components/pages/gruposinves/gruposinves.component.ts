@@ -38,6 +38,12 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
         clasi: 'A1'
       },
       {
+        id: 'COL0088925',
+        nombre: 'Neurored',
+        lider: 'Jairo Antonio Rodríguez Rodríguez	',
+        clasi: 'A1'
+      },
+      {
         id: 'COL0022253',
         nombre: 'Agroindustria',
         lider: 'Nelson Gutiérrez Guzmán',
@@ -48,12 +54,6 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
         nombre: 'Cuidar',
         lider: 'Dolly Orfilia Arias	',
         clasi: 'A'
-      },
-      {
-        id: 'COL0088925',
-        nombre: 'Neurored',
-        lider: 'Jairo Antonio Rodríguez Rodríguez	',
-        clasi: 'A1'
       },
       {
         id: 'COL0022244',

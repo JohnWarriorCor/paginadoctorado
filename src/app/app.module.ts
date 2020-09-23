@@ -25,6 +25,8 @@ import { EstudiantesComponent } from './components/pages/estudiantes/estudiantes
 import { GruposinvesComponent } from './components/pages/gruposinves/gruposinves.component';
 import { EgresadosComponent } from './components/pages/egresados/egresados.component';
 import { TesisComponent } from './components/pages/tesis/tesis.component';
+import { LoginComponent } from './components/admin/login/login.component';
+import { GruposinveseditComponent } from './components/admin/gruposinvesedit/gruposinvesedit.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -42,6 +44,8 @@ registerLocaleData(localeEsCO, 'es-CO');
     GruposinvesComponent,
     EgresadosComponent,
     TesisComponent,
+    LoginComponent,
+    GruposinveseditComponent,
   ],
   imports: [
     BrowserModule,
