@@ -1,9 +1,9 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="/assets/docentes.jpg"
+      src="/assets/profesores.png"
       class="d-block w-100"
-      style="height: 300px"
+      style="height: 250px"
       alt="Responsive image"
     />
   </div>
@@ -12,36 +12,34 @@
       <div class="row">
         <div class="col-sm-8 shadow text-justify fondodivleft shadow">
           <h2 class="redinst">Profesores</h2>
-          <div class="card" style="padding: 20px">
+          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="profesores.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
+          <div *ngFor="let pro of profesores |  slice: (page-1) * pageSize : (page-1) * pageSize + pageSize  ; let i = index" class="card brCard grayinst" style="padding: 20px">
             <div class="row">
               <div class="col-md-4">
-                <img src="/assets/usuaria.png" class="w-100" />
+                <img [src]="pro.foto" [alt]="pro.nombre" class="w-100 perfilPro" />
               </div>
               <div class="col-md-8 px-3">
                 <div class="card-block px-3">
-                  <h4 class="card-title">Alba Rocío Valencia Valderrama</h4>
-                  <p class="card-text">Formación Académica:</p>
+                  <h4 class="card-title redinst"><i class="fas fa-chalkboard-teacher"></i> {{ pro.nombre }}</h4>
+                  <p class="card-text"><i class="fas fa-info-circle"></i> Formación Académica:</p>
                   <ul class="card-text" style="font-size: 12px">
                     <li>
-                      <p class="text-left">
-                        Doctorado UNIVERSIDAD DE GRANADA<br />
-                        Antropología Física y Forense<br />
-                        Octubrede2009 - Enerode 2016<br />
-                        Determinación de la edad en subadultos mediante técnica
-                        histologica<br />
+                      <p class="text-justify">
+                        {{ pro.sintesis }}
                       </p>
                     </li>
                   </ul>
+                  <p class="card-title grayinst"><i class="fas fa-envelope"></i> {{ pro.correo }}</p>
                   <div class="text-right">
                     <a
-                      href="http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000830062"
+                      [href]="pro.cvlac"
                       target="blank_"
                       class="btn navlinkinSolid"
                       >CvLAC</a
                     >
                     <a
                       style="margin-left: 10px"
-                      href="https://orcid.org/0000-0003-4311-8407"
+                      [href]="pro.orcid"
                       target="blank_"
                       class="btn navlinkinSolid"
                       >ORCID</a
@@ -51,126 +49,7 @@
               </div>
             </div>
           </div>
-          <br />
-          <div class="card" style="padding: 20px">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/assets/docente.png" class="w-100" />
-              </div>
-              <div class="col-md-8 px-3">
-                <div class="card-block px-3">
-                  <h4 class="card-title">Alfredo Olaya Amaya</h4>
-                  <p class="card-text">Formación Académica:</p>
-                  <ul class="card-text" style="font-size: 12px">
-                    <li>
-                      <p class="text-left">
-                        Doctorado UNIVERSIDAD NACIONAL DE COLOMBIA SEDE
-                        MEDELLÍN<br />
-                        Doctorado En Ingeniería Área Recursos Hidráulicos<br />
-                        Enerode1994 - de 2003<br />
-                        Sistema de Apoyo para la Toma de Decisiones en Distritos
-                        de Riego y Drenaje a partir de sus Recursos,
-                        Restricciones e Impactos Ambientales, para el Caso de
-                        Colombia<br />
-                      </p>
-                    </li>
-                  </ul>
-                  <div class="text-right">
-                    <a
-                      href="http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000310883"
-                      target="blank_"
-                      class="btn navlinkinSolid"
-                      >CvLAC</a
-                    >
-                    <a
-                      style="margin-left: 10px"
-                      href="https://orcid.org/0000-0002-7080-1394"
-                      target="blank_"
-                      class="btn navlinkinSolid"
-                      >ORCID</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="card" style="padding: 20px">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/assets/docente.png" class="w-100" />
-              </div>
-              <div class="col-md-8 px-3">
-                <div class="card-block px-3">
-                  <h4 class="card-title">Carlos Fernando Narváez Rojas</h4>
-                  <p class="card-text">Formación Académica:</p>
-                  <ul class="card-text" style="font-size: 12px">
-                    <li>
-                      <p class="text-left">
-                        Postdoctorado/Estancia postdoctoral MASSACHUSETTS INSTITUTE OF TECHNOLOGY (MIT)<br> 
-                        DEPARTMENT OF HEALTH AND SCIENCE<br>
-                        Febrerode2017 - Mayode 2017<br>
-                      </p>
-                    </li>
-                  </ul>
-                  <div class="text-right">
-                    <a
-                      href="https://scienti.minciencias.gov.co/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000310050"
-                      target="blank_"
-                      class="btn navlinkinSolid"
-                      >CvLAC</a
-                    >
-                    <!--<a
-                      style="margin-left: 10px"
-                      href="https://orcid.org/0000-0002-7080-1394"
-                      target="blank_"
-                      class="btn navlinkinSolid"
-                      >ORCID</a
-                    >-->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div class="card" style="padding: 20px">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/assets/usuaria.png" class="w-100" />
-              </div>
-              <div class="col-md-8 px-3">
-                <div class="card-block px-3">
-                  <h4 class="card-title">Dolly Orfilia Arias Torres</h4>
-                  <p class="card-text">Formación Académica:</p>
-                  <ul class="card-text" style="font-size: 12px">
-                    <li>
-                      <p class="text-left">
-                        Postdoctorado/Estancia postdoctoral Universidade Federal do Estado do Rio de Janeiro<br> 
-                        Pós-Doutorado no Programa de Pós-Graduação em Enfermagem e Biociências<br>
-                        Juliode2015 - Juliode 2016<br>
-                        Estudio comparado de políticas públicas en salud de Brasil y Colombia<br>
-                      </p>
-                    </li>
-                  </ul>
-                  <div class="text-right">
-                    <a
-                      href="http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000574422 "
-                      target="blank_"
-                      class="btn navlinkinSolid"
-                      >CvLAC</a
-                    >
-                    <!--<a
-                      style="margin-left: 10px"
-                      href="https://orcid.org/0000-0003-4311-8407"
-                      target="blank_"
-                      class="btn navlinkinSolid"
-                      >ORCID</a
-                    >-->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ngb-pagination class="d-flex justify-content-start" [collectionSize]="profesores.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
         </div>
         <div class="col-sm-auto shadow fondodivright">
           <a
