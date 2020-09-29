@@ -23,8 +23,8 @@ export class DocentesComponent implements OnInit, AfterViewInit {
         // tslint:disable-next-line:max-line-length
         sintesis: 'Enfermera, Magíster en Educación y Desarrollo Comunitario, Doctora en Ciencias de la Salud y estancia posdoctoral en Salud de Colectivos. Profesora titular, tiempo completo de planta e investigadora de la Universidad Surcolombiana. Líder del Grupo de Investigación “Cuidar”, Categoría A de Minciencias, Coordinadora del Doctorado en Ciencias de la Salud desde 2016. Con amplia experiencia profesional en docencia e investigación en los campos de la Salud Comunitaria y la Salud de Pobalciones. Par evaluadora de Minciencias y del Ministerio de Educación Nacional (CNA y CONACES).',
         correo: 'dolaria@usco.edu.co',
-        cvlac: 'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000830062',
-        orcid: 'https://orcid.org/0000-0003-4311-8407',
+        cvlac: 'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000574422',
+        orcid: 'https://orcid.org/signin',
       },
       {
         id: '2',
@@ -118,10 +118,10 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '11',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/pro_jorge_castaneda.png',
         nombre: 'Jorge Andrés Ramos Castañeda',
         // tslint:disable-next-line:max-line-length
-        sintesis: '',
+        sintesis: 'Enfermero, Especialista en Epidemiología, Magíster en Epidemiología Clínica y Doctor en Salud Pública. Docente Universidad Surcolombiana, Fundación Universitaria Navarra, y docente invitado de la Universidad CES. Actualmente clasificado como investigador asociado por Minciencias. Experiencia en investigación en salud, revisión sistemática y metaanálisis, seguridad del paciente y Salud Pública. Docente de los cursos de seminario de investigación, determinantes sociales de la salud y revisión sistemática de programas de doctorado, maestría y especialización. Asesor en la parte de investigación de instituciones prestadoras de servicios de salud y empresas farmacéuticas.',
         correo: 'andres.ramos@usco.edu.co',
         cvlac: 'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000830062',
         orcid: 'https://orcid.org/0000-0003-4311-8407',
