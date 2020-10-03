@@ -18,8 +18,8 @@ export class DocentesComponent implements OnInit, AfterViewInit {
     this.profesores.push(
       {
         id: '1',
-        foto: '/assets/pro_dolly_arias.png',
-        nombre: 'Dolly Orfilia Arias Torres',
+        foto: '/assets/perfil_dolly_arias.png',
+        nombre: 'Dolly Arias Torres',
         // tslint:disable-next-line:max-line-length
         sintesis: 'Enfermera, Magíster en Educación y Desarrollo Comunitario, Doctora en Ciencias de la Salud y estancia posdoctoral en Salud de Colectivos. Profesora titular, tiempo completo de planta e investigadora de la Universidad Surcolombiana. Líder del Grupo de Investigación “Cuidar”, Categoría A de Minciencias, Coordinadora del Doctorado en Ciencias de la Salud desde 2016. Con amplia experiencia profesional en docencia e investigación en los campos de la Salud Comunitaria y la Salud de Pobalciones. Par evaluadora de Minciencias y del Ministerio de Educación Nacional (CNA y CONACES).',
         correo: 'dolaria@usco.edu.co',
@@ -28,7 +28,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '2',
-        foto: '/assets/pro_null_m.png',
+        foto: '/assets/perfil_alba_valencia.png',
         nombre: 'Alba Rocio Valencia Valderrama',
         // tslint:disable-next-line:max-line-length
         sintesis: 'Doctorado - DOCTORADO EN ANTROPOLOGIA - Graduado Maestría - MAESTRIA EN MORFOLOGIA - Graduado Profesional - LICENCIATURA EN BIOLOGIA Y QUIMICA - Graduado Básica secundaria Estudio en el Exterior - Maestría en Antropología Física y Forense - Graduado',
@@ -38,7 +38,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '3',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_alfredo_olaya.png',
         nombre: 'Alfredo Olaya Amaya',
         // tslint:disable-next-line:max-line-length
         sintesis: 'Doctorado UNIVERSIDAD NACIONAL DE COLOMBIA SEDE MEDELLÍN Doctorado En Ingeniería Área Recursos Hidráulicos Enerode1994 - de 2003 Sistema de Apoyo para la Toma de Decisiones en Distritos de Riego y Drenaje a partir de sus Recursos, Restricciones e Impactos Ambientales, para el Caso de Colombia',
@@ -68,7 +68,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '6',
-        foto: '/assets/pro_eduardo_pastrana.png',
+        foto: '/assets/perfil_eduardo_pastrana.png',
         nombre: 'Eduardo Pastrana Bonilla',
         // tslint:disable-next-line:max-line-length
         sintesis: 'Eduardo Pastrana Bonilla es Ingeniero Agrícola egresado de la Universidad Surcolombiana, con un Master of Science en Ciencia y Tecnología de Alimentos de California State University, Fresno, USA, y Doctorado en Ciencia y Tecnología de Alimentos de University of Georgia, USA. Es profesor titular de Tiempo completo Facultad de Ingeniería de la Universidad Surcolombiana desde el año 1984, ha sido Secretario Académico de la Facultad de Ingeniería, Jefe de Programa de Ingeniería Agrícola, Vicerrector de Recursos y Bienestar, Jefe de Programa, Administración Agroindustrial, Decano Facultad de Ingeniería, en dos periodos, Rector en encargo y en propiedad y, últimamente, Coordinador del Doctorado en Agroindustria y Desarrollo Agrícola Sostenible, todos estos cargos en la Universidad Surcolombiana. Ha sido Coordinador “Reestructuración curricular del programa de Ingeniería Agrícola”. Miembro del Comité Institucional de Acreditación. Universidad Surcolombiana. Coordinador de la Autoevaluación, con fines de acreditación, del programa de Ingeniería Agrícola. Coordinador de currículo de la Facultad de Ingeniería.  Y Par académico CNA, en 18 oportunidades. Ha sido conferencista y participante en más de 100 eventos. Y es miembro de la American Chemistry Society  (ACS), del American Oil Chemistry Society (AOCS) y del Institute of Food Technologists (IFT). Fue Becario Fulbright en dos oportunidades y actualmente participa dentro del Comité Asesor de Programas de la Comisión Fulbright – Colombia. ',
@@ -198,10 +198,10 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '19',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_nicolas_nunez.png',
         nombre: 'Nicolás Arturo Núñez Gómez',
         // tslint:disable-next-line:max-line-length
-        sintesis: '',
+        sintesis: 'Psicólogo Especialista en Psicología Clínica y de la Salud Especialista en Estadística Magister en Filosofía Doctor en Ciencias de la Salud Universidad Surcolombiana Facultad de Salud Programa de Medicina Adscrito al Area de Psiquiatría Profesor Doctorado en Ciencias de la Salud Coordinador Grupo de Investigación Carlos Finlay. Par Académico Dra. Zoraida María Amable Ambros. Escuela Nacional de Salud Pública, La Habana, Cuba. ',
         correo: 'ninugo@usco.edu.co',
         cvlac: 'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000830062',
         orcid: 'https://orcid.org/0000-0003-4311-8407',

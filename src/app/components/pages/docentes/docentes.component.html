@@ -12,20 +12,20 @@
       <div class="row">
         <div class="col-sm-8 shadow text-justify fondodivleft shadow">
           <h2 class="redinst">Profesores</h2>
-          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="profesores.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
-          <div *ngFor="let pro of profesores |  slice: (page-1) * pageSize : (page-1) * pageSize + pageSize  ; let i = index" class="card brCard grayinst" style="padding: 20px">
+          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="profesores.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination><br>
+          <div *ngFor="let pro of profesores |  slice: (page-1) * pageSize : (page-1) * pageSize + pageSize  ; let i = index" class="card brCard grayinst shadow-sm" style="padding: 20px" id="gradiante">
             <div class="row">
               <div class="col-md-4">
                 <img [src]="pro.foto" [alt]="pro.nombre" class="w-100 perfilPro" />
               </div>
               <div class="col-md-8 px-3">
                 <div class="card-block px-3">
-                  <h4 class="card-title redinst"><i class="fas fa-chalkboard-teacher"></i> {{ pro.nombre }}</h4>
+                  <h4 class="card-title beigeInst carnetTitulo"><i class="fas fa-chalkboard-teacher"></i> {{ pro.nombre }}</h4><br>
                   <p class="card-text"><i class="fas fa-info-circle"></i> Formación Académica:</p>
                   <ul class="card-text" style="font-size: 12px">
                     <li>
                       <p class="text-justify">
-                        {{ pro.sintesis }}
+                        {{ pro.sintesis | slice:0:300 }} <a href="#" style="color: #8F141B;">... Ver más</a>
                       </p>
                     </li>
                   </ul>
@@ -48,7 +48,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div><br>
           <ngb-pagination class="d-flex justify-content-start" [collectionSize]="profesores.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
         </div>
         <div class="col-sm-auto shadow fondodivright">
