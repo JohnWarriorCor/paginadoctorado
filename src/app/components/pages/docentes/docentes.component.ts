@@ -88,20 +88,20 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '8',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_german_lopez.png',
         nombre: 'German Alfonso López Daza',
         // tslint:disable-next-line:max-line-length
-        sintesis: '',
+        sintesis: 'Doctorado - DOCTORADO EN DERECHO - Graduado Maestría - MAESTRIA EN GOBIERNO Y POLITICAS PUBLICAS - Graduado Especialización - ESPECIALIZACION EN DERECHO CONSTITUCIONAL - Graduado Profesional - DERECHO - Graduado Básica secundaria Estudio en el Exterior - JUSTICE CONSTITUTIONNEL - Graduado',
         correo: 'germanlo@usco.edu.co',
         cvlac: 'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000830062',
         orcid: 'https://orcid.org/0000-0003-4311-8407',
       },
       {
         id: '9',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_gilberto_astaiza.png',
         nombre: 'Gilberto Mauricio Astaiza',
         // tslint:disable-next-line:max-line-length
-        sintesis: '',
+        sintesis: 'Doctorado - DOCTORADO EN SALUD PUBLICA - Graduado Maestría - MAESTRIA EN EDUCACION Y DESARROLLO COMUNITARIO - Graduado Especialización - ESPECIALIZACION EN EPIDEMIOLOGIA - Graduado Profesional - MEDICINA - Graduado',
         correo: 'gastaiza@usco.edu.co',
         cvlac: 'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000830062',
         orcid: 'https://orcid.org/0000-0003-4311-8407',
@@ -111,14 +111,14 @@ export class DocentesComponent implements OnInit, AfterViewInit {
         foto: '/assets/pro_null_h.png',
         nombre: 'Jairo Antonio Rodríguez Rodríguez',
         // tslint:disable-next-line:max-line-length
-        sintesis: '',
+        sintesis: 'Doctorado - DOCTORADO EN CIENCIAS BIOMEDICAS - Graduado, Maestría - MAESTRIA EN MICROBIOLOGIA - Graduado, Especialización - ESPECIALIZACION EN ALERGOLOGIA CLINICA - Graduado, Profesional - MEDICINA - Graduado, Básica secundaria, Estudio en el Exterior - ALERGIA E INMUNOLOGIA PEDIATRICA - No Graduado, Estudio en el Exterior - Doctor en Ciencias Biomédicas - Graduado',
         correo: 'jrodriguez@usco.edu.co',
         cvlac: 'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000830062',
         orcid: 'https://orcid.org/0000-0003-4311-8407',
       },
       {
         id: '11',
-        foto: '/assets/pro_jorge_castaneda.png',
+        foto: '/assets/perfil_jorge_castaneda.png',
         nombre: 'Jorge Andrés Ramos Castañeda',
         // tslint:disable-next-line:max-line-length
         sintesis: 'Enfermero, Especialista en Epidemiología, Magíster en Epidemiología Clínica y Doctor en Salud Pública. Docente Universidad Surcolombiana, Fundación Universitaria Navarra, y docente invitado de la Universidad CES. Actualmente clasificado como investigador asociado por Minciencias. Experiencia en investigación en salud, revisión sistemática y metaanálisis, seguridad del paciente y Salud Pública. Docente de los cursos de seminario de investigación, determinantes sociales de la salud y revisión sistemática de programas de doctorado, maestría y especialización. Asesor en la parte de investigación de instituciones prestadoras de servicios de salud y empresas farmacéuticas.',
@@ -148,7 +148,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '14',
-        foto: '/assets/pro_luis_munoz.png',
+        foto: '/assets/perfil_luis_munoz.png',
         nombre: 'Luis Alfredo Muñoz Velazco',
         // tslint:disable-next-line:max-line-length
         sintesis: 'Par Evaluador Reconocido por Minciencias Categorìa: Investigador Junior (IJ) con vigencia hasta la publicación de los resultados de la siguiente convocatoria    	•	Doctorado Universidad de Manizales Desarrollo Sostenible (2018) Tesis: “Influencia del sector hidroeléctrico en el desarrollo sostenible del territorio huilanse.” •	Maestría/Magister Universidad Externado de Colombia Derecho Economíco (2008)	Especialización Universidad Externado de Colombia Seguridad Social(2005) •	Especialización Escuela de Administracion de Negocios - E.A.N. Administración Financiera (1998)	Especialización Universidad Surcolombiana Gestión del Desarrollo Regional(1995) Especialización Universidad Santo Tomàs Docencia Universitaria(2001)',
@@ -178,7 +178,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '17',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_nelson_lopez.png',
         nombre: 'Nelson Ernesto López Jiménez',
         // tslint:disable-next-line:max-line-length
         sintesis: '',
@@ -188,7 +188,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '18',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_nelson_gutierrez.png',
         nombre: 'Nelson Gutiérrez Guzmán',
         // tslint:disable-next-line:max-line-length
         sintesis: '',
@@ -218,7 +218,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '21',
-        foto: '/assets/pro_leon_reyes.png',
+        foto: '/assets/perfil_leon_reyes.png',
         nombre: 'Pedro León Reyes Gaspar',
         // tslint:disable-next-line:max-line-length
         sintesis: 'Médico Cirujano Doctor en Ciencias de la Salud Especialista en Epidemiología Especialista en Gerencia y Auditoria de la Calidad en Salud Especialista en Gerencia de Servicios de Salud Diplomado en Auditoria Médica Diplomado en Docencia Universitaria Docente Titular Departamento de Salud Pública Universidad Surcolombiana Coordinador de Posgrados Facultad de Salud Universidad Surcolombiana Investigador, Grupo de Investigación Desarrollo Social, Salud Pública y Derechos Humanos, Universidad Surcolombiana, categoría A Colciencias Ex Rector Universidad Surcolombiana Ex Decano Facultad de Salud Universidad Surcolombiana Ex integrante Juntas Directivas ESEs Departamentales del Huila Ex Director Hospital Regional de Pitalito, Huila Ex Coordinador Técnico Hospital Regional de Pitalito, Huila',
@@ -228,7 +228,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '22',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_reinaldo_polo.png',
         nombre: 'Reinaldo Emilio Polo Ledesma',
         // tslint:disable-next-line:max-line-length
         sintesis: '',
@@ -238,7 +238,7 @@ export class DocentesComponent implements OnInit, AfterViewInit {
       },
       {
         id: '23',
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_willian_torres.png',
         nombre: 'William Fernando Torres Silva',
         // tslint:disable-next-line:max-line-length
         sintesis: '',
