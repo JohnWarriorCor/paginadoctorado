@@ -1,0 +1,46 @@
+<div class="wrapper fadeIn fast">
+  <div>
+    <img
+      src="assets/carrusel0.png"
+      class="d-block w-100"
+      style="height: 300px"
+      alt="Responsive image"
+    />
+  </div>
+  <div>
+    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+      <div class="fondodivcent text-justify shadow grayinst">
+        <h4 class="redinst">Plan de estudios</h4>
+        <table
+          id="tableSortExample"
+          class="table table-bordered parinst text-center"
+          style="border-radius: 10px"
+        >
+          <thead class="tablatit">
+            <tr class="white">
+              <th scope="col" [mdbTableSort]="asignaturas" sortBy="id">
+                N°
+                <mdb-icon fas icon="sort"></mdb-icon>
+              </th>
+              <th scope="col" [mdbTableSort]="asignaturas" sortBy="asignatura">
+                Asignatura
+                <mdb-icon fas icon="sort"></mdb-icon>
+              </th>
+              <th scope="col" [mdbTableSort]="asignaturas" sortBy="creditos">
+                Créditos
+                <mdb-icon fas icon="sort"></mdb-icon>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let grupo of asignaturas; let i = index">
+              <th scope="row">{{ grupo.id }}</th>
+              <td>{{ grupo.asignatura }}</td>
+              <td>{{ grupo.creditos }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

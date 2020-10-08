@@ -94,13 +94,31 @@
               ><i class="fas fa-home"></i> Inicio</a
             >
           </li>
-          <li class="menu__group">
+          <li class="menu__group dropdown menu__group">
             <a style="padding: 10px;"
               routerLinkActive="router-link-active"
-              class="nav-link menu__link"
+              class="nav-link dropdown-toggle menu__link dropbtn"
+              [routerLink]="['/historia']"
+              ><i class="far fa-building"></i> Programa</a
+            >
+            <div class="dropdown-content text-left">
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/historia']"><i class="fas fa-book-open"></i> Historia</a>
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/organigrama']"><i class="fas fa-code-branch"></i> Organigrama</a>
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/ubicacion']"><i class="fas fa-map-marker-alt"></i> Ubicación</a>
+            </div>
+          </li>
+          <li class="menu__group dropdown menu__group">
+            <a style="padding: 10px;"
+              routerLinkActive="router-link-active"
+              class="nav-link dropdown-toggle menu__link dropbtn"
               [routerLink]="['/formacion']"
               ><i class="fas fa-university"></i> Formación</a
             >
+            <div class="dropdown-content text-left">
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/plandeestudios']"><i class="fas fa-book-reader"></i> Plan de estudios</a>
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/competencias']"><i class="fas fa-bullseye"></i> Competencias</a>
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/perfil']"><i class="fas fa-user-tie"></i> Perfil</a>
+            </div>
           </li>
           <li class="menu__group">
             <a style="padding: 10px;"
@@ -123,7 +141,7 @@
               routerLinkActive="router-link-active"
               class="nav-link menu__link"
               [routerLink]="['/gruposinvestigacion']"
-              ><i class="fas fa-microscope"></i> Grupos de investigación</a
+              ><i class="fas fa-microscope"></i> Investigación</a
             >
           </li>
           <li class="nav-item dropdown menu__group">
@@ -133,9 +151,9 @@
             >
             <i class="fas fa-user-circle"></i> Estudiantes
             </a>
-            <div class="dropdown-content">
-              <a href="#" class="menu__link" [routerLink]="['/egresados']"><i class="fas fa-user-graduate"></i> Egresados</a>
-              <a href="#" class="menu__link" [routerLink]="['/tesis']"><i class="fas fa-file-pdf"></i> Tesis</a>
+            <div class="dropdown-content text-left">
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/egresados']"><i class="fas fa-user-graduate"></i> Egresados</a>
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/tesis']"><i class="fas fa-file-pdf"></i> Tesis</a>
             </div>
           </li>
         </ul>

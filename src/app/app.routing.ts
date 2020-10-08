@@ -6,19 +6,40 @@ import { AgendaComponent } from './components/pages/agenda/agenda.component';
 import { GruposinvesComponent } from './components/pages/gruposinves/gruposinves.component';
 import { EstudiantesComponent } from './components/pages/estudiantes/estudiantes.component';
 import { LoginComponent } from './components/admin/login/login.component';
-import { EgresadosComponent } from './components/pages/egresados/egresados.component';
-import { TesisComponent } from './components/pages/tesis/tesis.component';
+import { EgresadosComponent } from './components/pages/estudiantes/egresados/egresados.component';
+import { TesisComponent } from './components/pages/estudiantes/tesis/tesis.component';
+import { ProgramaComponent } from './components/pages/programa/programa.component';
+import { HistoriaComponent } from './components/pages/programa/historia/historia.component';
+import { UbicacionComponent } from './components/pages/programa/ubicacion/ubicacion.component';
+import { PlanestudiosComponent } from './components/pages/formacion/planestudios/planestudios.component';
+import { CompetenciasComponent } from './components/pages/formacion/competencias/competencias.component';
+import { PerfilComponent } from './components/pages/formacion/perfil/perfil.component';
 
 const routes: Routes = [
+  // INICIO
   { path: 'inicio', component: HomeComponent },
+  // PROGRAMA
+  { path: 'programa', component: ProgramaComponent },
+  { path: 'historia', component: HistoriaComponent },
+  { path: 'ubicacion', component: UbicacionComponent },
+  // FORMACION
   { path: 'formacion', component: FormacionComponent },
+  { path: 'plandeestudios', component: PlanestudiosComponent },
+  { path: 'competencias', component: CompetenciasComponent },
+  { path: 'perfil', component: PerfilComponent },
+  // PROFESORES
   { path: 'docentes', component: DocentesComponent },
+  // ACTIVDADES
   { path: 'agenda', component: AgendaComponent },
+  // INVESTIGACION
   { path: 'gruposinvestigacion', component: GruposinvesComponent },
+  // ESTUDIANDTES
   { path: 'estudiantes', component: EstudiantesComponent },
   { path: 'egresados', component: EgresadosComponent },
   { path: 'tesis', component: TesisComponent },
+  // RUTAS ADMINISTRADOR
   { path: 'adminlogin', component: LoginComponent },
+  // ROOT
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
 

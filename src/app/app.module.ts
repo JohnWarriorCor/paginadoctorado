@@ -23,10 +23,16 @@ import { DocentesComponent } from './components/pages/docentes/docentes.componen
 import { AgendaComponent } from './components/pages/agenda/agenda.component';
 import { EstudiantesComponent } from './components/pages/estudiantes/estudiantes.component';
 import { GruposinvesComponent } from './components/pages/gruposinves/gruposinves.component';
-import { EgresadosComponent } from './components/pages/egresados/egresados.component';
-import { TesisComponent } from './components/pages/tesis/tesis.component';
+import { EgresadosComponent } from './components/pages/estudiantes/egresados/egresados.component';
+import { TesisComponent } from './components/pages/estudiantes/tesis/tesis.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { GruposinveseditComponent } from './components/admin/gruposinvesedit/gruposinvesedit.component';
+import { ProgramaComponent } from './components/pages/programa/programa.component';
+import { HistoriaComponent } from './components/pages/programa/historia/historia.component';
+import { UbicacionComponent } from './components/pages/programa/ubicacion/ubicacion.component';
+import { PlanestudiosComponent } from './components/pages/formacion/planestudios/planestudios.component';
+import { CompetenciasComponent } from './components/pages/formacion/competencias/competencias.component';
+import { PerfilComponent } from './components/pages/formacion/perfil/perfil.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -46,6 +52,12 @@ registerLocaleData(localeEsCO, 'es-CO');
     TesisComponent,
     LoginComponent,
     GruposinveseditComponent,
+    ProgramaComponent,
+    HistoriaComponent,
+    UbicacionComponent,
+    PlanestudiosComponent,
+    CompetenciasComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,
