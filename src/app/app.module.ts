@@ -33,6 +33,7 @@ import { UbicacionComponent } from './components/pages/programa/ubicacion/ubicac
 import { PlanestudiosComponent } from './components/pages/formacion/planestudios/planestudios.component';
 import { CompetenciasComponent } from './components/pages/formacion/competencias/competencias.component';
 import { PerfilComponent } from './components/pages/formacion/perfil/perfil.component';
+import { OrganigramaComponent } from './components/pages/programa/organigrama/organigrama.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -58,6 +59,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     PlanestudiosComponent,
     CompetenciasComponent,
     PerfilComponent,
+    OrganigramaComponent,
   ],
   imports: [
     BrowserModule,

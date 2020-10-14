@@ -1,4 +1,3 @@
-
 /*RESTRUCTURACIÓN DEL CSS*/
 * {
   box-sizing: border-box;
@@ -7,7 +6,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
   font-size: 14px;
   background: #f5f5f5;
 }
@@ -36,13 +35,13 @@ html {
 .colorRedInst {
   color: #8f141b;
 }
-.bgRedInst{
+.bgRedInst {
   background-color: #8f141b;
 }
-.beigeInst{
-  color: #DFD4A6;
+.beigeInst {
+  color: #dfd4a6;
 }
-.grayinst{
+.grayinst {
   color: #4e6470;
 }
 .navlinkinSolid {
@@ -50,17 +49,17 @@ html {
   color: #dfd4a6;
 }
 .navlinkinSolid:hover {
-  background-color: #1E262B;
-  color: #EDEFF0;
+  background-color: #1e262b;
+  color: #edeff0;
 }
-.fondodivleft{
+.fondodivleft {
   background-color: white;
   border-radius: 12px;
   padding: 30px;
   margin-bottom: 10px;
   margin-right: 10px;
 }
-.fondodivright{
+.fondodivright {
   background-color: white;
   border-radius: 12px;
   padding: 30px;
@@ -72,7 +71,7 @@ html {
   padding: 30px;
   margin-bottom: 10px;
 }
-.fondodivlogin{
+.fondodivlogin {
   background-color: white;
   border-radius: 12px;
   width: 350px;
@@ -81,8 +80,16 @@ html {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.lineredinst{
-  border: solid #8f141b 2px;
+.lineInstRed {
+  content: "";
+  height: 2px;
+  background: #8f141b;
+  margin: 0 auto;
+  position: absolute;
+  width: 20%;
+}
+.mgText{
+  margin-top: 30px;
 }
 .ir-arriba {
   display: inline-block;
@@ -96,6 +103,11 @@ html {
   float: none;
   z-index: 100;
   border-radius: 100px;
+}
+.titleInstRed {
+  color: #8f141b;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 /*FIN RESTRUCTURACIÓN DEL CSS*/

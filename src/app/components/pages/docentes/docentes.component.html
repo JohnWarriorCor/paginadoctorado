@@ -3,15 +3,15 @@
     <img
       src="/assets/profesores.png"
       class="d-block w-100"
-      style="height: 250px"
-      alt="Responsive image"
+      style="height: auto"
     />
   </div>
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
         <div class="col-sm-8 shadow text-justify fondodivleft shadow">
-          <h2 class="redinst">Profesores</h2>
+          <h3 class="titleInstRed">Equipo Docente del Programa</h3>
+          <hr class="lineInstRed" /><br>
           <ngb-pagination class="d-flex justify-content-end" [collectionSize]="profesores.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination><br>
           <div *ngFor="let pro of profesores |  slice: (page-1) * pageSize : (page-1) * pageSize + pageSize  ; let i = index" class="card brCard grayinst shadow-sm" style="padding: 20px" id="gradiante">
             <div class="row">

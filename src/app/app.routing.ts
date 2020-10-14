@@ -14,6 +14,7 @@ import { UbicacionComponent } from './components/pages/programa/ubicacion/ubicac
 import { PlanestudiosComponent } from './components/pages/formacion/planestudios/planestudios.component';
 import { CompetenciasComponent } from './components/pages/formacion/competencias/competencias.component';
 import { PerfilComponent } from './components/pages/formacion/perfil/perfil.component';
+import { OrganigramaComponent } from './components/pages/programa/organigrama/organigrama.component';
 
 const routes: Routes = [
   // INICIO
@@ -21,6 +22,7 @@ const routes: Routes = [
   // PROGRAMA
   { path: 'programa', component: ProgramaComponent },
   { path: 'historia', component: HistoriaComponent },
+  { path: 'organigrama', component: OrganigramaComponent },
   { path: 'ubicacion', component: UbicacionComponent },
   // FORMACION
   { path: 'formacion', component: FormacionComponent },
