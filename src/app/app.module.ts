@@ -34,6 +34,7 @@ import { PlanestudiosComponent } from './components/pages/formacion/planestudios
 import { CompetenciasComponent } from './components/pages/formacion/competencias/competencias.component';
 import { PerfilComponent } from './components/pages/formacion/perfil/perfil.component';
 import { OrganigramaComponent } from './components/pages/programa/organigrama/organigrama.component';
+import {NgxPrintModule} from 'ngx-print';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -69,6 +70,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     NgbModule,
     FormsModule,
     RouterModule,
+    NgxPrintModule,
     MDBBootstrapModule.forRoot(),
   ],
   exports: [

@@ -20,14 +20,15 @@
               width="100%"
               height="480"
             ></iframe>
-            <hr>
+            <hr />
             <br />
             <h5 class="font-weight-bold">Entrada principal</h5>
             <br />
             <img src="assets/ubicacionsubsede.jpg" class="rounded img-fluid" />
             <hr />
-            <br>
-            <h5><b>Bloques de la Facultad de Salud</b></h5>
+            <br />
+            <div id="print-section">
+              <h5><b>Bloques de la Facultad de Salud</b></h5>
             <img
               src="assets/mapabloques.jpg"
               class="rounded img-fluid"
@@ -115,20 +116,20 @@
               "
             />
             <MAP name="ImageMap2">
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=80,330,105,388>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=115,348,152,384>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=164,327,265,404>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=357,193,442,260>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=451,194,522,260>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=564,108,650,260>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=499,108,553,166>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=433,110,486,163>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=384,110,425,188>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=299,30,369,112>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=147,27,283,110>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=94,24,138,88>
-              <AREA shape=RECT href="http://www.trellian.com/" alt="Click Here!" target="" coords=8,69,86,208>
-              </MAP>
+              <AREA shape="RECT"type="button" data-toggle="tooltip" data-placement="top" title="" coords="80,330,105,388" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="115,348,152,384" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="164,327,265,404" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="357,193,442,260" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="451,194,522,260" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="564,108,650,260" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="499,108,553,166" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="433,110,486,163" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="384,110,425,188" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="299,30,369,112" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="147,27,283,110" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="94,24,138,88" />
+              <AREA shape="RECT" data-toggle="tooltip" data-placement="top" title="" coords="8,69,86,208" />
+            </MAP>
             <h5>Nomenclatura:</h5>
             <div class="row">
               <div class="col">
@@ -154,7 +155,8 @@
               </div>
             </div>
             <hr />
-            <button class="btn navlinkinSolid" (click)="printPage()">
+            </div>
+            <button class="btn navlinkinSolid" printSectionId="print-section" ngxPrint>
               <i class="fas fa-print"></i> Imprimir
             </button>
           </div>
