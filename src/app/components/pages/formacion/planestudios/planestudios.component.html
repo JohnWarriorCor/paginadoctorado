@@ -9,41 +9,60 @@
   </div>
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-      <div class="fondodivcent text-justify shadow grayinst">
-        <h4 class="redinst">Plan de estudios</h4>
-        <table
-          id="tableSortExample"
-          class="table table-bordered parinst text-center"
-          style="border-radius: 10px"
-        >
-          <thead class="tablatit">
-            <tr class="white">
-              <th scope="col" [mdbTableSort]="asignaturas" sortBy="id">
-                N°
-                <mdb-icon fas icon="sort"></mdb-icon>
-              </th>
-              <th scope="col" [mdbTableSort]="asignaturas" sortBy="asignatura">
-                Asignatura
-                <mdb-icon fas icon="sort"></mdb-icon>
-              </th>
-              <th scope="col" [mdbTableSort]="asignaturas" sortBy="creditos">
-                Créditos
-                <mdb-icon fas icon="sort"></mdb-icon>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let grupo of asignaturas; let i = index">
-              <th scope="row">{{ grupo.id }}</th>
-              <td>{{ grupo.asignatura }}</td>
-              <td>{{ grupo.creditos }}</td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
-          <button class="btn navlinkinSolid">
-            <i class="fas fa-print"></i> Imprimir
-          </button>
+      <div class="row">
+        <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst">
+          <h3 class="titleInstRed">Plan de Estudios</h3>
+          <hr class="lineInstRed" />
+          <br />
+          <table
+            id="tableSortExample"
+            class="table table-bordered parinst text-center"
+            style="border-radius: 10px"
+          >
+            <thead class="tablatit">
+              <tr class="white">
+                <th scope="col" [mdbTableSort]="asignaturas" sortBy="id">
+                  N°
+                  <mdb-icon fas icon="sort"></mdb-icon>
+                </th>
+                <th scope="col" [mdbTableSort]="asignaturas" sortBy="asignatura">
+                  Asignatura
+                  <mdb-icon fas icon="sort"></mdb-icon>
+                </th>
+                <th scope="col" [mdbTableSort]="asignaturas" sortBy="creditos">
+                  Créditos
+                  <mdb-icon fas icon="sort"></mdb-icon>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let grupo of asignaturas; let i = index">
+                <th scope="row">{{ grupo.id }}</th>
+                <td>{{ grupo.asignatura }}</td>
+                <td>{{ grupo.creditos }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <hr />
+            <button class="btn navlinkinSolid">
+              <i class="fas fa-print"></i> Imprimir
+            </button>
+        </div>
+        <div class="col-sm-auto fondodivright shadow">
+          <h3 class="titleInstRed">Infórmate</h3>
+          <hr class="lineInstRed" />
+          <br />
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=1000&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+            width="100%"
+            height="1000"
+            style="border: none; overflow: hidden"
+            scrolling="no"
+            frameborder="0"
+            allowTransparency="true"
+            allow="encrypted-media"
+          ></iframe>
+        </div>
       </div>
     </div>
   </div>

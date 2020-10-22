@@ -22,25 +22,19 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
       {
         id: 'COL0024427',
         nombre: 'Mi Dneuropsy',
-        lider: 'Efraín Amaya Vargas	',
+        lider: 'Esperanza Cabrera Díaz',
         clasi: 'A1'
       },
       {
         id: 'COL0014556',
         nombre: 'Parasitología y medicina tropical',
-        lider: 'Jairo Antonio Rodríguez Rodríguez	',
+        lider: 'Carlos Fernando Narvaez Rojas',
         clasi: 'A1'
       },
       {
         id: 'COL0035331',
         nombre: 'Laboratorio de medicina genómica',
         lider: 'Henry Ostos Alfonso',
-        clasi: 'A1'
-      },
-      {
-        id: 'COL0088925',
-        nombre: 'Neurored',
-        lider: 'Jairo Antonio Rodríguez Rodríguez	',
         clasi: 'A1'
       },
       {
@@ -56,6 +50,12 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
         clasi: 'A'
       },
       {
+        id: 'COL0044063',
+        nombre: 'Nuevas visiones del derecho',
+        lider: 'German Alfonso López Daza',
+        clasi: 'A'
+      },
+      {
         id: 'COL0022244',
         nombre: 'Ecosistemas sur-colombianos',
         lider: 'Alfredo Olaya Amaya',
@@ -68,9 +68,9 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
         clasi: 'B'
       },
       {
-        id: 'COL0044063',
-        nombre: 'Nuevas visiones del derecho',
-        lider: 'German Alfonso López Daza',
+        id: 'COL0047038',
+        nombre: 'Salud y grupos vulnerables',
+        lider: 'Claudia Andrea Ramírez',
         clasi: 'B'
       },
       {
@@ -78,12 +78,6 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
         nombre: 'Biología de la re-producción',
         lider: 'Manuel García Flórez',
         clasi: 'C'
-      },
-      {
-        id: 'COL0047038',
-        nombre: 'Salud y grupos vulnerables',
-        lider: 'Claudia Andrea Ramírez',
-        clasi: 'D'
       },
     );
   }

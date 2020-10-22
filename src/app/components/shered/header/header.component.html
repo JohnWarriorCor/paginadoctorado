@@ -120,13 +120,16 @@
               <a href="#" class="menu__link_dropdown" [routerLink]="['/perfil']"><i class="fas fa-user-tie"></i> Perfil</a>
             </div>
           </li>
-          <li class="menu__group">
+          <li class="menu__group dropdown menu__group">
             <a style="padding: 10px;"
               routerLinkActive="router-link-active"
-              class="nav-link menu__link"
+              class="nav-link dropdown-toggle menu__link dropbtn"
               [routerLink]="['/docentes']"
               ><i class="fas fa-users"></i> Profesores</a
             >
+            <div class="dropdown-content text-left">
+              <a href="#" class="menu__link_dropdown" [routerLink]="['#']"><i class="fas fa-book-reader"></i> Artículos publicados</a>
+            </div>
           </li>
           <li class="menu__group">
             <a style="padding: 10px;"
@@ -152,9 +155,18 @@
             <i class="fas fa-user-circle"></i> Estudiantes
             </a>
             <div class="dropdown-content text-left">
-              <a href="#" class="menu__link_dropdown" [routerLink]="['/egresados']"><i class="fas fa-user-graduate"></i> Egresados</a>
+              <a href="#" class="menu__link_dropdown" [routerLink]="['#']"><i class="fas fa-file-pdf"></i> Artículos publicados</a>
               <a href="#" class="menu__link_dropdown" [routerLink]="['/tesis']"><i class="fas fa-file-pdf"></i> Tesis</a>
+              <a href="#" class="menu__link_dropdown" [routerLink]="['/egresados']"><i class="fas fa-user-graduate"></i> Egresados</a>
             </div>
+          </li>
+          <li class="menu__group">
+            <a style="padding: 10px;"
+              routerLinkActive="router-link-active"
+              class="nav-link menu__link"
+              [routerLink]="['#']"
+              ><i class="fas fa-book"></i> Biblioteca</a
+            >
           </li>
         </ul>
       </div>
