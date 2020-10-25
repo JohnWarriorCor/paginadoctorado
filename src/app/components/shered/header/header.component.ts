@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   open = false;
-  emailstring = 'mailto:xyz@example.com';
+  emailstring = 'mailto:doctoradoencienciasdelasalud@usco.edu.co';
   today = new Date();
 
   constructor() {

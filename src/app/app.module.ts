@@ -35,6 +35,14 @@ import { CompetenciasComponent } from './components/pages/formacion/competencias
 import { PerfilComponent } from './components/pages/formacion/perfil/perfil.component';
 import { OrganigramaComponent } from './components/pages/programa/organigrama/organigrama.component';
 import {NgxPrintModule} from 'ngx-print';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
+import { KeysfirebasePipe } from './pipes/keysfirebase.pipe';
+import { ListinvertPipe } from './pipes/listinvert.pipe';
+import { TarjetadocenteComponent } from './components/pages/docentes/tarjetadocente/tarjetadocente.component';
+import { DocenteComponent } from './components/pages/docentes/docente/docente.component';
+import { BibliotecaComponent } from './components/pages/biblioteca/biblioteca.component';
+import { ArticulosprofesoresComponent } from './components/pages/docentes/articulosprofesores/articulosprofesores.component';
+import { ArticulosestudiantesComponent } from './components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -61,6 +69,14 @@ registerLocaleData(localeEsCO, 'es-CO');
     CompetenciasComponent,
     PerfilComponent,
     OrganigramaComponent,
+    DomseguroPipe,
+    KeysfirebasePipe,
+    ListinvertPipe,
+    TarjetadocenteComponent,
+    DocenteComponent,
+    BibliotecaComponent,
+    ArticulosprofesoresComponent,
+    ArticulosestudiantesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { ProfesoresService, Profesores } from '../../../services/profesores.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-docentes',
@@ -8,14 +10,16 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 export class DocentesComponent implements OnInit, AfterViewInit {
 
   profesores: any = [];
+  profesores2: any = [];
   page = 1;
   pageSize = 3;
 
 
-  constructor() { }
+  constructor(private profesoresService: ProfesoresService, private router: Router) { }
 
   ngOnInit() {
-    this.profesores.push(
+    this.profesores = this.profesoresService.getProfesores();
+    this.profesores2.push(
       {
         id: '1',
         foto: '/assets/perfil_dolly_arias.png',
@@ -247,6 +251,13 @@ export class DocentesComponent implements OnInit, AfterViewInit {
         orcid: 'https://orcid.org/0000-0003-4311-8407',
       },
       );
+  }
+  verProfesor( idx: number ) {
+    this.router.navigate(['/docente', idx]);
+  }
+  buscarProfesor( termino: string ) {
+    // console.log(termino);
+    this.router.navigate( ['/buscarDocente', termino] );
   }
   ngAfterViewInit(): void {
     (window as any).twttr.widgets.load();

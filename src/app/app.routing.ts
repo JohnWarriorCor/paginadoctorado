@@ -15,6 +15,10 @@ import { PlanestudiosComponent } from './components/pages/formacion/planestudios
 import { CompetenciasComponent } from './components/pages/formacion/competencias/competencias.component';
 import { PerfilComponent } from './components/pages/formacion/perfil/perfil.component';
 import { OrganigramaComponent } from './components/pages/programa/organigrama/organigrama.component';
+import { DocenteComponent } from './components/pages/docentes/docente/docente.component';
+import { BibliotecaComponent } from './components/pages/biblioteca/biblioteca.component';
+import { ArticulosestudiantesComponent } from './components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component';
+import { ArticulosprofesoresComponent } from './components/pages/docentes/articulosprofesores/articulosprofesores.component';
 
 const routes: Routes = [
   // INICIO
@@ -31,14 +35,19 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent },
   // PROFESORES
   { path: 'docentes', component: DocentesComponent },
+  { path: 'articulosProfesores', component: ArticulosprofesoresComponent },
+  { path: 'docente/:id', component: DocenteComponent },
   // ACTIVDADES
   { path: 'agenda', component: AgendaComponent },
   // INVESTIGACION
   { path: 'gruposinvestigacion', component: GruposinvesComponent },
   // ESTUDIANDTES
   { path: 'estudiantes', component: EstudiantesComponent },
+  { path: 'articulosEstudiantes', component: ArticulosestudiantesComponent },
   { path: 'egresados', component: EgresadosComponent },
   { path: 'tesis', component: TesisComponent },
+  // BIBLIOTECA
+  { path: 'biblioteca', component: BibliotecaComponent },
   // RUTAS ADMINISTRADOR
   { path: 'adminlogin', component: LoginComponent },
   // ROOT

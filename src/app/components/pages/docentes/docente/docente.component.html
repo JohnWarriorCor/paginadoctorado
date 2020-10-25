@@ -1,0 +1,89 @@
+<div class="wrapper fadeIn fast">
+  <div>
+    <img
+      src="/assets/profesores.png"
+      class="d-block w-100"
+      style="height: auto"
+    />
+  </div>
+  <div>
+    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+      <div class="row fondodivleft shadow" id="print-section">
+        <div class="col-md-8 text-justify">
+          <div
+            style="
+              background-color: #8f141b;
+              color: white;
+              padding: 20px;
+              border-radius: 10px 10px 0px 0px;
+            "
+          >
+            <h3>Perfil de {{ profesor.nombre }}</h3>
+            <h5>Docente</h5>
+            <h6>Universidad Surcolombiana</h6>
+          </div>
+          <div
+            style="
+              background-color: #edeff0;
+              padding: 20px;
+              border-radius: 0px 0px 10px 10px;
+              color: #1e262b;
+            "
+          >
+            <h5><i class="fas fa-info-circle"></i> Formación académica:</h5>
+            <p class="m-4">{{ profesor.sintesis }}</p><br>
+            <h5><i class="fas fa-envelope"></i> {{ profesor.correo }}</h5><br>
+            <div class="text-right">
+              <a
+                  [href]="profesor.cvlac"
+                  target="blank_"
+                  class="btn navlinkinSolid"
+                  >CvLAC</a
+                >
+                <a
+                style="margin-left: 10px;"
+                  [href]="profesor.orcid"
+                  target="blank_"
+                  class="btn navlinkinSolid"
+                  >ORCID</a
+                >
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4" style="
+        background-color: #edeff0;
+        padding: 20px;
+        border-radius: 10px 10px 10px 10px;
+        color: #1e262b;
+      ">
+          <img
+            [src]="profesor.foto"
+            [alt]="profesor.nombre"
+            class="rounded mx-auto d-block"
+            style="width: 100%;border: solid 5px white;"
+          />
+          <br>
+          <h6 class="text-center" style="background-color: #B15B60; color: white;padding: 10px;border-radius: 10px;"><a style="color: white;" href="http://wsp.presidencia.gov.co/Normativa/Leyes/Documents/LEY%201712%20DEL%2006%20DE%20MARZO%20DE%202014.pdf" target="_blank">Ver Ley de Transparencia y acceso a la información</a></h6>
+      </div>
+      <div class="container text-right">
+        <hr>
+        <button
+          class="btn navlinkinSolid"
+          printSectionId="print-section"
+          [useExistingCss]="true"
+          printTitle="Perfil de {{profesor.nombre}}"
+          ngxPrint
+        >
+          <i class="fas fa-print"></i> Imprimir
+        </button>
+        <button
+        style="margin-left: 10px;"
+        class="btn navlinkinSolid"
+        [routerLink]="['/docentes']"
+      >
+      <i class="fas fa-sign-out-alt"></i> Regresar
+      </button>
+      </div>
+    </div>
+  </div>
+</div>
