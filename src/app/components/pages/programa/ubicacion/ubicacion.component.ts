@@ -11,8 +11,5 @@ export class UbicacionComponent implements OnInit {
 
   ngOnInit() {
   }
-  printPage() {
-    window.print();
-  }
 
 }

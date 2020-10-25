@@ -11,42 +11,58 @@
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
         <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst">
-          <h3 class="titleInstRed">Plan de Estudios</h3>
-          <hr class="lineInstRed" />
-          <br />
-          <table
-            id="tableSortExample"
-            class="table table-bordered parinst text-center"
-            style="border-radius: 10px"
-          >
-            <thead class="tablatit">
-              <tr class="white">
-                <th scope="col" [mdbTableSort]="asignaturas" sortBy="id">
-                  N°
-                  <mdb-icon fas icon="sort"></mdb-icon>
-                </th>
-                <th scope="col" [mdbTableSort]="asignaturas" sortBy="asignatura">
-                  Asignatura
-                  <mdb-icon fas icon="sort"></mdb-icon>
-                </th>
-                <th scope="col" [mdbTableSort]="asignaturas" sortBy="creditos">
-                  Créditos
-                  <mdb-icon fas icon="sort"></mdb-icon>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let grupo of asignaturas; let i = index">
-                <th scope="row">{{ grupo.id }}</th>
-                <td>{{ grupo.asignatura }}</td>
-                <td>{{ grupo.creditos }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div id="print-section">
+            <h3 class="titleInstRed">Plan de Estudios</h3>
+            <hr class="lineInstRed" />
+            <br />
+            <table
+              id="tableSortExample"
+              class="table table-bordered parinst text-center"
+              style="border-radius: 10px"
+            >
+              <thead class="tablatit">
+                <tr class="white">
+                  <th scope="col" [mdbTableSort]="asignaturas" sortBy="id">
+                    N°
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th
+                    scope="col"
+                    [mdbTableSort]="asignaturas"
+                    sortBy="asignatura"
+                  >
+                    Asignatura
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th
+                    scope="col"
+                    [mdbTableSort]="asignaturas"
+                    sortBy="creditos"
+                  >
+                    Créditos
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let grupo of asignaturas; let i = index">
+                  <th scope="row">{{ grupo.id }}</th>
+                  <td>{{ grupo.asignatura }}</td>
+                  <td>{{ grupo.creditos }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <hr />
-            <button class="btn navlinkinSolid">
-              <i class="fas fa-print"></i> Imprimir
-            </button>
+          <button
+            class="btn navlinkinSolid"
+            printSectionId="print-section"
+            [useExistingCss]="true"
+            printTitle="Plan de estudios Doctorado en Ciencias de la Salud"  
+            ngxPrint
+          >
+            <i class="fas fa-print"></i> Imprimir
+          </button>
         </div>
         <div class="col-sm-auto fondodivright shadow">
           <h3 class="titleInstRed">Infórmate</h3>

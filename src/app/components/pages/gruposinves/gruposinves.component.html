@@ -3,54 +3,66 @@
     <img
       src="/assets/grupinves.jpg"
       class="d-block w-100"
-      style="height: auto;"
+      style="height: auto"
     />
   </div>
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
         <div class="col-sm-8 shadow fondodivleft shadow">
-          <h3 class="titleInstRed">Grupos de Investigación del Doctorado</h3>
-          <hr class="lineInstRed"><br>
-          <br>
-          <!--ETILO OPCIONAL
+          <div id="print-section">
+            <h3 class="titleInstRed">Grupos de Investigación del Doctorado</h3>
+            <hr class="lineInstRed" />
+            <br />
+            <br />
+            <!--ETILO OPCIONAL
             mdbTable
             class="z-depth-1"
           -->
-          <table
-            id="tableSortExample"
-            class="table table-bordered parinst table-responsive text-center"
-            style="border-radius: 10px"
+            <table
+              id="tableSortExample"
+              class="table table-bordered parinst table-responsive text-center"
+              style="border-radius: 10px"
+            >
+              <thead class="tablatit">
+                <tr class="white">
+                  <th scope="col" [mdbTableSort]="gruposInv" sortBy="id">
+                    CÓDIGO DE GRUPO COLCIENCIAS
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th scope="col" [mdbTableSort]="gruposInv" sortBy="nombre">
+                    NOMBRE DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th scope="col" [mdbTableSort]="gruposInv" sortBy="lider">
+                    LÍDER DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th scope="col" [mdbTableSort]="gruposInv" sortBy="clasi">
+                    CLASIFICACIÓN DEL GRUPO
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let grupo of gruposInv; let i = index">
+                  <th scope="row">{{ grupo.id }}</th>
+                  <td>{{ grupo.nombre }}</td>
+                  <td>{{ grupo.lider }}</td>
+                  <td>{{ grupo.clasi }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+          </div>
+          <hr />
+          <button
+            class="btn navlinkinSolid"
+            printSectionId="print-section"
+            [useExistingCss]="true"
+            printTitle="Grupos de Investigación del Doctorado en Ciencias de la Salud"
+            ngxPrint
           >
-            <thead class="tablatit">
-              <tr class="white">
-                <th scope="col" [mdbTableSort]="gruposInv" sortBy="id">
-                  CÓDIGO DE GRUPO COLCIENCIAS
-                  <mdb-icon fas icon="sort"></mdb-icon>
-                </th>
-                <th scope="col" [mdbTableSort]="gruposInv" sortBy="nombre">
-                  NOMBRE DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
-                </th>
-                <th scope="col" [mdbTableSort]="gruposInv" sortBy="lider">
-                  LÍDER DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
-                </th>
-                <th scope="col" [mdbTableSort]="gruposInv" sortBy="clasi">
-                  CLASIFICACIÓN DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let grupo of gruposInv; let i = index">
-                <th scope="row">{{ grupo.id }}</th>
-                <td>{{ grupo.nombre }}</td>
-                <td>{{ grupo.lider }}</td>
-                <td>{{ grupo.clasi }}</td>
-              </tr>
-            </tbody>
-          </table>
-          <br />
-          <br />
-          <br />
+            <i class="fas fa-print"></i> Imprimir
+          </button>
         </div>
         <div class="col-sm-auto shadow fondodivright">
           <a
