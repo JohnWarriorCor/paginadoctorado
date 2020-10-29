@@ -18,7 +18,7 @@
               border-radius: 10px 10px 0px 0px;
             "
           >
-            <h3>Perfil de {{ profesor.nombre }}</h3>
+            <h3><i class="fas fa-user-circle"></i> Perfil de {{ profesor.nombre }}</h3>
             <h5>Docente</h5>
             <h6>Universidad Surcolombiana</h6>
           </div>
@@ -31,58 +31,127 @@
             "
           >
             <h5><i class="fas fa-info-circle"></i> Formación académica:</h5>
-            <p class="m-4">{{ profesor.sintesis }}</p><br>
-            <h5><i class="fas fa-envelope"></i> {{ profesor.correo }}</h5><br>
-            <div class="text-right">
+            <p class="m-4">{{ profesor.sintesis }}</p>
+            <br />
+            <h5><i class="fas fa-envelope"></i> {{ profesor.correo }}</h5>
+            <br />
+            <div class="text-right no-print">
               <a
-                  [href]="profesor.cvlac"
-                  target="blank_"
-                  class="btn navlinkinSolid"
-                  >CvLAC</a
-                >
-                <a
-                style="margin-left: 10px;"
-                  [href]="profesor.orcid"
-                  target="blank_"
-                  class="btn navlinkinSolid"
-                  >ORCID</a
-                >
+                [href]="profesor.cvlac"
+                target="blank_"
+                class="btn navlinkinSolid"
+                >CvLAC</a
+              >
+              <a
+                style="margin-left: 10px"
+                [href]="profesor.orcid"
+                target="blank_"
+                class="btn navlinkinSolid"
+                >ORCID</a
+              >
             </div>
           </div>
         </div>
-        <div class="col-6 col-md-4" style="
-        background-color: #edeff0;
-        padding: 20px;
-        border-radius: 10px 10px 10px 10px;
-        color: #1e262b;
-      ">
+        <div
+          class="col-6 col-md-4"
+          style="
+            background-color: #edeff0;
+            padding: 20px;
+            border-radius: 10px 10px 10px 10px;
+            color: #1e262b;
+          "
+        >
           <img
             [src]="profesor.foto"
             [alt]="profesor.nombre"
             class="rounded mx-auto d-block"
-            style="width: 100%;border: solid 5px white;"
+            style="width: 100%; border: solid 5px white"
           />
-          <br>
-          <h6 class="text-center" style="background-color: #B15B60; color: white;padding: 10px;border-radius: 10px;"><a style="color: white;" href="http://wsp.presidencia.gov.co/Normativa/Leyes/Documents/LEY%201712%20DEL%2006%20DE%20MARZO%20DE%202014.pdf" target="_blank">Ver Ley de Transparencia y acceso a la información</a></h6>
-      </div>
-      <div class="container text-right">
-        <hr>
-        <button
-          class="btn navlinkinSolid"
-          printSectionId="print-section"
-          [useExistingCss]="true"
-          printTitle="Perfil de {{profesor.nombre}}"
-          ngxPrint
-        >
-          <i class="fas fa-print"></i> Imprimir
-        </button>
-        <button
-        style="margin-left: 10px;"
-        class="btn navlinkinSolid"
-        [routerLink]="['/docentes']"
-      >
-      <i class="fas fa-sign-out-alt"></i> Regresar
-      </button>
+          <br />
+          <h6
+            class="text-center no-print"
+            style="
+              background-color: #b15b60;
+              color: white;
+              padding: 10px;
+              border-radius: 10px;
+            "
+          >
+            <a
+              style="color: white"
+              href="http://wsp.presidencia.gov.co/Normativa/Leyes/Documents/LEY%201712%20DEL%2006%20DE%20MARZO%20DE%202014.pdf"
+              target="_blank"
+              >Ver Ley de Transparencia y acceso a la información</a
+            >
+          </h6>
+        </div>
+        <div class="container text-right no-print">
+          <hr />
+          <button
+            class="btn navlinkinSolid"
+            printSectionId="print-section"
+            [useExistingCss]="true"
+            printTitle="Perfil de {{ profesor.nombre }}"
+            ngxPrint
+          >
+            <i class="fas fa-print"></i> Imprimir
+          </button>
+          <button
+            style="margin-left: 10px"
+            class="btn navlinkinSolid"
+            [routerLink]="['/docentes']"
+            (click)="up()"
+          >
+            <i class="fas fa-sign-out-alt"></i> Regresar
+          </button>
+          <br />
+          <hr />
+          <div
+            id="carouselExampleInterval"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner text-center no-print">
+              <div class="carousel-item" data-interval="10000" *ngFor="let item of slides let j = index" [attr.data-slide-to]="j" [ngClass]="{'active' : j == 0}">
+                <div class="card-deck">
+                  <div class="card" *ngFor="let card of item let cardIndex = index" style="border: none;">
+                    <img [routerLink]="['/docente',(card.id-1)]" (click)="up()" [src]="card.foto" [alt]="card.nombre" class="card-img-top" style="border-radius: 50%;"/>
+                    <div class="card-body">
+                      <h5 class="card-title">{{card.nombre}}</h5>
+                    </div>
+                    <div class="card-footer btn navlinkinSolid" [routerLink]="['/docente',(card.id-1)]" (click)="up()">
+                      <h6>Ver perfil...</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleInterval"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleInterval"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

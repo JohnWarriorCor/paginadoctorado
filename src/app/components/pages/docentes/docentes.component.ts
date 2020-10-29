@@ -262,5 +262,8 @@ export class DocentesComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     (window as any).twttr.widgets.load();
   }
+  up() {
+    window.scroll(0, 400);
+  }
 
 }

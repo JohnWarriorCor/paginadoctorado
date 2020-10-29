@@ -12,7 +12,6 @@
         <div class="col-sm-8 shadow text-justify fondodivleft shadow">
           <h3 class="titleInstRed">Equipo Docente del Programa</h3>
           <hr class="lineInstRed" /><br>
-
           <ngb-pagination class="d-flex justify-content-end" [collectionSize]="profesores.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
             <app-tarjetadocente (profesorSeleccionado)="verProfesor( $event )" [profesor]="foo" [index]="i" *ngFor="let foo of profesores | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ; let i = index"></app-tarjetadocente>
           <ngb-pagination class="d-flex justify-content-start" [collectionSize]="profesores.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
@@ -57,6 +56,8 @@
           <ngb-pagination class="d-flex justify-content-start" [collectionSize]="profesores2.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>-->
         </div>
         <div class="col-sm-auto shadow fondodivright">
+          <h3 class="titleInstRed"><i class="far fa-newspaper"></i> Infórmate</h3>
+          <hr class="lineInstRed" /><br>
           <a
             class="twitter-timeline"
             data-lang="es"
