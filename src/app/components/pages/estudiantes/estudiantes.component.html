@@ -1,16 +1,71 @@
 <div class="wrapper fadeIn fast">
   <div>
-    <img src="/assets/facultad-de-salud-02-.jpg" class="d-block w-100" style="height: 300px;" alt="Responsive image">
+    <img
+      src="/assets/estudiantes.jpg"
+      class="d-block w-100"
+      style="height: auto"
+    />
   </div>
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
-        <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst">
-          <h4 class="redinst">Estudiantes</h4>
+        <div class="col-sm-8 shadow text-justify fondodivleft shadow">
+          <h3 class="titleInstRed">Perfiles</h3>
+          <hr class="lineInstRed" /><br>
+          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="estudiantes.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
+            <app-tarjetaestudiante (profesorSeleccionado)="verEstudiante( $event )" [estudiante]="foo" [index]="i" *ngFor="let foo of estudiantes | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ; let i = index"></app-tarjetaestudiante>
+          <ngb-pagination class="d-flex justify-content-start" [collectionSize]="estudiantes.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
+          <!-- PROFESORES SIN NAVEGACION
+          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="profesores2.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination><br>
+          <div *ngFor="let pro of profesores2 |  slice: (page-1) * pageSize : (page-1) * pageSize + pageSize  ; let i = index" class="card brCard grayinst shadow-sm" style="padding: 20px" id="gradiante">
+            <div class="row">
+              <div class="col-md-4">
+                <img [src]="pro.foto" [alt]="pro.nombre" class="w-100 perfilPro" />
+              </div>
+              <div class="col-md-8 px-3">
+                <div class="card-block px-3">
+                  <h4 class="card-title beigeInst carnetTitulo"><i class="fas fa-chalkboard-teacher"></i> {{ pro.nombre }}</h4><br>
+                  <p class="card-text"><i class="fas fa-info-circle"></i> Formación Académica:</p>
+                  <ul class="card-text" style="font-size: 12px">
+                    <li>
+                      <p class="text-justify">
+                        {{ pro.sintesis | slice:0:300 }} <a href="#" style="color: #8F141B;">... Ver más</a>
+                      </p>
+                    </li>
+                  </ul>
+                  <p class="card-title grayinst"><i class="fas fa-envelope"></i> {{ pro.correo }}</p>
+                  <div class="text-right">
+                    <a
+                      [href]="pro.cvlac"
+                      target="blank_"
+                      class="btn navlinkinSolid"
+                      >CvLAC</a
+                    >
+                    <a
+                      style="margin-left: 10px"
+                      [href]="pro.orcid"
+                      target="blank_"
+                      class="btn navlinkinSolid"
+                      >ORCID</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><br>
+          <ngb-pagination class="d-flex justify-content-start" [collectionSize]="profesores2.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>-->
         </div>
-        <div class="col-sm-auto fondodivright shadow">
-          <h3 class="redinst">USCO</h3>
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="100%" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        <div class="col-sm-auto shadow fondodivright">
+          <h3 class="titleInstRed"><i class="far fa-newspaper"></i> Infórmate</h3>
+          <hr class="lineInstRed" /><br>
+          <a
+            class="twitter-timeline"
+            data-lang="es"
+            data-height="1200"
+            data-theme="light"
+            href="https://twitter.com/FACSALUD_USCO?ref_src=twsrc%5Etfw"
+            >Tweets de FACSALUD_USCO</a
+          >
         </div>
       </div>
     </div>

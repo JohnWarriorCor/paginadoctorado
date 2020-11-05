@@ -26,17 +26,37 @@
             >
               <thead class="tablatit">
                 <tr class="white">
-                  <th scope="col" [mdbTableSort]="gruposInv" sortBy="id">
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="gruposInv"
+                    sortBy="id"
+                  >
                     CÓDIGO DE GRUPO COLCIENCIAS
                     <mdb-icon fas icon="sort"></mdb-icon>
                   </th>
-                  <th scope="col" [mdbTableSort]="gruposInv" sortBy="nombre">
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="gruposInv"
+                    sortBy="nombre"
+                  >
                     NOMBRE DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
                   </th>
-                  <th scope="col" [mdbTableSort]="gruposInv" sortBy="lider">
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="gruposInv"
+                    sortBy="lider"
+                  >
                     LÍDER DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
                   </th>
-                  <th scope="col" [mdbTableSort]="gruposInv" sortBy="clasi">
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="gruposInv"
+                    sortBy="clasi"
+                  >
                     CLASIFICACIÓN DEL GRUPO
                     <mdb-icon fas icon="sort"></mdb-icon>
                   </th>
@@ -44,10 +64,12 @@
               </thead>
               <tbody>
                 <tr *ngFor="let grupo of gruposInv; let i = index">
-                  <th scope="row">{{ grupo.id }}</th>
-                  <td>{{ grupo.nombre }}</td>
-                  <td>{{ grupo.lider }}</td>
-                  <td>{{ grupo.clasi }}</td>
+                  <th style="vertical-align: middle" scope="row">
+                    {{ grupo.id }}
+                  </th>
+                  <td style="vertical-align: middle">{{ grupo.nombre }}</td>
+                  <td style="vertical-align: middle">{{ grupo.lider }}</td>
+                  <td style="vertical-align: middle">{{ grupo.clasi }}</td>
                 </tr>
               </tbody>
             </table>

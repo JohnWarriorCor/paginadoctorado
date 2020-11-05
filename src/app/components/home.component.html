@@ -197,7 +197,7 @@
           data-ride="carousel"
         >
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item">
               <div class="card-deck">
                 <div class="card shadow">
                   <img
@@ -247,6 +247,58 @@
                     <p class="card-text">
                       <small class="text-muted"
                         >Última actualización hace una semana</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item active">
+              <div class="card-deck">
+                <div class="card shadow">
+                  <img
+                    src="/assets/car1.jpg"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h6 class="card-title redinst">
+                      <i class="far fa-calendar-alt"></i>
+                      Martes, 03 De Noviembre De 2020
+                    </h6>
+                    <p class="card-text grayinst">
+                      Simposio - virtual <br />
+                      Reflexión frente a la pandemia.
+                      social.<br />
+                      5 de noviembre - Contexto internacional de la pandemia.<br>
+                      Conferencistas invitados <br>
+                      Plataforma Facebook Live - Hora 4:00 p.m.
+                    </p>
+                    <p class="card-text">
+                      <small class="text-muted"
+                        >Última actualización hace dos días</small
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div class="card shadow">
+                  <img src="/assets/car2.jpg" class="card-img-top" alt="..." />
+                  <div class="card-body">
+                    <h6 class="card-title redinst">
+                      <i class="far fa-calendar-alt"></i>
+                      Viernes, 30 De Octubre De 2020
+                    </h6>
+                    <p class="card-text grayinst">
+                      Primer encuentro. <br />
+                      Simposio virtual Reflexión frente a la pandemia. <br />
+                      Inscripciones:
+                      <a href="https://contenidos.usco.edu.co/salud/" target="_blank"
+                        >https://contenidos.usco.edu.co/salud/</a
+                      >
+                    </p>
+                    <p class="card-text">
+                      <small class="text-muted"
+                        >Última actualización hace 7 días</small
                       >
                     </p>
                   </div>
@@ -334,29 +386,49 @@
           <thead style="background-color: #8f141b; color: white">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Autor</th>
-              <th scope="col">Indexado</th>
+              <th scope="col">Título</th>
+              <th scope="col">Autores</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td>{{ today | date: "fullDate" | titlecase }}</td>
-              <td>Otto</td>
-              <td><button class="btn navlinkinSolid">Scielo</button></td>
+              <th style="vertical-align:middle;" scope="row">1</th>
+              <td style="vertical-align:middle;">Juan Camilo Calderón Farfán, Dolly Arias Torres, Martha Nidia Papamija Gómez y Maria Paula Quintero Tamayo</td>
+              <td style="vertical-align:middle;">Condiciones de seguridad alimentaria en una comunidad indígena de Colombia</td>
+              <td style="vertical-align:middle;">
+                <div class="row">
+                  <div class="col">
+                    <a href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es" target="_blank">
+                      <button placement="right" ngbTooltip="Descargar" class="btn navlinkinSolid" style="margin-bottom: 10px;"><i class="fas fa-download"></i></button>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#" target="_blank">
+                      <button placement="right" ngbTooltip="Ver" class="btn navlinkinSolid"><i class="far fa-eye"></i></button>
+                    </a>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>{{ today | date: "fullDate" | titlecase }}</td>
-              <td>Thornton</td>
-              <td><button class="btn navlinkinSolid">Scielo</button></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>{{ today | date: "fullDate" | titlecase }}</td>
-              <td>the Bird</td>
-              <td><button class="btn navlinkinSolid">Scielo</button></td>
+              <th style="vertical-align:middle;" scope="row">2</th>
+              <td style="vertical-align:middle;">Juan Camilo Calderón Farfán, María Alejandra Torres Soto, Valentina Quintero Montoya, Leisy Cruz Rodríguez, Julieth González Cerón, Luis Alberto Vargas Guadarrama y Dolly Arias Torres</td>
+              <td style="vertical-align:middle;">Prácticas de autonomía alimentaria en la cosmovisión indígena nasa en Colombia</td>
+              <td style="vertical-align:middle;">
+                <div class="row">
+                  <div class="col">
+                    <a href="https://www.tandfonline.com/doi/abs/10.1080/21683565.2020.1812789" target="_blank">
+                      <button placement="right" ngbTooltip="Descargar" class="btn navlinkinSolid" style="margin-bottom: 10px;"><i class="fas fa-download"></i></button>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a href="https://www.tandfonline.com/doi/abs/10.1080/21683565.2020.1812789" target="_blank">
+                      <button placement="right" ngbTooltip="Ver" class="btn navlinkinSolid"><i class="far fa-eye"></i></button>
+                    </a>
+                  </div>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>

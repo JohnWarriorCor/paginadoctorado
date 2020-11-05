@@ -22,11 +22,17 @@
             >
               <thead class="tablatit">
                 <tr class="white">
-                  <th scope="col" [mdbTableSort]="asignaturas" sortBy="id">
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="asignaturas"
+                    sortBy="id"
+                  >
                     N°
                     <mdb-icon fas icon="sort"></mdb-icon>
                   </th>
                   <th
+                    style="vertical-align: middle"
                     scope="col"
                     [mdbTableSort]="asignaturas"
                     sortBy="asignatura"
@@ -35,6 +41,7 @@
                     <mdb-icon fas icon="sort"></mdb-icon>
                   </th>
                   <th
+                    style="vertical-align: middle"
                     scope="col"
                     [mdbTableSort]="asignaturas"
                     sortBy="creditos"
@@ -46,9 +53,11 @@
               </thead>
               <tbody>
                 <tr *ngFor="let grupo of asignaturas; let i = index">
-                  <th scope="row">{{ grupo.id }}</th>
-                  <td>{{ grupo.asignatura }}</td>
-                  <td>{{ grupo.creditos }}</td>
+                  <th style="vertical-align: middle" scope="row">
+                    {{ grupo.id }}
+                  </th>
+                  <td style="vertical-align: middle">{{ grupo.asignatura }}</td>
+                  <td style="vertical-align: middle">{{ grupo.creditos }}</td>
                 </tr>
               </tbody>
             </table>
@@ -58,7 +67,7 @@
             class="btn navlinkinSolid"
             printSectionId="print-section"
             [useExistingCss]="true"
-            printTitle="Plan de estudios Doctorado en Ciencias de la Salud"  
+            printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
             ngxPrint
           >
             <i class="fas fa-print"></i> Imprimir

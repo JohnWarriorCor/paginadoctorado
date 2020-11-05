@@ -17,9 +17,6 @@ export class TarjetadocenteComponent {
   constructor(private modalService: NgbModal, private router: Router) {
     this.profesorSeleccionado = new EventEmitter();
   }
-  verPelicula() {
-    this.router.navigate(['/docente', this.index]);
-  }
   openLg(content) {
     this.modalService.open(content, { size: 'lg', windowClass: 'dark-modal', centered: true });
   }

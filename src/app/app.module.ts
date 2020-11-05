@@ -43,6 +43,8 @@ import { DocenteComponent } from './components/pages/docentes/docente/docente.co
 import { BibliotecaComponent } from './components/pages/biblioteca/biblioteca.component';
 import { ArticulosprofesoresComponent } from './components/pages/docentes/articulosprofesores/articulosprofesores.component';
 import { ArticulosestudiantesComponent } from './components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component';
+import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
+import { TarjetaestudianteComponent } from './components/pages/estudiantes/tarjetaestudiante/tarjetaestudiante.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -77,6 +79,8 @@ registerLocaleData(localeEsCO, 'es-CO');
     BibliotecaComponent,
     ArticulosprofesoresComponent,
     ArticulosestudiantesComponent,
+    EstudianteComponent,
+    TarjetaestudianteComponent,
   ],
   imports: [
     BrowserModule,

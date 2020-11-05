@@ -19,6 +19,7 @@ import { DocenteComponent } from './components/pages/docentes/docente/docente.co
 import { BibliotecaComponent } from './components/pages/biblioteca/biblioteca.component';
 import { ArticulosestudiantesComponent } from './components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component';
 import { ArticulosprofesoresComponent } from './components/pages/docentes/articulosprofesores/articulosprofesores.component';
+import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
 
 const routes: Routes = [
   // INICIO
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'gruposinvestigacion', component: GruposinvesComponent },
   // ESTUDIANDTES
   { path: 'estudiantes', component: EstudiantesComponent },
+  { path: 'estudiante/:id', component: EstudianteComponent },
   { path: 'articulosEstudiantes', component: ArticulosestudiantesComponent },
   { path: 'egresados', component: EgresadosComponent },
   { path: 'tesis', component: TesisComponent },
