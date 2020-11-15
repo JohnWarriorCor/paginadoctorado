@@ -1,16 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit, ViewChild } from '@angular/core';
 import * as $ from 'jquery';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
+  closeResult: string;
+  @ViewChild('content') myModal: any;
   title = 'DocCienciasSalud';
+  constructor(private modalService: NgbModal) {
+  }
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'custom-moodal fade-in'});
+  }
+
   onActivate(event) {
     window.scroll(0, 0);
     document.querySelector('body').scrollTo(0, 0);
+  }
+  ngAfterViewInit() {
+    this.openVerticallyCentered(this.myModal);
   }
   ngOnInit() {
     // tslint:disable-next-line:only-arrow-functions

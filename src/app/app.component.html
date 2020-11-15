@@ -2,3 +2,20 @@
 <a><i class="ir-arriba fas fa-chevron-up"></i></a>
   <router-outlet (activate)="onActivate($event)"></router-outlet>
 <app-footer></app-footer>
+<ng-template #content let-modal>
+  <div class="modal-header bgrojoycafe">
+    <h4 class="modal-title"><i class="far fa-newspaper"></i> Comunicado</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <i class="fas fa-times" style="color: white;"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <video width="270" height="240" controls autoplay loop>
+      <source src="assets/inscripciones.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn navlinkinSolid" ngbAutofocus (click)="modal.close('Close click')">Cerrar</button>
+  </div>
+</ng-template>

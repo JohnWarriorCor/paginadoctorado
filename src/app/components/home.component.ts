@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ProfesoresService, Profesores } from '../services/profesores.service';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 // tslint:disable-next-line:prefer-const
 
@@ -10,10 +11,9 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [NgbModal]
 })
 
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
   currentJustify = 'justified';
   today = new Date();
   profesor: any = {};
@@ -25,11 +25,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.profesor = this.profesorService.getProfesor(params.id);
     });
   }
-
-  open(content) {
-    this.modalService.open(content);
-  }
-
   chunk(arr, chunkSize) {
     // tslint:disable-next-line:prefer-const
     let R = [];
@@ -47,8 +42,5 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
   up() {
     window.scroll(0, 400);
-  }
-  ngAfterViewInit(): void {
-    (window as any).twttr.widgets.load();
   }
 }

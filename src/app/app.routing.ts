@@ -20,6 +20,7 @@ import { BibliotecaComponent } from './components/pages/biblioteca/biblioteca.co
 import { ArticulosestudiantesComponent } from './components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component';
 import { ArticulosprofesoresComponent } from './components/pages/docentes/articulosprofesores/articulosprofesores.component';
 import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
+import { HistoriaeditComponent } from './components/admin/programa/historiaedit/historiaedit.component';
 
 const routes: Routes = [
   // INICIO
@@ -58,7 +59,7 @@ const routes: Routes = [
   { path: 'admi_inicio', component: HomeComponent },
   // PROGRAMA
   { path: 'admi_programa', component: ProgramaComponent },
-  { path: 'admi_historia', component: HistoriaComponent },
+  { path: 'admi_historia', component: HistoriaeditComponent },
   { path: 'admi_organigrama', component: OrganigramaComponent },
   { path: 'admi_ubicacion', component: UbicacionComponent },
   // FORMACION

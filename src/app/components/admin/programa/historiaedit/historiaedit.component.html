@@ -1,0 +1,38 @@
+<div class="wrapper fadeIn fast">
+  <div>
+    <img
+      src="/assets/facultad-de-salud-02-.jpg"
+      class="d-block w-100"
+      style="height: 300px"
+      alt="Responsive image"
+    />
+  </div>
+  <div>
+    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+      <div class="row">
+        <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+          <h3 class="titleInstRed">
+            Formulario para editar la Historia del Prorgama
+          </h3>
+          <hr class="lineInstRed" />
+          <br />
+          <!--(ngSubmit)="guardar()"-->
+          <form #forma="ngForm">
+            <!--[(ngModel)]="historia.reseniaHist"-->
+            <textarea
+              
+              maxlength="6500"
+              name="reseniaHist"
+              class="form-control shadow p-3"
+              placeholder="Digite en esta área la historía del programa ..."
+              rows="30"
+            ></textarea
+            ><br /><br />
+          </form>
+          <hr />
+          <button class="btn navlinkinSolid">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -45,6 +45,7 @@ import { ArticulosprofesoresComponent } from './components/pages/docentes/articu
 import { ArticulosestudiantesComponent } from './components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component';
 import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
 import { TarjetaestudianteComponent } from './components/pages/estudiantes/tarjetaestudiante/tarjetaestudiante.component';
+import { HistoriaeditComponent } from './components/admin/programa/historiaedit/historiaedit.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -81,6 +82,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     ArticulosestudiantesComponent,
     EstudianteComponent,
     TarjetaestudianteComponent,
+    HistoriaeditComponent,
   ],
   imports: [
     BrowserModule,
