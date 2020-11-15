@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ProfesoresService, Profesores } from '../services/profesores.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 // tslint:disable-next-line:prefer-const
 
@@ -9,6 +10,7 @@ import { ProfesoresService, Profesores } from '../services/profesores.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  providers: [NgbModal]
 })
 
 export class HomeComponent implements OnInit, AfterViewInit {
@@ -17,10 +19,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   profesor: any = {};
   profesores: Profesores[] = [];
   slides: any = [[]];
-  constructor(private activatedRoute: ActivatedRoute, private profesorService: ProfesoresService, private router: Router) {
+  // tslint:disable-next-line:max-line-length
+  constructor(private modalService: NgbModal, private activatedRoute: ActivatedRoute, private profesorService: ProfesoresService, private router: Router) {
     this.activatedRoute.params.subscribe( params => {
       this.profesor = this.profesorService.getProfesor(params.id);
     });
+  }
+
+  open(content) {
+    this.modalService.open(content);
   }
 
   chunk(arr, chunkSize) {

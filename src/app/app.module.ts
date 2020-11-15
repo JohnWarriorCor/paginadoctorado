@@ -6,7 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ModalModule, WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md';
 export { MDBBootstrapModule };
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
@@ -34,7 +34,7 @@ import { PlanestudiosComponent } from './components/pages/formacion/planestudios
 import { CompetenciasComponent } from './components/pages/formacion/competencias/competencias.component';
 import { PerfilComponent } from './components/pages/formacion/perfil/perfil.component';
 import { OrganigramaComponent } from './components/pages/programa/organigrama/organigrama.component';
-import {NgxPrintModule} from 'ngx-print';
+import { NgxPrintModule } from 'ngx-print';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { KeysfirebasePipe } from './pipes/keysfirebase.pipe';
 import { ListinvertPipe } from './pipes/listinvert.pipe';
@@ -92,6 +92,10 @@ registerLocaleData(localeEsCO, 'es-CO');
     RouterModule,
     NgxPrintModule,
     MDBBootstrapModule.forRoot(),
+    ModalModule.forRoot(),
+    WavesModule.forRoot(),
+    InputsModule.forRoot(),
+    ButtonsModule.forRoot(),
   ],
   exports: [
     MDBBootstrapModule,

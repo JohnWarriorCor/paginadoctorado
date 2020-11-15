@@ -38,7 +38,7 @@ export class ProfesoresService {
       },
       {
         id: 4,
-        foto: '/assets/pro_null_h.png',
+        foto: '/assets/perfil_jairo.png',
         nombre: 'Jairo Antonio Rodríguez Rodríguez',
         // tslint:disable-next-line:max-line-length
         sintesis: 'Médico, ESPECIALIZACION EN ALERGOLOGIA CLINICA, MAESTRIA EN MICROBIOLOGIA, DOCTORADO EN CIENCIAS BIOMEDICAS',

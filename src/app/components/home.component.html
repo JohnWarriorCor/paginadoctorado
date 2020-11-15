@@ -186,9 +186,46 @@
             </ng-template>
           </ngb-tab>
         </ngb-tabset>
+        <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fa fa-envelope prefix grey-text"></i>
+          <input type="email" id="defaultForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fa fa-lock prefix grey-text"></i>
+          <input type="password" id="defaultForm-pass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-default">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
+    Modal Login Form</a>
+</div>
       </div>
       <div class="col fondodivright shadow">
-        <h3 class="titleInstRed"><i class="far fa-edit"></i> Agéndate</h3>
+        <h3 [routerLink]="['/agenda']" class="titleInstRed cursorSelect">
+          <i class="far fa-edit"></i> Agéndate
+        </h3>
         <hr class="lineInstRed" />
         <br />
         <div
@@ -256,11 +293,7 @@
             <div class="carousel-item active">
               <div class="card-deck">
                 <div class="card shadow">
-                  <img
-                    src="/assets/car1.jpg"
-                    class="card-img-top"
-                    alt="..."
-                  />
+                  <img src="/assets/car1.jpg" class="card-img-top" alt="..." />
                   <div class="card-body">
                     <h6 class="card-title redinst">
                       <i class="far fa-calendar-alt"></i>
@@ -268,10 +301,9 @@
                     </h6>
                     <p class="card-text grayinst">
                       Simposio - virtual <br />
-                      Reflexión frente a la pandemia.
-                      social.<br />
-                      5 de noviembre - Contexto internacional de la pandemia.<br>
-                      Conferencistas invitados <br>
+                      Reflexión frente a la pandemia. social.<br />
+                      5 de noviembre - Contexto internacional de la pandemia.<br />
+                      Conferencistas invitados <br />
                       Plataforma Facebook Live - Hora 4:00 p.m.
                     </p>
                     <p class="card-text">
@@ -292,7 +324,9 @@
                       Primer encuentro. <br />
                       Simposio virtual Reflexión frente a la pandemia. <br />
                       Inscripciones:
-                      <a href="https://contenidos.usco.edu.co/salud/" target="_blank"
+                      <a
+                        href="https://contenidos.usco.edu.co/salud/"
+                        target="_blank"
                         >https://contenidos.usco.edu.co/salud/</a
                       >
                     </p>
@@ -355,29 +389,125 @@
           <thead style="background-color: #8f141b; color: white">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Autor</th>
-              <th scope="col">Indexado</th>
+              <th scope="col">Título</th>
+              <th scope="col">Autores</th>
+              <th scope="col">Opciones</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>{{ today | date: "fullDate" | titlecase }}</td>
-              <td>Otto</td>
-              <td><button class="btn navlinkinSolid">Scielo</button></td>
+              <td>Título de la publicación</td>
+              <td>Nombres de los autores</td>
+              <td>
+                <div class="row">
+                  <div class="col">
+                    <a
+                      href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Descargar"
+                        class="btn navlinkinSolid"
+                        style="margin-bottom: 10px"
+                      >
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a
+                      href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Ver"
+                        class="btn navlinkinSolid"
+                      >
+                        <i class="far fa-eye"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>{{ today | date: "fullDate" | titlecase }}</td>
-              <td>Thornton</td>
-              <td><button class="btn navlinkinSolid">Scielo</button></td>
+              <td>Título de la publicación</td>
+              <td>Nombres de los autores</td>
+              <td>
+                <div class="row">
+                  <div class="col">
+                    <a
+                      href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Descargar"
+                        class="btn navlinkinSolid"
+                        style="margin-bottom: 10px"
+                      >
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a
+                      href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Ver"
+                        class="btn navlinkinSolid"
+                      >
+                        <i class="far fa-eye"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td>{{ today | date: "fullDate" | titlecase }}</td>
-              <td>the Bird</td>
-              <td><button class="btn navlinkinSolid">Scielo</button></td>
+              <td>Título de la publicación</td>
+              <td>Nombres de los autores</td>
+              <td>
+                <div class="row">
+                  <div class="col">
+                    <a
+                      href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Descargar"
+                        class="btn navlinkinSolid"
+                        style="margin-bottom: 10px"
+                      >
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="col">
+                    <a
+                      href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Ver"
+                        class="btn navlinkinSolid"
+                      >
+                        <i class="far fa-eye"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -393,38 +523,90 @@
           </thead>
           <tbody>
             <tr>
-              <th style="vertical-align:middle;" scope="row">1</th>
-              <td style="vertical-align:middle;">Juan Camilo Calderón Farfán, Dolly Arias Torres, Martha Nidia Papamija Gómez y Maria Paula Quintero Tamayo</td>
-              <td style="vertical-align:middle;">Condiciones de seguridad alimentaria en una comunidad indígena de Colombia</td>
-              <td style="vertical-align:middle;">
+              <th style="vertical-align: middle" scope="row">1</th>
+              <td style="vertical-align: middle">
+                Juan Camilo Calderón Farfán, Dolly Arias Torres, Martha Nidia
+                Papamija Gómez y Maria Paula Quintero Tamayo
+              </td>
+              <td style="vertical-align: middle">
+                Condiciones de seguridad alimentaria en una comunidad indígena
+                de Colombia
+              </td>
+              <td style="vertical-align: middle">
                 <div class="row">
                   <div class="col">
-                    <a href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es" target="_blank">
-                      <button placement="right" ngbTooltip="Descargar" class="btn navlinkinSolid" style="margin-bottom: 10px;"><i class="fas fa-download"></i></button>
+                    <a
+                      href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Descargar"
+                        class="btn navlinkinSolid"
+                        style="margin-bottom: 10px"
+                      >
+                        <i class="fas fa-download"></i>
+                      </button>
                     </a>
                   </div>
                   <div class="col">
-                    <a href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#" target="_blank">
-                      <button placement="right" ngbTooltip="Ver" class="btn navlinkinSolid"><i class="far fa-eye"></i></button>
+                    <a
+                      href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Ver"
+                        class="btn navlinkinSolid"
+                      >
+                        <i class="far fa-eye"></i>
+                      </button>
                     </a>
                   </div>
                 </div>
               </td>
             </tr>
             <tr>
-              <th style="vertical-align:middle;" scope="row">2</th>
-              <td style="vertical-align:middle;">Juan Camilo Calderón Farfán, María Alejandra Torres Soto, Valentina Quintero Montoya, Leisy Cruz Rodríguez, Julieth González Cerón, Luis Alberto Vargas Guadarrama y Dolly Arias Torres</td>
-              <td style="vertical-align:middle;">Prácticas de autonomía alimentaria en la cosmovisión indígena nasa en Colombia</td>
-              <td style="vertical-align:middle;">
+              <th style="vertical-align: middle" scope="row">2</th>
+              <td style="vertical-align: middle">
+                Juan Camilo Calderón Farfán, María Alejandra Torres Soto,
+                Valentina Quintero Montoya, Leisy Cruz Rodríguez, Julieth
+                González Cerón, Luis Alberto Vargas Guadarrama y Dolly Arias
+                Torres
+              </td>
+              <td style="vertical-align: middle">
+                Prácticas de autonomía alimentaria en la cosmovisión indígena
+                nasa en Colombia
+              </td>
+              <td style="vertical-align: middle">
                 <div class="row">
                   <div class="col">
-                    <a href="https://www.tandfonline.com/doi/abs/10.1080/21683565.2020.1812789" target="_blank">
-                      <button placement="right" ngbTooltip="Descargar" class="btn navlinkinSolid" style="margin-bottom: 10px;"><i class="fas fa-download"></i></button>
+                    <a
+                      href="https://www.tandfonline.com/doi/abs/10.1080/21683565.2020.1812789"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Descargar"
+                        class="btn navlinkinSolid"
+                        style="margin-bottom: 10px"
+                      >
+                        <i class="fas fa-download"></i>
+                      </button>
                     </a>
                   </div>
                   <div class="col">
-                    <a href="https://www.tandfonline.com/doi/abs/10.1080/21683565.2020.1812789" target="_blank">
-                      <button placement="right" ngbTooltip="Ver" class="btn navlinkinSolid"><i class="far fa-eye"></i></button>
+                    <a
+                      href="https://www.tandfonline.com/doi/abs/10.1080/21683565.2020.1812789"
+                      target="_blank"
+                    >
+                      <button
+                        placement="right"
+                        ngbTooltip="Ver"
+                        class="btn navlinkinSolid"
+                      >
+                        <i class="far fa-eye"></i>
+                      </button>
                     </a>
                   </div>
                 </div>
@@ -434,12 +616,15 @@
         </table>
         <br />
         <hr />
-        <a [routerLink]="['/docentes']"
-          ><h3 class="titleInstRed" style="margin-top: 30px">
-            <i class="fas fa-users"></i> Plantel Docente
-          </h3>
-          <hr class="lineInstRed" /></a
-        ><br />
+        <h3
+          [routerLink]="['/docentes']"
+          class="titleInstRed cursorSelect"
+          style="margin-top: 30px"
+        >
+          <i class="fas fa-users"></i> Plantel Docente
+        </h3>
+        <hr class="lineInstRed" />
+        <br />
         <div
           id="carouselExampleInterval"
           class="carousel slide"
@@ -509,7 +694,16 @@
           </h3>
           <hr class="lineInstRed" />
           <br />
-          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="300" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+            width="300"
+            height="500"
+            style="border: none; overflow: hidden"
+            scrolling="no"
+            frameborder="0"
+            allowTransparency="true"
+            allow="encrypted-media"
+          ></iframe>
           <hr />
           <h3 class="titleInstRed">
             <i class="far fa-calendar-alt"></i> Calendario

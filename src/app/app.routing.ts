@@ -50,8 +50,38 @@ const routes: Routes = [
   { path: 'tesis', component: TesisComponent },
   // BIBLIOTECA
   { path: 'biblioteca', component: BibliotecaComponent },
+
+
   // RUTAS ADMINISTRADOR
   { path: 'adminlogin', component: LoginComponent },
+  // INICIO
+  { path: 'admi_inicio', component: HomeComponent },
+  // PROGRAMA
+  { path: 'admi_programa', component: ProgramaComponent },
+  { path: 'admi_historia', component: HistoriaComponent },
+  { path: 'admi_organigrama', component: OrganigramaComponent },
+  { path: 'admi_ubicacion', component: UbicacionComponent },
+  // FORMACION
+  { path: 'admi_formacion', component: FormacionComponent },
+  { path: 'admi_plandeestudios', component: PlanestudiosComponent },
+  { path: 'admi_competencias', component: CompetenciasComponent },
+  { path: 'admi_perfil', component: PerfilComponent },
+  // PROFESORES
+  { path: 'admi_docentes', component: DocentesComponent },
+  { path: 'admi_articulosProfesores', component: ArticulosprofesoresComponent },
+  { path: 'admi_docente/:id', component: DocenteComponent },
+  // ACTIVDADES
+  { path: 'admi_agenda', component: AgendaComponent },
+  // INVESTIGACION
+  { path: 'admi_gruposinvestigacion', component: GruposinvesComponent },
+  // ESTUDIANDTES
+  { path: 'admi_estudiantes', component: EstudiantesComponent },
+  { path: 'admi_estudiante/:id', component: EstudianteComponent },
+  { path: 'admi_articulosEstudiantes', component: ArticulosestudiantesComponent },
+  { path: 'admi_egresados', component: EgresadosComponent },
+  { path: 'admi_tesis', component: TesisComponent },
+  // BIBLIOTECA
+  { path: 'biblioteca', component: BibliotecaComponent },
   // ROOT
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];
