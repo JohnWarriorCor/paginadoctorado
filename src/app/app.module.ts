@@ -3,7 +3,9 @@ import { LOCALE_ID, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import { NgbPaginationModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 
 import { MDBBootstrapModule, ModalModule, WavesModule, InputsModule, ButtonsModule } from 'angular-bootstrap-md';
@@ -46,6 +48,7 @@ import { ArticulosestudiantesComponent } from './components/pages/estudiantes/ar
 import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
 import { TarjetaestudianteComponent } from './components/pages/estudiantes/tarjetaestudiante/tarjetaestudiante.component';
 import { HistoriaeditComponent } from './components/admin/programa/historiaedit/historiaedit.component';
+import { AgendaeditComponent } from './components/admin/agendaedit/agendaedit.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -83,6 +86,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     EstudianteComponent,
     TarjetaestudianteComponent,
     HistoriaeditComponent,
+    AgendaeditComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,8 +95,11 @@ registerLocaleData(localeEsCO, 'es-CO');
     NgbAlertModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule,
     NgxPrintModule,
+    HttpModule,
+    HttpClientModule,
     MDBBootstrapModule.forRoot(),
     ModalModule.forRoot(),
     WavesModule.forRoot(),

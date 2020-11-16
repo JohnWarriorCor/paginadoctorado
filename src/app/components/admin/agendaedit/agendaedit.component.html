@@ -1,0 +1,148 @@
+<div class="wrapper fadeIn fast">
+  <div>
+    <img
+      src="/assets/agenda.jpg"
+      class="d-block w-100"
+      style="height: 350px"
+      alt="Responsive image"
+    />
+  </div>
+  <div>
+    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+      <div class="row">
+        <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+          <h3 class="titleInstRed">
+            Formulario para la publicación de un evento
+          </h3>
+          <hr class="lineInstRed" />
+          <br /><br />
+          <form #forma="ngForm" class="text-center">
+            <div class="row animated fadeIn fast">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col">
+                    <h6 class="text-left subTituloRojoInstitucional">
+                      Titulo del evento:
+                    </h6>
+                    <input
+                      type="text"
+                      class="form-control shadow p-3 inputPaciente"
+                      placeholder="..."
+                    />
+                    <div class="row">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Fecha:
+                        </h6>
+                        <input
+                          id="fechaNombre"
+                          name="fechaNombre"
+                          type="date"
+                          class="form-control shadow p-3 inputPaciente"
+                        />
+                      </div>
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Imagen del evento:
+                        </h6>
+                        <input
+                          (change)="changeImg(urlimg)"
+                          name="ImgUrl"
+                          [(ngModel)]="urlimg"
+                          type="url"
+                          class="form-control shadow p-3 inputPaciente"
+                          placeholder="Dirección de la imagen"
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Parrafo:
+                        </h6>
+                        <textarea
+                          maxlength="6500"
+                          name="reseniaHist"
+                          class="form-control shadow p-3 inputPaciente"
+                          placeholder="Información relevante a la publicación ..."
+                          rows="10"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <h6 class="text-left subTituloRojoInstitucional">
+                      Previsualización de la imágen:
+                    </h6>
+                    <img
+                      [src]="defaultImgUrl"
+                      class="rounded mx-auto d-block"
+                      width="100%"
+                      alt="..."
+                      style="border: solid 1px black;"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <form #forma="ngForm">
+            <br />
+            <hr />
+            <button (click)="openModal(confirmar)" class="btn navlinkinSolid">
+              <i class="far fa-save"></i> Guardar
+            </button>
+            <ng-template #confirmar let-modal>
+              <div class="modal-header bgrojoycafe">
+                <h4 class="modal-title">Confirmar acción</h4>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  <i class="fas fa-times" style="color: white"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div
+                  class="alert alert-warning text-center font-weight-bold"
+                  role="alert"
+                >
+                  Está a punto de editar la historía. <br />
+                  ¿Desea continuar con la acción?
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btnColorFacultadSalud"
+                  ngbAutofocus
+                  (click)="guardar()"
+                >
+                  Aceptar
+                </button>
+                <button
+                  type="button"
+                  class="btn navlinkinSolid"
+                  (click)="modal.close('Close click')"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </ng-template>
+            <br />
+            <div
+              *ngIf="error != false"
+              class="alert alert-danger alert-dismissible fade show"
+              role="alert"
+            >
+              <strong>{{ passError }}</strong>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

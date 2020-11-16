@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="/assets/facultad-de-salud-02-.jpg"
+      src="/assets/Historia.png"
       class="d-block w-100"
       style="height: 300px"
       alt="Responsive image"
@@ -16,21 +16,68 @@
           </h3>
           <hr class="lineInstRed" />
           <br />
-          <!--(ngSubmit)="guardar()"-->
           <form #forma="ngForm">
-            <!--[(ngModel)]="historia.reseniaHist"-->
             <textarea
-              
+              [(ngModel)]="historia.reseniaHistorica"
               maxlength="6500"
               name="reseniaHist"
               class="form-control shadow p-3"
               placeholder="Digite en esta área la historía del programa ..."
               rows="30"
             ></textarea
-            ><br /><br />
+            ><br />
+            <hr />
+            <button (click)="openModal(confirmar)" class="btn navlinkinSolid">
+              <i class="far fa-save"></i> Guardar
+            </button>
+            <ng-template #confirmar let-modal>
+              <div class="modal-header bgrojoycafe">
+                <h4 class="modal-title">Confirmar acción</h4>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  <i class="fas fa-times" style="color: white"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div
+                  class="alert alert-warning text-center font-weight-bold"
+                  role="alert"
+                >
+                  Está a punto de editar la historía. <br />
+                  ¿Desea continuar con la acción?
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btnColorFacultadSalud"
+                  ngbAutofocus
+                  (click)="guardar()"
+                >
+                  Aceptar
+                </button>
+                <button
+                  type="button"
+                  class="btn navlinkinSolid"
+                  (click)="modal.close('Close click')"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </ng-template>
+            <br>
+            <div
+              *ngIf="error != false"
+              class="alert alert-danger alert-dismissible fade show"
+              role="alert"
+            >
+              <strong>{{ passError }}</strong>
+            </div>
           </form>
-          <hr />
-          <button class="btn navlinkinSolid">Guardar</button>
         </div>
       </div>
     </div>

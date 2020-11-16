@@ -35,6 +35,10 @@ html {
   color: #8f141b;
   margin-bottom: 20px;
 }
+.subTituloRojoInstitucional {
+  color: #8f141b;
+  font-weight: bold;
+}
 .colorRedInst {
   color: #8f141b;
 }
@@ -62,6 +66,14 @@ html {
 .navlinkinSolid:hover {
   background-color: #1e262b;
   color: #edeff0;
+}
+.btnColorFacultadSalud {
+  background-color:#00A4B7;
+  color: white;
+}
+.btnColorFacultadSalud:hover {
+  background-color: #004e57;
+  color: white;
 }
 .fondodivleft {
   background-color: white;

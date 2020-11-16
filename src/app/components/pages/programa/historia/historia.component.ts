@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { HistoriaService } from '../../../../services/programa/historia.service';
 
 @Component({
   selector: 'app-historia',
@@ -25,7 +26,12 @@ export class HistoriaComponent implements OnInit {
   error = false;
   passError = '';
 
-  constructor(private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private historiaService: HistoriaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.historiaService.getHistorias().subscribe( data => {
+      this.historia = data;
+    });
+  }
 
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
@@ -35,8 +41,8 @@ export class HistoriaComponent implements OnInit {
   }
   viewOpciones(pass, user) {
     if ( pass === '7183' && user === 'admin' ) {
-      this.modalReference.close();
-      this.router.navigate(['/admi_historia']);
+      this.ajustes = false;
+      this.validar = true;
     } else {
       if (pass !== '7183' && user !== 'admin') {
         this.error = true;
@@ -50,5 +56,14 @@ export class HistoriaComponent implements OnInit {
       }
     }
   }
-
+  borrarHistoria( key$: string) {
+    this.historiaService.borrarHistoria(key$).subscribe( respuesta => {
+      if ( respuesta ) {
+        console.error(respuesta);
+      } else {
+        delete this.historia[key$];
+        this.modalReference.close();
+      }
+    });
+  }
 }
