@@ -4,7 +4,7 @@
       src="/assets/agenda.jpg"
       class="d-block w-100"
       style="height: 350px"
-      alt="Responsive image"
+      alt="Agenda"
     />
   </div>
   <div>
@@ -27,12 +27,12 @@
                     <input
                       type="text"
                       class="form-control shadow p-3 inputPaciente"
-                      placeholder="..."
+                      placeholder="Encabezado o título del evento"
                     />
                     <div class="row">
                       <div class="col">
                         <h6 class="subTituloRojoInstitucional text-left">
-                          Fecha:
+                          Fecha del evento:
                         </h6>
                         <input
                           id="fechaNombre"
@@ -43,6 +43,19 @@
                       </div>
                       <div class="col">
                         <h6 class="subTituloRojoInstitucional text-left">
+                          Fecha de publicación:
+                        </h6>
+                        <input
+                          id="fechaNombre"
+                          name="fechaNombre"
+                          type="date"
+                          class="form-control shadow p-3 inputPaciente"
+                        />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
                           Imagen del evento:
                         </h6>
                         <input
@@ -51,8 +64,22 @@
                           [(ngModel)]="urlimg"
                           type="url"
                           class="form-control shadow p-3 inputPaciente"
-                          placeholder="Dirección de la imagen"
+                          placeholder="Dirección URL de la imagen"
                         />
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Reseña:
+                        </h6>
+                        <textarea
+                          maxlength="6500"
+                          name="reseniaHist"
+                          class="form-control shadow p-3 inputPaciente"
+                          placeholder="Síntesis o información relavante del evento ..."
+                          rows="3"
+                        ></textarea>
                       </div>
                     </div>
                     <div class="row">
@@ -65,8 +92,23 @@
                           name="reseniaHist"
                           class="form-control shadow p-3 inputPaciente"
                           placeholder="Información relevante a la publicación ..."
-                          rows="10"
+                          rows="8"
                         ></textarea>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Enlace información del evento:
+                        </h6>
+                        <input
+                          (change)="changeImg(urlimg)"
+                          name="ImgUrl"
+                          [(ngModel)]="urlimg"
+                          type="url"
+                          class="form-control shadow p-3 inputPaciente"
+                          placeholder="Dirección URL para mayor información del evento o suscripción"
+                        />
                       </div>
                     </div>
                   </div>
