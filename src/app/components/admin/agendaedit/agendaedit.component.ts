@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { formatDate } from '@angular/common';
+import { formatDate, DatePipe } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm, FormControl, Validators, FormArray } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -9,9 +9,12 @@ import { Agenda } from '../../../interfaces/agenda/agenda';
 @Component({
   selector: 'app-agendaedit',
   templateUrl: './agendaedit.component.html',
-  styleUrls: ['./agendaedit.component.css']
+  styleUrls: ['./agendaedit.component.css'],
+  providers: [DatePipe]
 })
 export class AgendaeditComponent implements OnInit {
+  today = new Date();
+  fecha: any;
   closeResult: string;
   defaultImgUrl: any;
   urlimg: any;
@@ -19,6 +22,8 @@ export class AgendaeditComponent implements OnInit {
   modalReference: any;
   error = false;
   passError = '';
+  imgError = '';
+  alertBool = false;
   forma: FormGroup;
   controls: any;
   nuevo = false;
@@ -26,19 +31,20 @@ export class AgendaeditComponent implements OnInit {
   agenda: Agenda = {
     titulo: '',
     img: '',
-    reseña: '',
+    resenia: '',
     parrafo: '',
-    fecha: '',
+    fechaEvento: '',
+    fechaPublicacion: '',
     url: '',
   };
 
 
   // tslint:disable-next-line:max-line-length
-  constructor( private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
-        this.agendaServices.getHistoria( this.id ).subscribe(agenda => this.agenda = agenda);
+        this.agendaServices.getAgenda( this.id ).subscribe(agenda => this.agenda = agenda);
       }
     });
   }
@@ -46,7 +52,8 @@ export class AgendaeditComponent implements OnInit {
   ngOnInit() {
     this.war = this.agenda.titulo;
     // tslint:disable-next-line:max-line-length
-    this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/imgprueba.png?alt=media&token=e1113798-cb57-4aef-973f-037680c3c124';
+    this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/comunicado.png?alt=media&token=0ffc510f-7150-4ced-9cb4-e6c8f39119e8';
+    this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
   }
 
   openModal(confirmar) {
@@ -54,9 +61,17 @@ export class AgendaeditComponent implements OnInit {
   }
 
   changeImg(urlimg) {
+    console.log(urlimg);
     // tslint:disable-next-line:max-line-length
-    this.defaultImgUrl = urlimg;
-    return this.defaultImgUrl;
+    if (urlimg === '' || urlimg === null) {
+      this.defaultImgUrl = urlimg;
+      this.alertBool = true;
+      this.imgError = 'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
+    } else {
+      this.alertBool = false;
+      this.defaultImgUrl = urlimg;
+      return this.defaultImgUrl;
+    }
   }
 
   guardar() {
@@ -66,23 +81,22 @@ export class AgendaeditComponent implements OnInit {
       console.log(this.war);
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
-        this.agendaServices.nuevoHistoria( this.agenda ).subscribe(data => {
+        this.agendaServices.nuevoAgenda( this.agenda ).subscribe(data => {
           this.router.navigate(['/agenda']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
-        this.agendaServices.actualizarHistoria( this.agenda, this.id ).subscribe(data => {
+        this.agendaServices.actualizarAgenda( this.agenda, this.id ).subscribe(data => {
           this.router.navigate(['/agenda']);
           this.modalReference.close();
         },
         error => console.error(error));
       }
     } else {
-      console.log('pasó');
       this.error = true;
-      this.passError = 'No puede dejar la publicación vacía';
+      this.passError = 'Formulario incompleto.';
       this.modalReference.close();
     }
   }

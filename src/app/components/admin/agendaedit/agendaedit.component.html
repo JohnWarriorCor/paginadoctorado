@@ -15,6 +15,12 @@
             Formulario para la publicación de un evento
           </h3>
           <hr class="lineInstRed" />
+          <br />
+          <a
+            href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
+            target="_blank"
+            ><button class="btn navlinkinSolid">Cargar imagen</button></a
+          >
           <br /><br />
           <form #forma="ngForm" class="text-center">
             <div class="row animated fadeIn fast">
@@ -26,6 +32,8 @@
                     </h6>
                     <input
                       type="text"
+                      name="titulo"
+                      [(ngModel)]="agenda.titulo"
                       class="form-control shadow p-3 inputPaciente"
                       placeholder="Encabezado o título del evento"
                     />
@@ -35,9 +43,9 @@
                           Fecha del evento:
                         </h6>
                         <input
-                          id="fechaNombre"
-                          name="fechaNombre"
                           type="date"
+                          name="fechaEvento"
+                          [(ngModel)]="agenda.fechaEvento"
                           class="form-control shadow p-3 inputPaciente"
                         />
                       </div>
@@ -46,9 +54,10 @@
                           Fecha de publicación:
                         </h6>
                         <input
-                          id="fechaNombre"
-                          name="fechaNombre"
                           type="date"
+                          name="fechaPublicacion"
+                          name="fechaEvento"
+                          [(ngModel)]="agenda.fechaPublicacion"
                           class="form-control shadow p-3 inputPaciente"
                         />
                       </div>
@@ -63,6 +72,7 @@
                           name="ImgUrl"
                           [(ngModel)]="urlimg"
                           type="url"
+                          [(ngModel)]="agenda.img"
                           class="form-control shadow p-3 inputPaciente"
                           placeholder="Dirección URL de la imagen"
                         />
@@ -75,7 +85,8 @@
                         </h6>
                         <textarea
                           maxlength="6500"
-                          name="reseniaHist"
+                          name="resenia"
+                          [(ngModel)]="agenda.resenia"
                           class="form-control shadow p-3 inputPaciente"
                           placeholder="Síntesis o información relavante del evento ..."
                           rows="3"
@@ -89,9 +100,10 @@
                         </h6>
                         <textarea
                           maxlength="6500"
-                          name="reseniaHist"
+                          name="parrafo"
+                          [(ngModel)]="agenda.parrafo"
                           class="form-control shadow p-3 inputPaciente"
-                          placeholder="Información relevante a la publicación ..."
+                          placeholder="Información complementaria..."
                           rows="8"
                         ></textarea>
                       </div>
@@ -102,9 +114,8 @@
                           Enlace información del evento:
                         </h6>
                         <input
-                          (change)="changeImg(urlimg)"
-                          name="ImgUrl"
-                          [(ngModel)]="urlimg"
+                          name="urlEvento"
+                          [(ngModel)]="agenda.url"
                           type="url"
                           class="form-control shadow p-3 inputPaciente"
                           placeholder="Dirección URL para mayor información del evento o suscripción"
@@ -121,8 +132,16 @@
                       class="rounded mx-auto d-block"
                       width="100%"
                       alt="..."
-                      style="border: solid 1px black;"
+                      style="border: solid 1px black"
                     />
+                    <br />
+                    <div
+                      *ngIf="alertBool != false"
+                      class="alert alert-danger alert-dismissible fade show"
+                      role="alert"
+                    >
+                      <strong>{{ imgError }}</strong>
+                    </div>
                   </div>
                 </div>
               </div>

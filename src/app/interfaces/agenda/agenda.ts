@@ -1,9 +1,10 @@
 export interface Agenda {
     titulo: string;
     img: string;
-    reseña: string;
+    resenia: string;
     parrafo: string;
-    fecha: string;
+    fechaEvento: string;
+    fechaPublicacion: string;
     url: string;
     key$?: string;
 }

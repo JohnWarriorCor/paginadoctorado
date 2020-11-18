@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     document.querySelector('body').scrollTo(0, 0);
   }
   ngAfterViewInit() {
-    // this.openVerticallyCentered(this.myModal);
+    this.openVerticallyCentered(this.myModal);
   }
   ngOnInit() {
     // tslint:disable-next-line:only-arrow-functions

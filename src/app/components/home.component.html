@@ -199,105 +199,29 @@
           data-ride="carousel"
         >
           <div class="carousel-inner">
-            <div class="carousel-item">
+            <div
+            [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
+            *ngFor="let item of agenda | keysfirebase let i = index "
+            >
               <div class="card-deck">
-                <div class="card shadow">
+                <div class="card shadow" style="width: 60%;">
                   <img
-                    src="/assets/simposio.jpg"
+                    [src]="agenda[item].img"
                     class="card-img-top"
                     alt="..."
                   />
                   <div class="card-body">
-                    <h6 class="card-title redinst">
+                    <h6 class="card-title subTituloRojoInstitucional">
                       <i class="far fa-calendar-alt"></i>
-                      Sábado, 24 De Octubre De 2020
+                      {{agenda[item].fechaEvento | date: "fullDate" | titlecase}}
                     </h6>
                     <p class="card-text grayinst">
-                      Simposio - virtual <br />
-                      Reflexión frente a la pandemia. Sus implicaciones en los
-                      procesos de formación, investigación y proyección
-                      social.<br />
-                      Inscripciones
-                      <a
-                        href="https://forms.gle/3zFGja2MP7HeoquN9"
-                        target="_blank"
-                        >https://forms.gle/3zFGja2MP7HeoquN9</a
-                      >
+                      {{agenda[item].resenia}}
                     </p>
-                    <p class="card-text">
+                    <a [href]="agenda[item].url"><button class="btn navlinkinSolid">Más información</button></a>
+                    <p class="card-text text-right">
                       <small class="text-muted"
-                        >Última actualización hace una semana</small
-                      >
-                    </p>
-                  </div>
-                </div>
-                <div class="card shadow">
-                  <img src="/assets/new1.jpg" class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <h6 class="card-title redinst">
-                      <i class="far fa-calendar-alt"></i>
-                      Miércoles, 21 De Octubre De 2020
-                    </h6>
-                    <p class="card-text grayinst">
-                      CONVOCATORIA QUINTA COHORTE PRIMER SEMESTRE 2021 <br />
-                      Inscripciones abiertas. <br />
-                      Mayor información:
-                      <a href="https://is.gd/bNGqpO" target="_blank"
-                        >https://is.gd/bNGqpO</a
-                      >
-                    </p>
-                    <p class="card-text">
-                      <small class="text-muted"
-                        >Última actualización hace una semana</small
-                      >
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item active">
-              <div class="card-deck">
-                <div class="card shadow">
-                  <img src="/assets/car1.jpg" class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <h6 class="card-title redinst">
-                      <i class="far fa-calendar-alt"></i>
-                      Martes, 03 De Noviembre De 2020
-                    </h6>
-                    <p class="card-text grayinst">
-                      Simposio - virtual <br />
-                      Reflexión frente a la pandemia. social.<br />
-                      5 de noviembre - Contexto internacional de la pandemia.<br />
-                      Conferencistas invitados <br />
-                      Plataforma Facebook Live - Hora 4:00 p.m.
-                    </p>
-                    <p class="card-text">
-                      <small class="text-muted"
-                        >Última actualización hace dos días</small
-                      >
-                    </p>
-                  </div>
-                </div>
-                <div class="card shadow">
-                  <img src="/assets/car2.jpg" class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <h6 class="card-title redinst">
-                      <i class="far fa-calendar-alt"></i>
-                      Viernes, 30 De Octubre De 2020
-                    </h6>
-                    <p class="card-text grayinst">
-                      Primer encuentro. <br />
-                      Simposio virtual Reflexión frente a la pandemia. <br />
-                      Inscripciones:
-                      <a
-                        href="https://contenidos.usco.edu.co/salud/"
-                        target="_blank"
-                        >https://contenidos.usco.edu.co/salud/</a
-                      >
-                    </p>
-                    <p class="card-text">
-                      <small class="text-muted"
-                        >Última actualización hace 7 días</small
+                        >Publicado: {{agenda[item].fechaPublicacion | date: "fullDate" | titlecase}}</small
                       >
                     </p>
                   </div>
@@ -305,8 +229,7 @@
               </div>
             </div>
           </div>
-        </div>
-
+        </div><!--
         <div class="row my-2">
           <div class="col text-left">
             <button class="btn navlinkinSolid" style="width: 50%">
@@ -336,7 +259,7 @@
               </a>
             </button>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
     <br />

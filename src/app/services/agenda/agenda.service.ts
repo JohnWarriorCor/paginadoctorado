@@ -13,7 +13,7 @@ export class AgendaService {
 
   constructor( private http: Http) { }
 
-  nuevoHistoria( agenda: Agenda) {
+  nuevoAgenda( agenda: Agenda) {
     const body = JSON.stringify(agenda);
     const headers = new Headers({
       'Content-Type': 'application/json'
@@ -23,7 +23,7 @@ export class AgendaService {
       return res.json();
     }));
   }
-  actualizarHistoria( agenda: Agenda, key$: string ) {
+  actualizarAgenda( agenda: Agenda, key$: string ) {
     const body = JSON.stringify(agenda);
     const headers = new Headers({
       'Content-Type': 'application/json'
@@ -36,14 +36,14 @@ export class AgendaService {
     }));
 
   }
-  getHistoria(key$: string) {
+  getAgenda(key$: string) {
     const url = `${ this.agendaURL }/${ key$ }.json`;
     return this.http.get( url ).pipe(map(res => res.json()));
   }
-  getHistorias() {
+  getAgendas() {
     return this.http.get( this.agendaRegistroURL ).pipe(map(res => res.json()));
   }
-  borrarHistoria( key$: string) {
+  borrarAgenda( key$: string) {
     const url = `${ this.agendaURL }/${ key$ }.json`;
     return this.http.delete(url).pipe(map( res => res.json()));
   }

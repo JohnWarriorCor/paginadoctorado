@@ -78,7 +78,7 @@ const routes: Routes = [
   { path: 'admi_articulosProfesores', component: ArticulosprofesoresComponent },
   { path: 'admi_docente/:id', component: DocenteComponent },
   // ACTIVDADES
-  { path: 'admi_agenda', component: AgendaeditComponent },
+  { path: 'admi_agenda/:id', component: AgendaeditComponent },
   // INVESTIGACION
   { path: 'admi_gruposinvestigacion', component: GruposinvesComponent },
   // ESTUDIANDTES

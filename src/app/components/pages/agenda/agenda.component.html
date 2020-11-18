@@ -15,91 +15,27 @@
             <i class="far fa-calendar-alt"></i> Agenda
           </h3>
           <hr class="lineInstRed" />
-          <br />
-          <div class="card" style="padding: 20px">
+          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="(agenda | keysfirebase).length" [(page)]="page" [pageSize]="pageSize"></ngb-pagination>
+          <div class="card" *ngFor="let item of agenda | keysfirebase | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize | listinvert ; let i = index;">
             <div class="row">
               <div class="col-md-4">
-                <img src="/assets/car1.jpg" class="w-100" />
+                <img style="padding: 10px;" [src]="agenda[item].img" class="w-100" />
               </div>
-              <div class="col-md-8 px-3">
+              <div class="col-md-8 px-3" style="margin-top: 20px;">
                 <div class="card-block px-3">
-                  <h4 class="card-title">
-                    Simposio - virtual <br>
-                    Reflexión frente a la pandemia. <br>
-                    5 de noviembre - Contexto internacional de la pandemia. <br>
-                    Conferencistas invitados <br>
-                    Plataforma Facebook Live - Hora 4:00 p.m.
+                  <h4 class="card-title" style="padding-right: 20px;">
+                    {{agenda[item].resenia}}
                   </h4>
-                  <p class="card-text">Sábado, 24 De Octubre De 2020</p>
-                  <a href="#" class="btn navlinkinSolid">Ver</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="padding: 20px">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/assets/car2.jpg" class="w-100" />
-              </div>
-              <div class="col-md-8 px-3">
-                <div class="card-block px-3">
-                  <h4 class="card-title">
-                    Primer encuentro. <br />
-                    Simposio virtual Reflexión frente a la pandemia. <br />
-                    Inscripciones: <br />
-                    <a
-                      href="https://contenidos.usco.edu.co/salud/"
-                      target="_blank"
-                      >https://contenidos.usco.edu.co/salud/</a
-                    >
-                  </h4>
-                  <p class="card-text">Viernes, 30 De Octubre De 2020</p>
-                  <a href="#" class="btn navlinkinSolid">Ver</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="padding: 20px">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/assets/simposio.jpg" class="w-100" />
-              </div>
-              <div class="col-md-8 px-3">
-                <div class="card-block px-3">
-                  <h4 class="card-title">
-                    Simposio - virtual Reflexión frente a la pandemia. Sus
-                    implicaciones en los procesos de formación, investigación y
-                    proyección social.
-                  </h4>
-                  <p class="card-text">Sábado, 24 De Octubre De 2020</p>
-                  <a href="#" class="btn navlinkinSolid">Ver</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card" style="padding: 20px">
-            <div class="row">
-              <div class="col-md-4">
-                <img src="/assets/new1.jpg" class="w-100" />
-              </div>
-              <div class="col-md-8 px-3">
-                <div class="card-block px-3">
-                  <h4 class="card-title">
-                    Convocatoria Quinta Cohorte Primer Semestre 2021
-                    Inscripciones abiertas. <br />
-                    Mayor información: <br />
-                    <a href="https://is.gd/bNGqpO" target="_blank"
-                      >https://is.gd/bNGqpO</a
-                    >
-                  </h4>
-                  <p class="card-text">Miércoles, 21 De Octubre De 2020</p>
-                  <a href="#" class="btn navlinkinSolid">Ver</a>
+                  <p class="card-text subTituloRojoInstitucional">{{agenda[item].fechaEvento | date: "fullDate" | titlecase}}</p>
+                  <a [href]="agenda[item].url" class="btn navlinkinSolid">Más información</a>
+                  <p class="text-right"><small>Publicado: {{agenda[item].fechaPublicacion | date: "fullDate" | titlecase}}</small></p>
                 </div>
               </div>
             </div>
           </div>
           <br />
           <img src="/assets/gruposinves.jpg" class="img-fluid" alt="" />
+          <br>
         </div>
         <div class="col-sm-auto fondodivright shadow">
           <h3 class="titleInstRed">
