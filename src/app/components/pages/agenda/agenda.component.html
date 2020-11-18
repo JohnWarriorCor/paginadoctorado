@@ -15,27 +15,244 @@
             <i class="far fa-calendar-alt"></i> Agenda
           </h3>
           <hr class="lineInstRed" />
-          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="(agenda | keysfirebase).length" [(page)]="page" [pageSize]="pageSize"></ngb-pagination>
-          <div class="card" *ngFor="let item of agenda | keysfirebase | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize | listinvert ; let i = index;">
+          <ngb-pagination
+            class="d-flex justify-content-end"
+            [collectionSize]="(agenda | keysfirebase).length"
+            [(page)]="page"
+            [pageSize]="pageSize"
+          ></ngb-pagination>
+          <div
+            class="card"
+            *ngFor="
+              let item of agenda
+                | keysfirebase
+                | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+                | listinvert;
+              let i = index
+            "
+          >
             <div class="row">
               <div class="col-md-4">
-                <img style="padding: 10px;" [src]="agenda[item].img" class="w-100" />
+                <img
+                  style="padding: 10px"
+                  [src]="agenda[item].img"
+                  class="rounded w-100"
+                />
               </div>
-              <div class="col-md-8 px-3" style="margin-top: 20px;">
+              <div class="col-md-8 px-3" style="margin-top: 20px">
                 <div class="card-block px-3">
-                  <h4 class="card-title" style="padding-right: 20px;">
-                    {{agenda[item].resenia}}
-                  </h4>
-                  <p class="card-text subTituloRojoInstitucional">{{agenda[item].fechaEvento | date: "fullDate" | titlecase}}</p>
-                  <a [href]="agenda[item].url" class="btn navlinkinSolid">Más información</a>
-                  <p class="text-right"><small>Publicado: {{agenda[item].fechaPublicacion | date: "fullDate" | titlecase}}</small></p>
+                  <h3 class="card-title subTituloRojoInstitucional">
+                    {{ agenda[item].titulo }}
+                  </h3>
+                  <p>
+                    {{ agenda[item].resenia | slice: 0:150 }}
+                    <a style="color: #8f141b">... Ver más</a>
+                  </p>
+                  <p class="card-text subTituloRojoInstitucional">
+                    {{
+                      agenda[item].fechaEvento | date: "fullDate" | titlecase
+                    }}
+                  </p>
+                  <div class="row">
+                    <a [href]="agenda[item].url" class="btn navlinkinSolid"
+                      >Más información</a
+                    >
+                  </div>
+                  <p class="text-right">
+                    <small
+                      >Publicado:
+                      {{
+                        agenda[item].fechaPublicacion
+                          | date: "fullDate"
+                          | titlecase
+                      }}</small
+                    >
+                  </p>
                 </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="vistaEdicion != false">
+              <div class="col text-right">
+                <a class="btn navlinkinSolid m-2" [routerLink]="['/admi_agenda', item]"
+                  ><i
+                    class="fas fa-pencil-alt"
+                  ></i>
+                  Editar</a
+                >
+                <a (click)="openModal(confirmar)" class="btn navlinkinSolid m-2"
+                  ><i class="fas fa-trash"></i> Borrar</a
+                ><br />
+                <ng-template #confirmar let-modal>
+                  <div class="modal-header bgrojoycafe">
+                    <h4 class="modal-title">Confirmar acción</h4>
+                    <button
+                      type="button"
+                      class="close"
+                      aria-label="Close"
+                      (click)="modal.dismiss('Cross click')"
+                    >
+                      <i class="fas fa-times" style="color: white"></i>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div
+                      class="alert alert-warning text-center font-weight-bold"
+                      role="alert"
+                    >
+                      Está a punto de editar la historía. <br />
+                      ¿Desea continuar con la acción?
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btnColorFacultadSalud"
+                      ngbAutofocus
+                      (click)="borrarAgenda(item)"
+                    >
+                      Aceptar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn navlinkinSolid"
+                      (click)="modal.close('Close click')"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col">
+              <ngb-pagination
+                class="d-flex justify-content-start"
+                [collectionSize]="(agenda | keysfirebase).length"
+                [(page)]="page"
+                [pageSize]="pageSize"
+              ></ngb-pagination>
+            </div>
+            <div class="col text-right">
+              <ng-template #formAdmin let-modal>
+                <div class="modal-header bgrojoyblanco">
+                  <h4 class="modal-title">
+                    <i class="fas fa-user-cog white"></i> Administrar contenido:
+                  </h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"
+                  >
+                    <i class="fas fa-times" style="color: white"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="text-center p-2" #forma="ngForm">
+                    <!-- Email -->
+                    <div class="d-flex justify-content-around">
+                      <i
+                        class="fas fa-user-shield fa-2x grayinst"
+                        style="margin: 5px"
+                      ></i>
+                      <input
+                        type="name"
+                        id="defaultLoginFormEmail"
+                        [(ngModel)]="user"
+                        name="user"
+                        class="form-control mb-4"
+                        placeholder="Usuario"
+                      />
+                    </div>
+
+                    <!-- Password -->
+                    <div class="d-flex justify-content-around">
+                      <i
+                        class="fas fa-key fa-2x grayinst"
+                        style="margin: 5px"
+                      ></i>
+                      <input
+                        [(ngModel)]="key"
+                        name="key"
+                        type="password"
+                        id="defaultLoginFormPassword"
+                        class="form-control mb-4"
+                        placeholder="Contraseña"
+                      />
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                      <div>
+                        <!-- Remember me -->
+                        <mdb-checkbox [default]="true">Recuerdame</mdb-checkbox>
+                      </div>
+                      <div>
+                        <!-- Forgot password -->
+                        <a href="">¿Recuperar?</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <hr />
+                <div
+                  *ngIf="error != false"
+                  class="alert alert-danger alert-dismissible fade show"
+                  role="alert"
+                >
+                  <strong>{{ passError }}</strong>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <i class="fas fa-times" style="color: #8f141b"></i>
+                  </button>
+                </div>
+                <button
+                  *ngIf="ajustes != false"
+                  type="button"
+                  style="
+                    width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 20px;
+                  "
+                  class="btn navlinkinSolid p-3"
+                  ngbAutofocus
+                  (click)="viewOpciones(key, user)"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  Acceder
+                </button>
+              </ng-template>
+              <div
+                *ngIf="ajustes != false"
+                class="col"
+                (click)="openSm(formAdmin)"
+              >
+                <i
+                  class="fas fa-wrench fa-2x"
+                  placement="left"
+                  ngbTooltip="Ajustes"
+                  style="color: #8f141b"
+                ></i>
+              </div>
+              <div class="col text-right" *ngIf="vistaEdicion != false">
+                <a class="btn navlinkinSolid m-2" [routerLink]="['/admi_agenda', 'nuevo']"
+                ><i class="far fa-newspaper"></i> Publicar evento</a>
+              </div>
+              <div class="col text-right" *ngIf="vistaEdicion != false">
+                <a class="btn navlinkinSolid m-2" [routerLink]="['/#']"
+                ><i class="fas fa-sign-out-alt"></i> Salir</a>
               </div>
             </div>
           </div>
           <br />
           <img src="/assets/gruposinves.jpg" class="img-fluid" alt="" />
-          <br>
+          <br />
         </div>
         <div class="col-sm-auto fondodivright shadow">
           <h3 class="titleInstRed">

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { formatDate, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
-import { FormGroup, NgForm, FormControl, Validators, FormArray } from '@angular/forms';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, NgForm } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AgendaService } from '../../../services/agenda/agenda.service';
 import { Agenda } from '../../../interfaces/agenda/agenda';
 
@@ -51,8 +51,12 @@ export class AgendaeditComponent implements OnInit {
 
   ngOnInit() {
     this.war = this.agenda.titulo;
-    // tslint:disable-next-line:max-line-length
-    this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/comunicado.png?alt=media&token=0ffc510f-7150-4ced-9cb4-e6c8f39119e8';
+    if ( this.agenda.img === null || this.agenda.img === '' ) {
+      // tslint:disable-next-line:max-line-length
+      this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/comunicado.png?alt=media&token=0ffc510f-7150-4ced-9cb4-e6c8f39119e8';
+      this.agenda.img = this.defaultImgUrl;
+      return this.agenda.img;
+    }
     this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
   }
 

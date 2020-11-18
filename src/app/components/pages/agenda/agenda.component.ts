@@ -11,7 +11,8 @@ import { AgendaService } from '../../../services/agenda/agenda.service';
 })
 export class AgendaComponent implements OnInit {
   page = 1;
-  pageSize = 3;
+  pageSize = 4;
+  vistaEdicion = false;
   today = new Date();
   closeResult: string;
   modalReference: any;
@@ -35,6 +36,14 @@ export class AgendaComponent implements OnInit {
     });
   }
 
+  refresh() {
+    window.location.reload();
+  }
+
+  openModal(confirmar) {
+    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
+  }
+
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
   }
@@ -45,6 +54,7 @@ export class AgendaComponent implements OnInit {
     if ( pass === '7183' && user === 'admin' ) {
       this.ajustes = false;
       this.validar = true;
+      this.vistaEdicion = true;
     } else {
       if (pass !== '7183' && user !== 'admin') {
         this.error = true;

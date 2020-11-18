@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProfesoresService, Profesores } from '../services/profesores.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AgendaService } from '../services/agenda/agenda.service';
+import { EstudiantesService, Estudiantes } from '../services/estudiantes.service';
 
 
 // tslint:disable-next-line:prefer-const
@@ -19,21 +20,35 @@ export class HomeComponent implements OnInit {
   g: any;
   today = new Date();
   profesor: any = {};
+  estudiante: any = {};
   agenda: any[] = [];
   activ: any[] = [];
   profesores: Profesores[] = [];
+  estudiantes: Estudiantes[] = [];
   slides: any = [[]];
   slidesAgenda: any = [[]];
+  slidesEstudiante: any = [[]];
   // tslint:disable-next-line:max-line-length
-  constructor(private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private profesorService: ProfesoresService, private router: Router) {
+  constructor(private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router) {
     this.activatedRoute.params.subscribe( params => {
       this.profesor = this.profesorService.getProfesor(params.id);
+    });
+    this.activatedRoute.params.subscribe( params => {
+      this.estudiante = this.estudianteService.getEstudiante(params.id);
     });
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });
   }
   chunk(arr, chunkSize) {
+    // tslint:disable-next-line:prefer-const
+    let R = [];
+    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
+      R.push(arr.slice(i, i + chunkSize));
+    }
+    return R;
+  }
+  chunkEstudiante(arr, chunkSize) {
     // tslint:disable-next-line:prefer-const
     let R = [];
     for (let i = 0, len = arr.length; i < len; i += chunkSize) {
@@ -51,14 +66,16 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
     this.profesores = this.profesorService.getProfesores();
-    this.g = this.agendaService.getAgendas();
+    this.estudiantes = this.estudianteService.getEstudiantes();
     this.slides = this.chunk(this.profesores, 4);
+    this.slidesEstudiante = this.chunkEstudiante(this.estudiantes, 4);
     this.slidesAgenda = this.chunkAgenda(this.activ, 2);
-    console.log(this.profesores);
-    console.log(this.slidesAgenda);
   }
   verProfesor( idx: number ) {
     this.router.navigate(['/docente', idx]);
+  }
+  verEstudiante( idx: number ) {
+    this.router.navigate(['/estudiante', idx]);
   }
   up() {
     window.scroll(0, 400);
