@@ -22,6 +22,8 @@ import { ArticulosprofesoresComponent } from './components/pages/docentes/articu
 import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
 import { HistoriaeditComponent } from './components/admin/programa/historiaedit/historiaedit.component';
 import { AgendaeditComponent } from './components/admin/agendaedit/agendaedit.component';
+import { GruposinveseditComponent } from './components/admin/gruposinvesedit/gruposinvesedit.component';
+import { EventoComponent } from './components/pages/agenda/evento/evento.component';
 
 const routes: Routes = [
   // INICIO
@@ -42,6 +44,7 @@ const routes: Routes = [
   { path: 'docente/:id', component: DocenteComponent },
   // ACTIVDADES
   { path: 'agenda', component: AgendaComponent },
+  { path: 'evento/:id', component: EventoComponent },
   // INVESTIGACION
   { path: 'gruposinvestigacion', component: GruposinvesComponent },
   // ESTUDIANDTES
@@ -80,7 +83,7 @@ const routes: Routes = [
   // ACTIVDADES
   { path: 'admi_agenda/:id', component: AgendaeditComponent },
   // INVESTIGACION
-  { path: 'admi_gruposinvestigacion', component: GruposinvesComponent },
+  { path: 'admi_gruposinvestigacion/:id', component: GruposinveseditComponent },
   // ESTUDIANDTES
   { path: 'admi_estudiantes', component: EstudiantesComponent },
   { path: 'admi_estudiante/:id', component: EstudianteComponent },

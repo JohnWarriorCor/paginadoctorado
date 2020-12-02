@@ -11,15 +11,18 @@
       <div class="row">
         <div class="col-sm-8 shadow fondodivleft shadow">
           <div id="print-section">
-            <h3 class="titleInstRed"><i class="fas fa-microscope"></i> Grupos de Investigación del Doctorado</h3>
+            <h3 class="titleInstRed">
+              <i class="fas fa-microscope"></i> Grupos de Investigación del
+              Doctorado
+            </h3>
             <hr class="lineInstRed" />
             <br />
-            <br />
+            <br>
             <!--ETILO OPCIONAL
             mdbTable
             class="z-depth-1"
-          -->
-            <table
+
+             <table
               id="tableSortExample"
               class="table table-bordered parinst table-responsive text-center"
               style="border-radius: 10px"
@@ -73,18 +76,280 @@
                 </tr>
               </tbody>
             </table>
+          -->
+            <table
+              id="tableSortExample"
+              class="table table-bordered parinst table-responsive text-center"
+              style="border-radius: 10px"
+            >
+              <thead class="tablatit">
+                <tr class="white">
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="gruposInv"
+                    sortBy="id"
+                  >
+                    N°
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="gruposInv"
+                    sortBy="id"
+                  >
+                    CÓDIGO DE GRUPO COLCIENCIAS
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="gruposInv"
+                    sortBy="nombre"
+                  >
+                    NOMBRE DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="gruposInv"
+                    sortBy="lider"
+                  >
+                    LÍDER DEL GRUPO <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th
+                    style="vertical-align: middle"
+                    scope="col"
+                    [mdbTableSort]="grupoInvestigacion | keysfirebase"
+                    sortBy="clasificacion"
+                  >
+                    CLASIFICACIÓN DEL GRUPO
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                  <th
+                    *ngIf="validar != false"
+                    style="vertical-align: middle"
+                    scope="col"
+                  >
+                    OPCIONES
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let grupo of grupoInvestigacion | keysfirebase | listinvert;
+                    let i = index
+                  "
+                >
+                  <ng-template #confirmar let-modal>
+                    <div class="modal-header bgrojoycafe">
+                      <h4 class="modal-title">Confirmar acción</h4>
+                      <button
+                        type="button"
+                        class="close"
+                        aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"
+                      >
+                        <i class="fas fa-times" style="color: white"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div
+                        class="alert alert-warning text-center font-weight-bold"
+                        role="alert"
+                      >
+                        Está a punto de borrar el Grupo. <br />
+                        ¿Desea continuar con la acción?
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btnColorFacultadSalud"
+                        ngbAutofocus
+                        (click)="borrarGrupo(grupo)"
+                      >
+                        Aceptar
+                      </button>
+                      <button
+                        type="button"
+                        class="btn navlinkinSolid"
+                        (click)="modal.close('Close click')"
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </ng-template>
+                  <th style="vertical-align: middle" scope="row">
+                    {{ i + 1 }}
+                  </th>
+                  <th style="vertical-align: middle" scope="row">
+                    {{ grupoInvestigacion[grupo].codigo }}
+                  </th>
+                  <td style="vertical-align: middle">
+                    {{ grupoInvestigacion[grupo].nombre }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ grupoInvestigacion[grupo].lider }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ grupoInvestigacion[grupo].clasificacion }}
+                  </td>
+                  <td *ngIf="validar != false" style="vertical-align: middle">
+                    <button
+                      class="btn navlinkinSolid m-1"
+                      placement="right"
+                      (click)="openModal(confirmar)"
+                      ngbTooltip="Borrar"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                    <button
+                      class="btn navlinkinSolid m-1"
+                      placement="right"
+                      [routerLink]="['/admi_gruposinvestigacion', grupo]"
+                      ngbTooltip="Editar"
+                    >
+                      <i class="fas fa-pencil-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+              <!-- MODAL LOGIN ADMIN -->
+              <ng-template #formAdmin let-modal>
+                <div class="modal-header bgrojoyblanco">
+                  <h4 class="modal-title">
+                    <i class="fas fa-user-cog white"></i> Administrar contenido:
+                  </h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"
+                  >
+                    <i class="fas fa-times" style="color: white"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="text-center p-2" #forma="ngForm">
+                    <!-- Email -->
+                    <div class="d-flex justify-content-around">
+                      <i
+                        class="fas fa-user-shield fa-2x grayinst"
+                        style="margin: 5px"
+                      ></i>
+                      <input
+                        type="name"
+                        id="defaultLoginFormEmail"
+                        [(ngModel)]="user"
+                        name="user"
+                        class="form-control mb-4"
+                        placeholder="Usuario"
+                      />
+                    </div>
+
+                    <!-- Password -->
+                    <div class="d-flex justify-content-around">
+                      <i
+                        class="fas fa-key fa-2x grayinst"
+                        style="margin: 5px"
+                      ></i>
+                      <input
+                        [(ngModel)]="key"
+                        name="key"
+                        type="password"
+                        id="defaultLoginFormPassword"
+                        class="form-control mb-4"
+                        placeholder="Contraseña"
+                      />
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                      <div>
+                        <!-- Remember me -->
+                        <mdb-checkbox [default]="true">Recuerdame</mdb-checkbox>
+                      </div>
+                      <div>
+                        <!-- Forgot password -->
+                        <a href="">¿Recuperar?</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <hr />
+                <div
+                  *ngIf="error != false"
+                  class="alert alert-danger alert-dismissible fade show"
+                  role="alert"
+                >
+                  <strong>{{ passError }}</strong>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <i class="fas fa-times" style="color: #8f141b"></i>
+                  </button>
+                </div>
+                <button
+                  *ngIf="ajustes != false"
+                  type="button"
+                  style="
+                    width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 20px;
+                  "
+                  class="btn navlinkinSolid p-3"
+                  ngbAutofocus
+                  (click)="viewOpciones(key, user)"
+                >
+                  Acceder
+                </button>
+              </ng-template>
+              <!-- FIN MODAL LOGIN ADMIN -->
+            </table>
             <br />
           </div>
           <hr />
-          <button
-            class="btn navlinkinSolid"
-            printSectionId="print-section"
-            [useExistingCss]="true"
-            printTitle="Grupos de Investigación del Doctorado en Ciencias de la Salud"
-            ngxPrint
-          >
-            <i class="fas fa-print"></i> Imprimir
-          </button>
+          <div class="row">
+            <div class="col">
+              <button
+                class="btn navlinkinSolid m-1"
+                printSectionId="print-section"
+                [useExistingCss]="true"
+                printTitle="Grupos de Investigación del Doctorado en Ciencias de la Salud"
+                ngxPrint
+              >
+                <i class="fas fa-print"></i> Imprimir
+              </button>
+            </div>
+            <div
+              *ngIf="ajustes != false"
+              class="col text-right"
+              (click)="openSm(formAdmin)"
+            >
+              <i
+                class="fas fa-wrench fa-2x"
+                placement="left"
+                ngbTooltip="Ajustes"
+                style="color: #8f141b"
+              ></i>
+            </div>
+            <div class="col text-right" *ngIf="validar != false">
+              <a
+                class="btn navlinkinSolid m-1"
+                [routerLink]="['/admi_gruposinvestigacion', 'nuevo']"
+                ><i class="fas fa-plus-circle"></i> Agregar Grupo</a
+              >
+              <a class="btn navlinkinSolid m-1" [routerLink]="['/#']"
+                ><i class="fas fa-sign-out-alt"></i> Salir</a
+              >
+            </div>
+          </div>
         </div>
         <div class="col-sm-auto shadow fondodivright">
           <h3 class="titleInstRed">
@@ -93,15 +358,16 @@
           <hr class="lineInstRed" />
           <br />
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
             width="300"
-            height="500"
+            height="800"
             style="border: none; overflow: hidden"
             scrolling="no"
             frameborder="0"
             allowTransparency="true"
             allow="encrypted-media"
           ></iframe>
+          <!--
           <hr />
           <h3 class="titleInstRed">
             <i class="far fa-calendar-alt"></i> Calendario
@@ -116,7 +382,7 @@
             frameborder="0"
             scrolling="no"
           ></iframe
-          ><br />
+          >--><br />
         </div>
       </div>
     </div>

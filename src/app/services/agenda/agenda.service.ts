@@ -11,7 +11,7 @@ export class AgendaService {
   agendaRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/agenda.json';
   agendaURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/agenda/';
 
-  constructor( private http: Http) { }
+  constructor( private http: Http ) { }
 
   nuevoAgenda( agenda: Agenda) {
     const body = JSON.stringify(agenda);

@@ -8,6 +8,7 @@ import { AgendaService } from '../../../services/agenda/agenda.service';
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
   styleUrls: ['./agenda.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AgendaComponent implements OnInit {
   page = 1;

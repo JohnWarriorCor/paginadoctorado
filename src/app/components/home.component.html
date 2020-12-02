@@ -211,11 +211,12 @@
                 <div class="card shadow" style="width: 60%">
                   <img
                     [src]="agenda[item].img"
-                    class="card-img-top"
+                    class="card-img-top cursorSelect"
+                    [routerLink]="['/evento', item]"
                     [alt]="agenda[item].titulo"
                   />
                   <div class="card-body">
-                    <h4 class="subTituloRojoInstitucional">
+                    <h4 [routerLink]="['/evento', item]" class="subTituloRojoInstitucional cursorSelect">
                       {{ agenda[item].titulo }}
                     </h4>
                     <h6 class="card-title subTituloRojoInstitucional">
@@ -227,7 +228,7 @@
                     <p class="card-text grayinst">
                       {{ agenda[item].resenia }}
                     </p>
-                    <a [href]="agenda[item].url" class="btn navlinkinSolid"
+                    <a [href]="agenda[item].url" target="_blank" class="btn navlinkinSolid"
                       >Más información</a
                     >
                     <p class="card-text text-right">

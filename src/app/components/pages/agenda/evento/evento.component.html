@@ -1,0 +1,111 @@
+<div class="wrapper fadeIn fast">
+  <div>
+    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+      <div class="row">
+        <div id="print-section">
+          <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+            <h3 class="titleInstRed">
+              <i class="far fa-newspaper"></i> {{ agenda.titulo }}
+            </h3>
+            <hr class="lineInstRed" />
+            <br /><br />
+            <div class="text-justify">
+              <div class="row animated fadeIn fast">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <h6 class="subTituloRojoInstitucional text-left">
+                            <i class="far fa-bookmark"></i> Reseña:
+                          </h6>
+                          <p>{{ agenda.resenia }}</p>
+                        </div>
+                      </div>
+                      <hr />
+                      <div class="row">
+                        <div class="col">
+                          <h6 class="subTituloRojoInstitucional text-left">
+                            <i class="far fa-calendar-alt"></i> Fecha Del Evento
+                            {{
+                              agenda.fechaEvento | date: "fullDate" | titlecase
+                            }}
+                          </h6>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <p>{{ agenda.parrafo }}</p>
+                        </div>
+                      </div>
+                      <br />
+                      <div class="row no-print">
+                        <div class="col">
+                          <a
+                            class="btn navlinkinSolid btn-lg btn-block"
+                            target="_blank"
+                            [href]="agenda.url"
+                          >
+                            <i class="fas fa-info-circle"></i> Más información
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col text-right">
+                      <small class="subTituloRojoInstitucional m-2">
+                        Fecha De Publicación:
+                        {{
+                          agenda.fechaPublicacion | date: "fullDate" | titlecase
+                        }}
+                      </small>
+                      <img
+                        [src]="agenda.img"
+                        class="rounded mx-auto d-block"
+                        width="100%"
+                        alt="..."
+                        style="border: solid 1px black"
+                      />
+                      <br />
+                      <div
+                        *ngIf="alertBool != false"
+                        class="alert alert-danger alert-dismissible fade show"
+                        role="alert"
+                      >
+                        <strong>{{ imgError }}</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="text-right no-print">
+              <br />
+              <hr />
+              <button [routerLink]="['/agenda']" class="btn navlinkinSolid m-1">
+                <i class="fas fa-sign-out-alt"></i> Volver
+              </button>
+              <button
+                class="btn navlinkinSolid m-1"
+                printSectionId="print-section"
+                [useExistingCss]="true"
+                printTitle="Información del evento"
+                ngxPrint
+              >
+                <i class="fas fa-print"></i> Imprimir
+              </button>
+              <br />
+              <div
+                *ngIf="error != false"
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                <strong>{{ passError }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
