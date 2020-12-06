@@ -61,7 +61,7 @@
         </h3>
         <hr class="lineInstRed" />
         <br />
-        <ngb-tabset [justify]="currentJustify" class="tabset1">
+        <ngb-tabset [justify]="currentJustify" class="tabset1" *ngFor="let den of denominacion | keysfirebase">
           <ngb-tab>
             <ng-template ngbTabTitle
               ><i class="fas fa-list-ul"></i> Programa</ng-template
@@ -74,7 +74,7 @@
                       <td><span class="redinst">Título a otorgar</span></td>
                       <td style="width: 60%">
                         <span class="grayinst">
-                          Doctor en Ciencias de la Salud.</span
+                          {{denominacion[den].tituloOtorgar}}</span
                         >
                       </td>
                     </tr>
@@ -85,10 +85,10 @@
                       <td>
                         <a
                           class="grayinst"
-                          href="https://contenidos.usco.edu.co/salud/images/pdf/resolucion-09862.pdf"
+                          target="_blank"
+                          [href]="denominacion[den].registroCalificadoUrl"
                         >
-                          Resolución Ministerio de Educación Nacional No. 09862
-                          de 2016</a
+                        {{denominacion[den].registroCalificado}}</a
                         >
                       </td>
                     </tr>
@@ -96,19 +96,19 @@
                       <td>
                         <span class="redinst">Periodicidad de admisión:</span>
                       </td>
-                      <td><span class="grayinst"> Anual</span></td>
+                      <td><span class="grayinst"> {{denominacion[den].perAdmision}}</span></td>
                     </tr>
                     <tr>
                       <td><span class="redinst">Número de créditos:</span></td>
-                      <td><span class="grayinst"> 128</span></td>
+                      <td><span class="grayinst"> {{denominacion[den].numCreditos}}</span></td>
                     </tr>
                     <tr>
                       <td><span class="redinst">Duración:</span></td>
-                      <td><span class="grayinst"> (4) Cuatro años</span></td>
+                      <td><span class="grayinst"> {{denominacion[den].duracion}}</span></td>
                     </tr>
                     <tr>
                       <td><span class="redinst">Costo de matrícula:</span></td>
-                      <td><span class="grayinst"> 9 SMMLV</span></td>
+                      <td><span class="grayinst"> {{denominacion[den].costoMatricula}}</span></td>
                     </tr>
                     <tr>
                       <td>
@@ -116,7 +116,7 @@
                       </td>
                       <td>
                         <span class="grayinst">
-                          (2) Dos estudiantes por cohorte</span
+                          {{denominacion[den].cupo}}</span
                         >
                       </td>
                     </tr>
@@ -131,18 +131,7 @@
             >
             <ng-template ngbTabContent>
               <p style="padding: 20px" class="text-justify grayinst">
-                El Doctorado en Ciencias de la Salud de la Universidad
-                Surcolombiana tiene por misión la formación integral de
-                investigadores al más alto nivel, con capacidad de desarrollar y
-                orientar, en forma autónoma y ética, procesos académicos,
-                investigativos y de proyección social conducentes a la
-                generación de conocimiento y a la solución de problemas de salud
-                y sus determinantes en el contexto local, regional y nacional,
-                con accionar coordinado entre el Estado, las instituciones y la
-                sociedad. Para ello contará con docentes altamente calificados y
-                con una infraestructura que promueva el trabajo interdisciplinar
-                e intersectorial para dar respuesta acertada a los cada vez más
-                complejos problemas de la salud humana.
+                {{denominacion[den].mision}}
               </p>
             </ng-template>
           </ngb-tab>
@@ -152,15 +141,7 @@
             >
             <ng-template ngbTabContent>
               <p style="padding: 20px" class="text-justify grayinst">
-                Para el 2027 el Doctorado en Ciencias de la Salud habrá
-                consolidado su comunidad académica; estará posicionado en el
-                contexto local, regional y nacional como uno de los mejores por
-                sus aportes al desarrollo científico y a la solución de los
-                problemas sanitarios prevalentes; contará con acreditación
-                académica y social y será ampliamente reconocido por su
-                incidencia en la formulación de política pública incluyente que
-                contribuya a la promoción del bienestar de la sociedad, en
-                armonía con el entorno.
+                {{denominacion[den].vision}}
               </p>
             </ng-template>
           </ngb-tab>
@@ -170,18 +151,9 @@
             <ng-template ngbTabTitle
               ><i class="fas fa-user-md"></i> Propósito</ng-template
             >
-            <ng-template ngbTabContent>
+            <ng-template ngbTabContent *ngFor="let den of denominacion | keysfirebase">
               <p style="padding: 20px" class="text-justify grayinst">
-                El Doctorado en Ciencias de la Salud tiene como propósito:
-                Formar científicos al más alto nivel, "con capacidad de
-                desarrollar y orientar, en forma autónoma, procesos académicos e
-                investigativos" conducentes a la intervención en Ciencias de la
-                Salud en el contexto local, regional, nacional e internacional,
-                con accionar coordinado entre el Estado, las instituciones y la
-                sociedad. Ello exige comprender que la salud está ligada a la
-                vida como valor universalmente reconocido, que hay diferentes
-                grados de salud y que es posible que la salud y la enfermedad
-                coexistan.
+                {{denominacion[den].proposito}}
               </p>
             </ng-template>
           </ngb-tab> </ngb-tabset

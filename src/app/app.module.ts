@@ -50,6 +50,8 @@ import { TarjetaestudianteComponent } from './components/pages/estudiantes/tarje
 import { HistoriaeditComponent } from './components/admin/programa/historiaedit/historiaedit.component';
 import { AgendaeditComponent } from './components/admin/agendaedit/agendaedit.component';
 import { EventoComponent } from './components/pages/agenda/evento/evento.component';
+import { DenominacionComponent } from './components/admin/home/denominacion.component';
+import { CarruselComponent } from './components/admin/home/carrusel/carrusel.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -89,6 +91,8 @@ registerLocaleData(localeEsCO, 'es-CO');
     HistoriaeditComponent,
     AgendaeditComponent,
     EventoComponent,
+    DenominacionComponent,
+    CarruselComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,6 +24,8 @@ import { HistoriaeditComponent } from './components/admin/programa/historiaedit/
 import { AgendaeditComponent } from './components/admin/agendaedit/agendaedit.component';
 import { GruposinveseditComponent } from './components/admin/gruposinvesedit/gruposinvesedit.component';
 import { EventoComponent } from './components/pages/agenda/evento/evento.component';
+import { DenominacionComponent } from './components/admin/home/denominacion.component';
+import { CarruselComponent } from './components/admin/home/carrusel/carrusel.component';
 
 const routes: Routes = [
   // INICIO
@@ -65,7 +67,8 @@ const routes: Routes = [
   // RUTAS ADMINISTRADOR
   { path: 'adminlogin', component: LoginComponent },
   // INICIO
-  { path: 'admi_inicio', component: HomeComponent },
+  { path: 'admi_denominacion/:id', component: DenominacionComponent },
+  { path: 'admi_carrusel', component: CarruselComponent },
   // PROGRAMA
   { path: 'admi_programa', component: ProgramaComponent },
   { path: 'admi_historia/:id', component: HistoriaeditComponent },

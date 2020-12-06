@@ -54,7 +54,6 @@ export class AgendaComponent implements OnInit {
   viewOpciones(pass, user) {
     if ( pass === '7183' && user === 'admin' ) {
       this.ajustes = false;
-      this.validar = true;
       this.vistaEdicion = true;
     } else {
       if (pass !== '7183' && user !== 'admin') {
