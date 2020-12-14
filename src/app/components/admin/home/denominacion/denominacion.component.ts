@@ -3,8 +3,8 @@ import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DenominacionService } from '../../../services/home/denominacion.service';
-import { Denominacion } from '../../../interfaces/home/denominacion';
+import { DenominacionService } from '../../../../services/home/denominacion.service';
+import { Denominacion } from '../../../../interfaces/home/denominacion';
 
 @Component({
   selector: 'app-denominacion',
