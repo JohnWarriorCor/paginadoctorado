@@ -1,57 +1,42 @@
 <div class="wrapper">
   <div
-    id="carouselExampleFade"
-    class="carousel slide carousel-fade"
-    data-ride="carousel"
-  >
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a
-          href="https://www.usco.edu.co/archivosUsuarios/20/publicacion/facultad-de-salud/doctorado-en-ciencias-de-la-salud-v-cohorte.pdf"
-          target="_blank"
-          ><img class="d-block w-100" src="assets/inscripciones.png" alt=""
-        /></a>
-        <div class="carousel-caption d-none d-md-block">
-          <div>
-            <a
-              href="https://www.usco.edu.co/archivosUsuarios/20/publicacion/facultad-de-salud/doctorado-en-ciencias-de-la-salud-v-cohorte.pdf"
-              target="_blank"
-              ><button
-                class="btn navlinkinSolid text-uppercase fade-in-right shadow"
-                style="border: solid 2px white; font-size: 18px"
-              >
-                <i class="far fa-file-pdf"></i> información
-              </button></a
-            >
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="d-block w-100" src="assets/carrusel0.png" alt="" />
-      </div>
+  id="carouselExampleFade"
+  class="carousel slide carousel-fade"
+  data-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div
+      [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
+      *ngFor="let item of carrusel | keysfirebase; let i = index"
+    >
+      <a [href]="carrusel[item].urlInfo" target="_blank"
+        ><img
+          class="d-block w-100 cursorSelect"
+          [src]="carrusel[item].urlImg"
+          [alt]="carrusel[item].titulo"
+          [title]="carrusel[item].titulo"
+      /></a>
     </div>
-    <a
-      class="carousel-control-prev"
-      href="#carouselExampleFade"
-      role="button"
-      data-slide="prev"
-    >
-      <i style="margin-top: 200px" class="fas fa-chevron-circle-left fa-3x"></i>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a
-      class="carousel-control-next"
-      href="#carouselExampleFade"
-      role="button"
-      data-slide="next"
-    >
-      <i
-        style="margin-top: 200px"
-        class="fas fa-chevron-circle-right fa-3x"
-      ></i>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselExampleFade"
+    role="button"
+    data-slide="prev"
+  >
+    <i class="fas fa-chevron-circle-left fa-3x"></i>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselExampleFade"
+    role="button"
+    data-slide="next"
+  >
+    <i class="fas fa-chevron-circle-right fa-3x"></i>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
   <br />
   <div class="container fadeIn fast" style="margin-top: 30px">
     <div class="row">
@@ -61,7 +46,11 @@
         </h3>
         <hr class="lineInstRed" />
         <br />
-        <ngb-tabset [justify]="currentJustify" class="tabset1" *ngFor="let den of denominacion | keysfirebase">
+        <ngb-tabset
+          [justify]="currentJustify"
+          class="tabset1"
+          *ngFor="let den of denominacion | keysfirebase"
+        >
           <ngb-tab>
             <ng-template ngbTabTitle
               ><i class="fas fa-list-ul"></i> Programa</ng-template
@@ -74,7 +63,7 @@
                       <td><span class="redinst">Título a otorgar</span></td>
                       <td style="width: 60%">
                         <span class="grayinst">
-                          {{denominacion[den].tituloOtorgar}}</span
+                          {{ denominacion[den].tituloOtorgar }}</span
                         >
                       </td>
                     </tr>
@@ -88,7 +77,7 @@
                           target="_blank"
                           [href]="denominacion[den].registroCalificadoUrl"
                         >
-                        {{denominacion[den].registroCalificado}}</a
+                          {{ denominacion[den].registroCalificado }}</a
                         >
                       </td>
                     </tr>
@@ -96,19 +85,35 @@
                       <td>
                         <span class="redinst">Periodicidad de admisión:</span>
                       </td>
-                      <td><span class="grayinst"> {{denominacion[den].perAdmision}}</span></td>
+                      <td>
+                        <span class="grayinst">
+                          {{ denominacion[den].perAdmision }}</span
+                        >
+                      </td>
                     </tr>
                     <tr>
                       <td><span class="redinst">Número de créditos:</span></td>
-                      <td><span class="grayinst"> {{denominacion[den].numCreditos}}</span></td>
+                      <td>
+                        <span class="grayinst">
+                          {{ denominacion[den].numCreditos }}</span
+                        >
+                      </td>
                     </tr>
                     <tr>
                       <td><span class="redinst">Duración:</span></td>
-                      <td><span class="grayinst"> {{denominacion[den].duracion}}</span></td>
+                      <td>
+                        <span class="grayinst">
+                          {{ denominacion[den].duracion }}</span
+                        >
+                      </td>
                     </tr>
                     <tr>
                       <td><span class="redinst">Costo de matrícula:</span></td>
-                      <td><span class="grayinst"> {{denominacion[den].costoMatricula}}</span></td>
+                      <td>
+                        <span class="grayinst">
+                          {{ denominacion[den].costoMatricula }}</span
+                        >
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -116,7 +121,7 @@
                       </td>
                       <td>
                         <span class="grayinst">
-                          {{denominacion[den].cupo}}</span
+                          {{ denominacion[den].cupo }}</span
                         >
                       </td>
                     </tr>
@@ -131,7 +136,7 @@
             >
             <ng-template ngbTabContent>
               <p style="padding: 20px" class="text-justify grayinst">
-                {{denominacion[den].mision}}
+                {{ denominacion[den].mision }}
               </p>
             </ng-template>
           </ngb-tab>
@@ -141,7 +146,7 @@
             >
             <ng-template ngbTabContent>
               <p style="padding: 20px" class="text-justify grayinst">
-                {{denominacion[den].vision}}
+                {{ denominacion[den].vision }}
               </p>
             </ng-template>
           </ngb-tab>
@@ -151,9 +156,12 @@
             <ng-template ngbTabTitle
               ><i class="fas fa-user-md"></i> Propósito</ng-template
             >
-            <ng-template ngbTabContent *ngFor="let den of denominacion | keysfirebase">
+            <ng-template
+              ngbTabContent
+              *ngFor="let den of denominacion | keysfirebase"
+            >
               <p style="padding: 20px" class="text-justify grayinst">
-                {{denominacion[den].proposito}}
+                {{ denominacion[den].proposito }}
               </p>
             </ng-template>
           </ngb-tab> </ngb-tabset
@@ -186,9 +194,13 @@
                     class="card-img-top cursorSelect"
                     [routerLink]="['/evento', item]"
                     [alt]="agenda[item].titulo"
+                    [title]="agenda[item].titulo"
                   />
                   <div class="card-body">
-                    <h4 [routerLink]="['/evento', item]" class="subTituloRojoInstitucional cursorSelect">
+                    <h4
+                      [routerLink]="['/evento', item]"
+                      class="subTituloRojoInstitucional cursorSelect"
+                    >
                       {{ agenda[item].titulo }}
                     </h4>
                     <h6 class="card-title subTituloRojoInstitucional">
@@ -200,7 +212,10 @@
                     <p class="card-text grayinst">
                       {{ agenda[item].resenia }}
                     </p>
-                    <a [href]="agenda[item].url" target="_blank" class="btn navlinkinSolid"
+                    <a
+                      [href]="agenda[item].url"
+                      target="_blank"
+                      class="btn navlinkinSolid"
                       >Más información</a
                     >
                     <p class="card-text text-right">

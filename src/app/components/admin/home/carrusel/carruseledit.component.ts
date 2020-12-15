@@ -17,7 +17,7 @@ export class CarruseleditComponent implements OnInit {
   fecha: any;
   closeResult: string;
   defaultImgUrl: any;
-  urlimg: any;
+  urlImage: any;
   war: any;
   modalReference: any;
   error = false;
@@ -62,16 +62,16 @@ export class CarruseleditComponent implements OnInit {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
 
-  changeImg(urlimg) {
-    console.log(urlimg);
+  changeImg(urlImage) {
+    console.log(urlImage);
     // tslint:disable-next-line:max-line-length
-    if (urlimg === '' || urlimg === null) {
-      this.defaultImgUrl = urlimg;
+    if (urlImage === '' || urlImage === null) {
+      this.defaultImgUrl = urlImage;
       this.alertBool = true;
       this.imgError = 'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
     } else {
       this.alertBool = false;
-      this.defaultImgUrl = urlimg;
+      this.defaultImgUrl = urlImage;
       return this.defaultImgUrl;
     }
   }
@@ -84,14 +84,14 @@ export class CarruseleditComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.carruselServices.nuevoCarrusel( this.carrusel ).subscribe(data => {
-          this.router.navigate(['/agenda']);
+          this.router.navigate(['/admi_carrusel']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
         this.carruselServices.actualizarCarrusel( this.carrusel, this.id ).subscribe(data => {
-          this.router.navigate(['/agenda']);
+          this.router.navigate(['/admi_carrusel']);
           this.modalReference.close();
         },
         error => console.error(error));

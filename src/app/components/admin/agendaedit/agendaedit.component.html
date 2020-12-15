@@ -68,9 +68,8 @@
                           Imagen del evento:
                         </h6>
                         <input
-                          (change)="changeImg(urlimg)"
+                          (change)="changeImg(agenda.img)"
                           name="img"
-                          [(ngModel)]="urlimg"
                           type="url"
                           [(ngModel)]="agenda.img"
                           class="form-control shadow p-3 inputPaciente"
@@ -128,10 +127,10 @@
                       Previsualización de la imágen:
                     </h6>
                     <img
-                      [src]="defaultImgUrl"
+                      [src]="agenda.img"
                       class="rounded mx-auto d-block"
-                      width="100%"
-                      alt="..."
+                      [alt]="agenda.titulo"
+                      [title]="agenda.titulo"
                       style="border: solid 1px black"
                     />
                     <br />

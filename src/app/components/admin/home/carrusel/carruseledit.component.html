@@ -38,8 +38,7 @@
                       URL de la imágen:
                     </h6>
                     <input
-                      (change)="changeImg(urlimg)"
-                      [(ngModel)]="urlimg"
+                      (change)="changeImg(carrusel.urlImg)"
                       type="url"
                       name="urlImg"
                       [(ngModel)]="carrusel.urlImg"
@@ -122,7 +121,7 @@
                     target="_blank"
                     ><img
                       class="d-block w-100"
-                      [src]="defaultImgUrl"
+                      [src]="carrusel.urlImg"
                       alt=""
                   /></a>
                   <div class="carousel-caption d-none d-md-block"></div>

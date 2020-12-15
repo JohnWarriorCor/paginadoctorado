@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AgendaService } from '../services/agenda/agenda.service';
 import { EstudiantesService, Estudiantes } from '../services/estudiantes.service';
 import { DenominacionService } from '../services/home/denominacion.service';
+import { CarruselService } from '../services/home/carrusel/carrusel.service';
 
 
 // tslint:disable-next-line:prefer-const
@@ -27,11 +28,12 @@ export class HomeComponent implements OnInit {
   activ: any[] = [];
   profesores: Profesores[] = [];
   estudiantes: Estudiantes[] = [];
+  carrusel: any[] = [];
   slides: any = [[]];
   slidesAgenda: any = [[]];
   slidesEstudiante: any = [[]];
   // tslint:disable-next-line:max-line-length
-  constructor(private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router) {
+  constructor(private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router, private carruselServices: CarruselService) {
     this.activatedRoute.params.subscribe( params => {
       this.profesor = this.profesorService.getProfesor(params.id);
     });
@@ -43,6 +45,9 @@ export class HomeComponent implements OnInit {
     });
     this.denominaciionService.getDenominaciones().subscribe( data => {
       this.denominacion = data;
+    });
+    this.carruselServices.getCarruseles().subscribe( data => {
+      this.carrusel = data;
     });
   }
   chunk(arr, chunkSize) {

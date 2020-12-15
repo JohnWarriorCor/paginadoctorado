@@ -4,7 +4,6 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CarruselService } from '../../../../services/home/carrusel/carrusel.service';
-import { Carrusel } from '../../../../interfaces/home/carrusel/carrusel';
 
 @Component({
   selector: 'app-carrusel',
@@ -29,82 +28,31 @@ export class CarruselComponent implements OnInit {
   controls: any;
   nuevo = false;
   id: string;
-  carrusel: Carrusel = {
-    titulo: '',
-    urlImg: '',
-    urlInfo: '',
-    fecha: '',
-    info: '',
-  };
+  carrusel: any[] = [];
 
 
   // tslint:disable-next-line:max-line-length
   constructor( public datepipe: DatePipe, private modalService: NgbModal, private carruselServices: CarruselService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.params.subscribe( parametros => {
-      this.id = parametros.id;
-      if ( this.id !== 'nuevo' ) {
-        this.carruselServices.getCarrusel( this.id ).subscribe(carrusel => this.carrusel = carrusel);
-      }
+    this.carruselServices.getCarruseles().subscribe( data => {
+      this.carrusel = data;
     });
   }
 
   ngOnInit() {
-    this.war = this.carrusel.titulo;
-    if ( this.carrusel.urlImg === null || this.carrusel.urlImg === '' ) {
-      // tslint:disable-next-line:max-line-length
-      this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/comunicado.png?alt=media&token=0ffc510f-7150-4ced-9cb4-e6c8f39119e8';
-      this.carrusel.urlImg = this.defaultImgUrl;
-      return this.carrusel.urlImg;
-    }
-    this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
   }
 
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
-
-  changeImg(urlimg) {
-    console.log(urlimg);
-    // tslint:disable-next-line:max-line-length
-    if (urlimg === '' || urlimg === null) {
-      this.defaultImgUrl = urlimg;
-      this.alertBool = true;
-      this.imgError = 'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
-    } else {
-      this.alertBool = false;
-      this.defaultImgUrl = urlimg;
-      return this.defaultImgUrl;
-    }
-  }
-
-  guardar() {
-    if ( this.carrusel.titulo !== this.war ||  this.carrusel.titulo !== this.war ) {
-      this.error = false;
-      console.log(this.carrusel.titulo);
-      console.log(this.war);
-      this.modalReference.close();
-      if ( this.id === 'nuevo' ) {
-        this.carruselServices.nuevoCarrusel( this.carrusel ).subscribe(data => {
-          this.router.navigate(['/agenda']);
-          this.modalReference.close();
-        },
-        error => console.error(error));
+  borrarCarrusel( key$: string) {
+    this.carruselServices.borrarCarrusel(key$).subscribe( respuesta => {
+      if ( respuesta ) {
+        console.error(respuesta);
       } else {
+        delete this.carrusel[key$];
         this.modalReference.close();
-        this.carruselServices.actualizarCarrusel( this.carrusel, this.id ).subscribe(data => {
-          this.router.navigate(['/agenda']);
-          this.modalReference.close();
-        },
-        error => console.error(error));
+        window.location.reload();
       }
-    } else {
-      this.error = true;
-      this.passError = 'Formulario incompleto.';
-      this.modalReference.close();
-    }
-  }
-  agregarNuevo( forma: NgForm) {
-    this.router.navigate(['/admi_agenda', 'nuevo']);
-    forma.reset({});
+    });
   }
 }
