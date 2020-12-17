@@ -27,6 +27,7 @@ import { EventoComponent } from './components/pages/agenda/evento/evento.compone
 import { DenominacionComponent } from './components/admin/home/denominacion/denominacion.component';
 import { CarruselComponent } from './components/admin/home/carrusel/carrusel.component';
 import { CarruseleditComponent } from './components/admin/home/carrusel/carruseledit.component';
+import { PlanestudioseditComponent } from './components/admin/formacion/planestudiosedit/planestudiosedit.component';
 
 const routes: Routes = [
   // INICIO
@@ -78,7 +79,7 @@ const routes: Routes = [
   { path: 'admi_ubicacion', component: UbicacionComponent },
   // FORMACION
   { path: 'admi_formacion', component: FormacionComponent },
-  { path: 'admi_plandeestudios', component: PlanestudiosComponent },
+  { path: 'admi_plandeestudios', component: PlanestudioseditComponent },
   { path: 'admi_competencias', component: CompetenciasComponent },
   { path: 'admi_perfil', component: PerfilComponent },
   // PROFESORES

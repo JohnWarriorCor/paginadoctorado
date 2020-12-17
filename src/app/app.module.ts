@@ -53,6 +53,7 @@ import { EventoComponent } from './components/pages/agenda/evento/evento.compone
 import { DenominacionComponent } from './components/admin/home/denominacion/denominacion.component';
 import { CarruselComponent } from './components/admin/home/carrusel/carrusel.component';
 import { CarruseleditComponent } from './components/admin/home/carrusel/carruseledit.component';
+import { PlanestudioseditComponent } from './components/admin/formacion/planestudiosedit/planestudiosedit.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -95,6 +96,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     DenominacionComponent,
     CarruselComponent,
     CarruseleditComponent,
+    PlanestudioseditComponent,
   ],
   imports: [
     BrowserModule,
