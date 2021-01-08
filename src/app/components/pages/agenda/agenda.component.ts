@@ -40,11 +40,9 @@ export class AgendaComponent implements OnInit {
   refresh() {
     window.location.reload();
   }
-
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
-
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
   }

@@ -79,7 +79,7 @@ const routes: Routes = [
   { path: 'admi_ubicacion', component: UbicacionComponent },
   // FORMACION
   { path: 'admi_formacion', component: FormacionComponent },
-  { path: 'admi_plandeestudios', component: PlanestudioseditComponent },
+  { path: 'admi_plandeestudios/:id', component: PlanestudioseditComponent },
   { path: 'admi_competencias', component: CompetenciasComponent },
   { path: 'admi_perfil', component: PerfilComponent },
   // PROFESORES

@@ -1,120 +1,73 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { PlanestudiosService } from '../../../../services/formacion/planestudios/planestudios.service';
 
 @Component({
   selector: 'app-planestudios',
   templateUrl: './planestudios.component.html',
-  styleUrls: ['./planestudios.component.css']
+  styleUrls: ['./planestudios.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class PlanestudiosComponent implements OnInit, AfterViewInit {
-  asignaturas: any = [];
-  constructor() { }
-
-  ngOnInit() {
-    this.asignaturas.push(
-      {
-        id: '1',
-        asignatura: 'CIENCIAS DE LA SALUD',
-        creditos: '6',
-      },
-      {
-        id: '2',
-        asignatura: 'SALUD DE POBLACIONES',
-        creditos: '5',
-      },
-      {
-        id: '3',
-        asignatura: 'MEDICINA TROPICAL',
-        creditos: '5',
-      },
-      {
-        id: '4',
-        asignatura: 'EPISTEMOLOGÍA DE LA SALUD',
-        creditos: '6',
-      },
-      {
-        id: '5',
-        asignatura: 'METODOLOGÍA DE LA INVESTIGACIÓN EN CIENCIAS DE LA SALUD: MÉTODOS CUANTITATIVOS',
-        creditos: '4',
-      },
-      {
-        id: '6',
-        asignatura: 'METODOLOGÍA DE LA INVESTIGACIÓN EN CIENCIAS DE LA SALUD: MÉTODOS CUALITATIVOS',
-        creditos: '4',
-      },
-      {
-        id: '7',
-        asignatura: 'METODOLOGÍA DE LA INVESTIGACIÓN EN CIENCIAS DE LA SALUD: BIOÉTICA',
-        creditos: '2',
-      },
-      {
-        id: '8',
-        asignatura: 'PROYECTO DE TESIS I',
-        creditos: '10',
-      },
-      {
-        id: '9',
-        asignatura: 'COMPONENTE FLEXIBLE DE PROFUNDIZACIÓN I',
-        creditos: '6',
-      },
-      {
-        id: '10',
-        asignatura: 'PROYECTO DE TESIS II',
-        creditos: '8',
-      },
-      {
-        id: '11',
-        asignatura: 'COMPONENTE FLEXIBLE DE PROFUNDIZACIÓN II',
-        creditos: '7',
-      },
-      {
-        id: '12',
-        asignatura: 'TESIS: ELABORACIÓN TESIS',
-        creditos: '11',
-      },
-      {
-        id: '13',
-        asignatura: 'COMPONENTE FLEXIBLE DE PEDAGOGÍA',
-        creditos: '4',
-      },
-      {
-        id: '14',
-        asignatura: 'TESIS: ELABORACIÓN TESIS',
-        creditos: '10',
-      },
-      {
-        id: '15',
-        asignatura: 'TESIS: PASANTIAS',
-        creditos: '6',
-      },
-      {
-        id: '16',
-        asignatura: 'TESIS: SOCIALIZACIÓN DE RESULTADOS EN EVENTOS CIENTÍFICOS',
-        creditos: '4',
-      },
-      {
-        id: '17',
-        asignatura: 'TESIS: PREDEFENSA',
-        creditos: '12',
-      },
-      {
-        id: '18',
-        asignatura: 'TESIS: DEFENSA',
-        creditos: '10',
-      },
-      {
-        id: '19',
-        asignatura: 'TESIS: REDACCIÓN Y PUBLICACIÓN DE ARTÍCULOS CIENTÍFICOS',
-        creditos: '8',
-      },
-      {
-        id: '-',
-        asignatura: 'TOTAL',
-        creditos: '128',
-      },
-    );
+export class PlanestudiosComponent implements OnInit {
+  closeResult: string;
+  modalReference: any;
+  acumFechas = 0;
+  comodinAcum = 0;
+  planEstudios: Array<any> = [];
+  loading = true;
+  // Herramientas ocultas
+  key: any;
+  user: any;
+  opciones = false;
+  ajustes = true;
+  validar = false;
+  error = false;
+  passError = '';
+  // tslint:disable-next-line:max-line-length
+  constructor(private planestudiosService: PlanestudiosService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.planestudiosService.getPlanestudios().subscribe( data => {
+      this.planEstudios = data;
+    });
   }
-  ngAfterViewInit(): void {
-    (window as any).twttr.widgets.load();
+  refresh() {
+    window.location.reload();
+  }
+  openModal(confirmar) {
+    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
+  }
+  openSm(formAdmin) {
+    this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
+  }
+  ngOnInit() {
+  }
+  viewOpciones(pass, user) {
+    if ( pass === '7183' && user === 'admin' ) {
+      this.ajustes = false;
+      this.validar = true;
+    } else {
+      if (pass !== '7183' && user !== 'admin') {
+        this.error = true;
+        this.passError = 'Usuario y contraseña incorrectas';
+      } else if (pass !== '7183') {
+        this.error = true;
+        this.passError = 'Contraseña incorrecta';
+      } else {
+        this.error = true;
+        this.passError = 'Usuario incorrecto';
+      }
+    }
+  }
+  borrarPlan( key$: string) {
+    this.planestudiosService.borrarPlanestudio(key$).subscribe( respuesta => {
+      if ( respuesta ) {
+        console.error(respuesta);
+      } else {
+        delete this.planEstudios[key$];
+        this.modalReference.close();
+      }
+    });
   }
 
 }

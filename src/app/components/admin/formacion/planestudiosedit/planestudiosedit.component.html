@@ -13,118 +13,89 @@
               Formulario para administrar el Plan de Estudio
             </h3>
             <hr class="lineInstRed" />
-            <br /><!--
+            <br />
             <form #forma="ngForm">
-              <div class="row">
-                <div class="col">
-                  <h6 class="text-left subTituloRojoInstitucional">
-                    Código de Grupo Colciencias:
-                  </h6>
-                  <input
-                    type="text"
-                    name="codigo"
-                    [(ngModel)]="grupoInvestigacion.codigo"
-                    class="form-control shadow p-3 inputPaciente"
-                    placeholder="Encabezado o título del evento"
-                  />
-                </div>
-                <div class="col">
-                  <h6 class="text-left subTituloRojoInstitucional">
-                    Nombre del Grupo:
-                  </h6>
-                  <input
-                    type="text"
-                    name="nombre"
-                    [(ngModel)]="grupoInvestigacion.nombre"
-                    class="form-control shadow p-3 inputPaciente"
-                    placeholder="Encabezado o título del evento"
-                  />
+              <table class="table table-bordered parinst text-center"> 
+                <thead class="tablatit"> 
+                 <tr class="white"> 
+                  <th style="vertical-align: middle" scope="col">Asignatura</th> 
+                  <th style="vertical-align: middle" scope="col">Créditos</th> 
+                  <th style="vertical-align: middle" scope="col">Opciones</th> 
+                 </tr> 
+                </thead> 
+                <tbody> 
+                 <tr *ngFor="let field of planEstudio.fieldArray; let i = index"> 
+                  <td> 
+                   <input [(ngModel)]="field.asignatura" class="form-control inputTable" type="text" name="{{field.asignatura}}" /> 
+                  </td> 
+                  <td> 
+                   <input [(ngModel)]="field.creditos" class="form-control inputTable" type="number" name="{{field.creditos}}" /> 
+                  </td> 
+                  <td> 
+                   <button class="btn btn-default colorRedInst" type="button" (click)="deleteFieldValue(i)" placement="top" ngbTooltip="Borrar"><i class="far fa-trash-alt"></i></button> 
+                  </td> 
+                 </tr> 
+                 <tr> 
+                  <td> 
+                   <input class="form-control inputTable" type="text" id="newAttributeAsignatura" [(ngModel)]="newAttribute.asignatura" name="newAttributeAsignatura" /> 
+                  </td> 
+                  <td> 
+                   <input class="form-control inputTable" type="number" id="newAttributeCreditos" [(ngModel)]="newAttribute.creditos" name="newAttributeCreditos" /> 
+                  </td> 
+                  <td> 
+                   <button class="btn btn-default colorRedInst" type="button" (click)="addFieldValue()" placement="top" ngbTooltip="Agregar"><i class="fas fa-plus-circle"></i></button> 
+                  </td> 
+                 </tr> 
+                </tbody> 
+            </table>
+            <button class="btn navlinkinSolid m-1" (click)="openModal(confirmar)"><i class="far fa-save"></i> Guardar</button>
+            <button class="btn navlinkinSolid m-1" [routerLink]="['/plandeestudios']"><i class="fas fa-sign-out-alt"></i> Volver</button>
+            <ng-template #confirmar let-modal>
+              <div class="modal-header bgrojoycafe">
+                <h4 class="modal-title">Confirmar acción</h4>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  <i class="fas fa-times" style="color: white"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div
+                  class="alert alert-warning text-center font-weight-bold"
+                  role="alert"
+                >
+                  ¿Desea guardar y continuar con la acción?
                 </div>
               </div>
-              <div class="row">
-                <div class="col">
-                  <h6 class="text-left subTituloRojoInstitucional">
-                    Líder del Grupo:
-                  </h6>
-                  <input
-                    type="text"
-                    name="lider"
-                    [(ngModel)]="grupoInvestigacion.lider"
-                    class="form-control shadow p-3 inputPaciente"
-                    placeholder="Encabezado o título del evento"
-                  />
-                </div>
-                <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">Clasificación:</h6>
-                    <select class="custom-select shadow inputPaciente" id="clasificacion" name="clasificacion"
-                        [(ngModel)]="grupoInvestigacion.clasificacion">
-                        <option value="" disabled="disabled">Elija el la clasificación</option>
-                        <option value="A1">A1</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="No reconocido">No reconocido</option>
-                    </select>
-                </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btnColorFacultadSalud"
+                  ngbAutofocus
+                  (click)="guardar()"
+                >
+                  Aceptar
+                </button>
+                <button
+                  type="button"
+                  class="btn navlinkinSolid"
+                  (click)="modal.close('Close click')"
+                >
+                  Cancelar
+                </button>
               </div>
-              <br />
-              <hr />
-              <button (click)="openModal(confirmar)" class="btn navlinkinSolid">
-                <i class="far fa-save"></i> Guardar
-              </button>
-              <button
-                class="btn navlinkinSolid m-1"
-                [routerLink]="['/admi_gruposinvestigacion', 'nuevo']"
-              >
-                <i class="fas fa-plus-circle"></i> Agregar Grupo
-              </button>
-              <ng-template #confirmar let-modal>
-                <div class="modal-header bgrojoycafe">
-                  <h4 class="modal-title">Confirmar acción</h4>
-                  <button
-                    type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="modal.dismiss('Cross click')"
-                  >
-                    <i class="fas fa-times" style="color: white"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div
-                    class="alert alert-warning text-center font-weight-bold"
-                    role="alert"
-                  >
-                    ¿Desea guardar y continuar con la acción?
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btnColorFacultadSalud"
-                    ngbAutofocus
-                    (click)="guardar()"
-                  >
-                    Aceptar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn navlinkinSolid"
-                    (click)="modal.close('Close click')"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </ng-template>
-              <br />
-              <div
+            </ng-template>
+            <div
                 *ngIf="error != false"
                 class="alert alert-danger alert-dismissible fade show"
                 role="alert"
               >
                 <strong>{{ passError }}</strong>
               </div>
-            </form>-->
+            </form>
           </div>
         </div>
       </div>

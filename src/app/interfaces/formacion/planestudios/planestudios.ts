@@ -1,6 +1,4 @@
 export interface Planestudios {
-    asignatura: string;
-    créditos: string;
-    fechaModificacion: string;
+    fieldArray: Array<any>;
     key$?: string;
 }

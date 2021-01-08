@@ -15,63 +15,179 @@
             <h3 class="titleInstRed">Plan de Estudios</h3>
             <hr class="lineInstRed" />
             <br />
+
             <table
               id="tableSortExample"
-              class="table table-bordered parinst text-center"
+              class="table table-bordered parinst table-responsive text-center"
               style="border-radius: 10px"
             >
               <thead class="tablatit">
                 <tr class="white">
-                  <th
-                    style="vertical-align: middle"
-                    scope="col"
-                    [mdbTableSort]="asignaturas"
-                    sortBy="id"
-                  >
-                    N°
-                    <mdb-icon fas icon="sort"></mdb-icon>
-                  </th>
-                  <th
-                    style="vertical-align: middle"
-                    scope="col"
-                    [mdbTableSort]="asignaturas"
-                    sortBy="asignatura"
-                  >
-                    Asignatura
-                    <mdb-icon fas icon="sort"></mdb-icon>
-                  </th>
-                  <th
-                    style="vertical-align: middle"
-                    scope="col"
-                    [mdbTableSort]="asignaturas"
-                    sortBy="creditos"
-                  >
-                    Créditos
-                    <mdb-icon fas icon="sort"></mdb-icon>
-                  </th>
+                  <th style="vertical-align: middle" scope="col">N°</th>
+                  <th style="vertical-align: middle" scope="col">Asignatura</th>
+                  <th style="vertical-align: middle" scope="col">Créditos</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr *ngFor="let grupo of asignaturas; let i = index">
+              <tbody *ngFor="let item of planEstudios | keysfirebase">
+                <tr
+                  *ngFor="
+                    let field of planEstudios[item].fieldArray | keysfirebase;
+                    let i = index
+                  "
+                >
                   <th style="vertical-align: middle" scope="row">
-                    {{ grupo.id }}
+                    {{ i + 1 }}
                   </th>
-                  <td style="vertical-align: middle">{{ grupo.asignatura }}</td>
-                  <td style="vertical-align: middle">{{ grupo.creditos }}</td>
+                  <td style="vertical-align: middle">
+                    {{ planEstudios[item].fieldArray[field].asignatura }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ planEstudios[item].fieldArray[field].creditos }}
+                  </td>
                 </tr>
               </tbody>
             </table>
+            <ng-template #confirmar let-modal>
+              <div class="modal-header bgrojoyblanco">
+                <h4 class="modal-title">
+                  <i class="fas fa-user-cog white"></i> Administrar contenido:
+                </h4>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  <i class="fas fa-times" style="color: white"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="text-center p-2" #forma="ngForm">
+                  <!-- Email -->
+                  <div class="d-flex justify-content-around">
+                    <i
+                      class="fas fa-user-shield fa-2x grayinst"
+                      style="margin: 5px"
+                    ></i>
+                    <input
+                      type="name"
+                      id="defaultLoginFormEmail"
+                      [(ngModel)]="user"
+                      name="user"
+                      class="form-control mb-4"
+                      placeholder="Usuario"
+                    />
+                  </div>
+
+                  <!-- Password -->
+                  <div class="d-flex justify-content-around">
+                    <i
+                      class="fas fa-key fa-2x grayinst"
+                      style="margin: 5px"
+                    ></i>
+                    <input
+                      [(ngModel)]="key"
+                      name="key"
+                      type="password"
+                      id="defaultLoginFormPassword"
+                      class="form-control mb-4"
+                      placeholder="Contraseña"
+                    />
+                  </div>
+
+                  <div class="d-flex justify-content-around">
+                    <div>
+                      <!-- Remember me -->
+                      <mdb-checkbox [default]="true">Recuerdame</mdb-checkbox>
+                    </div>
+                    <div>
+                      <!-- Forgot password -->
+                      <a href="">¿Recuperar?</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <hr />
+              <div
+                *ngIf="error != false"
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                <strong>{{ passError }}</strong>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <i class="fas fa-times" style="color: #8f141b"></i>
+                </button>
+              </div>
+              <button
+                *ngIf="ajustes != false"
+                type="button"
+                style="
+                  width: 80%;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                "
+                class="btn btnColorFacultadSalud p-3"
+                ngbAutofocus
+                (click)="viewOpciones(key, user)"
+              >
+                Validar
+              </button>
+              <div
+                *ngFor="let item of planEstudios | keysfirebase"
+                style="
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                "
+              >
+                <button
+                  *ngIf="validar != false"
+                  type="button"
+                  [routerLink]="['/admi_plandeestudios', item]"
+                  (click)="modal.dismiss('Cross click')"
+                  class="btn navlinkinSolid p-3"
+                  ngbAutofocus
+                  (click)="viewOpciones(key, user)"
+                >
+                  Acceder
+                </button>
+              </div>
+            </ng-template>
           </div>
           <hr />
-          <button
-            class="btn navlinkinSolid"
-            printSectionId="print-section"
-            [useExistingCss]="true"
-            printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
-            ngxPrint
-          >
-            <i class="fas fa-print"></i> Imprimir
-          </button>
+          <div class="row">
+            <div class="col">
+              <button
+                class="btn navlinkinSolid"
+                printSectionId="print-section"
+                [useExistingCss]="true"
+                printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
+                ngxPrint
+              >
+                <i class="fas fa-print"></i> Imprimir
+              </button>
+            </div>
+            <div class="col text-right">
+              <div
+                *ngIf="ajustes != false"
+                class="col"
+                (click)="openModal(confirmar)"
+              >
+                <i
+                  class="fas fa-wrench fa-2x"
+                  placement="left"
+                  ngbTooltip="Ajustes"
+                  style="color: #8f141b"
+                ></i>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-sm-auto fondodivright shadow">
           <h3 class="titleInstRed">Infórmate</h3>
