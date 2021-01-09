@@ -46,7 +46,7 @@ export class PlanestudioseditComponent implements OnInit {
 
   ngOnInit() {
     this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
-    this.war = this.newAttribute;
+    this.war = this.planEstudio.fieldArray[0];
   }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
@@ -60,7 +60,7 @@ export class PlanestudioseditComponent implements OnInit {
     this.planEstudio.fieldArray.splice(index, 1);
    }
    guardar() {
-    if ( this.newAttribute !== this.war ||  this.newAttribute !== this.war ) {
+    if ( this.planEstudio.fieldArray[0] !== this.war ||  this.planEstudio.fieldArray[0] !== this.war ) {
       this.error = false;
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {

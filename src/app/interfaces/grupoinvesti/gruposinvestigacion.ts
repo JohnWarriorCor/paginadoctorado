@@ -1,7 +1,4 @@
 export interface Gruposinvestigacion {
-    codigo: string;
-    nombre: string;
-    lider: string;
-    clasificacion: string;
+    fieldArray: Array<any>;
     key$?: string;
 }

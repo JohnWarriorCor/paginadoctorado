@@ -30,11 +30,9 @@ export class GruposinveseditComponent implements OnInit {
   controls: any;
   nuevo = false;
   id: string;
+  newAttribute: any = {};
   grupoInvestigacion: Gruposinvestigacion = {
-    codigo: '',
-    nombre: '',
-    lider: '',
-    clasificacion: '',
+    fieldArray: [],
   };
 
   // tslint:disable-next-line:max-line-length
@@ -49,15 +47,24 @@ export class GruposinveseditComponent implements OnInit {
 
   ngOnInit() {
     this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
-    this.war = this.grupoInvestigacion.nombre;
+    this.war = this.grupoInvestigacion.fieldArray[0];
   }
 
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
 
+  addFieldValue() {
+    this.grupoInvestigacion.fieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+  }
+
+   deleteFieldValue(index) {
+    this.grupoInvestigacion.fieldArray.splice(index, 1);
+  }
+
   guardar() {
-    if ( this.grupoInvestigacion.nombre !== this.war ||  this.grupoInvestigacion.nombre !== this.war ) {
+    if ( this.grupoInvestigacion.fieldArray[0] !== this.war ||  this.grupoInvestigacion.fieldArray[0] !== this.war ) {
       this.error = false;
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
