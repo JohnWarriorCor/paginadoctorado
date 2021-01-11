@@ -28,6 +28,12 @@ import { DenominacionComponent } from './components/admin/home/denominacion/deno
 import { CarruselComponent } from './components/admin/home/carrusel/carrusel.component';
 import { CarruseleditComponent } from './components/admin/home/carrusel/carruseledit.component';
 import { PlanestudioseditComponent } from './components/admin/formacion/planestudiosedit/planestudiosedit.component';
+import { ArticulosestueditComponent } from './components/admin/estudiantes/articulos/articulosestuedit.component';
+import { EgresadoseditComponent } from './components/admin/estudiantes/agresados/egresadosedit.component';
+import { TesiseditComponent } from './components/admin/estudiantes/tesis/tesisedit.component';
+import { LibroseditComponent } from './components/admin/biblioteca/libros/librosedit.component';
+import { ArticulosproeditComponent } from './components/admin/profesores/articulos/articulosproedit.component';
+import { PlanteleditComponent } from './components/admin/profesores/plantel/planteledit.component';
 
 const routes: Routes = [
   // INICIO
@@ -83,8 +89,8 @@ const routes: Routes = [
   { path: 'admi_competencias', component: CompetenciasComponent },
   { path: 'admi_perfil', component: PerfilComponent },
   // PROFESORES
-  { path: 'admi_docentes', component: DocentesComponent },
-  { path: 'admi_articulosProfesores', component: ArticulosprofesoresComponent },
+  { path: 'admi_docentes', component: PlanteleditComponent },
+  { path: 'admi_articulosProfesores', component: ArticulosproeditComponent },
   { path: 'admi_docente/:id', component: DocenteComponent },
   // ACTIVDADES
   { path: 'admi_agenda/:id', component: AgendaeditComponent },
@@ -93,11 +99,11 @@ const routes: Routes = [
   // ESTUDIANDTES
   { path: 'admi_estudiantes', component: EstudiantesComponent },
   { path: 'admi_estudiante/:id', component: EstudianteComponent },
-  { path: 'admi_articulosEstudiantes', component: ArticulosestudiantesComponent },
-  { path: 'admi_egresados', component: EgresadosComponent },
-  { path: 'admi_tesis', component: TesisComponent },
+  { path: 'admi_articulosEstudiantes', component: ArticulosestueditComponent },
+  { path: 'admi_egresados', component: EgresadoseditComponent },
+  { path: 'admi_tesis', component: TesiseditComponent },
   // BIBLIOTECA
-  { path: 'biblioteca', component: BibliotecaComponent },
+  { path: 'admi_biblioteca/:id', component: LibroseditComponent },
   // ROOT
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];

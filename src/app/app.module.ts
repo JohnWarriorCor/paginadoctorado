@@ -54,6 +54,13 @@ import { DenominacionComponent } from './components/admin/home/denominacion/deno
 import { CarruselComponent } from './components/admin/home/carrusel/carrusel.component';
 import { CarruseleditComponent } from './components/admin/home/carrusel/carruseledit.component';
 import { PlanestudioseditComponent } from './components/admin/formacion/planestudiosedit/planestudiosedit.component';
+import { ListadoeditComponent } from './components/admin/estudiantes/listado/listadoedit.component';
+import { EgresadoseditComponent } from './components/admin/estudiantes/agresados/egresadosedit.component';
+import { ArticulosestueditComponent } from './components/admin/estudiantes/articulos/articulosestuedit.component';
+import { TesiseditComponent } from './components/admin/estudiantes/tesis/tesisedit.component';
+import { LibroseditComponent } from './components/admin/biblioteca/libros/librosedit.component';
+import { PlanteleditComponent } from './components/admin/profesores/plantel/planteledit.component';
+import { ArticulosproeditComponent } from './components/admin/profesores/articulos/articulosproedit.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -97,6 +104,13 @@ registerLocaleData(localeEsCO, 'es-CO');
     CarruselComponent,
     CarruseleditComponent,
     PlanestudioseditComponent,
+    ListadoeditComponent,
+    EgresadoseditComponent,
+    ArticulosestueditComponent,
+    TesiseditComponent,
+    LibroseditComponent,
+    PlanteleditComponent,
+    ArticulosproeditComponent,
   ],
   imports: [
     BrowserModule,
