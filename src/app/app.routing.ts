@@ -90,7 +90,7 @@ const routes: Routes = [
   { path: 'admi_perfil', component: PerfilComponent },
   // PROFESORES
   { path: 'admi_docentes', component: PlanteleditComponent },
-  { path: 'admi_articulosProfesores', component: ArticulosproeditComponent },
+  { path: 'admi_articulosProfesores/:id', component: ArticulosproeditComponent },
   { path: 'admi_docente/:id', component: DocenteComponent },
   // ACTIVDADES
   { path: 'admi_agenda/:id', component: AgendaeditComponent },
@@ -99,9 +99,9 @@ const routes: Routes = [
   // ESTUDIANDTES
   { path: 'admi_estudiantes', component: EstudiantesComponent },
   { path: 'admi_estudiante/:id', component: EstudianteComponent },
-  { path: 'admi_articulosEstudiantes', component: ArticulosestueditComponent },
+  { path: 'admi_articulosEstudiantes/:id', component: ArticulosestueditComponent },
   { path: 'admi_egresados', component: EgresadoseditComponent },
-  { path: 'admi_tesis', component: TesiseditComponent },
+  { path: 'admi_tesis/:id', component: TesiseditComponent },
   // BIBLIOTECA
   { path: 'admi_biblioteca/:id', component: LibroseditComponent },
   // ROOT

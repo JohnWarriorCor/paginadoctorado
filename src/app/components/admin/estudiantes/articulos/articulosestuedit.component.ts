@@ -3,8 +3,8 @@ import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PlanestudiosService } from '../../../../services/formacion/planestudios/planestudios.service';
-import { Planestudios } from '../../../../interfaces/formacion/planestudios/planestudios';
+import { Articulosestu } from '../../../../interfaces/estudiantes/articulos/articulosestu';
+import { ArticulosestuService } from '../../../../services/estudiantes/articulos/articulosestu.service';
 
 @Component({
   selector: 'app-articulosestuedit',
@@ -31,48 +31,48 @@ export class ArticulosestueditComponent implements OnInit {
   id: string;
 
   newAttribute: any = {};
-  planEstudio: Planestudios = {
+  articulosEstu: Articulosestu = {
     fieldArray: [],
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(public datepipe: DatePipe, private modalService: NgbModal, private planEstudioService: PlanestudiosService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(public datepipe: DatePipe, private modalService: NgbModal, private articulosEstuService: ArticulosestuService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
-        this.planEstudioService.getPlanestudio( this.id ).subscribe(grupoInvestigacion => this.planEstudio = grupoInvestigacion);
+        this.articulosEstuService.getArticuloEstudiante( this.id ).subscribe(articulosEstu => this.articulosEstu = articulosEstu);
       }
     });
   }
 
   ngOnInit() {
     this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
-    this.war = this.planEstudio.fieldArray[0];
+    this.war = this.articulosEstu.fieldArray[0];
   }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
   addFieldValue() {
-    this.planEstudio.fieldArray.push(this.newAttribute);
+    this.articulosEstu.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
    }
 
    deleteFieldValue(index) {
-    this.planEstudio.fieldArray.splice(index, 1);
+    this.articulosEstu.fieldArray.splice(index, 1);
    }
    guardar() {
-    if ( this.planEstudio.fieldArray[0] !== this.war ||  this.planEstudio.fieldArray[0] !== this.war ) {
+    if ( this.articulosEstu.fieldArray[0] !== this.war ||  this.articulosEstu.fieldArray[0] !== this.war ) {
       this.error = false;
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
-        this.planEstudioService.nuevoPlanestudio( this.planEstudio ).subscribe(data => {
+        this.articulosEstuService.nuevoArticuloEstudiante( this.articulosEstu ).subscribe(data => {
           this.router.navigate(['/plandeestudios']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
-        this.planEstudioService.actualizarPlanestudio( this.planEstudio, this.id ).subscribe(data => {
+        this.articulosEstuService.actualizarArticuloEstudiante( this.articulosEstu, this.id ).subscribe(data => {
           this.router.navigate(['/plandeestudios']);
           this.modalReference.close();
         },
