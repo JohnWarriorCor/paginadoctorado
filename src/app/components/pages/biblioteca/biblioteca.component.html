@@ -16,66 +16,230 @@
             <hr class="lineInstRed" />
             <br />
             <p>
-              La siguiente lista incluye los libros que se encuentran en la Oficina del Doctorado en Ciencias de la Salud y que usted puede consultar o solicitar en prestamo dirigendose a la biblioteca de la Facultad de Salud de la Universidad Surcolombiana.
+              La siguiente lista incluye los libros que se encuentran en la
+              Oficina del Doctorado en Ciencias de la Salud y que usted puede
+              consultar o solicitar en prestamo dirigendose a la biblioteca de
+              la Facultad de Salud de la Universidad Surcolombiana.
             </p>
             <p>
-              Si desea acceder a la Biblioteca Virtual de la Universidad Surcolombiana y a las respectivas Bases de Datos, debe dar clik en el siguiente enlace: <a href="http://www.usco.edu.co/biblioteca/" target="_blank" class="redinst">Bases de datos Biblioteca USCO</a>
+              Si desea acceder a la Biblioteca Virtual de la Universidad
+              Surcolombiana y a las respectivas Bases de Datos, debe dar clik en
+              el siguiente enlace:
+              <a
+                href="http://www.usco.edu.co/biblioteca/"
+                target="_blank"
+                class="redinst"
+                >Bases de datos Biblioteca USCO</a
+              >
             </p>
             <div class="container">
               <div class="input-group mb-3">
-                <input type="text" class="form-control shadow"  style="border-radius: 50px 0px 0px 50px;" placeholder="Digite palabras claves para buscar..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                <input
+                  type="text"
+                  class="form-control shadow"
+                  style="border-radius: 50px 0px 0px 50px"
+                  placeholder="Digite palabras claves para buscar..."
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
                 <div class="input-group-append">
-                  <button class="btn navlinkinSolid shadow" type="button" id="button-addon2"><i class="fas fa-search"></i> Buscar</button>
+                  <button
+                    class="btn navlinkinSolid shadow"
+                    type="button"
+                    id="button-addon2"
+                  >
+                    <i class="fas fa-search"></i> Buscar
+                  </button>
                 </div>
               </div>
-            </div><br>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Autor</th>
-                  <th scope="col">Libro</th>
-                  <th scope="col">Tema</th>
+            </div>
+            <br />
+            <div class="table-responsive">
+              <table
+              id="tableSortExample"
+              class="table table-bordered parinst"
+              style="border-radius: 10px"
+            >
+              <thead class="tablatit text-center">
+                <tr class="white">
+                  <th style="vertical-align: middle" scope="col">N°</th>
+                  <th style="vertical-align: middle" scope="col">Título</th>
+                  <th style="vertical-align: middle" scope="col">Código</th>
+                  <th style="vertical-align: middle" scope="col">Autor</th>
+                  <th style="vertical-align: middle" scope="col">Editorial</th>
+                  <th style="vertical-align: middle" scope="col">Ejemplares</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
+              <tbody *ngFor="let item of libro | keysfirebase">
+                <tr
+                  *ngFor="
+                    let field of libro[item].fieldArray | keysfirebase;
+                    let i = index
+                  "
+                >
+                  <th style="vertical-align: middle" scope="row">
+                    {{ i + 1 }}
+                  </th>
+                  <td style="vertical-align: middle">
+                    {{ libro[item].fieldArray[field].titulo }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ libro[item].fieldArray[field].codigo }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ libro[item].fieldArray[field].autor }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ libro[item].fieldArray[field].editorial }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ libro[item].fieldArray[field].ejemplares }}
+                  </td>
                 </tr>
               </tbody>
             </table>
+            </div>
+            <ng-template #confirmar let-modal>
+              <div class="modal-header bgrojoyblanco">
+                <h4 class="modal-title">
+                  <i class="fas fa-user-cog white"></i> Administrar contenido:
+                </h4>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  <i class="fas fa-times" style="color: white"></i>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="text-center p-2" #forma="ngForm">
+                  <!-- Email -->
+                  <div class="d-flex justify-content-around">
+                    <i
+                      class="fas fa-user-shield fa-2x grayinst"
+                      style="margin: 5px"
+                    ></i>
+                    <input
+                      type="name"
+                      id="defaultLoginFormEmail"
+                      [(ngModel)]="user"
+                      name="user"
+                      class="form-control mb-4"
+                      placeholder="Usuario"
+                    />
+                  </div>
+
+                  <!-- Password -->
+                  <div class="d-flex justify-content-around">
+                    <i
+                      class="fas fa-key fa-2x grayinst"
+                      style="margin: 5px"
+                    ></i>
+                    <input
+                      [(ngModel)]="key"
+                      name="key"
+                      type="password"
+                      id="defaultLoginFormPassword"
+                      class="form-control mb-4"
+                      placeholder="Contraseña"
+                    />
+                  </div>
+
+                  <div class="d-flex justify-content-around">
+                    <div>
+                      <!-- Remember me -->
+                      <mdb-checkbox [default]="true">Recuerdame</mdb-checkbox>
+                    </div>
+                    <div>
+                      <!-- Forgot password -->
+                      <a href="">¿Recuperar?</a>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <hr />
+              <div
+                *ngIf="error != false"
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                <strong>{{ passError }}</strong>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <i class="fas fa-times" style="color: #8f141b"></i>
+                </button>
+              </div>
+              <button
+                *ngIf="ajustes != false"
+                type="button"
+                style="
+                  width: 80%;
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                "
+                class="btn btnColorFacultadSalud p-3"
+                ngbAutofocus
+                (click)="viewOpciones(key, user)"
+              >
+                Validar
+              </button>
+              <div
+                *ngFor="let item of libro | keysfirebase"
+                style="
+                  margin-left: auto;
+                  margin-right: auto;
+                  margin-bottom: 20px;
+                "
+              >
+                <button
+                  *ngIf="validar != false"
+                  type="button"
+                  [routerLink]="['/admi_biblioteca', item]"
+                  (click)="modal.dismiss('Cross click')"
+                  class="btn navlinkinSolid p-3"
+                  ngbAutofocus
+                  (click)="viewOpciones(key, user)"
+                >
+                  Acceder
+                </button>
+              </div>
+            </ng-template>
+            <hr />
+            <div class="row">
+              <div class="col">
+                <button
+                  class="btn navlinkinSolid"
+                  printSectionId="print-section"
+                  [useExistingCss]="true"
+                  printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
+                  ngxPrint
+                >
+                  <i class="fas fa-print"></i> Imprimir
+                </button>
+              </div>
+              <div class="col text-right">
+                <div
+                  *ngIf="ajustes != false"
+                  class="col"
+                  (click)="openModal(confirmar)"
+                >
+                  <i
+                    class="fas fa-wrench fa-2x"
+                    placement="left"
+                    ngbTooltip="Ajustes"
+                    style="color: #8f141b"
+                  ></i>
+                </div>
+              </div>
+            </div>
           </div>
-          <hr />
-          <button
-            class="btn navlinkinSolid"
-            printSectionId="print-section"
-            [useExistingCss]="true"
-            printTitle="Grupos de Investigación del Doctorado en Ciencias de la Salud"
-            ngxPrint
-          >
-            <i class="fas fa-print"></i> Imprimir
-          </button>
         </div>
         <div class="col-sm-auto fondodivright shadow">
           <h3 class="titleInstRed">Infórmate</h3>
