@@ -7,6 +7,8 @@ import { AgendaService } from '../services/agenda/agenda.service';
 import { EstudiantesService, Estudiantes } from '../services/estudiantes.service';
 import { DenominacionService } from '../services/home/denominacion.service';
 import { CarruselService } from '../services/home/carrusel/carrusel.service';
+import { ArticulosestuService } from '../services/estudiantes/articulos/articulosestu.service';
+import { ArticulosproService } from '../services/profesores/articulospro/articulospro.service';
 
 
 // tslint:disable-next-line:prefer-const
@@ -32,8 +34,10 @@ export class HomeComponent implements OnInit {
   slides: any = [[]];
   slidesAgenda: any = [[]];
   slidesEstudiante: any = [[]];
+  articuloEstudiante: Array<any> = [];
+  articulosPro: Array<any> = [];
   // tslint:disable-next-line:max-line-length
-  constructor(private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router, private carruselServices: CarruselService) {
+  constructor(private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router, private carruselServices: CarruselService, private articulosEstuService: ArticulosestuService, private articulosProService: ArticulosproService) {
     this.activatedRoute.params.subscribe( params => {
       this.profesor = this.profesorService.getProfesor(params.id);
     });
@@ -48,6 +52,12 @@ export class HomeComponent implements OnInit {
     });
     this.carruselServices.getCarruseles().subscribe( data => {
       this.carrusel = data;
+    });
+    this.articulosEstuService.getArticuloEstudiantes().subscribe( data => {
+      this.articuloEstudiante = data;
+    });
+    this.articulosProService.getArticuloProfesores().subscribe( data => {
+      this.articulosPro = data;
     });
   }
   chunk(arr, chunkSize) {

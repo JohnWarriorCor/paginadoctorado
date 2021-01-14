@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { EstudiantesService, Estudiantes } from '../../../services/estudiantes.service';
 import { Router } from '@angular/router';
+import { AgendaService } from '../../../services/agenda/agenda.service';
 
 @Component({
   selector: 'app-estudiantes',
@@ -13,9 +14,14 @@ export class EstudiantesComponent implements OnInit {
   estudiantes2: any = [];
   page = 1;
   pageSize = 4;
+  agenda: any[] = [];
 
 
-  constructor(private estudiantesService: EstudiantesService, private router: Router) { }
+  constructor(private estudiantesService: EstudiantesService, private router: Router, private agendaService: AgendaService) {
+    this.agendaService.getAgendas().subscribe( data => {
+      this.agenda = data;
+    });
+  }
 
   ngOnInit() {
     this.estudiantes = this.estudiantesService.getEstudiantes();

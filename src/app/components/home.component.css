@@ -138,3 +138,12 @@
     transform: scale(1);
   }
 }
+.tablatit {
+  color: white;
+  background-color: #8f141b;
+}
+.inputTable {
+  background: transparent;
+  border: none;
+  text-align: center;
+}

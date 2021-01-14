@@ -66,14 +66,14 @@ export class TesiseditComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.tesisService.nuevoTesi( this.tesis ).subscribe(data => {
-          this.router.navigate(['/plandeestudios']);
+          this.router.navigate(['/tesis']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
         this.tesisService.actualizarTesi( this.tesis, this.id ).subscribe(data => {
-          this.router.navigate(['/plandeestudios']);
+          this.router.navigate(['/tesis']);
           this.modalReference.close();
         },
         error => console.error(error));
@@ -85,7 +85,7 @@ export class TesiseditComponent implements OnInit {
     }
   }
   agregarNuevo( forma: NgForm) {
-    this.router.navigate(['/admi_plandeestudios', 'nuevo']);
+    this.router.navigate(['/admi_tesis', 'nuevo']);
     forma.reset({});
   }
 

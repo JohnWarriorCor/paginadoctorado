@@ -66,14 +66,14 @@ export class ArticulosestueditComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.articulosEstuService.nuevoArticuloEstudiante( this.articulosEstu ).subscribe(data => {
-          this.router.navigate(['/plandeestudios']);
+          this.router.navigate(['/articulosEstudiantes']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
         this.articulosEstuService.actualizarArticuloEstudiante( this.articulosEstu, this.id ).subscribe(data => {
-          this.router.navigate(['/plandeestudios']);
+          this.router.navigate(['/articulosEstudiantes']);
           this.modalReference.close();
         },
         error => console.error(error));
@@ -85,7 +85,7 @@ export class ArticulosestueditComponent implements OnInit {
     }
   }
   agregarNuevo( forma: NgForm) {
-    this.router.navigate(['/admi_plandeestudios', 'nuevo']);
+    this.router.navigate(['/admi_articulosEstudiantes', 'nuevo']);
     forma.reset({});
   }
 

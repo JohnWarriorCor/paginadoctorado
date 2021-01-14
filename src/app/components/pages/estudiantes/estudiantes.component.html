@@ -58,14 +58,100 @@
         <div class="col-sm-auto shadow fondodivright">
           <h3 class="titleInstRed"><i class="far fa-newspaper"></i> Infórmate</h3>
           <hr class="lineInstRed" /><br>
-          <a
-            class="twitter-timeline"
-            data-lang="es"
-            data-height="1200"
-            data-theme="light"
-            href="https://twitter.com/FACSALUD_USCO?ref_src=twsrc%5Etfw"
-            >Tweets de FACSALUD_USCO</a
-          >
+          <div
+          id="carouselExampleControls"
+          class="carousel slide"
+          data-ride="carousel"
+          style="width: 300px;"
+        >
+          <div class="carousel-inner">
+            <div
+            [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
+            *ngFor="
+              let item of agenda | keysfirebase | listinvert;
+              let i = index
+            ">
+              <div class="card-deck">
+                <div class="card shadow">
+                  <img [src]="agenda[item].img" class="card-img-top" [alt]="agenda[item].titulo" />
+                  <div class="card-body">
+                    <h4 class="subTituloRojoInstitucional">
+                      {{ agenda[item].titulo }}
+                    </h4>
+                    <h6 class="card-title subTituloRojoInstitucional">
+                      <i class="far fa-calendar-alt"></i>
+                      {{
+                        agenda[item].fechaEvento | date: "fullDate" | titlecase
+                      }}
+                    </h6>
+                    <p class="card-text grayinst">
+                      {{ agenda[item].resenia }}
+                    </p>
+                    <a [href]="agenda[item].url" class="btn navlinkinSolid"
+                      >Más información</a
+                    >
+                    <p class="card-text">
+                      <small class="text-muted"
+                        >Publicado:
+                        {{
+                          agenda[item].fechaPublicacion
+                            | date: "fullDate"
+                            | titlecase
+                        }}</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row my-2">
+          <div class="col text-left">
+            <button class="btn navlinkinSolid" style="width: 50%">
+              <i class="fas fa-arrow-left"></i
+              ><a
+                class="carousel-control-prev"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="prev"
+                style="width: 50%"
+              >
+                <span class="sr-only">Previous</span>
+              </a>
+            </button>
+          </div>
+          <div class="col text-right">
+            <button class="btn navlinkinSolid" style="width: 50%">
+              <i class="fas fa-arrow-right"></i
+              ><a
+                class="carousel-control-next"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="next"
+                style="width: 50%"
+              >
+                <span class="sr-only">Next</span>
+              </a>
+            </button>
+          </div>
+        </div>
+        <hr />
+        <h3 class="titleInstRed">
+          <i class="far fa-calendar-alt"></i> Calendario
+        </h3>
+        <hr class="lineInstRed" />
+        <br />
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;src=ZG9jZW5jaWVuY2lhc2RlbGFzYWx1ZHVzY29AZ21haWwuY29t&amp;src=bDNmbXZkbXExcHYyMjJlNGIxb2o2NjV2NGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%23C0CA33&amp;color=%2333B679&amp;color=%230B8043"
+          style="border: none; font-family: Open Sans; color: #4d626c"
+          width="300"
+          height="400"
+          frameborder="0"
+          scrolling="no"
+        ></iframe
+        ><br />
         </div>
       </div>
     </div>

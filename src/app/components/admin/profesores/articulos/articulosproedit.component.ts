@@ -66,14 +66,14 @@ export class ArticulosproeditComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.articulosProService.nuevoArticuloProfesor( this.articulosPro ).subscribe(data => {
-          this.router.navigate(['/plandeestudios']);
+          this.router.navigate(['/articulosProfesores']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
         this.articulosProService.actualizarArticuloProfesor( this.articulosPro, this.id ).subscribe(data => {
-          this.router.navigate(['/plandeestudios']);
+          this.router.navigate(['/articulosProfesores']);
           this.modalReference.close();
         },
         error => console.error(error));

@@ -294,237 +294,92 @@
           <i class="fas fa-user-edit"></i> Artículos y Publicaciones
         </h3>
         <hr class="lineInstRed" />
-        <br />
-        <h4>Profesores</h4>
-        <table class="table">
-          <thead style="background-color: #8f141b; color: white">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Título</th>
-              <th scope="col">Autores</th>
-              <th scope="col">Opciones</th>
+        <br /><br>
+        <h4 [routerLink]="['/articulosProfesores']" class="cursorSelect">Profesores</h4>
+        <div class="table-responsive">
+          <table
+          id="tableSortExample"
+          class="table table-bordered table-hover parinst text-center"
+          style="border-radius: 10px"
+        >
+          <thead class="tablatit">
+            <tr class="white">
+              <th style="vertical-align: middle" scope="col">N°</th>
+              <th style="vertical-align: middle" scope="col">Publicación</th>
+              <th style="vertical-align: middle" scope="col">Autores</th>
+              <th style="vertical-align: middle" scope="col">Revista</th>
+              <th style="vertical-align: middle" scope="col">Enlace</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Título de la publicación</td>
-              <td>Nombres de los autores</td>
-              <td>
-                <div class="row">
-                  <div class="col">
-                    <a
-                      href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Descargar"
-                        class="btn navlinkinSolid"
-                        style="margin-bottom: 10px"
-                      >
-                        <i class="fas fa-download"></i>
-                      </button>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a
-                      href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Ver"
-                        class="btn navlinkinSolid"
-                      >
-                        <i class="far fa-eye"></i>
-                      </button>
-                    </a>
-                  </div>
-                </div>
+          <tbody *ngFor="let item of articulosPro | keysfirebase">
+            <tr
+              *ngFor="
+                let field of articulosPro[item].fieldArray | keysfirebase;
+                let i = index
+              "
+            >
+              <th style="vertical-align: middle" scope="row">
+                {{ i + 1 }}
+              </th>
+              <td style="vertical-align: middle">
+                {{ articulosPro[item].fieldArray[field].publicacion }}
               </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Título de la publicación</td>
-              <td>Nombres de los autores</td>
-              <td>
-                <div class="row">
-                  <div class="col">
-                    <a
-                      href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Descargar"
-                        class="btn navlinkinSolid"
-                        style="margin-bottom: 10px"
-                      >
-                        <i class="fas fa-download"></i>
-                      </button>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a
-                      href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Ver"
-                        class="btn navlinkinSolid"
-                      >
-                        <i class="far fa-eye"></i>
-                      </button>
-                    </a>
-                  </div>
-                </div>
+              <td style="vertical-align: middle">
+                {{ articulosPro[item].fieldArray[field].autores }}
               </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Título de la publicación</td>
-              <td>Nombres de los autores</td>
-              <td>
-                <div class="row">
-                  <div class="col">
-                    <a
-                      href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Descargar"
-                        class="btn navlinkinSolid"
-                        style="margin-bottom: 10px"
-                      >
-                        <i class="fas fa-download"></i>
-                      </button>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a
-                      href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Ver"
-                        class="btn navlinkinSolid"
-                      >
-                        <i class="far fa-eye"></i>
-                      </button>
-                    </a>
-                  </div>
-                </div>
+              <td style="vertical-align: middle">
+                {{ articulosPro[item].fieldArray[field].revista }}
+              </td>
+              <td style="vertical-align: middle">
+                <a [href]="articulosPro[item].fieldArray[field].enlace" target="_blank" placement="right" ngbTooltip="Ir al documento" class="colorRedInst"><i class="fas fa-file-signature fa-2x"></i></a>
               </td>
             </tr>
           </tbody>
         </table>
-        <h4>Estudiantes</h4>
-        <table class="table">
-          <thead style="background-color: #8f141b; color: white">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Título</th>
-              <th scope="col">Autores</th>
-              <th scope="col">Opciones</th>
+        </div>
+        <br>
+        <h4 [routerLink]="['/articulosEstudiantes']" class="cursorSelect">Estudiantes</h4>
+        <div class="table-responsive">
+          <table
+          id="tableSortExample"
+          class="table table-bordered table-hover parinst text-center"
+          style="border-radius: 10px"
+        >
+          <thead class="tablatit">
+            <tr class="white">
+              <th style="vertical-align: middle" scope="col">N°</th>
+              <th style="vertical-align: middle" scope="col">Publicación</th>
+              <th style="vertical-align: middle" scope="col">Autores</th>
+              <th style="vertical-align: middle" scope="col">Revista</th>
+              <th style="vertical-align: middle" scope="col">Enlace</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <th style="vertical-align: middle" scope="row">1</th>
+          <tbody *ngFor="let item of articuloEstudiante | keysfirebase">
+            <tr
+              *ngFor="
+                let field of articuloEstudiante[item].fieldArray | keysfirebase;
+                let i = index
+              "
+            >
+              <th style="vertical-align: middle" scope="row">
+                {{ i + 1 }}
+              </th>
               <td style="vertical-align: middle">
-                Juan Camilo Calderón Farfán, Dolly Arias Torres, Martha Nidia
-                Papamija Gómez y Maria Paula Quintero Tamayo
+                {{ articuloEstudiante[item].fieldArray[field].publicacion }}
               </td>
               <td style="vertical-align: middle">
-                Condiciones de seguridad alimentaria en una comunidad indígena
-                de Colombia
+                {{ articuloEstudiante[item].fieldArray[field].autores }}
               </td>
               <td style="vertical-align: middle">
-                <div class="row">
-                  <div class="col">
-                    <a
-                      href="https://www.scielosp.org/pdf/physis/2018.v28n4/e280405/es"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Descargar"
-                        class="btn navlinkinSolid"
-                        style="margin-bottom: 10px"
-                      >
-                        <i class="fas fa-download"></i>
-                      </button>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a
-                      href="https://www.scielosp.org/article/physis/2018.v28n4/e280405/es/#"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Ver"
-                        class="btn navlinkinSolid"
-                      >
-                        <i class="far fa-eye"></i>
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <th style="vertical-align: middle" scope="row">2</th>
-              <td style="vertical-align: middle">
-                Juan Camilo Calderón Farfán, María Alejandra Torres Soto,
-                Valentina Quintero Montoya, Leisy Cruz Rodríguez, Julieth
-                González Cerón, Luis Alberto Vargas Guadarrama y Dolly Arias
-                Torres
+                {{ articuloEstudiante[item].fieldArray[field].revista }}
               </td>
               <td style="vertical-align: middle">
-                Prácticas de autonomía alimentaria en la cosmovisión indígena
-                nasa en Colombia
-              </td>
-              <td style="vertical-align: middle">
-                <div class="row">
-                  <div class="col">
-                    <a
-                      href="https://www.tandfonline.com/doi/abs/10.1080/21683565.2020.1812789"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Descargar"
-                        class="btn navlinkinSolid"
-                        style="margin-bottom: 10px"
-                      >
-                        <i class="fas fa-download"></i>
-                      </button>
-                    </a>
-                  </div>
-                  <div class="col">
-                    <a
-                      href="https://www.tandfonline.com/doi/abs/10.1080/21683565.2020.1812789"
-                      target="_blank"
-                    >
-                      <button
-                        placement="right"
-                        ngbTooltip="Ver"
-                        class="btn navlinkinSolid"
-                      >
-                        <i class="far fa-eye"></i>
-                      </button>
-                    </a>
-                  </div>
-                </div>
+                <a [href]="articuloEstudiante[item].fieldArray[field].enlace" target="_blank" placement="right" ngbTooltip="Ir al documento" class="colorRedInst"><i class="fas fa-file-signature fa-2x"></i></a>
               </td>
             </tr>
           </tbody>
         </table>
+        </div>
         <br />
         <hr />
         <h3

@@ -8,8 +8,8 @@ import { Tesis } from '../../../interfaces/estudiantes/tesis/tesis';
 })
 export class TesisService {
 
-  tesisRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/planestudio.json';
-  tesisURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/planestudio/';
+  tesisRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/tesis.json';
+  tesisURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/tesis/';
 
   constructor( private http: Http ) { }
 

@@ -88,6 +88,13 @@ html {
   padding: 30px;
   margin-bottom: 10px;
 }
+.fondodivCenter {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
 .fondodivcent {
   background-color: white;
   border-radius: 12px;
