@@ -91,6 +91,7 @@ const routes: Routes = [
   // PROFESORES
   { path: 'admi_docentes', component: PlanteleditComponent },
   { path: 'admi_articulosProfesores/:id', component: ArticulosproeditComponent },
+  { path: 'admi_plantel', component: PlanteleditComponent },
   { path: 'admi_docente/:id', component: DocenteComponent },
   // ACTIVDADES
   { path: 'admi_agenda/:id', component: AgendaeditComponent },

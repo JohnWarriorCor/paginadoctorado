@@ -1,4 +1,9 @@
 export interface Egresados {
-    fieldArray: Array<any>;
+    foto: string;
+    nombre: string;
+    formacion: string;
+    correo: string;
+    cvlac: string;
+    orcid: string;
     key$?: string;
 }

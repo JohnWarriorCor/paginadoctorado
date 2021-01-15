@@ -1,3 +1,183 @@
-<p>
-  planteledit works!
-</p>
+<div class="wrapper fadeIn fast">
+  <!--<div>
+    <img
+      src="/assets/profesores.png"
+      class="d-block w-100"
+      style="height: auto"
+    />
+  </div>-->
+  <div>
+    <form #forma="ngForm">
+      <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+        <div class="row fondodivCenter shadow">
+          <h3 class="titleInstRed">
+            Formulario para administrar el Plantel de Profesores
+          </h3>
+        </div>
+        <div class="row fondodivCenter shadow" id="print-section">
+          <div
+            class="col-md-4"
+            style="
+              background-color: #8f141b;
+              padding: 20px;
+              border-radius: 10px 10px 10px 10px;
+              color: #1e262b;
+              margin-bottom: 20px;
+            "
+          >
+            <h4 class="text-left text-white">
+              <i class="fas fa-camera"></i> Foto de perfil:
+            </h4>
+            <img
+              [src]="agenda.img"
+              [alt]="agenda.titulo"
+              [title]="agenda.titulo"
+              class="rounded mx-auto d-block"
+              style="width: 100%; border: solid 5px white"
+            />
+            <div class="text-center">
+              <a
+                href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
+                target="_blank"
+                ><button class="btn navlinkinSolid m-2">
+                  <i class="fas fa-upload"></i> Cargar imagen
+                </button></a
+              >
+            </div>
+            <div
+              *ngIf="alertBool != false"
+              class="alert alert-danger alert-dismissible fade show m-2"
+              role="alert"
+            >
+              <strong>{{ imgError }}</strong>
+            </div>
+            <br />
+            <h6 class="text-left text-white">
+              <i class="fas fa-link"></i> URL de la Foto:
+            </h6>
+            <input
+              (change)="changeImg(agenda.img)"
+              name="img"
+              type="url"
+              [(ngModel)]="agenda.img"
+              class="form-control shadow p-3"
+              placeholder="Dirección URL de la imagen"
+            />
+          </div>
+          <div class="col-md-8 text-justify" style="margin-bottom: 20px">
+            <div
+              style="
+                background-color: #8f141b;
+                color: white;
+                padding: 20px;
+                border-radius: 10px 10px 0px 0px;
+              "
+            >
+              <h3><i class="fas fa-user-circle"></i> Nombre del Profesor:</h3>
+              <input
+                type="text"
+                name="titulo"
+                [(ngModel)]="agenda.titulo"
+                class="form-control shadow p-3"
+                placeholder="..."
+              />
+            </div>
+            <div
+              style="
+                background-color: #edeff0;
+                padding: 20px;
+                border-radius: 0px 0px 10px 10px;
+                color: #1e262b;
+              "
+            >
+              <h5><i class="fas fa-info-circle"></i> Formación académica:</h5>
+              <textarea
+                maxlength="6500"
+                name="resenia"
+                [(ngModel)]="agenda.resenia"
+                class="form-control shadow p-3"
+                placeholder="Síntesis o información relavante del evento ..."
+                rows="3"
+              ></textarea>
+              <br />
+              <div class="row">
+                <div class="col">
+                  <h5><i class="fas fa-envelope"></i> Email del Profesor:</h5>
+                  <input
+                    type="text"
+                    name="titulo"
+                    [(ngModel)]="agenda.titulo"
+                    class="form-control shadow p-3"
+                    placeholder="Encabezado o título del evento"
+                  />
+                </div>
+                <div class="col">
+                  <h5><i class="far fa-calendar-alt"></i> Fecha de ingreso:</h5>
+                  <input
+                    type="text"
+                    name="titulo"
+                    [(ngModel)]="agenda.titulo"
+                    class="form-control shadow p-3"
+                    placeholder="Encabezado o título del evento"
+                  />
+                </div>
+              </div>
+              <br />
+              <div class="row">
+                <div class="col">
+                  <h5><i class="fas fa-atom"></i> Enlace del CvLAC:</h5>
+                  <input
+                    type="text"
+                    name="titulo"
+                    [(ngModel)]="agenda.titulo"
+                    class="form-control shadow p-3"
+                    placeholder="Encabezado o título del evento"
+                  />
+                </div>
+                <div class="col">
+                  <h5><i class="fas fa-atlas"></i> Enlace del ORCID:</h5>
+                  <input
+                    type="text"
+                    name="titulo"
+                    [(ngModel)]="agenda.titulo"
+                    class="form-control shadow p-3"
+                    placeholder="Encabezado o título del evento"
+                  />
+                </div>
+              </div>
+              <br />
+            </div>
+          </div>
+          <div class="container text-left no-print">
+            <hr />
+            <button
+              class="btn navlinkinSolid m-1"
+              printSectionId="print-section"
+              [useExistingCss]="true"
+              printTitle="Perfil de "
+              ngxPrint
+            >
+              <i class="fas fa-print"></i> Guardar
+            </button>
+            <button
+            class="btn navlinkinSolid m-1"
+            printSectionId="print-section"
+            [useExistingCss]="true"
+            printTitle="Perfil de "
+            ngxPrint
+          >
+          <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
+          </button>
+            <button
+              class="btn navlinkinSolid m-1"
+              [routerLink]="['/docentes']"
+            >
+              <i class="fas fa-sign-out-alt"></i> Regresar
+            </button>
+            <br />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
