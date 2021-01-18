@@ -3,20 +3,18 @@ import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PlantelService } from '../../../../services/profesores/plantel/plantel.service';
-import { Plantel } from '../../../../interfaces/profesores/plantel/plantel';
+import { EgresadosService } from '../../../../../services/estudiantes/egresados/egresados.service';
+import { Egresados } from '../../../../../interfaces/estudiantes/egresados/egresados';
 
 @Component({
-  selector: 'app-docente',
-  templateUrl: './docente.component.html',
-  styleUrls: ['./docente.component.css'],
+  selector: 'app-egresado',
+  templateUrl: './egresado.component.html',
+  styleUrls: ['./egresado.component.css'],
   providers: [DatePipe]
 })
-export class DocenteComponent implements OnInit {
-
+export class EgresadoComponent implements OnInit {
   page = 1;
   pageSize = 4;
-
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -33,8 +31,8 @@ export class DocenteComponent implements OnInit {
   nuevo = false;
   id: string;
   newAttribute: any = {};
-  plantelProfesores: any[] = [];
-  plantelProfesor: Plantel = {
+  egresados: any[] = [];
+  egresado: Egresados = {
     foto: '',
     nombre: '',
     sintesis: '',
@@ -44,8 +42,6 @@ export class DocenteComponent implements OnInit {
     cvlac: '',
     orcid: '',
   };
-  slides: any = [[]];
-
   vistaEdicion = false;
   acumFechas = 0;
   comodinAcum = 0;
@@ -57,35 +53,25 @@ export class DocenteComponent implements OnInit {
   ajustes = true;
   validar = false;
   link: any;
+
   // tslint:disable-next-line:max-line-length
-  constructor( public datepipe: DatePipe, private modalService: NgbModal, private plantelService: PlantelService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( public datepipe: DatePipe, private modalService: NgbModal, private egresadosService: EgresadosService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       this.link = parametros.id;
       if ( this.id !== 'nuevo' ) {
-        this.plantelService.getPlantel( this.id ).subscribe(plantelProfesor => this.plantelProfesor = plantelProfesor);
+        this.egresadosService.getEgresado( this.id ).subscribe(egresado => this.egresado = egresado);
       }
     });
-    this.plantelService.getPlanteles().subscribe( data => {
-      this.plantelProfesores = data;
-      console.log(this.plantelProfesores);
+    this.egresadosService.getEgresados().subscribe( data => {
+      this.egresados = data;
+      console.log(this.egresados);
     });
   }
   nav() {
-    this.router.navigate(['/admi_plantel', this.link]);
-  }
-  chunk(arr, chunkSize) {
-    // tslint:disable-next-line:prefer-const
-    let R = [];
-    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-      R.push(arr.slice(i, i + chunkSize));
-    }
-    return R;
+    this.router.navigate(['/admi_egresados', this.link]);
   }
   ngOnInit() {
-    console.log(this.plantelProfesores);
-    this.slides = this.chunk(this.plantelProfesores, 4);
-    console.log(this.slides);
     this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
   }
   changeImg(urlimg) {
@@ -106,9 +92,6 @@ export class DocenteComponent implements OnInit {
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
-  }
-  verProfesor( idx: number ) {
-    this.router.navigate(['/docente', idx]);
   }
   up() {
     window.scroll(0, 400);
@@ -131,21 +114,21 @@ export class DocenteComponent implements OnInit {
     }
   }
   guardar() {
-    if ( this.plantelProfesor.nombre !== this.war ||  this.plantelProfesor.nombre !== this.war ) {
+    if ( this.egresado.nombre !== this.war ||  this.egresado.nombre !== this.war ) {
       this.error = false;
-      console.log(this.plantelProfesor.nombre);
+      console.log(this.egresado.nombre);
       console.log(this.war);
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
-        this.plantelService.nuevoPlantel( this.plantelProfesor ).subscribe(data => {
-          this.router.navigate(['/agenda']);
+        this.egresadosService.nuevoEgresado( this.egresado ).subscribe(data => {
+          this.router.navigate(['/egresados']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
-        this.plantelService.actualizarPlantel( this.plantelProfesor, this.id ).subscribe(data => {
-          this.router.navigate(['/agenda']);
+        this.egresadosService.actualizarEgresado( this.egresado, this.id ).subscribe(data => {
+          this.router.navigate(['/egresados']);
           this.modalReference.close();
         },
         error => console.error(error));
@@ -157,9 +140,8 @@ export class DocenteComponent implements OnInit {
     }
   }
   agregarNuevo( forma: NgForm) {
-    this.router.navigate(['/admi_plantel', 'nuevo']);
+    this.router.navigate(['/admi_egresados', 'nuevo']);
     forma.reset({});
   }
 
 }
-

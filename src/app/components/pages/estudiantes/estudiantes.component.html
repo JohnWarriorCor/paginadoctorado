@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="/assets/estudiantes.jpg"
+    src="/assets/egresados.jpg"
       class="d-block w-100"
       style="height: auto"
     />
@@ -10,40 +10,124 @@
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
         <div class="col-sm-8 shadow text-justify fondodivleft shadow">
-          <h3 class="titleInstRed">Perfiles</h3>
-          <hr class="lineInstRed" /><br>
-          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="estudiantes.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
-            <app-tarjetaestudiante (profesorSeleccionado)="verEstudiante( $event )" [estudiante]="foo" [index]="i" *ngFor="let foo of estudiantes | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize ; let i = index"></app-tarjetaestudiante>
-          <ngb-pagination class="d-flex justify-content-start" [collectionSize]="estudiantes.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>
-          <!-- PROFESORES SIN NAVEGACION
-          <ngb-pagination class="d-flex justify-content-end" [collectionSize]="profesores2.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination><br>
-          <div *ngFor="let pro of profesores2 |  slice: (page-1) * pageSize : (page-1) * pageSize + pageSize  ; let i = index" class="card brCard grayinst shadow-sm" style="padding: 20px" id="gradiante">
+          <h3 class="titleInstRed">Egresados del Doctorado</h3>
+          <hr class="lineInstRed" />
+          <br />
+          <ngb-pagination
+            class="d-flex justify-content-end"
+            [collectionSize]="(listados | keysfirebase).length"
+            [pageSize]="pageSize"
+            [(page)]="page"
+          ></ngb-pagination>
+          <div
+            *ngFor="
+              let pro of listados
+                | keysfirebase
+                | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
+              let i = index
+            "
+            class="card brCard grayinst shadow-sm"
+            style="padding: 20px"
+            id="gradiante"
+          >
             <div class="row">
               <div class="col-md-4">
-                <img [src]="pro.foto" [alt]="pro.nombre" class="w-100 perfilPro" />
+                <img
+                  [src]="listados[pro].foto"
+                  [alt]="listados[pro].nombre"
+                  [title]="listados[pro].nombre"
+                  [routerLink]="['/estudiante', pro]"
+                  class="w-100 perfilPro cursorSelect"
+                />
+                <div class="row" *ngIf="vistaEdicion != false">
+                  <div class="col text-right">
+                    <a
+                      class="btn navlinkinSolid m-2"
+                      [routerLink]="['/admi_estudiante', pro]"
+                      ><i class="fas fa-pencil-alt"></i> Editar</a
+                    >
+                    <a
+                      (click)="openModal(confirmar)"
+                      class="btn navlinkinSolid m-2"
+                      ><i class="fas fa-trash"></i> Borrar</a
+                    ><br />
+                    <ng-template #confirmar let-modal>
+                      <div class="modal-header bgrojoycafe">
+                        <h4 class="modal-title">Confirmar acción</h4>
+                        <button
+                          type="button"
+                          class="close"
+                          aria-label="Close"
+                          (click)="modal.dismiss('Cross click')"
+                        >
+                          <i class="fas fa-times" style="color: white"></i>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div
+                          class="alert alert-warning text-center font-weight-bold"
+                          role="alert"
+                        >
+                          Está a punto de eliminar el perfil del Profesor. <br />
+                          ¿Desea continuar con la acción?
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btnColorFacultadSalud"
+                          ngbAutofocus
+                          (click)="borrarPlantel(pro)"
+                        >
+                          Aceptar
+                        </button>
+                        <button
+                          type="button"
+                          class="btn navlinkinSolid"
+                          (click)="modal.close('Close click')"
+                        >
+                          Cancelar
+                        </button>
+                      </div>
+                    </ng-template>
+                  </div>
+                </div>
               </div>
               <div class="col-md-8 px-3">
                 <div class="card-block px-3">
-                  <h4 class="card-title beigeInst carnetTitulo"><i class="fas fa-chalkboard-teacher"></i> {{ pro.nombre }}</h4><br>
-                  <p class="card-text"><i class="fas fa-info-circle"></i> Formación Académica:</p>
+                  <h4
+                    class="card-title beigeInst carnetTitulo cursorSelect"
+                    [routerLink]="['/estudiante', pro]"
+                  >
+                  <i class="fas fa-university"></i>
+                    {{ listados[pro].nombre }}
+                  </h4>
+                  <br />
+                  <p class="card-text">
+                    <i class="fas fa-info-circle"></i> Formación Académica:
+                  </p>
                   <ul class="card-text" style="font-size: 12px">
                     <li>
                       <p class="text-justify">
-                        {{ pro.sintesis | slice:0:300 }} <a href="#" style="color: #8F141B;">... Ver más</a>
+                        {{ listados[pro].sintesis | slice: 0:300 }}
+                        <a [routerLink]="['/estudiante', pro]" style="color: #8f141b">... Ver más</a>
                       </p>
                     </li>
                   </ul>
-                  <p class="card-title grayinst"><i class="fas fa-envelope"></i> {{ pro.correo }}</p>
+                  <p class="card-title grayinst">
+                    <i class="fas fa-envelope"></i>
+                    {{ listados[pro].correo }}
+                  </p>
                   <div class="text-right">
                     <a
-                      [href]="pro.cvlac"
+                      [href]="listados[pro].cvlac"
                       target="blank_"
                       class="btn navlinkinSolid"
                       >CvLAC</a
                     >
                     <a
                       style="margin-left: 10px"
-                      [href]="pro.orcid"
+                      [href]="listados[pro].orcid"
                       target="blank_"
                       class="btn navlinkinSolid"
                       >ORCID</a
@@ -52,106 +136,246 @@
                 </div>
               </div>
             </div>
-          </div><br>
-          <ngb-pagination class="d-flex justify-content-start" [collectionSize]="profesores2.length" [pageSize]="pageSize" [(page)]="page"></ngb-pagination>-->
+          </div>
+          <br />
+          <div class="row">
+            <div class="col">
+              <ngb-pagination
+                class="d-flex justify-content-start"
+                [collectionSize]="(listados | keysfirebase).length"
+                [(page)]="page"
+                [pageSize]="pageSize"
+              ></ngb-pagination>
+            </div>
+            <div class="col text-right">
+              <ng-template #formAdmin let-modal>
+                <div class="modal-header bgrojoyblanco">
+                  <h4 class="modal-title">
+                    <i class="fas fa-user-cog white"></i> Administrar contenido:
+                  </h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"
+                  >
+                    <i class="fas fa-times" style="color: white"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="text-center p-2" #forma="ngForm">
+                    <!-- Email -->
+                    <div class="d-flex justify-content-around">
+                      <i
+                        class="fas fa-user-shield fa-2x grayinst"
+                        style="margin: 5px"
+                      ></i>
+                      <input
+                        type="name"
+                        id="defaultLoginFormEmail"
+                        [(ngModel)]="user"
+                        name="user"
+                        class="form-control mb-4"
+                        placeholder="Usuario"
+                      />
+                    </div>
+
+                    <!-- Password -->
+                    <div class="d-flex justify-content-around">
+                      <i
+                        class="fas fa-key fa-2x grayinst"
+                        style="margin: 5px"
+                      ></i>
+                      <input
+                        [(ngModel)]="key"
+                        name="key"
+                        type="password"
+                        id="defaultLoginFormPassword"
+                        class="form-control mb-4"
+                        placeholder="Contraseña"
+                      />
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                      <div>
+                        <!-- Remember me -->
+                        <mdb-checkbox [default]="true">Recuerdame</mdb-checkbox>
+                      </div>
+                      <div>
+                        <!-- Forgot password -->
+                        <a href="">¿Recuperar?</a>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <hr />
+                <div
+                  *ngIf="error != false"
+                  class="alert alert-danger alert-dismissible fade show"
+                  role="alert"
+                >
+                  <strong>{{ passError }}</strong>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <i class="fas fa-times" style="color: #8f141b"></i>
+                  </button>
+                </div>
+                <button
+                  *ngIf="ajustes != false"
+                  type="button"
+                  style="
+                    width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 20px;
+                  "
+                  class="btn navlinkinSolid p-3"
+                  ngbAutofocus
+                  (click)="viewOpciones(key, user)"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  Acceder
+                </button>
+              </ng-template>
+              <div
+                *ngIf="ajustes != false"
+                class="col"
+                (click)="openSm(formAdmin)"
+              >
+                <i
+                  class="fas fa-wrench fa-2x"
+                  placement="left"
+                  ngbTooltip="Ajustes"
+                  style="color: #8f141b"
+                ></i>
+              </div>
+              <div class="col text-right" *ngIf="vistaEdicion != false">
+                <a
+                  class="btn navlinkinSolid m-2"
+                  [routerLink]="['/admi_estudiante', 'nuevo']"
+                  ><i class="fas fa-plus-circle"></i> Agregar nuevo Estudiante</a
+                >
+              </div>
+              <div class="col text-right" *ngIf="vistaEdicion != false">
+                <a class="btn navlinkinSolid m-2" [routerLink]="['/#']"
+                  ><i class="fas fa-sign-out-alt"></i> Salir</a
+                >
+              </div>
+            </div>
+          </div>
+          <br />
         </div>
         <div class="col-sm-auto shadow fondodivright">
-          <h3 class="titleInstRed"><i class="far fa-newspaper"></i> Infórmate</h3>
-          <hr class="lineInstRed" /><br>
+          <h3 class="titleInstRed">
+            <i class="far fa-newspaper"></i> Infórmate
+          </h3>
+          <hr class="lineInstRed" />
+          <br />
           <div
-          id="carouselExampleControls"
-          class="carousel slide"
-          data-ride="carousel"
-          style="width: 300px;"
-        >
-          <div class="carousel-inner">
-            <div
-            [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-            *ngFor="
-              let item of agenda | keysfirebase | listinvert;
-              let i = index
-            ">
-              <div class="card-deck">
-                <div class="card shadow">
-                  <img [src]="agenda[item].img" class="card-img-top" [alt]="agenda[item].titulo" />
-                  <div class="card-body">
-                    <h4 class="subTituloRojoInstitucional">
-                      {{ agenda[item].titulo }}
-                    </h4>
-                    <h6 class="card-title subTituloRojoInstitucional">
-                      <i class="far fa-calendar-alt"></i>
-                      {{
-                        agenda[item].fechaEvento | date: "fullDate" | titlecase
-                      }}
-                    </h6>
-                    <p class="card-text grayinst">
-                      {{ agenda[item].resenia }}
-                    </p>
-                    <a [href]="agenda[item].url" class="btn navlinkinSolid"
-                      >Más información</a
-                    >
-                    <p class="card-text">
-                      <small class="text-muted"
-                        >Publicado:
+            id="carouselExampleControls"
+            class="carousel slide"
+            data-ride="carousel"
+            style="width: 300px"
+          >
+            <div class="carousel-inner">
+              <div
+                [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
+                *ngFor="
+                  let item of agenda | keysfirebase | listinvert;
+                  let i = index
+                "
+              >
+                <div class="card-deck">
+                  <div class="card shadow">
+                    <img
+                      [src]="agenda[item].img"
+                      class="card-img-top"
+                      [alt]="agenda[item].titulo"
+                    />
+                    <div class="card-body">
+                      <h4 class="subTituloRojoInstitucional">
+                        {{ agenda[item].titulo }}
+                      </h4>
+                      <h6 class="card-title subTituloRojoInstitucional">
+                        <i class="far fa-calendar-alt"></i>
                         {{
-                          agenda[item].fechaPublicacion
+                          agenda[item].fechaEvento
                             | date: "fullDate"
                             | titlecase
-                        }}</small
+                        }}
+                      </h6>
+                      <p class="card-text grayinst">
+                        {{ agenda[item].resenia }}
+                      </p>
+                      <a [href]="agenda[item].url" class="btn navlinkinSolid"
+                        >Más información</a
                       >
-                    </p>
+                      <p class="card-text">
+                        <small class="text-muted"
+                          >Publicado:
+                          {{
+                            agenda[item].fechaPublicacion
+                              | date: "fullDate"
+                              | titlecase
+                          }}</small
+                        >
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="row my-2">
-          <div class="col text-left">
-            <button class="btn navlinkinSolid" style="width: 50%">
-              <i class="fas fa-arrow-left"></i
-              ><a
-                class="carousel-control-prev"
-                href="#carouselExampleControls"
-                role="button"
-                data-slide="prev"
-                style="width: 50%"
-              >
-                <span class="sr-only">Previous</span>
-              </a>
-            </button>
+          <div class="row my-2">
+            <div class="col text-left">
+              <button class="btn navlinkinSolid" style="width: 50%">
+                <i class="fas fa-arrow-left"></i
+                ><a
+                  class="carousel-control-prev"
+                  href="#carouselExampleControls"
+                  role="button"
+                  data-slide="prev"
+                  style="width: 50%"
+                >
+                  <span class="sr-only">Previous</span>
+                </a>
+              </button>
+            </div>
+            <div class="col text-right">
+              <button class="btn navlinkinSolid" style="width: 50%">
+                <i class="fas fa-arrow-right"></i
+                ><a
+                  class="carousel-control-next"
+                  href="#carouselExampleControls"
+                  role="button"
+                  data-slide="next"
+                  style="width: 50%"
+                >
+                  <span class="sr-only">Next</span>
+                </a>
+              </button>
+            </div>
           </div>
-          <div class="col text-right">
-            <button class="btn navlinkinSolid" style="width: 50%">
-              <i class="fas fa-arrow-right"></i
-              ><a
-                class="carousel-control-next"
-                href="#carouselExampleControls"
-                role="button"
-                data-slide="next"
-                style="width: 50%"
-              >
-                <span class="sr-only">Next</span>
-              </a>
-            </button>
-          </div>
-        </div>
-        <hr />
-        <h3 class="titleInstRed">
-          <i class="far fa-calendar-alt"></i> Calendario
-        </h3>
-        <hr class="lineInstRed" />
-        <br />
-        <iframe
-          src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;src=ZG9jZW5jaWVuY2lhc2RlbGFzYWx1ZHVzY29AZ21haWwuY29t&amp;src=bDNmbXZkbXExcHYyMjJlNGIxb2o2NjV2NGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%23C0CA33&amp;color=%2333B679&amp;color=%230B8043"
-          style="border: none; font-family: Open Sans; color: #4d626c"
-          width="300"
-          height="400"
-          frameborder="0"
-          scrolling="no"
-        ></iframe
-        ><br />
+          <hr />
+          <h3 class="titleInstRed">
+            <i class="far fa-calendar-alt"></i> Calendario
+          </h3>
+          <hr class="lineInstRed" />
+          <br />
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;src=ZG9jZW5jaWVuY2lhc2RlbGFzYWx1ZHVzY29AZ21haWwuY29t&amp;src=bDNmbXZkbXExcHYyMjJlNGIxb2o2NjV2NGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%23C0CA33&amp;color=%2333B679&amp;color=%230B8043"
+            style="border: none; font-family: Open Sans; color: #4d626c"
+            width="300"
+            height="400"
+            frameborder="0"
+            scrolling="no"
+          ></iframe
+          ><br />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="/assets/estudiantes.jpg"
+      src="/assets/egresados.jpg"
       class="d-block w-100"
       style="height: auto"
     />
@@ -26,9 +26,9 @@
                     <i class="fas fa-camera"></i> Foto de perfil
                   </h4>
                   <img
-                    [src]="listado.foto"
-                    [alt]="listado.nombre"
-                    [title]="listado.nombre"
+                    [src]="egresado.foto"
+                    [alt]="egresado.nombre"
+                    [title]="egresado.nombre"
                     class="rounded mx-auto d-block"
                     style="width: 100%; border: solid 5px white"
                   />
@@ -60,8 +60,8 @@
                     "
                   >
                     <h3>
-                      <i class="fas fa-university"></i>
-                      {{ listado.nombre }}
+                      <i class="fas fa-user-graduate"></i>
+                      {{ egresado.nombre }}
                     </h3>
                     <h5>Egresado</h5>
                     <h6>Universidad Surcolombiana</h6>
@@ -79,7 +79,7 @@
                       profesional:
                     </h5>
                     <p class="m-4">
-                      {{ listado.sintesis }}
+                      {{ egresado.sintesis }}
                     </p>
                     <br />
                     <h5>
@@ -88,7 +88,7 @@
                     </h5>
                     <ul>
                       <li
-                        *ngFor="let field of listado.fieldArray; let i = index"
+                        *ngFor="let field of egresado.fieldArray; let i = index"
                       >
                         {{ field.formacion }}
                       </li>
@@ -98,7 +98,7 @@
                       <div class="col">
                         <h5>
                           <i class="fas fa-envelope"></i>
-                          {{ listado.correo }}
+                          {{ egresado.correo }}
                         </h5>
                       </div>
                     </div>
@@ -106,7 +106,7 @@
                     <div class="row no-print">
                       <div class="col m-3">
                         <a
-                          [href]="listado.cvlac"
+                          [href]="egresado.cvlac"
                           target="blank_"
                           class="btn navlinkinSolid btn-lg btn-block m-3"
                           ><i class="fas fa-atom"></i> CvLAC</a
@@ -115,7 +115,7 @@
                       <div class="col m-3">
                         <a
                           style="margin-left: 10px"
-                          [href]="listado.orcid"
+                          [href]="egresado.orcid"
                           target="blank_"
                           class="btn navlinkinSolid btn-lg btn-block m-3"
                           ><i class="fas fa-atlas"></i> ORCID</a
@@ -172,14 +172,14 @@
                     class="btn navlinkinSolid"
                     printSectionId="print-section"
                     [useExistingCss]="true"
-                    printTitle="Perfil {{ listado.nombre }}"
+                    printTitle="Perfil {{ egresado.nombre }}"
                     ngxPrint
                   >
                     <i class="fas fa-print"></i> Imprimir
                   </button>
                   <button
                     class="btn navlinkinSolid m-1"
-                    [routerLink]="['/estudiantes']"
+                    [routerLink]="['/docentes']"
                   >
                     <i class="fas fa-sign-out-alt"></i> Regresar
                   </button>
@@ -296,7 +296,7 @@
                   <div class="col text-right" *ngIf="vistaEdicion != false">
                     <a
                       class="btn navlinkinSolid m-2"
-                      [routerLink]="['/admi_estudiante', 'nuevo']"
+                      [routerLink]="['/admi_plantel', 'nuevo']"
                       ><i class="fas fa-plus-circle"></i> Agregar nuevo
                       Profesor</a
                     >
@@ -315,17 +315,17 @@
           <div class="row">
             <div class="col">
               <h3
-                [routerLink]="['/estudiantes']"
+                [routerLink]="['/docentes']"
                 class="titleInstRed cursorSelect"
               >
-                <i class="fas fa-users"></i> Nuestros Estudiantes
+                <i class="fas fa-users"></i> Plantel Docente
               </h3>
               <br />
             </div>
             <div class="col text-rigth">
               <ngb-pagination
                 class="d-flex justify-content-end"
-                [collectionSize]="(listados | keysfirebase).length"
+                [collectionSize]="(egresados | keysfirebase).length"
                 [pageSize]="pageSize"
                 [(page)]="page"
               ></ngb-pagination>
@@ -344,7 +344,7 @@
                       <div
                         class="card"
                         *ngFor="
-                          let item of listados
+                          let item of egresados
                             | keysfirebase
                             | slice
                               : (page - 1) * pageSize
@@ -354,16 +354,16 @@
                         style="border: none"
                       >
                         <img
-                          [routerLink]="['/estudiante', item]"
+                          [routerLink]="['/docente', item]"
                           (click)="up()"
-                          [src]="listados[item].foto"
-                          [alt]="listados[item].nombre"
+                          [src]="egresados[item].foto"
+                          [alt]="egresados[item].nombre"
                           class="card-img-top"
                           style="border-radius: 50%"
                         />
                         <div class="card-body">
                           <h5 class="card-title">
-                            {{ listados[item].nombre }}
+                            {{ egresados[item].nombre }}
                           </h5>
                         </div>
                         <div

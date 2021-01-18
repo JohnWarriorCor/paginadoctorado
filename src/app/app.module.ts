@@ -61,6 +61,7 @@ import { TesiseditComponent } from './components/admin/estudiantes/tesis/tesised
 import { LibroseditComponent } from './components/admin/biblioteca/libros/librosedit.component';
 import { PlanteleditComponent } from './components/admin/profesores/plantel/planteledit.component';
 import { ArticulosproeditComponent } from './components/admin/profesores/articulos/articulosproedit.component';
+import { EgresadoComponent } from './components/pages/estudiantes/egresados/egresado/egresado.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -111,6 +112,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     LibroseditComponent,
     PlanteleditComponent,
     ArticulosproeditComponent,
+    EgresadoComponent,
   ],
   imports: [
     BrowserModule,

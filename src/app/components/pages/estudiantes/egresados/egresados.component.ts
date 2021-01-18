@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+import { AgendaService } from '../../../../services/agenda/agenda.service';
+import { EgresadosService } from '../../../../services/estudiantes/egresados/egresados.service';
 
 @Component({
   selector: 'app-egresados',
@@ -6,25 +10,72 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./egresados.component.css']
 })
 export class EgresadosComponent implements OnInit {
-  profesores2: any = [];
   page = 1;
-  pageSize = 4;
+  pageSize = 3;
+  agenda: any[] = [];
+  agresados: any[] = [];
 
-  constructor() { }
+  vistaEdicion = false;
+  today = new Date();
+  closeResult: string;
+  modalReference: any;
+  acumFechas = 0;
+  comodinAcum = 0;
+  loading = true;
+  // Herramientas ocultas
+  key: any;
+  user: any;
+  opciones = false;
+  ajustes = true;
+  validar = false;
+  error = false;
+  passError = '';
 
-  ngOnInit() {
-    this.profesores2.push(
-      {
-        id: '1',
-        foto: '/assets/pro_null_h.png',
-        nombre: 'Nombre de egresado',
-        // tslint:disable-next-line:max-line-length
-        sintesis: 'Síntesis: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-        correo: 'correo@usco.edu.co',
-        cvlac: 'http://scienti.colciencias.gov.co:8081/cvlac/visualizador/generarCurriculoCv.do?cod_rh=0000574422',
-        orcid: 'https://orcid.org/signin',
-      },
-      );
+  // tslint:disable-next-line:max-line-length
+  constructor( private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private egresadosService: EgresadosService) {
+    this.agendaService.getAgendas().subscribe( data => {
+      this.agenda = data;
+    });
+    this.egresadosService.getEgresados().subscribe( data => {
+      this.agresados = data;
+    });
   }
-
+  ngOnInit() {
+  }
+  openSm(formAdmin) {
+    this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
+  }
+  openModal(confirmar) {
+    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
+  }
+  viewOpciones(pass, user) {
+    if ( pass === '7183' && user === 'admin' ) {
+      this.ajustes = false;
+      this.vistaEdicion = true;
+    } else {
+      if (pass !== '7183' && user !== 'admin') {
+        this.error = true;
+        this.passError = 'Usuario y contraseña incorrectas';
+      } else if (pass !== '7183') {
+        this.error = true;
+        this.passError = 'Contraseña incorrecta';
+      } else {
+        this.error = true;
+        this.passError = 'Usuario incorrecto';
+      }
+    }
+  }
+  up() {
+    window.scroll(0, 400);
+  }
+  borrarPlantel( key$: string) {
+    this.egresadosService.borrarEgresado(key$).subscribe( respuesta => {
+      if ( respuesta ) {
+        console.error(respuesta);
+      } else {
+        delete this.agresados[key$];
+        this.modalReference.close();
+      }
+    });
+  }
 }

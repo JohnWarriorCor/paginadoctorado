@@ -3,8 +3,8 @@ import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AgendaService } from '../../../../services/agenda/agenda.service';
-import { Agenda } from '../../../../interfaces/agenda/agenda';
+import { PlantelService } from '../../../../services/profesores/plantel/plantel.service';
+import { Plantel } from '../../../../interfaces/profesores/plantel/plantel';
 
 
 @Component({
@@ -29,35 +29,48 @@ export class PlanteleditComponent implements OnInit {
   controls: any;
   nuevo = false;
   id: string;
-  agenda: Agenda = {
-    titulo: '',
-    img: '',
-    resenia: '',
-    parrafo: '',
-    fechaEvento: '',
-    fechaPublicacion: '',
-    url: '',
+  newAttribute: any = {};
+  plantelProfesor: Plantel = {
+    foto: '',
+    nombre: '',
+    sintesis: '',
+    fieldArray: [],
+    correo: '',
+    fecha: '',
+    cvlac: '',
+    orcid: '',
   };
 
    // tslint:disable-next-line:max-line-length
-   constructor( public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
+   constructor( public datepipe: DatePipe, private modalService: NgbModal, private plantelService: PlantelService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
-        this.agendaServices.getAgenda( this.id ).subscribe(agenda => this.agenda = agenda);
+        this.plantelService.getPlantel( this.id ).subscribe(plantelProfesor => this.plantelProfesor = plantelProfesor);
       }
     });
   }
 
   ngOnInit() {
-    this.war = this.agenda.titulo;
-    if ( this.agenda.img === null || this.agenda.img === '' ) {
+    this.war = this.plantelProfesor.nombre;
+    if ( this.plantelProfesor.foto === null || this.plantelProfesor.foto === '' ) {
       // tslint:disable-next-line:max-line-length
       this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/pro_null_h.png?alt=media&token=489c904c-df1c-4a53-826a-4d52546fea77';
-      this.agenda.img = this.defaultImgUrl;
-      return this.agenda.img;
+      this.plantelProfesor.foto = this.defaultImgUrl;
+      return this.plantelProfesor.foto;
     }
     this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
+  }
+  addFieldValue() {
+    this.plantelProfesor.fieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+  }
+
+   deleteFieldValue(index) {
+    this.plantelProfesor.fieldArray.splice(index, 1);
+  }
+  openModal(confirmar) {
+    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
   changeImg(urlimg) {
     console.log(urlimg);
@@ -71,6 +84,40 @@ export class PlanteleditComponent implements OnInit {
       this.defaultImgUrl = urlimg;
       return this.defaultImgUrl;
     }
+  }
+  guardar() {
+    if ( this.plantelProfesor.nombre !== this.war ||  this.plantelProfesor.nombre !== this.war ) {
+      this.error = false;
+      console.log(this.plantelProfesor.nombre);
+      console.log(this.war);
+      // this.modalReference.close();
+      if ( this.id === 'nuevo' ) {
+        this.plantelService.nuevoPlantel( this.plantelProfesor ).subscribe(data => {
+          this.router.navigate(['/docentes']);
+          this.modalReference.close();
+        },
+        error => console.error(error));
+      } else {
+        this.modalReference.close();
+        this.plantelService.actualizarPlantel( this.plantelProfesor, this.id ).subscribe(data => {
+          this.router.navigate(['/docentes']);
+          this.modalReference.close();
+        },
+        error => console.error(error));
+      }
+    } else {
+      this.error = true;
+      this.passError = 'Formulario incompleto.';
+      this.modalReference.close();
+    }
+  }
+  up() {
+    window.scroll(0, 400);
+  }
+  agregarNuevo( forma: NgForm ) {
+    this.router.navigate(['/admi_plantel', 'nuevo']);
+    forma.reset({});
+    this.up();
   }
 
 }

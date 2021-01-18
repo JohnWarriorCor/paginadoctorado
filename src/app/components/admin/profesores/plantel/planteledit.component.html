@@ -7,13 +7,69 @@
     />
   </div>-->
   <div>
-    <form #forma="ngForm">
-      <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-        <div class="row fondodivCenter shadow">
+    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+      <div class="row fondodivCenter shadow">
+        <div class="col">
           <h3 class="titleInstRed">
             Formulario para administrar el Plantel de Profesores
           </h3>
+          <hr class="lineInstRed" />
+          <br />
+          <h5 class="titleInstRed text-justify">
+            Antes de subir una imágen de perfil considere lo siguiente:
+          </h5>
+          <p class="text-justify">
+            Para aplicar una configuración óptima del sitio web, siga las
+            indicaciones que se muestran en la parte inferior. Se han
+            estandarizado unas plantillas para agregar contenido de manera
+            ordenada y uniforme; los colores, logos y fuentes de texto los puede
+            encontrar en el siguiente enlace:
+            <a
+              href="https://www.usco.edu.co/imagen-institucional/"
+              class="colorRedInst"
+              target="_blank"
+              >Guía Imágen Corporativa</a
+            >
+          </p>
+          <ul>
+            <li>
+              Descargue la plantilla oficial para plasmar el diseño que se tenga
+              pensado
+              <a
+                href="/assets/PlantillaCarrusel.psd"
+                download
+                class="colorRedInst"
+                ><i class="far fa-file-image"></i> Plantilla Photoshop.</a
+              >
+            </li>
+            <li>
+              Descargue el programa libre y portable de PhotoShop, tiene un peso
+              aproximado de 139,2 MB. <br />Con él podrá manejar la plantilla y
+              aplicar el diseño deseado
+              <a
+                href="https://mega.nz/file/ZYI2hbCb#6amg-4tmD3GCOaNaGX1ECmw9s9-i680Ydd7aogKaOqA"
+                class="colorRedInst"
+                target="_blank"
+                ><i class="fas fa-download"></i> Programa PhotoShop.</a
+              >
+            </li>
+            <li>
+              En caso de manejar otra herramienta de edición, considerar que la
+              imágen estandar tiene las siegientes dimensiones <br />[1.000
+              pixeles de ancho por 246 pixeles de alto]
+              <a href="/assets/pruebaCarrusel.jpg" download class="colorRedInst"
+                ><i class="fas fa-expand"></i> Descargar Imágen de muestra.</a
+              >
+            </li>
+          </ul>
+          <a
+            href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
+            target="_blank"
+            ><button class="btn navlinkinSolid">Cargar imagen</button></a
+          >
         </div>
+      </div>
+      <form #forma="ngForm">
         <div class="row fondodivCenter shadow" id="print-section">
           <div
             class="col-md-4"
@@ -29,21 +85,12 @@
               <i class="fas fa-camera"></i> Foto de perfil:
             </h4>
             <img
-              [src]="agenda.img"
-              [alt]="agenda.titulo"
-              [title]="agenda.titulo"
+              [src]="plantelProfesor.foto"
+              [alt]="plantelProfesor.nombre"
+              [title]="plantelProfesor.nombre"
               class="rounded mx-auto d-block"
               style="width: 100%; border: solid 5px white"
             />
-            <div class="text-center">
-              <a
-                href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
-                target="_blank"
-                ><button class="btn navlinkinSolid m-2">
-                  <i class="fas fa-upload"></i> Cargar imagen
-                </button></a
-              >
-            </div>
             <div
               *ngIf="alertBool != false"
               class="alert alert-danger alert-dismissible fade show m-2"
@@ -56,13 +103,18 @@
               <i class="fas fa-link"></i> URL de la Foto:
             </h6>
             <input
-              (change)="changeImg(agenda.img)"
-              name="img"
+              (change)="changeImg(plantelProfesor.foto)"
+              name="foto"
               type="url"
-              [(ngModel)]="agenda.img"
+              [(ngModel)]="plantelProfesor.foto"
               class="form-control shadow p-3"
               placeholder="Dirección URL de la imagen"
             />
+            <p class="alert alert-warning text-center font-weight-bold m-3">
+              Una vez cargada la imagen en el panel externo, por favor copie el
+              URL del Token y reemplace el URL existente del campo de arriba
+              para cambiar la foto actual. Gracias
+            </p>
           </div>
           <div class="col-md-8 text-justify" style="margin-bottom: 20px">
             <div
@@ -76,10 +128,10 @@
               <h3><i class="fas fa-user-circle"></i> Nombre del Profesor:</h3>
               <input
                 type="text"
-                name="titulo"
-                [(ngModel)]="agenda.titulo"
+                name="nombre"
+                [(ngModel)]="plantelProfesor.nombre"
                 class="form-control shadow p-3"
-                placeholder="..."
+                placeholder="Nombres y apellidos del profesor"
               />
             </div>
             <div
@@ -90,35 +142,100 @@
                 color: #1e262b;
               "
             >
-              <h5><i class="fas fa-info-circle"></i> Formación académica:</h5>
+              <h5><i class="fas fa-user-tie"></i> Síntesis:</h5>
               <textarea
                 maxlength="6500"
-                name="resenia"
-                [(ngModel)]="agenda.resenia"
+                name="sintesis"
+                [(ngModel)]="plantelProfesor.sintesis"
                 class="form-control shadow p-3"
-                placeholder="Síntesis o información relavante del evento ..."
+                placeholder="Información del perfil profesional del profesor lo mejor resumido posible"
                 rows="3"
               ></textarea>
+              <br />
+              <h5>
+                <i class="fas fa-list-ul"></i> Formación y logros académicos:
+              </h5>
+              <table class="table table-bordered parinst text-center shadow">
+                <thead class="tablatit">
+                  <tr class="white">
+                    <th style="vertical-align: middle" scope="col">
+                      Estudios o logros
+                    </th>
+                    <th style="vertical-align: middle" scope="col">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody style="background-color: white">
+                  <tr
+                    *ngFor="
+                      let field of plantelProfesor.fieldArray;
+                      let i = index
+                    "
+                  >
+                    <td>
+                      <input
+                        [(ngModel)]="field.formacion"
+                        class="form-control inputTable"
+                        type="text"
+                        name="{{ field.formacion }}"
+                        placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                      />
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-default colorRedInst"
+                        type="button"
+                        (click)="deleteFieldValue(i)"
+                        placement="top"
+                        ngbTooltip="Borrar"
+                      >
+                        <i class="far fa-trash-alt"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input
+                        class="form-control inputTable"
+                        type="text"
+                        id="newAttributeFormacion"
+                        [(ngModel)]="newAttribute.formacion"
+                        name="newAttributeFormacion"
+                        placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                      />
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-default colorRedInst"
+                        type="button"
+                        (click)="addFieldValue()"
+                        placement="top"
+                        ngbTooltip="Agregar"
+                      >
+                        <i class="fas fa-plus-circle"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
               <br />
               <div class="row">
                 <div class="col">
                   <h5><i class="fas fa-envelope"></i> Email del Profesor:</h5>
                   <input
-                    type="text"
-                    name="titulo"
-                    [(ngModel)]="agenda.titulo"
+                    type="mail"
+                    name="correo"
+                    [(ngModel)]="plantelProfesor.correo"
                     class="form-control shadow p-3"
-                    placeholder="Encabezado o título del evento"
+                    placeholder="Correo institucional"
                   />
                 </div>
                 <div class="col">
                   <h5><i class="far fa-calendar-alt"></i> Fecha de ingreso:</h5>
                   <input
                     type="text"
-                    name="titulo"
-                    [(ngModel)]="agenda.titulo"
+                    name="fecha"
+                    [(ngModel)]="plantelProfesor.fecha"
                     class="form-control shadow p-3"
-                    placeholder="Encabezado o título del evento"
                   />
                 </div>
               </div>
@@ -128,56 +245,83 @@
                   <h5><i class="fas fa-atom"></i> Enlace del CvLAC:</h5>
                   <input
                     type="text"
-                    name="titulo"
-                    [(ngModel)]="agenda.titulo"
+                    name="cvlac"
+                    [(ngModel)]="plantelProfesor.cvlac"
                     class="form-control shadow p-3"
-                    placeholder="Encabezado o título del evento"
+                    placeholder="Link del perfil del CvLac"
                   />
                 </div>
                 <div class="col">
                   <h5><i class="fas fa-atlas"></i> Enlace del ORCID:</h5>
                   <input
                     type="text"
-                    name="titulo"
-                    [(ngModel)]="agenda.titulo"
+                    name="orcid"
+                    [(ngModel)]="plantelProfesor.orcid"
                     class="form-control shadow p-3"
-                    placeholder="Encabezado o título del evento"
+                    placeholder="Link del perfil ORCID"
                   />
                 </div>
+                <ng-template #confirmar let-modal>
+                  <div class="modal-header bgrojoycafe">
+                    <h4 class="modal-title">Confirmar acción</h4>
+                    <button
+                      type="button"
+                      class="close"
+                      aria-label="Close"
+                      (click)="modal.dismiss('Cross click')"
+                    >
+                      <i class="fas fa-times" style="color: white"></i>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div
+                      class="alert alert-warning text-center font-weight-bold"
+                      role="alert"
+                    >
+                      Está a punto de guardar los cambios realizados. <br />
+                      ¿Desea continuar con la acción?
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btnColorFacultadSalud"
+                      ngbAutofocus
+                      (click)="guardar()"
+                    >
+                      Aceptar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn navlinkinSolid"
+                      (click)="modal.close('Close click')"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </ng-template>
               </div>
               <br />
             </div>
           </div>
           <div class="container text-left no-print">
             <hr />
-            <button
-              class="btn navlinkinSolid m-1"
-              printSectionId="print-section"
-              [useExistingCss]="true"
-              printTitle="Perfil de "
-              ngxPrint
-            >
-              <i class="fas fa-print"></i> Guardar
+            <button (click)="openModal(confirmar)" class="btn navlinkinSolid">
+              <i class="far fa-save"></i> Guardar
             </button>
-            <button
-            class="btn navlinkinSolid m-1"
-            printSectionId="print-section"
-            [useExistingCss]="true"
-            printTitle="Perfil de "
-            ngxPrint
-          >
-          <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
-          </button>
-            <button
+            <!--<button
               class="btn navlinkinSolid m-1"
-              [routerLink]="['/docentes']"
+              [routerLink]="['/admi_plantel','nuevo']"
             >
+              <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
+            </button>-->
+            <button class="btn navlinkinSolid m-1" [routerLink]="['/docentes']">
               <i class="fas fa-sign-out-alt"></i> Regresar
             </button>
             <br />
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

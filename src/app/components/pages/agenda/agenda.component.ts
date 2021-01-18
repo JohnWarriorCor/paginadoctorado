@@ -7,8 +7,7 @@ import { AgendaService } from '../../../services/agenda/agenda.service';
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./agenda.component.css']
 })
 export class AgendaComponent implements OnInit {
   page = 1;

@@ -37,9 +37,25 @@ export class EventoComponent implements OnInit {
     fechaPublicacion: '',
     url: '',
   };
+  agendas: any = {};
+  vistaEdicion = false;
+  acumFechas = 0;
+  comodinAcum = 0;
+  loading = true;
+  // Herramientas ocultas
+  key: any;
+  user: any;
+  opciones = false;
+  ajustes = true;
+  validar = false;
+  link: any;
 
   // tslint:disable-next-line:max-line-length
   constructor( public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe( params => {
+      this.agendas = this.agendaServices.getAgenda(params.id);
+      this.link = params.id;
+    });
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
@@ -69,7 +85,29 @@ export class EventoComponent implements OnInit {
       return this.defaultImgUrl;
     }
   }
-
+  viewOpciones(pass, user) {
+    if ( pass === '7183' && user === 'admin' ) {
+      this.ajustes = false;
+      this.vistaEdicion = true;
+    } else {
+      if (pass !== '7183' && user !== 'admin') {
+        this.error = true;
+        this.passError = 'Usuario y contraseña incorrectas';
+      } else if (pass !== '7183') {
+        this.error = true;
+        this.passError = 'Contraseña incorrecta';
+      } else {
+        this.error = true;
+        this.passError = 'Usuario incorrecto';
+      }
+    }
+  }
+  openSm(formAdmin) {
+    this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
+  }
+  nav() {
+    this.router.navigate(['/admi_agenda', this.link]);
+  }
   guardar() {
     if ( this.agenda.titulo !== this.war ||  this.agenda.titulo !== this.war ) {
       this.error = false;

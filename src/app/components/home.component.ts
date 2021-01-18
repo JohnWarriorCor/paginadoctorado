@@ -9,6 +9,8 @@ import { DenominacionService } from '../services/home/denominacion.service';
 import { CarruselService } from '../services/home/carrusel/carrusel.service';
 import { ArticulosestuService } from '../services/estudiantes/articulos/articulosestu.service';
 import { ArticulosproService } from '../services/profesores/articulospro/articulospro.service';
+import { ListadoService } from '../services/estudiantes/listado/listado.service';
+import { PlantelService } from '../services/profesores/plantel/plantel.service';
 
 
 // tslint:disable-next-line:prefer-const
@@ -20,9 +22,15 @@ import { ArticulosproService } from '../services/profesores/articulospro/articul
 })
 
 export class HomeComponent implements OnInit {
+  pageEstudiantes = 1;
+  pageSizeEstudiantes = 4;
+  pageProfesores = 1;
+  pageSizeProfesores = 4;
   currentJustify = 'justified';
   g: any;
   today = new Date();
+  plantelProfesores: any[] = [];
+  listados: any[] = [];
   profesor: any = {};
   estudiante: any = {};
   agenda: any[] = [];
@@ -37,7 +45,7 @@ export class HomeComponent implements OnInit {
   articuloEstudiante: Array<any> = [];
   articulosPro: Array<any> = [];
   // tslint:disable-next-line:max-line-length
-  constructor(private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router, private carruselServices: CarruselService, private articulosEstuService: ArticulosestuService, private articulosProService: ArticulosproService) {
+  constructor(private listadoService: ListadoService, private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router, private carruselServices: CarruselService, private articulosEstuService: ArticulosestuService, private articulosProService: ArticulosproService, private plantelService: PlantelService ) {
     this.activatedRoute.params.subscribe( params => {
       this.profesor = this.profesorService.getProfesor(params.id);
     });
@@ -58,6 +66,14 @@ export class HomeComponent implements OnInit {
     });
     this.articulosProService.getArticuloProfesores().subscribe( data => {
       this.articulosPro = data;
+    });
+    this.listadoService.getListados().subscribe( data => {
+      this.listados = data;
+      console.log(this.listados);
+    });
+    this.plantelService.getPlanteles().subscribe( data => {
+      this.plantelProfesores = data;
+      console.log(this.plantelProfesores);
     });
   }
   chunk(arr, chunkSize) {
