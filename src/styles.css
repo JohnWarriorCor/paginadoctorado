@@ -75,6 +75,12 @@ html {
   background-color: #004e57;
   color: white;
 }
+.greyImg{
+  filter: grayscale(100%);
+}
+.greyImg:hover{
+  filter: grayscale(0%);
+}
 .fondodivleft {
   background-color: white;
   border-radius: 12px;

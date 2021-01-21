@@ -252,37 +252,6 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <!--
-        <div class="row my-2">
-          <div class="col text-left">
-            <button class="btn navlinkinSolid" style="width: 50%">
-              <i class="fas fa-arrow-left"></i
-              ><a
-                class="carousel-control-prev"
-                href="#carouselExampleControls"
-                role="button"
-                data-slide="prev"
-                style="width: 50%"
-              >
-                <span class="sr-only">Previous</span>
-              </a>
-            </button>
-          </div>
-          <div class="col text-right">
-            <button class="btn navlinkinSolid" style="width: 50%">
-              <i class="fas fa-arrow-right"></i
-              ><a
-                class="carousel-control-next"
-                href="#carouselExampleControls"
-                role="button"
-                data-slide="next"
-                style="width: 50%"
-              >
-                <span class="sr-only">Next</span>
-              </a>
-            </button>
-          </div>
-        </div>-->
       </div>
     </div>
     <br />
@@ -290,95 +259,114 @@
     <br />
     <div class="row">
       <div class="col-sm-8 fondodivleft shadow">
-        <h3 class="titleInstRed" style="margin-top: 30px">
+        <h3 class="titleInstRed">
           <i class="fas fa-user-edit"></i> Artículos y Publicaciones
         </h3>
         <hr class="lineInstRed" />
-        <br /><br>
-        <h4 [routerLink]="['/articulosProfesores']" class="cursorSelect">Profesores</h4>
+        <br /><br />
+        <h4 [routerLink]="['/articulosProfesores']" class="cursorSelect">
+          Profesores
+        </h4>
         <div class="table-responsive">
           <table
-          id="tableSortExample"
-          class="table table-bordered table-hover parinst text-center"
-          style="border-radius: 10px"
-        >
-          <thead class="tablatit">
-            <tr class="white">
-              <th style="vertical-align: middle" scope="col">N°</th>
-              <th style="vertical-align: middle" scope="col">Publicación</th>
-              <th style="vertical-align: middle" scope="col">Autores</th>
-              <th style="vertical-align: middle" scope="col">Revista</th>
-              <th style="vertical-align: middle" scope="col">Enlace</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let item of articulosPro | keysfirebase">
-            <tr
-              *ngFor="
-                let field of articulosPro[item].fieldArray | keysfirebase;
-                let i = index
-              "
-            >
-              <th style="vertical-align: middle" scope="row">
-                {{ i + 1 }}
-              </th>
-              <td style="vertical-align: middle">
-                {{ articulosPro[item].fieldArray[field].publicacion }}
-              </td>
-              <td style="vertical-align: middle">
-                {{ articulosPro[item].fieldArray[field].autores }}
-              </td>
-              <td style="vertical-align: middle">
-                {{ articulosPro[item].fieldArray[field].revista }}
-              </td>
-              <td style="vertical-align: middle">
-                <a [href]="articulosPro[item].fieldArray[field].enlace" target="_blank" placement="right" ngbTooltip="Ir al documento" class="colorRedInst"><i class="fas fa-file-signature fa-2x"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            id="tableSortExample"
+            class="table table-bordered table-hover parinst text-center"
+            style="border-radius: 10px"
+          >
+            <thead class="tablatit">
+              <tr class="white">
+                <th style="vertical-align: middle" scope="col">N°</th>
+                <th style="vertical-align: middle" scope="col">Publicación</th>
+                <th style="vertical-align: middle" scope="col">Autores</th>
+                <th style="vertical-align: middle" scope="col">Revista</th>
+                <th style="vertical-align: middle" scope="col">Enlace</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of articulosPro | keysfirebase">
+              <tr
+                *ngFor="
+                  let field of articulosPro[item].fieldArray | keysfirebase;
+                  let i = index
+                "
+              >
+                <th style="vertical-align: middle" scope="row">
+                  {{ i + 1 }}
+                </th>
+                <td style="vertical-align: middle">
+                  {{ articulosPro[item].fieldArray[field].publicacion }}
+                </td>
+                <td style="vertical-align: middle">
+                  {{ articulosPro[item].fieldArray[field].autores }}
+                </td>
+                <td style="vertical-align: middle">
+                  {{ articulosPro[item].fieldArray[field].revista }}
+                </td>
+                <td style="vertical-align: middle">
+                  <a
+                    [href]="articulosPro[item].fieldArray[field].enlace"
+                    target="_blank"
+                    placement="right"
+                    ngbTooltip="Ir al documento"
+                    class="colorRedInst"
+                    ><i class="fas fa-file-signature fa-2x"></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <br>
-        <h4 [routerLink]="['/articulosEstudiantes']" class="cursorSelect">Estudiantes</h4>
+        <br />
+        <h4 [routerLink]="['/articulosEstudiantes']" class="cursorSelect">
+          Estudiantes
+        </h4>
         <div class="table-responsive">
           <table
-          id="tableSortExample"
-          class="table table-bordered table-hover parinst text-center"
-          style="border-radius: 10px"
-        >
-          <thead class="tablatit">
-            <tr class="white">
-              <th style="vertical-align: middle" scope="col">N°</th>
-              <th style="vertical-align: middle" scope="col">Publicación</th>
-              <th style="vertical-align: middle" scope="col">Autores</th>
-              <th style="vertical-align: middle" scope="col">Revista</th>
-              <th style="vertical-align: middle" scope="col">Enlace</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let item of articuloEstudiante | keysfirebase">
-            <tr
-              *ngFor="
-                let field of articuloEstudiante[item].fieldArray | keysfirebase;
-                let i = index
-              "
-            >
-              <th style="vertical-align: middle" scope="row">
-                {{ i + 1 }}
-              </th>
-              <td style="vertical-align: middle">
-                {{ articuloEstudiante[item].fieldArray[field].publicacion }}
-              </td>
-              <td style="vertical-align: middle">
-                {{ articuloEstudiante[item].fieldArray[field].autores }}
-              </td>
-              <td style="vertical-align: middle">
-                {{ articuloEstudiante[item].fieldArray[field].revista }}
-              </td>
-              <td style="vertical-align: middle">
-                <a [href]="articuloEstudiante[item].fieldArray[field].enlace" target="_blank" placement="right" ngbTooltip="Ir al documento" class="colorRedInst"><i class="fas fa-file-signature fa-2x"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            id="tableSortExample"
+            class="table table-bordered table-hover parinst text-center"
+            style="border-radius: 10px"
+          >
+            <thead class="tablatit">
+              <tr class="white">
+                <th style="vertical-align: middle" scope="col">N°</th>
+                <th style="vertical-align: middle" scope="col">Publicación</th>
+                <th style="vertical-align: middle" scope="col">Autores</th>
+                <th style="vertical-align: middle" scope="col">Revista</th>
+                <th style="vertical-align: middle" scope="col">Enlace</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let item of articuloEstudiante | keysfirebase">
+              <tr
+                *ngFor="
+                  let field of articuloEstudiante[item].fieldArray
+                    | keysfirebase;
+                  let i = index
+                "
+              >
+                <th style="vertical-align: middle" scope="row">
+                  {{ i + 1 }}
+                </th>
+                <td style="vertical-align: middle">
+                  {{ articuloEstudiante[item].fieldArray[field].publicacion }}
+                </td>
+                <td style="vertical-align: middle">
+                  {{ articuloEstudiante[item].fieldArray[field].autores }}
+                </td>
+                <td style="vertical-align: middle">
+                  {{ articuloEstudiante[item].fieldArray[field].revista }}
+                </td>
+                <td style="vertical-align: middle">
+                  <a
+                    [href]="articuloEstudiante[item].fieldArray[field].enlace"
+                    target="_blank"
+                    placement="right"
+                    ngbTooltip="Ir al documento"
+                    class="colorRedInst"
+                    ><i class="fas fa-file-signature fa-2x"></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <br />
         <hr />
@@ -386,67 +374,64 @@
           <div class="col">
             <div class="row">
               <div class="col">
-                <h3 [routerLink]="['/docentes']" class="titleInstRed cursorSelect">
+                <h3
+                  [routerLink]="['/docentes']"
+                  class="titleInstRed cursorSelect"
+                >
                   <i class="fas fa-users"></i> Plantel Docente
                 </h3>
                 <br />
               </div>
-              <div class="col text-rigth"><ngb-pagination
-                class="d-flex justify-content-end"
-                [collectionSize]="(plantelProfesores | keysfirebase).length"
-                [pageSize]="pageSizeProfesores"
-                [(page)]="pageProfesores"
-              ></ngb-pagination></div>
+              <div class="col text-rigth">
+                <ngb-pagination
+                  class="d-flex justify-content-end"
+                  [collectionSize]="(plantelProfesores | keysfirebase).length"
+                  [pageSize]="pageSizeProfesores"
+                  [(page)]="pageProfesores"
+                ></ngb-pagination>
+              </div>
             </div>
-           <div class="row">
-             <div class="col">
-              <div
-              id="carouselExampleInterval"
-              class="carousel slide"
-              data-ride="carousel"
-            >
-              <div class="carousel-inner text-center no-print">
-                <div class="carousel-item active">
-                  <div class="card-deck">
-                    <div
-                      class="card"
-                      *ngFor="
-                        let item of plantelProfesores
-                          | keysfirebase
-                          | slice
-                            : (pageProfesores - 1) * pageSizeProfesores
-                            : (pageProfesores - 1) * pageSizeProfesores + pageSizeProfesores;
-                        let i = index
-                      "
-                      style="border: none"
-                    >
-                      <img
-                        [routerLink]="['/docente', item]"
-                        (click)="up()"
-                        [src]="plantelProfesores[item].foto"
-                        [alt]="plantelProfesores[item].nombre"
-                        class="card-img-top cursorSelect"
-                        style="border-radius: 50%"
-                      />
-                      <div class="card-body">
-                        <h5 class="card-title">
-                          {{ plantelProfesores[item].nombre }}
-                        </h5>
-                      </div>
-                      <div
-                        class="card-footer btn navlinkinSolid"
-                        [routerLink]="['/docente', item]"
-                        (click)="up()"
-                      >
-                        <h6>Ver perfil...</h6>
+            <div class="row">
+              <div class="col">
+                <div
+                  id="carouselExampleInterval"
+                  class="carousel slide"
+                  data-ride="carousel"
+                >
+                  <div class="carousel-inner text-center no-print">
+                    <div class="carousel-item active">
+                      <div class="card-deck">
+                        <div
+                          class="card"
+                          *ngFor="
+                            let item of plantelProfesores
+                              | keysfirebase
+                              | slice
+                                : (pageProfesores - 1) * pageSizeProfesores
+                                : (pageProfesores - 1) * pageSizeProfesores +
+                                    pageSizeProfesores;
+                            let i = index
+                          "
+                          style="border: none"
+                        >
+                          <img
+                            [routerLink]="['/docente', item]"
+                            (click)="up()"
+                            [src]="plantelProfesores[item].foto"
+                            [alt]="plantelProfesores[item].nombre"
+                            [title]="plantelProfesores[item].nombre"
+                            class="card-img-top rounded greyImg cursorSelect"
+                          />
+                          <h5 class="card-title m-2" placement="top" ngbTooltip="Click para ir al perfil">
+                            {{ plantelProfesores[item].nombre }}
+                          </h5>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-             </div>
-           </div>
           </div>
         </div>
         <br />
@@ -489,7 +474,8 @@
                               | keysfirebase
                               | slice
                                 : (pageEstudiantes - 1) * pageSizeEstudiantes
-                                : (pageEstudiantes - 1) * pageSizeEstudiantes + pageSizeEstudiantes;
+                                : (pageEstudiantes - 1) * pageSizeEstudiantes +
+                                    pageSizeEstudiantes;
                             let i = index
                           "
                           style="border: none"
@@ -499,21 +485,13 @@
                             (click)="up()"
                             [src]="listados[item].foto"
                             [alt]="listados[item].nombre"
-                            class="card-img-top cursorSelect"
-                            style="border-radius: 50%"
+                            [title]="listados[item].nombre"
+                            class="card-img-top rounded greyImg cursorSelect"
+                            placement="top" ngbTooltip="Click para ir al perfil"
                           />
-                          <div class="card-body">
-                            <h5 class="card-title">
-                              {{ listados[item].nombre }}
-                            </h5>
-                          </div>
-                          <div
-                            class="card-footer btn navlinkinSolid"
-                            [routerLink]="['/docente', item]"
-                            (click)="up()"
-                          >
-                            <h6>Ver perfil...</h6>
-                          </div>
+                          <h5 class="card-title m-2">
+                            {{ listados[item].nombre }}
+                          </h5>
                         </div>
                       </div>
                     </div>

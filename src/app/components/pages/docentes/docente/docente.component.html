@@ -93,7 +93,9 @@
                           let i = index
                         "
                       >
-                        {{ field.formacion }}
+                        <p class="pre text-justify">
+                          {{ field.formacion }}
+                        </p>
                       </li>
                     </ul>
                     <br />
@@ -317,67 +319,67 @@
         <div class="col">
           <div class="row">
             <div class="col">
-              <h3 [routerLink]="['/docentes']" class="titleInstRed cursorSelect">
+              <h3
+                [routerLink]="['/docentes']"
+                class="titleInstRed cursorSelect"
+              >
                 <i class="fas fa-users"></i> Plantel Docente
               </h3>
               <br />
             </div>
-            <div class="col text-rigth"><ngb-pagination
-              class="d-flex justify-content-end"
-              [collectionSize]="(plantelProfesores | keysfirebase).length"
-              [pageSize]="pageSize"
-              [(page)]="page"
-            ></ngb-pagination></div>
+            <div class="col text-rigth">
+              <ngb-pagination
+                class="d-flex justify-content-end"
+                [collectionSize]="(plantelProfesores | keysfirebase).length"
+                [pageSize]="pageSize"
+                [(page)]="page"
+              ></ngb-pagination>
+            </div>
           </div>
-         <div class="row">
-           <div class="col">
-            <div
-            id="carouselExampleInterval"
-            class="carousel slide"
-            data-ride="carousel"
-          >
-            <div class="carousel-inner text-center no-print">
-              <div class="carousel-item active">
-                <div class="card-deck">
-                  <div
-                    class="card"
-                    *ngFor="
-                      let item of plantelProfesores
-                        | keysfirebase
-                        | slice
-                          : (page - 1) * pageSize
-                          : (page - 1) * pageSize + pageSize;
-                      let i = index
-                    "
-                    style="border: none"
-                  >
-                    <img
-                      [routerLink]="['/docente', item]"
-                      (click)="up()"
-                      [src]="plantelProfesores[item].foto"
-                      [alt]="plantelProfesores[item].nombre"
-                      class="card-img-top"
-                      style="border-radius: 50%"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title">
-                        {{ plantelProfesores[item].nombre }}
-                      </h5>
-                    </div>
-                    <div
-                      class="card-footer btn navlinkinSolid"
-                      [routerLink]="['/docente', item]"
-                      (click)="up()"
-                    >
-                      <h6>Ver perfil...</h6>
+          <div class="row">
+            <div class="col">
+              <div
+                id="carouselExampleInterval"
+                class="carousel slide"
+                data-ride="carousel"
+              >
+                <div class="carousel-inner text-center no-print">
+                  <div class="carousel-item active">
+                    <div class="card-deck">
+                      <div
+                        class="card"
+                        *ngFor="
+                          let item of plantelProfesores
+                            | keysfirebase
+                            | slice
+                              : (page - 1) * pageSize
+                              : (page - 1) * pageSize + pageSize;
+                          let i = index
+                        "
+                        style="border: none"
+                      >
+                        <img
+                          [routerLink]="['/docente', item]"
+                          (click)="up()"
+                          [src]="plantelProfesores[item].foto"
+                          [alt]="plantelProfesores[item].nombre"
+                          [title]="plantelProfesores[item].nombre"
+                          class="card-img-top rounded greyImg cursorSelect"
+                        />
+                        <h5
+                          class="card-title m-2"
+                          placement="top"
+                          ngbTooltip="Click para ir al perfil"
+                        >
+                          {{ plantelProfesores[item].nombre }}
+                        </h5>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-           </div>
-         </div>
         </div>
       </div>
     </div>

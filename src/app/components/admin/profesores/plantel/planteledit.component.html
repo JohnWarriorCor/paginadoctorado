@@ -155,8 +155,8 @@
               <h5>
                 <i class="fas fa-list-ul"></i> Formación y logros académicos:
               </h5>
-              <table class="table table-bordered parinst text-center shadow">
-                <thead class="tablatit">
+              <table class="table table-bordered parinst shadow">
+                <thead class="tablatit text-center">
                   <tr class="white">
                     <th style="vertical-align: middle" scope="col">
                       Estudios o logros
@@ -171,16 +171,16 @@
                       let i = index
                     "
                   >
-                    <td>
-                      <input
-                        [(ngModel)]="field.formacion"
+                    <td class="text-justify">
+                      <textarea rows="5"
+                      [(ngModel)]="field.formacion"
                         class="form-control inputTable"
                         type="text"
                         name="{{ field.formacion }}"
                         placeholder="Agrege los estudios realizados o logros de la carrera profesional"
-                      />
+                      ></textarea>
                     </td>
-                    <td>
+                    <td class="text-center" style="vertical-align: middle">
                       <button
                         class="btn btn-default colorRedInst"
                         type="button"
@@ -193,17 +193,18 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      <input
-                        class="form-control inputTable"
+                    <td class="text-justify">
+                      <textarea rows="5"
+                      class="form-control inputTable"
                         type="text"
                         id="newAttributeFormacion"
                         [(ngModel)]="newAttribute.formacion"
                         name="newAttributeFormacion"
                         placeholder="Agrege los estudios realizados o logros de la carrera profesional"
-                      />
+                      >
+                      </textarea>
                     </td>
-                    <td>
+                    <td class="text-center" style="vertical-align: middle">
                       <button
                         class="btn btn-default colorRedInst"
                         type="button"

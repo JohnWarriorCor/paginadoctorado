@@ -164,16 +164,17 @@
                 </thead>
                 <tbody style="background-color: white">
                   <tr *ngFor="let field of egresados.fieldArray; let i = index">
-                    <td>
-                      <input
+                    <td class="text-justify">
+                      <textarea
+                        rows="5"
                         [(ngModel)]="field.formacion"
                         class="form-control inputTable"
                         type="text"
                         name="{{ field.formacion }}"
                         placeholder="Agrege los estudios realizados o logros de la carrera profesional"
-                      />
+                      ></textarea>
                     </td>
-                    <td>
+                    <td class="text-center" style="vertical-align: middle">
                       <button
                         class="btn btn-default colorRedInst"
                         type="button"
@@ -186,17 +187,19 @@
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      <input
+                    <td class="text-justify">
+                      <textarea
+                        rows="5"
                         class="form-control inputTable"
                         type="text"
                         id="newAttributeFormacion"
                         [(ngModel)]="newAttribute.formacion"
                         name="newAttributeFormacion"
                         placeholder="Agrege los estudios realizados o logros de la carrera profesional"
-                      />
+                      >
+                      </textarea>
                     </td>
-                    <td>
+                    <td class="text-center" style="vertical-align: middle">
                       <button
                         class="btn btn-default colorRedInst"
                         type="button"
@@ -308,7 +311,10 @@
             >
               <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
             </button>-->
-            <button class="btn navlinkinSolid m-1" [routerLink]="['/egresados']">
+            <button
+              class="btn navlinkinSolid m-1"
+              [routerLink]="['/egresados']"
+            >
               <i class="fas fa-sign-out-alt"></i> Regresar
             </button>
             <br />

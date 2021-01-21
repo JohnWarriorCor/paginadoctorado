@@ -3,8 +3,7 @@
     <img
       src="/assets/agenda.jpg"
       class="d-block w-100"
-      style="height: 350px"
-      alt="Responsive image"
+      style="height: auto"
     />
   </div>
   <div>
@@ -26,8 +25,8 @@
             *ngFor="
               let item of agenda
                 | keysfirebase
-                | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
-                | listinvert;
+                | listinvert
+                | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
               let i = index
             "
           >
