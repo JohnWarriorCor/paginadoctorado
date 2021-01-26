@@ -5,6 +5,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AgendaService } from '../../../services/agenda/agenda.service';
 import { Agenda } from '../../../interfaces/agenda/agenda';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-agendaedit',
@@ -38,9 +40,8 @@ export class AgendaeditComponent implements OnInit {
     url: '',
   };
 
-
-  // tslint:disable-next-line:max-line-length
-  constructor( public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

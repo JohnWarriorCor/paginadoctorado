@@ -5,6 +5,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Tesis } from '../../../../interfaces/estudiantes/tesis/tesis';
 import { TesisService } from '../../../../services/estudiantes/tesis/tesis.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-tesisedit',
@@ -36,7 +38,7 @@ export class TesiseditComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(public datepipe: DatePipe, private modalService: NgbModal, private tesisService: TesisService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private tesisService: TesisService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

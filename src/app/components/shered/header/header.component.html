@@ -1,28 +1,42 @@
 <div>
   <section id="sp-top-bar">
     <div class="container">
-      <div class="row" style="color: aliceblue;">
+      <div class="row" style="color: aliceblue">
         <div class="col">{{ today | date: "fullDate" | titlecase }}</div>
         <div class="col text-right">
-            <!-- Facebook -->
-            <a style="color: aliceblue;" href="https://www.facebook.com/DoctoradoEnCienciasDeLaSalud/" target="_blanck" class="fb-ic">
-              <i class="fab fa-facebook-f white-text mr-4"> </i>
-            </a>
-            <!-- Twitter -->
-            <a style="color: aliceblue;" href="https://twitter.com/FACSALUD_USCO" target="_blanck" class="tw-ic">
-              <i class="fab fa-twitter white-text mr-4"> </i>
-            </a>
-            <!--Instagram-->
-            <a style="color: aliceblue;" href="https://www.instagram.com/fac_saludusco/" target="_blanck" class="ins-ic">
-              <i class="fab fa-instagram white-text"> </i>
-            </a>
-  
+          <!-- Facebook -->
+          <a
+            style="color: aliceblue"
+            href="https://www.facebook.com/DoctoradoEnCienciasDeLaSalud/"
+            target="_blanck"
+            class="fb-ic"
+          >
+            <i class="fab fa-facebook-f white-text mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a
+            style="color: aliceblue"
+            href="https://twitter.com/FACSALUD_USCO"
+            target="_blanck"
+            class="tw-ic"
+          >
+            <i class="fab fa-twitter white-text mr-4"> </i>
+          </a>
+          <!--Instagram-->
+          <a
+            style="color: aliceblue"
+            href="https://www.instagram.com/fac_saludusco/"
+            target="_blanck"
+            class="ins-ic"
+          >
+            <i class="fab fa-instagram white-text"> </i>
+          </a>
         </div>
         <div class="col text-right">
           <i class="far fa-envelope"></i
-            ><a style="color: aliceblue;" [href]="emailstring" target="_blank">
-              doctoradoencienciasdelasalud@usco.edu.co</a
-            >
+          ><a style="color: aliceblue" [href]="emailstring" target="_blank">
+            doctoradoencienciasdelasalud@usco.edu.co</a
+          >
         </div>
       </div>
     </div>
@@ -31,35 +45,32 @@
 <div id="sp-logo-wrap">
   <div class="container">
     <div class="row mt-3">
-      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="display: flex; justify-content: center;">
+      <div
+        class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4"
+        style="display: flex; justify-content: center"
+      >
         <a
           title="Universidad Surcolombiana Facultad de Salud"
           [routerLink]="['/inicio']"
         >
           <img
-            style="width: 95%;"
+            style="width: 95%"
             src="assets/salud.png"
             alt="Universidad Surcolombiana Facultad de Salud"
           />
         </a>
       </div>
-      <div
-        class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-center"
-      >
-      <a
-      title="Universidad Surcolombiana Facultad de Salud"
-    >
-      <img
-        class="responsive"
-        src="assets/doclogo.png"
-        alt="Universidad Surcolombiana Facultad de Salud"
-      />
-    </a>
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
+        <a title="Universidad Surcolombiana Facultad de Salud">
+          <img
+            class="responsive"
+            src="assets/doclogo.png"
+            alt="Universidad Surcolombiana Facultad de Salud"
+          />
+        </a>
       </div>
       <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4 text-center">
-        <a
-          title="Universidad Surcolombiana Facultad de Salud"
-        >
+        <a title="Universidad Surcolombiana Facultad de Salud">
           <img
             src="assets/escudo_colombia.png"
             alt="Universidad Surcolombiana Facultad de Salud"
@@ -81,13 +92,14 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-      <i class="fas fa-bars"></i>
+        <i class="fas fa-bars"></i>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto menu__list">
           <li class="menu__group">
-            <a style="padding: 10px;"
+            <a
+              style="padding: 10px"
               class="nav-link menu__link"
               [routerLink]="['/inicio']"
               routerLinkActive="router-link-active"
@@ -95,45 +107,48 @@
             >
           </li>
           <li class="menu__group dropdown menu__group">
-            <a style="padding: 10px;"
+            <a
+              style="padding: 10px"
               routerLinkActive="router-link-active"
               class="nav-link dropdown-toggle menu__link dropbtn"
               [routerLink]="['/historia']"
               ><i class="far fa-building"></i> Programa</a
             >
             <div class="dropdown-content text-left">
-              <a class="menu__link_dropdown" [routerLink]="['/historia']"><i class="fas fa-book-open"></i> Historia</a>
-              <a class="menu__link_dropdown" [routerLink]="['/organigrama']"><i class="fas fa-code-branch"></i> Organigrama</a>
-              <a class="menu__link_dropdown" [routerLink]="['/ubicacion']"><i class="fas fa-map-marker-alt"></i> Ubicación</a>
+              <a class="menu__link_dropdown" [routerLink]="['/historia']"
+                ><i class="fas fa-book-open"></i> Historia</a
+              >
+              <a class="menu__link_dropdown" [routerLink]="['/organigrama']"
+                ><i class="fas fa-code-branch"></i> Organigrama</a
+              >
+              <a class="menu__link_dropdown" [routerLink]="['/ubicacion']"
+                ><i class="fas fa-map-marker-alt"></i> Ubicación</a
+              >
             </div>
           </li>
           <li class="menu__group dropdown menu__group">
-            <a style="padding: 10px;"
+            <a
+              style="padding: 10px"
               routerLinkActive="router-link-active"
               class="nav-link dropdown-toggle menu__link dropbtn"
               [routerLink]="['/plandeestudios']"
               ><i class="fas fa-university"></i> Formación</a
             >
             <div class="dropdown-content text-left">
-              <a class="menu__link_dropdown" [routerLink]="['/plandeestudios']"><i class="fas fa-book-reader"></i> Plan de estudios</a>
-              <a class="menu__link_dropdown" [routerLink]="['/competencias']"><i class="fas fa-bullseye"></i> Competencias</a>
-              <a class="menu__link_dropdown" [routerLink]="['/perfil']"><i class="fas fa-user-tie"></i> Perfil</a>
-            </div>
-          </li>
-          <li class="menu__group dropdown menu__group">
-            <a style="padding: 10px;"
-              routerLinkActive="router-link-active"
-              class="nav-link dropdown-toggle menu__link dropbtn"
-              [routerLink]="['/docentes']"
-              ><i class="fas fa-users"></i> Profesores</a
-            >
-            <div class="dropdown-content text-left">
-              <a class="menu__link_dropdown" [routerLink]="['/docentes']"><i class="fas fa-user-friends"></i> Plantel</a>
-              <a class="menu__link_dropdown" [routerLink]="['/articulosProfesores']"><i class="fas fa-scroll"></i> Artículos publicados</a>
+              <a class="menu__link_dropdown" [routerLink]="['/plandeestudios']"
+                ><i class="fas fa-book-reader"></i> Plan de estudios</a
+              >
+              <a class="menu__link_dropdown" [routerLink]="['/competencias']"
+                ><i class="fas fa-bullseye"></i> Competencias</a
+              >
+              <a class="menu__link_dropdown" [routerLink]="['/perfil']"
+                ><i class="fas fa-user-tie"></i> Perfil</a
+              >
             </div>
           </li>
           <li class="menu__group">
-            <a style="padding: 10px;"
+            <a
+              style="padding: 10px"
               routerLinkActive="router-link-active"
               class="nav-link menu__link"
               [routerLink]="['/agenda']"
@@ -141,7 +156,8 @@
             >
           </li>
           <li class="menu__group">
-            <a style="padding: 10px;"
+            <a
+              style="padding: 10px"
               routerLinkActive="router-link-active"
               class="nav-link menu__link"
               [routerLink]="['/gruposinvestigacion']"
@@ -149,25 +165,75 @@
             >
           </li>
           <li class="nav-item dropdown menu__group">
-            <a style="padding: 10px;"
+            <a
+              style="padding: 10px"
               class="nav-link dropdown-toggle menu__link dropbtn"
               [routerLink]="['/estudiantes']"
             >
-            <i class="fas fa-user-circle"></i> Estudiantes
+              <i class="fas fa-user-circle"></i> Estudiantes
             </a>
             <div class="dropdown-content text-left">
-              <a class="menu__link_dropdown" [routerLink]="['/estudiantes']"><i class="fas fa-user-friends"></i> Nuestros estudiantes</a>
-              <a class="menu__link_dropdown" [routerLink]="['/articulosEstudiantes']"><i class="fas fa-paperclip"></i> Artículos publicados</a>
-              <a class="menu__link_dropdown" [routerLink]="['/tesis']"><i class="fas fa-file-pdf"></i> Tesis</a>
-              <a class="menu__link_dropdown" [routerLink]="['/egresados']"><i class="fas fa-user-graduate"></i> Egresados</a>
+              <a class="menu__link_dropdown" [routerLink]="['/estudiantes']"
+                ><i class="fas fa-user-friends"></i> Nuestros estudiantes</a
+              >
+              <a
+                class="menu__link_dropdown"
+                [routerLink]="['/articulosEstudiantes']"
+                ><i class="fas fa-paperclip"></i> Artículos publicados</a
+              >
+              <a class="menu__link_dropdown" [routerLink]="['/tesis']"
+                ><i class="fas fa-file-pdf"></i> Tesis</a
+              >
+              <a class="menu__link_dropdown" [routerLink]="['/egresados']"
+                ><i class="fas fa-user-graduate"></i> Egresados</a
+              >
+            </div>
+          </li>
+          <li class="menu__group dropdown menu__group">
+            <a
+              style="padding: 10px"
+              routerLinkActive="router-link-active"
+              class="nav-link dropdown-toggle menu__link dropbtn"
+              [routerLink]="['/docentes']"
+              ><i class="fas fa-users"></i> Profesores</a
+            >
+            <div class="dropdown-content text-left">
+              <a class="menu__link_dropdown" [routerLink]="['/docentes']"
+                ><i class="fas fa-user-friends"></i> Plantel</a
+              >
+              <a
+                class="menu__link_dropdown"
+                [routerLink]="['/articulosProfesores']"
+                ><i class="fas fa-scroll"></i> Artículos publicados</a
+              >
             </div>
           </li>
           <li class="menu__group">
-            <a style="padding: 10px;"
+            <a
+              style="padding: 10px"
               routerLinkActive="router-link-active"
               class="nav-link menu__link"
               [routerLink]="['/biblioteca']"
               ><i class="fas fa-book"></i> Biblioteca</a
+            >
+          </li>
+          <li class="menu__group">
+            <ng-template #showLogin>
+              <a
+              style="padding: 10px"
+              routerLinkActive="router-link-active"
+              class="nav-link menu__link"
+              (click)="openSm(formAdmin)"
+              ><i class="fas fa-lock"></i> Ingresar</a
+            >
+            </ng-template>
+            <a
+              *ngIf="auth.user | async ; else showLogin"
+              style="padding: 10px"
+              routerLinkActive="router-link-active"
+              class="nav-link menu__link cursorSelect"
+              (click)="logout()"
+              ><i class="fas fa-door-open"></i> Salir</a
             >
           </li>
         </ul>
@@ -175,3 +241,100 @@
     </div>
   </nav>
 </header>
+<ng-template #formAdmin let-modal>
+  <div class="modal-header bgrojoyblanco">
+    <h4 class="modal-title">
+      <i class="fas fa-user-cog white"></i> Administrar:
+    </h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <i class="fas fa-times" style="color: white"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <form class="text-center p-2" #forma="ngForm">
+        <!-- Email -->
+        <div class="d-flex justify-content-around">
+          <input
+            type="email"
+            id="defaultLoginFormEmail"
+            [(ngModel)]="email"
+            name="user"
+            class="form-control mb-4 shadow"
+            placeholder="Correo"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="d-flex justify-content-around">
+          <input
+            [(ngModel)]="pass"
+            name="pass"
+            type="password"
+            id="defaultLoginFormPassword"
+            class="form-control mb-4 shadow"
+            placeholder="Contraseña"
+          />
+        </div>
+
+        <div class="justify-content-around">
+          <div class="m-2">
+            <!-- Forgot password -->
+            <a href="">¿Recuperar?</a>
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control shadow"
+              placeholder="Correo"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <div class="input-group-append">
+              <button
+                placement="top"
+                ngbTooltip="Enviar al correo"
+                class="btn navlinkinSolid shadow"
+                type="button"
+                id="button-addon2"
+              >
+                <i class="far fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <!--<div
+    *ngIf="error != false"
+    class="alert alert-danger alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>{{ passError }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times" style="color: #8f141b"></i>
+    </button>
+  </div>-->
+  <button
+    type="button"
+    style="
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+    "
+    class="btn navlinkinSolid p-3"
+    ngbAutofocus
+    (click)="customLogin()"
+    (click)="modal.dismiss('Cross click')"
+  >
+    Acceder
+  </button>
+</ng-template>

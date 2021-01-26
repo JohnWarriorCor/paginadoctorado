@@ -4,6 +4,8 @@ import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CarruselService } from '../../../../services/home/carrusel/carrusel.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-carrusel',
@@ -32,7 +34,7 @@ export class CarruselComponent implements OnInit {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor( public datepipe: DatePipe, private modalService: NgbModal, private carruselServices: CarruselService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private carruselServices: CarruselService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.carruselServices.getCarruseles().subscribe( data => {
       this.carrusel = data;
     });

@@ -5,6 +5,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DenominacionService } from '../../../../services/home/denominacion.service';
 import { Denominacion } from '../../../../interfaces/home/denominacion';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-denominacion',
@@ -45,7 +47,7 @@ export class DenominacionComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor( public datepipe: DatePipe, private modalService: NgbModal, private denominacionServie: DenominacionService, private router: Router, private activatedRoute: ActivatedRoute ) {
+  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private denominacionServie: DenominacionService, private router: Router, private activatedRoute: ActivatedRoute ) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

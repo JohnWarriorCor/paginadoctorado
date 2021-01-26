@@ -37,6 +37,9 @@ import { PlanteleditComponent } from './components/admin/profesores/plantel/plan
 import { EgresadoComponent } from './components/pages/estudiantes/egresados/egresado/egresado.component';
 import { ListadoeditComponent } from './components/admin/estudiantes/listado/listadoedit.component';
 
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   // INICIO
   { path: 'inicio', component: HomeComponent },
@@ -76,38 +79,38 @@ const routes: Routes = [
 
 
   // RUTAS ADMINISTRADOR
-  { path: 'adminlogin', component: LoginComponent },
+  { path: 'admi_login', component: LoginComponent },
   // INICIO
-  { path: 'admi_denominacion/:id', component: DenominacionComponent },
-  { path: 'admi_carrusel', component: CarruselComponent },
-  { path: 'admi_carruselEdit/:id', component: CarruseleditComponent },
+  { path: 'admi_denominacion/:id', component: DenominacionComponent, canActivate: [AuthGuard] },
+  { path: 'admi_carrusel', component: CarruselComponent, canActivate: [AuthGuard] },
+  { path: 'admi_carruselEdit/:id', component: CarruseleditComponent, canActivate: [AuthGuard] },
   // PROGRAMA
-  { path: 'admi_programa', component: ProgramaComponent },
-  { path: 'admi_historia/:id', component: HistoriaeditComponent },
-  { path: 'admi_organigrama', component: OrganigramaComponent },
-  { path: 'admi_ubicacion', component: UbicacionComponent },
+  { path: 'admi_programa', component: ProgramaComponent, canActivate: [AuthGuard] },
+  { path: 'admi_historia/:id', component: HistoriaeditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_organigrama', component: OrganigramaComponent, canActivate: [AuthGuard] },
+  { path: 'admi_ubicacion', component: UbicacionComponent, canActivate: [AuthGuard] },
   // FORMACION
-  { path: 'admi_formacion', component: FormacionComponent },
-  { path: 'admi_plandeestudios/:id', component: PlanestudioseditComponent },
-  { path: 'admi_competencias', component: CompetenciasComponent },
-  { path: 'admi_perfil', component: PerfilComponent },
+  { path: 'admi_formacion', component: FormacionComponent, canActivate: [AuthGuard] },
+  { path: 'admi_plandeestudios/:id', component: PlanestudioseditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_competencias', component: CompetenciasComponent, canActivate: [AuthGuard] },
+  { path: 'admi_perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   // PROFESORES
   { path: 'admi_docentes', component: PlanteleditComponent },
-  { path: 'admi_articulosProfesores/:id', component: ArticulosproeditComponent },
-  { path: 'admi_plantel/:id', component: PlanteleditComponent },
-  { path: 'admi_docente/:id', component: DocenteComponent },
+  { path: 'admi_articulosProfesores/:id', component: ArticulosproeditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_plantel/:id', component: PlanteleditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_docente/:id', component: DocenteComponent, canActivate: [AuthGuard] },
   // ACTIVDADES
-  { path: 'admi_agenda/:id', component: AgendaeditComponent },
+  { path: 'admi_agenda/:id', component: AgendaeditComponent, canActivate: [AuthGuard] },
   // INVESTIGACION
-  { path: 'admi_gruposinvestigacion/:id', component: GruposinveseditComponent },
+  { path: 'admi_gruposinvestigacion/:id', component: GruposinveseditComponent, canActivate: [AuthGuard] },
   // ESTUDIANDTES
-  { path: 'admi_estudiantes', component: EstudiantesComponent },
-  { path: 'admi_estudiante/:id', component: ListadoeditComponent },
-  { path: 'admi_articulosEstudiantes/:id', component: ArticulosestueditComponent },
-  { path: 'admi_egresados/:id', component: EgresadoseditComponent },
-  { path: 'admi_tesis/:id', component: TesiseditComponent },
+  { path: 'admi_estudiantes', component: EstudiantesComponent, canActivate: [AuthGuard] },
+  { path: 'admi_estudiante/:id', component: ListadoeditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_articulosEstudiantes/:id', component: ArticulosestueditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_egresados/:id', component: EgresadoseditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_tesis/:id', component: TesiseditComponent, canActivate: [AuthGuard] },
   // BIBLIOTECA
-  { path: 'admi_biblioteca/:id', component: LibroseditComponent },
+  { path: 'admi_biblioteca/:id', component: LibroseditComponent, canActivate: [AuthGuard] },
   // ROOT
   { path: '**', pathMatch: 'full', redirectTo: 'inicio' }
 ];

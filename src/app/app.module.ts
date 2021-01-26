@@ -17,6 +17,11 @@ import { HeaderComponent } from './components/shered/header/header.component';
 import { APP_ROUTING } from './app.routing';
 import { RouterModule } from '@angular/router';
 
+// Autenticacion Firebase
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthGuardModule  } from '@angular/fire/auth-guard';
 
 // importar locales
 import localeEsCO from '@angular/common/locales/es-CO';
@@ -131,6 +136,9 @@ registerLocaleData(localeEsCO, 'es-CO');
     WavesModule.forRoot(),
     InputsModule.forRoot(),
     ButtonsModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFireAuthGuardModule
   ],
   exports: [
     MDBBootstrapModule,

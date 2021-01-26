@@ -4,6 +4,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { AgendaService } from '../../../services/agenda/agenda.service';
 import { PlantelService } from '../../../services/profesores/plantel/plantel.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-docentes',
@@ -31,9 +33,7 @@ export class DocentesComponent implements OnInit {
   validar = false;
   error = false;
   passError = '';
-
-  // tslint:disable-next-line:max-line-length
-  constructor(private profesoresService: ProfesoresService, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private plantelService: PlantelService) {
+  constructor(public auth: AngularFireAuth, private profesoresService: ProfesoresService, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private plantelService: PlantelService) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });

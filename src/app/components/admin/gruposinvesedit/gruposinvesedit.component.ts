@@ -5,6 +5,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Gruposinvestigacion } from '../../../interfaces/grupoinvesti/gruposinvestigacion';
 import { GruposinvestigacionService } from '../../../services/grupoinvesti/gruposinvestigacion.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 
 @Component({
@@ -36,7 +38,7 @@ export class GruposinveseditComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor( public datepipe: DatePipe, private modalService: NgbModal, private grupoInvestigacionService: GruposinvestigacionService, private router: Router, private activatedRoute: ActivatedRoute ) {
+  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private grupoInvestigacionService: GruposinvestigacionService, private router: Router, private activatedRoute: ActivatedRoute ) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

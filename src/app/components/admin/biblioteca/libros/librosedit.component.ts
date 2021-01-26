@@ -5,6 +5,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Libros } from '../../../../interfaces/biblioteca/libros/libros';
 import { BibliotecaService } from '../../../../services/biblioteca/biblioteca.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 @Component({
   selector: 'app-librosedit',
   templateUrl: './librosedit.component.html',
@@ -35,7 +37,7 @@ export class LibroseditComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(public datepipe: DatePipe, private modalService: NgbModal, private planEstudioService: BibliotecaService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private planEstudioService: BibliotecaService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

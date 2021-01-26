@@ -5,6 +5,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlanestudiosService } from '../../../../services/formacion/planestudios/planestudios.service';
 import { Planestudios } from '../../../../interfaces/formacion/planestudios/planestudios';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-planestudiosedit',
@@ -35,7 +37,7 @@ export class PlanestudioseditComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(public datepipe: DatePipe, private modalService: NgbModal, private planEstudioService: PlanestudiosService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private planEstudioService: PlanestudiosService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

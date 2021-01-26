@@ -5,6 +5,8 @@ import { FormGroup, NgForm, FormControl, Validators, FormArray } from '@angular/
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HistoriaService } from '../../../../services/programa/historia.service';
 import { Historia } from '../../../../interfaces/programa/historia';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-historiaedit',
@@ -25,8 +27,7 @@ export class HistoriaeditComponent implements OnInit {
     reseniaHistorica: '',
   };
 
-  // tslint:disable-next-line:max-line-length
-  constructor( private modalService: NgbModal, private historiaServices: HistoriaService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( public auth: AngularFireAuth, private modalService: NgbModal, private historiaServices: HistoriaService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

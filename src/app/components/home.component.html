@@ -4,7 +4,7 @@
     class="carousel slide carousel-fade"
     data-ride="carousel"
   >
-    <div class="carousel-inner">
+    <div class="carousel-inner text-center">
       <div
         [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
         *ngFor="let item of carrusel | keysfirebase | listinvert; let i = index"
@@ -16,6 +16,12 @@
             [alt]="carrusel[item].titulo"
             [title]="carrusel[item].titulo"
         /></a>
+        <a
+        *ngIf="auth.user | async"
+        class="btn navlinkinSolid m-2"
+        [routerLink]="['/admi_carrusel']"
+        ><i class="fas fa-pencil-alt"></i> Editar</a
+      >
       </div>
     </div>
     <a
@@ -41,132 +47,149 @@
   <div class="container fadeIn fast" style="margin-top: 30px">
     <div class="row">
       <div class="col fondodivleft shadow">
-        <h3 class="titleInstRed">
-          <i class="fas fa-book-open"></i> Denominación del programa
-        </h3>
-        <hr class="lineInstRed" />
-        <br />
-        <ngb-tabset
-          [justify]="currentJustify"
-          class="tabset1"
-          *ngFor="let den of denominacion | keysfirebase"
-        >
-          <ngb-tab>
-            <ng-template ngbTabTitle
-              ><i class="fas fa-list-ul"></i> Programa</ng-template
-            >
-            <ng-template ngbTabContent>
-              <div class="justify-content-center m-sm-3">
-                <table class="table table-striped">
-                  <thead>
-                    <tr>
-                      <td><span class="redinst">Título a otorgar</span></td>
-                      <td style="width: 60%">
-                        <span class="grayinst">
-                          {{ denominacion[den].tituloOtorgar }}</span
-                        >
-                      </td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><span class="redinst">Registro Calificado:</span></td>
-                      <td>
-                        <a
-                          class="grayinst"
-                          target="_blank"
-                          [href]="denominacion[den].registroCalificadoUrl"
-                        >
-                          {{ denominacion[den].registroCalificado }}</a
-                        >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="redinst">Periodicidad de admisión:</span>
-                      </td>
-                      <td>
-                        <span class="grayinst">
-                          {{ denominacion[den].perAdmision }}</span
-                        >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><span class="redinst">Número de créditos:</span></td>
-                      <td>
-                        <span class="grayinst">
-                          {{ denominacion[den].numCreditos }}</span
-                        >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><span class="redinst">Duración:</span></td>
-                      <td>
-                        <span class="grayinst">
-                          {{ denominacion[den].duracion }}</span
-                        >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><span class="redinst">Costo de matrícula:</span></td>
-                      <td>
-                        <span class="grayinst">
-                          {{ denominacion[den].costoMatricula }}</span
-                        >
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <span class="redinst">Cupo:</span>
-                      </td>
-                      <td>
-                        <span class="grayinst">
-                          {{ denominacion[den].cupo }}</span
-                        >
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab>
-            <ng-template ngbTabTitle
-              ><i class="fas fa-flag"></i> Misión</ng-template
-            >
-            <ng-template ngbTabContent>
-              <p style="padding: 20px" class="text-justify grayinst">
-                {{ denominacion[den].mision }}
-              </p>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab>
-            <ng-template ngbTabTitle
-              ><i class="far fa-eye"></i> Visión</ng-template
-            >
-            <ng-template ngbTabContent>
-              <p style="padding: 20px" class="text-justify grayinst">
-                {{ denominacion[den].vision }}
-              </p>
-            </ng-template>
-          </ngb-tab>
-        </ngb-tabset>
-        <ngb-tabset [justify]="currentJustify" class="tabset1">
-          <ngb-tab>
-            <ng-template ngbTabTitle
-              ><i class="fas fa-user-md"></i> Propósito</ng-template
-            >
-            <ng-template
-              ngbTabContent
+        <div class="row">
+          <div class="col">
+            <h3 class="titleInstRed">
+              <i class="fas fa-book-open"></i> Denominación del programa
+            </h3>
+            <hr class="lineInstRed" />
+            <br />
+            <ngb-tabset
+              [justify]="currentJustify"
+              class="tabset1"
               *ngFor="let den of denominacion | keysfirebase"
             >
-              <p style="padding: 20px" class="text-justify grayinst">
-                {{ denominacion[den].proposito }}
-              </p>
-            </ng-template>
-          </ngb-tab> </ngb-tabset
-        ><br />
-        <img src="/assets/gruposinves.jpg" class="img-fluid" alt="" />
+              <ngb-tab>
+                <ng-template ngbTabTitle
+                  ><i class="fas fa-list-ul"></i> Programa</ng-template
+                >
+                <ng-template ngbTabContent>
+                  <div class="justify-content-center m-sm-3">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <td><span class="redinst">Título a otorgar</span></td>
+                          <td style="width: 60%">
+                            <span class="grayinst">
+                              {{ denominacion[den].tituloOtorgar }}</span
+                            >
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <span class="redinst">Registro Calificado:</span>
+                          </td>
+                          <td>
+                            <a
+                              class="grayinst"
+                              target="_blank"
+                              [href]="denominacion[den].registroCalificadoUrl"
+                            >
+                              {{ denominacion[den].registroCalificado }}</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="redinst"
+                              >Periodicidad de admisión:</span
+                            >
+                          </td>
+                          <td>
+                            <span class="grayinst">
+                              {{ denominacion[den].perAdmision }}</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="redinst">Número de créditos:</span>
+                          </td>
+                          <td>
+                            <span class="grayinst">
+                              {{ denominacion[den].numCreditos }}</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><span class="redinst">Duración:</span></td>
+                          <td>
+                            <span class="grayinst">
+                              {{ denominacion[den].duracion }}</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="redinst">Costo de matrícula:</span>
+                          </td>
+                          <td>
+                            <span class="grayinst">
+                              {{ denominacion[den].costoMatricula }}</span
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="redinst">Cupo:</span>
+                          </td>
+                          <td>
+                            <span class="grayinst">
+                              {{ denominacion[den].cupo }}</span
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab>
+                <ng-template ngbTabTitle
+                  ><i class="fas fa-flag"></i> Misión</ng-template
+                >
+                <ng-template ngbTabContent>
+                  <p style="padding: 20px" class="text-justify grayinst">
+                    {{ denominacion[den].mision }}
+                  </p>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab>
+                <ng-template ngbTabTitle
+                  ><i class="far fa-eye"></i> Visión</ng-template
+                >
+                <ng-template ngbTabContent>
+                  <p style="padding: 20px" class="text-justify grayinst">
+                    {{ denominacion[den].vision }}
+                  </p>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+            <ngb-tabset [justify]="currentJustify" class="tabset1">
+              <ngb-tab>
+                <ng-template ngbTabTitle
+                  ><i class="fas fa-user-md"></i> Propósito</ng-template
+                >
+                <ng-template
+                  ngbTabContent
+                  *ngFor="let den of denominacion | keysfirebase"
+                >
+                  <p style="padding: 20px" class="text-justify grayinst">
+                    {{ denominacion[den].proposito }}
+                  </p>
+                  <a
+                    *ngIf="auth.user | async"
+                    class="btn navlinkinSolid m-2"
+                    [routerLink]="['/admi_denominacion', den]"
+                    ><i class="fas fa-pencil-alt"></i> Editar</a
+                  >
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
       </div>
       <div class="col fondodivright shadow">
         <h3 [routerLink]="['/agenda']" class="titleInstRed cursorSelect">
@@ -422,7 +445,11 @@
                             [title]="plantelProfesores[item].nombre"
                             class="card-img-top rounded greyImg cursorSelect"
                           />
-                          <h5 class="card-title m-2" placement="top" ngbTooltip="Click para ir al perfil">
+                          <h5
+                            class="card-title m-2"
+                            placement="top"
+                            ngbTooltip="Click para ir al perfil"
+                          >
                             {{ plantelProfesores[item].nombre }}
                           </h5>
                         </div>
@@ -487,7 +514,8 @@
                             [alt]="listados[item].nombre"
                             [title]="listados[item].nombre"
                             class="card-img-top rounded greyImg cursorSelect"
-                            placement="top" ngbTooltip="Click para ir al perfil"
+                            placement="top"
+                            ngbTooltip="Click para ir al perfil"
                           />
                           <h5 class="card-title m-2">
                             {{ listados[item].nombre }}

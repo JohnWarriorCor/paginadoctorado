@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { GruposinvestigacionService } from '../../../services/grupoinvesti/gruposinvestigacion.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-gruposinves',
@@ -32,8 +34,8 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
   validar = false;
   error = false;
   passError = '';
-  // tslint:disable-next-line:max-line-length
-  constructor(private grupoInvestigacionService: GruposinvestigacionService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
+
+  constructor(public auth: AngularFireAuth, private grupoInvestigacionService: GruposinvestigacionService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
     this.grupoInvestigacionService.getGrupos().subscribe( data => {
       this.grupoInvestigacion = data;
     });

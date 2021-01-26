@@ -5,6 +5,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Articulospro } from '../../../../interfaces/profesores/articulospro/articulospro';
 import { ArticulosproService } from '../../../../services/profesores/articulospro/articulospro.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-articulosproedit',
@@ -36,7 +38,7 @@ export class ArticulosproeditComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(public datepipe: DatePipe, private modalService: NgbModal, private articulosProService: ArticulosproService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private articulosProService: ArticulosproService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

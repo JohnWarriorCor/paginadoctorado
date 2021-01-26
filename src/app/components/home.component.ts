@@ -11,6 +11,10 @@ import { ArticulosestuService } from '../services/estudiantes/articulos/articulo
 import { ArticulosproService } from '../services/profesores/articulospro/articulospro.service';
 import { ListadoService } from '../services/estudiantes/listado/listado.service';
 import { PlantelService } from '../services/profesores/plantel/plantel.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
+import 'firebase/auth';
+import firebase from '@firebase/app';
 
 
 // tslint:disable-next-line:prefer-const
@@ -44,8 +48,8 @@ export class HomeComponent implements OnInit {
   slidesEstudiante: any = [[]];
   articuloEstudiante: Array<any> = [];
   articulosPro: Array<any> = [];
-  // tslint:disable-next-line:max-line-length
-  constructor(private listadoService: ListadoService, private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router, private carruselServices: CarruselService, private articulosEstuService: ArticulosestuService, private articulosProService: ArticulosproService, private plantelService: PlantelService ) {
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor( public auth: AngularFireAuth, private listadoService: ListadoService, private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router, private carruselServices: CarruselService, private articulosEstuService: ArticulosestuService, private articulosProService: ArticulosproService, private plantelService: PlantelService ) {
     this.activatedRoute.params.subscribe( params => {
       this.profesor = this.profesorService.getProfesor(params.id);
     });

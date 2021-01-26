@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { AgendaService } from '../../../services/agenda/agenda.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-agenda',
@@ -29,8 +31,7 @@ export class AgendaComponent implements OnInit {
   error = false;
   passError = '';
 
-  // tslint:disable-next-line:max-line-length
-  constructor( private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router ) {
+  constructor( public auth: AngularFireAuth, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router ) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });
