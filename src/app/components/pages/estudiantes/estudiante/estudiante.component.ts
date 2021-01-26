@@ -5,6 +5,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ListadoService } from '../../../../services/estudiantes/listado/listado.service';
 import { Listado } from '../../../../interfaces/estudiantes/listado/listado';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-estudiante',
@@ -55,7 +57,7 @@ export class EstudianteComponent implements OnInit {
   link: any;
 
   // tslint:disable-next-line:max-line-length
-  constructor( public datepipe: DatePipe, private modalService: NgbModal, private listadoService: ListadoService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private listadoService: ListadoService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       this.link = parametros.id;

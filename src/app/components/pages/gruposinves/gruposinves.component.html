@@ -9,7 +9,7 @@
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
-        <div class="col-sm-8 shadow fondodivleft shadow">
+        <div class="col-sm-8 shadow fondodivleft shadow" *ngFor="let item of grupoInvestigacion | keysfirebase">
           <div id="print-section">
             <h3 class="titleInstRed">
               <i class="fas fa-microscope"></i> Grupos de Investigación del
@@ -41,7 +41,7 @@
                   </th>
                 </tr>
               </thead>
-              <tbody *ngFor="let item of grupoInvestigacion | keysfirebase">
+              <tbody>
                 <tr
                   *ngFor="
                     let field of grupoInvestigacion[item].fieldArray
@@ -69,10 +69,7 @@
             </table>
           </div>
           <hr />
-          <div
-            class="row"
-            *ngFor="let item of grupoInvestigacion | keysfirebase"
-          >
+          <div class="row">
             <div class="col">
               <button
                 class="btn navlinkinSolid"
@@ -84,7 +81,7 @@
                 <i class="fas fa-print"></i> Imprimir
               </button>
             </div>
-            <div class="col text-rigth">
+            <div class="col text-right">
               <button
                 *ngIf="auth.user | async"
                 class="btn navlinkinSolid"

@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { AgendaService } from '../../../../services/agenda/agenda.service';
 import { EgresadosService } from '../../../../services/estudiantes/egresados/egresados.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-egresados',
@@ -32,7 +34,7 @@ export class EgresadosComponent implements OnInit {
   passError = '';
 
   // tslint:disable-next-line:max-line-length
-  constructor( private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private egresadosService: EgresadosService) {
+  constructor( public auth: AngularFireAuth, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private egresadosService: EgresadosService) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });

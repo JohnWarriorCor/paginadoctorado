@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ArticulosproService } from '../../../../services/profesores/articulospro/articulospro.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-articulosprofesores',
@@ -31,7 +33,7 @@ export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
   error = false;
   passError = '';
   // tslint:disable-next-line:max-line-length
-  constructor(private articulosProService: ArticulosproService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor( public auth: AngularFireAuth, private articulosProService: ArticulosproService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
     this.articulosProService.getArticuloProfesores().subscribe( data => {
       this.articulosPro = data;
     });

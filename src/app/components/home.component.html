@@ -16,12 +16,15 @@
             [alt]="carrusel[item].titulo"
             [title]="carrusel[item].titulo"
         /></a>
-        <a
-        *ngIf="auth.user | async"
-        class="btn navlinkinSolid m-2"
-        [routerLink]="['/admi_carrusel']"
-        ><i class="fas fa-pencil-alt"></i> Editar</a
-      >
+        <div class="container">
+          <button
+            *ngIf="auth.user | async"
+            class="btn navlinkinSolid m-2 btn-lg btn-block"
+            [routerLink]="['/admi_carrusel']"
+          >
+            <i class="fas fa-pencil-alt"></i> Editar
+          </button>
+        </div>
       </div>
     </div>
     <a
@@ -179,12 +182,13 @@
                   <p style="padding: 20px" class="text-justify grayinst">
                     {{ denominacion[den].proposito }}
                   </p>
-                  <a
+                  <button
                     *ngIf="auth.user | async"
-                    class="btn navlinkinSolid m-2"
+                    class="btn navlinkinSolid m-2 btn-lg btn-block"
                     [routerLink]="['/admi_denominacion', den]"
-                    ><i class="fas fa-pencil-alt"></i> Editar</a
                   >
+                    <i class="fas fa-pencil-alt"></i> Editar
+                  </button>
                 </ng-template>
               </ngb-tab>
             </ngb-tabset>

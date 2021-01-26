@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import 'firebase/auth';
 import firebase from '@firebase/app';
 import { Router } from '@angular/router';
-
+import { ToastService } from '../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-footer',
@@ -26,20 +27,46 @@ export class FooterComponent implements OnInit {
   modalReference: any;
   acumFechas = 0;
   comodinAcum = 0;
-  loading = true;
-  // Herramientas ocultas
-  key: any;
-  user: any;
-  opciones = false;
-  ajustes = true;
-  validar = false;
-  error = false;
-  passError = '';
+  viewRecuperar = true;
+  viewPass = false;
+  hidePass =  true;
   email = '';
   pass = '';
 
   // tslint:disable-next-line:no-shadowed-variable
-  constructor(public auth: AngularFireAuth, private router: Router, private modalService: NgbModal) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public toastService: ToastService, public auth: AngularFireAuth, private router: Router, private modalService: NgbModal) {
+    // this.myToast.showToast('My Toast Title', 'Component Toast Loaded!!!', 'success');
+  }
+  showSuccess() {
+    this.toastr.success('Acceso exitoso', 'Bienvenido', {
+      timeOut: 2000
+    });
+  }
+  showExit() {
+    this.toastr.error('', 'Sesión cerrada', {
+      timeOut: 2500
+    });
+  }
+  showInfo(email) {
+    this.toastr.info( email, 'Mensaje enviado al correo:', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Correo o contraseña incorrectos', 'Verifique las credenciales', {
+      timeOut: 2500
+    });
+  }
+  recuperar() {
+    this.viewRecuperar = false;
+  }
+  view() {
+    this.viewPass = true;
+    this.hidePass = false;
+  }
+  hide() {
+    this.viewPass = false;
+    this.hidePass = true;
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
@@ -53,6 +80,7 @@ export class FooterComponent implements OnInit {
   }
   logout() {
     this.auth.auth.signOut();
+    this.showExit();
   }
   showData() {
     this.auth.user.subscribe( res => {
@@ -61,13 +89,16 @@ export class FooterComponent implements OnInit {
   }
   passEmail() {
     this.auth.auth.sendPasswordResetEmail(this.email);
+    this.showInfo(this.email);
   }
   customLogin() {
     this.auth.auth.signInWithEmailAndPassword(this.email, this.pass)
     .then( res => {
       console.log(res);
+      this.showSuccess();
+      this.modalReference.close();
     })
-    .catch(err => console.log('Error cl:', err));
+    .catch(err => console.log('Error cl:', err, this.showWarning()));
   }
   ngOnInit() {
   }

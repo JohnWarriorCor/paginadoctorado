@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { TesisService } from '../../../../services/estudiantes/tesis/tesis.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-tesis',
@@ -30,7 +32,7 @@ export class TesisComponent implements OnInit, AfterViewInit {
   error = false;
   passError = '';
   // tslint:disable-next-line:max-line-length
-  constructor(private tesisService: TesisService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(public auth: AngularFireAuth, private tesisService: TesisService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
     this.tesisService.getTesis().subscribe( data => {
       this.tesis = data;
     });

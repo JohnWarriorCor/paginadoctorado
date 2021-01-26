@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   closeResult: string;
   @ViewChild('content') myModal: any;
   title = 'DocCienciasSalud';
-  constructor(private modalService: NgbModal) {
+  constructor( private modalService: NgbModal) {
   }
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'custom-moodal fade-in'});

@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { AgendaService } from '../../../services/agenda/agenda.service';
 import { ListadoService } from '../../../services/estudiantes/listado/listado.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-estudiantes',
@@ -33,7 +35,7 @@ export class EstudiantesComponent implements OnInit {
   passError = '';
 
   // tslint:disable-next-line:max-line-length
-  constructor( private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private listadoService: ListadoService) {
+  constructor( public auth: AngularFireAuth, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private listadoService: ListadoService) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });

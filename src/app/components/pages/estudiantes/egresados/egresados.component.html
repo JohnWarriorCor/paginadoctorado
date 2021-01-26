@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-    src="/assets/egresados.jpg"
+      src="/assets/egresados.jpg"
       class="d-block w-100"
       style="height: auto"
     />
@@ -39,7 +39,7 @@
                   [routerLink]="['/egresado', pro]"
                   class="w-100 perfilPro cursorSelect"
                 />
-                <div class="row" *ngIf="vistaEdicion != false">
+                <div class="row" *ngIf="auth.user | async">
                   <div class="col text-right">
                     <a
                       class="btn navlinkinSolid m-2"
@@ -68,7 +68,8 @@
                           class="alert alert-warning text-center font-weight-bold"
                           role="alert"
                         >
-                          Está a punto de eliminar el perfil del Profesor. <br />
+                          Está a punto de eliminar el perfil del Profesor.
+                          <br />
                           ¿Desea continuar con la acción?
                         </div>
                       </div>
@@ -99,7 +100,7 @@
                     class="card-title beigeInst carnetTitulo cursorSelect"
                     [routerLink]="['/egresado', pro]"
                   >
-                  <i class="fas fa-user-graduate"></i>
+                    <i class="fas fa-user-graduate"></i>
                     {{ agresados[pro].nombre }}
                   </h4>
                   <br />
@@ -110,7 +111,11 @@
                     <li>
                       <p class="text-justify">
                         {{ agresados[pro].sintesis | slice: 0:300 }}
-                        <a [routerLink]="['/egresado', pro]" style="color: #8f141b">... Ver más</a>
+                        <a
+                          [routerLink]="['/egresado', pro]"
+                          style="color: #8f141b"
+                          >... Ver más</a
+                        >
                       </p>
                     </li>
                   </ul>
@@ -148,121 +153,11 @@
               ></ngb-pagination>
             </div>
             <div class="col text-right">
-              <ng-template #formAdmin let-modal>
-                <div class="modal-header bgrojoyblanco">
-                  <h4 class="modal-title">
-                    <i class="fas fa-user-cog white"></i> Administrar contenido:
-                  </h4>
-                  <button
-                    type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="modal.dismiss('Cross click')"
-                  >
-                    <i class="fas fa-times" style="color: white"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form class="text-center p-2" #forma="ngForm">
-                    <!-- Email -->
-                    <div class="d-flex justify-content-around">
-                      <i
-                        class="fas fa-user-shield fa-2x grayinst"
-                        style="margin: 5px"
-                      ></i>
-                      <input
-                        type="name"
-                        id="defaultLoginFormEmail"
-                        [(ngModel)]="user"
-                        name="user"
-                        class="form-control mb-4"
-                        placeholder="Usuario"
-                      />
-                    </div>
-
-                    <!-- Password -->
-                    <div class="d-flex justify-content-around">
-                      <i
-                        class="fas fa-key fa-2x grayinst"
-                        style="margin: 5px"
-                      ></i>
-                      <input
-                        [(ngModel)]="key"
-                        name="key"
-                        type="password"
-                        id="defaultLoginFormPassword"
-                        class="form-control mb-4"
-                        placeholder="Contraseña"
-                      />
-                    </div>
-
-                    <div class="d-flex justify-content-around">
-                      <div>
-                        <!-- Remember me -->
-                        <mdb-checkbox [default]="true">Recuerdame</mdb-checkbox>
-                      </div>
-                      <div>
-                        <!-- Forgot password -->
-                        <a href="">¿Recuperar?</a>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <hr />
-                <div
-                  *ngIf="error != false"
-                  class="alert alert-danger alert-dismissible fade show"
-                  role="alert"
-                >
-                  <strong>{{ passError }}</strong>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <i class="fas fa-times" style="color: #8f141b"></i>
-                  </button>
-                </div>
-                <button
-                  *ngIf="ajustes != false"
-                  type="button"
-                  style="
-                    width: 80%;
-                    margin-left: auto;
-                    margin-right: auto;
-                    margin-bottom: 20px;
-                  "
-                  class="btn navlinkinSolid p-3"
-                  ngbAutofocus
-                  (click)="viewOpciones(key, user)"
-                  (click)="modal.dismiss('Cross click')"
-                >
-                  Acceder
-                </button>
-              </ng-template>
-              <div
-                *ngIf="ajustes != false"
-                class="col"
-                (click)="openSm(formAdmin)"
-              >
-                <i
-                  class="fas fa-wrench fa-2x"
-                  placement="left"
-                  ngbTooltip="Ajustes"
-                  style="color: #8f141b"
-                ></i>
-              </div>
-              <div class="col text-right" *ngIf="vistaEdicion != false">
+              <div class="col text-right" *ngIf="auth.user | async">
                 <a
-                  class="btn navlinkinSolid m-2"
+                  class="btn navlinkinSolid"
                   [routerLink]="['/admi_egresados', 'nuevo']"
-                  ><i class="fas fa-plus-circle"></i> Agregar nuev@ Egresad@</a
-                >
-              </div>
-              <div class="col text-right" *ngIf="vistaEdicion != false">
-                <a class="btn navlinkinSolid m-2" [routerLink]="['/#']"
-                  ><i class="fas fa-sign-out-alt"></i> Salir</a
+                  ><i class="fas fa-plus-circle"></i> Agregar nuevo Egresado</a
                 >
               </div>
             </div>

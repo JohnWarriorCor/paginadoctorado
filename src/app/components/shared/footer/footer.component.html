@@ -213,29 +213,78 @@
         </div>
 
         <!-- Password -->
-        <div class="d-flex justify-content-around">
-          <input
-            [(ngModel)]="pass"
-            name="pass"
-            type="password"
-            id="defaultLoginFormPassword"
-            class="form-control mb-4 shadow"
-            placeholder="Contraseña"
-          />
+        <div class="d-flex justify-content-around" *ngIf="viewPass != true">
+          <div class="input-group mb-3">
+            <input
+              [(ngModel)]="pass"
+              name="pass"
+              type="password"
+              class="form-control shadow"
+              placeholder="Contraseña"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              (keyup.enter)="customLogin()"
+            />
+            <div class="input-group-append">
+              <button
+                placement="top"
+                ngbTooltip="Ver contraseña"
+                class="btn navlinkinSolid shadow"
+                type="button"
+                id="button-addon2"
+                (click)="view()"
+              >
+                <i class="far fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Password view-->
+        <div class="d-flex justify-content-around" *ngIf="hidePass != true">
+          <div class="input-group mb-3">
+            <input
+              [(ngModel)]="pass"
+              name="pass"
+              type="text"
+              class="form-control shadow"
+              placeholder="Contraseña"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              (keyup.enter)="customLogin()"
+            />
+            <div class="input-group-append">
+              <button
+                placement="top"
+                ngbTooltip="Ocultar contraseña"
+                class="btn navlinkinSolid shadow"
+                type="button"
+                id="button-addon2"
+                (click)="hide()"
+              >
+                <i class="far fa-eye-slash"></i>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="justify-content-around">
           <div class="m-2">
             <!-- Forgot password -->
-            <a href="">¿Recuperar?</a>
+            <a (click)="recuperar()" class="cursorSelect text-blue"
+              >¿Recuperar?</a
+            >
           </div>
-          <div class="input-group mb-3">
+          <div class="input-group mb-3" *ngIf="viewRecuperar != true">
             <input
-              type="text"
               class="form-control shadow"
               placeholder="Correo"
+              type="email"
+              id="defaultLoginFormEmail"
+              [(ngModel)]="email"
+              name="email"
               aria-label="Recipient's username"
               aria-describedby="button-addon2"
+              (keyup.enter)="passEmail()"
             />
             <div class="input-group-append">
               <button
@@ -244,26 +293,21 @@
                 class="btn navlinkinSolid shadow"
                 type="button"
                 id="button-addon2"
+                (click)="passEmail()"
               >
                 <i class="far fa-paper-plane"></i>
               </button>
             </div>
+            <small class="m-2"
+              >Digite su correo para enviar un email y recuperar su
+              contraseña</small
+            >
           </div>
         </div>
       </form>
     </div>
   </div>
   <hr />
-  <!--<div
-    *ngIf="error != false"
-    class="alert alert-danger alert-dismissible fade show"
-    role="alert"
-  >
-    <strong>{{ passError }}</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <i class="fas fa-times" style="color: #8f141b"></i>
-    </button>
-  </div>-->
   <button
     type="button"
     style="
@@ -275,7 +319,6 @@
     class="btn navlinkinSolid p-3"
     ngbAutofocus
     (click)="customLogin()"
-    (click)="modal.dismiss('Cross click')"
   >
     Acceder
   </button>

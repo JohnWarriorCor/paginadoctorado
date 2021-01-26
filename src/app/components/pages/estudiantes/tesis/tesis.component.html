@@ -10,163 +10,56 @@
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
-        <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+        <div
+          class="col-sm shadow text-justify fondodivleft shadow grayinst"
+          *ngFor="let item of tesis | keysfirebase"
+        >
           <h3 class="titleInstRed">Tesis de Doctorado</h3>
           <hr class="lineInstRed" />
           <br />
           <div class="table-responsive">
             <table
-            id="tableSortExample"
-            class="table table-bordered table-hover text-center parinst"
-            style="border-radius: 10px"
-          >
-            <thead class="tablatit">
-              <tr class="white">
-                <th style="vertical-align: middle" scope="col">N°</th>
-                <th style="vertical-align: middle" scope="col">Título de Tesis</th>
-                <th style="vertical-align: middle" scope="col">Autor</th>
-                <th style="vertical-align: middle" scope="col">Resumen</th>
-                <th style="vertical-align: middle" scope="col">Director</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let item of tesis | keysfirebase">
-              <tr
-                *ngFor="
-                  let field of tesis[item].fieldArray | keysfirebase;
-                  let i = index
-                "
-              >
-                <th style="vertical-align: middle" scope="row">
-                  {{ i + 1 }}
-                </th>
-                <td style="vertical-align: middle">
-                  {{ tesis[item].fieldArray[field].titulo }}
-                </td>
-                <td style="vertical-align: middle">
-                  {{ tesis[item].fieldArray[field].autor }}
-                </td>
-                <td style="vertical-align: middle">
-                  {{ tesis[item].fieldArray[field].resumen }}
-                </td>
-                <td style="vertical-align: middle">
-                  {{ tesis[item].fieldArray[field].director }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              id="tableSortExample"
+              class="table table-bordered table-hover text-center parinst"
+              style="border-radius: 10px"
+            >
+              <thead class="tablatit">
+                <tr class="white">
+                  <th style="vertical-align: middle" scope="col">N°</th>
+                  <th style="vertical-align: middle" scope="col">
+                    Título de Tesis
+                  </th>
+                  <th style="vertical-align: middle" scope="col">Autor</th>
+                  <th style="vertical-align: middle" scope="col">Resumen</th>
+                  <th style="vertical-align: middle" scope="col">Director</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let field of tesis[item].fieldArray | keysfirebase;
+                    let i = index
+                  "
+                >
+                  <th style="vertical-align: middle" scope="row">
+                    {{ i + 1 }}
+                  </th>
+                  <td style="vertical-align: middle">
+                    {{ tesis[item].fieldArray[field].titulo }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ tesis[item].fieldArray[field].autor }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ tesis[item].fieldArray[field].resumen }}
+                  </td>
+                  <td style="vertical-align: middle">
+                    {{ tesis[item].fieldArray[field].director }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <ng-template #confirmar let-modal>
-            <div class="modal-header bgrojoyblanco">
-              <h4 class="modal-title">
-                <i class="fas fa-user-cog white"></i> Administrar contenido:
-              </h4>
-              <button
-                type="button"
-                class="close"
-                aria-label="Close"
-                (click)="modal.dismiss('Cross click')"
-              >
-                <i class="fas fa-times" style="color: white"></i>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form class="text-center p-2" #forma="ngForm">
-                <!-- Email -->
-                <div class="d-flex justify-content-around">
-                  <i
-                    class="fas fa-user-shield fa-2x grayinst"
-                    style="margin: 5px"
-                  ></i>
-                  <input
-                    type="name"
-                    id="defaultLoginFormEmail"
-                    [(ngModel)]="user"
-                    name="user"
-                    class="form-control mb-4"
-                    placeholder="Usuario"
-                  />
-                </div>
-
-                <!-- Password -->
-                <div class="d-flex justify-content-around">
-                  <i
-                    class="fas fa-key fa-2x grayinst"
-                    style="margin: 5px"
-                  ></i>
-                  <input
-                    [(ngModel)]="key"
-                    name="key"
-                    type="password"
-                    id="defaultLoginFormPassword"
-                    class="form-control mb-4"
-                    placeholder="Contraseña"
-                  />
-                </div>
-
-                <div class="d-flex justify-content-around">
-                  <div>
-                    <!-- Remember me -->
-                    <mdb-checkbox [default]="true">Recuerdame</mdb-checkbox>
-                  </div>
-                  <div>
-                    <!-- Forgot password -->
-                    <a href="">¿Recuperar?</a>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <hr />
-            <div
-              *ngIf="error != false"
-              class="alert alert-danger alert-dismissible fade show"
-              role="alert"
-            >
-              <strong>{{ passError }}</strong>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
-                <i class="fas fa-times" style="color: #8f141b"></i>
-              </button>
-            </div>
-            <button
-              *ngIf="ajustes != false"
-              type="button"
-              style="
-                width: 80%;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 20px;
-              "
-              class="btn btnColorFacultadSalud p-3"
-              ngbAutofocus
-              (click)="viewOpciones(key, user)"
-            >
-              Validar
-            </button>
-            <div
-              *ngFor="let item of tesis | keysfirebase"
-              style="
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 20px;
-              "
-            >
-              <button
-                *ngIf="validar != false"
-                type="button"
-                [routerLink]="['/admi_tesis', item]"
-                (click)="modal.dismiss('Cross click')"
-                class="btn navlinkinSolid p-3"
-                ngbAutofocus
-                (click)="viewOpciones(key, user)"
-              >
-                Acceder
-              </button>
-            </div>
-          </ng-template>
           <hr />
           <div class="row">
             <div class="col">
@@ -181,18 +74,13 @@
               </button>
             </div>
             <div class="col text-right">
-              <div
-                *ngIf="ajustes != false"
-                class="col"
-                (click)="openModal(confirmar)"
+              <button
+                *ngIf="auth.user | async"
+                class="btn navlinkinSolid"
+                [routerLink]="['/admi_tesis', item]"
               >
-                <i
-                  class="fas fa-wrench fa-2x"
-                  placement="left"
-                  ngbTooltip="Ajustes"
-                  style="color: #8f141b"
-                ></i>
-              </div>
+                <i class="fas fa-pencil-alt"></i> Editar
+              </button>
             </div>
           </div>
         </div>

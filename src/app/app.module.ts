@@ -12,8 +12,8 @@ import { MDBBootstrapModule, ModalModule, WavesModule, InputsModule, ButtonsModu
 export { MDBBootstrapModule };
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
-import { FooterComponent } from './components/shered/footer/footer.component';
-import { HeaderComponent } from './components/shered/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 import { APP_ROUTING } from './app.routing';
 import { RouterModule } from '@angular/router';
 
@@ -22,6 +22,12 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuardModule  } from '@angular/fire/auth-guard';
+
+// Toast
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastService } from './services/toast/toast.service';
+
 
 // importar locales
 import localeEsCO from '@angular/common/locales/es-CO';
@@ -138,12 +144,14 @@ registerLocaleData(localeEsCO, 'es-CO');
     ButtonsModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireAuthGuardModule
+    AngularFireAuthGuardModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   exports: [
     MDBBootstrapModule,
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'es-CO' }],
+  providers: [{ provide: LOCALE_ID, useValue: 'es-CO' }, ToastService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

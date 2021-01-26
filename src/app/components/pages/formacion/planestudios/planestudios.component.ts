@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { PlanestudiosService } from '../../../../services/formacion/planestudios/planestudios.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 @Component({
   selector: 'app-planestudios',
@@ -25,8 +27,8 @@ export class PlanestudiosComponent implements OnInit {
   validar = false;
   error = false;
   passError = '';
-  // tslint:disable-next-line:max-line-length
-  constructor(private planestudiosService: PlanestudiosService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
+
+  constructor( public auth: AngularFireAuth, private planestudiosService: PlanestudiosService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
     this.planestudiosService.getPlanestudios().subscribe( data => {
       this.planEstudios = data;
     });

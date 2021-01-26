@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { BibliotecaService } from '../../../services/biblioteca/biblioteca.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
 
 
 @Component({
@@ -32,7 +34,7 @@ export class BibliotecaComponent implements OnInit, AfterViewInit {
   error = false;
   passError = '';
   // tslint:disable-next-line:max-line-length
-  constructor(private bibliotecaService: BibliotecaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor( public auth: AngularFireAuth, private bibliotecaService: BibliotecaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
     this.bibliotecaService.getLibros().subscribe( data => {
       this.libro = data;
     });
