@@ -5,6 +5,10 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AgendaService } from '../../../../services/agenda/agenda.service';
 import { Agenda } from '../../../../interfaces/agenda/agenda';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-evento',
@@ -51,7 +55,7 @@ export class EventoComponent implements OnInit {
   link: any;
 
   // tslint:disable-next-line:max-line-length
-  constructor( public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( params => {
       this.agendas = this.agendaServices.getAgenda(params.id);
       this.link = params.id;
@@ -61,6 +65,16 @@ export class EventoComponent implements OnInit {
       if ( this.id !== 'nuevo' ) {
         this.agendaServices.getAgenda( this.id ).subscribe(agenda => this.agenda = agenda);
       }
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error', {
+      timeOut: 2500
     });
   }
 
@@ -137,6 +151,20 @@ export class EventoComponent implements OnInit {
   agregarNuevo( forma: NgForm) {
     this.router.navigate(['/admi_agenda', 'nuevo']);
     forma.reset({});
+  }
+
+  borrarAgenda() {
+    this.agendaServices.borrarAgenda(this.link).subscribe( respuesta => {
+      if ( respuesta ) {
+        console.error(respuesta);
+        this.showDanger();
+      } else {
+        delete this.agenda[this.link];
+        this.elementoEliminado();
+        this.modalReference.close();
+        this.router.navigate(['/agenda']);
+      }
+    });
   }
 
 }

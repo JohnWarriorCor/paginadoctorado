@@ -7,6 +7,8 @@ import { PlanestudiosService } from '../../../../services/formacion/planestudios
 import { Planestudios } from '../../../../interfaces/formacion/planestudios/planestudios';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-planestudiosedit',
@@ -37,12 +39,42 @@ export class PlanestudioseditComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private planEstudioService: PlanestudiosService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private planEstudioService: PlanestudiosService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
         this.planEstudioService.getPlanestudio( this.id ).subscribe(grupoInvestigacion => this.planEstudio = grupoInvestigacion);
       }
+    });
+  }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
     });
   }
 
@@ -55,11 +87,13 @@ export class PlanestudioseditComponent implements OnInit {
   }
   addFieldValue() {
     this.planEstudio.fieldArray.push(this.newAttribute);
+    this.elementoAgregado();
     this.newAttribute = {};
    }
 
    deleteFieldValue(index) {
     this.planEstudio.fieldArray.splice(index, 1);
+    this.elementoEliminado();
    }
    guardar() {
     if ( this.planEstudio.fieldArray[0] !== this.war ||  this.planEstudio.fieldArray[0] !== this.war ) {
@@ -67,6 +101,7 @@ export class PlanestudioseditComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.planEstudioService.nuevoPlanestudio( this.planEstudio ).subscribe(data => {
+          this.showSuccess();
           this.router.navigate(['/plandeestudios']);
           this.modalReference.close();
         },
@@ -74,10 +109,11 @@ export class PlanestudioseditComponent implements OnInit {
       } else {
         this.modalReference.close();
         this.planEstudioService.actualizarPlanestudio( this.planEstudio, this.id ).subscribe(data => {
+          this.showInfo();
           this.router.navigate(['/plandeestudios']);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showWarning()));
       }
     } else {
       this.error = true;

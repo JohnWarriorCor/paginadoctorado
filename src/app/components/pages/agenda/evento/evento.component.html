@@ -79,28 +79,40 @@
             <div class="row no-print">
               <div class="col">
                 <button
-                class="btn navlinkinSolid"
-                printSectionId="print-section"
-                [useExistingCss]="true"
-                printTitle="Perfil {{agenda.titulo}}"
-                ngxPrint
-              >
-                <i class="fas fa-print"></i> Imprimir
-              </button>
+                  class="btn navlinkinSolid m-2"
+                  printSectionId="print-section"
+                  [useExistingCss]="true"
+                  printTitle="Evento {{ agenda.titulo }}"
+                  ngxPrint
+                >
+                  <i class="fas fa-print"></i> Imprimir
+                </button>
                 <button
-                  class="btn navlinkinSolid m-1"
+                  class="btn navlinkinSolid m-2"
                   [routerLink]="['/agenda']"
                 >
                   <i class="fas fa-sign-out-alt"></i> Regresar
                 </button>
               </div>
-              <div class="col text-right">
-                <ng-template #formAdmin let-modal>
-                  <div class="modal-header bgrojoyblanco">
-                    <h4 class="modal-title">
-                      <i class="fas fa-user-cog white"></i> Administrar
-                      contenido:
-                    </h4>
+              <div class="col text-right" *ngIf="auth.user | async">
+                <button
+                  class="btn navlinkinSolid m-2"
+                  [routerLink]="['/admi_agenda', 'nuevo']"
+                >
+                  <i class="fas fa-plus-circle"></i> Agregar nueva Publicación
+                </button>
+                <button class="btn navlinkinSolid m-2" (click)="nav()">
+                  <i class="fas fa-user-edit"></i> Editar
+                </button>
+                <button
+                  (click)="openModal(confirmar)"
+                  class="btn navlinkinSolid m-2"
+                >
+                  <i class="fas fa-trash"></i> Borrar
+                </button>
+                <ng-template #confirmar let-modal>
+                  <div class="modal-header bgrojoycafe">
+                    <h4 class="modal-title">Confirmar acción</h4>
                     <button
                       type="button"
                       class="close"
@@ -111,110 +123,32 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form class="text-center p-2" #forma="ngForm">
-                      <!-- Email -->
-                      <div class="d-flex justify-content-around">
-                        <i
-                          class="fas fa-user-shield fa-2x grayinst"
-                          style="margin: 5px"
-                        ></i>
-                        <input
-                          type="name"
-                          id="defaultLoginFormEmail"
-                          [(ngModel)]="user"
-                          name="user"
-                          class="form-control mb-4"
-                          placeholder="Usuario"
-                        />
-                      </div>
-
-                      <!-- Password -->
-                      <div class="d-flex justify-content-around">
-                        <i
-                          class="fas fa-key fa-2x grayinst"
-                          style="margin: 5px"
-                        ></i>
-                        <input
-                          [(ngModel)]="key"
-                          name="key"
-                          type="password"
-                          id="defaultLoginFormPassword"
-                          class="form-control mb-4"
-                          placeholder="Contraseña"
-                        />
-                      </div>
-
-                      <div class="d-flex justify-content-around">
-                        <div>
-                          <!-- Remember me -->
-                          <mdb-checkbox [default]="true"
-                            >Recuerdame</mdb-checkbox
-                          >
-                        </div>
-                        <div>
-                          <!-- Forgot password -->
-                          <a href="">¿Recuperar?</a>
-                        </div>
-                      </div>
-                    </form>
+                    <div
+                      class="alert alert-warning text-center font-weight-bold"
+                      role="alert"
+                    >
+                      Está a punto de borrar el evento. <br />
+                      ¿Desea continuar con la acción?
+                    </div>
                   </div>
-                  <hr />
-                  <div
-                    *ngIf="error != false"
-                    class="alert alert-danger alert-dismissible fade show"
-                    role="alert"
-                  >
-                    <strong>{{ passError }}</strong>
+                  <div class="modal-footer">
                     <button
                       type="button"
-                      class="close"
-                      data-dismiss="alert"
-                      aria-label="Close"
+                      class="btn btnColorFacultadSalud"
+                      ngbAutofocus
+                      (click)="borrarAgenda()"
                     >
-                      <i class="fas fa-times" style="color: #8f141b"></i>
+                      Aceptar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn navlinkinSolid"
+                      (click)="modal.close('Close click')"
+                    >
+                      Cancelar
                     </button>
                   </div>
-                  <button
-                    *ngIf="ajustes != false"
-                    type="button"
-                    style="
-                      width: 80%;
-                      margin-left: auto;
-                      margin-right: auto;
-                      margin-bottom: 20px;
-                    "
-                    class="btn navlinkinSolid p-3"
-                    ngbAutofocus
-                    (click)="viewOpciones(key, user)"
-                    (click)="modal.dismiss('Cross click')"
-                  >
-                    Acceder
-                  </button>
                 </ng-template>
-                <div
-                  *ngIf="ajustes != false"
-                  class="col"
-                  (click)="openSm(formAdmin)"
-                >
-                  <i
-                    class="fas fa-wrench fa-2x"
-                    placement="left"
-                    ngbTooltip="Ajustes"
-                    style="color: #8f141b"
-                  ></i>
-                </div>
-                <div class="col text-right" *ngIf="vistaEdicion != false">
-                  <a
-                    class="btn navlinkinSolid m-2"
-                    [routerLink]="['/admi_agenda', 'nuevo']"
-                    ><i class="fas fa-plus-circle"></i> Agregar nueva Publicación</a
-                  >
-                  <a
-                    class="btn navlinkinSolid m-2"
-                    (click)="nav()"
-                    ><i class="fas fa-user-edit"></i> Editar</a
-                  >
-                </div>
               </div>
             </div>
           </div>

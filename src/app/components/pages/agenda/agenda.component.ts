@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AgendaService } from '../../../services/agenda/agenda.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-agenda',
@@ -22,18 +24,20 @@ export class AgendaComponent implements OnInit {
   comodinAcum = 0;
   agenda: any[] = [];
   loading = true;
-  // Herramientas ocultas
-  key: any;
-  user: any;
-  opciones = false;
-  ajustes = true;
-  validar = false;
-  error = false;
-  passError = '';
 
-  constructor( public auth: AngularFireAuth, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router ) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router ) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error', {
+      timeOut: 2500
     });
   }
 
@@ -49,29 +53,14 @@ export class AgendaComponent implements OnInit {
 
   ngOnInit() {
   }
-  viewOpciones(pass, user) {
-    if ( pass === '7183' && user === 'admin' ) {
-      this.ajustes = false;
-      this.vistaEdicion = true;
-    } else {
-      if (pass !== '7183' && user !== 'admin') {
-        this.error = true;
-        this.passError = 'Usuario y contraseña incorrectas';
-      } else if (pass !== '7183') {
-        this.error = true;
-        this.passError = 'Contraseña incorrecta';
-      } else {
-        this.error = true;
-        this.passError = 'Usuario incorrecto';
-      }
-    }
-  }
   borrarAgenda( key$: string) {
     this.agendaService.borrarAgenda(key$).subscribe( respuesta => {
       if ( respuesta ) {
         console.error(respuesta);
+        this.showDanger();
       } else {
         delete this.agenda[key$];
+        this.elementoEliminado();
         this.modalReference.close();
       }
     });

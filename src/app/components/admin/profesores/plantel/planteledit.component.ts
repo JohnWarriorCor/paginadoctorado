@@ -7,6 +7,8 @@ import { PlantelService } from '../../../../services/profesores/plantel/plantel.
 import { Plantel } from '../../../../interfaces/profesores/plantel/plantel';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -44,12 +46,42 @@ export class PlanteleditComponent implements OnInit {
   };
 
    // tslint:disable-next-line:max-line-length
-   constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private plantelService: PlantelService, private router: Router, private activatedRoute: ActivatedRoute) {
+   constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private plantelService: PlantelService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
         this.plantelService.getPlantel( this.id ).subscribe(plantelProfesor => this.plantelProfesor = plantelProfesor);
       }
+    });
+  }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
     });
   }
 
@@ -66,10 +98,12 @@ export class PlanteleditComponent implements OnInit {
   addFieldValue() {
     this.plantelProfesor.fieldArray.push(this.newAttribute);
     this.newAttribute = {};
+    this.elementoAgregado();
   }
 
-   deleteFieldValue(index) {
+  deleteFieldValue(index) {
     this.plantelProfesor.fieldArray.splice(index, 1);
+    this.elementoEliminado();
   }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
@@ -95,17 +129,19 @@ export class PlanteleditComponent implements OnInit {
       // this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.plantelService.nuevoPlantel( this.plantelProfesor ).subscribe(data => {
-          this.router.navigate(['/docentes']);
+          this.showSuccess();
+          this.router.navigate(['/docente', this.id]);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showDanger()));
       } else {
         this.modalReference.close();
         this.plantelService.actualizarPlantel( this.plantelProfesor, this.id ).subscribe(data => {
-          this.router.navigate(['/docentes']);
+          this.showInfo();
+          this.router.navigate(['/docente', this.id]);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showWarning()));
       }
     } else {
       this.error = true;
