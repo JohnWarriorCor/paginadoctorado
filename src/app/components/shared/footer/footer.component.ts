@@ -57,6 +57,11 @@ export class FooterComponent implements OnInit {
       timeOut: 2500
     });
   }
+  showWarningMail() {
+    this.toastr.warning( 'Correo no registrado', 'Verifique el correo escrito', {
+      timeOut: 2500
+    });
+  }
   recuperar() {
     this.viewRecuperar = false;
   }
@@ -88,8 +93,12 @@ export class FooterComponent implements OnInit {
     });
   }
   passEmail() {
-    this.auth.auth.sendPasswordResetEmail(this.email);
-    this.showInfo(this.email);
+    this.auth.auth.sendPasswordResetEmail(this.email).then( res => {
+      console.log(res);
+      this.showInfo(this.email);
+      this.modalReference.close();
+    })
+    .catch(err => console.log('Error cl:', err, this.showWarningMail()));
   }
   customLogin() {
     this.auth.auth.signInWithEmailAndPassword(this.email, this.pass)
