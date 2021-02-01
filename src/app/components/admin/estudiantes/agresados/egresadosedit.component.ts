@@ -7,6 +7,8 @@ import { EgresadosService } from '../../../../services/estudiantes/egresados/egr
 import { Egresados } from '../../../../interfaces/estudiantes/egresados/egresados';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-egresadosedit',
@@ -44,12 +46,42 @@ export class EgresadoseditComponent implements OnInit {
   };
 
    // tslint:disable-next-line:max-line-length
-   constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private egresadosService: EgresadosService, private router: Router, private activatedRoute: ActivatedRoute) {
+   constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private egresadosService: EgresadosService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
         this.egresadosService.getEgresado( this.id ).subscribe(egresados => this.egresados = egresados);
       }
+    });
+  }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
     });
   }
 
@@ -65,11 +97,13 @@ export class EgresadoseditComponent implements OnInit {
   }
   addFieldValue() {
     this.egresados.fieldArray.push(this.newAttribute);
+    this.elementoAgregado();
     this.newAttribute = {};
   }
 
    deleteFieldValue(index) {
     this.egresados.fieldArray.splice(index, 1);
+    this.elementoEliminado();
   }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
@@ -95,17 +129,19 @@ export class EgresadoseditComponent implements OnInit {
       // this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.egresadosService.nuevoEgresado( this.egresados ).subscribe(data => {
+          this.showSuccess();
           this.router.navigate(['/egresados']);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showDanger()));
       } else {
         this.modalReference.close();
         this.egresadosService.actualizarEgresado( this.egresados, this.id ).subscribe(data => {
-          this.router.navigate(['/egresados']);
+          this.showInfo();
+          this.router.navigate(['/egresado', this.id]);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showWarning()));
       }
     } else {
       this.error = true;

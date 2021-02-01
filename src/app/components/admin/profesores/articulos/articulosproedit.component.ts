@@ -7,6 +7,8 @@ import { Articulospro } from '../../../../interfaces/profesores/articulospro/art
 import { ArticulosproService } from '../../../../services/profesores/articulospro/articulospro.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-articulosproedit',
@@ -38,12 +40,42 @@ export class ArticulosproeditComponent implements OnInit {
   };
 
   // tslint:disable-next-line:max-line-length
-  constructor(public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private articulosProService: ArticulosproService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private articulosProService: ArticulosproService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
         this.articulosProService.getArticuloProfesor( this.id ).subscribe(articulosPro => this.articulosPro = articulosPro);
       }
+    });
+  }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
     });
   }
 
@@ -56,11 +88,13 @@ export class ArticulosproeditComponent implements OnInit {
   }
   addFieldValue() {
     this.articulosPro.fieldArray.push(this.newAttribute);
+    this.elementoAgregado();
     this.newAttribute = {};
    }
 
    deleteFieldValue(index) {
     this.articulosPro.fieldArray.splice(index, 1);
+    this.elementoEliminado();
    }
    guardar() {
     if ( this.articulosPro.fieldArray[0] !== this.war ||  this.articulosPro.fieldArray[0] !== this.war ) {
@@ -68,17 +102,19 @@ export class ArticulosproeditComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.articulosProService.nuevoArticuloProfesor( this.articulosPro ).subscribe(data => {
+          this.showSuccess();
           this.router.navigate(['/articulosProfesores']);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showDanger()));
       } else {
         this.modalReference.close();
         this.articulosProService.actualizarArticuloProfesor( this.articulosPro, this.id ).subscribe(data => {
+          this.showInfo();
           this.router.navigate(['/articulosProfesores']);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showWarning()));
       }
     } else {
       this.error = true;

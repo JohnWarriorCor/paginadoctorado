@@ -6,6 +6,8 @@ import { AgendaService } from '../../../services/agenda/agenda.service';
 import { PlantelService } from '../../../services/profesores/plantel/plantel.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-docentes',
@@ -25,15 +27,7 @@ export class DocentesComponent implements OnInit {
   acumFechas = 0;
   comodinAcum = 0;
   loading = true;
-  // Herramientas ocultas
-  key: any;
-  user: any;
-  opciones = false;
-  ajustes = true;
-  validar = false;
-  error = false;
-  passError = '';
-  constructor(public auth: AngularFireAuth, private profesoresService: ProfesoresService, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private plantelService: PlantelService) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private profesoresService: ProfesoresService, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private plantelService: PlantelService) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });
@@ -50,22 +44,35 @@ export class DocentesComponent implements OnInit {
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
-  viewOpciones(pass, user) {
-    if ( pass === '7183' && user === 'admin' ) {
-      this.ajustes = false;
-      this.vistaEdicion = true;
-    } else {
-      if (pass !== '7183' && user !== 'admin') {
-        this.error = true;
-        this.passError = 'Usuario y contraseña incorrectas';
-      } else if (pass !== '7183') {
-        this.error = true;
-        this.passError = 'Contraseña incorrecta';
-      } else {
-        this.error = true;
-        this.passError = 'Usuario incorrecto';
-      }
-    }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
+    });
   }
   up() {
     window.scroll(0, 400);
@@ -76,6 +83,7 @@ export class DocentesComponent implements OnInit {
         console.error(respuesta);
       } else {
         delete this.plantelProfesores[key$];
+        this.elementoEliminado();
         this.modalReference.close();
       }
     });

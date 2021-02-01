@@ -51,13 +51,11 @@ import { NgxPrintModule } from 'ngx-print';
 import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { KeysfirebasePipe } from './pipes/keysfirebase.pipe';
 import { ListinvertPipe } from './pipes/listinvert.pipe';
-import { TarjetadocenteComponent } from './components/pages/docentes/tarjetadocente/tarjetadocente.component';
 import { DocenteComponent } from './components/pages/docentes/docente/docente.component';
 import { BibliotecaComponent } from './components/pages/biblioteca/biblioteca.component';
 import { ArticulosprofesoresComponent } from './components/pages/docentes/articulosprofesores/articulosprofesores.component';
 import { ArticulosestudiantesComponent } from './components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component';
 import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
-import { TarjetaestudianteComponent } from './components/pages/estudiantes/tarjetaestudiante/tarjetaestudiante.component';
 import { HistoriaeditComponent } from './components/admin/programa/historiaedit/historiaedit.component';
 import { AgendaeditComponent } from './components/admin/agendaedit/agendaedit.component';
 import { EventoComponent } from './components/pages/agenda/evento/evento.component';
@@ -102,13 +100,11 @@ registerLocaleData(localeEsCO, 'es-CO');
     DomseguroPipe,
     KeysfirebasePipe,
     ListinvertPipe,
-    TarjetadocenteComponent,
     DocenteComponent,
     BibliotecaComponent,
     ArticulosprofesoresComponent,
     ArticulosestudiantesComponent,
     EstudianteComponent,
-    TarjetaestudianteComponent,
     HistoriaeditComponent,
     AgendaeditComponent,
     EventoComponent,

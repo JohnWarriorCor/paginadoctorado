@@ -130,8 +130,8 @@ export class PlanteleditComponent implements OnInit {
       if ( this.id === 'nuevo' ) {
         this.plantelService.nuevoPlantel( this.plantelProfesor ).subscribe(data => {
           this.showSuccess();
-          this.router.navigate(['/docente', this.id]);
           this.modalReference.close();
+          this.router.navigate(['/docentes']);
         },
         error => console.error(error, this.showDanger()));
       } else {

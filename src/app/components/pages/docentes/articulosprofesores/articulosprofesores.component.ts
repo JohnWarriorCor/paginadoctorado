@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ArticulosproService } from '../../../../services/profesores/articulospro/articulospro.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-articulosprofesores',
@@ -33,11 +35,42 @@ export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
   error = false;
   passError = '';
   // tslint:disable-next-line:max-line-length
-  constructor( public auth: AngularFireAuth, private articulosProService: ArticulosproService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private articulosProService: ArticulosproService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
     this.articulosProService.getArticuloProfesores().subscribe( data => {
       this.articulosPro = data;
     });
   }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
+    });
+  }
+
   refresh() {
     window.location.reload();
   }
@@ -53,23 +86,6 @@ export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
-  }
-  viewOpciones(pass, user) {
-    if ( pass === '7183' && user === 'admin' ) {
-      this.ajustes = false;
-      this.validar = true;
-    } else {
-      if (pass !== '7183' && user !== 'admin') {
-        this.error = true;
-        this.passError = 'Usuario y contraseña incorrectas';
-      } else if (pass !== '7183') {
-        this.error = true;
-        this.passError = 'Contraseña incorrecta';
-      } else {
-        this.error = true;
-        this.passError = 'Usuario incorrecto';
-      }
-    }
   }
   borrarGrupo( key$: string) {
     this.articulosProService.borrarArticuloProfesor(key$).subscribe( respuesta => {

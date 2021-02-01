@@ -7,6 +7,8 @@ import { ListadoService } from '../../../../services/estudiantes/listado/listado
 import { Listado } from '../../../../interfaces/estudiantes/listado/listado';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-estudiante',
@@ -48,16 +50,10 @@ export class EstudianteComponent implements OnInit {
   acumFechas = 0;
   comodinAcum = 0;
   loading = true;
-  // Herramientas ocultas
-  key: any;
-  user: any;
-  opciones = false;
-  ajustes = true;
-  validar = false;
   link: any;
 
   // tslint:disable-next-line:max-line-length
-  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private listadoService: ListadoService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private listadoService: ListadoService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       this.link = parametros.id;
@@ -68,6 +64,36 @@ export class EstudianteComponent implements OnInit {
     this.listadoService.getListados().subscribe( data => {
       this.listados = data;
       console.log(this.listados);
+    });
+  }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
     });
   }
   nav() {
@@ -98,23 +124,6 @@ export class EstudianteComponent implements OnInit {
   up() {
     window.scroll(0, 400);
   }
-  viewOpciones(pass, user) {
-    if ( pass === '7183' && user === 'admin' ) {
-      this.ajustes = false;
-      this.vistaEdicion = true;
-    } else {
-      if (pass !== '7183' && user !== 'admin') {
-        this.error = true;
-        this.passError = 'Usuario y contraseña incorrectas';
-      } else if (pass !== '7183') {
-        this.error = true;
-        this.passError = 'Contraseña incorrecta';
-      } else {
-        this.error = true;
-        this.passError = 'Usuario incorrecto';
-      }
-    }
-  }
   guardar() {
     if ( this.listado.nombre !== this.war ||  this.listado.nombre !== this.war ) {
       this.error = false;
@@ -144,6 +153,18 @@ export class EstudianteComponent implements OnInit {
   agregarNuevo( forma: NgForm) {
     this.router.navigate(['/admi_estudiante', 'nuevo']);
     forma.reset({});
+  }
+  borrarPlantel() {
+    this.listadoService.borrarListado(this.id).subscribe( respuesta => {
+      if ( respuesta ) {
+        console.error(respuesta);
+      } else {
+        this.router.navigate(['/docentes']);
+        delete this.listados[this.id];
+        this.elementoEliminado();
+        this.modalReference.close();
+      }
+    });
   }
 
 }

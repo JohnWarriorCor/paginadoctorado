@@ -121,9 +121,13 @@ export class PlanestudioseditComponent implements OnInit {
       this.modalReference.close();
     }
   }
+  up() {
+    window.scroll(0, 400);
+  }
   agregarNuevo( forma: NgForm) {
     this.router.navigate(['/admi_plandeestudios', 'nuevo']);
     forma.reset({});
+    this.up();
   }
 
 }

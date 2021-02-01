@@ -5,6 +5,10 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ListadoService } from '../../../../services/estudiantes/listado/listado.service';
 import { Listado } from '../../../../interfaces/estudiantes/listado/listado';
+import { AngularFireAuth } from '@angular/fire/auth';
+import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-listadoedit',
@@ -41,12 +45,42 @@ export class ListadoeditComponent implements OnInit {
   };
 
    // tslint:disable-next-line:max-line-length
-   constructor( public datepipe: DatePipe, private modalService: NgbModal, private listadoService: ListadoService, private router: Router, private activatedRoute: ActivatedRoute) {
+   constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private listadoService: ListadoService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
         this.listadoService.getListado( this.id ).subscribe(listado => this.listado = listado);
       }
+    });
+  }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
     });
   }
 
@@ -62,11 +96,13 @@ export class ListadoeditComponent implements OnInit {
   }
   addFieldValue() {
     this.listado.fieldArray.push(this.newAttribute);
+    this.elementoAgregado();
     this.newAttribute = {};
   }
 
    deleteFieldValue(index) {
     this.listado.fieldArray.splice(index, 1);
+    this.elementoEliminado();
   }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
@@ -92,17 +128,19 @@ export class ListadoeditComponent implements OnInit {
       // this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.listadoService.nuevoListado( this.listado ).subscribe(data => {
-          this.router.navigate(['/estudiantes']);
+          this.showSuccess();
           this.modalReference.close();
+          this.router.navigate(['/estudiantes']);
         },
-        error => console.error(error));
+        error => console.error(error, this.showDanger()));
       } else {
         this.modalReference.close();
         this.listadoService.actualizarListado( this.listado, this.id ).subscribe(data => {
-          this.router.navigate(['/estudiantes']);
+          this.showInfo();
+          this.router.navigate(['/estudiante', this.id]);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showWarning()));
       }
     } else {
       this.error = true;
