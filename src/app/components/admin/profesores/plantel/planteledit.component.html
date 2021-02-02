@@ -63,7 +63,7 @@
             </li>
           </ul>
           <a
-            href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
+            href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files~2FPROFESORES"
             target="_blank"
             ><button class="btn navlinkinSolid">Cargar imagen</button></a
           >
@@ -91,6 +91,35 @@
               class="rounded mx-auto d-block"
               style="width: 100%; border: solid 5px white"
             />
+            <div class="m-2 p-2 text-white text-center">
+              <div class="custom-control custom-radio">
+                <input
+                  type="radio"
+                  id="customRadio1"
+                  name="customRadio"
+                  (click)="imgHombre()"
+                  class="custom-control-input"
+                />
+                <label class="custom-control-label" for="customRadio1"
+                  >Masculino</label
+                >
+              </div>
+              <div class="custom-control custom-radio">
+                <input
+                  type="radio"
+                  id="customRadio2"
+                  name="customRadio"
+                  (click)="imgMujer()"
+                  class="custom-control-input"
+                />
+                <label class="custom-control-label" for="customRadio2"
+                  >Femenino</label
+                >
+              </div>
+            </div>
+            <p class="alert alert-warning text-center font-weight-bold m-3">
+              Solo seleccione género si el profesor no tiene foto para cargar.
+            </p>
             <div
               *ngIf="alertBool != false"
               class="alert alert-danger alert-dismissible fade show m-2"
@@ -172,8 +201,9 @@
                     "
                   >
                     <td class="text-justify">
-                      <textarea rows="5"
-                      [(ngModel)]="field.formacion"
+                      <textarea
+                        rows="5"
+                        [(ngModel)]="field.formacion"
                         class="form-control inputTable"
                         type="text"
                         name="{{ field.formacion }}"
@@ -194,8 +224,9 @@
                   </tr>
                   <tr>
                     <td class="text-justify">
-                      <textarea rows="5"
-                      class="form-control inputTable"
+                      <textarea
+                        rows="5"
+                        class="form-control inputTable"
                         type="text"
                         id="newAttributeFormacion"
                         [(ngModel)]="newAttribute.formacion"

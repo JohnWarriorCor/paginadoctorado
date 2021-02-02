@@ -1,10 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { ProfesoresService, Profesores } from '../services/profesores.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AgendaService } from '../services/agenda/agenda.service';
-import { EstudiantesService, Estudiantes } from '../services/estudiantes.service';
 import { DenominacionService } from '../services/home/denominacion.service';
 import { CarruselService } from '../services/home/carrusel/carrusel.service';
 import { ArticulosestuService } from '../services/estudiantes/articulos/articulosestu.service';
@@ -40,8 +38,6 @@ export class HomeComponent implements OnInit {
   agenda: any[] = [];
   denominacion: any[] = [];
   activ: any[] = [];
-  profesores: Profesores[] = [];
-  estudiantes: Estudiantes[] = [];
   carrusel: any[] = [];
   slides: any = [[]];
   slidesAgenda: any = [[]];
@@ -49,13 +45,7 @@ export class HomeComponent implements OnInit {
   articuloEstudiante: Array<any> = [];
   articulosPro: Array<any> = [];
   // tslint:disable-next-line:no-shadowed-variable
-  constructor( public auth: AngularFireAuth, private listadoService: ListadoService, private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private estudianteService: EstudiantesService, private profesorService: ProfesoresService, private router: Router, private carruselServices: CarruselService, private articulosEstuService: ArticulosestuService, private articulosProService: ArticulosproService, private plantelService: PlantelService ) {
-    this.activatedRoute.params.subscribe( params => {
-      this.profesor = this.profesorService.getProfesor(params.id);
-    });
-    this.activatedRoute.params.subscribe( params => {
-      this.estudiante = this.estudianteService.getEstudiante(params.id);
-    });
+  constructor( public auth: AngularFireAuth, private listadoService: ListadoService, private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router, private carruselServices: CarruselService, private articulosEstuService: ArticulosestuService, private articulosProService: ArticulosproService, private plantelService: PlantelService ) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });
@@ -105,10 +95,6 @@ export class HomeComponent implements OnInit {
     return R;
   }
   ngOnInit() {
-    this.profesores = this.profesorService.getProfesores();
-    this.estudiantes = this.estudianteService.getEstudiantes();
-    this.slides = this.chunk(this.profesores, 4);
-    this.slidesEstudiante = this.chunkEstudiante(this.estudiantes, 4);
     this.slidesAgenda = this.chunkAgenda(this.activ, 2);
   }
   verProfesor( idx: number ) {

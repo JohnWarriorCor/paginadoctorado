@@ -53,7 +53,7 @@ export class CarruseleditComponent implements OnInit {
     this.war = this.carrusel.titulo;
     if ( this.carrusel.urlImg === null || this.carrusel.urlImg === '' ) {
       // tslint:disable-next-line:max-line-length
-      this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/carrusel_prueba.jpg?alt=media&token=840ed11f-f7ac-4977-82aa-14311bd9acb3';
+      this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/NO%20MODIFICAR%2Fcarrusel_prueba.jpg?alt=media&token=b2e86559-cf35-4541-9cf6-9b81415817ab';
       this.carrusel.urlImg = this.defaultImgUrl;
       return this.carrusel.urlImg;
     }

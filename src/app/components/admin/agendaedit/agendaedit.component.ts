@@ -86,7 +86,7 @@ export class AgendaeditComponent implements OnInit {
     this.war = this.agenda.titulo;
     if ( this.agenda.img === null || this.agenda.img === '' ) {
       // tslint:disable-next-line:max-line-length
-      this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/comunicado.png?alt=media&token=0ffc510f-7150-4ced-9cb4-e6c8f39119e8';
+      this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/NO%20MODIFICAR%2Fcomunicado.png?alt=media&token=aa7d3518-ad8f-41dc-bbb4-9bf7ea615b51';
       this.agenda.img = this.defaultImgUrl;
       return this.agenda.img;
     }

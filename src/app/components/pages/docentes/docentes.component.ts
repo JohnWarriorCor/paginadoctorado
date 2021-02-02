@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ProfesoresService, Profesores } from '../../../services/profesores.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { AgendaService } from '../../../services/agenda/agenda.service';
@@ -27,7 +26,7 @@ export class DocentesComponent implements OnInit {
   acumFechas = 0;
   comodinAcum = 0;
   loading = true;
-  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private profesoresService: ProfesoresService, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private plantelService: PlantelService) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private plantelService: PlantelService) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });

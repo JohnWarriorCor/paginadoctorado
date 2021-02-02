@@ -88,7 +88,7 @@ export class ListadoeditComponent implements OnInit {
     this.war = this.listado.nombre;
     if ( this.listado.foto === null || this.listado.foto === '' ) {
       // tslint:disable-next-line:max-line-length
-      this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/pro_null_h.png?alt=media&token=489c904c-df1c-4a53-826a-4d52546fea77';
+      this.defaultImgUrl = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/NO%20MODIFICAR%2Fperfil_prueba.png?alt=media&token=d1fff1b2-b9eb-4536-866a-ba6720887f02';
       this.listado.foto = this.defaultImgUrl;
       return this.listado.foto;
     }
@@ -103,6 +103,12 @@ export class ListadoeditComponent implements OnInit {
    deleteFieldValue(index) {
     this.listado.fieldArray.splice(index, 1);
     this.elementoEliminado();
+  }
+  imgMujer() {
+    this.listado.foto = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/NO%20MODIFICAR%2Fperfil_mujer.png?alt=media&token=62e21016-cb7e-4bcc-a1c6-af5ee2f71188';
+  }
+  imgHombre() {
+    this.listado.foto = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/NO%20MODIFICAR%2Fperfil_hombre.png?alt=media&token=6a9058fa-e8a5-4d75-83de-202c11ea1053';
   }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
