@@ -6,6 +6,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CarruselService } from '../../../../services/home/carrusel/carrusel.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-carrusel',
@@ -34,7 +36,7 @@ export class CarruselComponent implements OnInit {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private carruselServices: CarruselService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private carruselServices: CarruselService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.carruselServices.getCarruseles().subscribe( data => {
       this.carrusel = data;
     });
@@ -46,12 +48,18 @@ export class CarruselComponent implements OnInit {
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
+    });
+  }
   borrarCarrusel( key$: string) {
     this.carruselServices.borrarCarrusel(key$).subscribe( respuesta => {
       if ( respuesta ) {
         console.error(respuesta);
       } else {
         delete this.carrusel[key$];
+        this.elementoEliminado();
         this.modalReference.close();
         window.location.reload();
       }

@@ -66,6 +66,16 @@ export class AgendaeditComponent implements OnInit {
       timeOut: 2500
     });
   }
+  imgChange() {
+    this.toastr.info( '', 'Imagen cambiada con éxito', {
+      timeOut: 2500
+    });
+  }
+  imgNone() {
+    this.toastr.error('No puede dejar un evento sin imagen, por favor inserte un URL correspondiente', 'Error', {
+      timeOut: 2500
+    });
+  }
   showWarning() {
     this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
       timeOut: 2500
@@ -103,10 +113,11 @@ export class AgendaeditComponent implements OnInit {
     if (urlimg === '' || urlimg === null) {
       this.defaultImgUrl = urlimg;
       this.alertBool = true;
-      this.imgError = 'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
+      this.imgNone();
     } else {
       this.alertBool = false;
       this.defaultImgUrl = urlimg;
+      this.imgChange();
       return this.defaultImgUrl;
     }
   }

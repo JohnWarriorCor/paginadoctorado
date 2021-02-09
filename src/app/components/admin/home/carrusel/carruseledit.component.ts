@@ -7,6 +7,8 @@ import { CarruselService } from '../../../../services/home/carrusel/carrusel.ser
 import { Carrusel } from '../../../../interfaces/home/carrusel/carrusel';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-carruseledit',
@@ -40,12 +42,42 @@ export class CarruseleditComponent implements OnInit {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor( public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private carruselServices: CarruselService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(  private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private carruselServices: CarruselService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
         this.carruselServices.getCarrusel( this.id ).subscribe(carrusel => this.carrusel = carrusel);
       }
+    });
+  }
+  showSuccess() {
+    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+      timeOut: 2500
+    });
+  }
+  showDanger() {
+    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+      timeOut: 2500
+    });
+  }
+  showInfo() {
+    this.toastr.info( '', 'Elemento actualizado', {
+      timeOut: 2500
+    });
+  }
+  showWarning() {
+    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500
+    });
+  }
+  elementoAgregado() {
+    this.toastr.info( '', 'Elemento agregado', {
+      timeOut: 2500
+    });
+  }
+  elementoEliminado() {
+    this.toastr.warning( '', 'Elemento eliminado', {
+      timeOut: 2500
     });
   }
 
@@ -86,17 +118,19 @@ export class CarruseleditComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.carruselServices.nuevoCarrusel( this.carrusel ).subscribe(data => {
+          this.showSuccess();
           this.router.navigate(['/admi_carrusel']);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showDanger()));
       } else {
         this.modalReference.close();
         this.carruselServices.actualizarCarrusel( this.carrusel, this.id ).subscribe(data => {
+          this.showInfo();
           this.router.navigate(['/admi_carrusel']);
           this.modalReference.close();
         },
-        error => console.error(error));
+        error => console.error(error, this.showWarning()));
       }
     } else {
       this.error = true;

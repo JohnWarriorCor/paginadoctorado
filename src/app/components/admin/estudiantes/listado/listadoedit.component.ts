@@ -83,6 +83,16 @@ export class ListadoeditComponent implements OnInit {
       timeOut: 2500
     });
   }
+  imgChange() {
+    this.toastr.info( '', 'Imagen cambiada con éxito', {
+      timeOut: 2500
+    });
+  }
+  imgNone() {
+    this.toastr.error('No puede dejar un evento sin imagen, por favor inserte un URL correspondiente', 'Error', {
+      timeOut: 2500
+    });
+  }
 
   ngOnInit() {
     this.war = this.listado.nombre;
@@ -106,9 +116,11 @@ export class ListadoeditComponent implements OnInit {
   }
   imgMujer() {
     this.listado.foto = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/NO%20MODIFICAR%2Fperfil_mujer.png?alt=media&token=62e21016-cb7e-4bcc-a1c6-af5ee2f71188';
+    this.imgChange();
   }
   imgHombre() {
     this.listado.foto = 'https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/NO%20MODIFICAR%2Fperfil_hombre.png?alt=media&token=6a9058fa-e8a5-4d75-83de-202c11ea1053';
+    this.imgChange();
   }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
@@ -119,10 +131,11 @@ export class ListadoeditComponent implements OnInit {
     if (urlimg === '' || urlimg === null) {
       this.defaultImgUrl = urlimg;
       this.alertBool = true;
-      this.imgError = 'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
+      this.imgNone();
     } else {
       this.alertBool = false;
       this.defaultImgUrl = urlimg;
+      this.imgChange();
       return this.defaultImgUrl;
     }
   }
