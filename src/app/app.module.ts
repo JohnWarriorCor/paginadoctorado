@@ -71,6 +71,7 @@ import { LibroseditComponent } from './components/admin/biblioteca/libros/libros
 import { PlanteleditComponent } from './components/admin/profesores/plantel/planteledit.component';
 import { ArticulosproeditComponent } from './components/admin/profesores/articulos/articulosproedit.component';
 import { EgresadoComponent } from './components/pages/estudiantes/egresados/egresado/egresado.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -120,6 +121,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     PlanteleditComponent,
     ArticulosproeditComponent,
     EgresadoComponent,
+    FiltroPipe,
   ],
   imports: [
     BrowserModule,

@@ -7,16 +7,20 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { ToastService } from '../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.css']
+  styleUrls: ['./agenda.component.css'],
+  providers: [DatePipe]
 })
 export class AgendaComponent implements OnInit {
+  filterpost = '';
   page = 1;
   pageSize = 4;
   vistaEdicion = false;
+  fecha: any;
   today = new Date();
   closeResult: string;
   modalReference: any;
@@ -24,8 +28,11 @@ export class AgendaComponent implements OnInit {
   comodinAcum = 0;
   agenda: any[] = [];
   loading = true;
-
-  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router ) {
+  anios = [];
+  consulta: any;
+  filterargs = {titulo: ''};
+  mes = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  constructor( public datepipe: DatePipe, private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router ) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });
@@ -52,11 +59,14 @@ export class AgendaComponent implements OnInit {
   }
 
   ngOnInit() {
+    for (let index = 2016; index <= (new Date()).getFullYear(); index++) {
+      this.anios.push(index);
+    }
+    this.fecha = this.datepipe.transform(this.today, 'yyyy-mm-dd');
   }
   borrarAgenda( key$: string) {
     this.agendaService.borrarAgenda(key$).subscribe( respuesta => {
       if ( respuesta ) {
-        console.error(respuesta);
         this.showDanger();
       } else {
         delete this.agenda[key$];

@@ -63,11 +63,9 @@ export class HomeComponent implements OnInit {
     });
     this.listadoService.getListados().subscribe( data => {
       this.listados = data;
-      console.log(this.listados);
     });
     this.plantelService.getPlanteles().subscribe( data => {
       this.plantelProfesores = data;
-      console.log(this.plantelProfesores);
     });
   }
   chunk(arr, chunkSize) {

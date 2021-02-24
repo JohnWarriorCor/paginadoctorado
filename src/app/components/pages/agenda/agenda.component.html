@@ -1,10 +1,6 @@
 <div class="wrapper fadeIn fast">
   <div>
-    <img
-      src="/assets/agenda.jpg"
-      class="d-block w-100"
-      style="height: auto"
-    />
+    <img src="/assets/agenda.jpg" class="d-block w-100" style="height: auto" />
   </div>
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
@@ -14,13 +10,15 @@
             <i class="far fa-calendar-alt"></i> Agenda
           </h3>
           <hr class="lineInstRed" />
-          <br>
+          <br />
           <div class="container">
             <div class="input-group mb-3 m-2">
               <input
                 type="text"
                 class="form-control shadow"
                 style="border-radius: 50px 0px 0px 50px"
+                name="buscarEvento"
+                [(ngModel)]="filterpost"
                 placeholder="Digite palabras claves para buscar..."
                 aria-label="Recipient's username"
                 aria-describedby="button-addon2"
@@ -39,30 +37,30 @@
           <div class="text-center m-2">
             <div class="form-row align-items-center">
               <div class="col-auto my-1">
-                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                  <option selected>Día</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
+                <input
+                  type="number"
+                  class="form-control mr-sm-2"
+                  max="31"
+                  min="1"
+                  placeholder="Día"
+                />
               </div>
               <div class="col-auto my-1">
-                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select
+                  class="custom-select mr-sm-2"
+                  id="inlineFormCustomSelect"
+                >
                   <option selected>Mes</option>
-                  <option value="1">Enero</option>
-                  <option value="2">Febrero</option>
-                  <option value="3">Marzo</option>
+                  <option *ngFor="let m of mes" [value]="m">{{ m }}</option>
                 </select>
               </div>
               <div class="col-auto my-1">
-                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                <select
+                  class="custom-select mr-sm-2"
+                  id="inlineFormCustomSelect"
+                >
                   <option selected>Año</option>
-                  <option value="1">2021</option>
-                  <option value="2">2020</option>
-                  <option value="3">2019</option>
+                  <option *ngFor="let a of anios" [value]="a">{{ a }}</option>
                 </select>
               </div>
             </div>
@@ -79,6 +77,7 @@
               let item of agenda
                 | keysfirebase
                 | listinvert
+                | filtro: filterpost
                 | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
               let i = index
             "
@@ -94,7 +93,10 @@
               </div>
               <div class="col-md-8 px-3" style="margin-top: 20px">
                 <div class="card-block px-3">
-                  <h3 [routerLink]="['/evento', item]" class="card-title subTituloRojoInstitucional cursorSelect">
+                  <h3
+                    [routerLink]="['/evento', item]"
+                    class="card-title subTituloRojoInstitucional cursorSelect"
+                  >
                     {{ agenda[item].titulo }}
                   </h3>
                   <p>
@@ -107,10 +109,15 @@
                     }}
                   </p>
                   <div class="row">
-                    <a [href]="agenda[item].url" target="_blank" class="btn navlinkinSolid m-3"
+                    <a
+                      [href]="agenda[item].url"
+                      target="_blank"
+                      class="btn navlinkinSolid m-3"
                       ><i class="fas fa-info-circle"></i> Más información</a
                     >
-                    <a [routerLink]="['/evento', item]" class="btn navlinkinSolid m-3"
+                    <a
+                      [routerLink]="['/evento', item]"
+                      class="btn navlinkinSolid m-3"
                       ><i class="fas fa-search"></i> Ver evento</a
                     >
                   </div>
@@ -129,11 +136,10 @@
             </div>
             <div class="row" *ngIf="auth.user | async">
               <div class="col text-right">
-                <a class="btn navlinkinSolid m-2" [routerLink]="['/admi_agenda', item]"
-                  ><i
-                    class="fas fa-pencil-alt"
-                  ></i>
-                  Editar</a
+                <a
+                  class="btn navlinkinSolid m-2"
+                  [routerLink]="['/admi_agenda', item]"
+                  ><i class="fas fa-pencil-alt"></i> Editar</a
                 >
                 <a (click)="openModal(confirmar)" class="btn navlinkinSolid m-2"
                   ><i class="fas fa-trash"></i> Borrar</a
@@ -192,8 +198,11 @@
             </div>
             <div class="col text-right">
               <div class="col text-right" *ngIf="auth.user | async">
-                <a class="btn navlinkinSolid" [routerLink]="['/admi_agenda', 'nuevo']"
-                ><i class="far fa-newspaper"></i> Publicar evento</a>
+                <a
+                  class="btn navlinkinSolid"
+                  [routerLink]="['/admi_agenda', 'nuevo']"
+                  ><i class="far fa-newspaper"></i> Publicar evento</a
+                >
               </div>
             </div>
           </div>
@@ -230,7 +239,7 @@
             allowTransparency="true"
             allow="encrypted-media"
           ></iframe>
-          <hr>
+          <hr />
           <h3 class="titleInstRed">
             <i class="fas fa-rss"></i> Redes sociales
           </h3>

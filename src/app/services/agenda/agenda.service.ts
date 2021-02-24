@@ -19,7 +19,6 @@ export class AgendaService {
       'Content-Type': 'application/json'
     });
     return this.http.post( this.agendaRegistroURL, body, {headers} ).pipe(map(res => {
-      console.log(res.json());
       return res.json();
     }));
   }
@@ -31,7 +30,6 @@ export class AgendaService {
     const url = `${this.agendaURL}/${key$}.json`;
 
     return this.http.put( url, body, {headers} ).pipe(map( res => {
-      console.log(res.json());
       return res.json();
     }));
 
