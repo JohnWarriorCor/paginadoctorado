@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 // Autenticacion Firebase
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAuthGuardModule  } from '@angular/fire/auth-guard';
 
@@ -72,6 +73,8 @@ import { PlanteleditComponent } from './components/admin/profesores/plantel/plan
 import { ArticulosproeditComponent } from './components/admin/profesores/articulos/articulosproedit.component';
 import { EgresadoComponent } from './components/pages/estudiantes/egresados/egresado/egresado.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { FiltroAnioPipe } from './pipes/filtro-anio.pipe';
+import { FiltroprofesoresPipe } from './pipes/filtroprofesores.pipe';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -122,6 +125,8 @@ registerLocaleData(localeEsCO, 'es-CO');
     ArticulosproeditComponent,
     EgresadoComponent,
     FiltroPipe,
+    FiltroAnioPipe,
+    FiltroprofesoresPipe,
   ],
   imports: [
     BrowserModule,
@@ -143,6 +148,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
+    AngularFireDatabaseModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot() // ToastrModule added
   ],

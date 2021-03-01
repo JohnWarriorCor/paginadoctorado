@@ -33,8 +33,6 @@ export class HomeComponent implements OnInit {
   today = new Date();
   plantelProfesores: any[] = [];
   listados: any[] = [];
-  profesor: any = {};
-  estudiante: any = {};
   agenda: any[] = [];
   denominacion: any[] = [];
   activ: any[] = [];
@@ -68,38 +66,7 @@ export class HomeComponent implements OnInit {
       this.plantelProfesores = data;
     });
   }
-  chunk(arr, chunkSize) {
-    // tslint:disable-next-line:prefer-const
-    let R = [];
-    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-      R.push(arr.slice(i, i + chunkSize));
-    }
-    return R;
-  }
-  chunkEstudiante(arr, chunkSize) {
-    // tslint:disable-next-line:prefer-const
-    let R = [];
-    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-      R.push(arr.slice(i, i + chunkSize));
-    }
-    return R;
-  }
-  chunkAgenda(arr, chunkSize) {
-    // tslint:disable-next-line:prefer-const
-    let R = [];
-    for (let i = 0, len = arr.length; i < len; i += chunkSize) {
-      R.push(arr.slice(i, i + chunkSize));
-    }
-    return R;
-  }
   ngOnInit() {
-    this.slidesAgenda = this.chunkAgenda(this.activ, 2);
-  }
-  verProfesor( idx: number ) {
-    this.router.navigate(['/docente', idx]);
-  }
-  verEstudiante( idx: number ) {
-    this.router.navigate(['/estudiante', idx]);
   }
   up() {
     window.scroll(0, 400);

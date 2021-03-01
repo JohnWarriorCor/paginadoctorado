@@ -1,12 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from '@angular/router';
 import { AgendaService } from '../../../services/agenda/agenda.service';
 import { PlantelService } from '../../../services/profesores/plantel/plantel.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-docentes',
@@ -14,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./docentes.component.css'],
 })
 export class DocentesComponent implements OnInit {
+  filterpost = '';
   page = 1;
   pageSize = 3;
   agenda: any[] = [];
@@ -26,7 +26,11 @@ export class DocentesComponent implements OnInit {
   acumFechas = 0;
   comodinAcum = 0;
   loading = true;
-  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private plantelService: PlantelService) {
+
+  profesores: any;
+  actualProfesor = null;
+  actualIndex = -1;
+  constructor( private toastr: ToastrService, public auth: AngularFireAuth, private modalService: NgbModal , private agendaService: AgendaService, private plantelService: PlantelService) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });
@@ -36,7 +40,31 @@ export class DocentesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.obtenerProfesores();
   }
+
+  refreshList(): void {
+    this.actualProfesor = null;
+    this.actualIndex = -1;
+    this.obtenerProfesores();
+  }
+  setActiveTutorial(evento, index): void {
+    this.actualProfesor = evento;
+    this.actualIndex = index;
+  }
+
+  obtenerProfesores(): void {
+    this.plantelService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.profesores = data;
+    });
+  }
+
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
   }

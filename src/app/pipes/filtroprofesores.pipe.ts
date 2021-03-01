@@ -1,14 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filtro'
+  name: 'filtroprofesores'
 })
-export class FiltroPipe implements PipeTransform {
+export class FiltroprofesoresPipe implements PipeTransform {
+
   transform(value: any, arg: any): any {
     if (arg === '' || arg.length < 3) { return value.slice().reverse(); }
     const resultPosts = [];
     for (const post of value) {
-      if (post.titulo.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.fechaEvento.indexOf(arg.toLowerCase()) > -1) {
+      if (post.nombre.toLowerCase().indexOf(arg.toLowerCase()) > -1 ) {
         resultPosts.push(post);
       }
     }

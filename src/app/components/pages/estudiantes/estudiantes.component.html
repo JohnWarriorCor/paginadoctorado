@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-    src="/assets/egresados.jpg"
+      src="/assets/egresados.jpg"
       class="d-block w-100"
       style="height: auto"
     />
@@ -12,6 +12,29 @@
         <div class="col-sm-8 shadow text-justify fondodivleft shadow">
           <h3 class="titleInstRed">Egresados del Doctorado</h3>
           <hr class="lineInstRed" />
+          <br />
+          <div class="container">
+            <div class="input-group mb-3 m-2">
+              <input
+                type="text"
+                class="form-control shadow"
+                style="border-radius: 50px 0px 0px 50px"
+                name="buscarEvento"
+                placeholder="Digite palabras claves para buscar..."
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn navlinkinSolid shadow"
+                  type="button"
+                  id="button-addon2"
+                >
+                  <i class="fas fa-search"></i> Buscar
+                </button>
+              </div>
+            </div>
+          </div>
           <br />
           <ngb-pagination
             class="d-flex justify-content-end"
@@ -68,7 +91,8 @@
                           class="alert alert-warning text-center font-weight-bold"
                           role="alert"
                         >
-                          Está a punto de eliminar el perfil del Profesor. <br />
+                          Está a punto de eliminar el perfil del Profesor.
+                          <br />
                           ¿Desea continuar con la acción?
                         </div>
                       </div>
@@ -99,7 +123,7 @@
                     class="card-title beigeInst carnetTitulo cursorSelect"
                     [routerLink]="['/estudiante', pro]"
                   >
-                  <i class="fas fa-university"></i>
+                    <i class="fas fa-university"></i>
                     {{ listados[pro].nombre }}
                   </h4>
                   <br />
@@ -110,7 +134,11 @@
                     <li>
                       <p class="text-justify">
                         {{ listados[pro].sintesis | slice: 0:300 }}
-                        <a [routerLink]="['/estudiante', pro]" style="color: #8f141b">... Ver más</a>
+                        <a
+                          [routerLink]="['/estudiante', pro]"
+                          style="color: #8f141b"
+                          >... Ver más</a
+                        >
                       </p>
                     </li>
                   </ul>
@@ -152,7 +180,8 @@
                 <a
                   class="btn navlinkinSolid"
                   [routerLink]="['/admi_estudiante', 'nuevo']"
-                  ><i class="fas fa-plus-circle"></i> Agregar nuevo Estudiante</a
+                  ><i class="fas fa-plus-circle"></i> Agregar nuevo
+                  Estudiante</a
                 >
               </div>
             </div>

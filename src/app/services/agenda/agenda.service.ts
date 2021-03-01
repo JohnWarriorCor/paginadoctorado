@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers  } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Agenda } from '../../interfaces/agenda/agenda';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,15 @@ export class AgendaService {
 
   agendaRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/agenda.json';
   agendaURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/agenda/';
+  private dbPath = '/agenda';
+  agendaRef: AngularFireList<Agenda> = null;
 
-  constructor( private http: Http ) { }
-
+  constructor(private db: AngularFireDatabase, private http: Http ) {
+    this.agendaRef = db.list(this.dbPath);
+  }
+  getAll(): AngularFireList<Agenda> {
+    return this.agendaRef;
+  }
   nuevoAgenda( agenda: Agenda) {
     const body = JSON.stringify(agenda);
     const headers = new Headers({

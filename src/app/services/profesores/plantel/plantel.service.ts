@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers  } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Plantel } from '../../../interfaces/profesores/plantel/plantel';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,16 @@ import { Plantel } from '../../../interfaces/profesores/plantel/plantel';
 export class PlantelService {
   plantelRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/plantelProfesores.json';
   plantelURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/plantelProfesores/';
+  private dbPath = '/plantelProfesores';
+  plantelRef: AngularFireList<Plantel> = null;
 
-  constructor( private http: Http ) { }
 
+  constructor(private db: AngularFireDatabase, private http: Http ) {
+    this.plantelRef = db.list(this.dbPath);
+  }
+  getAll(): AngularFireList<Plantel> {
+    return this.plantelRef;
+  }
   nuevoPlantel( plantelProfesores: Plantel) {
     const body = JSON.stringify(plantelProfesores);
     const headers = new Headers({

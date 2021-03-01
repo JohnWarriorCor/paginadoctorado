@@ -13,16 +13,43 @@
           <h3 class="titleInstRed">Equipo Docente del Programa</h3>
           <hr class="lineInstRed" />
           <br />
+          <div class="container">
+            <div class="input-group mb-3 m-2">
+              <input
+                type="text"
+                class="form-control shadow"
+                style="border-radius: 50px 0px 0px 50px"
+                name="buscarEvento"
+                [(ngModel)]="filterpost"
+                placeholder="Digite palabras claves para buscar..."
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn navlinkinSolid shadow"
+                  type="button"
+                  id="button-addon2"
+                >
+                  <i class="fas fa-search"></i> Buscar
+                </button>
+              </div>
+            </div>
+          </div>
+          <br />
           <ngb-pagination
             class="d-flex justify-content-end"
-            [collectionSize]="(plantelProfesores | keysfirebase).length"
+            [collectionSize]="
+              (profesores | filtroprofesores: filterpost).length
+            "
             [pageSize]="pageSize"
             [(page)]="page"
           ></ngb-pagination>
           <div
             *ngFor="
-              let pro of plantelProfesores
-                | keysfirebase
+              let profesor of profesores
+                | filtroprofesores: filterpost
+                | listinvert
                 | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
               let i = index
             "
@@ -33,17 +60,17 @@
             <div class="row">
               <div class="col-md-4">
                 <img
-                  [src]="plantelProfesores[pro].foto"
-                  [alt]="plantelProfesores[pro].nombre"
-                  [title]="plantelProfesores[pro].nombre"
-                  [routerLink]="['/docente', pro]"
+                  [src]="profesor.foto"
+                  [alt]="profesor.nombre"
+                  [title]="profesor.nombre"
+                  [routerLink]="['/docente', profesor.key]"
                   class="w-100 perfilPro cursorSelect"
                 />
                 <div class="row" *ngIf="auth.user | async">
                   <div class="col text-right">
                     <a
                       class="btn navlinkinSolid m-2"
-                      [routerLink]="['/admi_plantel', pro]"
+                      [routerLink]="['/admi_plantel', profesor.key]"
                       ><i class="fas fa-pencil-alt"></i> Editar</a
                     >
                     <a
@@ -68,7 +95,8 @@
                           class="alert alert-warning text-center font-weight-bold"
                           role="alert"
                         >
-                          Está a punto de eliminar el perfil del Profesor. <br />
+                          Está a punto de eliminar el perfil del Profesor.
+                          <br />
                           ¿Desea continuar con la acción?
                         </div>
                       </div>
@@ -77,7 +105,7 @@
                           type="button"
                           class="btn btnColorFacultadSalud"
                           ngbAutofocus
-                          (click)="borrarPlantel(pro)"
+                          (click)="borrarPlantel(profesor.key)"
                         >
                           Aceptar
                         </button>
@@ -97,10 +125,10 @@
                 <div class="card-block px-3">
                   <h4
                     class="card-title beigeInst carnetTitulo cursorSelect"
-                    [routerLink]="['/docente', pro]"
+                    [routerLink]="['/docente', profesor.key]"
                   >
                     <i class="fas fa-chalkboard-teacher"></i>
-                    {{ plantelProfesores[pro].nombre }}
+                    {{ profesor.nombre }}
                   </h4>
                   <br />
                   <p class="card-text">
@@ -109,25 +137,25 @@
                   <ul class="card-text" style="font-size: 12px">
                     <li>
                       <p class="text-justify">
-                        {{ plantelProfesores[pro].sintesis | slice: 0:300 }}
+                        {{ profesor.sintesis | slice: 0:300 }}
                         <a href="#" style="color: #8f141b">... Ver más</a>
                       </p>
                     </li>
                   </ul>
                   <p class="card-title grayinst">
                     <i class="fas fa-envelope"></i>
-                    {{ plantelProfesores[pro].correo }}
+                    {{ profesor.correo }}
                   </p>
                   <div class="text-right">
                     <a
-                      [href]="plantelProfesores[pro].cvlac"
+                      [href]="profesor.cvlac"
                       target="blank_"
                       class="btn navlinkinSolid"
                       >CvLAC</a
                     >
                     <a
                       style="margin-left: 10px"
-                      [href]="plantelProfesores[pro].orcid"
+                      [href]="profesor.orcid"
                       target="blank_"
                       class="btn navlinkinSolid"
                       >ORCID</a

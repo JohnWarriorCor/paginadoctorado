@@ -29,6 +29,7 @@
     "core-js": "^2.5.4",
     "firebase": "^7.24.0",
     "jquery": "^3.5.1",
+    "ng-search-filter": "^1.1.0",
     "ng-uikit-pro-standard": "^1.0.0",
     "ngx-print": "^1.2.0-beta.5",
     "ngx-toastr": "^10.1.0",
