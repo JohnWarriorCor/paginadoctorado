@@ -86,6 +86,13 @@ export class AgendaComponent implements OnInit {
       this.agenda = data;
     });
   }
+  get sortData() {
+    return this.eventos.sort((a, b) => {
+      // tslint:disable-next-line:whitespace
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
+    });
+  }
   elementoEliminado() {
     this.toastr.warning( '', 'Elemento eliminado', {
       timeOut: 2500

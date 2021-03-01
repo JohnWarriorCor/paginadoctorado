@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { AgendaService } from '../../../services/agenda/agenda.service';
@@ -7,6 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { ToastService } from '../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-estudiantes',
@@ -27,7 +28,7 @@ export class EstudiantesComponent implements OnInit {
   acumFechas = 0;
   comodinAcum = 0;
   loading = true;
-
+  eventos: any;
   // tslint:disable-next-line:max-line-length
   constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, private modalService: NgbModal , private router: Router, private agendaService: AgendaService, private listadoService: ListadoService) {
     this.agendaService.getAgendas().subscribe( data => {
@@ -37,7 +38,26 @@ export class EstudiantesComponent implements OnInit {
       this.listados = data;
     });
   }
+  get sortData() {
+    return this.eventos.sort((a, b) => {
+      // tslint:disable-next-line:whitespace
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
+    });
+  }
+  obtenerEventos(): void {
+    this.agendaService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.eventos = data;
+    });
+  }
   ngOnInit() {
+    this.obtenerEventos();
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });

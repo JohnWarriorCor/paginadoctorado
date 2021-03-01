@@ -73,7 +73,7 @@
           <div
             class="card"
             *ngFor="
-              let evento of eventos
+              let evento of sortData
                 | filtro: filterpost
                 | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
               let i = index
@@ -184,7 +184,7 @@
             <div class="col">
               <ngb-pagination
                 class="d-flex justify-content-start"
-                [collectionSize]="(agenda | keysfirebase).length"
+                [collectionSize]="(eventos | filtro: filterpost).length"
                 [(page)]="page"
                 [pageSize]="pageSize"
               ></ngb-pagination>
@@ -248,37 +248,6 @@
             allowTransparency="true"
             allow="encrypted-media"
           ></iframe>
-        </div>
-      </div>
-      <div class="list row">
-        <div class="col-md-6">
-          <h4>Tutorials List</h4>
-          <ul class="list-group">
-            <li
-              class="list-group-item"
-              *ngFor="let evento of eventos | filtro: filterpost; let i = index"
-              [class.active]="i == actualIndex"
-              (click)="setActiveTutorial(evento, i)"
-            >
-              {{ evento.titulo }}
-              {{ i }}
-              {{ evento.key }}
-            </li>
-          </ul>
-        </div>
-
-        <div class="col-md-6">
-          <div *ngIf="actualEvento">
-            <app-tutorial-details
-              (refreshList)="refreshList()"
-              [tutorial]="actualEvento"
-            ></app-tutorial-details>
-          </div>
-
-          <div *ngIf="!actualEvento">
-            <br />
-            <p>Please click on a Tutorial...</p>
-          </div>
         </div>
       </div>
     </div>

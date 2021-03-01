@@ -210,37 +210,37 @@
             <div
               [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
               *ngFor="
-                let item of agenda | keysfirebase | listinvert;
+                let evento of sortDataEvento;
                 let i = index
               "
             >
               <div class="card-deck">
                 <div class="card shadow">
                   <img
-                    [src]="agenda[item].img"
+                    [src]="evento.img"
                     class="card-img-top cursorSelect"
-                    [routerLink]="['/evento', item]"
-                    [alt]="agenda[item].titulo"
-                    [title]="agenda[item].titulo"
+                    [routerLink]="['/evento', evento.key]"
+                    [alt]="evento.titulo"
+                    [title]="evento.titulo"
                   />
                   <div class="card-body">
                     <h4
-                      [routerLink]="['/evento', item]"
+                      [routerLink]="['/evento', evento.key]"
                       class="subTituloRojoInstitucional cursorSelect"
                     >
-                      {{ agenda[item].titulo }}
+                      {{ evento.titulo }}
                     </h4>
                     <h6 class="card-title subTituloRojoInstitucional">
                       <i class="far fa-calendar-alt"></i>
                       {{
-                        agenda[item].fechaEvento | date: "fullDate" | titlecase
+                        evento.fechaEvento | date: "fullDate" | titlecase
                       }}
                     </h6>
                     <p class="card-text grayinst">
-                      {{ agenda[item].resenia }}
+                      {{ evento.resenia }}
                     </p>
                     <a
-                      [href]="agenda[item].url"
+                      [href]="evento.url"
                       target="_blank"
                       class="btn navlinkinSolid"
                       >Más información</a
@@ -249,7 +249,7 @@
                       <small class="text-muted"
                         >Publicado:
                         {{
-                          agenda[item].fechaPublicacion
+                          evento.fechaPublicacion
                             | date: "fullDate"
                             | titlecase
                         }}</small

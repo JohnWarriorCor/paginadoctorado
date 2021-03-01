@@ -170,7 +170,9 @@
             <div class="col">
               <ngb-pagination
                 class="d-flex justify-content-start"
-                [collectionSize]="(plantelProfesores | keysfirebase).length"
+                [collectionSize]="
+                  (profesores | filtroprofesores: filterpost).length
+                "
                 [(page)]="page"
                 [pageSize]="pageSize"
               ></ngb-pagination>
@@ -203,40 +205,40 @@
               <div
                 [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
                 *ngFor="
-                  let item of agenda | keysfirebase | listinvert;
+                  let evento of sortData;
                   let i = index
                 "
               >
                 <div class="card-deck">
                   <div class="card shadow">
                     <img
-                      [src]="agenda[item].img"
+                      [src]="evento.img"
                       class="card-img-top"
-                      [alt]="agenda[item].titulo"
+                      [alt]="evento.titulo"
                     />
                     <div class="card-body">
                       <h4 class="subTituloRojoInstitucional">
-                        {{ agenda[item].titulo }}
+                        {{ evento.titulo }}
                       </h4>
                       <h6 class="card-title subTituloRojoInstitucional">
                         <i class="far fa-calendar-alt"></i>
                         {{
-                          agenda[item].fechaEvento
+                          evento.fechaEvento
                             | date: "fullDate"
                             | titlecase
                         }}
                       </h6>
                       <p class="card-text grayinst">
-                        {{ agenda[item].resenia }}
+                        {{ evento.resenia }}
                       </p>
-                      <a [href]="agenda[item].url" class="btn navlinkinSolid"
+                      <a [href]="evento.url" class="btn navlinkinSolid"
                         >Más información</a
                       >
                       <p class="card-text">
                         <small class="text-muted"
                           >Publicado:
                           {{
-                            agenda[item].fechaPublicacion
+                            evento.fechaPublicacion
                               | date: "fullDate"
                               | titlecase
                           }}</small

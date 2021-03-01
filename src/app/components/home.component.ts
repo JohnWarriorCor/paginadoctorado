@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewEncapsulation, ViewChild} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,9 +10,8 @@ import { ArticulosproService } from '../services/profesores/articulospro/articul
 import { ListadoService } from '../services/estudiantes/listado/listado.service';
 import { PlantelService } from '../services/profesores/plantel/plantel.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import 'firebase/auth';
-import firebase from '@firebase/app';
+import { map } from 'rxjs/operators';
 
 
 // tslint:disable-next-line:prefer-const
@@ -42,6 +41,9 @@ export class HomeComponent implements OnInit {
   slidesEstudiante: any = [[]];
   articuloEstudiante: Array<any> = [];
   articulosPro: Array<any> = [];
+  eventos: any;
+  actualEvento = null;
+  actualIndex = -1;
   // tslint:disable-next-line:no-shadowed-variable
   constructor( public auth: AngularFireAuth, private listadoService: ListadoService, private denominaciionService: DenominacionService, private agendaService: AgendaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router, private carruselServices: CarruselService, private articulosEstuService: ArticulosestuService, private articulosProService: ArticulosproService, private plantelService: PlantelService ) {
     this.agendaService.getAgendas().subscribe( data => {
@@ -66,7 +68,25 @@ export class HomeComponent implements OnInit {
       this.plantelProfesores = data;
     });
   }
+  obtenerEventos(): void {
+    this.agendaService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.eventos = data;
+    });
+  }
+  get sortDataEvento() {
+    return this.eventos.sort((a, b) => {
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
+    });
+  }
   ngOnInit() {
+    this.obtenerEventos();
   }
   up() {
     window.scroll(0, 400);

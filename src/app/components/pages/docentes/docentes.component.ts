@@ -29,6 +29,8 @@ export class DocentesComponent implements OnInit {
 
   profesores: any;
   actualProfesor = null;
+  eventos: any;
+  actualEvento = null;
   actualIndex = -1;
   constructor( private toastr: ToastrService, public auth: AngularFireAuth, private modalService: NgbModal , private agendaService: AgendaService, private plantelService: PlantelService) {
     this.agendaService.getAgendas().subscribe( data => {
@@ -38,9 +40,28 @@ export class DocentesComponent implements OnInit {
       this.plantelProfesores = data;
     });
   }
+  get sortData() {
+    return this.eventos.sort((a, b) => {
+      // tslint:disable-next-line:whitespace
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
+    });
+  }
+  obtenerEventos(): void {
+    this.agendaService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.eventos = data;
+    });
+  }
 
   ngOnInit() {
     this.obtenerProfesores();
+    this.obtenerEventos();
   }
 
   refreshList(): void {
