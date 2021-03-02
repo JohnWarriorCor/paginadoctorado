@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="/assets/profesores.png"
+      src="/assets/slide-profesores.png"
       class="d-block w-100"
       style="height: auto"
     />
@@ -204,10 +204,7 @@
             <div class="carousel-inner">
               <div
                 [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-                *ngFor="
-                  let evento of sortData;
-                  let i = index
-                "
+                *ngFor="let evento of sortData; let i = index"
               >
                 <div class="card-deck">
                   <div class="card shadow">
@@ -222,11 +219,7 @@
                       </h4>
                       <h6 class="card-title subTituloRojoInstitucional">
                         <i class="far fa-calendar-alt"></i>
-                        {{
-                          evento.fechaEvento
-                            | date: "fullDate"
-                            | titlecase
-                        }}
+                        {{ evento.fechaEvento | date: "fullDate" | titlecase }}
                       </h6>
                       <p class="card-text grayinst">
                         {{ evento.resenia }}

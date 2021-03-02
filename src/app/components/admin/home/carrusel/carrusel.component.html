@@ -13,7 +13,10 @@
           <div class="carousel-inner">
             <div
               [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-              *ngFor="let item of carrusel | keysfirebase | listinvert; let i = index"
+              *ngFor="
+                let item of carrusel | keysfirebase | listinvert;
+                let i = index
+              "
             >
               <a [href]="carrusel[item].urlInfo" target="_blank"
                 ><img
@@ -126,7 +129,10 @@
           <li>
             Descargue la plantilla oficial para plasmar el diseño que se tenga
             pensado
-            <a href="/assets/PlantillaCarrusel.psd" download class="colorRedInst"
+            <a
+              href="/assets/PlantillaCarrusel.psd"
+              download
+              class="colorRedInst"
               ><i class="far fa-file-image"></i> Plantilla Photoshop.</a
             >
           </li>
@@ -143,8 +149,8 @@
           </li>
           <li>
             En caso de manejar otra herramienta de edición, considerar que la
-            imágen estandar tiene las siegientes dimensiones <br>[1.000 pixeles de
-            ancho por 246 pixeles de alto]
+            imágen estandar tiene las siegientes dimensiones <br />[1.000
+            pixeles de ancho por 246 pixeles de alto]
             <a href="/assets/pruebaCarrusel.jpg" download class="colorRedInst"
               ><i class="fas fa-expand"></i> Descargar Imágen de muestra.</a
             >

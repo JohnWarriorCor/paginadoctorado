@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="/assets/grupinves.jpg"
+      src="/assets/slide-grupos-investigacion.jpg"
       class="d-block w-100"
       style="height: auto"
     />
@@ -36,7 +36,10 @@
                 </thead>
                 <tbody>
                   <tr
-                    *ngFor="let field of grupoInvestigacion.fieldArray; let i = index"
+                    *ngFor="
+                      let field of grupoInvestigacion.fieldArray;
+                      let i = index
+                    "
                   >
                     <td>
                       <input
@@ -64,20 +67,20 @@
                     </td>
                     <td>
                       <select
-                      class="custom-select inputTable"
-                      id="clasificacion"
-                      name="{{ field.categoria }}"
-                      [(ngModel)]="field.categoria"
-                    >
-                      <option value="" disabled="disabled">
-                        Elija la clasificación
-                      </option>
-                      <option value="A1">A1</option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="No reconocido">No reconocido</option>
-                    </select>
+                        class="custom-select inputTable"
+                        id="clasificacion"
+                        name="{{ field.categoria }}"
+                        [(ngModel)]="field.categoria"
+                      >
+                        <option value="" disabled="disabled">
+                          Elija la clasificación
+                        </option>
+                        <option value="A1">A1</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="No reconocido">No reconocido</option>
+                      </select>
                     </td>
                     <td>
                       <button

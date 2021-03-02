@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers  } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Gruposinvestigacion } from '../../interfaces/grupoinvesti/gruposinvestigacion';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,15 @@ export class GruposinvestigacionService {
 
   gruposInvestigacionRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/gruposInvestigacion.json';
   gruposInvestigacionURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/gruposInvestigacion/';
+  private dbPath = '/gruposInvestigacion';
+  gruposInvesRef: AngularFireList<Gruposinvestigacion> = null;
 
-  constructor( private http: Http ) { }
+  constructor(private db: AngularFireDatabase, private http: Http ) {
+    this.gruposInvesRef = db.list(this.dbPath);
+  }
+  getAll(): AngularFireList<Gruposinvestigacion> {
+    return this.gruposInvesRef;
+  }
   nuevoGrupo( grupoInvestigacion: Gruposinvestigacion) {
     const body = JSON.stringify(grupoInvestigacion);
     const headers = new Headers({

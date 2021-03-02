@@ -1,11 +1,5 @@
 <div class="wrapper fadeIn fast">
   <div>
-    <!--
-    <img
-      src="/assets/grupinves.jpg"
-      class="d-block w-100"
-      style="height: auto"
-    />-->
     <div>
       <div class="container" style="padding-top: 30px; padding-bottom: 30px">
         <div class="row">
@@ -22,15 +16,17 @@
                     <th style="vertical-align: middle" scope="col">Título</th>
                     <th style="vertical-align: middle" scope="col">Código</th>
                     <th style="vertical-align: middle" scope="col">Autor</th>
-                    <th style="vertical-align: middle" scope="col">Editorial</th>
-                    <th style="vertical-align: middle" scope="col">Ejemplares</th>
+                    <th style="vertical-align: middle" scope="col">
+                      Editorial
+                    </th>
+                    <th style="vertical-align: middle" scope="col">
+                      Ejemplares
+                    </th>
                     <th style="vertical-align: middle" scope="col">Opciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    *ngFor="let field of libro.fieldArray; let i = index"
-                  >
+                  <tr *ngFor="let field of libro.fieldArray; let i = index">
                     <td>
                       <input
                         [(ngModel)]="field.titulo"

@@ -1,16 +1,18 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="assets/publiprofesores.jpg"
+      src="assets/slide-publicacion-profesores.jpg"
       class="d-block w-100"
-      style="height: 300px"
-      alt="Responsive image"
+      style="height: auto"
     />
   </div>
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
-        <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst" *ngFor="let item of articulosPro | keysfirebase">
+        <div
+          class="col-sm-8 shadow text-justify fondodivleft shadow grayinst"
+          *ngFor="let item of articulosPro | keysfirebase"
+        >
           <div id="print-section">
             <h3 class="titleInstRed">Articulos y Publicaciones Profesores</h3>
             <hr class="lineInstRed" />

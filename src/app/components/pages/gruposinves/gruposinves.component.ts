@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { GruposinvestigacionService } from '../../../services/grupoinvesti/gruposinvestigacion.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-gruposinves',
@@ -34,6 +35,9 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
   validar = false;
   error = false;
   passError = '';
+  filterpost = '';
+  grupos: any;
+  actualProfesor = null;
 
   constructor(public auth: AngularFireAuth, private grupoInvestigacionService: GruposinvestigacionService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
     this.grupoInvestigacionService.getGrupos().subscribe( data => {
@@ -47,8 +51,21 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
   }
+  obtenerGrupos(): void {
+    this.grupoInvestigacionService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.grupos = data;
+      console.log(this.grupos);
+    });
+  }
 
   ngOnInit() {
+    this.obtenerGrupos();
   }
   ngAfterViewInit(): void {
     (window as any).twttr.widgets.load();

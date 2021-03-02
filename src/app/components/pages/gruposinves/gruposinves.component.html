@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="/assets/grupinves.jpg"
+      src="/assets/slide-grupos-investigacion.jpg"
       class="d-block w-100"
       style="height: auto"
     />
@@ -11,7 +11,7 @@
       <div class="row">
         <div
           class="col-sm-8 shadow fondodivleft shadow"
-          *ngFor="let item of grupoInvestigacion | keysfirebase"
+          *ngFor="let grupo of grupos"
         >
           <div id="print-section">
             <h3 class="titleInstRed">
@@ -27,6 +27,7 @@
                   class="form-control shadow"
                   style="border-radius: 50px 0px 0px 50px"
                   name="buscarEvento"
+                  [(ngModel)]="filterpost"
                   placeholder="Digite palabras claves para buscar..."
                   aria-label="Recipient's username"
                   aria-describedby="button-addon2"
@@ -69,8 +70,8 @@
               <tbody>
                 <tr
                   *ngFor="
-                    let field of grupoInvestigacion[item].fieldArray
-                      | keysfirebase;
+                    let field of grupo.fieldArray
+                      | filtrogruposinves: filterpost;
                     let i = index
                   "
                 >
@@ -78,16 +79,16 @@
                     {{ i + 1 }}
                   </th>
                   <td style="vertical-align: middle">
-                    {{ grupoInvestigacion[item].fieldArray[field].codigo }}
+                    {{ field.codigo }}
                   </td>
                   <td style="vertical-align: middle">
-                    {{ grupoInvestigacion[item].fieldArray[field].nombre }}
+                    {{ field.nombre }}
                   </td>
                   <td style="vertical-align: middle">
-                    {{ grupoInvestigacion[item].fieldArray[field].lider }}
+                    {{ field.lider }}
                   </td>
                   <td style="vertical-align: middle">
-                    {{ grupoInvestigacion[item].fieldArray[field].categoria }}
+                    {{ field.categoria }}
                   </td>
                 </tr>
               </tbody>
@@ -110,7 +111,7 @@
               <button
                 *ngIf="auth.user | async"
                 class="btn navlinkinSolid"
-                [routerLink]="['/admi_gruposinvestigacion', item]"
+                [routerLink]="['/admi_gruposinvestigacion', grupo]"
               >
                 <i class="fas fa-pencil-alt"></i> Editar
               </button>

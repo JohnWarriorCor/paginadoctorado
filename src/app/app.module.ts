@@ -73,8 +73,8 @@ import { PlanteleditComponent } from './components/admin/profesores/plantel/plan
 import { ArticulosproeditComponent } from './components/admin/profesores/articulos/articulosproedit.component';
 import { EgresadoComponent } from './components/pages/estudiantes/egresados/egresado/egresado.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
-import { FiltroAnioPipe } from './pipes/filtro-anio.pipe';
 import { FiltroprofesoresPipe } from './pipes/filtroprofesores.pipe';
+import { FiltrogruposinvesPipe } from './pipes/filtrogruposinves.pipe';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -125,8 +125,8 @@ registerLocaleData(localeEsCO, 'es-CO');
     ArticulosproeditComponent,
     EgresadoComponent,
     FiltroPipe,
-    FiltroAnioPipe,
     FiltroprofesoresPipe,
+    FiltrogruposinvesPipe,
   ],
   imports: [
     BrowserModule,

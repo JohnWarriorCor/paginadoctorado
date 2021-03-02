@@ -1,24 +1,49 @@
 <div class="container">
-  <hr>
+  <hr />
   <div class="fondodivlogin">
-    <div class="card text-center" *ngIf="ajustes != false" style="border-radius: 12px;">
-      <div class="card-header" style="background-color: #8f141b;color: white;border-radius: 12px 12px 0 0;">
+    <div
+      class="card text-center"
+      *ngIf="ajustes != false"
+      style="border-radius: 12px"
+    >
+      <div
+        class="card-header"
+        style="
+          background-color: #8f141b;
+          color: white;
+          border-radius: 12px 12px 0 0;
+        "
+      >
         <p class="h4">Administrar contenidos:</p>
       </div>
       <div class="card-body">
         <form class="text-center p-5" #forma="ngForm">
           <!-- Email -->
           <div class="d-flex justify-content-around">
-            <i class="fas fa-user-cog fa-2x grayinst" style="margin: 5px;"></i>
-            <input [(ngModel)]="user" name="user" type="text" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="Usuario">
+            <i class="fas fa-user-cog fa-2x grayinst" style="margin: 5px"></i>
+            <input
+              [(ngModel)]="user"
+              name="user"
+              type="text"
+              id="defaultLoginFormEmail"
+              class="form-control mb-4"
+              placeholder="Usuario"
+            />
           </div>
-        
+
           <!-- Password -->
           <div class="d-flex justify-content-around">
-            <i class="fas fa-key fa-2x grayinst" style="margin: 5px;"></i>
-            <input [(ngModel)]="key" name="key" type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Contraseña">
+            <i class="fas fa-key fa-2x grayinst" style="margin: 5px"></i>
+            <input
+              [(ngModel)]="key"
+              name="key"
+              type="password"
+              id="defaultLoginFormPassword"
+              class="form-control mb-4"
+              placeholder="Contraseña"
+            />
           </div>
-        
+
           <div class="d-flex justify-content-around">
             <div>
               <!-- Remember me -->
@@ -30,23 +55,30 @@
             </div>
           </div>
           <div
-                  *ngIf="error != false"
-                  class="alert alert-danger alert-dismissible fade show"
-                  role="alert"
-                >
-                  <strong>{{ passError }}</strong>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <i class="fas fa-times" style="color: #8f141b"></i>
-                  </button>
-                </div>
+            *ngIf="error != false"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ passError }}</strong>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <i class="fas fa-times" style="color: #8f141b"></i>
+            </button>
+          </div>
           <!-- Sign in button -->
-          <button (click)="viewOpciones(key, user)" class="btn navlinkinSolid my-4" style="width: 100%;" type="submit">Acceder</button>
-        
+          <button
+            (click)="viewOpciones(key, user)"
+            class="btn navlinkinSolid my-4"
+            style="width: 100%"
+            type="submit"
+          >
+            Acceder
+          </button>
+
           <!-- Register 
           <p>Not a member?
             <a href="">Register</a>
@@ -58,14 +90,30 @@
       </div>-->
     </div>
   </div>
-  <div class="row"  *ngIf="vistaEdicion != false">
+  <div class="row" *ngIf="vistaEdicion != false">
     <div class="col">
-      <div class="card text-center cursorSelect" [routerLink]="['/admi_carrusel']" style="border-radius: 12px;">
-        <div class="card-header" style="background-color: #8f141b;color: white;border-radius: 12px 12px 0 0;">
+      <div
+        class="card text-center cursorSelect"
+        [routerLink]="['/admi_carrusel']"
+        style="border-radius: 12px"
+      >
+        <div
+          class="card-header"
+          style="
+            background-color: #8f141b;
+            color: white;
+            border-radius: 12px 12px 0 0;
+          "
+        >
           <p class="h4">Administrar carrusel de imágenes</p>
         </div>
         <div class="card-body">
-          <img src="assets/carrusel.png" class="rounded mx-auto d-block" style="width: 100%;" alt="">
+          <img
+            src="assets/carrusel.png"
+            class="rounded mx-auto d-block"
+            style="width: 100%"
+            alt=""
+          />
         </div>
         <!--<div class="card-footer text-muted">
           2 days ago
@@ -73,12 +121,28 @@
       </div>
     </div>
     <div class="col">
-      <div class="card text-center cursorSelect" [routerLink]="['/admi_denominacion/', keyFireBase]" style="border-radius: 12px;">
-        <div class="card-header" style="background-color: #8f141b;color: white;border-radius: 12px 12px 0 0;">
+      <div
+        class="card text-center cursorSelect"
+        [routerLink]="['/admi_denominacion/', keyFireBase]"
+        style="border-radius: 12px"
+      >
+        <div
+          class="card-header"
+          style="
+            background-color: #8f141b;
+            color: white;
+            border-radius: 12px 12px 0 0;
+          "
+        >
           <p class="h4">Administrar tabla denominación del programa</p>
         </div>
         <div class="card-body">
-          <img src="assets/denominacion.png" class="rounded mx-auto d-block" style="width: 48%;" alt="">
+          <img
+            src="assets/denominacion.png"
+            class="rounded mx-auto d-block"
+            style="width: 48%"
+            alt=""
+          />
         </div>
         <!--<div class="card-footer text-muted">
           2 days ago
@@ -86,5 +150,5 @@
       </div>
     </div>
   </div>
-  <hr>
+  <hr />
 </div>
