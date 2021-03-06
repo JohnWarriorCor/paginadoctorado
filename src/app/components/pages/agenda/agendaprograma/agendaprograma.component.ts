@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AgendaService } from '../../../services/agenda/agenda.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { map } from 'rxjs/operators';
+import { AgendaprogramaService } from '../../../../services/agenda/agendaprograma.service';
 
 @Component({
-  selector: 'app-agenda',
-  templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.css'],
+  selector: 'app-agendaprograma',
+  templateUrl: './agendaprograma.component.html',
+  styleUrls: ['./agendaprograma.component.css'],
   providers: [DatePipe]
 })
-
-export class AgendaComponent implements OnInit {
+export class AgendaprogramaComponent implements OnInit {
   filterpost = '';
   page = 1;
   pageSize = 4;
@@ -81,7 +80,7 @@ export class AgendaComponent implements OnInit {
   eventos: any;
   actualEvento = null;
   actualIndex = -1;
-  constructor( public datepipe: DatePipe, private toastr: ToastrService, public auth: AngularFireAuth, private agendaService: AgendaService, private modalService: NgbModal ) {
+  constructor( public datepipe: DatePipe, private toastr: ToastrService, public auth: AngularFireAuth, private agendaService: AgendaprogramaService, private modalService: NgbModal ) {
     this.agendaService.getAgendas().subscribe( data => {
       this.agenda = data;
     });

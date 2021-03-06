@@ -2,7 +2,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home.component';
 import { DocentesComponent } from './components/pages/docentes/docentes.component';
 import { FormacionComponent } from './components/pages/formacion/formacion.component';
-import { AgendaComponent } from './components/pages/agenda/agenda.component';
 import { GruposinvesComponent } from './components/pages/gruposinves/gruposinves.component';
 import { EstudiantesComponent } from './components/pages/estudiantes/estudiantes.component';
 import { LoginComponent } from './components/admin/login/login.component';
@@ -21,9 +20,7 @@ import { ArticulosestudiantesComponent } from './components/pages/estudiantes/ar
 import { ArticulosprofesoresComponent } from './components/pages/docentes/articulosprofesores/articulosprofesores.component';
 import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
 import { HistoriaeditComponent } from './components/admin/programa/historiaedit/historiaedit.component';
-import { AgendaeditComponent } from './components/admin/agendaedit/agendaedit.component';
 import { GruposinveseditComponent } from './components/admin/gruposinvesedit/gruposinvesedit.component';
-import { EventoComponent } from './components/pages/agenda/evento/evento.component';
 import { DenominacionComponent } from './components/admin/home/denominacion/denominacion.component';
 import { CarruselComponent } from './components/admin/home/carrusel/carrusel.component';
 import { CarruseleditComponent } from './components/admin/home/carrusel/carruseledit.component';
@@ -37,8 +34,13 @@ import { PlanteleditComponent } from './components/admin/profesores/plantel/plan
 import { EgresadoComponent } from './components/pages/estudiantes/egresados/egresado/egresado.component';
 import { ListadoeditComponent } from './components/admin/estudiantes/listado/listadoedit.component';
 
-import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { AuthGuard } from './guards/auth.guard';
+import { EventoprogramaComponent } from './components/pages/agenda/agendaprograma/eventoprograma/eventoprograma.component';
+import { EventoinstitucionalComponent } from './components/pages/agenda/agendainstitucional/eventoinstitucional/eventoinstitucional.component';
+import { AgendaprogramaComponent } from './components/pages/agenda/agendaprograma/agendaprograma.component';
+import { AgendainstitucionalComponent } from './components/pages/agenda/agendainstitucional/agendainstitucional.component';
+import { AgendaprogramaeditComponent } from './components/admin/agendaedit/agendaprogramaedit/agendaprogramaedit.component';
+import { AgendainstitucionaleditComponent } from './components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component';
 
 const routes: Routes = [
   // INICIO
@@ -58,10 +60,12 @@ const routes: Routes = [
   { path: 'articulosProfesores', component: ArticulosprofesoresComponent },
   { path: 'docente/:id', component: DocenteComponent },
   // ACTIVDADES
-  { path: 'agenda', component: AgendaComponent },
-  { path: 'evento/:id', component: EventoComponent },
+  { path: 'agendaPrograma', component: AgendaprogramaComponent },
+  { path: 'agendaInstitucional', component: AgendainstitucionalComponent },
+  { path: 'eventoPrograma/:id', component: EventoprogramaComponent },
+  { path: 'eventoInstitucional/:id', component: EventoinstitucionalComponent},
   // INVESTIGACION
-  { path: 'gruposinvestigacion', component: GruposinvesComponent },
+  { path: 'gruposInvestigacion', component: GruposinvesComponent },
   // ESTUDIANDTES
   { path: 'estudiantes', component: EstudiantesComponent },
   { path: 'estudiante/:id', component: EstudianteComponent },
@@ -100,9 +104,10 @@ const routes: Routes = [
   { path: 'admi_plantel/:id', component: PlanteleditComponent, canActivate: [AuthGuard] },
   { path: 'admi_docente/:id', component: DocenteComponent, canActivate: [AuthGuard] },
   // ACTIVDADES
-  { path: 'admi_agenda/:id', component: AgendaeditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_agendaInstitucional/:id', component: AgendainstitucionaleditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_agendaPrograma/:id', component: AgendaprogramaeditComponent, canActivate: [AuthGuard] },
   // INVESTIGACION
-  { path: 'admi_gruposinvestigacion/:id', component: GruposinveseditComponent, canActivate: [AuthGuard] },
+  { path: 'admi_gruposInvestigacion/:id', component: GruposinveseditComponent, canActivate: [AuthGuard] },
   // ESTUDIANDTES
   { path: 'admi_estudiantes', component: EstudiantesComponent, canActivate: [AuthGuard] },
   { path: 'admi_estudiante/:id', component: ListadoeditComponent, canActivate: [AuthGuard] },

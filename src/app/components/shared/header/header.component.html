@@ -146,21 +146,29 @@
               >
             </div>
           </li>
-          <li class="menu__group">
+          <li class="nav-item dropdown menu__group">
             <a
               style="padding: 10px"
-              routerLinkActive="router-link-active"
-              class="nav-link menu__link"
-              [routerLink]="['/agenda']"
-              ><i class="far fa-newspaper"></i> Actividades</a
+              class="nav-link dropdown-toggle menu__link dropbtn"
+              [routerLink]="['/agendaPrograma']"
             >
+              <i class="far fa-newspaper"></i> Actividades
+            </a>
+            <div class="dropdown-content text-left">
+              <a class="menu__link_dropdown" [routerLink]="['/agendaPrograma']"
+                ><i class="fas fa-newspaper"></i> De Programa</a
+              >
+              <a class="menu__link_dropdown" [routerLink]="['/agendaInstitucional']"
+                ><i class="fas fa-rss-square"></i> Institucionales</a
+              >
+            </div>
           </li>
           <li class="menu__group">
             <a
               style="padding: 10px"
               routerLinkActive="router-link-active"
               class="nav-link menu__link"
-              [routerLink]="['/gruposinvestigacion']"
+              [routerLink]="['/gruposInvestigacion']"
               ><i class="fas fa-microscope"></i> Investigación</a
             >
           </li>
@@ -220,15 +228,15 @@
           <li class="menu__group">
             <ng-template #showLogin>
               <a
-              style="padding: 10px"
-              routerLinkActive="router-link-active"
-              class="nav-link menu__link"
-              (click)="openSm(formAdmin)"
-              ><i class="fas fa-lock"></i> Ingresar</a
-            >
+                style="padding: 10px"
+                routerLinkActive="router-link-active"
+                class="nav-link menu__link"
+                (click)="openSm(formAdmin)"
+                ><i class="fas fa-lock"></i> Ingresar</a
+              >
             </ng-template>
             <a
-              *ngIf="auth.user | async ; else showLogin"
+              *ngIf="auth.user | async; else showLogin"
               style="padding: 10px"
               routerLinkActive="router-link-active"
               class="nav-link menu__link cursorSelect"

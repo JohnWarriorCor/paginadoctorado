@@ -71,14 +71,14 @@ export class GruposinveseditComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.grupoInvestigacionService.nuevoGrupo( this.grupoInvestigacion ).subscribe(data => {
-          this.router.navigate(['/gruposinvestigacion']);
+          this.router.navigate(['/gruposInvestigacion']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
         this.grupoInvestigacionService.actualizarGrupo( this.grupoInvestigacion, this.id ).subscribe(data => {
-          this.router.navigate(['/gruposinvestigacion']);
+          this.router.navigate(['/gruposInvestigacion']);
           this.modalReference.close();
         },
         error => console.error(error));
@@ -90,7 +90,7 @@ export class GruposinveseditComponent implements OnInit {
     }
   }
   agregarNuevo( forma: NgForm) {
-    this.router.navigate(['/admi_gruposinvestigacion', 'nuevo']);
+    this.router.navigate(['/admi_gruposInvestigacion', 'nuevo']);
     forma.reset({});
   }
 

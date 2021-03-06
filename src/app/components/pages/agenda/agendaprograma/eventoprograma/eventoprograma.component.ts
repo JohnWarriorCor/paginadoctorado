@@ -3,20 +3,20 @@ import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AgendaService } from '../../../../services/agenda/agenda.service';
-import { Agenda } from '../../../../interfaces/agenda/agenda';
+import { Agenda } from '../../../../../interfaces/agenda/agenda';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../../services/toast/toast.service';
+import { ToastService } from '../../../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
+import { AgendaprogramaService } from '../../../../../services/agenda/agendaprograma.service';
 
 @Component({
-  selector: 'app-evento',
-  templateUrl: './evento.component.html',
-  styleUrls: ['./evento.component.css'],
+  selector: 'app-eventoprograma',
+  templateUrl: './eventoprograma.component.html',
+  styleUrls: ['./eventoprograma.component.css'],
   providers: [DatePipe]
 })
-export class EventoComponent implements OnInit {
+export class EventoprogramaComponent implements OnInit {
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -55,7 +55,7 @@ export class EventoComponent implements OnInit {
   link: any;
 
   // tslint:disable-next-line:max-line-length
-  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaprogramaService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( params => {
       this.agendas = this.agendaServices.getAgenda(params.id);
       this.link = params.id;
@@ -120,7 +120,7 @@ export class EventoComponent implements OnInit {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
   }
   nav() {
-    this.router.navigate(['/admi_agenda', this.link]);
+    this.router.navigate(['/admi_agendaPrograma', this.link]);
   }
   guardar() {
     if ( this.agenda.titulo !== this.war ||  this.agenda.titulo !== this.war ) {
@@ -130,14 +130,14 @@ export class EventoComponent implements OnInit {
       this.modalReference.close();
       if ( this.id === 'nuevo' ) {
         this.agendaServices.nuevoAgenda( this.agenda ).subscribe(data => {
-          this.router.navigate(['/agenda']);
+          this.router.navigate(['/agendaPrograma']);
           this.modalReference.close();
         },
         error => console.error(error));
       } else {
         this.modalReference.close();
         this.agendaServices.actualizarAgenda( this.agenda, this.id ).subscribe(data => {
-          this.router.navigate(['/agenda']);
+          this.router.navigate(['/agendaPrograma']);
           this.modalReference.close();
         },
         error => console.error(error));
@@ -149,7 +149,7 @@ export class EventoComponent implements OnInit {
     }
   }
   agregarNuevo( forma: NgForm) {
-    this.router.navigate(['/admi_agenda', 'nuevo']);
+    this.router.navigate(['/admi_agendaPrograma', 'nuevo']);
     forma.reset({});
   }
 
@@ -162,7 +162,7 @@ export class EventoComponent implements OnInit {
         delete this.agenda[this.link];
         this.elementoEliminado();
         this.modalReference.close();
-        this.router.navigate(['/agenda']);
+        this.router.navigate(['/agendaPrograma']);
       }
     });
   }

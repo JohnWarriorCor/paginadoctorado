@@ -7,11 +7,10 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 @Injectable({
   providedIn: 'root'
 })
-export class AgendaService {
-
-  agendaRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/agenda.json';
-  agendaURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/agenda/';
-  private dbPath = '/agenda';
+export class AgendainstitucionalService {
+  agendaRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/agendainstitucional.json';
+  agendaURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/agendainstitucional/';
+  private dbPath = '/agendainstitucional';
   agendaRef: AngularFireList<Agenda> = null;
 
   constructor(private db: AngularFireDatabase, private http: Http ) {

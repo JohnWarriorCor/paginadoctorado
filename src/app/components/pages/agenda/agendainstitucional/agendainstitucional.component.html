@@ -68,12 +68,23 @@
               </div>
             </div>
           </div>
-          <ngb-pagination
-            class="d-flex justify-content-end"
-            [collectionSize]="(eventos | filtro: filterpost).length"
-            [(page)]="page"
-            [pageSize]="pageSize"
-          ></ngb-pagination>
+          <div class="row">
+            <div class="col text-left" *ngIf="auth.user | async">
+              <a
+                class="btn navlinkinSolid"
+                [routerLink]="['/admi_agendaInstitucional', 'nuevo']"
+                ><i class="far fa-newspaper"></i> Publicar evento</a
+              >
+            </div>
+            <div class="col">
+              <ngb-pagination
+                class="d-flex justify-content-end"
+                [collectionSize]="(eventos | filtro: filterpost).length"
+                [(page)]="page"
+                [pageSize]="pageSize"
+              ></ngb-pagination>
+            </div>
+          </div>
           <div
             class="card"
             *ngFor="
@@ -88,14 +99,14 @@
                 <img
                   style="padding: 10px"
                   [src]="evento.img"
-                  [routerLink]="['/evento', evento.key]"
+                  [routerLink]="['/eventoInstitucional', evento.key]"
                   class="rounded w-100 cursorSelect"
                 />
               </div>
               <div class="col-md-8 px-3" style="margin-top: 20px">
                 <div class="card-block px-3">
                   <h3
-                    [routerLink]="['/evento', evento.key]"
+                    [routerLink]="['/eventoInstitucional', evento.key]"
                     class="card-title subTituloRojoInstitucional cursorSelect"
                   >
                     {{ evento.titulo }}
@@ -115,7 +126,7 @@
                       ><i class="fas fa-info-circle"></i> Más información</a
                     >
                     <a
-                      [routerLink]="['/evento', evento.key]"
+                      [routerLink]="['/eventoInstitucional', evento.key]"
                       class="btn navlinkinSolid m-3"
                       ><i class="fas fa-search"></i> Ver evento</a
                     >
@@ -135,7 +146,7 @@
               <div class="col text-right">
                 <a
                   class="btn navlinkinSolid m-2"
-                  [routerLink]="['/admi_agenda', evento.key]"
+                  [routerLink]="['/admi_agendaInstitucional', evento.key]"
                   ><i class="fas fa-pencil-alt"></i> Editar</a
                 >
                 <a (click)="openModal(confirmar)" class="btn navlinkinSolid m-2"
@@ -193,14 +204,12 @@
                 [pageSize]="pageSize"
               ></ngb-pagination>
             </div>
-            <div class="col text-right">
-              <div class="col text-right" *ngIf="auth.user | async">
-                <a
-                  class="btn navlinkinSolid"
-                  [routerLink]="['/admi_agenda', 'nuevo']"
-                  ><i class="far fa-newspaper"></i> Publicar evento</a
-                >
-              </div>
+            <div class="col text-right" *ngIf="auth.user | async">
+              <a
+                class="btn navlinkinSolid"
+                [routerLink]="['/admi_agendaInstitucional', 'nuevo']"
+                ><i class="far fa-newspaper"></i> Publicar evento</a
+              >
             </div>
           </div>
           <br />

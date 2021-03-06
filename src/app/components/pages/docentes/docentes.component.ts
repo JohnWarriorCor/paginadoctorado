@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AgendaService } from '../../../services/agenda/agenda.service';
 import { PlantelService } from '../../../services/profesores/plantel/plantel.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
+import { AgendaprogramaService } from '../../../services/agenda/agendaprograma.service';
+import { AgendainstitucionalService } from '../../../services/agenda/agendainstitucional.service';
 
 @Component({
   selector: 'app-docentes',
@@ -32,36 +33,53 @@ export class DocentesComponent implements OnInit {
   eventos: any;
   actualEvento = null;
   actualIndex = -1;
-  constructor( private toastr: ToastrService, public auth: AngularFireAuth, private modalService: NgbModal , private agendaService: AgendaService, private plantelService: PlantelService) {
-    this.agendaService.getAgendas().subscribe( data => {
-      this.agenda = data;
-    });
+  eventosPrograma: any;
+  eventosInstitucional: any;
+  constructor( private toastr: ToastrService, public auth: AngularFireAuth, private modalService: NgbModal , private agendaProgramaService: AgendaprogramaService, private agendaInstitucionalService: AgendainstitucionalService, private plantelService: PlantelService) {
     this.plantelService.getPlanteles().subscribe( data => {
       this.plantelProfesores = data;
     });
   }
-  get sortData() {
-    return this.eventos.sort((a, b) => {
+  get sortDataPrograma() {
+    return this.eventosPrograma.sort((a, b) => {
       // tslint:disable-next-line:whitespace
       // tslint:disable-next-line:no-angle-bracket-type-assertion
       return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
     });
   }
-  obtenerEventos(): void {
-    this.agendaService.getAll().snapshotChanges().pipe(
+  obtenerEventosPrograma(): void {
+    this.agendaProgramaService.getAll().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({ key: c.payload.key, ...c.payload.val() })
         )
       )
     ).subscribe(data => {
-      this.eventos = data;
+      this.eventosPrograma = data;
     });
   }
-
+  get sortDataInstitucional() {
+    return this.eventosInstitucional.sort((a, b) => {
+      // tslint:disable-next-line:whitespace
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
+    });
+  }
+  obtenerEventosInstitucional(): void {
+    this.agendaInstitucionalService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.eventosInstitucional = data;
+    });
+  }
   ngOnInit() {
+    this.obtenerEventosPrograma();
+    this.obtenerEventosInstitucional();
     this.obtenerProfesores();
-    this.obtenerEventos();
   }
 
   refreshList(): void {

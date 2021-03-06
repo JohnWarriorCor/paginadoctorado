@@ -34,7 +34,6 @@ import { ToastService } from './services/toast/toast.service';
 import localeEsCO from '@angular/common/locales/es-CO';
 import { FormacionComponent } from './components/pages/formacion/formacion.component';
 import { DocentesComponent } from './components/pages/docentes/docentes.component';
-import { AgendaComponent } from './components/pages/agenda/agenda.component';
 import { EstudiantesComponent } from './components/pages/estudiantes/estudiantes.component';
 import { GruposinvesComponent } from './components/pages/gruposinves/gruposinves.component';
 import { EgresadosComponent } from './components/pages/estudiantes/egresados/egresados.component';
@@ -58,8 +57,6 @@ import { ArticulosprofesoresComponent } from './components/pages/docentes/articu
 import { ArticulosestudiantesComponent } from './components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component';
 import { EstudianteComponent } from './components/pages/estudiantes/estudiante/estudiante.component';
 import { HistoriaeditComponent } from './components/admin/programa/historiaedit/historiaedit.component';
-import { AgendaeditComponent } from './components/admin/agendaedit/agendaedit.component';
-import { EventoComponent } from './components/pages/agenda/evento/evento.component';
 import { DenominacionComponent } from './components/admin/home/denominacion/denominacion.component';
 import { CarruselComponent } from './components/admin/home/carrusel/carrusel.component';
 import { CarruseleditComponent } from './components/admin/home/carrusel/carruseledit.component';
@@ -75,6 +72,12 @@ import { EgresadoComponent } from './components/pages/estudiantes/egresados/egre
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { FiltroprofesoresPipe } from './pipes/filtroprofesores.pipe';
 import { FiltrogruposinvesPipe } from './pipes/filtrogruposinves.pipe';
+import { AgendainstitucionalComponent } from './components/pages/agenda/agendainstitucional/agendainstitucional.component';
+import { EventoinstitucionalComponent } from './components/pages/agenda/agendainstitucional/eventoinstitucional/eventoinstitucional.component';
+import { AgendaprogramaComponent } from './components/pages/agenda/agendaprograma/agendaprograma.component';
+import { EventoprogramaComponent } from './components/pages/agenda/agendaprograma/eventoprograma/eventoprograma.component';
+import { AgendaprogramaeditComponent } from './components/admin/agendaedit/agendaprogramaedit/agendaprogramaedit.component';
+import { AgendainstitucionaleditComponent } from './components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -87,7 +90,6 @@ registerLocaleData(localeEsCO, 'es-CO');
     HeaderComponent,
     FormacionComponent,
     DocentesComponent,
-    AgendaComponent,
     EstudiantesComponent,
     GruposinvesComponent,
     EgresadosComponent,
@@ -110,8 +112,6 @@ registerLocaleData(localeEsCO, 'es-CO');
     ArticulosestudiantesComponent,
     EstudianteComponent,
     HistoriaeditComponent,
-    AgendaeditComponent,
-    EventoComponent,
     DenominacionComponent,
     CarruselComponent,
     CarruseleditComponent,
@@ -127,6 +127,12 @@ registerLocaleData(localeEsCO, 'es-CO');
     FiltroPipe,
     FiltroprofesoresPipe,
     FiltrogruposinvesPipe,
+    AgendainstitucionalComponent,
+    EventoinstitucionalComponent,
+    AgendaprogramaComponent,
+    EventoprogramaComponent,
+    AgendaprogramaeditComponent,
+    AgendainstitucionaleditComponent,
   ],
   imports: [
     BrowserModule,

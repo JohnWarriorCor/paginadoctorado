@@ -3,20 +3,20 @@ import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AgendaService } from '../../../services/agenda/agenda.service';
-import { Agenda } from '../../../interfaces/agenda/agenda';
+import { Agenda } from '../../../../interfaces/agenda/agenda';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../services/toast/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
+import { AgendainstitucionalService } from '../../../../services/agenda/agendainstitucional.service';
 
 @Component({
-  selector: 'app-agendaedit',
-  templateUrl: './agendaedit.component.html',
-  styleUrls: ['./agendaedit.component.css'],
+  selector: 'app-agendainstitucionaledit',
+  templateUrl: './agendainstitucionaledit.component.html',
+  styleUrls: ['./agendainstitucionaledit.component.css'],
   providers: [DatePipe]
 })
-export class AgendaeditComponent implements OnInit {
+export class AgendainstitucionaleditComponent implements OnInit {
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -42,8 +42,7 @@ export class AgendaeditComponent implements OnInit {
     url: '',
   };
 
-  // tslint:disable-next-line:no-shadowed-variable
-  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendaService, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private agendaServices: AgendainstitucionalService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {

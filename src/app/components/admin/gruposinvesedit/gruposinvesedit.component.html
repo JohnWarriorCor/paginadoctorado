@@ -31,6 +31,9 @@
                     <th style="vertical-align: middle" scope="col">
                       Clasificación
                     </th>
+                    <th style="vertical-align: middle" scope="col">
+                      URL GrupLAC
+                    </th>
                     <th style="vertical-align: middle" scope="col">Opciones</th>
                   </tr>
                 </thead>
@@ -81,6 +84,14 @@
                         <option value="C">C</option>
                         <option value="No reconocido">No reconocido</option>
                       </select>
+                    </td>
+                    <td>
+                      <input
+                        [(ngModel)]="field.url"
+                        class="form-control inputTable"
+                        type="text"
+                        name="{{ field.url }}"
+                      />
                     </td>
                     <td>
                       <button
@@ -140,6 +151,15 @@
                       </select>
                     </td>
                     <td>
+                      <input
+                        class="form-control inputTable"
+                        type="text"
+                        id="newAttributeUrl"
+                        [(ngModel)]="newAttribute.url"
+                        name="newAttributeUrl"
+                      />
+                    </td>
+                    <td>
                       <button
                         class="btn btn-default colorRedInst"
                         type="button"
@@ -161,7 +181,7 @@
               </button>
               <button
                 class="btn navlinkinSolid m-1"
-                [routerLink]="['/gruposinvestigacion']"
+                [routerLink]="['/gruposInvestigacion']"
               >
                 <i class="fas fa-sign-out-alt"></i> Volver
               </button>
