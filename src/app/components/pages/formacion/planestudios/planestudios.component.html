@@ -12,62 +12,109 @@
       <div class="row">
         <div
           class="col-sm-8 shadow text-justify fondodivleft shadow grayinst"
-          *ngFor="let item of planEstudios | keysfirebase"
+          *ngFor="let item of planEstudioResumen | keysfirebase"
         >
           <div id="print-section">
             <h3 class="titleInstRed">Plan de Estudios</h3>
             <hr class="lineInstRed" />
             <br />
-            <div class="container">
-              <div class="input-group mb-3 m-2">
-                <input
-                  type="text"
-                  class="form-control shadow"
-                  style="border-radius: 50px 0px 0px 50px"
-                  name="buscarEvento"
-                  placeholder="Digite palabras claves para buscar..."
-                  aria-label="Recipient's username"
-                  aria-describedby="button-addon2"
-                />
-                <div class="input-group-append">
-                  <button
-                    class="btn navlinkinSolid shadow"
-                    type="button"
-                    id="button-addon2"
-                  >
-                    <i class="fas fa-search"></i> Buscar
-                  </button>
-                </div>
-              </div>
-            </div>
-            <br />
-            <table
-              id="tableSortExample"
-              class="table table-bordered table-hover parinst table-responsive text-center"
-              style="border-radius: 10px"
-            >
-              <thead class="tablatit">
+            <table class="table table-bordered parinst">
+              <thead class="tablatit text-center">
                 <tr class="white">
-                  <th style="vertical-align: middle" scope="col">N°</th>
-                  <th style="vertical-align: middle" scope="col">Asignatura</th>
-                  <th style="vertical-align: middle" scope="col">Créditos</th>
+                  <th style="vertical-align: middle" scope="col">CURSOS</th>
+                  <th style="vertical-align: middle" scope="col">CRÉDITOS</th>
+                  <th style="vertical-align: middle" scope="col">PORCENTAJE</th>
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  *ngFor="
-                    let field of planEstudios[item].fieldArray | keysfirebase;
-                    let i = index
-                  "
-                >
-                  <th style="vertical-align: middle" scope="row">
-                    {{ i + 1 }}
-                  </th>
-                  <td style="vertical-align: middle">
-                    {{ planEstudios[item].fieldArray[field].asignatura }}
+                <tr>
+                  <td>
+                    <b>FUNDAMENTOS TEÓRICOS DE CIENCIAS DE LA SALUD. </b
+                    >(Ciencias de la Salud, Medicina Tropical, Salud de
+                    Poblaciones)
                   </td>
-                  <td style="vertical-align: middle">
-                    {{ planEstudios[item].fieldArray[field].creditos }}
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaUno }}
+                  </td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].porcentajeCasillaUno }}
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="2">
+                    <b>INVESTIGACIÓN</b><br />
+                    Metodología de la Investigación en CS
+                  </td>
+                  <td rowspan="2" class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaDos }}
+                  </td>
+                  <td
+                    rowspan="9"
+                    style="vertical-align: middle"
+                    class="text-center"
+                  >
+                    {{ planEstudioResumen[item].porcentajeCasillaDos }}
+                  </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                  <td>Epistemología de la Salud</td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaTres }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Proyecto Tesis I</td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaCuatro }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Proyecto de Tesis II</td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaCinco }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tesis</td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaSeis }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Pasantía internacional</td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaSiete }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Socialización productos Tesis</td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaOcho }}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Redacción y publicación científica</td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaNueve }}
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>COMPONENTES FLEXIBLES</b></td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaDiez }}
+                  </td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].porcentajeCasillaTres }}
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>TOTAL</b></td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].creditoCasillaTotal }}
+                  </td>
+                  <td class="text-center">
+                    {{ planEstudioResumen[item].porcentajeCasillaTotal }}
                   </td>
                 </tr>
               </tbody>
@@ -102,9 +149,9 @@
           <hr class="lineInstRed" />
           <br />
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=1000&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
             width="100%"
-            height="1000"
+            height="600"
             style="border: none; overflow: hidden"
             scrolling="no"
             frameborder="0"

@@ -18,6 +18,7 @@ export class PlanestudiosComponent implements OnInit {
   acumFechas = 0;
   comodinAcum = 0;
   planEstudios: Array<any> = [];
+  planEstudioResumen: any[] = [];
   loading = true;
   // Herramientas ocultas
   key: any;
@@ -32,6 +33,9 @@ export class PlanestudiosComponent implements OnInit {
     this.planestudiosService.getPlanestudios().subscribe( data => {
       this.planEstudios = data;
     });
+    this.planestudiosService.getPlanestudiosResumen().subscribe( data => {
+      this.planEstudioResumen = data;
+    });
   }
   refresh() {
     window.location.reload();
@@ -43,23 +47,6 @@ export class PlanestudiosComponent implements OnInit {
     this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
   }
   ngOnInit() {
-  }
-  viewOpciones(pass, user) {
-    if ( pass === '7183' && user === 'admin' ) {
-      this.ajustes = false;
-      this.validar = true;
-    } else {
-      if (pass !== '7183' && user !== 'admin') {
-        this.error = true;
-        this.passError = 'Usuario y contraseña incorrectas';
-      } else if (pass !== '7183') {
-        this.error = true;
-        this.passError = 'Contraseña incorrecta';
-      } else {
-        this.error = true;
-        this.passError = 'Usuario incorrecto';
-      }
-    }
   }
   borrarPlan( key$: string) {
     this.planestudiosService.borrarPlanestudio(key$).subscribe( respuesta => {

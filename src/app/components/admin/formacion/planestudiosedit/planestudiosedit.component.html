@@ -10,6 +10,187 @@
             <hr class="lineInstRed" />
             <br />
             <form #forma="ngForm">
+              <!--NUEVA TABLA-->
+              <table class="table table-bordered parinst">
+                <thead class="tablatit text-center">
+                  <tr class="white">
+                    <th style="vertical-align: middle" scope="col">CURSOS</th>
+                    <th style="vertical-align: middle" scope="col">CRÉDITOS</th>
+                    <th style="vertical-align: middle" scope="col">
+                      PORCENTAJE
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <b>FUNDAMENTOS TEÓRICOS DE CIENCIAS DE LA SALUD. </b
+                      >(Ciencias de la Salud, Medicina Tropical, Salud de
+                      Poblaciones)
+                    </td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditosCasillaUno"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaUno"
+                      />
+                    </td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="text"
+                        name="porcentajeCasillaUno"
+                        [(ngModel)]="planestudiosresumen.porcentajeCasillaUno"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">
+                      <b>INVESTIGACIÓN</b><br />
+                      Metodología de la Investigación en CS
+                    </td>
+                    <td rowspan="2" class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditosCasillaDos"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaDos"
+                      />
+                    </td>
+                    <td
+                      rowspan="9"
+                      style="vertical-align: middle"
+                      class="text-center"
+                    >
+                      <input
+                        class="form-control inputTable"
+                        type="text"
+                        name="porcentajeCasillaDos"
+                        [(ngModel)]="planestudiosresumen.porcentajeCasillaDos"
+                      />
+                    </td>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                    <td>Epistemología de la Salud</td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaTres"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaTres"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Proyecto Tesis I</td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaCuatro"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaCuatro"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Proyecto de Tesis II</td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaCinco"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaCinco"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tesis</td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaSeis"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaSeis"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Pasantía internacional</td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaSiete"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaSiete"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Socialización productos Tesis</td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaOcho"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaOcho"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Redacción y publicación científica</td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaNueve"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaNueve"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>COMPONENTES FLEXIBLES</b></td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaDiez"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaDiez"
+                      />
+                    </td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="text"
+                        name="porcentajeCasillaTres"
+                        [(ngModel)]="planestudiosresumen.porcentajeCasillaTres"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>TOTAL</b></td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="number"
+                        name="creditoCasillaTotal"
+                        [(ngModel)]="planestudiosresumen.creditoCasillaTotal"
+                      />
+                    </td>
+                    <td class="text-center">
+                      <input
+                        class="form-control inputTable"
+                        type="text"
+                        name="porcentajeCasillaTotal"
+                        [(ngModel)]="planestudiosresumen.porcentajeCasillaTotal"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--<br /><br />
+              ANTIGUA TABLA
               <table class="table table-bordered parinst text-center">
                 <thead class="tablatit">
                   <tr class="white">
@@ -85,6 +266,7 @@
                   </tr>
                 </tbody>
               </table>
+              -->
               <button
                 class="btn navlinkinSolid m-1"
                 (click)="openModal(confirmar)"
@@ -122,7 +304,7 @@
                     type="button"
                     class="btn btnColorFacultadSalud"
                     ngbAutofocus
-                    (click)="guardar()"
+                    (click)="guardarResumen()"
                   >
                     Aceptar
                   </button>

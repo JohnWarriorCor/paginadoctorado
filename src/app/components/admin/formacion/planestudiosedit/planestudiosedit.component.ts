@@ -5,6 +5,7 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlanestudiosService } from '../../../../services/formacion/planestudios/planestudios.service';
 import { Planestudios } from '../../../../interfaces/formacion/planestudios/planestudios';
+import { Planestudiosresumen } from '../../../../interfaces/formacion/planestudios/planestudiosresumen';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { ToastService } from '../../../../services/toast/toast.service';
@@ -37,13 +38,36 @@ export class PlanestudioseditComponent implements OnInit {
   planEstudio: Planestudios = {
     fieldArray: [],
   };
+  planestudiosresumen: Planestudiosresumen = {
+    creditoCasillaUno: '',
+    creditoCasillaDos: '',
+    creditoCasillaTres: '',
+    creditoCasillaCuatro: '',
+    creditoCasillaCinco: '',
+    creditoCasillaSeis: '',
+    creditoCasillaSiete: '',
+    creditoCasillaOcho: '',
+    creditoCasillaNueve: '',
+    creditoCasillaDiez: '',
+    creditoCasillaTotal: '',
+    porcentajeCasillaUno: '',
+    porcentajeCasillaDos: '',
+    porcentajeCasillaTres: '',
+    porcentajeCasillaTotal: '',
+  };
 
   // tslint:disable-next-line:max-line-length
   constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private planEstudioService: PlanestudiosService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe( parametros => {
       this.id = parametros.id;
       if ( this.id !== 'nuevo' ) {
-        this.planEstudioService.getPlanestudio( this.id ).subscribe(grupoInvestigacion => this.planEstudio = grupoInvestigacion);
+        this.planEstudioService.getPlanestudio( this.id ).subscribe(planEstudio => this.planEstudio = planEstudio);
+      }
+    });
+    this.activatedRoute.params.subscribe( parametros => {
+      this.id = parametros.id;
+      if ( this.id !== 'nuevo' ) {
+        this.planEstudioService.getPlanestudioResumen( this.id ).subscribe(planestudiosresumen => this.planestudiosresumen = planestudiosresumen);
       }
     });
   }
@@ -129,5 +153,30 @@ export class PlanestudioseditComponent implements OnInit {
     forma.reset({});
     this.up();
   }
-
+  guardarResumen() {
+    if ( this.planestudiosresumen.creditoCasillaUno !== this.war ||  this.planestudiosresumen.creditoCasillaTotal !== this.war ) {
+      this.error = false;
+      this.modalReference.close();
+      if ( this.id === 'nuevo' ) {
+        this.planEstudioService.nuevoPlanestudioResumen( this.planestudiosresumen ).subscribe(data => {
+          this.showSuccess();
+          this.router.navigate(['/plandeestudios']);
+          this.modalReference.close();
+        },
+        error => console.error(error));
+      } else {
+        this.modalReference.close();
+        this.planEstudioService.actualizarPlanestudioResumen( this.planestudiosresumen, this.id ).subscribe(data => {
+          this.showInfo();
+          this.router.navigate(['/plandeestudios']);
+          this.modalReference.close();
+        },
+        error => console.error(error, this.showWarning()));
+      }
+    } else {
+      this.error = true;
+      this.passError = 'No puede dejar la historía vacía';
+      this.modalReference.close();
+    }
+  }
 }

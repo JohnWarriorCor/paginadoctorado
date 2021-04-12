@@ -71,15 +71,27 @@
                     <table class="table table-striped">
                       <thead>
                         <tr>
-                          <td><span class="redinst">Título a otorgar</span></td>
+                          <td>
+                            <span class="redinst">Nombre del programa:</span>
+                          </td>
+                          <td style="width: 60%">
+                            <span class="grayinst">
+                              Doctorado en Ciencias de la Salud</span
+                            >
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <span class="redinst">Título a otorgar:</span>
+                          </td>
                           <td style="width: 60%">
                             <span class="grayinst">
                               {{ denominacion[den].tituloOtorgar }}</span
                             >
                           </td>
                         </tr>
-                      </thead>
-                      <tbody>
                         <tr>
                           <td>
                             <span class="redinst">Registro Calificado:</span>
@@ -196,14 +208,24 @@
         </div>
       </div>
       <div class="col fondodivright shadow">
-        <h3 [routerLink]="['/agendaPrograma']" class="titleInstRed cursorSelect">
+        <h3
+          [routerLink]="['/agendaPrograma']"
+          class="titleInstRed cursorSelect"
+        >
           <i class="far fa-edit"></i> Agéndate
         </h3>
         <hr class="lineInstRed" />
         <br />
         <div class="row">
           <div class="col">
-            <p class="grayinst font-weight-bold cursorSelect" [routerLink]="['/agendaPrograma']"><small><i class="fas fa-newspaper"></i> Actividades de Programa</small></p>
+            <p
+              class="grayinst font-weight-bold cursorSelect"
+              [routerLink]="['/agendaPrograma']"
+            >
+              <small
+                ><i class="fas fa-newspaper"></i> Actividades de Programa</small
+              >
+            </p>
             <div
               id="carouselExampleControlsPrograma"
               class="carousel slide"
@@ -288,7 +310,15 @@
             </div>
           </div>
           <div class="col">
-            <p class="grayinst font-weight-bold cursorSelect" [routerLink]="['/agendaInstitucional']"><small><i class="fas fa-rss-square"></i> Actividades Institucionales</small></p>
+            <p
+              class="grayinst font-weight-bold cursorSelect"
+              [routerLink]="['/agendaInstitucional']"
+            >
+              <small
+                ><i class="fas fa-rss-square"></i> Actividades
+                Institucionales</small
+              >
+            </p>
             <div
               id="carouselExampleControlsInstitucional"
               class="carousel slide"
@@ -298,7 +328,10 @@
               <div class="carousel-inner">
                 <div
                   [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-                  *ngFor="let evento of sortDataEventoInstitucional; let i = index"
+                  *ngFor="
+                    let evento of sortDataEventoInstitucional;
+                    let i = index
+                  "
                 >
                   <div class="card-deck">
                     <div class="card shadow">
@@ -499,7 +532,7 @@
                   [routerLink]="['/docentes']"
                   class="titleInstRed cursorSelect"
                 >
-                  <i class="fas fa-users"></i> Plantel Docente
+                  <i class="fas fa-users"></i> Equipo Docente del Programa
                 </h3>
                 <br />
               </div>
