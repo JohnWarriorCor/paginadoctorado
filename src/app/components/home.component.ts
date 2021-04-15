@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   pageEstudiantes = 1;
   pageSizeEstudiantes = 4;
   pageProfesores = 1;
-  pageSizeProfesores = 4;
+  pageSizeProfesores = 3;
   currentJustify = 'justified';
   g: any;
   today = new Date();
