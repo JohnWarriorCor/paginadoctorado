@@ -271,7 +271,7 @@ section .section-title {
 }
 
 .backside .card {
-  min-height: 120px;
+  min-height: 250px;
 }
 .frontside .card {
   min-height: 250px;
@@ -299,6 +299,5 @@ section .section-title {
 }
 
 .text-backside {
-  margin-top: 50px;
   font-size: 10px;
 }

@@ -231,44 +231,74 @@
           </div>
           <div class="row">
             <div class="col">
-              <div
-                id="carouselExampleInterval"
-                class="carousel slide"
-                data-ride="carousel"
-              >
-                <div class="carousel-inner text-center no-print">
-                  <div class="carousel-item active">
-                    <div class="card-deck">
-                      <div
-                        class="card"
-                        *ngFor="
-                          let item of listados
-                            | keysfirebase
-                            | slice
-                              : (page - 1) * pageSize
-                              : (page - 1) * pageSize + pageSize;
-                          let i = index
-                        "
-                        style="border: none"
-                      >
-                        <img
-                          [routerLink]="['/estudiante', item]"
-                          (click)="up()"
-                          [src]="listados[item].foto"
-                          [alt]="listados[item].nombre"
-                          [title]="listados[item].nombre"
-                          class="card-img-top rounded greyImg cursorSelect"
-                          placement="top"
-                          ngbTooltip="Click para ir al perfil"
-                        />
-                        <h5 class="card-title m-2">
-                          {{ listados[item].nombre }}
-                        </h5>
+              <section id="team" class="pb-5">
+                <div class="row">
+                  <!-- Team member -->
+                  <div
+                    class="col-xs-12 col-sm-6 col-md-4"
+                    style="margin-bottom: 10px"
+                    [routerLink]="['/docente', item]"
+                    (click)="up()"
+                    *ngFor="
+                      let item of listados
+                        | keysfirebase
+                        | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
+                      let i = index
+                    "
+                  >
+                    <div class="image-flip">
+                      <div class="mainflip flip-0">
+                        <div
+                          class="frontside"
+                          style="border: solid 1px #8f141b; border-radius: 2%"
+                        >
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <p>
+                                <img
+                                  [routerLink]="['/estudiante', item]"
+                                  (click)="up()"
+                                  [src]="listados[item].foto"
+                                  [alt]="listados[item].nombre"
+                                  [title]="listados[item].nombre"
+                                  class="card-img-top rounded cursorSelect"
+                                />
+                              </p>
+                              <h4 class="card-title">
+                                {{ listados[item].nombre }}
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="backside">
+                          <div class="card">
+                            <div
+                              class="card-body text-center mt-4 text-backside"
+                            >
+                              <br /><br />
+                              <h4 class="card-title">
+                                {{ listados[item].nombre }}
+                              </h4>
+                              <p class="card-text text-justify">
+                                {{
+                                  listados[item].sintesis
+                                    | slice: 0:200
+                                }}
+                                <a
+                                  [routerLink]="['/estudiante', item]"
+                                  style="color: #8f141b; font-size: 10px"
+                                  >... Ver más</a
+                                >
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <!-- ./Team member -->
                 </div>
-              </div>
+              </section>
             </div>
           </div>
         </div>

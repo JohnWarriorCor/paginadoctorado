@@ -19,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 export class DocenteComponent implements OnInit {
 
   page = 1;
-  pageSize = 4;
+  pageSize = 3;
 
   today = new Date();
   fecha: any;

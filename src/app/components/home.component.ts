@@ -25,7 +25,7 @@ import { AgendainstitucionalService } from '../services/agenda/agendainstitucion
 
 export class HomeComponent implements OnInit {
   pageEstudiantes = 1;
-  pageSizeEstudiantes = 4;
+  pageSizeEstudiantes = 3;
   pageProfesores = 1;
   pageSizeProfesores = 3;
   currentJustify = 'justified';
