@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthGuardModule  } from '@angular/fire/auth-guard';
 
 // Toast
@@ -152,6 +153,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     InputsModule.forRoot(),
     ButtonsModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     AngularFireDatabaseModule,

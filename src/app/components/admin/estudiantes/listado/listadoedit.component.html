@@ -4,7 +4,7 @@
       <div class="row fondodivCenter shadow">
         <div class="col">
           <h3 class="titleInstRed">
-            Formulario para administrar el Plantel de Profesores
+            Formulario para administrar el perfil de los Estudiantes
           </h3>
           <hr class="lineInstRed" />
           <br />
@@ -77,6 +77,66 @@
             <h4 class="text-left text-white">
               <i class="fas fa-camera"></i> Foto de perfil:
             </h4>
+            <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+              <div class="row">
+                <div *ngIf="porcentaje > 1 && porcentaje < 101" class="col">
+                  <ngb-progressbar
+                    [showValue]="true"
+                    type="danger"
+                    [value]="porcentaje"
+                  >
+                  </ngb-progressbar
+                  ><br />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label class="file-label">
+                    <input
+                      type="file"
+                      class="custom-file-input"
+                      formControlName="archivo"
+                      (change)="cambioArchivo($event)"
+                      id="customFileLang"
+                      lang="es"
+                      required
+                    />
+                    <span class="file-cta">
+                      <span
+                        class="custom-file-label text-left"
+                        style="margin-left: 16px"
+                        for="customFileLang"
+                      >
+                        {{ mensajeArchivo | slice: 0:20 }}
+                      </span>
+                    </span>
+                  </label>
+                  <br />
+                </div>
+                <div class="col col-lg-2 text-left">
+                  <button
+                    class="btn btn-danger"
+                    type="submit"
+                    placement="top"
+                    ngbTooltip="Subir archivo"
+                    [disabled]="!archivoForm.valid"
+                  >
+                    <i class="fas fa-upload"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div
+                    *ngIf="porcentaje === 100"
+                    class="alert alert-success"
+                    role="alert"
+                  >
+                    Imágen cargada exitosamente
+                  </div>
+                </div>
+              </div>
+            </form>
             <img
               [src]="listado.foto"
               [alt]="listado.nombre"
@@ -111,7 +171,7 @@
               </div>
             </div>
             <p class="alert alert-warning text-center font-weight-bold m-3">
-              Solo seleccione género si el profesor no tiene foto para cargar.
+              Solo seleccione género si el profesor NO tiene foto para cargar.
             </p>
             <div
               *ngIf="alertBool != false"
@@ -120,23 +180,6 @@
             >
               <strong>{{ imgError }}</strong>
             </div>
-            <br />
-            <h6 class="text-left text-white">
-              <i class="fas fa-link"></i> URL de la Foto:
-            </h6>
-            <input
-              (change)="changeImg(listado.foto)"
-              name="foto"
-              type="url"
-              [(ngModel)]="listado.foto"
-              class="form-control shadow p-3"
-              placeholder="Dirección URL de la imagen"
-            />
-            <p class="alert alert-warning text-center font-weight-bold m-3">
-              Una vez cargada la imagen en el panel externo, por favor copie el
-              URL del Token y reemplace el URL existente del campo de arriba
-              para cambiar la foto actual. Gracias
-            </p>
           </div>
           <div class="col-md-8 text-justify" style="margin-bottom: 20px">
             <div

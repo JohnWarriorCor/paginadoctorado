@@ -122,6 +122,77 @@
                   </div>
                   <div class="col">
                     <h6 class="text-left subTituloRojoInstitucional">
+                      Cargar imágen a publicar:
+                    </h6>
+                    <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+                      <div class="row">
+                        <div
+                          *ngIf="porcentaje > 1 && porcentaje < 101"
+                          class="col"
+                        >
+                          <ngb-progressbar
+                            [showValue]="true"
+                            type="danger"
+                            [value]="porcentaje"
+                          >
+                          </ngb-progressbar
+                          ><br />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <label class="file-label">
+                            <input
+                              type="file"
+                              class="custom-file-input"
+                              formControlName="archivo"
+                              (change)="cambioArchivo($event)"
+                              id="customFileLang"
+                              lang="es"
+                              required
+                            />
+                            <span class="file-cta">
+                              <span
+                                class="
+                                  custom-file-label
+                                  text-left
+                                  inputPaciente
+                                "
+                                style="margin-left: 16px"
+                                for="customFileLang"
+                              >
+                                {{ mensajeArchivo | slice: 0:50 }}
+                              </span>
+                            </span>
+                          </label>
+                          <br />
+                        </div>
+                        <div class="col col-lg-2 text-right">
+                          <button
+                            class="btn navlinkin"
+                            type="submit"
+                            placement="top"
+                            ngbTooltip="Subir archivo"
+                            [disabled]="!archivoForm.valid"
+                          >
+                            <i class="fas fa-upload"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div
+                            *ngIf="porcentaje === 100"
+                            class="alert alert-success"
+                            role="alert"
+                          >
+                            Imágen cargada exitosamente
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <br />
+                    <h6 class="text-left subTituloRojoInstitucional">
                       Previsualización de la imágen:
                     </h6>
                     <img
@@ -139,6 +210,14 @@
                     >
                       <strong>{{ imgError }}</strong>
                     </div>
+                    <br />
+                    <a
+                      href="https://console.firebase.google.com/u/4/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
+                      target="_blank"
+                      ><button class="btn navlinkinSolid">
+                        Adminsitrar imágenes
+                      </button></a
+                    >
                   </div>
                 </div>
               </div>
