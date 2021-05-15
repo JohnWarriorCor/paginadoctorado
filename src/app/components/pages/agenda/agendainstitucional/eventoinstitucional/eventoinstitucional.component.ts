@@ -35,6 +35,7 @@ export class EventoinstitucionalComponent implements OnInit {
   agenda: Agenda = {
     titulo: '',
     img: '',
+    nameImg: '',
     resenia: '',
     parrafo: '',
     fechaEvento: '',

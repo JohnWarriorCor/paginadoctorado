@@ -37,6 +37,7 @@ export class AgendaprogramaeditComponent implements OnInit {
   agenda: Agenda = {
     titulo: '',
     img: '',
+    nameImg: '',
     resenia: '',
     parrafo: '',
     fechaEvento: '',
@@ -193,6 +194,7 @@ export class AgendaprogramaeditComponent implements OnInit {
   }
   // Función para subir el archivo a Cloud Storage referenciado con la ruta de acceso
   subirArchivo() {
+    this.agenda.nameImg = this.nombreArchivo;
     this.nombreArchivo = 'EVENTOS/PROGRAMA/' + this.nombreArchivo;
     const archivo = this.datosFormulario.get('archivo');
     const referencia = this.firebaseStorage.referenciaCloudStorage(
@@ -211,7 +213,7 @@ export class AgendaprogramaeditComponent implements OnInit {
             this.URLPublica = URL;
             this.finalizado = true;
             this.agenda.img = this.URLPublica;
-            return [this.URLPublica, this.finalizado, this.agenda.img];
+            return [this.URLPublica, this.finalizado, this.agenda.img, this.agenda.nameImg];
           });
         }, 2000);
       }

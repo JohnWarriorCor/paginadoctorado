@@ -6,12 +6,13 @@ import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { map } from 'rxjs/operators';
 import { AgendainstitucionalService } from '../../../../services/agenda/agendainstitucional.service';
+import { FilesService } from '../../../../services/upload/file.service';
 
 @Component({
   selector: 'app-agendainstitucional',
   templateUrl: './agendainstitucional.component.html',
   styleUrls: ['./agendainstitucional.component.css'],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
 export class AgendainstitucionalComponent implements OnInit {
   filterpost = '';
@@ -28,61 +29,71 @@ export class AgendainstitucionalComponent implements OnInit {
   loading = true;
   anios = [];
   dias = [];
-  mes: any[] = [{
-    id: '-01-',
-    name: 'Enero',
-  },
-  {
-    id: '-02-',
-    name: 'Febrero',
-  },
-  {
-    id: '-03-',
-    name: 'Marzo',
-  },
-  {
-    id: '-04-',
-    name: 'Abril',
-  },
-  {
-    id: '-05-',
-    name: 'Mayo',
-  },
-  {
-    id: '-06-',
-    name: 'Junio',
-  },
-  {
-    id: '-07-',
-    name: 'Julio',
-  },
-  {
-    id: '-08-',
-    name: 'Agosto',
-  },
-  {
-    id: '-09-',
-    name: 'Sptiembre',
-  },
-  {
-    id: '-10-',
-    name: 'Octubre',
-  },
-  {
-    id: '-11-',
-    name: 'Noviembre',
-  },
-  {
-    id: '-12-',
-    name: 'Diciemebre',
-  },
+  mes: any[] = [
+    {
+      id: '-01-',
+      name: 'Enero',
+    },
+    {
+      id: '-02-',
+      name: 'Febrero',
+    },
+    {
+      id: '-03-',
+      name: 'Marzo',
+    },
+    {
+      id: '-04-',
+      name: 'Abril',
+    },
+    {
+      id: '-05-',
+      name: 'Mayo',
+    },
+    {
+      id: '-06-',
+      name: 'Junio',
+    },
+    {
+      id: '-07-',
+      name: 'Julio',
+    },
+    {
+      id: '-08-',
+      name: 'Agosto',
+    },
+    {
+      id: '-09-',
+      name: 'Sptiembre',
+    },
+    {
+      id: '-10-',
+      name: 'Octubre',
+    },
+    {
+      id: '-11-',
+      name: 'Noviembre',
+    },
+    {
+      id: '-12-',
+      name: 'Diciemebre',
+    },
   ];
   eventos: any;
   actualEvento = null;
   actualIndex = -1;
-  constructor( public datepipe: DatePipe, private toastr: ToastrService, public auth: AngularFireAuth, private agendaService: AgendainstitucionalService, private modalService: NgbModal ) {
-    this.agendaService.getAgendas().subscribe( data => {
+  public nombreArchivo = '';
+  constructor(
+    private firebaseStorage: FilesService,
+    public datepipe: DatePipe,
+    private toastr: ToastrService,
+    public auth: AngularFireAuth,
+    private agendaService: AgendainstitucionalService,
+    private modalService: NgbModal
+  ) {
+    this.agendaService.getAgendas().subscribe((data) => {
       this.agenda = data;
+      return this.agenda;
     });
   }
   get sortData() {
@@ -93,13 +104,13 @@ export class AgendainstitucionalComponent implements OnInit {
     });
   }
   elementoEliminado() {
-    this.toastr.warning( '', 'Elemento eliminado', {
-      timeOut: 2500
+    this.toastr.warning('', 'Elemento eliminado', {
+      timeOut: 2500,
     });
   }
   showDanger() {
     this.toastr.error('Intenten nuevamente', 'Error', {
-      timeOut: 2500
+      timeOut: 2500,
     });
   }
 
@@ -107,14 +118,23 @@ export class AgendainstitucionalComponent implements OnInit {
     window.location.reload();
   }
   openModal(confirmar) {
-    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
+    this.modalReference = this.modalService.open(confirmar, {
+      centered: true,
+      size: 'sm',
+      backdrop: 'static',
+      windowClass: 'fade-in',
+    });
   }
   openSm(formAdmin) {
-    this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
+    this.modalReference = this.modalService.open(formAdmin, {
+      size: 'sm',
+      centered: true,
+      backdrop: 'static',
+    });
   }
 
   ngOnInit(): void {
-    for (let index = 2016; index <= (new Date()).getFullYear(); index++) {
+    for (let index = 2016; index <= new Date().getFullYear(); index++) {
       this.anios.push(index.toString());
     }
     this.fecha = this.datepipe.transform(this.today, 'yyyy-mm-dd');
@@ -135,21 +155,27 @@ export class AgendainstitucionalComponent implements OnInit {
   }
 
   obtenerEventos(): void {
-    this.agendaService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ key: c.payload.key, ...c.payload.val() })
+    this.agendaService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
         )
       )
-    ).subscribe(data => {
-      this.eventos = data;
-    });
+      .subscribe((data) => {
+        this.eventos = data;
+      });
   }
 
-
-  borrarAgenda( key$: string) {
-    this.agendaService.borrarAgenda(key$).subscribe( respuesta => {
-      if ( respuesta ) {
+  borrarAgenda(key$: string) {
+    this.nombreArchivo = 'EVENTOS/INSTITUCIONALES/';
+    this.firebaseStorage.deleteFileStorage(
+      this.nombreArchivo,
+      this.agenda[key$].nameImg
+    );
+    this.agendaService.borrarAgenda(key$).subscribe((respuesta) => {
+      if (respuesta) {
         this.showDanger();
       } else {
         delete this.agenda[key$];

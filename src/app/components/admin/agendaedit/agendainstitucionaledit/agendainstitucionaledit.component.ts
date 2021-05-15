@@ -1,17 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import {
-  FormGroup,
-  NgForm,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Agenda } from '../../../../interfaces/agenda/agenda';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
 import { AgendainstitucionalService } from '../../../../services/agenda/agendainstitucional.service';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -42,6 +36,7 @@ export class AgendainstitucionaleditComponent implements OnInit {
   agenda: Agenda = {
     titulo: '',
     img: '',
+    nameImg: '',
     resenia: '',
     parrafo: '',
     fechaEvento: '',
@@ -61,7 +56,6 @@ export class AgendainstitucionaleditComponent implements OnInit {
 
   constructor(
     private firebaseStorage: FilesService,
-    private myToast: ToastService,
     private toastr: ToastrService,
     public auth: AngularFireAuth,
     public datepipe: DatePipe,
@@ -198,6 +192,7 @@ export class AgendainstitucionaleditComponent implements OnInit {
   }
   // Función para subir el archivo a Cloud Storage referenciado con la ruta de acceso
   subirArchivo() {
+    this.agenda.nameImg = this.nombreArchivo;
     this.nombreArchivo = 'EVENTOS/INSTITUCIONALES/' + this.nombreArchivo;
     const archivo = this.datosFormulario.get('archivo');
     const referencia = this.firebaseStorage.referenciaCloudStorage(

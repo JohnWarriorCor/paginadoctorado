@@ -17,4 +17,10 @@ export class FilesService {
     return this.storage.ref(nombreArchivo);
   }
 
+  public deleteFileStorage(ruta: string, file: string) {
+    console.log(ruta, '---', file);
+    const storageRef = this.storage.ref(ruta);
+    storageRef.child(file).delete();
+  }
+
 }
