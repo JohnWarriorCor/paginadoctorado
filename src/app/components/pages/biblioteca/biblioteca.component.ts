@@ -1,11 +1,16 @@
-import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { BibliotecaService } from '../../../services/biblioteca/biblioteca.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-biblioteca',
@@ -14,28 +19,22 @@ import 'firebase/auth';
   encapsulation: ViewEncapsulation.None,
 })
 export class BibliotecaComponent implements OnInit, AfterViewInit {
-
-  cpage = 1;
+  page = 1;
   pageSize = 4;
-  vistaEdicion = false;
-  today = new Date();
-  closeResult: string;
   modalReference: any;
-  acumFechas = 0;
-  comodinAcum = 0;
   libro: Array<any> = [];
   loading = true;
-  // Herramientas ocultas
-  key: any;
-  user: any;
-  opciones = false;
-  ajustes = true;
-  validar = false;
-  error = false;
-  passError = '';
+  filterpost = '';
+  biblioteca: any;
   // tslint:disable-next-line:max-line-length
-  constructor( public auth: AngularFireAuth, private bibliotecaService: BibliotecaService, private modalService: NgbModal, private activatedRoute: ActivatedRoute, private router: Router) {
-    this.bibliotecaService.getLibros().subscribe( data => {
+  constructor(
+    public auth: AngularFireAuth,
+    private bibliotecaService: BibliotecaService,
+    private modalService: NgbModal,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
+    this.bibliotecaService.getLibros().subscribe((data) => {
       this.libro = data;
     });
   }
@@ -44,37 +43,46 @@ export class BibliotecaComponent implements OnInit, AfterViewInit {
   }
 
   openModal(confirmar) {
-    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
+    this.modalReference = this.modalService.open(confirmar, {
+      centered: true,
+      size: 'sm',
+      backdrop: 'static',
+      windowClass: 'fade-in',
+    });
+  }
+  obtenerLibros(): void {
+    this.bibliotecaService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.biblioteca = data;
+        console.log(this.biblioteca);
+      });
   }
 
   ngOnInit() {
+    this.obtenerLibros();
   }
+
   ngAfterViewInit(): void {
     (window as any).twttr.widgets.load();
   }
   openSm(formAdmin) {
-    this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
+    this.modalReference = this.modalService.open(formAdmin, {
+      size: 'sm',
+      centered: true,
+      backdrop: 'static',
+    });
   }
-  viewOpciones(pass, user) {
-    if ( pass === '7183' && user === 'admin' ) {
-      this.ajustes = false;
-      this.validar = true;
-    } else {
-      if (pass !== '7183' && user !== 'admin') {
-        this.error = true;
-        this.passError = 'Usuario y contraseña incorrectas';
-      } else if (pass !== '7183') {
-        this.error = true;
-        this.passError = 'Contraseña incorrecta';
-      } else {
-        this.error = true;
-        this.passError = 'Usuario incorrecto';
-      }
-    }
-  }
-  borrarGrupo( key$: string) {
-    this.bibliotecaService.borrarLibro(key$).subscribe( respuesta => {
-      if ( respuesta ) {
+
+  borrarGrupo(key$: string) {
+    this.bibliotecaService.borrarLibro(key$).subscribe((respuesta) => {
+      if (respuesta) {
         console.error(respuesta);
       } else {
         delete this.libro[key$];
@@ -82,5 +90,4 @@ export class BibliotecaComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
 }

@@ -14,7 +14,6 @@
                 <thead class="tablatit">
                   <tr class="white">
                     <th style="vertical-align: middle" scope="col">Título</th>
-                    <th style="vertical-align: middle" scope="col">Código</th>
                     <th style="vertical-align: middle" scope="col">Autor</th>
                     <th style="vertical-align: middle" scope="col">
                       Editorial
@@ -33,14 +32,6 @@
                         class="form-control inputTable"
                         type="text"
                         name="{{ field.titulo }}"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        [(ngModel)]="field.codigo"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.codigo }}"
                       />
                     </td>
                     <td>
@@ -87,15 +78,6 @@
                         id="newAttributeTitulo"
                         [(ngModel)]="newAttribute.titulo"
                         name="newAttributeTitulo"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeCodigo"
-                        [(ngModel)]="newAttribute.codigo"
-                        name="newAttributeCodigo"
                       />
                     </td>
                     <td>
