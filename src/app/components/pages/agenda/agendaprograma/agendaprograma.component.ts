@@ -79,7 +79,7 @@ export class AgendaprogramaComponent implements OnInit {
       name: 'Diciemebre',
     },
   ];
-  eventos: any;
+  eventos: any[] = [];
   actualEvento = null;
   actualIndex = -1;
   public nombreArchivo = '';
