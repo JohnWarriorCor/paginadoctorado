@@ -7,7 +7,6 @@ import { EstudiantesComponent } from './components/pages/estudiantes/estudiantes
 import { LoginComponent } from './components/admin/login/login.component';
 import { EgresadosComponent } from './components/pages/estudiantes/egresados/egresados.component';
 import { TesisComponent } from './components/pages/estudiantes/tesis/tesis.component';
-import { ProgramaComponent } from './components/pages/programa/programa.component';
 import { HistoriaComponent } from './components/pages/programa/historia/historia.component';
 import { UbicacionComponent } from './components/pages/programa/ubicacion/ubicacion.component';
 import { PlanestudiosComponent } from './components/pages/formacion/planestudios/planestudios.component';
@@ -46,7 +45,6 @@ const routes: Routes = [
   // INICIO
   { path: 'inicio', component: HomeComponent },
   // PROGRAMA
-  { path: 'programa', component: ProgramaComponent },
   { path: 'historia', component: HistoriaComponent },
   { path: 'organigrama', component: OrganigramaComponent },
   { path: 'ubicacion', component: UbicacionComponent },
@@ -89,7 +87,6 @@ const routes: Routes = [
   { path: 'admi_carrusel', component: CarruselComponent, canActivate: [AuthGuard] },
   { path: 'admi_carruselEdit/:id', component: CarruseleditComponent, canActivate: [AuthGuard] },
   // PROGRAMA
-  { path: 'admi_programa', component: ProgramaComponent, canActivate: [AuthGuard] },
   { path: 'admi_historia/:id', component: HistoriaeditComponent, canActivate: [AuthGuard] },
   { path: 'admi_organigrama', component: OrganigramaComponent, canActivate: [AuthGuard] },
   { path: 'admi_ubicacion', component: UbicacionComponent, canActivate: [AuthGuard] },

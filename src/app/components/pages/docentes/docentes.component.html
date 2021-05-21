@@ -92,7 +92,11 @@
                       </div>
                       <div class="modal-body">
                         <div
-                          class="alert alert-warning text-center font-weight-bold"
+                          class="
+                            alert alert-warning
+                            text-center
+                            font-weight-bold
+                          "
                           role="alert"
                         >
                           Está a punto de eliminar el perfil del Profesor.
@@ -138,7 +142,11 @@
                     <li>
                       <p class="text-justify">
                         {{ profesor.sintesis | slice: 0:300 }}
-                        <a [routerLink]="['/docente', profesor.key]" style="color: #8f141b">... Ver más</a>
+                        <a
+                          [routerLink]="['/docente', profesor.key]"
+                          style="color: #8f141b"
+                          >... Ver más</a
+                        >
                       </p>
                     </li>
                   </ul>

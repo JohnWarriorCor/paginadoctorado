@@ -41,7 +41,6 @@ import { EgresadosComponent } from './components/pages/estudiantes/egresados/egr
 import { TesisComponent } from './components/pages/estudiantes/tesis/tesis.component';
 import { LoginComponent } from './components/admin/login/login.component';
 import { GruposinveseditComponent } from './components/admin/gruposinvesedit/gruposinvesedit.component';
-import { ProgramaComponent } from './components/pages/programa/programa.component';
 import { HistoriaComponent } from './components/pages/programa/historia/historia.component';
 import { UbicacionComponent } from './components/pages/programa/ubicacion/ubicacion.component';
 import { PlanestudiosComponent } from './components/pages/formacion/planestudios/planestudios.component';
@@ -98,7 +97,6 @@ registerLocaleData(localeEsCO, 'es-CO');
     TesisComponent,
     LoginComponent,
     GruposinveseditComponent,
-    ProgramaComponent,
     HistoriaComponent,
     UbicacionComponent,
     PlanestudiosComponent,

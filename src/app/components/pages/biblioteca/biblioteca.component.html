@@ -121,7 +121,7 @@
                 <button
                   *ngIf="auth.user | async"
                   class="btn navlinkinSolid"
-                  [routerLink]="['/admi_biblioteca', item]"
+                  [routerLink]="['/admi_biblioteca', biblio.key]"
                 >
                   <i class="fas fa-pencil-alt"></i> Editar
                 </button>

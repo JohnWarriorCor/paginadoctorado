@@ -140,7 +140,11 @@
                         </div>
                         <div class="modal-body">
                           <div
-                            class="alert alert-warning text-center font-weight-bold"
+                            class="
+                              alert alert-warning
+                              text-center
+                              font-weight-bold
+                            "
                             role="alert"
                           >
                             Está a punto de guardar el evento. <br />
@@ -245,7 +249,9 @@
                     *ngFor="
                       let item of plantelProfesores
                         | keysfirebase
-                        | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
+                        | slice
+                          : (page - 1) * pageSize
+                          : (page - 1) * pageSize + pageSize;
                       let i = index
                     "
                   >

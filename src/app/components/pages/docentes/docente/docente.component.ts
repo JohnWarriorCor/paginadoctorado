@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { Router, ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlantelService } from '../../../../services/profesores/plantel/plantel.service';
 import { Plantel } from '../../../../interfaces/profesores/plantel/plantel';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-docente',
   templateUrl: './docente.component.html',
   styleUrls: ['./docente.component.css'],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
 export class DocenteComponent implements OnInit {
-
   page = 1;
   pageSize = 3;
 
@@ -55,16 +53,28 @@ export class DocenteComponent implements OnInit {
   comodinAcum = 0;
   loading = true;
   link: any;
-  // tslint:disable-next-line:max-line-length
-  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private plantelService: PlantelService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.params.subscribe( parametros => {
+
+  constructor(
+    private toastr: ToastrService,
+    public auth: AngularFireAuth,
+    public datepipe: DatePipe,
+    private modalService: NgbModal,
+    private plantelService: PlantelService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.activatedRoute.params.subscribe((parametros) => {
       this.id = parametros.id;
       this.link = parametros.id;
-      if ( this.id !== 'nuevo' ) {
-        this.plantelService.getPlantel( this.id ).subscribe(plantelProfesor => this.plantelProfesor = plantelProfesor);
+      if (this.id !== 'nuevo') {
+        this.plantelService
+          .getPlantel(this.id)
+          .subscribe(
+            (plantelProfesor) => (this.plantelProfesor = plantelProfesor)
+          );
       }
     });
-    this.plantelService.getPlanteles().subscribe( data => {
+    this.plantelService.getPlanteles().subscribe((data) => {
       this.plantelProfesores = data;
       console.log(this.plantelProfesores);
     });
@@ -92,7 +102,8 @@ export class DocenteComponent implements OnInit {
     if (urlimg === '' || urlimg === null) {
       this.defaultImgUrl = urlimg;
       this.alertBool = true;
-      this.imgError = 'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
+      this.imgError =
+        'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
     } else {
       this.alertBool = false;
       this.defaultImgUrl = urlimg;
@@ -101,65 +112,83 @@ export class DocenteComponent implements OnInit {
   }
   showSuccess() {
     this.toastr.success('Acción exitosa', 'Elemento guardado', {
-      timeOut: 2500
+      timeOut: 2500,
     });
   }
   showDanger() {
     this.toastr.error('Intenten nuevamente', 'Error al guardar', {
-      timeOut: 2500
+      timeOut: 2500,
     });
   }
   showInfo() {
-    this.toastr.info( '', 'Elemento actualizado', {
-      timeOut: 2500
+    this.toastr.info('', 'Elemento actualizado', {
+      timeOut: 2500,
     });
   }
   showWarning() {
-    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
-      timeOut: 2500
+    this.toastr.warning('Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500,
     });
   }
   elementoAgregado() {
-    this.toastr.info( '', 'Elemento agregado', {
-      timeOut: 2500
+    this.toastr.info('', 'Elemento agregado', {
+      timeOut: 2500,
     });
   }
   elementoEliminado() {
-    this.toastr.warning( '', 'Elemento eliminado', {
-      timeOut: 2500
+    this.toastr.warning('', 'Elemento eliminado', {
+      timeOut: 2500,
     });
   }
   openModal(confirmar) {
-    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
+    this.modalReference = this.modalService.open(confirmar, {
+      centered: true,
+      size: 'sm',
+      backdrop: 'static',
+      windowClass: 'fade-in',
+    });
   }
   openSm(formAdmin) {
-    this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
+    this.modalReference = this.modalService.open(formAdmin, {
+      size: 'sm',
+      centered: true,
+      backdrop: 'static',
+    });
   }
-  verProfesor( idx: number ) {
+  verProfesor(idx: number) {
     this.router.navigate(['/docente', idx]);
   }
   up() {
     window.scroll(0, 400);
   }
   guardar() {
-    if ( this.plantelProfesor.nombre !== this.war ||  this.plantelProfesor.nombre !== this.war ) {
+    if (
+      this.plantelProfesor.nombre !== this.war ||
+      this.plantelProfesor.nombre !== this.war
+    ) {
       this.error = false;
       console.log(this.plantelProfesor.nombre);
       console.log(this.war);
       this.modalReference.close();
-      if ( this.id === 'nuevo' ) {
-        this.plantelService.nuevoPlantel( this.plantelProfesor ).subscribe(data => {
-          this.router.navigate(['/docentes']);
-          this.modalReference.close();
-        },
-        error => console.error(error));
+      if (this.id === 'nuevo') {
+        this.plantelService.nuevoPlantel(this.plantelProfesor).subscribe(
+          (data) => {
+            this.router.navigate(['/docentes']);
+            this.modalReference.close();
+          },
+          (error) => console.error(error)
+        );
       } else {
         this.modalReference.close();
-        this.plantelService.actualizarPlantel( this.plantelProfesor, this.id ).subscribe(data => {
-          this.router.navigate(['/docentes']);
-          this.modalReference.close();
-        },
-        error => console.error(error));
+        this.plantelService
+          .actualizarPlantel(this.plantelProfesor, this.id)
+          .subscribe(
+            (data) => {
+              this.router.navigate(['/docentes']);
+              this.modalReference.close();
+            },
+            (error) => console.error(error)
+          );
       }
     } else {
       this.error = true;
@@ -167,13 +196,13 @@ export class DocenteComponent implements OnInit {
       this.modalReference.close();
     }
   }
-  agregarNuevo( forma: NgForm) {
+  agregarNuevo(forma: NgForm) {
     this.router.navigate(['/admi_plantel', 'nuevo']);
     forma.reset({});
   }
   borrarPlantel() {
-    this.plantelService.borrarPlantel(this.id).subscribe( respuesta => {
-      if ( respuesta ) {
+    this.plantelService.borrarPlantel(this.id).subscribe((respuesta) => {
+      if (respuesta) {
         console.error(respuesta);
       } else {
         this.router.navigate(['/docentes']);
@@ -183,6 +212,4 @@ export class DocenteComponent implements OnInit {
       }
     });
   }
-
 }
-

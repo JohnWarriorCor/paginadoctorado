@@ -137,7 +137,11 @@
                         </div>
                         <div class="modal-body">
                           <div
-                            class="alert alert-warning text-center font-weight-bold"
+                            class="
+                              alert alert-warning
+                              text-center
+                              font-weight-bold
+                            "
                             role="alert"
                           >
                             Está a punto de guardar el evento. <br />
@@ -242,7 +246,9 @@
                     *ngFor="
                       let item of listados
                         | keysfirebase
-                        | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
+                        | slice
+                          : (page - 1) * pageSize
+                          : (page - 1) * pageSize + pageSize;
                       let i = index
                     "
                   >
@@ -280,10 +286,7 @@
                                 {{ listados[item].nombre }}
                               </h4>
                               <p class="card-text text-justify">
-                                {{
-                                  listados[item].sintesis
-                                    | slice: 0:200
-                                }}
+                                {{ listados[item].sintesis | slice: 0:200 }}
                                 <a
                                   [routerLink]="['/estudiante', item]"
                                   style="color: #8f141b; font-size: 10px"

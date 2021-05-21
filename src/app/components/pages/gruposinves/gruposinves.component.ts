@@ -5,8 +5,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 import { GruposinvestigacionService } from '../../../services/grupoinvesti/gruposinvestigacion.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
@@ -39,8 +37,6 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
     public auth: AngularFireAuth,
     private grupoInvestigacionService: GruposinvestigacionService,
     private modalService: NgbModal,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
   ) {
     this.grupoInvestigacionService.getGrupos().subscribe((data) => {
       this.grupoInvestigacion = data;

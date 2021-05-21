@@ -11,10 +11,9 @@ import { AgendainstitucionalService } from '../../../services/agenda/agendainsti
 @Component({
   selector: 'app-estudiantes',
   templateUrl: './estudiantes.component.html',
-  styleUrls: ['./estudiantes.component.css']
+  styleUrls: ['./estudiantes.component.css'],
 })
 export class EstudiantesComponent implements OnInit {
-
   page = 1;
   pageSize = 4;
   agenda: any[] = [];
@@ -30,8 +29,15 @@ export class EstudiantesComponent implements OnInit {
   eventosPrograma: any;
   eventosInstitucional: any;
   // tslint:disable-next-line:max-line-length
-  constructor( private toastr: ToastrService, public auth: AngularFireAuth, private modalService: NgbModal, private agendaProgramaService: AgendaprogramaService, private agendaInstitucionalService: AgendainstitucionalService, private listadoService: ListadoService ) {
-    this.listadoService.getListados().subscribe( data => {
+  constructor(
+    private toastr: ToastrService,
+    public auth: AngularFireAuth,
+    private modalService: NgbModal,
+    private agendaProgramaService: AgendaprogramaService,
+    private agendaInstitucionalService: AgendainstitucionalService,
+    private listadoService: ListadoService
+  ) {
+    this.listadoService.getListados().subscribe((data) => {
       this.listados = data;
     });
   }
@@ -43,15 +49,17 @@ export class EstudiantesComponent implements OnInit {
     });
   }
   obtenerEventosPrograma(): void {
-    this.agendaProgramaService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ key: c.payload.key, ...c.payload.val() })
+    this.agendaProgramaService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
         )
       )
-    ).subscribe(data => {
-      this.eventosPrograma = data;
-    });
+      .subscribe((data) => {
+        this.eventosPrograma = data;
+      });
   }
   get sortDataInstitucional() {
     return this.eventosInstitucional.sort((a, b) => {
@@ -61,62 +69,73 @@ export class EstudiantesComponent implements OnInit {
     });
   }
   obtenerEventosInstitucional(): void {
-    this.agendaInstitucionalService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ key: c.payload.key, ...c.payload.val() })
+    this.agendaInstitucionalService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
         )
       )
-    ).subscribe(data => {
-      this.eventosInstitucional = data;
-    });
+      .subscribe((data) => {
+        this.eventosInstitucional = data;
+      });
   }
   ngOnInit() {
     this.obtenerEventosPrograma();
     this.obtenerEventosInstitucional();
   }
   openSm(formAdmin) {
-    this.modalReference = this.modalService.open(formAdmin, { size: 'sm', centered: true, backdrop: 'static' });
+    this.modalReference = this.modalService.open(formAdmin, {
+      size: 'sm',
+      centered: true,
+      backdrop: 'static',
+    });
   }
   openModal(confirmar) {
-    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
+    this.modalReference = this.modalService.open(confirmar, {
+      centered: true,
+      size: 'sm',
+      backdrop: 'static',
+      windowClass: 'fade-in',
+    });
   }
   showSuccess() {
     this.toastr.success('Acción exitosa', 'Elemento guardado', {
-      timeOut: 2500
+      timeOut: 2500,
     });
   }
   showDanger() {
     this.toastr.error('Intenten nuevamente', 'Error al guardar', {
-      timeOut: 2500
+      timeOut: 2500,
     });
   }
   showInfo() {
-    this.toastr.info( '', 'Elemento actualizado', {
-      timeOut: 2500
+    this.toastr.info('', 'Elemento actualizado', {
+      timeOut: 2500,
     });
   }
   showWarning() {
-    this.toastr.warning( 'Intenten nuevamente', 'Error al actualizar', {
-      timeOut: 2500
+    this.toastr.warning('Intenten nuevamente', 'Error al actualizar', {
+      timeOut: 2500,
     });
   }
   elementoAgregado() {
-    this.toastr.info( '', 'Elemento agregado', {
-      timeOut: 2500
+    this.toastr.info('', 'Elemento agregado', {
+      timeOut: 2500,
     });
   }
   elementoEliminado() {
-    this.toastr.warning( '', 'Elemento eliminado', {
-      timeOut: 2500
+    this.toastr.warning('', 'Elemento eliminado', {
+      timeOut: 2500,
     });
   }
   up() {
     window.scroll(0, 400);
   }
-  borrarPlantel( key$: string) {
-    this.listadoService.borrarListado(key$).subscribe( respuesta => {
-      if ( respuesta ) {
+  borrarPlantel(key$: string) {
+    this.listadoService.borrarListado(key$).subscribe((respuesta) => {
+      if (respuesta) {
         console.error(respuesta);
       } else {
         delete this.listados[key$];

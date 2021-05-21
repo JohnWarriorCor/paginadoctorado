@@ -88,7 +88,11 @@
                       </div>
                       <div class="modal-body">
                         <div
-                          class="alert alert-warning text-center font-weight-bold"
+                          class="
+                            alert alert-warning
+                            text-center
+                            font-weight-bold
+                          "
                           role="alert"
                         >
                           Está a punto de eliminar el perfil del Profesor.
@@ -204,10 +208,7 @@
             <div class="carousel-inner">
               <div
                 [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-                *ngFor="
-                  let evento of sortDataPrograma;
-                  let i = index
-                "
+                *ngFor="let evento of sortDataPrograma; let i = index"
               >
                 <div class="card-deck">
                   <div class="card shadow">
@@ -222,11 +223,7 @@
                       </h4>
                       <h6 class="card-title subTituloRojoInstitucional">
                         <i class="far fa-calendar-alt"></i>
-                        {{
-                          evento.fechaEvento
-                            | date: "fullDate"
-                            | titlecase
-                        }}
+                        {{ evento.fechaEvento | date: "fullDate" | titlecase }}
                       </h6>
                       <p class="card-text grayinst">
                         {{ evento.resenia }}
@@ -299,10 +296,7 @@
             <div class="carousel-inner">
               <div
                 [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-                *ngFor="
-                  let evento of sortDataInstitucional;
-                  let i = index
-                "
+                *ngFor="let evento of sortDataInstitucional; let i = index"
               >
                 <div class="card-deck">
                   <div class="card shadow">
@@ -317,11 +311,7 @@
                       </h4>
                       <h6 class="card-title subTituloRojoInstitucional">
                         <i class="far fa-calendar-alt"></i>
-                        {{
-                          evento.fechaEvento
-                            | date: "fullDate"
-                            | titlecase
-                        }}
+                        {{ evento.fechaEvento | date: "fullDate" | titlecase }}
                       </h6>
                       <p class="card-text grayinst">
                         {{ evento.resenia }}
