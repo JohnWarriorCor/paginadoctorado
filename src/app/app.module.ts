@@ -79,6 +79,7 @@ import { EventoprogramaComponent } from './components/pages/agenda/agendaprogram
 import { AgendaprogramaeditComponent } from './components/admin/agendaedit/agendaprogramaedit/agendaprogramaedit.component';
 import { AgendainstitucionaleditComponent } from './components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component';
 import { FiltrobibliotecaPipe } from './pipes/filtrobiblioteca.pipe';
+import { GaleriaComponent } from './components/pages/biblioteca/galeria/galeria.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -134,6 +135,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     AgendaprogramaeditComponent,
     AgendainstitucionaleditComponent,
     FiltrobibliotecaPipe,
+    GaleriaComponent,
   ],
   imports: [
     BrowserModule,

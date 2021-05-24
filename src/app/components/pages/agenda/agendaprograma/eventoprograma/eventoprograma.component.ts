@@ -166,7 +166,7 @@ export class EventoprogramaComponent implements OnInit {
   }
 
   borrarAgenda() {
-    this.nombreArchivo = 'EVENTOS/INSTITUCIONALES/';
+    this.nombreArchivo = 'EVENTOS/PROGRAMA/';
     this.firebaseStorage.deleteFileStorage(
       this.nombreArchivo,
       this.agenda[this.link].nameImg

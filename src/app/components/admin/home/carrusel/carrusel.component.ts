@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CarruselService } from '../../../../services/home/carrusel/carrusel.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
+import { FilesService } from '../../../../services/upload/file.service';
 
 @Component({
   selector: 'app-carrusel',
   templateUrl: './carrusel.component.html',
   styleUrls: ['./carrusel.component.css'],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
 export class CarruselComponent implements OnInit {
-
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -33,29 +31,45 @@ export class CarruselComponent implements OnInit {
   nuevo = false;
   id: string;
   carrusel: any[] = [];
-
+  public nombreArchivo = '';
 
   // tslint:disable-next-line:max-line-length
-  constructor( private myToast: ToastService, private toastr: ToastrService, public auth: AngularFireAuth, public datepipe: DatePipe, private modalService: NgbModal, private carruselServices: CarruselService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.carruselServices.getCarruseles().subscribe( data => {
+  constructor(
+    private firebaseStorage: FilesService,
+    private toastr: ToastrService,
+    public auth: AngularFireAuth,
+    public datepipe: DatePipe,
+    private modalService: NgbModal,
+    private carruselServices: CarruselService,
+  ) {
+    this.carruselServices.getCarruseles().subscribe((data) => {
       this.carrusel = data;
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openModal(confirmar) {
-    this.modalReference = this.modalService.open(confirmar, { centered: true, size: 'sm', backdrop: 'static', windowClass: 'fade-in'});
-  }
-  elementoEliminado() {
-    this.toastr.warning( '', 'Elemento eliminado', {
-      timeOut: 2500
+    this.modalReference = this.modalService.open(confirmar, {
+      centered: true,
+      size: 'sm',
+      backdrop: 'static',
+      windowClass: 'fade-in',
     });
   }
-  borrarCarrusel( key$: string) {
-    this.carruselServices.borrarCarrusel(key$).subscribe( respuesta => {
-      if ( respuesta ) {
+  elementoEliminado() {
+    this.toastr.warning('', 'Elemento eliminado', {
+      timeOut: 2500,
+    });
+  }
+  borrarCarrusel(key$: string) {
+    this.nombreArchivo = 'CARRUSEL/';
+    this.firebaseStorage.deleteFileStorage(
+      this.nombreArchivo,
+      this.carrusel[key$].nameImg
+    );
+    this.carruselServices.borrarCarrusel(key$).subscribe((respuesta) => {
+      if (respuesta) {
         console.error(respuesta);
       } else {
         delete this.carrusel[key$];

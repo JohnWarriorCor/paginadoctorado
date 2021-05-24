@@ -217,14 +217,24 @@
             >
           </div>
         </li>
-        <li class="menu__group">
+        <li class="menu__group dropdown menu__group">
           <a
             style="padding: 10px"
             routerLinkActive="router-link-active"
-            class="nav-link menu__link"
+            class="nav-link dropdown-toggle menu__link dropbtn"
             [routerLink]="['/biblioteca']"
             ><i class="fas fa-book"></i> Biblioteca</a
           >
+          <div class="dropdown-content text-left">
+            <a class="menu__link_dropdown" [routerLink]="['/biblioteca']"
+              ><i class="fas fa-book"></i> Libros del Programa</a
+            >
+            <a
+              class="menu__link_dropdown"
+              [routerLink]="['/galeria_imagenes']"
+              ><i class="far fa-images"></i> Galería de imágenes</a
+            >
+          </div>
         </li>
         <li class="menu__group">
           <a

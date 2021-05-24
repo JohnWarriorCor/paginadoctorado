@@ -40,6 +40,7 @@ import { AgendaprogramaComponent } from './components/pages/agenda/agendaprogram
 import { AgendainstitucionalComponent } from './components/pages/agenda/agendainstitucional/agendainstitucional.component';
 import { AgendaprogramaeditComponent } from './components/admin/agendaedit/agendaprogramaedit/agendaprogramaedit.component';
 import { AgendainstitucionaleditComponent } from './components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component';
+import { GaleriaComponent } from './components/pages/biblioteca/galeria/galeria.component';
 
 const routes: Routes = [
   // INICIO
@@ -73,6 +74,7 @@ const routes: Routes = [
   { path: 'tesis', component: TesisComponent },
   // BIBLIOTECA
   { path: 'biblioteca', component: BibliotecaComponent },
+  { path: 'galeria_imagenes', component: GaleriaComponent },
 
 
 

@@ -8,14 +8,6 @@
           </h3>
           <hr class="lineInstRed" />
           <br />
-          <a
-            href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files~2FCARRUSEL"
-            target="_blank"
-            ><button class="btn navlinkinSolid">
-              <i class="fas fa-cloud-upload-alt"></i> Cargar imagen
-            </button></a
-          >
-          <br />
           <br />
           <form #forma="ngForm">
             <div class="row">
@@ -35,16 +27,75 @@
                   </div>
                   <div class="col">
                     <h6 class="text-left subTituloRojoInstitucional">
-                      URL de la imágen:
+                      Cargar archivo de imágen:
                     </h6>
-                    <input
-                      (change)="changeImg(carrusel.urlImg)"
-                      type="url"
-                      name="urlImg"
-                      [(ngModel)]="carrusel.urlImg"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de texto"
-                    />
+                    <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+                      <div class="row">
+                        <div
+                          *ngIf="porcentaje > 1 && porcentaje < 101"
+                          class="col"
+                        >
+                          <ngb-progressbar
+                            [showValue]="true"
+                            type="danger"
+                            [value]="porcentaje"
+                          >
+                          </ngb-progressbar
+                          ><br />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <label class="file-label">
+                            <input
+                              type="file"
+                              class="custom-file-input"
+                              formControlName="archivo"
+                              (change)="cambioArchivo($event)"
+                              id="customFileLang"
+                              lang="es"
+                              required
+                            />
+                            <span class="file-cta">
+                              <span
+                                class="
+                                  custom-file-label
+                                  text-left
+                                  inputPaciente
+                                "
+                                style="margin-left: 16px"
+                                for="customFileLang"
+                              >
+                                {{ mensajeArchivo | slice: 0:50 }}
+                              </span>
+                            </span>
+                          </label>
+                          <br />
+                        </div>
+                        <div class="col col-lg-2 text-right">
+                          <button
+                            class="btn navlinkin"
+                            type="submit"
+                            placement="top"
+                            ngbTooltip="Subir archivo"
+                            [disabled]="!archivoForm.valid"
+                          >
+                            <i class="fas fa-upload"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col">
+                          <div
+                            *ngIf="porcentaje === 100"
+                            class="alert alert-success"
+                            role="alert"
+                          >
+                            Imágen cargada exitosamente
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
                 <div class="row">
@@ -104,6 +155,13 @@
               >
                 <i class="fas fa-sign-out-alt"></i> Salir
               </button>
+              <a
+                href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files~2FCARRUSEL"
+                target="_blank"
+                ><button class="btn navlinkinSolid m-1">
+                  <i class="fas fa-cloud-upload-alt"></i> Administrar imagenes
+                </button></a
+              >
             </div>
             <h3 class="titleInstRed">
               <i class="far fa-eye"></i> Previsualización de la imagen a
