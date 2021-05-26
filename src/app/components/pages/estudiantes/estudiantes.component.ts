@@ -14,21 +14,26 @@ import { AgendainstitucionalService } from '../../../services/agenda/agendainsti
   styleUrls: ['./estudiantes.component.css'],
 })
 export class EstudiantesComponent implements OnInit {
+  filterpost = '';
   page = 1;
   pageSize = 4;
   agenda: any[] = [];
   listados: any[] = [];
 
-  vistaEdicion = false;
   today = new Date();
   closeResult: string;
   modalReference: any;
   acumFechas = 0;
   comodinAcum = 0;
   loading = true;
-  eventosPrograma: any;
-  eventosInstitucional: any;
-  // tslint:disable-next-line:max-line-length
+
+  estudiantes: any[] = [];
+  actualEstudiante = null;
+  eventos: any[] = [];
+  actualEvento = null;
+  actualIndex = -1;
+  eventosPrograma: any[] = [];
+  eventosInstitucional: any[] = [];
   constructor(
     private toastr: ToastrService,
     public auth: AngularFireAuth,
@@ -81,10 +86,34 @@ export class EstudiantesComponent implements OnInit {
         this.eventosInstitucional = data;
       });
   }
+  obtenerEstudiantes(): void {
+    this.listadoService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.estudiantes = data;
+      });
+  }
   ngOnInit() {
     this.obtenerEventosPrograma();
     this.obtenerEventosInstitucional();
+    this.obtenerEstudiantes();
   }
+  refreshList(): void {
+    this.actualEstudiante = null;
+    this.actualIndex = -1;
+    this.obtenerEstudiantes();
+  }
+  setActiveTutorial(evento, index): void {
+    this.actualEstudiante = evento;
+    this.actualIndex = index;
+  }
+
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {
       size: 'sm',

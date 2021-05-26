@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers  } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Listado } from '../../../interfaces/estudiantes/listado/listado';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,15 @@ import { Listado } from '../../../interfaces/estudiantes/listado/listado';
 export class ListadoService {
   listadoRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/listadoEstudiantes.json';
   listadoURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/listadoEstudiantes/';
+  private dbPath = '/listadoEstudiantes';
+  listadoRef: AngularFireList<Listado> = null;
 
-  constructor( private http: Http ) { }
+  constructor(private db: AngularFireDatabase, private http: Http ) {
+    this.listadoRef = db.list(this.dbPath);
+  }
+  getAll(): AngularFireList<Listado> {
+    return this.listadoRef;
+  }
 
   nuevoListado( listado: Listado) {
     const body = JSON.stringify(listado);

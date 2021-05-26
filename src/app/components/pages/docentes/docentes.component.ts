@@ -27,13 +27,13 @@ export class DocentesComponent implements OnInit {
   comodinAcum = 0;
   loading = true;
 
-  profesores: any;
+  profesores: any[] = [];
   actualProfesor = null;
-  eventos: any;
+  eventos: any[] = [];
   actualEvento = null;
   actualIndex = -1;
-  eventosPrograma: any;
-  eventosInstitucional: any;
+  eventosPrograma: any[] = [];
+  eventosInstitucional: any[] = [];
   constructor(
     private toastr: ToastrService,
     public auth: AngularFireAuth,

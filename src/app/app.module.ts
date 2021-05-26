@@ -30,6 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ToastService } from './services/toast/toast.service';
 
+import { LightboxModule } from 'ngx-lightbox';
+import {CrystalLightboxModule} from '@crystalui/angular-lightbox';
+
 
 // importar locales
 import localeEsCO from '@angular/common/locales/es-CO';
@@ -141,9 +144,11 @@ registerLocaleData(localeEsCO, 'es-CO');
     BrowserModule,
     APP_ROUTING,
     NgbPaginationModule,
+    CrystalLightboxModule,
     NgbAlertModule,
     NgbModule,
     FormsModule,
+    LightboxModule,
     ReactiveFormsModule,
     RouterModule,
     NgxPrintModule,

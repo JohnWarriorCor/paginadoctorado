@@ -20,6 +20,7 @@
                 class="form-control shadow"
                 style="border-radius: 50px 0px 0px 50px"
                 name="buscarEvento"
+                [(ngModel)]="filterpost"
                 placeholder="Digite palabras claves para buscar..."
                 aria-label="Recipient's username"
                 aria-describedby="button-addon2"
@@ -38,14 +39,17 @@
           <br />
           <ngb-pagination
             class="d-flex justify-content-end"
-            [collectionSize]="(listados | keysfirebase).length"
+            [collectionSize]="
+              (estudiantes | filtroprofesores: filterpost).length
+            "
             [pageSize]="pageSize"
             [(page)]="page"
           ></ngb-pagination>
           <div
             *ngFor="
-              let pro of listados
-                | keysfirebase
+              let estudiante of estudiantes
+                | filtroprofesores: filterpost
+                | listinvert
                 | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
               let i = index
             "
@@ -56,17 +60,17 @@
             <div class="row">
               <div class="col-md-4">
                 <img
-                  [src]="listados[pro].foto"
-                  [alt]="listados[pro].nombre"
-                  [title]="listados[pro].nombre"
-                  [routerLink]="['/estudiante', pro]"
+                  [src]="estudiante.foto"
+                  [alt]="estudiante.nombre"
+                  [title]="estudiante.nombre"
+                  [routerLink]="['/estudiante', estudiante.key]"
                   class="w-100 perfilPro cursorSelect"
                 />
                 <div class="row" *ngIf="auth.user | async">
                   <div class="col text-right">
                     <a
                       class="btn navlinkinSolid m-2"
-                      [routerLink]="['/admi_estudiante', pro]"
+                      [routerLink]="['/admi_estudiante', estudiante.key]"
                       ><i class="fas fa-pencil-alt"></i> Editar</a
                     >
                     <a
@@ -105,7 +109,7 @@
                           type="button"
                           class="btn btnColorFacultadSalud"
                           ngbAutofocus
-                          (click)="borrarPlantel(pro)"
+                          (click)="borrarPlantel(estudiante.key)"
                         >
                           Aceptar
                         </button>
@@ -125,10 +129,10 @@
                 <div class="card-block px-3">
                   <h4
                     class="card-title beigeInst carnetTitulo cursorSelect"
-                    [routerLink]="['/estudiante', pro]"
+                    [routerLink]="['/estudiante', estudiante.key]"
                   >
                     <i class="fas fa-university"></i>
-                    {{ listados[pro].nombre }}
+                    {{ estudiante.nombre }}
                   </h4>
                   <br />
                   <p class="card-text">
@@ -137,9 +141,9 @@
                   <ul class="card-text" style="font-size: 12px">
                     <li>
                       <p class="text-justify">
-                        {{ listados[pro].sintesis | slice: 0:300 }}
+                        {{ estudiante.sintesis | slice: 0:300 }}
                         <a
-                          [routerLink]="['/estudiante', pro]"
+                          [routerLink]="['/estudiante', estudiante.key]"
                           style="color: #8f141b"
                           >... Ver más</a
                         >
@@ -148,18 +152,18 @@
                   </ul>
                   <p class="card-title grayinst">
                     <i class="fas fa-envelope"></i>
-                    {{ listados[pro].correo }}
+                    {{ estudiante.correo }}
                   </p>
                   <div class="text-right">
                     <a
-                      [href]="listados[pro].cvlac"
+                      [href]="estudiante.cvlac"
                       target="blank_"
                       class="btn navlinkinSolid"
                       >CvLAC</a
                     >
                     <a
                       style="margin-left: 10px"
-                      [href]="listados[pro].orcid"
+                      [href]="estudiante.orcid"
                       target="blank_"
                       class="btn navlinkinSolid"
                       >ORCID</a
@@ -174,7 +178,9 @@
             <div class="col">
               <ngb-pagination
                 class="d-flex justify-content-start"
-                [collectionSize]="(listados | keysfirebase).length"
+                [collectionSize]="
+                  (estudiantes | filtroprofesores: filterpost).length
+                "
                 [(page)]="page"
                 [pageSize]="pageSize"
               ></ngb-pagination>
