@@ -19,6 +19,8 @@ import { FilesService } from '../../../../services/upload/file.service';
   providers: [DatePipe, NgbProgressbarConfig],
 })
 export class PlanteleditComponent implements OnInit {
+  page = 1;
+  pageSize = 3;
   today = new Date();
   fecha: any;
   closeResult: string;

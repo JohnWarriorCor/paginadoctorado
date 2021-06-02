@@ -8,385 +8,665 @@
           </h3>
           <hr class="lineInstRed" />
           <br />
-          <h5 class="titleInstRed text-justify">
-            Antes de subir una imágen de perfil considere lo siguiente:
-          </h5>
-          <p class="text-justify">
-            Para aplicar una configuración óptima del sitio web, siga las
-            indicaciones que se muestran en la parte inferior. Se han
-            estandarizado unas plantillas para agregar contenido de manera
-            ordenada y uniforme; los colores, logos y fuentes de texto los puede
-            encontrar en el siguiente enlace:
-            <a
-              href="https://www.usco.edu.co/imagen-institucional/"
-              class="colorRedInst"
-              target="_blank"
-              >Guía Imágen Corporativa</a
-            >
-          </p>
-          <ul>
-            <li>
-              Descargue la plantilla oficial para plasmar el diseño que se tenga
-              pensado
-              <a
-                href="/assets/PlantillaCarrusel.psd"
-                download
-                class="colorRedInst"
-                ><i class="far fa-file-image"></i> Plantilla Photoshop.</a
+          <!-- COLLAPSE START-->
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5
+                  class="mb-0 titleInstRed text-justify"
+                  data-toggle="collapse"
+                  aria-expanded="true"
+                  data-target="#collapseOne"
+                  aria-controls="collapseOne"
+                >
+                  Antes de subir una imágen de perfil considere lo siguiente:
+                </h5>
+              </div>
+
+              <div
+                id="collapseOne"
+                class="collapse"
+                aria-labelledby="headingOne"
+                data-parent="#accordionExample"
               >
-            </li>
-            <li>
-              Descargue el programa libre y portable de PhotoShop, tiene un peso
-              aproximado de 139,2 MB. <br />Con él podrá manejar la plantilla y
-              aplicar el diseño deseado
-              <a
-                href="https://mega.nz/file/ZYI2hbCb#6amg-4tmD3GCOaNaGX1ECmw9s9-i680Ydd7aogKaOqA"
-                class="colorRedInst"
-                target="_blank"
-                ><i class="fas fa-download"></i> Programa PhotoShop.</a
-              >
-            </li>
-            <li>
-              En caso de manejar otra herramienta de edición, considerar que la
-              imágen estandar tiene las siegientes dimensiones <br />[1.000
-              pixeles de ancho por 246 pixeles de alto]
-              <a href="/assets/pruebaCarrusel.jpg" download class="colorRedInst"
-                ><i class="fas fa-expand"></i> Descargar Imágen de muestra.</a
-              >
-            </li>
-          </ul>
-          <a
-            href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files~2FPROFESORES"
-            target="_blank"
-            ><button class="btn navlinkinSolid">Cargar imagen</button></a
-          >
+                <div class="card-body" style="background-color: #edeff0">
+                  <p class="text-justify">
+                    Para aplicar una configuración óptima del sitio web, siga
+                    las indicaciones que se muestran en la parte inferior. Se
+                    han estandarizado unas plantillas para agregar contenido de
+                    manera ordenada y uniforme; los colores, logos y fuentes de
+                    texto los puede encontrar en el siguiente enlace:
+                    <a
+                      href="https://www.usco.edu.co/imagen-institucional/"
+                      class="colorRedInst"
+                      target="_blank"
+                      >Guía Imágen Corporativa</a
+                    >
+                  </p>
+                  <ul>
+                    <li>
+                      Descargue la plantilla oficial para plasmar el diseño que
+                      se tenga pensado
+                      <a
+                        href="/assets/PlantillaCarrusel.psd"
+                        download
+                        class="colorRedInst"
+                        ><i class="far fa-file-image"></i> Plantilla
+                        Photoshop.</a
+                      >
+                    </li>
+                    <li>
+                      Descargue el programa libre y portable de PhotoShop, tiene
+                      un peso aproximado de 139,2 MB. <br />Con él podrá manejar
+                      la plantilla y aplicar el diseño deseado
+                      <a
+                        href="https://mega.nz/file/ZYI2hbCb#6amg-4tmD3GCOaNaGX1ECmw9s9-i680Ydd7aogKaOqA"
+                        class="colorRedInst"
+                        target="_blank"
+                        ><i class="fas fa-download"></i> Programa PhotoShop.</a
+                      >
+                    </li>
+                    <li>
+                      En caso de manejar otra herramienta de edición, considerar
+                      que la imágen estandar tiene las siegientes dimensiones
+                      <br />[1.000 pixeles de ancho por 246 pixeles de alto]
+                      <a
+                        href="/assets/pruebaCarrusel.jpg"
+                        download
+                        class="colorRedInst"
+                        ><i class="fas fa-expand"></i> Descargar Imágen de
+                        muestra.</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--COLLAPSE END-->
         </div>
       </div>
       <form #forma="ngForm">
         <div class="row fondodivCenter shadow" id="print-section">
-          <div
-            class="col-md-4"
-            style="
-              background-color: #8f141b;
-              padding: 20px;
-              border-radius: 10px 10px 10px 10px;
-              color: #1e262b;
-              margin-bottom: 20px;
-            "
-          >
-            <h4 class="text-left text-white">
-              <i class="fas fa-camera"></i> Foto de perfil:
-            </h4>
-            <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-              <div class="row">
-                <div *ngIf="porcentaje > 1 && porcentaje < 101" class="col">
-                  <ngb-progressbar
-                    [showValue]="true"
-                    type="danger"
-                    [value]="porcentaje"
-                  >
-                  </ngb-progressbar
-                  ><br />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <label class="file-label">
-                    <input
-                      type="file"
-                      class="custom-file-input"
-                      formControlName="archivo"
-                      (change)="cambioArchivo($event)"
-                      id="customFileLang"
-                      lang="es"
-                      required
-                    />
-                    <span class="file-cta">
-                      <span
-                        class="custom-file-label text-left"
-                        style="margin-left: 16px"
-                        for="customFileLang"
+          <div class="col">
+            <div class="row">
+              <div
+                class="col-md-4"
+                style="
+                  background-color: #8f141b;
+                  padding: 20px;
+                  border-radius: 10px 10px 10px 10px;
+                  color: #1e262b;
+                  margin-bottom: 20px;
+                "
+              >
+                <h4 class="text-left text-white">
+                  <i class="fas fa-camera"></i> Foto de perfil:
+                </h4>
+                <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+                  <div class="row">
+                    <div *ngIf="porcentaje > 1 && porcentaje < 101" class="col">
+                      <ngb-progressbar
+                        [showValue]="true"
+                        type="danger"
+                        [value]="porcentaje"
                       >
-                        {{ mensajeArchivo | slice: 0:20 }}
-                      </span>
-                    </span>
-                  </label>
-                  <br />
-                </div>
-                <div class="col col-lg-2 text-left">
-                  <button
-                    class="btn btn-danger"
-                    type="submit"
-                    placement="top"
-                    ngbTooltip="Subir archivo"
-                    [disabled]="!archivoForm.valid"
-                  >
-                    <i class="fas fa-upload"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div
-                    *ngIf="porcentaje === 100"
-                    class="alert alert-success"
-                    role="alert"
-                  >
-                    Imágen cargada exitosamente
-                  </div>
-                </div>
-              </div>
-            </form>
-            <img
-              [src]="plantelProfesor.foto"
-              [alt]="plantelProfesor.nombre"
-              [title]="plantelProfesor.nombre"
-              class="rounded mx-auto d-block"
-              style="width: 100%; border: solid 5px white"
-            />
-            <div class="m-2 p-2 text-white text-center">
-              <div class="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio1"
-                  name="customRadio"
-                  (click)="imgHombre()"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadio1"
-                  >Masculino</label
-                >
-              </div>
-              <div class="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio2"
-                  name="customRadio"
-                  (click)="imgMujer()"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadio2"
-                  >Femenino</label
-                >
-              </div>
-            </div>
-            <p class="alert alert-warning text-center font-weight-bold m-3">
-              Solo seleccione género si el profesor no tiene foto para cargar.
-            </p>
-            <div
-              *ngIf="alertBool != false"
-              class="alert alert-danger alert-dismissible fade show m-2"
-              role="alert"
-            >
-              <strong>{{ imgError }}</strong>
-            </div>
-          </div>
-          <div class="col-md-8 text-justify" style="margin-bottom: 20px">
-            <div
-              style="
-                background-color: #8f141b;
-                color: white;
-                padding: 20px;
-                border-radius: 10px 10px 0px 0px;
-              "
-            >
-              <h3><i class="fas fa-user-circle"></i> Nombre del Profesor:</h3>
-              <input
-                type="text"
-                name="nombre"
-                [(ngModel)]="plantelProfesor.nombre"
-                class="form-control shadow p-3"
-                placeholder="Nombres y apellidos del profesor"
-              />
-            </div>
-            <div
-              style="
-                background-color: #edeff0;
-                padding: 20px;
-                border-radius: 0px 0px 10px 10px;
-                color: #1e262b;
-              "
-            >
-              <h5><i class="fas fa-user-tie"></i> Síntesis:</h5>
-              <textarea
-                maxlength="6500"
-                name="sintesis"
-                [(ngModel)]="plantelProfesor.sintesis"
-                class="form-control shadow p-3"
-                placeholder="Información del perfil profesional del profesor lo mejor resumido posible"
-                rows="3"
-              ></textarea>
-              <br />
-              <h5>
-                <i class="fas fa-list-ul"></i> Formación y logros académicos:
-              </h5>
-              <table class="table table-bordered parinst shadow">
-                <thead class="tablatit text-center">
-                  <tr class="white">
-                    <th style="vertical-align: middle" scope="col">
-                      Estudios o logros
-                    </th>
-                    <th style="vertical-align: middle" scope="col">Opciones</th>
-                  </tr>
-                </thead>
-                <tbody style="background-color: white">
-                  <tr
-                    *ngFor="
-                      let field of plantelProfesor.fieldArray;
-                      let i = index
-                    "
-                  >
-                    <td class="text-justify">
-                      <textarea
-                        rows="5"
-                        [(ngModel)]="field.formacion"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.formacion }}"
-                        placeholder="Agrege los estudios realizados o logros de la carrera profesional"
-                      ></textarea>
-                    </td>
-                    <td class="text-center" style="vertical-align: middle">
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="deleteFieldValue(i)"
-                        placement="top"
-                        ngbTooltip="Borrar"
-                      >
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="text-justify">
-                      <textarea
-                        rows="5"
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeFormacion"
-                        [(ngModel)]="newAttribute.formacion"
-                        name="newAttributeFormacion"
-                        placeholder="Agrege los estudios realizados o logros de la carrera profesional"
-                      >
-                      </textarea>
-                    </td>
-                    <td class="text-center" style="vertical-align: middle">
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="addFieldValue()"
-                        placement="top"
-                        ngbTooltip="Agregar"
-                      >
-                        <i class="fas fa-plus-circle"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <br />
-              <div class="row">
-                <div class="col">
-                  <h5><i class="fas fa-envelope"></i> Email del Profesor:</h5>
-                  <input
-                    type="mail"
-                    name="correo"
-                    [(ngModel)]="plantelProfesor.correo"
-                    class="form-control shadow p-3"
-                    placeholder="Correo institucional"
-                  />
-                </div>
-                <div class="col">
-                  <h5><i class="far fa-calendar-alt"></i> Fecha de ingreso:</h5>
-                  <input
-                    type="text"
-                    name="fecha"
-                    [(ngModel)]="plantelProfesor.fecha"
-                    class="form-control shadow p-3"
-                  />
-                </div>
-              </div>
-              <br />
-              <div class="row">
-                <div class="col">
-                  <h5><i class="fas fa-atom"></i> Enlace del CvLAC:</h5>
-                  <input
-                    type="text"
-                    name="cvlac"
-                    [(ngModel)]="plantelProfesor.cvlac"
-                    class="form-control shadow p-3"
-                    placeholder="Link del perfil del CvLac"
-                  />
-                </div>
-                <div class="col">
-                  <h5><i class="fas fa-atlas"></i> Enlace del ORCID:</h5>
-                  <input
-                    type="text"
-                    name="orcid"
-                    [(ngModel)]="plantelProfesor.orcid"
-                    class="form-control shadow p-3"
-                    placeholder="Link del perfil ORCID"
-                  />
-                </div>
-                <ng-template #confirmar let-modal>
-                  <div class="modal-header bgrojoycafe">
-                    <h4 class="modal-title">Confirmar acción</h4>
-                    <button
-                      type="button"
-                      class="close"
-                      aria-label="Close"
-                      (click)="modal.dismiss('Cross click')"
-                    >
-                      <i class="fas fa-times" style="color: white"></i>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div
-                      class="alert alert-warning text-center font-weight-bold"
-                      role="alert"
-                    >
-                      Está a punto de guardar los cambios realizados. <br />
-                      ¿Desea continuar con la acción?
+                      </ngb-progressbar
+                      ><br />
                     </div>
                   </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btnColorFacultadSalud"
-                      ngbAutofocus
-                      (click)="guardar()"
-                    >
-                      Aceptar
-                    </button>
-                    <button
-                      type="button"
-                      class="btn navlinkinSolid"
-                      (click)="modal.close('Close click')"
-                    >
-                      Cancelar
-                    </button>
+                  <div class="row">
+                    <div class="col">
+                      <label class="file-label">
+                        <input
+                          type="file"
+                          class="custom-file-input"
+                          formControlName="archivo"
+                          (change)="cambioArchivo($event)"
+                          id="customFileLang"
+                          lang="es"
+                          required
+                        />
+                        <span class="file-cta">
+                          <span
+                            class="custom-file-label text-left"
+                            style="margin-left: 16px"
+                            for="customFileLang"
+                          >
+                            {{ mensajeArchivo | slice: 0:20 }}
+                          </span>
+                        </span>
+                      </label>
+                      <br />
+                    </div>
+                    <div class="col col-lg-2 text-left">
+                      <button
+                        class="btn btn-danger"
+                        type="submit"
+                        placement="top"
+                        ngbTooltip="Subir archivo"
+                        [disabled]="!archivoForm.valid"
+                      >
+                        <i class="fas fa-upload"></i>
+                      </button>
+                    </div>
                   </div>
-                </ng-template>
+                  <div class="row">
+                    <div class="col">
+                      <div
+                        *ngIf="porcentaje === 100"
+                        class="alert alert-success"
+                        role="alert"
+                      >
+                        Imágen cargada exitosamente
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <img
+                  [src]="plantelProfesor.foto"
+                  [alt]="plantelProfesor.nombre"
+                  [title]="plantelProfesor.nombre"
+                  class="rounded mx-auto d-block"
+                  style="width: 100%; border: solid 5px white"
+                />
+                <p class="alert alert-warning text-center font-weight-bold m-3">
+                  Solo seleccione género si el profesor o profesora no tiene
+                  foto para cargar.
+                </p>
+                <div class="m-2 p-2 text-white text-center">
+                  <div class="custom-control custom-radio">
+                    <input
+                      type="radio"
+                      id="customRadio1"
+                      name="customRadio"
+                      (click)="imgHombre()"
+                      class="custom-control-input"
+                    />
+                    <label class="custom-control-label" for="customRadio1"
+                      >Masculino</label
+                    >
+                  </div>
+                  <div class="custom-control custom-radio">
+                    <input
+                      type="radio"
+                      id="customRadio2"
+                      name="customRadio"
+                      (click)="imgMujer()"
+                      class="custom-control-input"
+                    />
+                    <label class="custom-control-label" for="customRadio2"
+                      >Femenino</label
+                    >
+                  </div>
+                </div>
+                <div
+                  *ngIf="alertBool != false"
+                  class="alert alert-danger alert-dismissible fade show m-2"
+                  role="alert"
+                >
+                  <strong>{{ imgError }}</strong>
+                </div>
               </div>
-              <br />
+              <div class="col-md-8 text-justify" style="margin-bottom: 20px">
+                <div
+                  style="
+                    background-color: #8f141b;
+                    color: white;
+                    padding: 20px;
+                    border-radius: 10px 10px 0px 0px;
+                  "
+                >
+                  <h3>
+                    <i class="fas fa-user-circle"></i> Nombre del Profesor:
+                  </h3>
+                  <input
+                    type="text"
+                    name="nombre"
+                    [(ngModel)]="plantelProfesor.nombre"
+                    class="form-control shadow p-3"
+                    placeholder="Nombres y apellidos del profesor"
+                  />
+                </div>
+                <div
+                  style="
+                    background-color: #edeff0;
+                    padding: 20px;
+                    border-radius: 0px 0px 10px 10px;
+                    color: #1e262b;
+                  "
+                >
+                  <h5><i class="fas fa-user-tie"></i> Síntesis:</h5>
+                  <textarea
+                    maxlength="6500"
+                    name="sintesis"
+                    [(ngModel)]="plantelProfesor.sintesis"
+                    class="form-control shadow p-3"
+                    placeholder="Información del perfil profesional del profesor lo mejor resumido posible"
+                    rows="6"
+                  ></textarea>
+                  <br />
+                  <div class="row">
+                    <div class="col">
+                      <h5>
+                        <i class="fas fa-envelope"></i> Email del Profesor:
+                      </h5>
+                      <input
+                        type="mail"
+                        name="correo"
+                        [(ngModel)]="plantelProfesor.correo"
+                        class="form-control shadow p-3"
+                        placeholder="Correo institucional"
+                      />
+                    </div>
+                    <div class="col">
+                      <h5>
+                        <i class="far fa-calendar-alt"></i> Fecha de ingreso:
+                      </h5>
+                      <input
+                        type="text"
+                        name="fecha"
+                        [(ngModel)]="plantelProfesor.fecha"
+                        class="form-control shadow p-3"
+                      />
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col">
+                      <h5><i class="fas fa-atom"></i> Enlace del CvLAC:</h5>
+                      <input
+                        type="text"
+                        name="cvlac"
+                        [(ngModel)]="plantelProfesor.cvlac"
+                        class="form-control shadow p-3"
+                        placeholder="Link del perfil del CvLac"
+                      />
+                    </div>
+                    <div class="col">
+                      <h5><i class="fas fa-atlas"></i> Enlace del ORCID:</h5>
+                      <input
+                        type="text"
+                        name="orcid"
+                        [(ngModel)]="plantelProfesor.orcid"
+                        class="form-control shadow p-3"
+                        placeholder="Link del perfil ORCID"
+                      />
+                    </div>
+                    <ng-template #confirmar let-modal>
+                      <div class="modal-header bgrojoycafe">
+                        <h4 class="modal-title">Confirmar acción</h4>
+                        <button
+                          type="button"
+                          class="close"
+                          aria-label="Close"
+                          (click)="modal.dismiss('Cross click')"
+                        >
+                          <i class="fas fa-times" style="color: white"></i>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div
+                          class="
+                            alert alert-warning
+                            text-center
+                            font-weight-bold
+                          "
+                          role="alert"
+                        >
+                          Está a punto de guardar los cambios realizados. <br />
+                          ¿Desea continuar con la acción?
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btnColorFacultadSalud"
+                          ngbAutofocus
+                          (click)="guardar()"
+                        >
+                          Aceptar
+                        </button>
+                        <button
+                          type="button"
+                          class="btn navlinkinSolid"
+                          (click)="modal.close('Close click')"
+                        >
+                          Cancelar
+                        </button>
+                      </div>
+                    </ng-template>
+                  </div>
+                  <br />
+                  <!-- COLLAPSE START-->
+                  <div class="accordion" id="accordionExample">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5
+                          class="mb-0"
+                          data-toggle="collapse"
+                          aria-expanded="true"
+                          data-target="#collapseOne"
+                          aria-controls="collapseOne"
+                        >
+                          <i class="fas fa-list-ul"></i> Formación y logros
+                          académicos:
+                        </h5>
+                      </div>
+
+                      <div
+                        id="collapseOne"
+                        class="collapse"
+                        aria-labelledby="headingOne"
+                        data-parent="#accordionExample"
+                      >
+                        <div
+                          class="card-body"
+                          style="background-color: #edeff0"
+                        >
+                          <table class="table table-bordered parinst shadow">
+                            <thead class="tablatit text-center">
+                              <tr class="white">
+                                <th style="vertical-align: middle" scope="col">
+                                  Estudios o logros
+                                </th>
+                                <th style="vertical-align: middle" scope="col">
+                                  Opciones
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody style="background-color: white">
+                              <tr
+                                *ngFor="
+                                  let field of plantelProfesor.fieldArray;
+                                  let i = index
+                                "
+                              >
+                                <td class="text-justify">
+                                  <textarea
+                                    rows="5"
+                                    [(ngModel)]="field.formacion"
+                                    class="form-control inputTable"
+                                    type="text"
+                                    name="{{ field.formacion }}"
+                                    placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                                  ></textarea>
+                                </td>
+                                <td
+                                  class="text-center"
+                                  style="vertical-align: middle"
+                                >
+                                  <button
+                                    class="btn btn-default colorRedInst"
+                                    type="button"
+                                    (click)="deleteFieldValue(i)"
+                                    placement="top"
+                                    ngbTooltip="Borrar"
+                                  >
+                                    <i class="far fa-trash-alt"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="text-justify">
+                                  <textarea
+                                    rows="5"
+                                    class="form-control inputTable"
+                                    type="text"
+                                    id="newAttributeFormacion"
+                                    [(ngModel)]="newAttribute.formacion"
+                                    name="newAttributeFormacion"
+                                    placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                                  >
+                                  </textarea>
+                                </td>
+                                <td
+                                  class="text-center"
+                                  style="vertical-align: middle"
+                                >
+                                  <button
+                                    class="btn btn-default colorRedInst"
+                                    type="button"
+                                    (click)="addFieldValue()"
+                                    placement="top"
+                                    ngbTooltip="Agregar"
+                                  >
+                                    <i class="fas fa-plus-circle"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--COLLAPSE END-->
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="container text-left no-print">
-            <hr />
-            <button (click)="openModal(confirmar)" class="btn navlinkinSolid">
-              <i class="far fa-save"></i> Guardar
-            </button>
-            <!--<button
-              class="btn navlinkinSolid m-1"
-              [routerLink]="['/admi_plantel','nuevo']"
-            >
-              <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
-            </button>-->
-            <button class="btn navlinkinSolid m-1" [routerLink]="['/docentes']">
-              <i class="fas fa-sign-out-alt"></i> Regresar
-            </button>
-            <br />
+            <div class="row">
+              <div
+                class="col text-justify"
+                style="margin-bottom: 20px; padding-left: 0px"
+              >
+                <div
+                  style="
+                    background-color: #edeff0;
+                    padding: 20px;
+                    border-radius: 0px 0px 10px 10px;
+                    color: #1e262b;
+                  "
+                >
+                  <div class="row">
+                    <div class="col">
+                      <h4 class="m-2">
+                        <i class="fas fa-scroll"></i> Artíuclos publicados:
+                      </h4>
+                    </div>
+                    <div class="col">
+                      <ngb-pagination
+                        class="d-flex justify-content-end"
+                        [collectionSize]="plantelProfesor.fieldArray.length"
+                        [pageSize]="pageSize"
+                        [(page)]="page"
+                      ></ngb-pagination>
+                    </div>
+                  </div>
+                  <table class="table table-bordered parinst shadow">
+                    <thead class="tablatit text-center">
+                      <tr class="white">
+                        <th style="vertical-align: middle" scope="col">
+                          Nombre del artículo
+                        </th>
+                        <th style="vertical-align: middle" scope="col">
+                          Autores
+                        </th>
+                        <th style="vertical-align: middle" scope="col">
+                          Revista
+                        </th>
+                        <th style="vertical-align: middle" scope="col">Año</th>
+                        <th style="vertical-align: middle" scope="col">
+                          Enlace
+                        </th>
+                        <th style="vertical-align: middle" scope="col">
+                          Opciones
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody style="background-color: white">
+                      <tr
+                        *ngFor="
+                          let field of plantelProfesor.fieldArray
+                            | slice
+                              : (page - 1) * pageSize
+                              : (page - 1) * pageSize + pageSize;
+                          let i = index
+                        "
+                      >
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            [(ngModel)]="field.formacion"
+                            class="form-control inputTable"
+                            type="text"
+                            name="{{ field.formacion }}"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          ></textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            [(ngModel)]="field.formacion"
+                            class="form-control inputTable"
+                            type="text"
+                            name="{{ field.formacion }}"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          ></textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            [(ngModel)]="field.formacion"
+                            class="form-control inputTable"
+                            type="text"
+                            name="{{ field.formacion }}"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          ></textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            [(ngModel)]="field.formacion"
+                            class="form-control inputTable"
+                            type="text"
+                            name="{{ field.formacion }}"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          ></textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            [(ngModel)]="field.formacion"
+                            class="form-control inputTable"
+                            type="text"
+                            name="{{ field.formacion }}"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          ></textarea>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle">
+                          <button
+                            class="btn btn-default colorRedInst"
+                            type="button"
+                            (click)="deleteFieldValue(i)"
+                            placement="top"
+                            ngbTooltip="Borrar"
+                          >
+                            <i class="far fa-trash-alt"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            class="form-control inputTable"
+                            type="text"
+                            id="newAttributeFormacion"
+                            [(ngModel)]="newAttribute.formacion"
+                            name="newAttributeFormacion"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          >
+                          </textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            class="form-control inputTable"
+                            type="text"
+                            id="newAttributeFormacion"
+                            [(ngModel)]="newAttribute.formacion"
+                            name="newAttributeFormacion"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          >
+                          </textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            class="form-control inputTable"
+                            type="text"
+                            id="newAttributeFormacion"
+                            [(ngModel)]="newAttribute.formacion"
+                            name="newAttributeFormacion"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          >
+                          </textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            class="form-control inputTable"
+                            type="text"
+                            id="newAttributeFormacion"
+                            [(ngModel)]="newAttribute.formacion"
+                            name="newAttributeFormacion"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          >
+                          </textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            class="form-control inputTable"
+                            type="text"
+                            id="newAttributeFormacion"
+                            [(ngModel)]="newAttribute.formacion"
+                            name="newAttributeFormacion"
+                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                          >
+                          </textarea>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle">
+                          <button
+                            class="btn btn-default colorRedInst"
+                            type="button"
+                            (click)="addFieldValue()"
+                            placement="top"
+                            ngbTooltip="Agregar"
+                          >
+                            <i class="fas fa-plus-circle"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br />
+                </div>
+                <div class="container text-left no-print">
+                  <hr />
+                  <button
+                    (click)="openModal(confirmar)"
+                    class="btn navlinkinSolid"
+                  >
+                    <i class="far fa-save"></i> Guardar
+                  </button>
+                  <!--<button
+                  class="btn navlinkinSolid m-1"
+                  [routerLink]="['/admi_plantel','nuevo']"
+                >
+                  <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
+                </button>-->
+                  <button
+                    class="btn navlinkinSolid m-1"
+                    [routerLink]="['/docentes']"
+                  >
+                    <i class="fas fa-sign-out-alt"></i> Regresar
+                  </button>
+                  <br />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </form>

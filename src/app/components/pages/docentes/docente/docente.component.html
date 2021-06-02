@@ -22,9 +22,6 @@
                     margin-bottom: 20px;
                   "
                 >
-                  <h4 class="text-left text-white">
-                    <i class="fas fa-camera"></i> Foto de perfil
-                  </h4>
                   <img
                     [src]="plantelProfesor.foto"
                     [alt]="plantelProfesor.nombre"
@@ -65,6 +62,10 @@
                     </h3>
                     <h5>Docente</h5>
                     <h6>Universidad Surcolombiana</h6>
+                    <h6>
+                      <i class="fas fa-envelope"></i>
+                      {{ plantelProfesor.correo }}
+                    </h6>
                   </div>
                   <div
                     style="
@@ -81,33 +82,53 @@
                     <p class="m-4">
                       {{ plantelProfesor.sintesis }}
                     </p>
+                    <hr />
                     <br />
-                    <h5>
-                      <i class="fas fa-list-ul"></i> Formación y logros
-                      académicos:
-                    </h5>
-                    <ul>
-                      <li
-                        *ngFor="
-                          let field of plantelProfesor.fieldArray;
-                          let i = index
-                        "
-                      >
-                        <p class="pre text-justify">
-                          {{ field.formacion }}
-                        </p>
-                      </li>
-                    </ul>
-                    <br />
-                    <div class="row">
-                      <div class="col">
-                        <h5>
-                          <i class="fas fa-envelope"></i>
-                          {{ plantelProfesor.correo }}
-                        </h5>
+                    <!-- COLLAPSE START-->
+                    <div class="accordion" id="accordionExample">
+                      <div class="card">
+                        <div class="card-header" id="headingOne">
+                          <h5
+                            class="mb-0"
+                            data-toggle="collapse"
+                            aria-expanded="true"
+                            data-target="#collapseOne"
+                            aria-controls="collapseOne"
+                          >
+                            <i class="fas fa-list-ul"></i> Formación y logros
+                            académicos:
+                          </h5>
+                        </div>
+
+                        <div
+                          id="collapseOne"
+                          class="collapse"
+                          aria-labelledby="headingOne"
+                          data-parent="#accordionExample"
+                        >
+                          <div
+                            class="card-body"
+                            style="background-color: #edeff0"
+                          >
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let field of plantelProfesor.fieldArray;
+                                  let i = index
+                                "
+                              >
+                                <p class="pre text-justify">
+                                  {{ field.formacion }}
+                                </p>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    <!--COLLAPSE END-->
                     <br />
+                    <hr />
                     <div class="row no-print">
                       <div class="col m-3">
                         <a
@@ -170,6 +191,38 @@
                         </div>
                       </ng-template>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div
+                  class="col text-justify"
+                  style="margin-bottom: 20px; padding-left: 0px"
+                >
+                  <div
+                    style="
+                      background-color: #edeff0;
+                      padding: 20px;
+                      border-radius: 0px 0px 10px 10px;
+                      color: #1e262b;
+                    "
+                  >
+                    <div class="row">
+                      <div class="col">
+                        <h4 class="m-2">
+                          <i class="fas fa-scroll"></i> Artíuclos publicados:
+                        </h4>
+                      </div>
+                      <div class="col">
+                        <ngb-pagination
+                          class="d-flex justify-content-end"
+                          [collectionSize]="plantelProfesor.fieldArray.length"
+                          [pageSize]="pageSize"
+                          [(page)]="page"
+                        ></ngb-pagination>
+                      </div>
+                    </div>
+                    <h1>En desarrollo</h1>
                     <br />
                   </div>
                 </div>
