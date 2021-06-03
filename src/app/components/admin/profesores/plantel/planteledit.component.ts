@@ -7,7 +7,6 @@ import { PlantelService } from '../../../../services/profesores/plantel/plantel.
 import { Plantel } from '../../../../interfaces/profesores/plantel/plantel';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FilesService } from '../../../../services/upload/file.service';
@@ -21,6 +20,8 @@ import { FilesService } from '../../../../services/upload/file.service';
 export class PlanteleditComponent implements OnInit {
   page = 1;
   pageSize = 3;
+  pageArticulos = 1;
+  pageSizeArticulos = 3;
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -42,6 +43,7 @@ export class PlanteleditComponent implements OnInit {
     nombre: '',
     sintesis: '',
     fieldArray: [],
+    fieldArrayArticulos: [],
     correo: '',
     fecha: '',
     cvlac: '',
@@ -59,7 +61,6 @@ export class PlanteleditComponent implements OnInit {
   });
   constructor(
     private firebaseStorage: FilesService,
-    private myToast: ToastService,
     private toastr: ToastrService,
     public auth: AngularFireAuth,
     public datepipe: DatePipe,
@@ -146,6 +147,16 @@ export class PlanteleditComponent implements OnInit {
 
   deleteFieldValue(index) {
     this.plantelProfesor.fieldArray.splice(index, 1);
+    this.elementoEliminado();
+  }
+  addFieldValueArticulo() {
+    this.plantelProfesor.fieldArrayArticulos.push(this.newAttribute);
+    this.newAttribute = {};
+    this.elementoAgregado();
+  }
+
+  deleteFieldValueArticulo(index) {
+    this.plantelProfesor.fieldArrayArticulos.splice(index, 1);
     this.elementoEliminado();
   }
   openModal(confirmar) {

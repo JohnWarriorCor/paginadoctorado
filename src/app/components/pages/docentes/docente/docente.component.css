@@ -1,38 +1,50 @@
 .brCard {
-    margin-bottom: 20px;
-    border: solid 2px #8f141b;
-    background-color: #fefefe;
-    border-radius: 10px;
-  }
-  .perfilPro {
-    margin-bottom: 10px;
-    border: solid 8px white;
-    border-radius: 5px;
-  }
-  .carnetTitulo{
-      background-color: #8f141b;
-      padding: 5px;
-      border-radius: 10px 0 10px 0;
-  }
-  ngb-pagination ::ng-deep ul > li:not(.active) > a {
-    background-color: #8f141b !important;
-    border-top-style: none !important;
-    border-bottom-style: none !important;
-    border-left-style: none !important;
-    border-right-style: none !important;
-    color: #dfd4a6;
-    border-color: #dfd4a6;
-  }
-  
-  ngb-pagination ::ng-deep ul > li.active > a {
-    background-color: #b62229 !important;
-    border-top-style: none !important;
-    border-bottom-style: none !important;
-    border-left-style: none !important;
-    border-right-style: none !important;
-    color: #f0e4b4;
-    border-color: #f0e4b4;
-  }
-  #gradiante {
-    background-image: linear-gradient(#8f141b 20%, white 10%);
-  }
+  margin-bottom: 20px;
+  border: solid 2px #8f141b;
+  background-color: #fefefe;
+  border-radius: 10px;
+}
+.perfilPro {
+  margin-bottom: 10px;
+  border: solid 8px white;
+  border-radius: 5px;
+}
+.carnetTitulo {
+  background-color: #8f141b;
+  padding: 5px;
+  border-radius: 10px 0 10px 0;
+}
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+  background-color: #8f141b !important;
+  border-top-style: none !important;
+  border-bottom-style: none !important;
+  border-left-style: none !important;
+  border-right-style: none !important;
+  color: #dfd4a6;
+  border-color: #dfd4a6;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+  background-color: #b62229 !important;
+  border-top-style: none !important;
+  border-bottom-style: none !important;
+  border-left-style: none !important;
+  border-right-style: none !important;
+  color: #f0e4b4;
+  border-color: #f0e4b4;
+}
+#gradiante {
+  background-image: linear-gradient(#8f141b 20%, white 10%);
+}
+.cover img.img-polaroid {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  padding: 4px;
+  width: auto;
+}
+.cover img {
+  width: 80px;
+  max-height: 112px;
+  margin: 0px 5px 5px 0px;
+}

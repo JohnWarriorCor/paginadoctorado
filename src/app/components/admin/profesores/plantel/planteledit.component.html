@@ -264,7 +264,7 @@
                         <i class="far fa-calendar-alt"></i> Fecha de ingreso:
                       </h5>
                       <input
-                        type="text"
+                        type="date"
                         name="fecha"
                         [(ngModel)]="plantelProfesor.fecha"
                         class="form-control shadow p-3"
@@ -467,9 +467,9 @@
                     <div class="col">
                       <ngb-pagination
                         class="d-flex justify-content-end"
-                        [collectionSize]="plantelProfesor.fieldArray.length"
-                        [pageSize]="pageSize"
-                        [(page)]="page"
+                        [collectionSize]="plantelProfesor.fieldArrayArticulos.length"
+                        [pageSize]="pageSizeArticulos"
+                        [(page)]="pageArticulos"
                       ></ngb-pagination>
                     </div>
                   </div>
@@ -481,6 +481,9 @@
                         </th>
                         <th style="vertical-align: middle" scope="col">
                           Autores
+                        </th>
+                        <th style="vertical-align: middle" scope="col">
+                          Resumen
                         </th>
                         <th style="vertical-align: middle" scope="col">
                           Revista
@@ -497,68 +500,72 @@
                     <tbody style="background-color: white">
                       <tr
                         *ngFor="
-                          let field of plantelProfesor.fieldArray
+                          let field of plantelProfesor.fieldArrayArticulos
                             | slice
-                              : (page - 1) * pageSize
-                              : (page - 1) * pageSize + pageSize;
+                              : (pageArticulos - 1) * pageSizeArticulos
+                              : (pageArticulos - 1) * pageSizeArticulos + pageSizeArticulos;
                           let i = index
                         "
                       >
                         <td class="text-justify">
                           <textarea
                             rows="5"
-                            [(ngModel)]="field.formacion"
+                            [(ngModel)]="field.nombreArticulo"
                             class="form-control inputTable"
                             type="text"
-                            name="{{ field.formacion }}"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            name="{{ field.nombreArticulo }}"
                           ></textarea>
                         </td>
                         <td class="text-justify">
                           <textarea
                             rows="5"
-                            [(ngModel)]="field.formacion"
+                            [(ngModel)]="field.autores"
                             class="form-control inputTable"
                             type="text"
-                            name="{{ field.formacion }}"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            name="{{ field.autores }}"
                           ></textarea>
                         </td>
                         <td class="text-justify">
                           <textarea
                             rows="5"
-                            [(ngModel)]="field.formacion"
+                            [(ngModel)]="field.resumen"
                             class="form-control inputTable"
                             type="text"
-                            name="{{ field.formacion }}"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            name="{{ field.resumen }}"
                           ></textarea>
                         </td>
                         <td class="text-justify">
                           <textarea
                             rows="5"
-                            [(ngModel)]="field.formacion"
+                            [(ngModel)]="field.revista"
                             class="form-control inputTable"
                             type="text"
-                            name="{{ field.formacion }}"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            name="{{ field.revista }}"
                           ></textarea>
                         </td>
                         <td class="text-justify">
                           <textarea
                             rows="5"
-                            [(ngModel)]="field.formacion"
+                            [(ngModel)]="field.anio"
                             class="form-control inputTable"
                             type="text"
-                            name="{{ field.formacion }}"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            name="{{ field.anio }}"
+                          ></textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            [(ngModel)]="field.enlace"
+                            class="form-control inputTable"
+                            type="text"
+                            name="{{ field.enlace }}"
                           ></textarea>
                         </td>
                         <td class="text-center" style="vertical-align: middle">
                           <button
                             class="btn btn-default colorRedInst"
                             type="button"
-                            (click)="deleteFieldValue(i)"
+                            (click)="deleteFieldValueArticulo(i)"
                             placement="top"
                             ngbTooltip="Borrar"
                           >
@@ -572,10 +579,10 @@
                             rows="5"
                             class="form-control inputTable"
                             type="text"
-                            id="newAttributeFormacion"
-                            [(ngModel)]="newAttribute.formacion"
-                            name="newAttributeFormacion"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            id="newAttributeNombreArticulo"
+                            [(ngModel)]="newAttribute.nombreArticulo"
+                            name="newAttributeNombreArticulo"
+                            placeholder="Nombre del artículo publicado"
                           >
                           </textarea>
                         </td>
@@ -584,10 +591,10 @@
                             rows="5"
                             class="form-control inputTable"
                             type="text"
-                            id="newAttributeFormacion"
-                            [(ngModel)]="newAttribute.formacion"
-                            name="newAttributeFormacion"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            id="newAttributeAutores"
+                            [(ngModel)]="newAttribute.autores"
+                            name="newAttributeAutores"
+                            placeholder="Autores participantes"
                           >
                           </textarea>
                         </td>
@@ -596,10 +603,10 @@
                             rows="5"
                             class="form-control inputTable"
                             type="text"
-                            id="newAttributeFormacion"
-                            [(ngModel)]="newAttribute.formacion"
-                            name="newAttributeFormacion"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            id="newAttributeResumen"
+                            [(ngModel)]="newAttribute.resumen"
+                            name="newAttributeResumen"
+                            placeholder="Resumen o abstract"
                           >
                           </textarea>
                         </td>
@@ -608,10 +615,10 @@
                             rows="5"
                             class="form-control inputTable"
                             type="text"
-                            id="newAttributeFormacion"
-                            [(ngModel)]="newAttribute.formacion"
-                            name="newAttributeFormacion"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            id="newAttributeRevista"
+                            [(ngModel)]="newAttribute.revista"
+                            name="newAttributeRevista"
+                            placeholder="Revista de la publicación"
                           >
                           </textarea>
                         </td>
@@ -620,10 +627,22 @@
                             rows="5"
                             class="form-control inputTable"
                             type="text"
-                            id="newAttributeFormacion"
-                            [(ngModel)]="newAttribute.formacion"
-                            name="newAttributeFormacion"
-                            placeholder="Agrege los estudios realizados o logros de la carrera profesional"
+                            id="newAttributeAnio"
+                            [(ngModel)]="newAttribute.anio"
+                            name="newAttributeAnio"
+                            placeholder="Año publicación"
+                          >
+                          </textarea>
+                        </td>
+                        <td class="text-justify">
+                          <textarea
+                            rows="5"
+                            class="form-control inputTable"
+                            type="text"
+                            id="newAttributeEnlace"
+                            [(ngModel)]="newAttribute.enlace"
+                            name="newAttributeEnlace"
+                            placeholder="URL o link de referencia"
                           >
                           </textarea>
                         </td>
@@ -631,7 +650,7 @@
                           <button
                             class="btn btn-default colorRedInst"
                             type="button"
-                            (click)="addFieldValue()"
+                            (click)="addFieldValueArticulo()"
                             placement="top"
                             ngbTooltip="Agregar"
                           >

@@ -106,10 +106,7 @@
                           aria-labelledby="headingOne"
                           data-parent="#accordionExample"
                         >
-                          <div
-                            class="card-body"
-                            style="background-color: #edeff0"
-                          >
+                          <div class="card-body">
                             <ul>
                               <li
                                 *ngFor="
@@ -208,21 +205,83 @@
                     "
                   >
                     <div class="row">
-                      <div class="col">
+                      <div class="col-md-8">
                         <h4 class="m-2">
-                          <i class="fas fa-scroll"></i> Artíuclos publicados:
+                          <i class="fas fa-scroll"></i> Publicaciones
+                          {{ plantelProfesor.nombre }}:
                         </h4>
                       </div>
-                      <div class="col">
+                      <div class="col-md-4">
                         <ngb-pagination
                           class="d-flex justify-content-end"
-                          [collectionSize]="plantelProfesor.fieldArray.length"
-                          [pageSize]="pageSize"
-                          [(page)]="page"
+                          [collectionSize]="
+                            plantelProfesor.fieldArrayArticulos.length
+                          "
+                          [pageSize]="pageSizeArticulos"
+                          [(page)]="pageArticulos"
                         ></ngb-pagination>
                       </div>
                     </div>
-                    <h1>En desarrollo</h1>
+                    <table class="table table-hover books">
+                      <tbody>
+                        <tr
+                          *ngFor="
+                            let fieldArticulos of plantelProfesor.fieldArrayArticulos
+                              | slice
+                                : (pageArticulos - 1) * pageSizeArticulos
+                                : (pageArticulos - 1) * pageSizeArticulos +
+                                    pageSizeArticulos;
+                            let i = index
+                          "
+                        >
+                          <td width="100px">
+                            <div class="img-intro-left cover">
+                              <a
+                                [href]="fieldArticulos.enlace"
+                                [title]="fieldArticulos.nombreArticulo"
+                                ><img
+                                  class="img-polaroid"
+                                  src="assets/PDF_file_icon.svg"
+                                  [alt]="fieldArticulos.nombreArticulo"
+                              /></a>
+                            </div>
+                          </td>
+                          <td>
+                            <h5
+                              class="
+                                card-title
+                                subTituloRojoInstitucional
+                                cursorSelect
+                              "
+                            >
+                              {{ i + 1 }}. {{ fieldArticulos.nombreArticulo }}
+                            </h5>
+                            <div>
+                              <strong
+                                ><i class="fas fa-users"></i> Autores:
+                              </strong>
+                              <a [href]="fieldArticulos.enlace">{{
+                                fieldArticulos.autores
+                              }}</a>
+                            </div>
+                            <dl>
+                              <dd>
+                                <strong
+                                  ><i class="fas fa-calendar-day"></i> Año:
+                                </strong>
+                                {{ fieldArticulos.anio }}
+                              </dd>
+                              <dd>
+                                <strong
+                                  ><i class="fab fa-readme"></i> Resumen:
+                                </strong>
+                                {{ fieldArticulos.resumen | slice: 0:150 }} ...
+                              </dd>
+                            </dl>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                     <br />
                   </div>
                 </div>
