@@ -21,7 +21,7 @@ export class PlanteleditComponent implements OnInit {
   page = 1;
   pageSize = 3;
   pageArticulos = 1;
-  pageSizeArticulos = 3;
+  pageSizeArticulos = 2;
   today = new Date();
   fecha: any;
   closeResult: string;

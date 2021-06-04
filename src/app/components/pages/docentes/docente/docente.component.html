@@ -82,8 +82,6 @@
                     <p class="m-4">
                       {{ plantelProfesor.sintesis }}
                     </p>
-                    <hr />
-                    <br />
                     <!-- COLLAPSE START-->
                     <div class="accordion" id="accordionExample">
                       <div class="card">
@@ -124,8 +122,6 @@
                       </div>
                     </div>
                     <!--COLLAPSE END-->
-                    <br />
-                    <hr />
                     <div class="row no-print">
                       <div class="col m-3">
                         <a
@@ -238,6 +234,7 @@
                             <div class="img-intro-left cover">
                               <a
                                 [href]="fieldArticulos.enlace"
+                                target="_blank"
                                 [title]="fieldArticulos.nombreArticulo"
                                 ><img
                                   class="img-polaroid"
@@ -252,6 +249,7 @@
                                 card-title
                                 subTituloRojoInstitucional
                                 cursorSelect
+                                text-left
                               "
                             >
                               {{ i + 1 }}. {{ fieldArticulos.nombreArticulo }}
@@ -260,7 +258,7 @@
                               <strong
                                 ><i class="fas fa-users"></i> Autores:
                               </strong>
-                              <a [href]="fieldArticulos.enlace">{{
+                              <a [href]="fieldArticulos.enlace" target="_blank">{{
                                 fieldArticulos.autores
                               }}</a>
                             </div>
@@ -269,13 +267,13 @@
                                 <strong
                                   ><i class="fas fa-calendar-day"></i> Año:
                                 </strong>
-                                {{ fieldArticulos.anio }}
+                                {{ fieldArticulos.anio | date: "yyyy" }}
                               </dd>
                               <dd>
                                 <strong
                                   ><i class="fab fa-readme"></i> Resumen:
                                 </strong>
-                                {{ fieldArticulos.resumen | slice: 0:150 }} ...
+                                {{ fieldArticulos.resumen | slice: 0:300 }} ...
                               </dd>
                             </dl>
                           </td>

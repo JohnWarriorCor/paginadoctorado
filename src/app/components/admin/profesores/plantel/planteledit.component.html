@@ -467,199 +467,231 @@
                     <div class="col">
                       <ngb-pagination
                         class="d-flex justify-content-end"
-                        [collectionSize]="plantelProfesor.fieldArrayArticulos.length"
+                        [collectionSize]="
+                          plantelProfesor.fieldArrayArticulos.length
+                        "
                         [pageSize]="pageSizeArticulos"
                         [(page)]="pageArticulos"
                       ></ngb-pagination>
                     </div>
                   </div>
-                  <table class="table table-bordered parinst shadow">
-                    <thead class="tablatit text-center">
-                      <tr class="white">
-                        <th style="vertical-align: middle" scope="col">
-                          Nombre del artículo
-                        </th>
-                        <th style="vertical-align: middle" scope="col">
-                          Autores
-                        </th>
-                        <th style="vertical-align: middle" scope="col">
-                          Resumen
-                        </th>
-                        <th style="vertical-align: middle" scope="col">
-                          Revista
-                        </th>
-                        <th style="vertical-align: middle" scope="col">Año</th>
-                        <th style="vertical-align: middle" scope="col">
-                          Enlace
-                        </th>
-                        <th style="vertical-align: middle" scope="col">
-                          Opciones
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody style="background-color: white">
-                      <tr
-                        *ngFor="
-                          let field of plantelProfesor.fieldArrayArticulos
-                            | slice
-                              : (pageArticulos - 1) * pageSizeArticulos
-                              : (pageArticulos - 1) * pageSizeArticulos + pageSizeArticulos;
-                          let i = index
-                        "
-                      >
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            [(ngModel)]="field.nombreArticulo"
-                            class="form-control inputTable"
-                            type="text"
-                            name="{{ field.nombreArticulo }}"
-                          ></textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            [(ngModel)]="field.autores"
-                            class="form-control inputTable"
-                            type="text"
-                            name="{{ field.autores }}"
-                          ></textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            [(ngModel)]="field.resumen"
-                            class="form-control inputTable"
-                            type="text"
-                            name="{{ field.resumen }}"
-                          ></textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            [(ngModel)]="field.revista"
-                            class="form-control inputTable"
-                            type="text"
-                            name="{{ field.revista }}"
-                          ></textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            [(ngModel)]="field.anio"
-                            class="form-control inputTable"
-                            type="text"
-                            name="{{ field.anio }}"
-                          ></textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            [(ngModel)]="field.enlace"
-                            class="form-control inputTable"
-                            type="text"
-                            name="{{ field.enlace }}"
-                          ></textarea>
-                        </td>
-                        <td class="text-center" style="vertical-align: middle">
-                          <button
-                            class="btn btn-default colorRedInst"
-                            type="button"
-                            (click)="deleteFieldValueArticulo(i)"
-                            placement="top"
-                            ngbTooltip="Borrar"
-                          >
-                            <i class="far fa-trash-alt"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            class="form-control inputTable"
-                            type="text"
-                            id="newAttributeNombreArticulo"
-                            [(ngModel)]="newAttribute.nombreArticulo"
-                            name="newAttributeNombreArticulo"
-                            placeholder="Nombre del artículo publicado"
-                          >
-                          </textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            class="form-control inputTable"
-                            type="text"
-                            id="newAttributeAutores"
-                            [(ngModel)]="newAttribute.autores"
-                            name="newAttributeAutores"
-                            placeholder="Autores participantes"
-                          >
-                          </textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            class="form-control inputTable"
-                            type="text"
-                            id="newAttributeResumen"
-                            [(ngModel)]="newAttribute.resumen"
-                            name="newAttributeResumen"
-                            placeholder="Resumen o abstract"
-                          >
-                          </textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            class="form-control inputTable"
-                            type="text"
-                            id="newAttributeRevista"
-                            [(ngModel)]="newAttribute.revista"
-                            name="newAttributeRevista"
-                            placeholder="Revista de la publicación"
-                          >
-                          </textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            class="form-control inputTable"
-                            type="text"
-                            id="newAttributeAnio"
-                            [(ngModel)]="newAttribute.anio"
-                            name="newAttributeAnio"
-                            placeholder="Año publicación"
-                          >
-                          </textarea>
-                        </td>
-                        <td class="text-justify">
-                          <textarea
-                            rows="5"
-                            class="form-control inputTable"
-                            type="text"
-                            id="newAttributeEnlace"
-                            [(ngModel)]="newAttribute.enlace"
-                            name="newAttributeEnlace"
-                            placeholder="URL o link de referencia"
-                          >
-                          </textarea>
-                        </td>
-                        <td class="text-center" style="vertical-align: middle">
-                          <button
-                            class="btn btn-default colorRedInst"
-                            type="button"
-                            (click)="addFieldValueArticulo()"
-                            placement="top"
-                            ngbTooltip="Agregar"
-                          >
-                            <i class="fas fa-plus-circle"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <!-- FORM INPUTS ARTICULOS START-->
+                  <div
+                    *ngFor="
+                      let field of plantelProfesor.fieldArrayArticulos
+                        | slice
+                          : (pageArticulos - 1) * pageSizeArticulos
+                          : (pageArticulos - 1) * pageSizeArticulos +
+                              pageSizeArticulos;
+                      let i = index
+                    "
+                    style="
+                    background-color: #cccccc;
+                    padding: 30px;
+                    color: #1e262b;
+                  "
+                  >
+                    <div class="row m-2">
+                      <div class="col">
+                        <h6 class="text-left subTituloRojoInstitucional">
+                          Nombre del artículo:
+                        </h6>
+                        <input
+                          type="text"
+                          name="{{ field.nombreArticulo }}"
+                          [(ngModel)]="field.nombreArticulo"
+                          class="form-control shadow p-3"
+                          placeholder="Encabezado o título del evento"
+                        />
+                      </div>
+                    </div>
+                    <div class="row m-2">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Autores:
+                        </h6>
+                        <input
+                          type="text"
+                          name="{{ field.autores }}"
+                          [(ngModel)]="field.autores"
+                          class="form-control shadow p-3"
+                        />
+                      </div>
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Fecha de publicación:
+                        </h6>
+                        <input
+                          type="date"
+                          name="{{ field.anio }}"
+                          [(ngModel)]="field.anio"
+                          class="form-control shadow p-3"
+                        />
+                      </div>
+                    </div>
+                    <div class="row m-2">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Reseña:
+                        </h6>
+                        <textarea
+                          maxlength="6500"
+                          name="{{ field.resumen }}"
+                          [(ngModel)]="field.resumen"
+                          class="form-control shadow p-1"
+                          placeholder="Síntesis o información relavante del evento ..."
+                          rows="7"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="row m-2">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Enlace del artículo:
+                        </h6>
+                        <input
+                          name="{{ field.enlace }}"
+                          [(ngModel)]="field.enlace"
+                          type="text"
+                          class="form-control shadow p-3 inputPaciente"
+                          placeholder="Dirección URL para mayor información del evento o suscripción"
+                        />
+                      </div>
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Revista:
+                        </h6>
+                        <input
+                          name="{{ field.revista }}"
+                          [(ngModel)]="field.revista"
+                          type="text"
+                          class="form-control shadow p-3 inputPaciente"
+                          placeholder="Dirección URL para mayor información del evento o suscripción"
+                        />
+                      </div>
+                    </div>
+                    <div class="row m-2">
+                      <div class="col text-left">
+                        <h4 class="subTituloRojoInstitucional text-left">
+                          Formulario diligenciado
+                        </h4>
+                      </div>
+                      <div class="col text-right">
+                        <button
+                          class="btn btn-default navlinkinSolid"
+                          type="button"
+                          (click)="deleteFieldValueArticulo(i)"
+                          placement="top"
+                          ngbTooltip="Borrar"
+                        >
+                          <i class="far fa-trash-alt"> Borrar</i>
+                        </button>
+                      </div>
+                    </div>
+                    <hr />
+                  </div>
+                  <div>
+                    <div class="row m-2">
+                      <div class="col">
+                        <h6 class="text-left subTituloRojoInstitucional">
+                          Nombre del artículo:
+                        </h6>
+                        <input
+                          type="text"
+                          id="newAttributeNombreArticulo"
+                          [(ngModel)]="newAttribute.nombreArticulo"
+                          name="newAttributeNombreArticulo"
+                          class="form-control shadow p-3"
+                        />
+                      </div>
+                    </div>
+                    <div class="row m-2">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Autores:
+                        </h6>
+                        <input
+                          type="text"
+                          id="newAttributeAutores"
+                          [(ngModel)]="newAttribute.autores"
+                          name="newAttributeAutores"
+                          class="form-control shadow p-3"
+                        />
+                      </div>
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Fecha de publicación:
+                        </h6>
+                        <input
+                          type="date"
+                          id="newAttributeAnio"
+                          [(ngModel)]="newAttribute.anio"
+                          name="newAttributeAnio"
+                          class="form-control shadow p-3"
+                        />
+                      </div>
+                    </div>
+                    <div class="row m-2">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Reseña:
+                        </h6>
+                        <textarea
+                          maxlength="6500"
+                          id="newAttributeResumen"
+                          [(ngModel)]="newAttribute.resumen"
+                          name="newAttributeResumen"
+                          class="form-control shadow p-1"
+                          rows="7"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="row m-2">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Enlace del artículo:
+                        </h6>
+                        <input
+                          id="newAttributeEnlace"
+                          [(ngModel)]="newAttribute.enlace"
+                          name="newAttributeEnlace"
+                          type="text"
+                          class="form-control shadow p-3 inputPaciente"
+                        />
+                      </div>
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Revista:
+                        </h6>
+                        <input
+                          id="newAttributeRevista"
+                          [(ngModel)]="newAttribute.revista"
+                          name="newAttributeRevista"
+                          type="text"
+                          class="form-control shadow p-3 inputPaciente"
+                        />
+                      </div>
+                    </div>
+                    <div class="row m-2">
+                      <div class="col text-left">
+                        <h4 class="subTituloRojoInstitucional text-left">
+                          Formulario en blanco
+                        </h4>
+                      </div>
+                      <div class="col text-right">
+                        <button
+                          class="btn btn-default navlinkinSolid"
+                          type="button"
+                          (click)="addFieldValueArticulo()"
+                          placement="top"
+                          ngbTooltip="Agregar"
+                        >
+                          <i class="fas fa-plus-circle"> Agregar</i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- FORM INPUTS ARTICULOS END-->
                   <br />
                 </div>
                 <div class="container text-left no-print">
