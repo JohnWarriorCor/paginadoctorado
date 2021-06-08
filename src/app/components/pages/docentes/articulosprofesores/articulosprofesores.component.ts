@@ -1,41 +1,51 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ArticulosproService } from '../../../../services/profesores/articulospro/articulospro.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { ToastrService } from 'ngx-toastr';
+import { PlantelService } from '../../../../services/profesores/plantel/plantel.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-articulosprofesores',
   templateUrl: './articulosprofesores.component.html',
   styleUrls: ['./articulosprofesores.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
-  cpage = 1;
-  pageSize = 4;
-  vistaEdicion = false;
+  filterpost = '';
+  indicador = '-';
+  page = 1;
+  pageSize = 3;
+  pageArticulos = 1;
+  pageSizeArticulos = 3;
+  agenda: any[] = [];
+  plantelProfesores: any[] = [];
+
   today = new Date();
   closeResult: string;
   modalReference: any;
   acumFechas = 0;
   comodinAcum = 0;
-  articulosPro: Array<any> = [];
   loading = true;
+
+  profesores: any[] = [];
+  actualProfesor = null;
+  eventos: any[] = [];
+  actualEvento = null;
+  actualIndex = -1;
+  eventosPrograma: any[] = [];
+  eventosInstitucional: any[] = [];
 
   constructor(
     private toastr: ToastrService,
     public auth: AngularFireAuth,
     private articulosProService: ArticulosproService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private plantelService: PlantelService
   ) {
-    this.articulosProService.getArticuloProfesores().subscribe((data) => {
-      this.articulosPro = data;
+    this.plantelService.getPlanteles().subscribe((data) => {
+      this.plantelProfesores = data;
     });
   }
 
@@ -88,7 +98,32 @@ export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.obtenerProfesores();
+  }
+  refreshList(): void {
+    this.actualProfesor = null;
+    this.actualIndex = -1;
+    this.obtenerProfesores();
+  }
+  setActiveTutorial(evento, index): void {
+    this.actualProfesor = evento;
+    this.actualIndex = index;
+  }
+  obtenerProfesores(): void {
+    this.plantelService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.profesores = data;
+      });
+  }
+
 
   ngAfterViewInit(): void {
     (window as any).twttr.widgets.load();
@@ -102,16 +137,15 @@ export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
     });
   }
 
-  borrarGrupo(key$: string) {
-    this.articulosProService
-      .borrarArticuloProfesor(key$)
-      .subscribe((respuesta) => {
-        if (respuesta) {
-          console.error(respuesta);
-        } else {
-          delete this.articulosPro[key$];
-          this.modalReference.close();
-        }
-      });
+  borrarPlantel(key$: string) {
+    this.plantelService.borrarPlantel(key$).subscribe((respuesta) => {
+      if (respuesta) {
+        console.error(respuesta);
+      } else {
+        delete this.plantelProfesores[key$];
+        this.elementoEliminado();
+        this.modalReference.close();
+      }
+    });
   }
 }

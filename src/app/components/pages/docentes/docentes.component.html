@@ -58,7 +58,7 @@
             id="gradiante"
           >
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-4 text-center">
                 <img
                   [src]="profesor.foto"
                   [alt]="profesor.nombre"
@@ -66,6 +66,17 @@
                   [routerLink]="['/docente', profesor.key]"
                   class="w-100 perfilPro cursorSelect"
                 />
+                <p class="card-title grayinst">
+                  <strong
+                    ><i class="fas fa-envelope"></i>
+                    {{ profesor.correo }}</strong
+                  >
+                </p>
+                <p class="card-title grayinst">
+                  <strong
+                    >Artículos registrados: {{ (profesor.fieldArrayArticulos).length }}</strong
+                  >
+                </p>
                 <div class="row" *ngIf="auth.user | async">
                   <div class="col text-right">
                     <a
@@ -136,23 +147,18 @@
                   </h4>
                   <br />
                   <p class="card-text">
-                    <i class="fas fa-info-circle"></i> Formación Académica:
+                    <strong
+                      ><i class="fas fa-info-circle"></i> Formación
+                      Académica:</strong
+                    >
                   </p>
-                  <ul class="card-text" style="font-size: 12px">
-                    <li>
-                      <p class="text-justify">
-                        {{ profesor.sintesis | slice: 0:300 }}
-                        <a
-                          [routerLink]="['/docente', profesor.key]"
-                          style="color: #8f141b"
-                          >... Ver más</a
-                        >
-                      </p>
-                    </li>
-                  </ul>
-                  <p class="card-title grayinst">
-                    <i class="fas fa-envelope"></i>
-                    {{ profesor.correo }}
+                  <p class="text-justify m-2">
+                    {{ profesor.sintesis | slice: 0:300 }}
+                    <a
+                      [routerLink]="['/docente', profesor.key]"
+                      style="color: #8f141b"
+                      >... Ver más</a
+                    >
                   </p>
                   <div class="text-right">
                     <a

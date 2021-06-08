@@ -203,8 +203,8 @@
                     <div class="row">
                       <div class="col-md-8">
                         <h4 class="m-2">
-                          <i class="fas fa-scroll"></i> Publicaciones
-                          {{ plantelProfesor.nombre }}:
+                          <strong><i class="fas fa-scroll"></i> Publicaciones
+                          {{ plantelProfesor.nombre }} - #{{ (plantelProfesor.fieldArrayArticulos).length }}</strong>
                         </h4>
                       </div>
                       <div class="col-md-4">
@@ -252,7 +252,7 @@
                                 text-left
                               "
                             >
-                              {{ i + 1 }}. {{ fieldArticulos.nombreArticulo }}
+                              {{ ((pageArticulos - 1) * pageSizeArticulos) + (i + 1) }}. {{ fieldArticulos.nombreArticulo }}
                             </h5>
                             <div>
                               <strong
@@ -273,7 +273,7 @@
                                 <strong
                                   ><i class="fab fa-readme"></i> Resumen:
                                 </strong>
-                                {{ fieldArticulos.resumen | slice: 0:300 }} ...
+                                {{ fieldArticulos.resumen | slice: 0:280 }} <a style="color: #8f141b">... Ver más</a>
                               </dd>
                             </dl>
                           </td>
