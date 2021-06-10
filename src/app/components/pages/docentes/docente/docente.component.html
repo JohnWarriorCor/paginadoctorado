@@ -203,8 +203,12 @@
                     <div class="row">
                       <div class="col-md-8">
                         <h4 class="m-2">
-                          <strong><i class="fas fa-scroll"></i> Publicaciones
-                          {{ plantelProfesor.nombre }} - #{{ (plantelProfesor.fieldArrayArticulos).length }}</strong>
+                          <strong
+                            ><i class="fas fa-scroll"></i> Publicaciones
+                            {{ plantelProfesor.nombre }} - #{{
+                              plantelProfesor.fieldArrayArticulos.length
+                            }}</strong
+                          >
                         </h4>
                       </div>
                       <div class="col-md-4">
@@ -233,8 +237,11 @@
                           <td width="100px">
                             <div class="img-intro-left cover">
                               <a
-                                [href]="fieldArticulos.enlace"
-                                target="_blank"
+                                [routerLink]="[
+                                  '/articulo_docente',
+                                  link,
+                                  (pageArticulos - 1) * pageSizeArticulos + i
+                                ]"
                                 [title]="fieldArticulos.nombreArticulo"
                                 ><img
                                   class="img-polaroid"
@@ -251,16 +258,26 @@
                                 cursorSelect
                                 text-left
                               "
+                              [routerLink]="[
+                                '/articulo_docente',
+                                link,
+                                (pageArticulos - 1) * pageSizeArticulos + i
+                              ]"
                             >
-                              {{ ((pageArticulos - 1) * pageSizeArticulos) + (i + 1) }}. {{ fieldArticulos.nombreArticulo }}
+                              {{
+                                (pageArticulos - 1) * pageSizeArticulos +
+                                  (i + 1)
+                              }}. {{ fieldArticulos.nombreArticulo }}
                             </h5>
                             <div>
                               <strong
                                 ><i class="fas fa-users"></i> Autores:
                               </strong>
-                              <a [href]="fieldArticulos.enlace" target="_blank">{{
-                                fieldArticulos.autores
-                              }}</a>
+                              <a
+                                [href]="fieldArticulos.enlace"
+                                target="_blank"
+                                >{{ fieldArticulos.autores }}</a
+                              >
                             </div>
                             <dl>
                               <dd>
@@ -273,7 +290,16 @@
                                 <strong
                                   ><i class="fab fa-readme"></i> Resumen:
                                 </strong>
-                                {{ fieldArticulos.resumen | slice: 0:280 }} <a style="color: #8f141b">... Ver más</a>
+                                {{ fieldArticulos.resumen | slice: 0:280 }}
+                                <a
+                                  [routerLink]="[
+                                    '/articulo_docente',
+                                    link,
+                                    (pageArticulos - 1) * pageSizeArticulos + i
+                                  ]"
+                                  style="color: #8f141b"
+                                  >... Ver más</a
+                                >
                               </dd>
                             </dl>
                           </td>

@@ -29,3 +29,7 @@ ngb-pagination ::ng-deep ul > li.active > a {
   color: #f0e4b4;
   border-color: #f0e4b4;
 }
+pdf-viewer {
+    display: block;
+    height: 100vh;
+}

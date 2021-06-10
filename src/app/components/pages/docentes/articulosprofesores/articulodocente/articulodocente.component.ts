@@ -17,6 +17,7 @@ import { Articulo } from '../../../../../interfaces/profesores/articulo';
   providers: [DatePipe],
 })
 export class ArticulodocenteComponent implements OnInit {
+  pdfSource = 'https://drive.google.com/file/d/1unOARuer2zVmdsWISIXgDH-kDgVtgOdg/preview';
   page = 1;
   pageSize = 3;
   pageArticulos = 1;

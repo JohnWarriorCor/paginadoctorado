@@ -14,7 +14,7 @@
             <div class="col">
               <div class="row">
                 <div
-                  class="col-md-4"
+                  class="col-md-4 text-center"
                   style="
                     background-color: #8f141b;
                     padding: 20px;
@@ -24,16 +24,15 @@
                   "
                 >
                   <h3>
-                    <i class="fas fa-user-circle"></i>
                     {{ plantelProfesor.nombre }}
-                  </h3>
+                  </h3><br>
                   <img
                     [src]="plantelProfesor.foto"
                     [alt]="plantelProfesor.nombre"
                     [title]="plantelProfesor.nombre"
                     class="rounded mx-auto d-block"
                     style="width: 100%; border: solid 5px white"
-                  />
+                  /> <br>
                   <h5>Docente</h5>
                   <h6>Universidad Surcolombiana</h6>
                   <h6>
@@ -133,9 +132,10 @@
                       <i class="fas fa-edit"></i>
                       {{ articuloDocente.nombreArticulo }}
                     </h5>
-                    <hr style="border: solid 1px white;">
+                    <hr style="border: solid 1px white" />
                     <p>
-                      <strong><i class="fas fa-users"></i> Autores:</strong> {{ articuloDocente.autores }}
+                      <strong><i class="fas fa-users"></i> Autores:</strong>
+                      {{ articuloDocente.autores }}
                     </p>
                   </div>
                   <div
@@ -155,6 +155,26 @@
                     <p class="m-2">
                       {{ articuloDocente.resumen }}
                     </p>
+                    <br />
+                    <h5>
+                      <strong
+                        ><i class="fab fa-readme"></i> Visualización del
+                        artículo:</strong
+                      >
+                    </h5>
+                    <br />
+                    <hr />
+                    <div class="container">
+                      <iframe
+                        [src]="
+                          articuloDocente.enlace
+                            | domseguro: 'https://drive.google.com/file/d/'
+                        "
+                        width="100%"
+                        height="480"
+                      ></iframe>
+                    </div>
+                    <hr />
                   </div>
                 </div>
               </div>
@@ -175,10 +195,8 @@
                       <div class="col-md-8">
                         <h4 class="m-2">
                           <strong
-                            ><i class="fas fa-scroll"></i> Publicaciones
-                            {{ plantelProfesor.nombre }} - #{{
-                              plantelProfesor.fieldArrayArticulos.length
-                            }}</strong
+                            ><i class="fas fa-scroll"></i>Más publicaciones
+                            {{ plantelProfesor.nombre }}</strong
                           >
                         </h4>
                       </div>
@@ -208,9 +226,12 @@
                           <td width="100px">
                             <div class="img-intro-left cover">
                               <a
-                                [href]="fieldArticulos.enlace"
-                                target="_blank"
-                                [title]="fieldArticulos.nombreArticulo"
+                                (click)="up()"
+                                [routerLink]="[
+                                  '/articulo_docente',
+                                  link,
+                                  (pageArticulos - 1) * pageSizeArticulos + i
+                                ]"
                                 ><img
                                   class="img-polaroid"
                                   src="assets/PDF_file_icon.svg"
@@ -226,6 +247,12 @@
                                 cursorSelect
                                 text-left
                               "
+                              (click)="up()"
+                              [routerLink]="[
+                                '/articulo_docente',
+                                link,
+                                (pageArticulos - 1) * pageSizeArticulos + i
+                              ]"
                             >
                               {{
                                 (pageArticulos - 1) * pageSizeArticulos +
@@ -254,7 +281,16 @@
                                   ><i class="fab fa-readme"></i> Resumen:
                                 </strong>
                                 {{ fieldArticulos.resumen | slice: 0:280 }}
-                                <a style="color: #8f141b">... Ver más</a>
+                                <a
+                                  (click)="up()"
+                                  [routerLink]="[
+                                    '/articulo_docente',
+                                    link,
+                                    (pageArticulos - 1) * pageSizeArticulos + i
+                                  ]"
+                                  style="color: #8f141b"
+                                  >... Ver más</a
+                                >
                               </dd>
                             </dl>
                           </td>

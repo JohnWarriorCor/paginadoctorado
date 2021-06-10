@@ -31,7 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ToastService } from './services/toast/toast.service';
 
 import { LightboxModule } from 'ngx-lightbox';
-import {CrystalLightboxModule} from '@crystalui/angular-lightbox';
+import { CrystalLightboxModule } from '@crystalui/angular-lightbox';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 // importar locales
@@ -167,7 +168,8 @@ registerLocaleData(localeEsCO, 'es-CO');
     AngularFireAuthGuardModule,
     AngularFireDatabaseModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    PdfViewerModule
   ],
   exports: [
     MDBBootstrapModule,
