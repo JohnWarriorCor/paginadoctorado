@@ -89,6 +89,7 @@
                               cursorSelect
                               text-left
                             "
+                            [routerLink]="['/articulo_docente', profesor.key, i ]"
                           >
                             {{ fieldArticulos.nombreArticulo }}
                           </h5>
@@ -112,7 +113,7 @@
                                 ><i class="fab fa-readme"></i> Resumen:
                               </strong>
                               {{ fieldArticulos.resumen | slice: 0:280 }}
-                              <a style="color: #8f141b">... Ver más</a>
+                              <a [routerLink]="['/articulo_docente', profesor.key, i ]" routerLinkActive="router-link-active"  style="color: #8f141b">... Ver más</a>
                             </dd>
                           </dl>
                         </td>

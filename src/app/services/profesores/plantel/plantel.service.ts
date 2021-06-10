@@ -45,6 +45,11 @@ export class PlantelService {
   }
   getPlantel(key$: string) {
     const url = `${ this.plantelURL }/${ key$ }.json`;
+    console.log(`${ this.plantelURL }/${ key$ }/${'fieldArrayArticulos'}/${'0'}.json`);
+    return this.http.get( url ).pipe(map(res => res.json()));
+  }
+  getArticuloProfesor(key$: string, idx$: string) {
+    const url = `${ this.plantelURL }/${ key$ }/${'fieldArrayArticulos'}/${idx$}.json`;
     return this.http.get( url ).pipe(map(res => res.json()));
   }
   getPlanteles() {
