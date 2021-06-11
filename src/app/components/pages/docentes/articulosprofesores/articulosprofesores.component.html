@@ -16,8 +16,8 @@
             <br />
             <p>
               La siguiente lista incluye los articulos publicados por los
-              profesores que se encuentran en Doctorado en Ciencias de la Salud
-              de la Universidad Surcolombiana.
+              profesores que se encuentran en el Doctorado en Ciencias de la
+              Salud de la Universidad Surcolombiana.
             </p>
             <div class="container">
               <div class="input-group mb-3">
@@ -71,8 +71,11 @@
                         <td width="100px">
                           <div class="img-intro-left cover">
                             <a
-                              [href]="fieldArticulos.enlace"
-                              target="_blank"
+                              [routerLink]="[
+                                '/articulo_docente',
+                                profesor.key,
+                                i
+                              ]"
                               [title]="fieldArticulos.nombreArticulo"
                               ><img
                                 class="img-polaroid"
@@ -89,7 +92,11 @@
                               cursorSelect
                               text-left
                             "
-                            [routerLink]="['/articulo_docente', profesor.key, i ]"
+                            [routerLink]="[
+                              '/articulo_docente',
+                              profesor.key,
+                              i
+                            ]"
                           >
                             {{ fieldArticulos.nombreArticulo }}
                           </h5>
@@ -97,9 +104,15 @@
                             <strong
                               ><i class="fas fa-users"></i> Autores:
                             </strong>
-                            <a [href]="fieldArticulos.enlace" target="_blank">{{
-                              fieldArticulos.autores
-                            }}</a>
+                            <a
+                              [href]="
+                                fieldArticulos.enlace
+                                  | domseguro
+                                    : 'https://drive.google.com/file/d/'
+                              "
+                              target="_blank"
+                              >{{ fieldArticulos.autores }}</a
+                            >
                           </div>
                           <dl>
                             <dd>
@@ -113,7 +126,16 @@
                                 ><i class="fab fa-readme"></i> Resumen:
                               </strong>
                               {{ fieldArticulos.resumen | slice: 0:280 }}
-                              <a [routerLink]="['/articulo_docente', profesor.key, i ]" routerLinkActive="router-link-active"  style="color: #8f141b">... Ver más</a>
+                              <a
+                                [routerLink]="[
+                                  '/articulo_docente',
+                                  profesor.key,
+                                  i
+                                ]"
+                                routerLinkActive="router-link-active"
+                                style="color: #8f141b"
+                                >... Ver más</a
+                              >
                             </dd>
                           </dl>
                         </td>

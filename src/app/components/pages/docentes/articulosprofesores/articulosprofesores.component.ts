@@ -16,9 +16,9 @@ export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
   filterpost = '';
   indicador = '-';
   page = 1;
-  pageSize = 3;
+  pageSize = 2;
   pageArticulos = 1;
-  pageSizeArticulos = 3;
+  pageSizeArticulos = 2;
   agenda: any[] = [];
   plantelProfesores: any[] = [];
 

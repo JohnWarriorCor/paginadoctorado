@@ -486,10 +486,10 @@
                       let i = index
                     "
                     style="
-                    background-color: #cccccc;
-                    padding: 30px;
-                    color: #1e262b;
-                  "
+                      background-color: #cccccc;
+                      padding: 30px;
+                      color: #1e262b;
+                    "
                   >
                     <div class="row m-2">
                       <div class="col">
@@ -573,14 +573,20 @@
                     <div class="row m-2">
                       <div class="col text-left">
                         <h4 class="subTituloRojoInstitucional text-left">
-                          Formulario diligenciado
+                          Formulario diligenciado #{{
+                            (pageArticulos - 1) * pageSizeArticulos + (i + 1)
+                          }}
                         </h4>
                       </div>
                       <div class="col text-right">
                         <button
                           class="btn btn-default navlinkinSolid"
                           type="button"
-                          (click)="deleteFieldValueArticulo(i)"
+                          (click)="
+                            deleteFieldValueArticulo(
+                              (pageArticulos - 1) * pageSizeArticulos + i
+                            )
+                          "
                           placement="top"
                           ngbTooltip="Borrar"
                         >
