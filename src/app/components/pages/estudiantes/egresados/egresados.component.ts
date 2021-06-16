@@ -15,8 +15,6 @@ export class EgresadosComponent implements OnInit {
   pageSize = 3;
   agenda: any[] = [];
   agresados: any[] = [];
-
-  vistaEdicion = false;
   today = new Date();
   closeResult: string;
   modalReference: any;

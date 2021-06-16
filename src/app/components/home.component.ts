@@ -8,6 +8,7 @@ import { ArticulosestuService } from '../services/estudiantes/articulos/articulo
 import { ArticulosproService } from '../services/profesores/articulospro/articulospro.service';
 import { ListadoService } from '../services/estudiantes/listado/listado.service';
 import { PlantelService } from '../services/profesores/plantel/plantel.service';
+import { EgresadosService } from '../services/estudiantes/egresados/egresados.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { map } from 'rxjs/operators';
@@ -24,11 +25,14 @@ import { AgendainstitucionalService } from '../services/agenda/agendainstitucion
 export class HomeComponent implements OnInit {
   pageEstudiantes = 1;
   pageSizeEstudiantes = 3;
+  pageEgresados = 1;
+  pageSizeEgresados = 3;
   pageProfesores = 1;
   pageSizeProfesores = 3;
   currentJustify = 'justified';
   g: any;
   today = new Date();
+  egresadosPrograma: any[] = [];
   plantelProfesores: any[] = [];
   listados: any[] = [];
   agenda: any[] = [];
@@ -57,7 +61,8 @@ export class HomeComponent implements OnInit {
     private carruselServices: CarruselService,
     private articulosEstuService: ArticulosestuService,
     private articulosProService: ArticulosproService,
-    private plantelService: PlantelService
+    private plantelService: PlantelService,
+    private egresadosService: EgresadosService
   ) {
     this.agendaProgramaService.getAgendas().subscribe((data) => {
       this.agenda = data;
@@ -79,6 +84,9 @@ export class HomeComponent implements OnInit {
     });
     this.plantelService.getPlanteles().subscribe((data) => {
       this.plantelProfesores = data;
+    });
+    this.egresadosService.getEgresados().subscribe((data) => {
+      this.egresadosPrograma = data;
     });
   }
   obtenerEventosPrograma(): void {

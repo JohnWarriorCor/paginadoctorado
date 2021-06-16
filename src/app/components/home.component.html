@@ -1,4 +1,5 @@
 <div class="wrapper">
+  <!-- INICIO CARRUSEL IMAGENES -->
   <div
     id="carouselExampleFade"
     class="carousel slide carousel-fade"
@@ -19,7 +20,13 @@
         <div class="container">
           <button
             *ngIf="auth.user | async"
-            class="btn btnColorFacultadSalud m-2 btn-lg btn-block carousel-caption"
+            class="
+              btn
+              btnColorFacultadSalud
+              m-2
+              btn-lg btn-block
+              carousel-caption
+            "
             [routerLink]="['/admi_carrusel']"
           >
             <i class="fas fa-pencil-alt"></i> Editar
@@ -46,9 +53,11 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <!-- FIN CARRUSEL IMAGENES -->
   <br />
-  <div class="container fadeIn fast" style="margin-top: 30px">
+  <div class="container fadeIn fast" style="margin-top: 20px">
     <div class="row">
+      <!-- INICIO CONTENIDO PRIMERA COLUMNA IZQUIERDA -->
       <div class="col fondodivleft shadow">
         <div class="row">
           <div class="col">
@@ -207,6 +216,8 @@
           </div>
         </div>
       </div>
+      <!-- FIN CONTENIDO PRIMERA COLUMNA IZQUIERDA -->
+      <!-- INICIO CONTENIDO PRIMERA COLUMNA DERECHA -->
       <div class="col fondodivright shadow">
         <h3
           [routerLink]="['/agendaPrograma']"
@@ -407,6 +418,7 @@
           </div>
         </div>
       </div>
+      <!-- FIN CONTENIDO PRIMERA COLUMNA DERECHA -->
     </div>
     <br />
     <hr />
@@ -421,7 +433,7 @@
                   [routerLink]="['/docentes']"
                   class="titleInstRed cursorSelect"
                 >
-                  <i class="fas fa-users"></i> Equipo Docente del Programa
+                  <i class="fas fa-users"></i> Docentes del Programa
                 </h3>
                 <br />
               </div>
@@ -510,7 +522,6 @@
             </div>
           </div>
         </div>
-        <br />
         <hr />
         <div class="row">
           <div class="col">
@@ -606,117 +617,102 @@
           </div>
         </div>
         <hr />
-        <h3 class="titleInstRed">
-          <i class="fas fa-user-edit"></i> Artículos y Publicaciones
-        </h3>
-        <hr class="lineInstRed" />
-        <br /><br />
-        <h4 [routerLink]="['/articulosProfesores']" class="cursorSelect">
-          Profesores
-        </h4>
-        <div class="table-responsive">
-          <table
-            id="tableSortExample"
-            class="table table-bordered table-hover parinst text-center"
-            style="border-radius: 10px"
-          >
-            <thead class="tablatit">
-              <tr class="white">
-                <th style="vertical-align: middle" scope="col">N°</th>
-                <th style="vertical-align: middle" scope="col">Publicación</th>
-                <th style="vertical-align: middle" scope="col">Autores</th>
-                <th style="vertical-align: middle" scope="col">Revista</th>
-                <th style="vertical-align: middle" scope="col">Enlace</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let item of articulosPro | keysfirebase">
-              <tr
-                *ngFor="
-                  let field of articulosPro[item].fieldArray | keysfirebase;
-                  let i = index
-                "
-              >
-                <th style="vertical-align: middle" scope="row">
-                  {{ i + 1 }}
-                </th>
-                <td style="vertical-align: middle">
-                  {{ articulosPro[item].fieldArray[field].publicacion }}
-                </td>
-                <td style="vertical-align: middle">
-                  {{ articulosPro[item].fieldArray[field].autores }}
-                </td>
-                <td style="vertical-align: middle">
-                  {{ articulosPro[item].fieldArray[field].revista }}
-                </td>
-                <td style="vertical-align: middle">
-                  <a
-                    [href]="articulosPro[item].fieldArray[field].enlace"
-                    target="_blank"
-                    placement="right"
-                    ngbTooltip="Ir al documento"
-                    class="colorRedInst"
-                    ><i class="fas fa-file-signature fa-2x"></i
-                  ></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <h3
+                  [routerLink]="['/egresados']"
+                  class="titleInstRed cursorSelect"
+                >
+                  <i class="fas fa-users"></i> Nuestros Egresados
+                </h3>
+                <br />
+              </div>
+              <div class="col text-rigth">
+                <ngb-pagination
+                  class="d-flex justify-content-end"
+                  [collectionSize]="(egresadosPrograma | keysfirebase).length"
+                  [pageSize]="pageSizeEgresados"
+                  [(page)]="pageEgresados"
+                ></ngb-pagination>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <section id="team" class="pb-5">
+                  <div class="row">
+                    <!-- Team member -->
+                    <div
+                      class="col-xs-12 col-sm-6 col-md-4"
+                      [routerLink]="['/egresado', item]"
+                      *ngFor="
+                        let item of egresadosPrograma
+                          | keysfirebase
+                          | slice
+                            : (pageEgresados - 1) * pageSizeEgresados
+                            : (pageEgresados - 1) * pageSizeEgresados +
+                                pageSizeEgresados;
+                        let i = index
+                      "
+                    >
+                      <div class="image-flip">
+                        <div class="mainflip flip-0">
+                          <div
+                            class="frontside"
+                            style="border: solid 1px #8f141b; border-radius: 2%"
+                          >
+                            <div class="card">
+                              <div class="card-body text-center">
+                                <p>
+                                  <img
+                                    [routerLink]="['/estudiante', item]"
+                                    (click)="up()"
+                                    [src]="egresadosPrograma[item].foto"
+                                    [alt]="egresadosPrograma[item].nombre"
+                                    [title]="egresadosPrograma[item].nombre"
+                                    class="card-img-top rounded cursorSelect"
+                                  />
+                                </p>
+                                <h4 class="card-title">
+                                  {{ egresadosPrograma[item].nombre }}
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="backside">
+                            <div class="card">
+                              <div
+                                class="card-body text-center mt-4 text-backside"
+                              >
+                                <br /><br />
+                                <h4 class="card-title">
+                                  {{ egresadosPrograma[item].nombre }}
+                                </h4>
+                                <p class="card-text text-justify">
+                                  {{
+                                    egresadosPrograma[item].sintesis
+                                      | slice: 0:200
+                                  }}
+                                  <a
+                                    [routerLink]="['/egresado', item]"
+                                    style="color: #8f141b; font-size: 10px"
+                                    >... Ver más</a
+                                  >
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- ./Team member -->
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
         </div>
-        <br />
-        <h4 [routerLink]="['/articulosEstudiantes']" class="cursorSelect">
-          Estudiantes
-        </h4>
-        <div class="table-responsive">
-          <table
-            id="tableSortExample"
-            class="table table-bordered table-hover parinst text-center"
-            style="border-radius: 10px"
-          >
-            <thead class="tablatit">
-              <tr class="white">
-                <th style="vertical-align: middle" scope="col">N°</th>
-                <th style="vertical-align: middle" scope="col">Publicación</th>
-                <th style="vertical-align: middle" scope="col">Autores</th>
-                <th style="vertical-align: middle" scope="col">Revista</th>
-                <th style="vertical-align: middle" scope="col">Enlace</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let item of articuloEstudiante | keysfirebase">
-              <tr
-                *ngFor="
-                  let field of articuloEstudiante[item].fieldArray
-                    | keysfirebase;
-                  let i = index
-                "
-              >
-                <th style="vertical-align: middle" scope="row">
-                  {{ i + 1 }}
-                </th>
-                <td style="vertical-align: middle">
-                  {{ articuloEstudiante[item].fieldArray[field].publicacion }}
-                </td>
-                <td style="vertical-align: middle">
-                  {{ articuloEstudiante[item].fieldArray[field].autores }}
-                </td>
-                <td style="vertical-align: middle">
-                  {{ articuloEstudiante[item].fieldArray[field].revista }}
-                </td>
-                <td style="vertical-align: middle">
-                  <a
-                    [href]="articuloEstudiante[item].fieldArray[field].enlace"
-                    target="_blank"
-                    placement="right"
-                    ngbTooltip="Ir al documento"
-                    class="colorRedInst"
-                    ><i class="fas fa-file-signature fa-2x"></i
-                  ></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <br />
-        <hr />
       </div>
       <div class="col-sm-auto fondodivright shadow">
         <div>
@@ -749,28 +745,9 @@
             frameborder="0"
             scrolling="no"
           ></iframe>
-          <br />
-          <hr />
-          <h3 class="titleInstRed">
-            <i class="fab fa-youtube"></i> Canal YouTube
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            id="ytplayer"
-            type="text/html"
-            width="300"
-            height="360"
-            src="https://www.youtube.com/embed/xn5AXaLtO0Y?autoplay=0&origin=http://example.com"
-            frameborder="0"
-          ></iframe>
-          <hr />
         </div>
       </div>
     </div>
-    <br />
-    <hr />
-    <br />
   </div>
   <br />
 </div>
