@@ -71,6 +71,13 @@
               class="tabset1"
               *ngFor="let den of denominacion | keysfirebase"
             >
+              <button
+                *ngIf="auth.user | async"
+                class="btn navlinkinSolid m-2 btn-lg btn-block"
+                [routerLink]="['/admi_denominacion', den]"
+              >
+                <i class="fas fa-pencil-alt"></i> Editar
+              </button>
               <ngb-tab>
                 <ng-template ngbTabTitle
                   ><i class="fas fa-list-ul"></i> Programa</ng-template
@@ -168,6 +175,13 @@
                       </tbody>
                     </table>
                   </div>
+                  <button
+                    *ngIf="auth.user | async"
+                    class="btn navlinkinSolid m-2 btn-lg btn-block"
+                    [routerLink]="['/admi_denominacion', den]"
+                  >
+                    <i class="fas fa-pencil-alt"></i> Editar
+                  </button>
                 </ng-template>
               </ngb-tab>
               <ngb-tab>
@@ -190,8 +204,6 @@
                   </p>
                 </ng-template>
               </ngb-tab>
-            </ngb-tabset>
-            <ngb-tabset [justify]="currentJustify" class="tabset1">
               <ngb-tab>
                 <ng-template ngbTabTitle
                   ><i class="fas fa-user-md"></i> Propósito</ng-template
@@ -203,13 +215,6 @@
                   <p style="padding: 20px" class="text-justify grayinst">
                     {{ denominacion[den].proposito }}
                   </p>
-                  <button
-                    *ngIf="auth.user | async"
-                    class="btn navlinkinSolid m-2 btn-lg btn-block"
-                    [routerLink]="['/admi_denominacion', den]"
-                  >
-                    <i class="fas fa-pencil-alt"></i> Editar
-                  </button>
                 </ng-template>
               </ngb-tab>
             </ngb-tabset>
@@ -271,24 +276,14 @@
                           }}
                         </h6>
                         <p class="card-text grayinst">
-                          {{ evento.resenia }}
+                          {{ evento.resenia | slice: 0:80 }}...
                         </p>
                         <a
                           [href]="evento.url"
                           target="_blank"
-                          class="btn navlinkinSolid"
-                          >Más información</a
+                          style="color: gray"
+                          ><b> LEER MÁS... </b></a
                         >
-                        <p class="card-text text-right">
-                          <small class="text-muted"
-                            >Publicado:
-                            {{
-                              evento.fechaPublicacion
-                                | date: "fullDate"
-                                | titlecase
-                            }}</small
-                          >
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -367,24 +362,14 @@
                           }}
                         </h6>
                         <p class="card-text grayinst">
-                          {{ evento.resenia }}
+                          {{ evento.resenia | slice: 0:80 }}...
                         </p>
                         <a
                           [href]="evento.url"
                           target="_blank"
-                          class="btn navlinkinSolid"
-                          >Más información</a
+                          style="color: gray"
+                          ><b> LEER MÁS... </b></a
                         >
-                        <p class="card-text text-right">
-                          <small class="text-muted"
-                            >Publicado:
-                            {{
-                              evento.fechaPublicacion
-                                | date: "fullDate"
-                                | titlecase
-                            }}</small
-                          >
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -722,15 +707,42 @@
           <hr class="lineInstRed" />
           <br />
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
             width="300"
-            height="500"
+            height="200"
             style="border: none; overflow: hidden"
             scrolling="no"
             frameborder="0"
             allowTransparency="true"
             allow="encrypted-media"
           ></iframe>
+          <hr />
+          <br />
+          <h3 class="titleInstRed">
+            <i class="fas fa-book-open"></i> Doctorados
+          </h3>
+          <hr class="lineInstRed" />
+          <br />
+          <div class="list-group" style="width: 300px">
+            <a
+              href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-pregrado/facultad-de-ingenieria/doctorado-en-agroindustria-y-desarrollo-agricola-sostenible/"
+              target="_blank"
+              type="button"
+              class="list-group-item list-group-item-action navlinkinSolid"
+              aria-current="true"
+            >
+              Doctorado en Agroindustria y Desarrollo Agrícola Sostenible
+            </a>
+            <a
+              href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-postgrado/facultad-de-educacion/doctorado-en-educacion-y-cultura-ambiental/"
+              target="_blank"
+              type="button"
+              class="list-group-item list-group-item-action navlinkinSolid"
+            >
+              Doctorado en Educación y Cultura Ambiental
+            </a>
+          </div>
+          <br />
           <hr />
           <h3 class="titleInstRed">
             <i class="far fa-calendar-alt"></i> Calendario

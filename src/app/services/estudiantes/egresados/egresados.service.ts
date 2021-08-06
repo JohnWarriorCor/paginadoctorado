@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers  } from '@angular/http';
 import { map } from 'rxjs/operators';
-import { Listado } from '../../../interfaces/estudiantes/listado/listado';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Egresados } from '../../../interfaces/estudiantes/egresados/egresados';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,17 @@ import { Listado } from '../../../interfaces/estudiantes/listado/listado';
 export class EgresadosService {
   egresadoRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/listadoEgresados.json';
   egresadoURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/listadoEgresados/';
+  private dbPath = '/listadoEgresados';
+  listadoRef: AngularFireList<Egresados> = null;
 
-  constructor( private http: Http ) { }
+  constructor(private db: AngularFireDatabase, private http: Http ) {
+    this.listadoRef = db.list(this.dbPath);
+  }
+  getAll(): AngularFireList<Egresados> {
+    return this.listadoRef;
+  }
 
-  nuevoEgresado( listado: Listado) {
+  nuevoEgresado( listado: Egresados) {
     const body = JSON.stringify(listado);
     const headers = new Headers({
       'Content-Type': 'application/json'
@@ -22,7 +30,7 @@ export class EgresadosService {
       return res.json();
     }));
   }
-  actualizarEgresado( listado: Listado, key$: string ) {
+  actualizarEgresado( listado: Egresados, key$: string ) {
     const body = JSON.stringify(listado);
     const headers = new Headers({
       'Content-Type': 'application/json'

@@ -71,7 +71,6 @@ export class EstudianteComponent implements OnInit {
     });
     this.listadoService.getListados().subscribe((data) => {
       this.listados = data;
-      console.log(this.listados);
     });
   }
   showSuccess() {

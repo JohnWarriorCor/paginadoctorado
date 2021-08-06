@@ -22,9 +22,6 @@
                     margin-bottom: 20px;
                   "
                 >
-                  <h4 class="text-left text-white">
-                    <i class="fas fa-camera"></i> Foto de perfil
-                  </h4>
                   <img
                     [src]="egresado.foto"
                     [alt]="egresado.nombre"
@@ -61,10 +58,14 @@
                   >
                     <h3>
                       <i class="fas fa-user-graduate"></i>
-                      {{ egresado.nombre }}
+                      Dr. {{ egresado.nombre }}
                     </h3>
                     <h5>Egresado</h5>
                     <h6>Universidad Surcolombiana</h6>
+                    <h6>
+                      <i class="fas fa-envelope"></i>
+                      {{ egresado.correo }}
+                    </h6>
                   </div>
                   <div
                     style="
@@ -82,28 +83,46 @@
                       {{ egresado.sintesis }}
                     </p>
                     <br />
-                    <h5>
-                      <i class="fas fa-list-ul"></i> Formación y logros
-                      académicos:
-                    </h5>
-                    <ul>
-                      <li
-                        *ngFor="let field of egresado.fieldArray; let i = index"
-                      >
-                        <p class="pre text-justify">
-                          {{ field.formacion }}
-                        </p>
-                      </li>
-                    </ul>
-                    <br />
-                    <div class="row">
-                      <div class="col">
-                        <h5>
-                          <i class="fas fa-envelope"></i>
-                          {{ egresado.correo }}
-                        </h5>
+                    <!-- COLLAPSE START-->
+                    <div class="accordion" id="accordionExample">
+                      <div class="card">
+                        <div class="card-header" id="headingOne">
+                          <h5
+                            class="mb-0"
+                            data-toggle="collapse"
+                            aria-expanded="true"
+                            data-target="#collapseOne"
+                            aria-controls="collapseOne"
+                          >
+                            <i class="fas fa-list-ul"></i> Formación y logros
+                            académicos:
+                          </h5>
+                        </div>
+
+                        <div
+                          id="collapseOne"
+                          class="collapse"
+                          aria-labelledby="headingOne"
+                          data-parent="#accordionExample"
+                        >
+                          <div class="card-body">
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let field of egresado.fieldArray;
+                                  let i = index
+                                "
+                              >
+                                <p class="pre text-justify">
+                                  {{ field.formacion }}
+                                </p>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                    <!--COLLAPSE END-->
                     <br />
                     <div class="row no-print">
                       <div class="col m-3">
@@ -144,7 +163,7 @@
                             "
                             role="alert"
                           >
-                            Está a punto de guardar el evento. <br />
+                            Está a punto de guardar. <br />
                             ¿Desea continuar con la acción?
                           </div>
                         </div>
@@ -211,10 +230,10 @@
           <div class="row">
             <div class="col">
               <h3
-                [routerLink]="['/docentes']"
+                [routerLink]="['/egresados']"
                 class="titleInstRed cursorSelect"
               >
-                <i class="fas fa-users"></i> Plantel Docente
+                <i class="fas fa-users"></i> Nuestros Estudiantes
               </h3>
               <br />
             </div>
@@ -229,51 +248,73 @@
           </div>
           <div class="row">
             <div class="col">
-              <div
-                id="carouselExampleInterval"
-                class="carousel slide"
-                data-ride="carousel"
-              >
-                <div class="carousel-inner text-center no-print">
-                  <div class="carousel-item active">
-                    <div class="card-deck">
-                      <div
-                        class="card"
-                        *ngFor="
-                          let item of egresados
-                            | keysfirebase
-                            | slice
-                              : (page - 1) * pageSize
-                              : (page - 1) * pageSize + pageSize;
-                          let i = index
-                        "
-                        style="border: none"
-                      >
-                        <img
-                          [routerLink]="['/egresado', item]"
-                          (click)="up()"
-                          [src]="egresados[item].foto"
-                          [alt]="egresados[item].nombre"
-                          class="card-img-top"
-                          style="border-radius: 50%"
-                        />
-                        <div class="card-body">
-                          <h5 class="card-title">
-                            {{ egresados[item].nombre }}
-                          </h5>
-                        </div>
+              <section id="team" class="pb-5">
+                <div class="row">
+                  <!-- Team member -->
+                  <div
+                    class="col-xs-12 col-sm-6 col-md-4"
+                    style="margin-bottom: 10px"
+                    [routerLink]="['/egresado', item]"
+                    (click)="up()"
+                    *ngFor="
+                      let item of egresados
+                        | keysfirebase
+                        | slice
+                          : (page - 1) * pageSize
+                          : (page - 1) * pageSize + pageSize;
+                      let i = index
+                    "
+                  >
+                    <div class="image-flip">
+                      <div class="mainflip flip-0">
                         <div
-                          class="card-footer btn navlinkinSolid"
-                          [routerLink]="['/egresado', item]"
-                          (click)="up()"
+                          class="frontside"
+                          style="border: solid 1px #8f141b; border-radius: 2%"
                         >
-                          <h6>Ver perfil...</h6>
+                          <div class="card">
+                            <div class="card-body text-center">
+                              <p>
+                                <img
+                                  [routerLink]="['/egresado', item]"
+                                  (click)="up()"
+                                  [src]="egresados[item].foto"
+                                  [alt]="egresados[item].nombre"
+                                  [title]="egresados[item].nombre"
+                                  class="card-img-top rounded cursorSelect"
+                                />
+                              </p>
+                              <h4 class="card-title">
+                                {{ egresados[item].nombre }}
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="backside">
+                          <div class="card">
+                            <div
+                              class="card-body text-center mt-4 text-backside"
+                            >
+                              <br /><br />
+                              <h4 class="card-title">
+                                {{ egresados[item].nombre }}
+                              </h4>
+                              <p class="card-text text-justify">
+                                {{ egresados[item].sintesis | slice: 0:200 }}
+                                <a
+                                  [routerLink]="['/egresado', item]"
+                                  style="color: #8f141b; font-size: 10px"
+                                  >... Ver más</a
+                                >
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <!-- ./Team member -->
                 </div>
-              </div>
+              </section>
             </div>
           </div>
         </div>
