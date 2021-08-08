@@ -4,78 +4,7 @@
       <div class="row">
         <div id="print-section">
           <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
-            <h3 class="titleInstRed">
-              <i class="far fa-newspaper"></i> {{ agenda.titulo }}
-            </h3>
-            <hr class="lineInstRed" />
-            <br /><br />
-            <div class="row animated fadeIn fast">
-              <div class="col-md-12">
-                <div class="row">
-                  <div class="col">
-                    <div class="row">
-                      <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
-                          <i class="far fa-bookmark"></i> Reseña:
-                        </h6>
-                        <p>{{ agenda.resenia }}</p>
-                      </div>
-                    </div>
-                    <hr />
-                    <div class="row">
-                      <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
-                          <i class="far fa-calendar-alt"></i> Fecha Del Evento:
-                          {{
-                            agenda.fechaEvento | date: "fullDate" | titlecase
-                          }}
-                        </h6>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <p class="pre">{{ agenda.parrafo }}</p>
-                      </div>
-                    </div>
-                    <br />
-                  </div>
-                  <div class="col text-right">
-                    <small class="subTituloRojoInstitucional m-2">
-                      Fecha De Publicación:
-                      {{
-                        agenda.fechaPublicacion | date: "fullDate" | titlecase
-                      }}
-                    </small>
-                    <img
-                      [src]="agenda.img"
-                      class="rounded mx-auto d-block"
-                      width="100%"
-                      alt="..."
-                      style="border: solid 1px black"
-                    />
-                    <br />
-                    <div
-                      *ngIf="alertBool != false"
-                      class="alert alert-danger alert-dismissible fade show"
-                      role="alert"
-                    >
-                      <strong>{{ imgError }}</strong>
-                    </div>
-                    <div class="row no-print">
-                      <div class="col">
-                        <a
-                          class="btn navlinkinSolid btn-lg btn-block"
-                          target="_blank"
-                          [href]="agenda.url"
-                        >
-                          <i class="fas fa-info-circle"></i> Más información
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div [innerHTML]="agenda.parrafo | noSanitize"></div>
             <div class="row no-print">
               <div class="col">
                 <button

@@ -9,13 +9,13 @@
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
-        <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+        <div class="col-sm shadow fondodivleft shadow grayinst">
           <h3 class="titleInstRed">
             Formulario para la publicación de un evento
           </h3>
           <hr class="lineInstRed" />
           <br /><br />
-          <form #forma="ngForm" class="text-center">
+          <form #forma="ngForm">
             <div class="row animated fadeIn fast">
               <div class="col-md-12">
                 <div class="row">
@@ -63,27 +63,13 @@
                           maxlength="6500"
                           name="resenia"
                           [(ngModel)]="agenda.resenia"
-                          class="form-control shadow p-3 inputPaciente"
+                          class="form-control shadow p-3"
                           placeholder="Síntesis o información relavante del evento ..."
-                          rows="3"
-                        ></textarea>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
-                          Parrafo:
-                        </h6>
-                        <textarea
-                          maxlength="6500"
-                          name="parrafo"
-                          [(ngModel)]="agenda.parrafo"
-                          class="form-control shadow p-3 inputPaciente"
-                          placeholder="Información complementaria..."
                           rows="8"
                         ></textarea>
                       </div>
                     </div>
+                    <br />
                     <div class="row">
                       <div class="col">
                         <h6 class="subTituloRojoInstitucional text-left">
@@ -179,7 +165,7 @@
                       class="rounded img-fluid"
                       [alt]="agenda.titulo"
                       [title]="agenda.titulo"
-                      style="border: solid 1px black"
+                      style="border: solid 1px black; width: 80%"
                     />
                     <br />
                     <div
@@ -189,72 +175,81 @@
                     >
                       <strong>{{ imgError }}</strong>
                     </div>
-                    <br />
-                    <a
-                      href="https://console.firebase.google.com/u/4/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
-                      target="_blank"
-                      ><button class="btn navlinkinSolid">
-                        Adminsitrar imágenes
-                      </button></a
-                    >
                   </div>
                 </div>
               </div>
             </div>
-          </form>
-
-          <form #forma="ngForm">
-            <br />
-            <hr />
-            <button (click)="openModal(confirmar)" class="btn navlinkinSolid">
-              <i class="far fa-save"></i> Guardar
-            </button>
-            <ng-template #confirmar let-modal>
-              <div class="modal-header bgrojoycafe">
-                <h4 class="modal-title">Confirmar acción</h4>
-                <button
-                  type="button"
-                  class="close"
-                  aria-label="Close"
-                  (click)="modal.dismiss('Cross click')"
-                >
-                  <i class="fas fa-times" style="color: white"></i>
-                </button>
+            <div class="row">
+              <div class="col">
+                <h3 class="titleInstRed">Espacio para diseño del Blog</h3>
+                <hr class="lineInstRed" />
+                <br />
+                <angular-editor
+                  [placeholder]="'Diseña tu blog para publicar...'"
+                  [config]="config"
+                  name="parrafo"
+                  [(ngModel)]="agenda.parrafo"
+                ></angular-editor>
               </div>
-              <div class="modal-body">
+            </div>
+            <div class="row text-right">
+              <div class="col">
+                <br />
+                <hr />
+                <button
+                  (click)="openModal(confirmar)"
+                  class="btn navlinkinSolid"
+                >
+                  <i class="far fa-save"></i> Guardar
+                </button>
+                <ng-template #confirmar let-modal>
+                  <div class="modal-header bgrojoycafe">
+                    <h4 class="modal-title">Confirmar acción</h4>
+                    <button
+                      type="button"
+                      class="close"
+                      aria-label="Close"
+                      (click)="modal.dismiss('Cross click')"
+                    >
+                      <i class="fas fa-times" style="color: white"></i>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div
+                      class="alert alert-warning text-center font-weight-bold"
+                      role="alert"
+                    >
+                      Está a punto de guardar el evento. <br />
+                      ¿Desea continuar con la acción?
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btnColorFacultadSalud"
+                      ngbAutofocus
+                      (click)="guardar()"
+                    >
+                      Aceptar
+                    </button>
+                    <button
+                      type="button"
+                      class="btn navlinkinSolid"
+                      (click)="modal.close('Close click')"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </ng-template>
+                <br />
                 <div
-                  class="alert alert-warning text-center font-weight-bold"
+                  *ngIf="error != false"
+                  class="alert alert-danger alert-dismissible fade show"
                   role="alert"
                 >
-                  Está a punto de guardar el evento. <br />
-                  ¿Desea continuar con la acción?
+                  <strong>{{ passError }}</strong>
                 </div>
               </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btnColorFacultadSalud"
-                  ngbAutofocus
-                  (click)="guardar()"
-                >
-                  Aceptar
-                </button>
-                <button
-                  type="button"
-                  class="btn navlinkinSolid"
-                  (click)="modal.close('Close click')"
-                >
-                  Cancelar
-                </button>
-              </div>
-            </ng-template>
-            <br />
-            <div
-              *ngIf="error != false"
-              class="alert alert-danger alert-dismissible fade show"
-              role="alert"
-            >
-              <strong>{{ passError }}</strong>
             </div>
           </form>
         </div>

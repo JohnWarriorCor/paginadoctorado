@@ -8,9 +8,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Agenda } from '../../../../interfaces/agenda/agenda';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
 import { AgendaprogramaService } from '../../../../services/agenda/agendaprograma.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-agendaprogramaedit',
@@ -19,6 +19,45 @@ import { AgendaprogramaService } from '../../../../services/agenda/agendaprogram
   providers: [DatePipe, NgbProgressbarConfig],
 })
 export class AgendaprogramaeditComponent implements OnInit {
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' },
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText',
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    sanitize: false,
+    toolbarPosition: 'top',
+  };
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -57,7 +96,6 @@ export class AgendaprogramaeditComponent implements OnInit {
 
   constructor(
     private firebaseStorage: FilesService,
-    private myToast: ToastService,
     private toastr: ToastrService,
     public auth: AngularFireAuth,
     public datepipe: DatePipe,

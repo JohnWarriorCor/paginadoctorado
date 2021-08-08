@@ -33,6 +33,8 @@ import { ToastService } from './services/toast/toast.service';
 import { LightboxModule } from 'ngx-lightbox';
 import { CrystalLightboxModule } from '@crystalui/angular-lightbox';
 
+// Editor de texto
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 // importar locales
 import localeEsCO from '@angular/common/locales/es-CO';
@@ -84,6 +86,7 @@ import { AgendainstitucionaleditComponent } from './components/admin/agendaedit/
 import { FiltrobibliotecaPipe } from './pipes/filtrobiblioteca.pipe';
 import { GaleriaComponent } from './components/pages/biblioteca/galeria/galeria.component';
 import { ArticulodocenteComponent } from './components/pages/docentes/articulosprofesores/articulodocente/articulodocente.component';
+import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -141,6 +144,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     FiltrobibliotecaPipe,
     GaleriaComponent,
     ArticulodocenteComponent,
+    NoSanitizePipe,
   ],
   imports: [
     BrowserModule,
@@ -168,6 +172,7 @@ registerLocaleData(localeEsCO, 'es-CO');
     AngularFireDatabaseModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
+    AngularEditorModule,
   ],
   exports: [
     MDBBootstrapModule,

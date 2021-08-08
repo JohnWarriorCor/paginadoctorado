@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AgendainstitucionalService } from '../../../../services/agenda/agendainstitucional.service';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FilesService } from '../../../../services/upload/file.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-agendainstitucionaledit',
@@ -18,6 +19,45 @@ import { FilesService } from '../../../../services/upload/file.service';
   providers: [DatePipe, NgbProgressbarConfig],
 })
 export class AgendainstitucionaleditComponent implements OnInit {
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' },
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText',
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    sanitize: false,
+    toolbarPosition: 'top',
+  };
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -164,7 +204,7 @@ export class AgendainstitucionaleditComponent implements OnInit {
         this.agendaServices.nuevoAgenda(this.agenda).subscribe(
           (data) => {
             this.showSuccess();
-            this.router.navigate(['/agenda']);
+            this.router.navigate(['/agendaInstitucional']);
             this.modalReference.close();
           },
           (error) => console.error(error, this.showDanger())
@@ -174,7 +214,7 @@ export class AgendainstitucionaleditComponent implements OnInit {
         this.agendaServices.actualizarAgenda(this.agenda, this.id).subscribe(
           (data) => {
             this.showInfo();
-            this.router.navigate(['/agenda']);
+            this.router.navigate(['/agendaInstitucional']);
             this.modalReference.close();
           },
           (error) => console.error(error, this.showWarning())

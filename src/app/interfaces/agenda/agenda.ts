@@ -3,7 +3,7 @@ export interface Agenda {
     img: string;
     nameImg: string;
     resenia: string;
-    parrafo: string;
+    parrafo: any;
     fechaEvento: string;
     fechaPublicacion: string;
     url: string;

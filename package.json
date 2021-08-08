@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "@crystalui/angular-lightbox": "^1.0.6",
+    "@kolkov/angular-editor": "^0.18.8",
     "@ng-bootstrap/ng-bootstrap": "^4.0.0",
     "@types/jquery": "^3.5.1",
     "angular-bootstrap-md": "^7.4.4",
