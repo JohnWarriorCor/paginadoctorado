@@ -10,142 +10,132 @@
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
         <div class="col-sm-8 shadow text-justify fondodivleft shadow">
-          <h3 class="titleInstRed">
-            <i class="far fa-calendar-alt"></i> Agenda
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <div class="container">
-            <div class="input-group mb-3 m-2">
-              <input
-                type="text"
-                class="form-control shadow"
-                style="border-radius: 50px 0px 0px 50px"
-                name="buscarEvento"
-                [(ngModel)]="filterpost"
-                placeholder="Digite palabras claves para buscar..."
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn navlinkinSolid shadow"
-                  type="button"
-                  id="button-addon2"
-                >
-                  <i class="fas fa-search"></i> Buscar
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="text-center m-2">
-            <div class="form-row align-items-center">
-              <div class="col-auto my-1">
-                <label class="col-form-label">Mes:</label>
-              </div>
-              <div class="col-auto my-1">
-                <select
-                  class="custom-select mr-sm-2"
-                  id="inlineFormCustomSelect"
-                  [(ngModel)]="filterpost"
-                >
-                  <option *ngFor="let m of mes" [value]="m.id">
-                    {{ m.name }}
-                  </option>
-                </select>
-              </div>
-              <div class="col-auto my-1">
-                <label class="col-form-label">Año:</label>
-              </div>
-              <div class="col-auto my-1">
-                <select
-                  class="custom-select mr-sm-2"
-                  id="inlineFormCustomSelect"
-                  [(ngModel)]="filterpost"
-                >
-                  <option *ngFor="let a of anios" [value]="a">{{ a }}</option>
-                </select>
-              </div>
-            </div>
-          </div>
           <div class="row">
-            <div class="col text-left" *ngIf="auth.user | async">
+            <div class="col">
+              <h3 class="titleInstRed">
+                <i class="far fa-calendar-alt"></i> Agenda
+              </h3>
+              <hr class="lineInstRed" />
+            </div>
+            <div class="col text-right" *ngIf="auth.user | async">
               <a
                 class="btn navlinkinSolid"
-                [routerLink]="['/admi_agendaInstitucional', 'nuevo']"
+                [routerLink]="['/admi_agendaPrograma', 'nuevo']"
                 ><i class="far fa-newspaper"></i> Publicar evento</a
               >
             </div>
-            <div class="col">
-              <ngb-pagination
-                class="d-flex justify-content-end"
-                [collectionSize]="(eventos | filtro: filterpost).length"
-                [(page)]="page"
-                [pageSize]="pageSize"
-              ></ngb-pagination>
+            <div class="col-auto">
+              <button
+                class="btn navlinkinSolid mr-2"
+                placement="top"
+                ngbTooltip="Vista en Cuadricula"
+                (click)="changeGrid()"
+              >
+                <i class="fas fa-th"></i>
+              </button>
+              <button
+                class="btn navlinkinSolid mr-2"
+                placement="top"
+                ngbTooltip="Vista en Lista"
+                (click)="changeList()"
+              >
+                <i class="fas fa-th-list"></i>
+              </button>
             </div>
           </div>
-          <div
-            class="card"
-            *ngFor="
-              let evento of sortData
-                | filtro: filterpost
-                | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
-              let i = index
-            "
-          >
-            <div class="row">
-              <div class="col-md-4">
-                <img
-                  style="padding: 10px"
-                  [src]="evento.img"
-                  [routerLink]="['/eventoInstitucional', evento.key]"
-                  class="rounded w-100 cursorSelect"
+          <br />
+          <div class="row">
+            <div class="col-7">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control shadow"
+                  style="border-radius: 50px 0px 0px 50px"
+                  name="buscarEvento"
+                  [(ngModel)]="filterpost"
+                  placeholder="Digite palabras claves para buscar..."
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
                 />
-              </div>
-              <div class="col-md-8 px-3" style="margin-top: 20px">
-                <div class="card-block px-3">
-                  <h3
-                    [routerLink]="['/eventoInstitucional', evento.key]"
-                    class="card-title text-left subTituloRojoInstitucional cursorSelect"
+                <div class="input-group-append">
+                  <button
+                    class="btn navlinkinSolid shadow"
+                    type="button"
+                    id="button-addon2"
                   >
-                    {{ evento.titulo }}
-                  </h3>
-                  <p>
-                    {{ evento.resenia | slice: 0:150 }}
-                    <a style="color: #8f141b">... Ver más</a>
-                  </p>
-                  <p class="card-text subTituloRojoInstitucional">
-                    {{ evento.fechaEvento | date: "fullDate" | titlecase }}
-                  </p>
-                  <div class="row">
-                    <a
-                      [href]="evento.url"
-                      target="_blank"
-                      class="btn navlinkinSolid m-3"
-                      ><i class="fas fa-info-circle"></i> Más información</a
-                    >
-                    <a
-                      [routerLink]="['/eventoInstitucional', evento.key]"
-                      class="btn navlinkinSolid m-3"
-                      ><i class="fas fa-search"></i> Ver evento</a
-                    >
-                  </div>
-                  <p class="text-right">
-                    <small
-                      >Publicado:
-                      {{
-                        evento.fechaPublicacion | date: "fullDate" | titlecase
-                      }}</small
-                    >
-                  </p>
+                    <i class="fas fa-search"></i> Buscar
+                  </button>
                 </div>
               </div>
             </div>
-            <div class="row" *ngIf="auth.user | async">
-              <div class="col text-right">
+            <div class="col-5">
+              <div class="form-row">
+                <div class="col-auto">
+                  <select
+                    class="custom-select mr-sm-2"
+                    id="inlineFormCustomSelect"
+                    [(ngModel)]="filterpost"
+                  >
+                    <option *ngFor="let m of mes" [value]="m.id">
+                      {{ m.name }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-auto">
+                  <select
+                    class="custom-select mr-sm-2"
+                    id="inlineFormCustomSelect"
+                    [(ngModel)]="filterpost"
+                  >
+                    <option *ngFor="let a of anios" [value]="a">
+                      {{ a }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="card-columns" *ngIf="grid">
+            <div
+              class="card shadow"
+              *ngFor="
+                let evento of sortData
+                  | filtro: filterpost
+                  | slice
+                    : (page - 1) * pageSize
+                    : (page - 1) * pageSize + pageSize;
+                let i = index
+              "
+            >
+              <img
+                [src]="evento.img"
+                class="card-img-top cursorSelect"
+                [routerLink]="['/eventoInstitucional', evento.key]"
+                [alt]="evento.titulo"
+                [title]="evento.titulo"
+              />
+              <div class="card-body">
+                <h5
+                  [routerLink]="['/eventoInstitucional', evento.key]"
+                  class="subTituloRojoInstitucional cursorSelect text-left"
+                >
+                  {{ evento.titulo }}
+                </h5>
+                <h6 class="card-title subTituloRojoInstitucional">
+                  <i class="far fa-calendar-alt"></i>
+                  {{ evento.fechaEvento | date: "fullDate" | titlecase }}
+                </h6>
+                <p class="card-text grayinst">
+                  {{ evento.resenia }}
+                </p>
+                <a [href]="evento.url" target="_blank" style="color: gray"
+                  ><b> LEER MÁS... </b></a
+                >
+              </div>
+              <div class="card-footer" *ngIf="auth.user | async">
                 <a
-                  class="btn navlinkinSolid m-2"
+                  class="btn navlinkinSolid mr-2"
                   [routerLink]="['/admi_agendaInstitucional', evento.key]"
                   ><i class="fas fa-pencil-alt"></i> Editar</a
                 >
@@ -195,21 +185,135 @@
             </div>
           </div>
           <br />
+          <div *ngIf="list">
+            <div
+              class="card"
+              *ngFor="
+                let evento of sortData
+                  | filtro: filterpost
+                  | slice
+                    : (page - 1) * pageSize
+                    : (page - 1) * pageSize + pageSize;
+                let i = index
+              "
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <img
+                    style="padding: 10px"
+                    [src]="evento.img"
+                    [routerLink]="['/eventoInstitucional', evento.key]"
+                    class="rounded w-100 cursorSelect"
+                  />
+                </div>
+                <div class="col-md-8 px-3" style="margin-top: 20px">
+                  <div class="card-block px-3">
+                    <h3
+                      [routerLink]="['/eventoInstitucional', evento.key]"
+                      class="
+                        card-title
+                        text-left
+                        subTituloRojoInstitucional
+                        cursorSelect
+                      "
+                    >
+                      {{ evento.titulo }}
+                    </h3>
+                    <p>
+                      {{ evento.resenia | slice: 0:150 }}
+                      <a style="color: #8f141b">... Ver más</a>
+                    </p>
+                    <p class="card-text subTituloRojoInstitucional">
+                      {{ evento.fechaEvento | date: "fullDate" | titlecase }}
+                    </p>
+                    <div class="row">
+                      <a
+                        [href]="evento.url"
+                        target="_blank"
+                        class="btn navlinkinSolid m-3"
+                        ><i class="fas fa-info-circle"></i> Más información</a
+                      >
+                      <a
+                        [routerLink]="['/eventoInstitucional', evento.key]"
+                        class="btn navlinkinSolid m-3"
+                        ><i class="fas fa-search"></i> Ver evento</a
+                      >
+                    </div>
+                    <p class="text-right">
+                      <small
+                        >Publicado:
+                        {{
+                          evento.fechaPublicacion | date: "fullDate" | titlecase
+                        }}</small
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="auth.user | async">
+                <div class="col text-right">
+                  <a
+                    class="btn navlinkinSolid m-2"
+                    [routerLink]="['/admi_agendaInstitucional', evento.key]"
+                    ><i class="fas fa-pencil-alt"></i> Editar</a
+                  >
+                  <a
+                    (click)="openModal(confirmar)"
+                    class="btn navlinkinSolid m-2"
+                    ><i class="fas fa-trash"></i> Borrar</a
+                  ><br />
+                  <ng-template #confirmar let-modal>
+                    <div class="modal-header bgrojoycafe">
+                      <h4 class="modal-title">Confirmar acción</h4>
+                      <button
+                        type="button"
+                        class="close"
+                        aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"
+                      >
+                        <i class="fas fa-times" style="color: white"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div
+                        class="alert alert-warning text-center font-weight-bold"
+                        role="alert"
+                      >
+                        Está a punto de borrar el evento. <br />
+                        ¿Desea continuar con la acción?
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btnColorFacultadSalud"
+                        ngbAutofocus
+                        (click)="borrarAgenda(evento.key)"
+                      >
+                        Aceptar
+                      </button>
+                      <button
+                        type="button"
+                        class="btn navlinkinSolid"
+                        (click)="modal.close('Close click')"
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
           <div class="row">
             <div class="col">
               <ngb-pagination
-                class="d-flex justify-content-start"
+                class="d-flex justify-content-center"
                 [collectionSize]="(eventos | filtro: filterpost).length"
                 [(page)]="page"
                 [pageSize]="pageSize"
               ></ngb-pagination>
-            </div>
-            <div class="col text-right" *ngIf="auth.user | async">
-              <a
-                class="btn navlinkinSolid"
-                [routerLink]="['/admi_agendaInstitucional', 'nuevo']"
-                ><i class="far fa-newspaper"></i> Publicar evento</a
-              >
             </div>
           </div>
           <br />
@@ -229,20 +333,6 @@
             scrolling="no"
           ></iframe
           ><br />
-          <hr />
-          <h3 class="titleInstRed"><i class="fas fa-rss"></i> Universidad</h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-            width="100%"
-            height="500"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
           <hr />
           <h3 class="titleInstRed">
             <i class="fas fa-rss"></i> Redes sociales

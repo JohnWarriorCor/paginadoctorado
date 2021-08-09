@@ -17,7 +17,7 @@ import { FilesService } from '../../../../services/upload/file.service';
 export class AgendainstitucionalComponent implements OnInit {
   filterpost = '';
   page = 1;
-  pageSize = 4;
+  pageSize = 6;
   vistaEdicion = false;
   fecha: any;
   today = new Date();
@@ -29,6 +29,8 @@ export class AgendainstitucionalComponent implements OnInit {
   loading = true;
   anios = [];
   dias = [];
+  grid = true;
+  list = false;
   mes: any[] = [
     {
       id: '-01-',
@@ -102,6 +104,14 @@ export class AgendainstitucionalComponent implements OnInit {
       // tslint:disable-next-line:no-angle-bracket-type-assertion
       return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
     });
+  }
+  changeList() {
+    this.grid = false;
+    this.list = true;
+  }
+  changeGrid() {
+    this.grid = true;
+    this.list = false;
   }
   elementoEliminado() {
     this.toastr.warning('', 'Elemento eliminado', {
