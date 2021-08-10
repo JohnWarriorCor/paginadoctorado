@@ -269,12 +269,12 @@
                         >
                           {{ evento.titulo }}
                         </h4>
-                        <h6 class="card-title subTituloRojoInstitucional">
+                        <small class="card-title subTituloRojoInstitucional">
                           <i class="far fa-calendar-alt"></i>
                           {{
                             evento.fechaEvento | date: "fullDate" | titlecase
                           }}
-                        </h6>
+                        </small>
                         <p class="card-text grayinst">
                           {{ evento.resenia | slice: 0:80 }}...
                         </p>
@@ -355,12 +355,12 @@
                         >
                           {{ evento.titulo }}
                         </h4>
-                        <h6 class="card-title subTituloRojoInstitucional">
+                        <small class="card-title subTituloRojoInstitucional">
                           <i class="far fa-calendar-alt"></i>
                           {{
                             evento.fechaEvento | date: "fullDate" | titlecase
                           }}
-                        </h6>
+                        </small>
                         <p class="card-text grayinst">
                           {{ evento.resenia | slice: 0:80 }}...
                         </p>

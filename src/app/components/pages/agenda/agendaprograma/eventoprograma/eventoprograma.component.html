@@ -4,6 +4,9 @@
       <div class="row">
         <div id="print-section">
           <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+            <div class="text-right">
+              <small>Publicado: {{ agenda.fechaPublicacion | date: "fullDate" | titlecase }}</small>
+            </div>
             <div [innerHTML]="agenda.parrafo | noSanitize"></div>
             <div class="row no-print">
               <div class="col">

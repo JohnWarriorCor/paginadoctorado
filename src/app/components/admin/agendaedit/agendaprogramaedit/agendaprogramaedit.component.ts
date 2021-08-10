@@ -204,7 +204,7 @@ export class AgendaprogramaeditComponent implements OnInit {
         this.agendaServices.nuevoAgenda(this.agenda).subscribe(
           (data) => {
             this.showSuccess();
-            this.router.navigate(['/agenda']);
+            this.router.navigate(['/agendaPrograma']);
             this.modalReference.close();
           },
           (error) => console.error(error, this.showDanger())
@@ -214,7 +214,7 @@ export class AgendaprogramaeditComponent implements OnInit {
         this.agendaServices.actualizarAgenda(this.agenda, this.id).subscribe(
           (data) => {
             this.showInfo();
-            this.router.navigate(['/agenda']);
+            this.router.navigate(['/agendaPrograma']);
             this.modalReference.close();
           },
           (error) => console.error(error, this.showWarning())

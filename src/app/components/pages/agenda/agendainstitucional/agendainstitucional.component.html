@@ -20,8 +20,8 @@
             <div class="col text-right" *ngIf="auth.user | async">
               <a
                 class="btn navlinkinSolid"
-                [routerLink]="['/admi_agendaPrograma', 'nuevo']"
-                ><i class="far fa-newspaper"></i> Publicar evento</a
+                [routerLink]="['/admi_agendaInstitucional', 'nuevo']"
+                ><i class="fas fa-plus-circle"></i> Publicar evento</a
               >
             </div>
             <div class="col-auto">
@@ -76,6 +76,7 @@
                     id="inlineFormCustomSelect"
                     [(ngModel)]="filterpost"
                   >
+                    <option selected value="">Mes</option>
                     <option *ngFor="let m of mes" [value]="m.id">
                       {{ m.name }}
                     </option>
@@ -87,6 +88,7 @@
                     id="inlineFormCustomSelect"
                     [(ngModel)]="filterpost"
                   >
+                    <option selected value="">Año</option>
                     <option *ngFor="let a of anios" [value]="a">
                       {{ a }}
                     </option>
@@ -133,7 +135,7 @@
                   ><b> LEER MÁS... </b></a
                 >
               </div>
-              <div class="card-footer" *ngIf="auth.user | async">
+              <div class="card-footer text-center" *ngIf="auth.user | async">
                 <a
                   class="btn navlinkinSolid mr-2"
                   [routerLink]="['/admi_agendaInstitucional', evento.key]"

@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="/assets/slide-agenda-institucional.jpg"
+      src="/assets/slide-agenda-programa.jpg"
       class="d-block w-100"
       style="height: auto"
     />
@@ -20,8 +20,8 @@
             <div class="col text-right" *ngIf="auth.user | async">
               <a
                 class="btn navlinkinSolid"
-                [routerLink]="['/admi_agendaInstitucional', 'nuevo']"
-                ><i class="far fa-newspaper"></i> Publicar evento</a
+                [routerLink]="['/admi_agendaPrograma', 'nuevo']"
+                ><i class="fas fa-plus-circle"></i> Publicar evento</a
               >
             </div>
             <div class="col-auto">
@@ -76,6 +76,7 @@
                     id="inlineFormCustomSelect"
                     [(ngModel)]="filterpost"
                   >
+                    <option selected value="">Mes</option>
                     <option *ngFor="let m of mes" [value]="m.id">
                       {{ m.name }}
                     </option>
@@ -87,6 +88,7 @@
                     id="inlineFormCustomSelect"
                     [(ngModel)]="filterpost"
                   >
+                    <option selected value="">Año</option>
                     <option *ngFor="let a of anios" [value]="a">
                       {{ a }}
                     </option>
@@ -111,13 +113,13 @@
               <img
                 [src]="evento.img"
                 class="card-img-top cursorSelect"
-                [routerLink]="['/eventoInstitucional', evento.key]"
+                [routerLink]="['/eventoPrograma', evento.key]"
                 [alt]="evento.titulo"
                 [title]="evento.titulo"
               />
               <div class="card-body">
                 <h5
-                  [routerLink]="['/eventoInstitucional', evento.key]"
+                  [routerLink]="['/eventoPrograma', evento.key]"
                   class="subTituloRojoInstitucional cursorSelect text-left"
                 >
                   {{ evento.titulo }}
@@ -133,10 +135,10 @@
                   ><b> LEER MÁS... </b></a
                 >
               </div>
-              <div class="card-footer" *ngIf="auth.user | async">
+              <div class="card-footer text-center" *ngIf="auth.user | async">
                 <a
                   class="btn navlinkinSolid mr-2"
-                  [routerLink]="['/admi_agendaInstitucional', evento.key]"
+                  [routerLink]="['/admi_agendaPrograma', evento.key]"
                   ><i class="fas fa-pencil-alt"></i> Editar</a
                 >
                 <a (click)="openModal(confirmar)" class="btn navlinkinSolid m-2"
@@ -202,14 +204,14 @@
                   <img
                     style="padding: 10px"
                     [src]="evento.img"
-                    [routerLink]="['/eventoInstitucional', evento.key]"
+                    [routerLink]="['/eventoPrograma', evento.key]"
                     class="rounded w-100 cursorSelect"
                   />
                 </div>
                 <div class="col-md-8 px-3" style="margin-top: 20px">
                   <div class="card-block px-3">
                     <h3
-                      [routerLink]="['/eventoInstitucional', evento.key]"
+                      [routerLink]="['/eventoPrograma', evento.key]"
                       class="
                         card-title
                         text-left
@@ -234,7 +236,7 @@
                         ><i class="fas fa-info-circle"></i> Más información</a
                       >
                       <a
-                        [routerLink]="['/eventoInstitucional', evento.key]"
+                        [routerLink]="['/eventoPrograma', evento.key]"
                         class="btn navlinkinSolid m-3"
                         ><i class="fas fa-search"></i> Ver evento</a
                       >
@@ -254,7 +256,7 @@
                 <div class="col text-right">
                   <a
                     class="btn navlinkinSolid m-2"
-                    [routerLink]="['/admi_agendaInstitucional', evento.key]"
+                    [routerLink]="['/admi_agendaPrograma', evento.key]"
                     ><i class="fas fa-pencil-alt"></i> Editar</a
                   >
                   <a
@@ -325,10 +327,10 @@
           <hr class="lineInstRed" />
           <br />
           <iframe
-            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;src=ZG9jZW5jaWVuY2lhc2RlbGFzYWx1ZHVzY29AZ21haWwuY29t&amp;src=bDNmbXZkbXExcHYyMjJlNGIxb2o2NjV2NGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%23C0CA33&amp;color=%2333B679&amp;color=%230B8043"
-            style="border: none"
-            width="300"
-            height="400"
+            src="https://calendar.google.com/calendar/embed?src=doctoradoencienciasdelasalud%40usco.edu.co&ctz=America%2FBogota"
+            style="border: 0"
+            width="auto"
+            height="500"
             frameborder="0"
             scrolling="no"
           ></iframe
@@ -340,22 +342,6 @@
           <iframe
             src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
             width="100%"
-            height="500"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
-          <hr />
-          <h3 class="titleInstRed">
-            <i class="fas fa-rss"></i> Redes sociales
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-            width="300"
             height="500"
             style="border: none; overflow: hidden"
             scrolling="no"
