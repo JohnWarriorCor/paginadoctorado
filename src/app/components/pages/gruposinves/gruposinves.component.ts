@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GruposinvestigacionService } from '../../../services/grupoinvesti/gruposinvestigacion.service';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -14,11 +9,10 @@ import { map } from 'rxjs/operators';
   selector: 'app-gruposinves',
   templateUrl: './gruposinves.component.html',
   styleUrls: ['./gruposinves.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
 
 // tslint:disable-next-line:directive-class-suffix
-export class GruposinvesComponent implements OnInit, AfterViewInit {
+export class GruposinvesComponent implements OnInit {
   page = 1;
   pageSize = 4;
   vistaEdicion = false;
@@ -30,13 +24,13 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
   grupoInvestigacion: Array<any> = [];
   loading = true;
   filterpost = '';
-  grupos: any;
+  grupos: any[] = [];
   actualProfesor = null;
 
   constructor(
     public auth: AngularFireAuth,
     private grupoInvestigacionService: GruposinvestigacionService,
-    private modalService: NgbModal,
+    private modalService: NgbModal
   ) {
     this.grupoInvestigacionService.getGrupos().subscribe((data) => {
       this.grupoInvestigacion = data;
@@ -71,9 +65,6 @@ export class GruposinvesComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.obtenerGrupos();
-  }
-  ngAfterViewInit(): void {
-    (window as any).twttr.widgets.load();
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {

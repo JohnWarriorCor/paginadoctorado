@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers  } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Tesis } from '../../../interfaces/estudiantes/tesis/tesis';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,15 @@ export class TesisService {
 
   tesisRegistroURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/tesis.json';
   tesisURL = 'https://doctoradocienciasdelasaludusco.firebaseio.com/tesis/';
+  private dbPath = '/tesis';
+  listadoRef: AngularFireList<Tesis> = null;
 
-  constructor( private http: Http ) { }
-
+  constructor(private db: AngularFireDatabase, private http: Http ) {
+    this.listadoRef = db.list(this.dbPath);
+  }
+  getAll(): AngularFireList<Tesis> {
+    return this.listadoRef;
+  }
   nuevoTesi( tesis: Tesis) {
     const body = JSON.stringify(tesis);
     const headers = new Headers({

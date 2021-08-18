@@ -1,22 +1,19 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TesisService } from '../../../../services/estudiantes/tesis/tesis.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
+import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tesis',
   templateUrl: './tesis.component.html',
   styleUrls: ['./tesis.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
-export class TesisComponent implements OnInit, AfterViewInit {
-  cpage = 1;
+export class TesisComponent implements OnInit {
+  filterpost = '';
+  page = 1;
   pageSize = 4;
   vistaEdicion = false;
   today = new Date();
@@ -25,12 +22,14 @@ export class TesisComponent implements OnInit, AfterViewInit {
   acumFechas = 0;
   comodinAcum = 0;
   tesis: Array<any> = [];
+  tesisEstudiantes: any[] = [];
   loading = true;
 
   constructor(
+    private toastr: ToastrService,
     public auth: AngularFireAuth,
     private tesisService: TesisService,
-    private modalService: NgbModal,
+    private modalService: NgbModal
   ) {
     this.tesisService.getTesis().subscribe((data) => {
       this.tesis = data;
@@ -48,10 +47,22 @@ export class TesisComponent implements OnInit, AfterViewInit {
       windowClass: 'fade-in',
     });
   }
+  obtenerTesis(): void {
+    this.tesisService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.tesisEstudiantes = data;
+      });
+  }
 
-  ngOnInit() {}
-  ngAfterViewInit(): void {
-    (window as any).twttr.widgets.load();
+  ngOnInit() {
+    this.obtenerTesis();
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {

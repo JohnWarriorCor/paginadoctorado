@@ -74,7 +74,8 @@
                 </p>
                 <p class="card-title grayinst">
                   <strong
-                    >Artículos registrados: {{ (profesor.fieldArrayArticulos).length }}</strong
+                    >Artículos registrados:
+                    {{ profesor.fieldArrayArticulos.length }}</strong
                   >
                 </p>
                 <div class="row" *ngIf="auth.user | async">
@@ -225,69 +226,59 @@
                   <div class="card shadow">
                     <img
                       [src]="evento.img"
-                      class="card-img-top"
+                      class="card-img-top cursorSelect"
+                      [routerLink]="['/eventoPrograma', evento.key]"
                       [alt]="evento.titulo"
+                      [title]="evento.titulo"
                     />
                     <div class="card-body">
-                      <h4 class="subTituloRojoInstitucional">
+                      <h4
+                        [routerLink]="['/eventoPrograma', evento.key]"
+                        class="subTituloRojoInstitucional cursorSelect"
+                      >
                         {{ evento.titulo }}
                       </h4>
-                      <h6 class="card-title subTituloRojoInstitucional">
+                      <small class="card-title subTituloRojoInstitucional">
                         <i class="far fa-calendar-alt"></i>
                         {{ evento.fechaEvento | date: "fullDate" | titlecase }}
-                      </h6>
-                      <a [href]="evento.url" class="btn navlinkinSolid"
-                        >Más información</a
-                      >
-                      <p class="card-text">
-                        <small class="text-muted"
-                          >Publicado:
-                          {{
-                            evento.fechaPublicacion
-                              | date: "fullDate"
-                              | titlecase
-                          }}</small
-                        >
+                      </small>
+                      <p class="card-text grayinst">
+                        {{ evento.resenia | slice: 0:80 }}...
                       </p>
+                      <a [href]="evento.url" target="_blank" style="color: gray"
+                        ><b> LEER MÁS... </b></a
+                      >
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleControlsPrograma"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleControlsPrograma"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
           <!-- /SLIDE AGENDA PROGRAMA-->
-          <!--CONTROLES SLIDE AGENDA PROGRAMA-->
-          <div class="row my-2">
-            <div class="col text-left">
-              <button class="btn navlinkinSolid" style="width: 50%">
-                <i class="fas fa-arrow-left"></i
-                ><a
-                  class="carousel-control-prev"
-                  href="#carouselExampleControlsPrograma"
-                  role="button"
-                  data-slide="prev"
-                  style="width: 50%"
-                >
-                  <span class="sr-only">Previous</span>
-                </a>
-              </button>
-            </div>
-            <div class="col text-right">
-              <button class="btn navlinkinSolid" style="width: 50%">
-                <i class="fas fa-arrow-right"></i
-                ><a
-                  class="carousel-control-next"
-                  href="#carouselExampleControlsPrograma"
-                  role="button"
-                  data-slide="next"
-                  style="width: 50%"
-                >
-                  <span class="sr-only">Next</span>
-                </a>
-              </button>
-            </div>
-          </div>
-          <!--/CONTROLES SLIDE AGENDA PROGRAMA-->
           <hr />
           <h3 class="titleInstRed">
             <i class="far fa-calendar-alt"></i> Institucional
@@ -310,69 +301,59 @@
                   <div class="card shadow">
                     <img
                       [src]="evento.img"
-                      class="card-img-top"
+                      class="card-img-top cursorSelect"
+                      [routerLink]="['/eventoInstitucional', evento.key]"
                       [alt]="evento.titulo"
+                      [title]="evento.titulo"
                     />
                     <div class="card-body">
-                      <h4 class="subTituloRojoInstitucional">
+                      <h4
+                        [routerLink]="['/eventoInstitucional', evento.key]"
+                        class="subTituloRojoInstitucional cursorSelect"
+                      >
                         {{ evento.titulo }}
                       </h4>
-                      <h6 class="card-title subTituloRojoInstitucional">
+                      <small class="card-title subTituloRojoInstitucional">
                         <i class="far fa-calendar-alt"></i>
                         {{ evento.fechaEvento | date: "fullDate" | titlecase }}
-                      </h6>
-                      <a [href]="evento.url" class="btn navlinkinSolid"
-                        >Más información</a
-                      >
-                      <p class="card-text">
-                        <small class="text-muted"
-                          >Publicado:
-                          {{
-                            evento.fechaPublicacion
-                              | date: "fullDate"
-                              | titlecase
-                          }}</small
-                        >
+                      </small>
+                      <p class="card-text grayinst">
+                        {{ evento.resenia | slice: 0:80 }}...
                       </p>
+                      <a [href]="evento.url" target="_blank" style="color: gray"
+                        ><b> LEER MÁS... </b></a
+                      >
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleControlsInstitucional"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleControlsInstitucional"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
           <!-- /SLIDE AGENDA INSTITUCIONAL-->
-          <!--CONTROLES SLIDE AGENDA INSTITUCIONAL-->
-          <div class="row my-2">
-            <div class="col text-left">
-              <button class="btn navlinkinSolid" style="width: 50%">
-                <i class="fas fa-arrow-left"></i
-                ><a
-                  class="carousel-control-prev"
-                  href="#carouselExampleControlsInstitucional"
-                  role="button"
-                  data-slide="prev"
-                  style="width: 50%"
-                >
-                  <span class="sr-only">Previous</span>
-                </a>
-              </button>
-            </div>
-            <div class="col text-right">
-              <button class="btn navlinkinSolid" style="width: 50%">
-                <i class="fas fa-arrow-right"></i
-                ><a
-                  class="carousel-control-next"
-                  href="#carouselExampleControlsInstitucional"
-                  role="button"
-                  data-slide="next"
-                  style="width: 50%"
-                >
-                  <span class="sr-only">Next</span>
-                </a>
-              </button>
-            </div>
-          </div>
-          <!--/CONTROLES SLIDE AGENDA INSTITUCIONAL-->
           <br />
         </div>
       </div>
