@@ -7,7 +7,6 @@ import { ListadoService } from '../../../../services/estudiantes/listado/listado
 import { Listado } from '../../../../interfaces/estudiantes/listado/listado';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
-import { ToastService } from '../../../../services/toast/toast.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgbProgressbarConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FilesService } from '../../../../services/upload/file.service';
@@ -19,6 +18,10 @@ import { FilesService } from '../../../../services/upload/file.service';
   providers: [DatePipe, NgbProgressbarConfig],
 })
 export class ListadoeditComponent implements OnInit {
+  page = 1;
+  pageSize = 3;
+  pageArticulos = 1;
+  pageSizeArticulos = 2;
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -40,6 +43,7 @@ export class ListadoeditComponent implements OnInit {
     nombre: '',
     sintesis: '',
     fieldArray: [],
+    fieldArrayArticulos: [],
     correo: '',
     fecha: '',
     cvlac: '',
@@ -59,7 +63,6 @@ export class ListadoeditComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   constructor(
     private firebaseStorage: FilesService,
-    private myToast: ToastService,
     private toastr: ToastrService,
     public auth: AngularFireAuth,
     public datepipe: DatePipe,
@@ -141,6 +144,16 @@ export class ListadoeditComponent implements OnInit {
 
   deleteFieldValue(index) {
     this.listado.fieldArray.splice(index, 1);
+    this.elementoEliminado();
+  }
+  addFieldValueArticulo() {
+    this.listado.fieldArrayArticulos.push(this.newAttribute);
+    this.newAttribute = {};
+    this.elementoAgregado();
+  }
+
+  deleteFieldValueArticulo(index) {
+    this.listado.fieldArrayArticulos.splice(index, 1);
     this.elementoEliminado();
   }
   imgMujer() {

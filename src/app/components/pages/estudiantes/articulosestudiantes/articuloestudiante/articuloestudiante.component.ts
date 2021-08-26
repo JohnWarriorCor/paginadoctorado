@@ -3,19 +3,22 @@ import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ListadoService } from '../../../../services/estudiantes/listado/listado.service';
-import { Listado } from '../../../../interfaces/estudiantes/listado/listado';
+import { Listado } from '../../../../../interfaces/estudiantes/listado/listado';
+import { ListadoService } from '../../../../../services/estudiantes/listado/listado.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import 'firebase/auth';
 import { ToastrService } from 'ngx-toastr';
+import { Articulo } from '../../../../../interfaces/profesores/articulo';
+
 
 @Component({
-  selector: 'app-estudiante',
-  templateUrl: './estudiante.component.html',
-  styleUrls: ['./estudiante.component.css'],
+  selector: 'app-articuloestudiante',
+  templateUrl: './articuloestudiante.component.html',
+  styleUrls: ['./articuloestudiante.component.css'],
   providers: [DatePipe],
 })
-export class EstudianteComponent implements OnInit {
+export class ArticuloestudianteComponent implements OnInit {
+  pdfSource = 'https://drive.google.com/file/d/1unOARuer2zVmdsWISIXgDH-kDgVtgOdg/preview';
   page = 1;
   pageSize = 3;
   pageArticulos = 1;
@@ -35,9 +38,18 @@ export class EstudianteComponent implements OnInit {
   controls: any;
   nuevo = false;
   id: string;
+  idx: string;
   newAttribute: any = {};
-  listados: any[] = [];
-  listado: Listado = {
+  articulos: any = [];
+  articuloEstudiante: Articulo = {
+    anio: '',
+    autores: '',
+    enlace: '',
+    nombreArticulo: '',
+    resumen: '',
+    revista: '',
+  };
+  listadoEstudiantes: Listado = {
     foto: '',
     nombre: '',
     sintesis: '',
@@ -49,6 +61,7 @@ export class EstudianteComponent implements OnInit {
     orcid: '',
   };
   slides: any = [[]];
+
   vistaEdicion = false;
   acumFechas = 0;
   comodinAcum = 0;
@@ -65,17 +78,29 @@ export class EstudianteComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.params.subscribe((parametros) => {
+      console.log(parametros);
       this.id = parametros.id;
+      this.idx = parametros.idx;
       this.link = parametros.id;
       if (this.id !== 'nuevo') {
         this.listadoService
           .getListado(this.id)
-          .subscribe((listado) => (this.listado = listado));
+          .subscribe(
+            (listadoEstudiantes) => (this.listadoEstudiantes = listadoEstudiantes)
+          );
       }
+      this.listadoService
+          .getArticuloEstudiante(this.id, this.idx)
+          .subscribe(
+            (articuloEstudiante) => (this.articuloEstudiante = articuloEstudiante)
+          );
     });
-    this.listadoService.getListados().subscribe((data) => {
-      this.listados = data;
-    });
+  }
+  nav() {
+    this.router.navigate(['/admi_plantel', this.link]);
+  }
+  ngOnInit() {
+    this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
   }
   showSuccess() {
     this.toastr.success('Acción exitosa', 'Elemento guardado', {
@@ -107,26 +132,6 @@ export class EstudianteComponent implements OnInit {
       timeOut: 2500,
     });
   }
-  nav() {
-    this.router.navigate(['/admi_estudiante', this.link]);
-  }
-  ngOnInit() {
-    this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
-  }
-  changeImg(urlimg) {
-    console.log(urlimg);
-    // tslint:disable-next-line:max-line-length
-    if (urlimg === '' || urlimg === null) {
-      this.defaultImgUrl = urlimg;
-      this.alertBool = true;
-      this.imgError =
-        'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
-    } else {
-      this.alertBool = false;
-      this.defaultImgUrl = urlimg;
-      return this.defaultImgUrl;
-    }
-  }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, {
       centered: true,
@@ -142,32 +147,40 @@ export class EstudianteComponent implements OnInit {
       backdrop: 'static',
     });
   }
+  verProfesor(idx: number) {
+    this.router.navigate(['/docente', idx]);
+  }
   up() {
     window.scroll(0, 400);
   }
   guardar() {
-    if (this.listado.nombre !== this.war || this.listado.nombre !== this.war) {
+    if (
+      this.listadoEstudiantes.nombre !== this.war ||
+      this.listadoEstudiantes.nombre !== this.war
+    ) {
       this.error = false;
-      console.log(this.listado.nombre);
+      console.log(this.listadoEstudiantes.nombre);
       console.log(this.war);
       this.modalReference.close();
       if (this.id === 'nuevo') {
-        this.listadoService.nuevoListado(this.listado).subscribe(
+        this.listadoService.nuevoListado(this.listadoEstudiantes).subscribe(
           (data) => {
-            this.router.navigate(['/estudiantes']);
+            this.router.navigate(['/docentes']);
             this.modalReference.close();
           },
           (error) => console.error(error)
         );
       } else {
         this.modalReference.close();
-        this.listadoService.actualizarListado(this.listado, this.id).subscribe(
-          (data) => {
-            this.router.navigate(['/estudiantes']);
-            this.modalReference.close();
-          },
-          (error) => console.error(error)
-        );
+        this.listadoService
+          .actualizarListado(this.listadoEstudiantes, this.id)
+          .subscribe(
+            (data) => {
+              this.router.navigate(['/docentes']);
+              this.modalReference.close();
+            },
+            (error) => console.error(error)
+          );
       }
     } else {
       this.error = true;
@@ -176,7 +189,7 @@ export class EstudianteComponent implements OnInit {
     }
   }
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(['/admi_estudiante', 'nuevo']);
+    this.router.navigate(['/admi_plantel', 'nuevo']);
     forma.reset({});
   }
   borrarPlantel() {
@@ -185,7 +198,7 @@ export class EstudianteComponent implements OnInit {
         console.error(respuesta);
       } else {
         this.router.navigate(['/docentes']);
-        delete this.listados[this.id];
+        // delete this.plantelProfesores[this.id];
         this.elementoEliminado();
         this.modalReference.close();
       }

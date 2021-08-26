@@ -47,6 +47,10 @@ export class ListadoService {
     const url = `${ this.listadoURL }/${ key$ }.json`;
     return this.http.get( url ).pipe(map(res => res.json()));
   }
+  getArticuloEstudiante(key$: string, idx$: string) {
+    const url = `${ this.listadoURL }/${ key$ }/${'fieldArrayArticulos'}/${idx$}.json`;
+    return this.http.get( url ).pipe(map(res => res.json()));
+  }
   getListados() {
     return this.http.get( this.listadoRegistroURL ).pipe(map(res => res.json()));
   }

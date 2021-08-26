@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ArticulosproService } from '../../../../services/profesores/articulospro/articulospro.service';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './articulosprofesores.component.html',
   styleUrls: ['./articulosprofesores.component.css'],
 })
-export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
+export class ArticulosprofesoresComponent implements OnInit {
   filterpost = '';
   indicador = '-';
   page = 1;
@@ -40,7 +40,6 @@ export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
   constructor(
     private toastr: ToastrService,
     public auth: AngularFireAuth,
-    private articulosProService: ArticulosproService,
     private modalService: NgbModal,
     private plantelService: PlantelService
   ) {
@@ -122,11 +121,6 @@ export class ArticulosprofesoresComponent implements OnInit, AfterViewInit {
       .subscribe((data) => {
         this.profesores = data;
       });
-  }
-
-
-  ngAfterViewInit(): void {
-    (window as any).twttr.widgets.load();
   }
 
   openSm(formAdmin) {

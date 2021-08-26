@@ -56,7 +56,7 @@
             id="gradiante"
           >
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-4 text-center">
                 <img
                   [src]="egresado.foto"
                   [alt]="egresado.nombre"
@@ -64,6 +64,18 @@
                   [routerLink]="['/egresado', egresado.key]"
                   class="w-100 perfilPro cursorSelect"
                 />
+                <small class="card-title grayinst">
+                  <strong
+                    ><i class="fas fa-envelope"></i>
+                    {{ egresado.correo }}</strong
+                  >
+                </small>
+                <p class="card-title grayinst">
+                  <strong
+                    >Artículos registrados:
+                    {{ egresado.fieldArrayArticulos.length }}</strong
+                  >
+                </p>
                 <div class="row" *ngIf="auth.user | async">
                   <div class="col text-right">
                     <a
@@ -148,10 +160,6 @@
                       </p>
                     </li>
                   </ul>
-                  <p class="card-title grayinst">
-                    <i class="fas fa-envelope"></i>
-                    {{ egresado.correo }}
-                  </p>
                   <div class="text-right">
                     <a
                       [href]="egresado.cvlac"

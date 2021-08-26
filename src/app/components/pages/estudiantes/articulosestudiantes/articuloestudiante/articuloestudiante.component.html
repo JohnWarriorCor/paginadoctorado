@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div>
     <img
-      src="assets/slide-publicacion-profesores.jpg"
+    src="assets/slide-publicacion-estudiantes.jpg"
       class="d-block w-100"
       style="height: auto"
     />
@@ -22,22 +22,22 @@
               "
             >
               <h3>
-                {{ plantelProfesor.nombre }}
+                {{ listadoEstudiantes.nombre }}
               </h3>
               <br />
               <img
-                [src]="plantelProfesor.foto"
-                [alt]="plantelProfesor.nombre"
-                [title]="plantelProfesor.nombre"
+                [src]="listadoEstudiantes.foto"
+                [alt]="listadoEstudiantes.nombre"
+                [title]="listadoEstudiantes.nombre"
                 class="rounded mx-auto d-block"
                 style="width: 100%; border: solid 5px white"
               />
               <br />
-              <h5>Docente</h5>
+              <h5>Estudiante</h5>
               <h6>Universidad Surcolombiana</h6>
               <h6>
                 <i class="fas fa-envelope"></i>
-                {{ plantelProfesor.correo }}
+                {{ listadoEstudiantes.correo }}
               </h6>
               <br />
               <h6
@@ -68,12 +68,12 @@
               >
                 <h5>
                   <i class="fas fa-edit"></i>
-                  {{ articuloDocente.nombreArticulo }}
+                  {{ articuloEstudiante.nombreArticulo }}
                 </h5>
                 <hr style="border: solid 1px white" />
                 <p>
                   <strong><i class="fas fa-users"></i> Autores:</strong>
-                  {{ articuloDocente.autores }}
+                  {{ articuloEstudiante.autores }}
                 </p>
               </div>
               <div
@@ -96,13 +96,13 @@
                   <div class="col text-right">
                     <small
                       >Fecha de publicación:
-                      {{ articuloDocente.anio | date }}</small
+                      {{ articuloEstudiante.anio | date }}</small
                     >
                   </div>
                 </div>
 
                 <p class="m-2">
-                  {{ articuloDocente.resumen }}
+                  {{ articuloEstudiante.resumen }}
                 </p>
                 <br />
                 <div class="row">
@@ -116,13 +116,13 @@
                   </div>
                   <div class="col text-right">
                     <small
-                      ><a [href]="plantelProfesor.cvlac" target="_blank"
+                      ><a [href]="listadoEstudiantes.cvlac" target="_blank"
                         >CVLAC /</a
-                      ><a [href]="plantelProfesor.orcid" target="_blank">
+                      ><a [href]="listadoEstudiantes.orcid" target="_blank">
                         ORCID / </a
                       ><a
                         [href]="
-                          articuloDocente.enlace
+                          articuloEstudiante.enlace
                             | domseguro: 'https://drive.google.com/file/d/'
                         "
                         target="_blank"
@@ -136,7 +136,7 @@
                 <div class="container">
                   <iframe
                     [src]="
-                      articuloDocente.enlace
+                      articuloEstudiante.enlace
                         | domseguro: 'https://drive.google.com/file/d/'
                     "
                     width="100%"
@@ -165,7 +165,7 @@
                     <h4 class="m-2">
                       <strong
                         ><i class="fas fa-scroll"></i> Otras publicaciones de
-                        {{ plantelProfesor.nombre }}</strong
+                        {{ listadoEstudiantes.nombre }}</strong
                       >
                     </h4>
                   </div>
@@ -173,7 +173,7 @@
                     <ngb-pagination
                       class="d-flex justify-content-end"
                       [collectionSize]="
-                        plantelProfesor.fieldArrayArticulos.length
+                        listadoEstudiantes.fieldArrayArticulos.length
                       "
                       [pageSize]="pageSizeArticulos"
                       [(page)]="pageArticulos"
@@ -184,7 +184,7 @@
                   <tbody>
                     <tr
                       *ngFor="
-                        let fieldArticulos of plantelProfesor.fieldArrayArticulos
+                        let fieldArticulos of listadoEstudiantes.fieldArrayArticulos
                           | slice
                             : (pageArticulos - 1) * pageSizeArticulos
                             : (pageArticulos - 1) * pageSizeArticulos +
@@ -197,7 +197,7 @@
                           <a
                             (click)="up()"
                             [routerLink]="[
-                              '/articulo_docente',
+                              '/articulo_estudiante',
                               link,
                               (pageArticulos - 1) * pageSizeArticulos + i
                             ]"
@@ -218,7 +218,7 @@
                           "
                           (click)="up()"
                           [routerLink]="[
-                            '/articulo_docente',
+                            '/articulo_estudiante',
                             link,
                             (pageArticulos - 1) * pageSizeArticulos + i
                           ]"
@@ -255,7 +255,7 @@
                             <a
                               (click)="up()"
                               [routerLink]="[
-                                '/articulo_docente',
+                                '/articulo_estudiante',
                                 link,
                                 (pageArticulos - 1) * pageSizeArticulos + i
                               ]"
@@ -279,14 +279,14 @@
                 class="btn navlinkinSolid"
                 printSectionId="print-section"
                 [useExistingCss]="true"
-                printTitle="Perfil {{ plantelProfesor.nombre }}"
+                printTitle="Perfil {{ listadoEstudiantes.nombre }}"
                 ngxPrint
               >
                 <i class="fas fa-print"></i> Imprimir
               </button>
               <button
                 class="btn navlinkinSolid m-1"
-                [routerLink]="['/articulosProfesores']"
+                [routerLink]="['/articulosEstudiantes']"
               >
                 <i class="fas fa-sign-out-alt"></i> Regresar
               </button>

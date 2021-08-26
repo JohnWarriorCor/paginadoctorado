@@ -161,7 +161,7 @@
                             "
                             role="alert"
                           >
-                            Está a punto de guardar el evento. <br />
+                            Está a punto de guardar. <br />
                             ¿Desea continuar con la acción?
                           </div>
                         </div>
@@ -274,7 +274,11 @@
                                 ><i class="fas fa-users"></i> Autores:
                               </strong>
                               <a
-                                [href]="fieldArticulos.enlace | domseguro: 'https://drive.google.com/file/d/'"
+                                [href]="
+                                  fieldArticulos.enlace
+                                    | domseguro
+                                      : 'https://drive.google.com/file/d/'
+                                "
                                 target="_blank"
                                 >{{ fieldArticulos.autores }}</a
                               >

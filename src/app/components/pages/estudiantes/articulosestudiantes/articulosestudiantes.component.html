@@ -9,20 +9,17 @@
   <div>
     <div class="container" style="padding-top: 30px; padding-bottom: 30px">
       <div class="row">
-        <div
-          class="col-sm-8 shadow text-justify fondodivleft shadow grayinst"
-          *ngFor="let item of articuloEstudiante | keysfirebase"
-        >
+        <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst">
           <div id="print-section">
-            <h3 class="titleInstRed">Articulos y Publicaciones Estudiantes</h3>
+            <h3 class="titleInstRed">Articulos y Publicaciones Profesores</h3>
             <hr class="lineInstRed" />
             <br />
             <p>
               La siguiente lista incluye los articulos publicados por los
-              estudiantes del Doctorado en Ciencias de la Salud de la
-              Universidad Surcolombiana.
+              profesores que se encuentran en el Doctorado en Ciencias de la
+              Salud de la Universidad Surcolombiana.
             </p>
-            <div class="container no-print">
+            <div class="container">
               <div class="input-group mb-3">
                 <input
                   type="text"
@@ -44,61 +41,112 @@
               </div>
             </div>
             <br />
-            <div class="table-responsive">
-              <table
-                id="tableSortExample"
-                class="table table-bordered table-hover parinst text-center"
-                style="border-radius: 10px"
-              >
-                <thead class="tablatit">
-                  <tr class="white">
-                    <th style="vertical-align: middle" scope="col">N°</th>
-                    <th style="vertical-align: middle" scope="col">
-                      Publicación
-                    </th>
-                    <th style="vertical-align: middle" scope="col">Autores</th>
-                    <th style="vertical-align: middle" scope="col">Revista</th>
-                    <th style="vertical-align: middle" scope="col">Enlace</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    *ngFor="
-                      let field of articuloEstudiante[item].fieldArray
-                        | keysfirebase;
-                      let i = index
-                    "
-                  >
-                    <th style="vertical-align: middle" scope="row">
-                      {{ i + 1 }}
-                    </th>
-                    <td style="vertical-align: middle">
-                      {{
-                        articuloEstudiante[item].fieldArray[field].publicacion
-                      }}
-                    </td>
-                    <td style="vertical-align: middle">
-                      {{ articuloEstudiante[item].fieldArray[field].autores }}
-                    </td>
-                    <td style="vertical-align: middle">
-                      {{ articuloEstudiante[item].fieldArray[field].revista }}
-                    </td>
-                    <td style="vertical-align: middle">
-                      <a
-                        [href]="
-                          articuloEstudiante[item].fieldArray[field].enlace
-                        "
-                        target="_blank"
-                        placement="right"
-                        ngbTooltip="Ir al documento"
-                        class="colorRedInst"
-                        ><i class="fas fa-file-signature fa-2x"></i
-                      ></a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <!---->
+            <ngb-pagination
+              class="d-flex justify-content-end"
+              [collectionSize]="articuloEstudiante.length"
+              [pageSize]="pageSize"
+              [(page)]="page"
+            ></ngb-pagination>
+            <div
+              *ngFor="
+                let estudiante of articuloEstudiante
+                  | slice
+                    : (page - 1) * pageSize
+                    : (page - 1) * pageSize + pageSize;
+                let i = index
+              "
+              style="margin: 0"
+            >
+              <div class="row">
+                <div class="col text-justify">
+                  <table class="table table-hover books">
+                    <tbody
+                      *ngFor="
+                        let fieldArticulos of estudiante.fieldArrayArticulos;
+                        let i = index
+                      "
+                    >
+                      <tr *ngIf="fieldArticulos.nombreArticulo != indicador">
+                        <td width="100px">
+                          <div class="img-intro-left cover">
+                            <a
+                              [routerLink]="[
+                                '/articulo_estudiante',
+                                estudiante.key,
+                                i
+                              ]"
+                              [title]="fieldArticulos.nombreArticulo"
+                              ><img
+                                class="img-polaroid"
+                                src="assets/PDF_file_icon.svg"
+                                [alt]="fieldArticulos.nombreArticulo"
+                            /></a>
+                          </div>
+                        </td>
+                        <td>
+                          <h5
+                            class="
+                              card-title
+                              subTituloRojoInstitucional
+                              cursorSelect
+                              text-left
+                            "
+                            [routerLink]="[
+                              '/articulo_estudiante',
+                              estudiante.key,
+                              i
+                            ]"
+                          >
+                            {{ fieldArticulos.nombreArticulo }}
+                          </h5>
+                          <div>
+                            <strong
+                              ><i class="fas fa-users"></i> Autores:
+                            </strong>
+                            <a
+                              [href]="
+                                fieldArticulos.enlace
+                                  | domseguro
+                                    : 'https://drive.google.com/file/d/'
+                              "
+                              target="_blank"
+                              >{{ fieldArticulos.autores }}</a
+                            >
+                          </div>
+                          <dl>
+                            <dd>
+                              <strong
+                                ><i class="fas fa-calendar-day"></i> Año:
+                              </strong>
+                              {{ fieldArticulos.anio | date: "yyyy" }}
+                            </dd>
+                            <dd>
+                              <strong
+                                ><i class="fab fa-readme"></i> Resumen:
+                              </strong>
+                              {{ fieldArticulos.resumen | slice: 0:280 }}
+                              <a
+                                [routerLink]="[
+                                  '/articulo_estudiante',
+                                  estudiante.key,
+                                  i
+                                ]"
+                                routerLinkActive="router-link-active"
+                                style="color: #8f141b"
+                                >... Ver más</a
+                              >
+                            </dd>
+                          </dl>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <br />
             </div>
+            <!---->
             <hr />
             <div class="row">
               <div class="col">
@@ -112,15 +160,15 @@
                   <i class="fas fa-print"></i> Imprimir
                 </button>
               </div>
-              <div class="col text-right">
+              <!--<div class="col text-right">
                 <button
                   *ngIf="auth.user | async"
                   class="btn navlinkinSolid"
-                  [routerLink]="['/admi_articulosEstudiantes', item]"
+                  [routerLink]="['/admi_articulosProfesores', item]"
                 >
                   <i class="fas fa-pencil-alt"></i> Editar
                 </button>
-              </div>
+              </div>-->
             </div>
           </div>
         </div>

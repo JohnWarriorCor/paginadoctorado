@@ -36,3 +36,15 @@ ngb-pagination ::ng-deep ul > li.active > a {
 #gradiante {
   background-image: linear-gradient(#8f141b 20%, white 10%);
 }
+.cover img.img-polaroid {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  padding: 4px;
+  width: auto;
+}
+.cover img {
+  width: 80px;
+  max-height: 112px;
+  margin: 0px 5px 5px 0px;
+}

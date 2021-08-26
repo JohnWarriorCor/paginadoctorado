@@ -42,6 +42,7 @@ import { AgendaprogramaeditComponent } from './components/admin/agendaedit/agend
 import { AgendainstitucionaleditComponent } from './components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component';
 import { GaleriaComponent } from './components/pages/biblioteca/galeria/galeria.component';
 import { ArticulodocenteComponent } from './components/pages/docentes/articulosprofesores/articulodocente/articulodocente.component';
+import { ArticuloestudianteComponent } from './components/pages/estudiantes/articulosestudiantes/articuloestudiante/articuloestudiante.component';
 
 const routes: Routes = [
   // INICIO
@@ -71,6 +72,7 @@ const routes: Routes = [
   { path: 'estudiantes', component: EstudiantesComponent },
   { path: 'estudiante/:id', component: EstudianteComponent },
   { path: 'articulosEstudiantes', component: ArticulosestudiantesComponent },
+  { path: 'articulo_estudiante/:id/:idx', component: ArticuloestudianteComponent },
   { path: 'egresados', component: EgresadosComponent },
   { path: 'egresado/:id', component: EgresadoComponent },
   { path: 'tesis', component: TesisComponent },

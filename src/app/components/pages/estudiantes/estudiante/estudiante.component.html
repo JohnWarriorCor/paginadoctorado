@@ -82,8 +82,8 @@
                     <p class="m-4">
                       {{ listado.sintesis }}
                     </p>
-                     <!-- COLLAPSE START-->
-                     <div class="accordion" id="accordionExample">
+                    <!-- COLLAPSE START-->
+                    <div class="accordion" id="accordionExample">
                       <div class="card">
                         <div class="card-header" id="headingOne">
                           <h5
@@ -188,7 +188,131 @@
                   </div>
                 </div>
               </div>
-              <hr />
+              <div class="row">
+                <div
+                  class="col text-justify"
+                  style="margin-bottom: 20px; padding-left: 0px"
+                >
+                  <div
+                    style="
+                      background-color: #edeff0;
+                      padding: 20px;
+                      border-radius: 0px 0px 10px 10px;
+                      color: #1e262b;
+                    "
+                  >
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h4 class="m-2">
+                          <strong
+                            ><i class="fas fa-scroll"></i> Publicaciones
+                            {{ listado.nombre }} - #{{
+                              listado.fieldArrayArticulos.length
+                            }}</strong
+                          >
+                        </h4>
+                      </div>
+                      <div class="col-md-4">
+                        <ngb-pagination
+                          class="d-flex justify-content-end"
+                          [collectionSize]="listado.fieldArrayArticulos.length"
+                          [pageSize]="pageSizeArticulos"
+                          [(page)]="pageArticulos"
+                        ></ngb-pagination>
+                      </div>
+                    </div>
+                    <table class="table table-hover books">
+                      <tbody>
+                        <tr
+                          *ngFor="
+                            let fieldArticulos of listado.fieldArrayArticulos
+                              | slice
+                                : (pageArticulos - 1) * pageSizeArticulos
+                                : (pageArticulos - 1) * pageSizeArticulos +
+                                    pageSizeArticulos;
+                            let i = index
+                          "
+                        >
+                          <td width="100px">
+                            <div class="img-intro-left cover">
+                              <a
+                                [routerLink]="[
+                                  '/articulo_estudiante',
+                                  link,
+                                  (pageArticulos - 1) * pageSizeArticulos + i
+                                ]"
+                                [title]="fieldArticulos.nombreArticulo"
+                                ><img
+                                  class="img-polaroid"
+                                  src="assets/PDF_file_icon.svg"
+                                  [alt]="fieldArticulos.nombreArticulo"
+                              /></a>
+                            </div>
+                          </td>
+                          <td>
+                            <h5
+                              class="
+                                card-title
+                                subTituloRojoInstitucional
+                                cursorSelect
+                                text-left
+                              "
+                              [routerLink]="[
+                                '/articulo_estudiante',
+                                link,
+                                (pageArticulos - 1) * pageSizeArticulos + i
+                              ]"
+                            >
+                              {{
+                                (pageArticulos - 1) * pageSizeArticulos +
+                                  (i + 1)
+                              }}. {{ fieldArticulos.nombreArticulo }}
+                            </h5>
+                            <div>
+                              <strong
+                                ><i class="fas fa-users"></i> Autores:
+                              </strong>
+                              <a
+                                [href]="
+                                  fieldArticulos.enlace
+                                    | domseguro
+                                      : 'https://drive.google.com/file/d/'
+                                "
+                                target="_blank"
+                                >{{ fieldArticulos.autores }}</a
+                              >
+                            </div>
+                            <dl>
+                              <dd>
+                                <strong
+                                  ><i class="fas fa-calendar-day"></i> Año:
+                                </strong>
+                                {{ fieldArticulos.anio | date: "yyyy" }}
+                              </dd>
+                              <dd>
+                                <strong
+                                  ><i class="fab fa-readme"></i> Resumen:
+                                </strong>
+                                {{ fieldArticulos.resumen | slice: 0:280 }}
+                                <a
+                                  [routerLink]="[
+                                    '/articulo_estudiante',
+                                    link,
+                                    (pageArticulos - 1) * pageSizeArticulos + i
+                                  ]"
+                                  style="color: #8f141b"
+                                  >... Ver más</a
+                                >
+                              </dd>
+                            </dl>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br />
+                  </div>
+                </div>
+              </div>
               <div class="row no-print">
                 <div class="col">
                   <button

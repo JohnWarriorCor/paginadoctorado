@@ -58,7 +58,7 @@
             id="gradiante"
           >
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-4 text-center">
                 <img
                   [src]="estudiante.foto"
                   [alt]="estudiante.nombre"
@@ -66,6 +66,18 @@
                   [routerLink]="['/estudiante', estudiante.key]"
                   class="w-100 perfilPro cursorSelect"
                 />
+                <small class="card-title grayinst">
+                  <strong
+                    ><i class="fas fa-envelope"></i>
+                    {{ estudiante.correo }}</strong
+                  >
+                </small>
+                <p class="card-title grayinst">
+                  <strong
+                    >Artículos registrados:
+                    {{ estudiante.fieldArrayArticulos.length }}</strong
+                  >
+                </p>
                 <div class="row" *ngIf="auth.user | async">
                   <div class="col text-right">
                     <a
@@ -150,10 +162,6 @@
                       </p>
                     </li>
                   </ul>
-                  <p class="card-title grayinst">
-                    <i class="fas fa-envelope"></i>
-                    {{ estudiante.correo }}
-                  </p>
                   <div class="text-right">
                     <a
                       [href]="estudiante.cvlac"
