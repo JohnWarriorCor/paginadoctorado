@@ -17,9 +17,9 @@
                     <th style="vertical-align: middle" scope="col">
                       Título de Tesis
                     </th>
-                    <th style="vertical-align: middle" scope="col">Resumen</th>
+                    <th style="vertical-align: middle" scope="col">Estado</th>
                     <th style="vertical-align: middle" scope="col">Autor</th>
-                    <th style="vertical-align: middle" scope="col">Director</th>
+                    <th style="vertical-align: middle" scope="col">Archivo</th>
                     <th style="vertical-align: middle" scope="col">Opciones</th>
                   </tr>
                 </thead>
@@ -34,12 +34,19 @@
                       />
                     </td>
                     <td>
-                      <input
-                        [(ngModel)]="field.resumen"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.resumen }}"
-                      />
+                      <select
+                      class="custom-select inputTable"
+                      id="clasificacion"
+                      name="{{ field.resumen }}"
+                      [(ngModel)]="field.resumen"
+                    >
+                      <option value="" disabled="disabled">
+                        Elija el estado
+                      </option>
+                      <option value="En Desarrollo">En Desarrollo</option>
+                      <option value="Finalizado">Finalizado</option>
+                      <option value="En Definición">En Definición</option>
+                    </select>
                     </td>
                     <td>
                       <input
