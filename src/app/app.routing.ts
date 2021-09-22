@@ -43,6 +43,8 @@ import { AgendainstitucionaleditComponent } from './components/admin/agendaedit/
 import { GaleriaComponent } from './components/pages/biblioteca/galeria/galeria.component';
 import { ArticulodocenteComponent } from './components/pages/docentes/articulosprofesores/articulodocente/articulodocente.component';
 import { ArticuloestudianteComponent } from './components/pages/estudiantes/articulosestudiantes/articuloestudiante/articuloestudiante.component';
+import { ArticuloComponent } from './components/pages/docentes/articulosprofesores/articulo/articulo.component';
+import { ArticuloeComponent } from './components/pages/estudiantes/articulosestudiantes/articuloe/articuloe.component';
 
 const routes: Routes = [
   // INICIO
@@ -61,6 +63,7 @@ const routes: Routes = [
   { path: 'articulosProfesores', component: ArticulosprofesoresComponent },
   { path: 'docente/:id', component: DocenteComponent },
   { path: 'articulo_docente/:id/:idx', component: ArticulodocenteComponent },
+  { path: 'articulo_docente/:id', component: ArticuloComponent },
   // ACTIVDADES
   { path: 'agendaPrograma', component: AgendaprogramaComponent },
   { path: 'agendaInstitucional', component: AgendainstitucionalComponent },
@@ -73,6 +76,7 @@ const routes: Routes = [
   { path: 'estudiante/:id', component: EstudianteComponent },
   { path: 'articulosEstudiantes', component: ArticulosestudiantesComponent },
   { path: 'articulo_estudiante/:id/:idx', component: ArticuloestudianteComponent },
+  { path: 'articulo_estudiante/:id', component: ArticuloeComponent },
   { path: 'egresados', component: EgresadosComponent },
   { path: 'egresado/:id', component: EgresadoComponent },
   { path: 'tesis', component: TesisComponent },

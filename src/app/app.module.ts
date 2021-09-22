@@ -89,6 +89,10 @@ import { ArticulodocenteComponent } from './components/pages/docentes/articulosp
 import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
 import { FiltrotesisPipe } from './pipes/filtrotesis.pipe';
 import { ArticuloestudianteComponent } from './components/pages/estudiantes/articulosestudiantes/articuloestudiante/articuloestudiante.component';
+import { ArticuloComponent } from './components/pages/docentes/articulosprofesores/articulo/articulo.component';
+import { ArticuloeComponent } from './components/pages/estudiantes/articulosestudiantes/articuloe/articuloe.component';
+import { FiltroarticulosprofesoresPipe } from './pipes/filtroarticulosprofesores.pipe';
+import { FiltroarticulosestudiantesPipe } from './pipes/filtroarticulosestudiantes.pipe';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, 'es-CO');
@@ -149,6 +153,10 @@ registerLocaleData(localeEsCO, 'es-CO');
     NoSanitizePipe,
     FiltrotesisPipe,
     ArticuloestudianteComponent,
+    ArticuloComponent,
+    ArticuloeComponent,
+    FiltroarticulosprofesoresPipe,
+    FiltroarticulosestudiantesPipe,
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst">
           <div id="print-section">
-            <h3 class="titleInstRed">Articulos y Publicaciones Profesores</h3>
+            <h3 class="titleInstRed">Articulos y Publicaciones Profesores - {{sortData?.length}}</h3>
             <hr class="lineInstRed" />
             <br />
             <p>
@@ -25,6 +25,8 @@
                   type="text"
                   class="form-control shadow"
                   style="border-radius: 50px 0px 0px 50px"
+                  name="buscarEvento"
+                  [(ngModel)]="filterpost"
                   placeholder="Digite palabras claves para buscar..."
                   aria-label="Recipient's username"
                   aria-describedby="button-addon2"
@@ -41,7 +43,7 @@
               </div>
             </div>
             <br />
-            <!---->
+            <!---
             <ngb-pagination
               class="d-flex justify-content-end"
               [collectionSize]="profesores.length"
@@ -146,7 +148,106 @@
               </div>
               <br />
             </div>
-            <!---->
+          -->
+            <ngb-pagination
+              class="d-flex justify-content-start"
+              [collectionSize]="(sortData | filtroarticulosprofesores: filterpost).length"
+              [pageSize]="pageSizeArticulosProfesores"
+              [(page)]="pageArticulosProfesores"
+            ></ngb-pagination>
+            <div
+              *ngFor="
+                let articulo of sortData
+                  | filtroarticulosprofesores: filterpost
+                  | slice
+                    : (pageArticulosProfesores - 1) *
+                        pageSizeArticulosProfesores
+                    : (pageArticulosProfesores - 1) *
+                        pageSizeArticulosProfesores +
+                        pageSizeArticulosProfesores;
+                let i = index
+              "
+              style="margin: 0"
+            >
+              <div class="row">
+                <div class="col text-justify">
+                  <table class="table table-hover books">
+                    <tbody>
+                      <tr>
+                        <td width="100px">
+                          <div class="img-intro-left cover">
+                            <a
+                              [routerLink]="['/articulo_docente', articulo.key]"
+                              [title]="articulo.nombreArticulo"
+                              ><img
+                                class="img-polaroid"
+                                src="assets/PDF_file_icon.svg"
+                                [alt]="articulo.nombreArticulo"
+                            /></a>
+                          </div>
+                        </td>
+                        <td>
+                          <h5
+                            class="
+                              card-title
+                              subTituloRojoInstitucional
+                              cursorSelect
+                              text-left
+                            "
+                            [routerLink]="['/articulo_docente', articulo.key]"
+                          >
+                            {{ articulo.nombreArticulo }}
+                          </h5>
+                          <div>
+                            <strong
+                              ><i class="fas fa-users"></i> Autores:
+                            </strong>
+                            <a
+                              [href]="
+                                articulo.enlace
+                                  | domseguro
+                                    : 'https://drive.google.com/file/d/'
+                              "
+                              target="_blank"
+                              >{{ articulo.autores }}</a
+                            >
+                          </div>
+                          <dl>
+                            <dd>
+                              <strong
+                                ><i class="fas fa-calendar-day"></i> Año:
+                              </strong>
+                              {{ articulo.anio | date: "yyyy" }}
+                            </dd>
+                            <dd>
+                              <strong
+                                ><i class="fab fa-readme"></i> Resumen:
+                              </strong>
+                              {{ articulo.resumen | slice: 0:280 }}
+                              <a
+                                [routerLink]="[
+                                  '/articulo_docente',
+                                  articulo.key
+                                ]"
+                                routerLinkActive="router-link-active"
+                                style="color: #8f141b"
+                                >... Ver más</a
+                              >
+                            </dd>
+                          </dl>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <ngb-pagination
+              class="d-flex justify-content-end"
+              [collectionSize]="(sortData | filtroarticulosprofesores: filterpost).length"
+              [pageSize]="pageSizeArticulosProfesores"
+              [(page)]="pageArticulosProfesores"
+            ></ngb-pagination>
             <hr />
             <div class="row">
               <div class="col">
@@ -177,9 +278,9 @@
           <hr class="lineInstRed" />
           <br />
           <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=1800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
             width="100%"
-            height="500"
+            height="1800"
             style="border: none; overflow: hidden"
             scrolling="no"
             frameborder="0"

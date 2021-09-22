@@ -18,6 +18,8 @@ export class ArticulosestudiantesComponent implements OnInit {
   indicador = '-';
   page = 1;
   pageSize = 4;
+  pageArticulosProfesores = 1;
+  pageSizeArticulosProfesores = 5;
   vistaEdicion = false;
   today = new Date();
   closeResult: string;
@@ -27,15 +29,24 @@ export class ArticulosestudiantesComponent implements OnInit {
   articulosEstudiantes: any[] = [];
   articuloEstudiante: any[] = [];
   loading = true;
+  articulos: any[] = [];
 
   constructor(
     private toastr: ToastrService,
     public auth: AngularFireAuth,
-    private articulosEstuService: ListadoService,
-    private modalService: NgbModal
+    private lsitadoEstuService: ListadoService,
+    private modalService: NgbModal,
+    private articulosEstuService: ArticulosestuService
   ) {
-    this.articulosEstuService.getListados().subscribe((data) => {
+    this.lsitadoEstuService.getListados().subscribe((data) => {
       this.articulosEstudiantes = data;
+    });
+  }
+  get sortData() {
+    return this.articulos.sort((a, b) => {
+      // tslint:disable-next-line:whitespace
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      return <any> new Date(b.anio) - <any> new Date(a.anio);
     });
   }
   refresh() {
@@ -95,7 +106,7 @@ export class ArticulosestudiantesComponent implements OnInit {
         )
       )
       .subscribe((data) => {
-        this.articuloEstudiante = data;
+        this.articulos = data;
       });
   }
 
@@ -111,7 +122,7 @@ export class ArticulosestudiantesComponent implements OnInit {
   }
 
   borrarGrupo(key$: string) {
-    this.articulosEstuService
+    this.lsitadoEstuService
       .borrarListado(key$)
       .subscribe((respuesta) => {
         if (respuesta) {

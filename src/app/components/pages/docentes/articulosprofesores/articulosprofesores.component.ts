@@ -19,6 +19,8 @@ export class ArticulosprofesoresComponent implements OnInit {
   pageSize = 2;
   pageArticulos = 1;
   pageSizeArticulos = 2;
+  pageArticulosProfesores = 1;
+  pageSizeArticulosProfesores = 8;
   agenda: any[] = [];
   plantelProfesores: any[] = [];
 
@@ -30,7 +32,9 @@ export class ArticulosprofesoresComponent implements OnInit {
   loading = true;
 
   profesores: any[] = [];
+  articulos: any[] = [];
   actualProfesor = null;
+  actualArticulo = null;
   eventos: any[] = [];
   actualEvento = null;
   actualIndex = -1;
@@ -41,10 +45,18 @@ export class ArticulosprofesoresComponent implements OnInit {
     private toastr: ToastrService,
     public auth: AngularFireAuth,
     private modalService: NgbModal,
-    private plantelService: PlantelService
+    private plantelService: PlantelService,
+    private articulosProService: ArticulosproService
   ) {
     this.plantelService.getPlanteles().subscribe((data) => {
       this.plantelProfesores = data;
+    });
+  }
+  get sortData() {
+    return this.articulos.sort((a, b) => {
+      // tslint:disable-next-line:whitespace
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      return <any> new Date(b.anio) - <any> new Date(a.anio);
     });
   }
 
@@ -99,6 +111,7 @@ export class ArticulosprofesoresComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerProfesores();
+    this.obtenerArticulos();
   }
   refreshList(): void {
     this.actualProfesor = null;
@@ -120,6 +133,19 @@ export class ArticulosprofesoresComponent implements OnInit {
       )
       .subscribe((data) => {
         this.profesores = data;
+      });
+  }
+  obtenerArticulos(): void {
+    this.articulosProService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.articulos = data;
       });
   }
 

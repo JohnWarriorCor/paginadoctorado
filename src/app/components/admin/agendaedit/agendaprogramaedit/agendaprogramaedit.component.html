@@ -84,12 +84,29 @@
                           maxlength="6500"
                           name="resenia"
                           [(ngModel)]="agenda.resenia"
-                          class="form-control shadow p-3 inputPaciente"
+                          class="form-control shadow p-3"
                           placeholder="Síntesis o información relavante del evento ..."
                           rows="8"
                         ></textarea>
                       </div>
                     </div>
+                    <br />
+                    <div class="row">
+                      <div class="col">
+                        <h6 class="subTituloRojoInstitucional text-left">
+                          Parrafo:
+                        </h6>
+                        <textarea
+                          maxlength="6500"
+                          name="parrafo"
+                          [(ngModel)]="agenda.parrafo"
+                          class="form-control shadow p-3"
+                          placeholder="Información relavante del evento ..."
+                          rows="8"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <br>
                     <div class="row">
                       <div class="col">
                         <h6 class="subTituloRojoInstitucional text-left">
@@ -201,7 +218,9 @@
             </div>
             <div class="row">
               <div class="col">
-                <h3 class="titleInstRed text-left">Espacio para diseño del Blog</h3>
+                <h3 class="titleInstRed text-left">
+                  Espacio para diseño del Blog
+                </h3>
                 <hr class="lineInstRed" />
                 <br />
                 <angular-editor

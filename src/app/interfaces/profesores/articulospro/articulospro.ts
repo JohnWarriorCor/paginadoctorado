@@ -1,4 +1,9 @@
 export interface Articulospro {
-    fieldArray: Array<any>;
+    anio: string;
+    autores: string;
+    enlace: string;
+    nombreArticulo: string;
+    resumen: string;
+    revista: string;
     key$?: string;
 }

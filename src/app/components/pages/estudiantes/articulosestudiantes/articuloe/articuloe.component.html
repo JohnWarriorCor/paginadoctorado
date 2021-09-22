@@ -1,0 +1,275 @@
+<div class="wrapper fadeIn fast">
+  <div>
+    <img
+      src="assets/slide-publicacion-estudiantes.jpg"
+      class="d-block w-100"
+      style="height: auto"
+    />
+  </div>
+  <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+    <form #forma="ngForm">
+      <div class="row fondodivCenter shadow" id="print-section">
+        <div class="col">
+          <div class="row">
+            <div class="col" style="margin-bottom: 20px">
+              <div class="row">
+                <div
+                  class="col text-center"
+                  style="
+                    background-color: #8f141b;
+                    padding: 20px;
+                    color: white;
+                    border-radius: 10px 10px 10px 10px;
+                    margin-bottom: 20px;
+                  "
+                >
+                  <h2>
+                    <strong>{{ articuloEstudiante.nombreArticulo }}</strong>
+                  </h2>
+                </div>
+              </div>
+              <div
+                style="
+                  background-color: #f7f7f7;
+                  padding: 20px;
+                  border-radius: 0px 0px 10px 10px;
+                  color: #1e262b;
+                "
+              >
+                <div class="row text-justify">
+                  <div class="col">
+                    <h4>
+                      <strong><i class="fas fa-users"></i> Autores:</strong>
+                    </h4>
+                  </div>
+                  <div class="col text-right">
+                    <p>
+                      Fecha de publicación: {{ articuloEstudiante.anio | date }}
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <p class="m-2">
+                      {{ articuloEstudiante.autores }}
+                    </p>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col">
+                    <h5>
+                      <strong
+                        ><i class="fas fa-bookmark"></i>
+                        Resumen/Abtract:</strong
+                      >
+                    </h5>
+                  </div>
+                </div>
+
+                <p class="m-2 text-justify">
+                  {{ articuloEstudiante.resumen }}
+                </p>
+                <br />
+                <div class="row">
+                  <div class="col">
+                    <h5>
+                      <strong
+                        ><i class="fab fa-readme"></i> Visualización del
+                        artículo:</strong
+                      >
+                    </h5>
+                  </div>
+                  <div class="col text-right">
+                    <small
+                      ><a [href]="plantelProfesor.cvlac" target="_blank"
+                        >CVLAC /</a
+                      ><a [href]="plantelProfesor.orcid" target="_blank">
+                        ORCID / </a
+                      ><a
+                        [href]="
+                          articuloEstudiante.enlace
+                            | domseguro: 'https://drive.google.com/file/d/'
+                        "
+                        target="_blank"
+                      >
+                        DRIVE</a
+                      ></small
+                    >
+                  </div>
+                </div>
+                <hr />
+                <div class="container">
+                  <iframe
+                    [src]="
+                      articuloEstudiante.enlace
+                        | domseguro: 'https://drive.google.com/file/d/'
+                    "
+                    width="100%"
+                    height="480"
+                  ></iframe>
+                </div>
+                <hr />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5>
+                <strong
+                  ><i class="fas fa-bookmark"></i> Otros Artículos:</strong
+                >
+              </h5>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col text-justify"
+              style="margin-bottom: 20px; padding-left: 0px"
+            >
+              <ngb-pagination
+                class="d-flex justify-content-end"
+                [collectionSize]="sortData.length"
+                [pageSize]="pageSizeArticulosProfesores"
+                [(page)]="pageArticulosProfesores"
+              ></ngb-pagination>
+              <div
+                *ngFor="
+                  let articulo of sortData
+                    | slice
+                      : (pageArticulosProfesores - 1) *
+                          pageSizeArticulosProfesores
+                      : (pageArticulosProfesores - 1) *
+                          pageSizeArticulosProfesores +
+                          pageSizeArticulosProfesores;
+                  let i = index
+                "
+                style="margin: 0"
+              >
+                <div class="row">
+                  <div class="col text-justify">
+                    <table class="table table-hover books">
+                      <tbody>
+                        <tr>
+                          <td width="100px">
+                            <div class="img-intro-left cover">
+                              <a
+                                [routerLink]="[
+                                  '/articulo_estudiante',
+                                  articulo.key
+                                ]"
+                                (click)="up()"
+                                [title]="articulo.nombreArticulo"
+                                ><img
+                                  class="img-polaroid"
+                                  src="assets/PDF_file_icon.svg"
+                                  [alt]="articulo.nombreArticulo"
+                              /></a>
+                            </div>
+                          </td>
+                          <td>
+                            <h5
+                              class="
+                                card-title
+                                subTituloRojoInstitucional
+                                cursorSelect
+                                text-left
+                              "
+                              [routerLink]="[
+                                '/articulo_estudiante',
+                                articulo.key
+                              ]"
+                            >
+                              {{ articulo.nombreArticulo }}
+                            </h5>
+                            <div>
+                              <strong
+                                ><i class="fas fa-users"></i> Autores:
+                              </strong>
+                              <a
+                                [href]="
+                                  articulo.enlace
+                                    | domseguro
+                                      : 'https://drive.google.com/file/d/'
+                                "
+                                target="_blank"
+                                >{{ articulo.autores }}</a
+                              >
+                            </div>
+                            <dl>
+                              <dd>
+                                <strong
+                                  ><i class="fas fa-calendar-day"></i> Año:
+                                </strong>
+                                {{ articulo.anio | date: "yyyy" }}
+                              </dd>
+                              <dd>
+                                <strong
+                                  ><i class="fab fa-readme"></i> Resumen:
+                                </strong>
+                                {{ articulo.resumen | slice: 0:280 }}
+                                <a
+                                  [routerLink]="[
+                                    '/articulo_estudiante',
+                                    articulo.key
+                                  ]"
+                                  routerLinkActive="router-link-active"
+                                  style="color: #8f141b"
+                                  >... Ver más</a
+                                >
+                              </dd>
+                            </dl>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <ngb-pagination
+                class="d-flex justify-content-end"
+                [collectionSize]="sortData.length"
+                [pageSize]="pageSizeArticulosProfesores"
+                [(page)]="pageArticulosProfesores"
+              ></ngb-pagination>
+            </div>
+          </div>
+          <hr />
+          <div class="row no-print">
+            <div class="col">
+              <button
+                class="btn navlinkinSolid"
+                printSectionId="print-section"
+                [useExistingCss]="true"
+                printTitle="Perfil {{ plantelProfesor.nombre }}"
+                ngxPrint
+              >
+                <i class="fas fa-print"></i> Imprimir
+              </button>
+              <button
+                class="btn navlinkinSolid m-1"
+                [routerLink]="['/articulosProfesores']"
+              >
+                <i class="fas fa-sign-out-alt"></i> Regresar
+              </button>
+            </div>
+            <div class="col text-right" *ngIf="auth.user | async">
+              <button
+                class="btn navlinkinSolid m-2"
+                [routerLink]="['/admi_plantel', 'nuevo']"
+              >
+                <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
+              </button>
+              <button class="btn navlinkinSolid m-2" (click)="nav()">
+                <i class="fas fa-user-edit"></i> Editar
+              </button>
+              <button class="btn navlinkinSolid m-2" (click)="borrarPlantel()">
+                <i class="fas fa-user-edit"></i> Borrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

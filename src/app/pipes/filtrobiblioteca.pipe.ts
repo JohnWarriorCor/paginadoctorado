@@ -9,7 +9,7 @@ export class FiltrobibliotecaPipe implements PipeTransform {
     if (arg === '' || arg.length < 3) { return value; }
     const resultPosts = [];
     for (const post of value) {
-      if (post.titulo.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.autor.indexOf(arg.toLowerCase()) > -1) {
+      if (post.titulo.toLowerCase().indexOf(arg.toLowerCase()) > -1 || post.autor.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
         resultPosts.push(post);
       }
     }
