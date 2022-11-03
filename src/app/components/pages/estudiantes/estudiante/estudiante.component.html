@@ -154,11 +154,7 @@
                         </div>
                         <div class="modal-body">
                           <div
-                            class="
-                              alert alert-warning
-                              text-center
-                              font-weight-bold
-                            "
+                            class="alert alert-warning text-center font-weight-bold"
                             role="alert"
                           >
                             Está a punto de guardar. <br />
@@ -251,12 +247,7 @@
                           </td>
                           <td>
                             <h5
-                              class="
-                                card-title
-                                subTituloRojoInstitucional
-                                cursorSelect
-                                text-left
-                              "
+                              class="card-title subTituloRojoInstitucional cursorSelect text-left"
                               [routerLink]="[
                                 '/articulo_estudiante',
                                 link,
@@ -328,7 +319,7 @@
                     class="btn navlinkinSolid m-2"
                     [routerLink]="['/estudiantes']"
                   >
-                    <i class="fas fa-sign-out-alt"></i> Regresar
+                    <i class="fas fa-arrow-left"></i> Regresar
                   </button>
                 </div>
                 <div class="col text-right" *ngIf="auth.user | async">
@@ -345,7 +336,7 @@
                     class="btn navlinkinSolid m-2"
                     (click)="borrarPlantel()"
                   >
-                    <i class="fas fa-user-edit"></i> Borrar
+                    <i class="fas fa-user-times"></i> Borrar
                   </button>
                 </div>
               </div>

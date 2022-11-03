@@ -171,8 +171,8 @@
                   style="width: 100%; border: solid 5px white"
                 />
                 <p class="alert alert-warning text-center font-weight-bold m-3">
-                  Solo seleccione el perfil si el estudiante no tiene
-                  foto para cargar.
+                  Solo seleccione el perfil si el estudiante no tiene foto para
+                  cargar.
                 </p>
                 <div class="m-2 p-2 text-white text-center">
                   <div class="custom-control custom-radio">
@@ -307,11 +307,7 @@
                       </div>
                       <div class="modal-body">
                         <div
-                          class="
-                            alert alert-warning
-                            text-center
-                            font-weight-bold
-                          "
+                          class="alert alert-warning text-center font-weight-bold"
                           role="alert"
                         >
                           Está a punto de guardar los cambios realizados. <br />
@@ -346,8 +342,8 @@
                           class="mb-0"
                           data-toggle="collapse"
                           aria-expanded="true"
-                          data-target="#collapseOne"
-                          aria-controls="collapseOne"
+                          data-target="#collapseTwo"
+                          aria-controls="collapseTwo"
                         >
                           <i class="fas fa-list-ul"></i> Formación y logros
                           académicos:
@@ -355,7 +351,7 @@
                       </div>
 
                       <div
-                        id="collapseOne"
+                        id="collapseTwo"
                         class="collapse"
                         aria-labelledby="headingOne"
                         data-parent="#accordionExample"
@@ -467,9 +463,7 @@
                     <div class="col">
                       <ngb-pagination
                         class="d-flex justify-content-end"
-                        [collectionSize]="
-                          listado.fieldArrayArticulos.length
-                        "
+                        [collectionSize]="listado.fieldArrayArticulos.length"
                         [pageSize]="pageSizeArticulos"
                         [(page)]="pageArticulos"
                       ></ngb-pagination>
@@ -716,9 +710,9 @@
                 </button>-->
                   <button
                     class="btn navlinkinSolid m-1"
-                    [routerLink]="['/docentes']"
+                    [routerLink]="['/estudiantes']"
                   >
-                    <i class="fas fa-sign-out-alt"></i> Regresar
+                    <i class="fas fa-arrow-left"></i> Regresar
                   </button>
                   <br />
                 </div>

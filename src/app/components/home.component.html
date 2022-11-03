@@ -20,13 +20,7 @@
         <div class="container">
           <button
             *ngIf="auth.user | async"
-            class="
-              btn
-              btnColorFacultadSalud
-              m-2
-              btn-lg btn-block
-              carousel-caption
-            "
+            class="btn btnColorFacultadSalud m-2 btn-lg btn-block carousel-caption"
             [routerLink]="['/admi_carrusel']"
           >
             <i class="fas fa-pencil-alt"></i> Editar
@@ -125,6 +119,31 @@
                         <tr>
                           <td>
                             <span class="redinst"
+                              >Renovación Registro Calificado:</span
+                            >
+                          </td>
+                          <td>
+                            <a
+                              class="grayinst"
+                              target="_blank"
+                              href="https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/DOCUMENTOS%2FResoluci%C3%B3n%20011578%20del%2023%20de%20junio%20de%202022%20Renovaci%C3%B3n%20RC%202022.pdf?alt=media&token=871e7a29-7d56-4cd5-ba76-7caeb083d82d"
+                            >
+                              Resolución 011578 del 23 de junio de 2022
+                              Renovación RC 2022</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="redinst">Modalidad:</span>
+                          </td>
+                          <td>
+                            <span class="grayinst"> Presencial</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <span class="redinst"
                               >Periodicidad de admisión:</span
                             >
                           </td>
@@ -164,7 +183,7 @@
                         </tr>
                         <tr>
                           <td>
-                            <span class="redinst">Cupo:</span>
+                            <span class="redinst">Cupo por corte:</span>
                           </td>
                           <td>
                             <span class="grayinst">
@@ -189,7 +208,7 @@
                   ><i class="fas fa-flag"></i> Misión</ng-template
                 >
                 <ng-template ngbTabContent>
-                  <p style="padding: 20px" class="text-justify grayinst">
+                  <p class="text-justify grayinst p-2">
                     {{ denominacion[den].mision }}
                   </p>
                 </ng-template>
@@ -199,7 +218,7 @@
                   ><i class="far fa-eye"></i> Visión</ng-template
                 >
                 <ng-template ngbTabContent>
-                  <p style="padding: 20px" class="text-justify grayinst">
+                  <p class="text-justify grayinst p-2">
                     {{ denominacion[den].vision }}
                   </p>
                 </ng-template>
@@ -468,14 +487,14 @@
                                     class="card-img-top rounded cursorSelect"
                                   />
                                 </p>
-                                <h4 class="card-title" style="color: #D5BA7F;">
+                                <h4 class="card-title" style="color: #d5ba7f">
                                   {{ plantelProfesores[item].nombre }}
                                 </h4>
                               </div>
                             </div>
                           </div>
                           <div class="backside">
-                            <div class="card">
+                            <div class="card cursorSelect">
                               <div
                                 class="card-body text-center mt-4 text-backside"
                               >
@@ -523,7 +542,7 @@
               <div class="col text-rigth">
                 <ngb-pagination
                   class="d-flex justify-content-end"
-                  [collectionSize]="(listados | keysfirebase).length"
+                  [collectionSize]="estudiantes.length"
                   [pageSize]="pageSizeEstudiantes"
                   [(page)]="pageEstudiantes"
                 ></ngb-pagination>
@@ -536,10 +555,9 @@
                     <!-- Team member -->
                     <div
                       class="col-xs-12 col-sm-6 col-md-4"
-                      [routerLink]="['/estudiante', item]"
                       *ngFor="
-                        let item of listados
-                          | keysfirebase
+                        let estudiante of estudiantes
+                          | listinvert
                           | slice
                             : (pageEstudiantes - 1) * pageSizeEstudiantes
                             : (pageEstudiantes - 1) * pageSizeEstudiantes +
@@ -557,33 +575,42 @@
                               <div class="card-body text-center">
                                 <p>
                                   <img
-                                    [routerLink]="['/estudiante', item]"
+                                    [routerLink]="[
+                                      '/estudiante',
+                                      estudiante.key
+                                    ]"
                                     (click)="up()"
-                                    [src]="listados[item].foto"
-                                    [alt]="listados[item].nombre"
-                                    [title]="listados[item].nombre"
+                                    [src]="estudiante.foto"
+                                    [alt]="estudiante.nombre"
+                                    [title]="estudiante.nombre"
                                     class="card-img-top rounded cursorSelect"
                                   />
                                 </p>
                                 <h4 class="card-title">
-                                  {{ listados[item].nombre }}
+                                  {{ estudiante.nombre }}
                                 </h4>
                               </div>
                             </div>
                           </div>
                           <div class="backside">
-                            <div class="card">
+                            <div
+                              class="card cursorSelect"
+                              [routerLink]="['/estudiante', estudiante.key]"
+                            >
                               <div
                                 class="card-body text-center mt-4 text-backside"
                               >
                                 <br /><br />
                                 <h4 class="card-title">
-                                  {{ listados[item].nombre }}
+                                  {{ estudiante.nombre }}
                                 </h4>
                                 <p class="card-text text-justify">
-                                  {{ listados[item].sintesis | slice: 0:200 }}
+                                  {{ estudiante.sintesis | slice: 0:200 }}
                                   <a
-                                    [routerLink]="['/estudiante', item]"
+                                    [routerLink]="[
+                                      '/estudiante',
+                                      estudiante.key
+                                    ]"
                                     style="color: #8f141b; font-size: 10px"
                                     >... Ver más</a
                                   >
@@ -666,7 +693,7 @@
                             </div>
                           </div>
                           <div class="backside">
-                            <div class="card">
+                            <div class="card cursorSelect">
                               <div
                                 class="card-body text-center mt-4 text-backside"
                               >

@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
   eventosInstitucionales: any[] = [];
   actualEvento = null;
   actualIndex = -1;
+  estudiantes: any[] = [];
   // tslint:disable-next-line:no-shadowed-variable
   constructor(
     public auth: AngularFireAuth,
@@ -89,6 +90,21 @@ export class HomeComponent implements OnInit {
       this.egresadosPrograma = data;
     });
   }
+
+  obtenerEstudiantes(): void {
+    this.listadoService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.estudiantes = data;
+      });
+  }
+
   obtenerEventosPrograma(): void {
     this.agendaProgramaService
       .getAll()
@@ -130,6 +146,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.obtenerEventosPrograma();
     this.obtenerEventosInstitucionales();
+    this.obtenerEstudiantes();
   }
   up() {
     window.scroll(0, 400);

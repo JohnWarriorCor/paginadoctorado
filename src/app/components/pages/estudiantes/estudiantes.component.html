@@ -49,7 +49,6 @@
             *ngFor="
               let estudiante of estudiantes
                 | filtroprofesores: filterpost
-                | listinvert
                 | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
               let i = index
             "
@@ -64,7 +63,7 @@
                   [alt]="estudiante.nombre"
                   [title]="estudiante.nombre"
                   [routerLink]="['/estudiante', estudiante.key]"
-                  class="w-100 perfilPro cursorSelect"
+                  class="card-img-top perfilPro cursorSelect"
                 />
                 <small class="card-title grayinst">
                   <strong
@@ -104,11 +103,7 @@
                       </div>
                       <div class="modal-body">
                         <div
-                          class="
-                            alert alert-warning
-                            text-center
-                            font-weight-bold
-                          "
+                          class="alert alert-warning text-center font-weight-bold"
                           role="alert"
                         >
                           Está a punto de eliminar el perfil del Profesor.

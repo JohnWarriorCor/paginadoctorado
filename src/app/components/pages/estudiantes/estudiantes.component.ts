@@ -34,6 +34,7 @@ export class EstudiantesComponent implements OnInit {
   actualIndex = -1;
   eventosPrograma: any[] = [];
   eventosInstitucional: any[] = [];
+  
   constructor(
     private toastr: ToastrService,
     public auth: AngularFireAuth,

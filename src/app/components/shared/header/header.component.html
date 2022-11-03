@@ -50,13 +50,12 @@
         style="display: flex; justify-content: center"
       >
         <a
-          title="Universidad Surcolombiana Facultad de Salud"
+          title="Universidad Surcolombiana Facultad de Ciencias de la Salud"
           [routerLink]="['/inicio']"
         >
           <img
-            style="width: 95%"
-            src="assets/header-facultad-salud-universidad-surcolombiana.png"
-            alt="Universidad Surcolombiana Facultad de Salud"
+            src="https://contenidos.usco.edu.co/salud/images/LOGO_FAC_SALUD.png"
+            alt="Universidad Surcolombiana Facultad de Ciencias de la Salud"
           />
         </a>
       </div>
@@ -229,14 +228,12 @@
             <a class="menu__link_dropdown" [routerLink]="['/biblioteca']"
               ><i class="fas fa-book"></i> Libros del Programa</a
             >
-            <a
-              class="menu__link_dropdown"
-              [routerLink]="['/galeria_imagenes']"
+            <a class="menu__link_dropdown" [routerLink]="['/galeria_imagenes']"
               ><i class="far fa-images"></i> Galería de imágenes</a
             >
           </div>
         </li>
-        <li class="menu__group">
+        <!-- <li class="menu__group">
           <a
             style="padding: 10px"
             routerLinkActive="router-link-active"
@@ -245,7 +242,7 @@
             href="https://saces-dcs-usco.web.app/#/inicio"
             ><i class="fas fa-laptop-code"></i> Información SACES</a
           >
-        </li>
+        </li> -->
         <li class="menu__group">
           <ng-template #showLogin>
             <a
