@@ -217,16 +217,31 @@
                     border-radius: 10px 10px 0px 0px;
                   "
                 >
-                  <h3>
-                    <i class="fas fa-user-circle"></i> Nombre del estudiante:
-                  </h3>
-                  <input
-                    type="text"
-                    name="nombre"
-                    [(ngModel)]="listado.nombre"
-                    class="form-control shadow p-3"
-                    placeholder="Nombres y apellidos del estudiante"
-                  />
+                <div class="row">
+                  <div class="col">
+                    <h4>
+                      <i class="fas fa-user-circle"></i> Nombre del estudiante:
+                    </h4>
+                    <input
+                      type="text"
+                      name="nombre"
+                      [(ngModel)]="listado.nombre"
+                      class="form-control shadow p-3"
+                      placeholder="Nombres y apellidos del estudiante"
+                    />
+                  </div>
+                  <div class="col">
+                    <h4>
+                      <i class="fas fa-id-card-alt"></i> Código del estudiante:
+                    </h4>
+                    <input
+                      type="number"
+                      name="codigo"
+                      [(ngModel)]="listado.codigo"
+                      class="form-control shadow p-3"
+                    />
+                  </div>
+                </div>
                 </div>
                 <div
                   style="

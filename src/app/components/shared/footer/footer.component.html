@@ -157,8 +157,8 @@
       class="footer-copyright text-center py-3"
       style="background-color: #4d626c; color: #ededed"
     >
-      © 2021 Doctorado en Ciencias de la Salud. Universidad Surcolombiana |
-      <i class="fas fa-lock"></i
+      © {{ today | date: "yyyy" }} Doctorado en Ciencias de la Salud.
+      Universidad Surcolombiana | <i class="fas fa-lock"></i
       ><a
         style="color: aliceblue"
         class="cursorSelect"
@@ -174,8 +174,8 @@
     class="footer-copyright text-center py-3"
     style="background-color: #4d626c; color: #ededed"
   >
-    © 2021 Doctorado en Ciencias de la Salud. Universidad Surcolombiana |
-    <i class="fas fa-door-open"></i
+    © {{ today | date: "yyyy" }} Doctorado en Ciencias de la Salud. Universidad
+    Surcolombiana | <i class="fas fa-door-open"></i
     ><a style="color: aliceblue" class="cursorSelect" (click)="logout()">
       Salir</a
     >

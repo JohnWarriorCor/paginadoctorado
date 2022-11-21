@@ -1,5 +1,6 @@
 export interface Egresados {
     foto: string;
+    codigo: number;
     nombre: string;
     sintesis: string;
     fieldArray: Array<any>;
@@ -8,5 +9,6 @@ export interface Egresados {
     fecha: string;
     cvlac: string;
     orcid: string;
+    estado: number;
     key$?: string;
 }

@@ -53,6 +53,15 @@ export class DocentesComponent implements OnInit {
       return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
     });
   }
+
+  get sortDataDocentes() {
+    return this.profesores.sort((a, b) => {
+      // tslint:disable-next-line:whitespace
+      // tslint:disable-next-line:no-angle-bracket-type-assertion
+      return <any> new Date(b.fecha) - <any> new Date(a.fecha);
+    });
+  }
+
   obtenerEventosPrograma(): void {
     this.agendaProgramaService
       .getAll()

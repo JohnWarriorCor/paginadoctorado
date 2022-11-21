@@ -39,6 +39,7 @@ export class EstudianteComponent implements OnInit {
   listados: any[] = [];
   listado: Listado = {
     foto: '',
+    codigo: 0,
     nombre: '',
     sintesis: '',
     fieldArray: [],
@@ -46,6 +47,7 @@ export class EstudianteComponent implements OnInit {
     correo: '',
     fecha: '',
     cvlac: '',
+    estado: 0,
     orcid: '',
   };
   slides: any = [[]];

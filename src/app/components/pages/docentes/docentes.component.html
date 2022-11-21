@@ -47,7 +47,7 @@
           ></ngb-pagination>
           <div
             *ngFor="
-              let profesor of profesores
+              let profesor of sortDataDocentes
                 | filtroprofesores: filterpost
                 | listinvert
                 | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;

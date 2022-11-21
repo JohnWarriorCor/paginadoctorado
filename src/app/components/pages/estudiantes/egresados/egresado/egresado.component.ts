@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, NgForm } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EgresadosService } from '../../../../../services/estudiantes/egresados/egresados.service';
-import { Egresados } from '../../../../../interfaces/estudiantes/egresados/egresados';
-import { AngularFireAuth } from '@angular/fire/auth';
-import 'firebase/auth';
+import { Component, OnInit } from "@angular/core";
+import { DatePipe } from "@angular/common";
+import { Router, ActivatedRoute } from "@angular/router";
+import { FormGroup, NgForm } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { EgresadosService } from "../../../../../services/estudiantes/egresados/egresados.service";
+import { Egresados } from "../../../../../interfaces/estudiantes/egresados/egresados";
+import { AngularFireAuth } from "@angular/fire/auth";
+import "firebase/auth";
 
 @Component({
-  selector: 'app-egresado',
-  templateUrl: './egresado.component.html',
-  styleUrls: ['./egresado.component.css'],
+  selector: "app-egresado",
+  templateUrl: "./egresado.component.html",
+  styleUrls: ["./egresado.component.css"],
   providers: [DatePipe],
 })
 export class EgresadoComponent implements OnInit {
@@ -27,8 +27,8 @@ export class EgresadoComponent implements OnInit {
   war: any;
   modalReference: any;
   error = false;
-  passError = '';
-  imgError = '';
+  passError = "";
+  imgError = "";
   alertBool = false;
   forma: FormGroup;
   controls: any;
@@ -37,15 +37,17 @@ export class EgresadoComponent implements OnInit {
   newAttribute: any = {};
   egresados: any[] = [];
   egresado: Egresados = {
-    foto: '',
-    nombre: '',
-    sintesis: '',
+    foto: "",
+    codigo: 0,
+    nombre: "",
+    sintesis: "",
     fieldArray: [],
     fieldArrayArticulos: [],
-    correo: '',
-    fecha: '',
-    cvlac: '',
-    orcid: '',
+    correo: "",
+    fecha: "",
+    cvlac: "",
+    orcid: "",
+    estado: 1,
   };
   vistaEdicion = false;
   acumFechas = 0;
@@ -53,7 +55,6 @@ export class EgresadoComponent implements OnInit {
   loading = true;
   link: any;
 
-  // tslint:disable-next-line:max-line-length
   constructor(
     public auth: AngularFireAuth,
     public datepipe: DatePipe,
@@ -65,7 +66,7 @@ export class EgresadoComponent implements OnInit {
     this.activatedRoute.params.subscribe((parametros) => {
       this.id = parametros.id;
       this.link = parametros.id;
-      if (this.id !== 'nuevo') {
+      if (this.id !== "nuevo") {
         this.egresadosService
           .getEgresado(this.id)
           .subscribe((egresado) => (this.egresado = egresado));
@@ -77,19 +78,19 @@ export class EgresadoComponent implements OnInit {
     });
   }
   nav() {
-    this.router.navigate(['/admi_egresados', this.link]);
+    this.router.navigate(["/admi_egresados", this.link]);
   }
   ngOnInit() {
-    this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
+    this.fecha = this.datepipe.transform(this.today, "dd/MM/yyyy");
   }
   changeImg(urlimg) {
     console.log(urlimg);
     // tslint:disable-next-line:max-line-length
-    if (urlimg === '' || urlimg === null) {
+    if (urlimg === "" || urlimg === null) {
       this.defaultImgUrl = urlimg;
       this.alertBool = true;
       this.imgError =
-        'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
+        "No puede dejar un evento sin imagen, por favor inserte un URL correspondiente";
     } else {
       this.alertBool = false;
       this.defaultImgUrl = urlimg;
@@ -99,16 +100,16 @@ export class EgresadoComponent implements OnInit {
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, {
       centered: true,
-      size: 'sm',
-      backdrop: 'static',
-      windowClass: 'fade-in',
+      size: "sm",
+      backdrop: "static",
+      windowClass: "fade-in",
     });
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {
-      size: 'sm',
+      size: "sm",
       centered: true,
-      backdrop: 'static',
+      backdrop: "static",
     });
   }
   up() {
@@ -124,10 +125,10 @@ export class EgresadoComponent implements OnInit {
       console.log(this.egresado.nombre);
       console.log(this.war);
       this.modalReference.close();
-      if (this.id === 'nuevo') {
+      if (this.id === "nuevo") {
         this.egresadosService.nuevoEgresado(this.egresado).subscribe(
           (data) => {
-            this.router.navigate(['/egresados']);
+            this.router.navigate(["/egresados"]);
             this.modalReference.close();
           },
           (error) => console.error(error)
@@ -138,7 +139,7 @@ export class EgresadoComponent implements OnInit {
           .actualizarEgresado(this.egresado, this.id)
           .subscribe(
             (data) => {
-              this.router.navigate(['/egresados']);
+              this.router.navigate(["/egresados"]);
               this.modalReference.close();
             },
             (error) => console.error(error)
@@ -146,12 +147,12 @@ export class EgresadoComponent implements OnInit {
       }
     } else {
       this.error = true;
-      this.passError = 'Formulario incompleto.';
+      this.passError = "Formulario incompleto.";
       this.modalReference.close();
     }
   }
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(['/admi_egresados', 'nuevo']);
+    this.router.navigate(["/admi_egresados", "nuevo"]);
     forma.reset({});
   }
 }

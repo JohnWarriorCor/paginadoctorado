@@ -15,7 +15,7 @@
                 <h5
                   class="mb-0 titleInstRed text-justify"
                   data-toggle="collapse"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   data-target="#collapseOne"
                   aria-controls="collapseOne"
                 >
@@ -69,7 +69,7 @@
                     <li>
                       En caso de manejar otra herramienta de edición, considerar
                       que la imágen estandar tiene las siegientes dimensiones
-                      <br />[1.000 pixeles de ancho por 246 pixeles de alto]
+                      <br />[512 pixeles de ancho por 440 pixeles de alto]
                       <a
                         href="/assets/pruebaCarrusel.jpg"
                         download
@@ -171,8 +171,8 @@
                   style="width: 100%; border: solid 5px white"
                 />
                 <p class="alert alert-warning text-center font-weight-bold m-3">
-                  Solo seleccione el perfil si el egresado no tiene
-                  foto para cargar.
+                  Solo seleccione el perfil si el egresado no tiene foto para
+                  cargar.
                 </p>
                 <div class="m-2 p-2 text-white text-center">
                   <div class="custom-control custom-radio">
@@ -217,16 +217,31 @@
                     border-radius: 10px 10px 0px 0px;
                   "
                 >
-                  <h3>
-                    <i class="fas fa-user-circle"></i> Nombre del egresado:
-                  </h3>
-                  <input
-                    type="text"
-                    name="nombre"
-                    [(ngModel)]="egresados.nombre"
-                    class="form-control shadow p-3"
-                    placeholder="Nombres y apellidos del egresado"
-                  />
+                  <div class="row">
+                    <div class="col">
+                      <h4>
+                        <i class="fas fa-user-circle"></i> Nombre del egresado:
+                      </h4>
+                      <input
+                        type="text"
+                        name="nombre"
+                        [(ngModel)]="egresados.nombre"
+                        class="form-control shadow p-3"
+                        placeholder="Nombres y apellidos del egresado"
+                      />
+                    </div>
+                    <div class="col">
+                      <h4>
+                        <i class="fas fa-id-card-alt"></i> Código del egresado:
+                      </h4>
+                      <input
+                        type="number"
+                        name="codigo"
+                        [(ngModel)]="egresados.codigo"
+                        class="form-control shadow p-3"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div
                   style="
@@ -307,11 +322,7 @@
                       </div>
                       <div class="modal-body">
                         <div
-                          class="
-                            alert alert-warning
-                            text-center
-                            font-weight-bold
-                          "
+                          class="alert alert-warning text-center font-weight-bold"
                           role="alert"
                         >
                           Está a punto de guardar los cambios realizados. <br />
@@ -467,9 +478,7 @@
                     <div class="col">
                       <ngb-pagination
                         class="d-flex justify-content-end"
-                        [collectionSize]="
-                          egresados.fieldArrayArticulos.length
-                        "
+                        [collectionSize]="egresados.fieldArrayArticulos.length"
                         [pageSize]="pageSizeArticulos"
                         [(page)]="pageArticulos"
                       ></ngb-pagination>

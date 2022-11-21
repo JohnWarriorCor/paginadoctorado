@@ -23,7 +23,7 @@
             class="btn btnColorFacultadSalud m-2 btn-lg btn-block carousel-caption"
             [routerLink]="['/admi_carrusel']"
           >
-            <i class="fas fa-pencil-alt"></i> Editar
+            <i class="fas fa-pencil-alt"></i> Administrar
           </button>
         </div>
       </div>
@@ -444,7 +444,7 @@
               <div class="col text-rigth">
                 <ngb-pagination
                   class="d-flex justify-content-end"
-                  [collectionSize]="(plantelProfesores | keysfirebase).length"
+                  [collectionSize]="profesores.length"
                   [pageSize]="pageSizeProfesores"
                   [(page)]="pageProfesores"
                 ></ngb-pagination>
@@ -458,10 +458,8 @@
                     <div
                       class="col-xs-12 col-sm-6 col-md-4"
                       style="margin-bottom: 10px"
-                      [routerLink]="['/docente', item]"
                       *ngFor="
-                        let item of plantelProfesores
-                          | keysfirebase
+                        let profesor of sortDataDocentes
                           | slice
                             : (pageProfesores - 1) * pageSizeProfesores
                             : (pageProfesores - 1) * pageSizeProfesores +
@@ -479,16 +477,16 @@
                               <div class="card-body text-center">
                                 <p>
                                   <img
-                                    [routerLink]="['/docente', item]"
+                                    [routerLink]="['/docente', profesor.key]"
                                     (click)="up()"
-                                    [src]="plantelProfesores[item].foto"
-                                    [alt]="plantelProfesores[item].nombre"
-                                    [title]="plantelProfesores[item].nombre"
+                                    [src]="profesor.foto"
+                                    [alt]="profesor.nombre"
+                                    [title]="profesor.nombre"
                                     class="card-img-top rounded cursorSelect"
                                   />
                                 </p>
                                 <h4 class="card-title" style="color: #d5ba7f">
-                                  {{ plantelProfesores[item].nombre }}
+                                  {{ profesor.nombre }}
                                 </h4>
                               </div>
                             </div>
@@ -500,15 +498,12 @@
                               >
                                 <br /><br />
                                 <h4 class="card-title">
-                                  {{ plantelProfesores[item].nombre }}
+                                  {{ profesor.nombre }}
                                 </h4>
                                 <p class="card-text text-justify">
-                                  {{
-                                    plantelProfesores[item].sintesis
-                                      | slice: 0:200
-                                  }}
+                                  {{ profesor.sintesis | slice: 0:200 }}
                                   <a
-                                    [routerLink]="['/docente', item]"
+                                    [routerLink]="['/docente', profesor.key]"
                                     style="color: #8f141b; font-size: 10px"
                                     >... Ver más</a
                                   >
@@ -746,7 +741,7 @@
           <hr />
           <br />
           <h3 class="titleInstRed">
-            <i class="fas fa-book-open"></i> Doctorados
+            <i class="fas fa-book-open"></i> Doctorados USCO
           </h3>
           <hr class="lineInstRed" />
           <br />

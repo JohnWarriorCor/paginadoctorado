@@ -40,6 +40,7 @@ export class ListadoeditComponent implements OnInit {
   newAttribute: any = {};
   listado: Listado = {
     foto: '',
+    codigo: null,
     nombre: '',
     sintesis: '',
     fieldArray: [],
@@ -48,6 +49,7 @@ export class ListadoeditComponent implements OnInit {
     fecha: '',
     cvlac: '',
     orcid: '',
+    estado: 1,
   };
   // CARGA DE ARCHIVOS A FIRESTORE CONTENIDO CURRICULAR
   public mensajeArchivo = 'No hay un archivo';

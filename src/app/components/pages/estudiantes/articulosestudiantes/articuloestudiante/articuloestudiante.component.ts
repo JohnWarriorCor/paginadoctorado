@@ -51,6 +51,7 @@ export class ArticuloestudianteComponent implements OnInit {
   };
   listadoEstudiantes: Listado = {
     foto: '',
+    codigo: 0,
     nombre: '',
     sintesis: '',
     fieldArray: [],
@@ -59,6 +60,7 @@ export class ArticuloestudianteComponent implements OnInit {
     fecha: '',
     cvlac: '',
     orcid: '',
+    estado: 0,
   };
   slides: any = [[]];
 

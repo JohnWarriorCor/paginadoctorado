@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
   today = new Date();
   egresadosPrograma: any[] = [];
   plantelProfesores: any[] = [];
+  profesores: any[] = [];
   listados: any[] = [];
   agenda: any[] = [];
   denominacion: any[] = [];
@@ -91,6 +92,33 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  ngOnInit() {
+    this.obtenerEventosPrograma();
+    this.obtenerEventosInstitucionales();
+    this.obtenerEstudiantes();
+    this.obtenerProfesores();
+  }
+
+  obtenerProfesores(): void {
+    this.plantelService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.profesores = data;
+      });
+  }
+
+  get sortDataDocentes() {
+    return this.profesores.sort((a, b) => {
+      return <any> new Date(b.fecha) - <any> new Date(a.fecha);
+    });
+  }
+
   obtenerEstudiantes(): void {
     this.listadoService
       .getAll()
@@ -143,11 +171,7 @@ export class HomeComponent implements OnInit {
       return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
     });
   }
-  ngOnInit() {
-    this.obtenerEventosPrograma();
-    this.obtenerEventosInstitucionales();
-    this.obtenerEstudiantes();
-  }
+  
   up() {
     window.scroll(0, 400);
   }
