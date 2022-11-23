@@ -2,11 +2,12 @@
   color: white;
   background-color: #4e6470;
 }
+
 .inputTable {
   background: transparent;
   border: none;
-  text-align: center;
 }
+
 ngb-pagination ::ng-deep ul > li:not(.active) > a {
   background-color: #8f141b !important;
   border-top-style: none !important;

@@ -77,8 +77,8 @@
                   ><i class="fas fa-list-ul"></i> Programa</ng-template
                 >
                 <ng-template ngbTabContent>
-                  <div class="justify-content-center m-sm-3">
-                    <table class="table table-striped">
+                  <div class="m-sm-3">
+                    <table class="table table-striped text-left">
                       <thead>
                         <tr>
                           <td>
@@ -205,24 +205,33 @@
               </ngb-tab>
               <ngb-tab>
                 <ng-template ngbTabTitle
-                  ><i class="fas fa-flag"></i> Misión</ng-template
+                  ><i class="fas fa-flag"></i> Misión y Vision</ng-template
                 >
                 <ng-template ngbTabContent>
-                  <p class="text-justify grayinst p-2">
-                    {{ denominacion[den].mision }}
-                  </p>
+                  <div class="row mt-4">
+                    <div class="col">
+                      <h3 class="titleInstRed">Misión</h3>
+                      <hr class="lineInstRed" />
+                      <br />
+                      <p class="text-justify grayinst p-2">
+                        {{ denominacion[den].mision }}
+                      </p>
+                      <h3 class="titleInstRed">Visión</h3>
+                      <hr class="lineInstRed" />
+                      <br />
+                      <p class="text-justify grayinst p-2">
+                        {{ denominacion[den].vision }}
+                      </p>
+                    </div>
+                  </div>
                 </ng-template>
               </ngb-tab>
-              <ngb-tab>
+              <!--  <ngb-tab>
                 <ng-template ngbTabTitle
                   ><i class="far fa-eye"></i> Visión</ng-template
                 >
-                <ng-template ngbTabContent>
-                  <p class="text-justify grayinst p-2">
-                    {{ denominacion[den].vision }}
-                  </p>
-                </ng-template>
-              </ngb-tab>
+                <ng-template ngbTabContent> </ng-template>
+              </ngb-tab> -->
               <ngb-tab>
                 <ng-template ngbTabTitle
                   ><i class="fas fa-user-md"></i> Propósito</ng-template
@@ -231,9 +240,25 @@
                   ngbTabContent
                   *ngFor="let den of denominacion | keysfirebase"
                 >
-                  <p style="padding: 20px" class="text-justify grayinst">
-                    {{ denominacion[den].proposito }}
-                  </p>
+                  <div class="row mt-4">
+                    <div class="col">
+                      <h3 class="titleInstRed">Propósito</h3>
+                      <hr class="lineInstRed" />
+                      <br />
+                      <p class="text-justify grayinst p-2">
+                        {{ denominacion[den].proposito }}
+                      </p>
+                      <h3 class="titleInstRed">
+                        Áreas Académicas del Doctorado
+                      </h3>
+                      <hr class="lineInstRed" />
+                      <br />
+                      <ul class="text-justify grayinst ml-4 p-2">
+                        <li>Salud de poblaciones</li>
+                        <li>Medicina Tropical</li>
+                      </ul>
+                    </div>
+                  </div>
                 </ng-template>
               </ngb-tab>
             </ngb-tabset>
