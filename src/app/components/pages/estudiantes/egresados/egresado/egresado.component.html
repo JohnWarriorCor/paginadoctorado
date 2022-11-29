@@ -108,14 +108,14 @@
                           <div class="card-body">
                             <ul>
                               <li
+                                class="p-2"
                                 *ngFor="
                                   let field of egresado.fieldArray;
                                   let i = index
                                 "
                               >
-                                <p class="pre text-justify">
-                                  {{ field.formacion }}
-                                </p>
+                                {{ field.formacion }}
+                                <hr />
                               </li>
                             </ul>
                           </div>

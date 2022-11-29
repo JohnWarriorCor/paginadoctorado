@@ -5,5 +5,6 @@ export interface Carrusel {
     urlInfo: string;
     fecha: string;
     info: string;
+    estado: number;
     key$?: string;
 }

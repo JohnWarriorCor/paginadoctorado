@@ -1,26 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DenominacionService } from '../services/home/denominacion.service';
-import { CarruselService } from '../services/home/carrusel/carrusel.service';
-import { ArticulosestuService } from '../services/estudiantes/articulos/articulosestu.service';
-import { ArticulosproService } from '../services/profesores/articulospro/articulospro.service';
-import { ListadoService } from '../services/estudiantes/listado/listado.service';
-import { PlantelService } from '../services/profesores/plantel/plantel.service';
-import { EgresadosService } from '../services/estudiantes/egresados/egresados.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import 'firebase/auth';
-import { map } from 'rxjs/operators';
-import { AgendaprogramaService } from '../services/agenda/agendaprograma.service';
-import { AgendainstitucionalService } from '../services/agenda/agendainstitucional.service';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { DenominacionService } from "../services/home/denominacion.service";
+import { CarruselService } from "../services/home/carrusel/carrusel.service";
+import { ArticulosestuService } from "../services/estudiantes/articulos/articulosestu.service";
+import { ArticulosproService } from "../services/profesores/articulospro/articulospro.service";
+import { ListadoService } from "../services/estudiantes/listado/listado.service";
+import { PlantelService } from "../services/profesores/plantel/plantel.service";
+import { EgresadosService } from "../services/estudiantes/egresados/egresados.service";
+import { AngularFireAuth } from "@angular/fire/auth";
+import "firebase/auth";
+import { map } from "rxjs/operators";
+import { AgendaprogramaService } from "../services/agenda/agendaprograma.service";
+import { AgendainstitucionalService } from "../services/agenda/agendainstitucional.service";
 
 // tslint:disable-next-line:prefer-const
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
   pageEstudiantes = 1;
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   pageSizeEgresados = 3;
   pageProfesores = 1;
   pageSizeProfesores = 3;
-  currentJustify = 'justified';
+  currentJustify = "justified";
   g: any;
   today = new Date();
   egresadosPrograma: any[] = [];
@@ -72,9 +72,9 @@ export class HomeComponent implements OnInit {
     this.denominaciionService.getDenominaciones().subscribe((data) => {
       this.denominacion = data;
     });
-    this.carruselServices.getCarruseles().subscribe((data) => {
+    /* this.carruselServices.getCarruseles().subscribe((data) => {
       this.carrusel = data;
-    });
+    }); */
     this.articulosEstuService.getArticuloEstudiantes().subscribe((data) => {
       this.articuloEstudiante = data;
     });
@@ -97,6 +97,27 @@ export class HomeComponent implements OnInit {
     this.obtenerEventosInstitucionales();
     this.obtenerEstudiantes();
     this.obtenerProfesores();
+    this.obtenerCarrusel();
+  }
+
+  obtenerCarrusel(): void {
+    this.carruselServices
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.carrusel = data;
+      });
+  }
+
+  get sortDataCarrusel() {
+    return this.carrusel.sort((a, b) => {
+      return <any>new Date(b.fecha) - <any>new Date(a.fecha);
+    });
   }
 
   obtenerProfesores(): void {
@@ -115,7 +136,7 @@ export class HomeComponent implements OnInit {
 
   get sortDataDocentes() {
     return this.profesores.sort((a, b) => {
-      return <any> new Date(b.fecha) - <any> new Date(a.fecha);
+      return <any>new Date(b.fecha) - <any>new Date(a.fecha);
     });
   }
 
@@ -162,16 +183,16 @@ export class HomeComponent implements OnInit {
   get sortDataEventoPrograma() {
     return this.eventosPrograma.sort((a, b) => {
       // tslint:disable-next-line:no-angle-bracket-type-assertion
-      return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
+      return <any>new Date(b.fechaEvento) - <any>new Date(a.fechaEvento);
     });
   }
   get sortDataEventoInstitucional() {
     return this.eventosInstitucionales.sort((a, b) => {
       // tslint:disable-next-line:no-angle-bracket-type-assertion
-      return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
+      return <any>new Date(b.fechaEvento) - <any>new Date(a.fechaEvento);
     });
   }
-  
+
   up() {
     window.scroll(0, 400);
   }

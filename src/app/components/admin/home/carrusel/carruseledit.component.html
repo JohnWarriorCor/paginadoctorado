@@ -1,261 +1,267 @@
 <div class="wrapper fadeIn fast">
-  <div>
-    <div class="container" style="padding-top: 10px; padding-bottom: 30px">
-      <div class="row">
-        <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
-          <h3 class="titleInstRed">
-            Formulario para administrar el carrusel de imágenes de inicio.
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <br />
-          <form #forma="ngForm">
-            <div class="row">
-              <div class="col">
-                <div class="row">
-                  <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">
-                      Título de la imágen:
-                    </h6>
-                    <input
-                      type="text"
-                      name="titulo"
-                      [(ngModel)]="carrusel.titulo"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de texto"
-                    />
-                  </div>
-                  <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">
-                      Cargar archivo de imágen:
-                    </h6>
-                    <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-                      <div class="row">
-                        <div
-                          *ngIf="porcentaje > 1 && porcentaje < 101"
-                          class="col"
-                        >
-                          <ngb-progressbar
-                            [showValue]="true"
-                            type="danger"
-                            [value]="porcentaje"
-                          >
-                          </ngb-progressbar
-                          ><br />
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <label class="file-label">
-                            <input
-                              type="file"
-                              class="custom-file-input"
-                              formControlName="archivo"
-                              (change)="cambioArchivo($event)"
-                              id="customFileLang"
-                              lang="es"
-                              required
-                            />
-                            <span class="file-cta">
-                              <span
-                                class="
-                                  custom-file-label
-                                  text-left
-                                  inputPaciente
-                                "
-                                style="margin-left: 16px"
-                                for="customFileLang"
-                              >
-                                {{ mensajeArchivo | slice: 0:50 }}
-                              </span>
-                            </span>
-                          </label>
-                          <br />
-                        </div>
-                        <div class="col col-lg-2 text-right">
-                          <button
-                            class="btn navlinkin"
-                            type="submit"
-                            placement="top"
-                            ngbTooltip="Subir archivo"
-                            [disabled]="!archivoForm.valid"
-                          >
-                            <i class="fas fa-upload"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col">
+  <div class="container p-3 mt-4">
+    <div class="row">
+      <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+        <div class="row mb-4">
+          <div class="col">
+            <h3 class="titleInstRed">
+              Formulario para administrar el carrusel de imágenes de inicio.
+            </h3>
+            <hr class="lineInstRed" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form #forma="ngForm">
+              <div class="row">
+                <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="text-left subTituloRojoInstitucional">
+                        Título de la imágen:
+                      </h6>
+                      <input
+                        type="text"
+                        name="titulo"
+                        [(ngModel)]="carrusel.titulo"
+                        class="form-control shadow p-3 inputPaciente"
+                        placeholder="Campo de texto"
+                      />
+                    </div>
+                    <div class="col">
+                      <h6 class="text-left subTituloRojoInstitucional">
+                        Cargar archivo de imágen:
+                      </h6>
+                      <form
+                        [formGroup]="archivoForm"
+                        (ngSubmit)="subirArchivo()"
+                      >
+                        <div class="row">
                           <div
-                            *ngIf="porcentaje === 100"
-                            class="alert alert-success"
-                            role="alert"
+                            *ngIf="porcentaje > 1 && porcentaje < 100"
+                            class="col"
                           >
-                            Imágen cargada exitosamente
+                            <ngb-progressbar
+                              [showValue]="true"
+                              type="danger"
+                              [value]="porcentaje"
+                            >
+                            </ngb-progressbar
+                            ><br />
                           </div>
                         </div>
-                      </div>
-                    </form>
+                        <div class="row">
+                          <div class="col">
+                            <label class="file-label">
+                              <input
+                                type="file"
+                                class="custom-file-input"
+                                formControlName="archivo"
+                                (change)="cambioArchivo($event)"
+                                id="customFileLang"
+                                lang="es"
+                                required
+                              />
+                              <span class="file-cta">
+                                <span
+                                  class="custom-file-label text-left inputPaciente"
+                                  style="margin-left: 16px"
+                                  for="customFileLang"
+                                >
+                                  {{ mensajeArchivo | slice: 0:25 }}...
+                                </span>
+                              </span>
+                            </label>
+                            <br />
+                          </div>
+                          <div class="col col-lg-3 text-right">
+                            <button
+                              class="btn navlinkinSolid"
+                              type="submit"
+                              placement="top"
+                              ngbTooltip="Subir archivo"
+                              [disabled]="!archivoForm.valid"
+                            >
+                              Subir <i class="fas fa-upload"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      URL para información complementaria:
-                    </h6>
-                    <input
-                      type="text"
-                      name="urlInfo"
-                      [(ngModel)]="carrusel.urlInfo"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo alfanumérico"
-                    />
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="subTituloRojoInstitucional text-left">
+                        URL para información complementaria:
+                      </h6>
+                      <input
+                        type="text"
+                        name="urlInfo"
+                        [(ngModel)]="carrusel.urlInfo"
+                        class="form-control shadow p-3 inputPaciente"
+                        placeholder="Campo alfanumérico"
+                      />
+                    </div>
+                    <div class="col">
+                      <h6 class="subTituloRojoInstitucional text-left">
+                        Fecha publicación:
+                      </h6>
+                      <input
+                        type="date"
+                        name="fecha"
+                        [(ngModel)]="carrusel.fecha"
+                        class="form-control shadow p-3 inputPaciente"
+                      />
+                    </div>
                   </div>
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Fecha publicación:
-                    </h6>
-                    <input
-                      type="date"
-                      name="fecha"
-                      [(ngModel)]="carrusel.fecha"
-                      class="form-control shadow p-3 inputPaciente"
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Reseña informativa:
-                    </h6>
-                    <textarea
-                      maxlength="6500"
-                      name="info"
-                      [(ngModel)]="carrusel.info"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de texto"
-                      rows="3"
-                    ></textarea>
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="subTituloRojoInstitucional text-left">
+                        Reseña informativa:
+                      </h6>
+                      <textarea
+                        maxlength="6500"
+                        name="info"
+                        [(ngModel)]="carrusel.info"
+                        class="form-control shadow p-3"
+                        placeholder="Campo de texto"
+                        rows="3"
+                      ></textarea>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <br />
-            <hr />
-            <div class="text-right">
-              <button
-                (click)="openModal(confirmar)"
-                class="btn navlinkinSolid m-1"
-              >
-                <i class="far fa-save"></i> Guardar
-              </button>
-              <button
-                [routerLink]="['/admi_carrusel']"
-                class="btn navlinkinSolid m-1"
-              >
-                <i class="fas fa-sign-out-alt"></i> Salir
-              </button>
-              <a
-                href="https://console.firebase.google.com/u/3/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files~2FCARRUSEL"
-                target="_blank"
-                ><button class="btn navlinkinSolid m-1">
-                  <i class="fas fa-cloud-upload-alt"></i> Administrar imagenes
-                </button></a
-              >
-            </div>
-            <h3 class="titleInstRed">
-              <i class="far fa-eye"></i> Previsualización de la imagen a
-              publicar.
-            </h3>
-            <div
-              id="carouselExampleFade"
-              class="carousel slide carousel-fade"
-              data-ride="carousel"
-            >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
+              <hr />
+              <div class="row">
+                <div class="col">
+                  <button
+                    [routerLink]="['/admi_carrusel']"
+                    class="btn navlinkinSolid m-1"
+                  >
+                    <i class="fas fa-arrow-left"></i> Salir
+                  </button>
                   <a
-                    href="https://www.usco.edu.co/archivosUsuarios/20/publicacion/facultad-de-salud/doctorado-en-ciencias-de-la-salud-v-cohorte.pdf"
+                    href="https://console.firebase.google.com/u/1/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files/~2FCARRUSEL"
                     target="_blank"
-                    ><img class="d-block w-100" [src]="carrusel.urlImg" alt=""
-                  /></a>
-                  <div class="carousel-caption d-none d-md-block"></div>
+                    ><button class="btn navlinkinSolid m-1">
+                      <i class="fas fa-cloud-upload-alt"></i> Administrar
+                      imagenes
+                    </button></a
+                  >
+                </div>
+                <div class="col text-right">
+                  <button
+                    (click)="openModal(confirmar)"
+                    class="btn navlinkinSolid m-1"
+                  >
+                    <i class="far fa-save"></i> Guardar
+                  </button>
                 </div>
               </div>
-              <a
-                class="carousel-control-prev"
-                href="#carouselExampleFade"
-                role="button"
-                data-slide="prev"
-              >
-                <i
-                  style="margin-top: 200px"
-                  class="fas fa-chevron-circle-left fa-3x"
-                ></i>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a
-                class="carousel-control-next"
-                href="#carouselExampleFade"
-                role="button"
-                data-slide="next"
-              >
-                <i
-                  style="margin-top: 200px"
-                  class="fas fa-chevron-circle-right fa-3x"
-                ></i>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-            <br />
-            <div
-              *ngIf="alertBool != false"
-              class="alert alert-danger alert-dismissible fade show"
-              role="alert"
-            >
-              <strong>{{ imgError }}</strong>
-            </div>
-            <ng-template #confirmar let-modal>
-              <div class="modal-header bgrojoycafe">
-                <h4 class="modal-title">Confirmar acción</h4>
-                <button
-                  type="button"
-                  class="close"
-                  aria-label="Close"
-                  (click)="modal.dismiss('Cross click')"
-                >
-                  <i class="fas fa-times" style="color: white"></i>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div
-                  class="alert alert-warning text-center font-weight-bold"
-                  role="alert"
-                >
-                  Está a punto de guardar. <br />
-                  ¿Desea continuar con la acción?
+              <hr />
+              <div class="row">
+                <div class="col">
+                  <h3 class="titleInstRed">
+                    <i class="far fa-eye"></i> Previsualización de la imagen a
+                    publicar.
+                  </h3>
                 </div>
               </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btnColorFacultadSalud"
-                  ngbAutofocus
-                  (click)="guardar()"
-                >
-                  Aceptar
-                </button>
-                <button
-                  type="button"
-                  class="btn navlinkinSolid"
-                  (click)="modal.close('Close click')"
-                >
-                  Cancelar
-                </button>
+              <div class="row mb-5">
+                <div class="col">
+                  <div
+                    id="carouselExampleFade"
+                    class="carousel slide carousel-fade"
+                    data-ride="carousel"
+                  >
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <a
+                          href="https://www.usco.edu.co/archivosUsuarios/20/publicacion/facultad-de-salud/doctorado-en-ciencias-de-la-salud-v-cohorte.pdf"
+                          target="_blank"
+                          ><img
+                            class="d-block w-100"
+                            [src]="carrusel.urlImg"
+                            alt=""
+                        /></a>
+                        <div class="carousel-caption d-none d-md-block"></div>
+                      </div>
+                    </div>
+                    <a
+                      class="carousel-control-prev"
+                      href="#carouselExampleFade"
+                      role="button"
+                      data-slide="prev"
+                    >
+                      <i
+                        style="margin-top: 200px"
+                        class="fas fa-chevron-circle-left fa-3x"
+                      ></i>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a
+                      class="carousel-control-next"
+                      href="#carouselExampleFade"
+                      role="button"
+                      data-slide="next"
+                    >
+                      <i
+                        style="margin-top: 200px"
+                        class="fas fa-chevron-circle-right fa-3x"
+                      ></i>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </ng-template>
-            <br />
-          </form>
+              <div
+                *ngIf="alertBool != false"
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                <strong>{{ imgError }}</strong>
+              </div>
+              <ng-template #confirmar let-modal>
+                <div class="modal-header bgrojoycafe">
+                  <h4 class="modal-title">Confirmar acción</h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"
+                  >
+                    <i class="fas fa-times" style="color: white"></i>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div
+                    class="alert alert-warning text-center font-weight-bold"
+                    role="alert"
+                  >
+                    Está a punto de guardar. <br />
+                    ¿Desea continuar con la acción?
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btnColorFacultadSalud"
+                    ngbAutofocus
+                    (click)="guardar()"
+                  >
+                    Aceptar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn navlinkinSolid"
+                    (click)="modal.close('Close click')"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </ng-template>
+            </form>
+          </div>
         </div>
       </div>
     </div>

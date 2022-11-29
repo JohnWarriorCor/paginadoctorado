@@ -13,6 +13,7 @@ import { AgendainstitucionalService } from '../../../services/agenda/agendainsti
   templateUrl: './docentes.component.html',
   styleUrls: ['./docentes.component.css'],
 })
+
 export class DocentesComponent implements OnInit {
   filterpost = '';
   page = 1;
@@ -34,6 +35,7 @@ export class DocentesComponent implements OnInit {
   actualIndex = -1;
   eventosPrograma: any[] = [];
   eventosInstitucional: any[] = [];
+
   constructor(
     private toastr: ToastrService,
     public auth: AngularFireAuth,
@@ -46,10 +48,15 @@ export class DocentesComponent implements OnInit {
       this.plantelProfesores = data;
     });
   }
+
+  ngOnInit() {
+    this.obtenerEventosPrograma();
+    this.obtenerEventosInstitucional();
+    this.obtenerProfesores();
+  }
+
   get sortDataPrograma() {
     return this.eventosPrograma.sort((a, b) => {
-      // tslint:disable-next-line:whitespace
-      // tslint:disable-next-line:no-angle-bracket-type-assertion
       return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
     });
   }
@@ -75,6 +82,7 @@ export class DocentesComponent implements OnInit {
         this.eventosPrograma = data;
       });
   }
+
   get sortDataInstitucional() {
     return this.eventosInstitucional.sort((a, b) => {
       // tslint:disable-next-line:whitespace
@@ -82,6 +90,7 @@ export class DocentesComponent implements OnInit {
       return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
     });
   }
+
   obtenerEventosInstitucional(): void {
     this.agendaInstitucionalService
       .getAll()
@@ -95,17 +104,13 @@ export class DocentesComponent implements OnInit {
         this.eventosInstitucional = data;
       });
   }
-  ngOnInit() {
-    this.obtenerEventosPrograma();
-    this.obtenerEventosInstitucional();
-    this.obtenerProfesores();
-  }
 
   refreshList(): void {
     this.actualProfesor = null;
     this.actualIndex = -1;
     this.obtenerProfesores();
   }
+
   setActiveTutorial(evento, index): void {
     this.actualProfesor = evento;
     this.actualIndex = index;

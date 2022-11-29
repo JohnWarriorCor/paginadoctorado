@@ -8,14 +8,14 @@
     <div class="carousel-inner text-center">
       <div
         [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-        *ngFor="let item of carrusel | keysfirebase | listinvert; let i = index"
+        *ngFor="let carrusel of sortDataCarrusel; let i = index"
       >
-        <a [href]="carrusel[item].urlInfo" target="_blank"
+        <a [href]="carrusel.urlInfo" target="_blank"
           ><img
             class="d-block w-100 cursorSelect"
-            [src]="carrusel[item].urlImg"
-            [alt]="carrusel[item].titulo"
-            [title]="carrusel[item].titulo"
+            [src]="carrusel.urlImg"
+            [alt]="carrusel.titulo"
+            [title]="carrusel.titulo"
         /></a>
         <div class="container">
           <button
