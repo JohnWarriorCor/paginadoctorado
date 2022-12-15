@@ -19,7 +19,7 @@ export class EstudianteComponent implements OnInit {
   page = 1;
   pageSize = 3;
   pageArticulos = 1;
-  pageSizeArticulos = 3;
+  pageSizeArticulos = 1;
   today = new Date();
   fecha: any;
   closeResult: string;

@@ -6,171 +6,160 @@
       style="height: auto"
     />
   </div>
-  <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-      <div class="row">
-        <div
-          class="col-sm-8 shadow fondodivleft shadow"
-          *ngFor="let grupo of grupos"
-        >
-          <div id="print-section">
-            <h3 class="titleInstRed">
-              <i class="fas fa-microscope"></i> Grupos de Investigación del
-              Doctorado
-            </h3>
-            <hr class="lineInstRed" />
-            <br />
-            <div class="container">
-              <div class="input-group mb-3 m-2">
-                <input
-                  type="text"
-                  class="form-control shadow"
-                  style="border-radius: 50px 0px 0px 50px"
-                  name="filterpost"
-                  [(ngModel)]="filterpost"
-                  placeholder="Buscar por Nombre del Gurpo o Líder"
-                  aria-label="Recipient's username"
-                  aria-describedby="button-addon2"
-                />
-                <div class="input-group-append">
-                  <button
-                    class="btn navlinkinSolid shadow"
-                    type="button"
-                    id="button-addon2"
-                  >
-                    <i class="fas fa-search"></i> Buscar
-                  </button>
-                </div>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div
+        class="col-sm-8 shadow fondodivleft pt-4 pb-4"
+        *ngFor="let grupo of grupos"
+      >
+        <div id="print-section">
+          <h3 class="titleInstRed">
+            <i class="fas fa-microscope"></i> Grupos de Investigación del
+            Doctorado
+          </h3>
+          <hr class="lineInstRed" />
+          <br />
+          <div class="container">
+            <div class="input-group mb-3 m-2">
+              <input
+                type="text"
+                class="form-control shadow"
+                style="border-radius: 50px 0px 0px 50px"
+                name="filterpost"
+                [(ngModel)]="filterpost"
+                placeholder="Buscar por Nombre del Gurpo o Líder"
+                aria-label="Recipient's username"
+                aria-describedby="button-addon2"
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-usco-vt shadow"
+                  type="button"
+                  id="button-addon2"
+                >
+                  <i class="fas fa-search"></i> Buscar
+                </button>
               </div>
             </div>
-            <br />
+          </div>
+          <br />
 
-            <table
-              id="tableSortExample"
-              class="
-                table table-bordered table-hover
-                parinst
-                table-responsive
-                text-center
-              "
-              style="border-radius: 10px"
+          <table
+            id="tableSortExample"
+            class="table table-bordered table-hover parinst table-responsive text-center"
+            style="border-radius: 10px"
+          >
+            <thead class="tablatit">
+              <tr class="white">
+                <th style="vertical-align: middle" scope="col">N°</th>
+                <th style="vertical-align: middle" scope="col">
+                  CÓDIGO DE GRUPO COLCIENCIAS
+                </th>
+                <th style="vertical-align: middle" scope="col">
+                  NOMBRE DEL GRUPO
+                </th>
+                <th style="vertical-align: middle" scope="col">
+                  LÍDER DEL GRUPO
+                </th>
+                <th style="vertical-align: middle" scope="col">
+                  CLASIFICACIÓN DEL GRUPO
+                </th>
+                <th style="vertical-align: middle" scope="col">GrupLAC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="
+                  let field of grupo.fieldArray
+                    | filtrogruposinves : filterpost;
+                  let i = index
+                "
+              >
+                <th style="vertical-align: middle" scope="row">
+                  {{ i + 1 }}
+                </th>
+                <td style="vertical-align: middle">
+                  {{ field.codigo }}
+                </td>
+                <td style="vertical-align: middle">
+                  {{ field.nombre }}
+                </td>
+                <td style="vertical-align: middle">
+                  {{ field.lider }}
+                </td>
+                <td style="vertical-align: middle">
+                  {{ field.categoria }}
+                </td>
+                <td style="vertical-align: middle">
+                  <a [href]="field.url" target="_blanck">
+                    <button
+                      class="btn btn-default colorRedInst"
+                      type="button"
+                      placement="top"
+                      ngbTooltip="Ver Información del Grupo {{ field.nombre }}"
+                    >
+                      <i class="fas fa-link"></i>
+                    </button>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-usco-vt"
+              printSectionId="print-section"
+              [useExistingCss]="true"
+              printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
+              ngxPrint
             >
-              <thead class="tablatit">
-                <tr class="white">
-                  <th style="vertical-align: middle" scope="col">N°</th>
-                  <th style="vertical-align: middle" scope="col">
-                    CÓDIGO DE GRUPO COLCIENCIAS
-                  </th>
-                  <th style="vertical-align: middle" scope="col">
-                    NOMBRE DEL GRUPO
-                  </th>
-                  <th style="vertical-align: middle" scope="col">
-                    LÍDER DEL GRUPO
-                  </th>
-                  <th style="vertical-align: middle" scope="col">
-                    CLASIFICACIÓN DEL GRUPO
-                  </th>
-                  <th style="vertical-align: middle" scope="col">GrupLAC</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  *ngFor="
-                    let field of grupo.fieldArray
-                      | filtrogruposinves: filterpost;
-                    let i = index
-                  "
-                >
-                  <th style="vertical-align: middle" scope="row">
-                    {{ i + 1 }}
-                  </th>
-                  <td style="vertical-align: middle">
-                    {{ field.codigo }}
-                  </td>
-                  <td style="vertical-align: middle">
-                    {{ field.nombre }}
-                  </td>
-                  <td style="vertical-align: middle">
-                    {{ field.lider }}
-                  </td>
-                  <td style="vertical-align: middle">
-                    {{ field.categoria }}
-                  </td>
-                  <td style="vertical-align: middle">
-                    <a [href]="field.url" target="_blanck">
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        placement="top"
-                        ngbTooltip="Ver Información del Grupo {{
-                          field.nombre
-                        }}"
-                      >
-                        <i class="fas fa-link"></i>
-                      </button>
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              <i class="fas fa-print"></i> Imprimir
+            </button>
           </div>
-          <hr />
-          <div class="row">
-            <div class="col">
-              <button
-                class="btn navlinkinSolid"
-                printSectionId="print-section"
-                [useExistingCss]="true"
-                printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
-                ngxPrint
-              >
-                <i class="fas fa-print"></i> Imprimir
-              </button>
-            </div>
-            <div class="col text-right">
-              <button
-                *ngIf="auth.user | async"
-                class="btn navlinkinSolid"
-                [routerLink]="['/admi_gruposInvestigacion', grupo.key]"
-              >
-                <i class="fas fa-pencil-alt"></i> Editar
-              </button>
-            </div>
+          <div class="col text-right">
+            <button
+              *ngIf="auth.user | async"
+              class="btn btn-usco-vt"
+              [routerLink]="['/admi_gruposInvestigacion', grupo.key]"
+            >
+              <i class="fas fa-pencil-alt"></i> Editar
+            </button>
           </div>
         </div>
-        <div class="col-sm-auto shadow fondodivright">
-          <h3 class="titleInstRed">
-            <i class="fas fa-rss"></i> Redes sociales
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-            width="300"
-            height="800"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
-          <!--
-          <hr />
-          <h3 class="titleInstRed">
-            <i class="far fa-calendar-alt"></i> Calendario
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;src=ZG9jZW5jaWVuY2lhc2RlbGFzYWx1ZHVzY29AZ21haWwuY29t&amp;src=bDNmbXZkbXExcHYyMjJlNGIxb2o2NjV2NGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%23C0CA33&amp;color=%2333B679&amp;color=%230B8043"
-            style="border: none; font-family: Open Sans; color: #4d626c"
-            width="300"
-            height="400"
-            frameborder="0"
-            scrolling="no"
-          ></iframe
-          >--><br />
-        </div>
+      </div>
+      <div class="col-sm-auto shadow fondodivright pt-4 pb-4">
+        <h3 class="titleInstRed"><i class="fas fa-rss"></i> Redes sociales</h3>
+        <hr class="lineInstRed" />
+        <br />
+        <iframe
+          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+          width="300"
+          height="800"
+          style="border: none; overflow: hidden"
+          scrolling="no"
+          frameborder="0"
+          allowTransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+        <!--
+        <hr />
+        <h3 class="titleInstRed">
+          <i class="far fa-calendar-alt"></i> Calendario
+        </h3>
+        <hr class="lineInstRed" />
+        <br />
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FBogota&amp;src=ZG9jZW5jaWVuY2lhc2RlbGFzYWx1ZHVzY29AZ21haWwuY29t&amp;src=bDNmbXZkbXExcHYyMjJlNGIxb2o2NjV2NGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZXMuY28jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5&amp;color=%23C0CA33&amp;color=%2333B679&amp;color=%230B8043"
+          style="border: none; font-family: Open Sans; color: #4d626c"
+          width="300"
+          height="400"
+          frameborder="0"
+          scrolling="no"
+        ></iframe
+        >--><br />
       </div>
     </div>
   </div>

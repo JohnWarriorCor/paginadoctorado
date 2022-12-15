@@ -7,100 +7,132 @@
     />
   </div>
   <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+    <div class="container mt-5 mb-5">
       <div class="row">
-        <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst">
+        <div class="col-sm-8 shadow text-justify fondodivleft grayinst">
           <div id="print-section">
-            <h3 class="titleInstRed">
-              <i class="fas fa-university"></i> Orígenes del programa
-            </h3>
-            <hr class="lineInstRed" />
-            <br />
-            <div *ngFor="let h of historia | keysfirebase; let i = index">
-              <p class="text-justify gray pre">
-                {{ historia[h].reseniaHistorica }}
-              </p>
-              <hr class="no-print" />
-              <div class="row no-print">
-                <div class="col">
-                  <button
-                    class="btn navlinkinSolid"
-                    printSectionId="print-section"
-                    [useExistingCss]="true"
-                    printTitle="Historia del Programa Doctorado en Ciencias de la Salud"
-                    ngxPrint
-                  >
-                    <i class="fas fa-print"></i> Imprimir
-                  </button>
-                </div>
-                <div class="col text-right">
-                  <button
-                    *ngIf="auth.user | async"
-                    class="btn navlinkinSolid"
-                    [routerLink]="['/admi_historia', h]"
-                  >
-                    <i class="fas fa-pencil-alt"></i> Editar
-                  </button>
+            <div class="row mt-4">
+              <div class="col">
+                <h3 class="titleInstRed">
+                  <i class="fas fa-university"></i> Orígenes del programa
+                </h3>
+                <hr class="lineInstRed" />
+                <br />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div *ngFor="let h of historia | keysfirebase; let i = index">
+                  <p class="text-justify gray pre">
+                    {{ historia[h].reseniaHistorica }}
+                  </p>
+                  <hr class="no-print" />
+                  <div class="row no-print">
+                    <div class="col">
+                      <button
+                        class="btn btn-usco-vt"
+                        printSectionId="print-section"
+                        [useExistingCss]="true"
+                        printTitle="Historia del Programa Doctorado en Ciencias de la Salud"
+                        ngxPrint
+                      >
+                        <i class="fas fa-print"></i> Imprimir
+                      </button>
+                    </div>
+                    <div class="col text-right">
+                      <button
+                        *ngIf="auth.user | async"
+                        class="btn btn-usco-vt"
+                        [routerLink]="['/admi_historia', h]"
+                      >
+                        <i class="fas fa-pencil-alt"></i> Editar
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="col-sm-auto fondodivright shadow">
-          <h3 class="titleInstRed">
-            <i class="fas fa-book-open"></i> Doctorados
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <div class="list-group" style="width: 300px">
-            <a
-              href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-pregrado/facultad-de-ingenieria/doctorado-en-agroindustria-y-desarrollo-agricola-sostenible/"
-              target="_blank"
-              type="button"
-              class="list-group-item list-group-item-action navlinkinSolid"
-              aria-current="true"
-            >
-              Doctorado en Agroindustria y Desarrollo Agrícola Sostenible
-            </a>
-            <a
-              href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-postgrado/facultad-de-educacion/doctorado-en-educacion-y-cultura-ambiental/"
-              target="_blank"
-              type="button"
-              class="list-group-item list-group-item-action navlinkinSolid"
-            >
-              Doctorado en Educación y Cultura Ambiental
-            </a>
+          <div class="row mt-4">
+            <div class="col">
+              <h3 class="titleInstRed">
+                <i class="fas fa-book-open"></i> Doctorados
+              </h3>
+              <hr class="lineInstRed" />
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="list-group" style="width: 300px">
+                <a
+                  href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-pregrado/facultad-de-ingenieria/doctorado-en-agroindustria-y-desarrollo-agricola-sostenible/"
+                  target="_blank"
+                  type="button"
+                  class="list-group-item list-group-item-action btn-usco-vt"
+                  aria-current="true"
+                >
+                  Doctorado en Agroindustria y Desarrollo Agrícola Sostenible
+                </a>
+                <a
+                  href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-postgrado/facultad-de-educacion/doctorado-en-educacion-y-cultura-ambiental/"
+                  target="_blank"
+                  type="button"
+                  class="list-group-item list-group-item-action btn-usco-vt"
+                >
+                  Doctorado en Educación y Cultura Ambiental
+                </a>
+              </div>
+            </div>
           </div>
           <br />
-          <h3 class="titleInstRed"><i class="fas fa-rss"></i> Síguenos</h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-            width="300"
-            height="500"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
+          <div class="row">
+            <div class="col">
+              <h3 class="titleInstRed"><i class="fas fa-rss"></i> Síguenos</h3>
+              <hr class="lineInstRed" />
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+                width="300"
+                height="500"
+                style="border: none; overflow: hidden"
+                scrolling="no"
+                frameborder="0"
+                allowTransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            </div>
+          </div>
           <hr />
-          <h3 class="titleInstRed">
-            <i class="fas fa-university"></i> Universidad
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-            width="100%"
-            height="500"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
+          <div class="row">
+            <div class="col">
+              <h3 class="titleInstRed">
+                <i class="fas fa-university"></i> Universidad
+              </h3>
+              <hr class="lineInstRed" />
+              <br />
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+                width="100%"
+                height="500"
+                style="border: none; overflow: hidden"
+                scrolling="no"
+                frameborder="0"
+                allowTransparency="true"
+                allow="encrypted-media"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>

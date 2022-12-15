@@ -20,7 +20,7 @@
         <div class="container">
           <button
             *ngIf="auth.user | async"
-            class="btn btnColorFacultadSalud m-2 btn-lg btn-block carousel-caption"
+            class="btn btn-usco-fac-salud m-2 btn-lg btn-block carousel-caption"
             [routerLink]="['/admi_carrusel']"
           >
             <i class="fas fa-pencil-alt"></i> Administrar
@@ -53,7 +53,7 @@
     <div class="row">
       <!-- INICIO CONTENIDO PRIMERA COLUMNA IZQUIERDA -->
       <div class="col fondodivleft shadow">
-        <div class="row">
+        <div class="row mt-4 mb-4">
           <div class="col">
             <h3 class="titleInstRed">
               <i class="fas fa-book-open"></i> Denominación del programa
@@ -67,7 +67,7 @@
             >
               <button
                 *ngIf="auth.user | async"
-                class="btn navlinkinSolid m-2 btn-lg btn-block"
+                class="btn btn-usco-vt m-2 btn-lg btn-block"
                 [routerLink]="['/admi_denominacion', den]"
               >
                 <i class="fas fa-pencil-alt"></i> Editar
@@ -196,7 +196,7 @@
                   </div>
                   <button
                     *ngIf="auth.user | async"
-                    class="btn navlinkinSolid m-2 btn-lg btn-block"
+                    class="btn btn-usco-vt m-2 btn-lg btn-block"
                     [routerLink]="['/admi_denominacion', den]"
                   >
                     <i class="fas fa-pencil-alt"></i> Editar
@@ -268,14 +268,18 @@
       <!-- FIN CONTENIDO PRIMERA COLUMNA IZQUIERDA -->
       <!-- INICIO CONTENIDO PRIMERA COLUMNA DERECHA -->
       <div class="col fondodivright shadow">
-        <h3
-          [routerLink]="['/agendaPrograma']"
-          class="titleInstRed cursorSelect"
-        >
-          <i class="far fa-edit"></i> Agéndate
-        </h3>
-        <hr class="lineInstRed" />
-        <br />
+        <div class="row mt-4">
+          <div class="col">
+            <h3
+              [routerLink]="['/agendaPrograma']"
+              class="titleInstRed cursorSelect"
+            >
+              <i class="far fa-edit"></i> Agéndate
+            </h3>
+            <hr class="lineInstRed" />
+            <br />
+          </div>
+        </div>
         <div class="row">
           <div class="col">
             <p
@@ -316,11 +320,11 @@
                         <small class="card-title subTituloRojoInstitucional">
                           <i class="far fa-calendar-alt"></i>
                           {{
-                            evento.fechaEvento | date: "fullDate" | titlecase
+                            evento.fechaEvento | date : "fullDate" | titlecase
                           }}
                         </small>
                         <p class="card-text grayinst">
-                          {{ evento.resenia | slice: 0:80 }}...
+                          {{ evento.resenia | slice : 0 : 80 }}...
                         </p>
                         <a
                           [href]="evento.url"
@@ -402,11 +406,11 @@
                         <small class="card-title subTituloRojoInstitucional">
                           <i class="far fa-calendar-alt"></i>
                           {{
-                            evento.fechaEvento | date: "fullDate" | titlecase
+                            evento.fechaEvento | date : "fullDate" | titlecase
                           }}
                         </small>
                         <p class="card-text grayinst">
-                          {{ evento.resenia | slice: 0:80 }}...
+                          {{ evento.resenia | slice : 0 : 80 }}...
                         </p>
                         <a
                           [href]="evento.url"
@@ -456,7 +460,7 @@
       <div class="col-sm-8 fondodivleft shadow">
         <div class="row">
           <div class="col">
-            <div class="row">
+            <div class="row mt-4">
               <div class="col">
                 <h3
                   [routerLink]="['/docentes']"
@@ -526,7 +530,7 @@
                                   {{ profesor.nombre }}
                                 </h4>
                                 <p class="card-text text-justify">
-                                  {{ profesor.sintesis | slice: 0:200 }}
+                                  {{ profesor.sintesis | slice : 0 : 200 }}
                                   <a
                                     [routerLink]="['/docente', profesor.key]"
                                     style="color: #8f141b; font-size: 10px"
@@ -625,7 +629,7 @@
                                   {{ estudiante.nombre }}
                                 </h4>
                                 <p class="card-text text-justify">
-                                  {{ estudiante.sintesis | slice: 0:200 }}
+                                  {{ estudiante.sintesis | slice : 0 : 200 }}
                                   <a
                                     [routerLink]="[
                                       '/estudiante',
@@ -724,7 +728,7 @@
                                 <p class="card-text text-justify">
                                   {{
                                     egresadosPrograma[item].sintesis
-                                      | slice: 0:200
+                                      | slice : 0 : 200
                                   }}
                                   <a
                                     [routerLink]="['/egresado', item]"
@@ -748,11 +752,15 @@
       </div>
       <div class="col-sm-auto fondodivright shadow">
         <div>
-          <h3 class="titleInstRed">
-            <i class="fas fa-rss"></i> Redes sociales
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
+          <div class="row mt-4">
+            <div class="col">
+              <h3 class="titleInstRed">
+                <i class="fas fa-rss"></i> Redes sociales
+              </h3>
+              <hr class="lineInstRed" />
+              <br />
+            </div>
+          </div>
           <iframe
             src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
             width="300"
@@ -775,7 +783,7 @@
               href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-pregrado/facultad-de-ingenieria/doctorado-en-agroindustria-y-desarrollo-agricola-sostenible/"
               target="_blank"
               type="button"
-              class="list-group-item list-group-item-action navlinkinSolid"
+              class="list-group-item list-group-item-action btn-usco-vt"
               aria-current="true"
             >
               Doctorado en Agroindustria y Desarrollo Agrícola Sostenible
@@ -784,7 +792,7 @@
               href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-postgrado/facultad-de-educacion/doctorado-en-educacion-y-cultura-ambiental/"
               target="_blank"
               type="button"
-              class="list-group-item list-group-item-action navlinkinSolid"
+              class="list-group-item list-group-item-action btn-usco-vt"
             >
               Doctorado en Educación y Cultura Ambiental
             </a>

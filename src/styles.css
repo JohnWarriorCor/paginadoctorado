@@ -1,9 +1,11 @@
-/*RESTRUCTURACIÓN DEL CSS*/
-@import '~ngx-toastr/toastr';
+/*IMPORTACIONES*/
+@import "~ngx-toastr/toastr";
 
+/*GENERAL Y ETIQUETAS*/
 * {
   box-sizing: border-box;
 }
+
 body,
 html {
   margin: 0;
@@ -12,91 +14,186 @@ html {
   font-size: 14px;
   background: #f5f5f5;
 }
-.cursorSelect{
+
+@media print {
+  .table {
+    border: solid 2px black;
+  }
+  .tables thead th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #000;
+  }
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hugeModal > .modal-dialog {
+    width: 90%;
+    max-width: 1200px; /* or 90% or whatever */
+  }
+}
+
+input:invalid {
+  border: 1px solid red;
+  box-shadow: 0 0 3px 1px red;
+}
+
+a.activeTab:hover {
+  color: #cab691;
+}
+
+/*SELECTORES DE CLASE*/
+
+.cursor-select {
   cursor: pointer;
 }
-.header {
-  border-top: 1px solid white;
-  height: 50px;
-  width: 100%;
-}
+
 .menu {
   height: 50px;
   width: 100%;
   z-index: 100;
 }
+
 .wrapper {
   width: 100%;
   padding-top: 0px;
 }
+
 .fixed {
   position: fixed;
   top: 0;
 }
-.redinst {
-  color: #8f141b;
-  margin-bottom: 20px;
-}
-.subTituloRojoInstitucional {
-  color: #8f141b;
-  font-weight: bold;
-}
-.colorRedInst {
-  color: #8f141b;
-}
-.bgRedInst {
+
+.bg-usco-vt-d1 {
   background-color: #8f141b;
 }
-.bgrojoycafe {
-  background-color: #8f141b;
-  color: #dfd4a6;
+
+.bg-usco-vt-d2 {
+  background-color: #b15b60;
 }
-.bgrojoyblanco {
-  background-color: #8f141b;
-  color: white;
+
+.bg-usco-vt-d3 {
+  background-color: #e3c5c6;
 }
-.beigeInst {
-  color: #dfd4a6;
+
+.bg-usco-vt-d4 {
+  background-color: #ddb8ba;
 }
-.grayinst {
+
+.bg-usco-vt-d5 {
+  background-color: #f4e7e8;
+}
+
+.bg-usco-vt-d6 {
+  background-color: #5c0e12;
+}
+
+.bg-usco-cf-d1 {
+  background-color: #dfd4a6;
+}
+
+.bg-usco-cf-d2 {
+  background-color: #e5ddb8;
+}
+
+.bg-usco-cf-d3 {
+  background-color: #efead3;
+}
+
+.bg-usco-cf-d4 {
+  background-color: #f5f2e4;
+}
+
+.bg-usco-cf-d5 {
+  background-color: #f9f6ed;
+}
+
+.bg-usco-cf-d6 {
+  background-color: #c7b363;
+}
+
+.bg-usco-gr-d1 {
+  background-color: #4d626c;
+}
+
+.bg-usco-gr-d2 {
+  background-color: #839198;
+}
+
+.bg-usco-gr-d3 {
+  background-color: #a6b1b6;
+}
+
+.bg-usco-gr-d4 {
+  background-color: #dbe0e2;
+}
+
+.bg-usco-gr-d5 {
+  background-color: #edeff0;
+}
+
+.bg-usco-gr-d6 {
+  background-color: #1e262b;
+}
+
+.font-usco-gr {
   color: #4e6470;
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
-.navlinkinSolid {
+
+.font-usco-vt {
+  color: #8f141b;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+.btn-usco-vt {
   background-color: #8f141b;
   color: #dfd4a6;
 }
-.navlinkinSolid:hover {
+
+.btn-usco-vt:hover {
   background-color: #1e262b;
   color: #edeff0;
 }
-.btnColorFacultadSalud {
-  background-color:#00A4B7;
+
+.btn-usco-fac-salud {
+  background-color: #00a4b7;
   color: white;
 }
-.btnColorFacultadSalud:hover {
-  background-color: #004e57;
-  color: white;
+
+.btn-usco-fac-salud:hover {
+  background-color: #1e262b;
+  color: #edeff0;
 }
-.greyImg{
+
+.greyImg {
   filter: grayscale(100%);
 }
-.greyImg:hover{
+
+.greyImg:hover {
   filter: grayscale(0%);
 }
+
 .fondodivleft {
   background-color: white;
   border-radius: 12px;
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
   margin-bottom: 10px;
   margin-right: 10px;
 }
+
 .fondodivright {
   background-color: white;
   border-radius: 12px;
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
   margin-bottom: 10px;
 }
+
 .fondodivCenter {
   background-color: white;
   border-radius: 12px;
@@ -104,12 +201,14 @@ html {
   margin-bottom: 10px;
   margin-right: 10px;
 }
+
 .fondodivcent {
   background-color: white;
   border-radius: 12px;
   padding: 30px;
   margin-bottom: 10px;
 }
+
 .fondodivlogin {
   background-color: white;
   border-radius: 12px;
@@ -119,6 +218,7 @@ html {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .lineInstRed {
   content: "";
   height: 2px;
@@ -127,9 +227,11 @@ html {
   position: absolute;
   width: 20%;
 }
-.mgText{
+
+.mgText {
   margin-top: 50px;
 }
+
 .ir-arriba {
   display: inline-block;
   padding: 10px;
@@ -143,67 +245,28 @@ html {
   z-index: 100;
   border-radius: 100px;
 }
+
 .titleInstRed {
   color: #8f141b;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-ngb-pagination ::ng-deep ul > li:not(.active) > a {
-  background-color: #8f141b !important;
-  border-top-style: none !important;
-  border-bottom-style: none !important;
-  border-left-style: none !important;
-  border-right-style: none !important;
-  color: #dfd4a6;
-  border-color: #dfd4a6;
-}
-
-ngb-pagination ::ng-deep ul > li.active > a {
-  background-color: #b62229 !important;
-  border-top-style: none !important;
-  border-bottom-style: none !important;
-  border-left-style: none !important;
-  border-right-style: none !important;
-  color: #f0e4b4;
-  border-color: #f0e4b4;
-}
-
-/*FIN RESTRUCTURACIÓN DEL CSS*/
-
-@media print {
-  .table {
-    border: solid 2px black;
-  }
-  h5 {
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-  .tables thead th {
-    vertical-align: bottom;
-    border-bottom: 1px solid #000;
-  }
-  .no-print,
-  .no-print * {
-    display: none !important;
-  }
-}
 .inicio {
   margin-top: 20px;
 }
+
 .fuenteUsco {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
+
 .centro {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
-#sp-logo-wrap {
-  padding: 37px 0;
-  background-color: #fff;
-}
+
 .txtcenter {
   text-align: center;
 }
@@ -280,11 +343,6 @@ ngb-pagination ::ng-deep ul > li.active > a {
 .uscolink {
   color: #8f141b;
   text-decoration: none;
-}
-
-input:invalid {
-  border: 1px solid red;
-  box-shadow: 0 0 3px 1px red;
 }
 
 .input-inside-button {
@@ -386,31 +444,34 @@ input:invalid {
   border-radius: 5px;
 }
 
-a.activeTab:hover {
-  color: #cab691;
-}
 .colorRojo {
   background-color: #8f141b;
 }
+
 .colorCafe {
   background-color: #dfd4a6;
 }
+
 .colorNegro {
   color: black;
 }
+
 .colorRojoContorno {
   color: #8f141b;
 }
+
 .iconRadio {
   display: inline-block;
   border-radius: 60px;
   box-shadow: 0px 0px 5px black;
   padding: 0.5em 0.6em;
 }
+
 .divUpload {
   position: relative;
   overflow: hidden;
 }
+
 .inputUpload {
   position: absolute;
   font-size: 50px;
@@ -418,6 +479,7 @@ a.activeTab:hover {
   right: 0;
   top: 0;
 }
+
 .menuAdmin {
   background-color: white;
   padding: 10px;
@@ -427,6 +489,7 @@ a.activeTab:hover {
   border-color: #000;
   color: #8fc8ee;
 }
+
 .selectAdmin {
   font-size: 12px;
   width: 15%;
@@ -435,6 +498,7 @@ a.activeTab:hover {
   margin-right: 1%;
   margin-top: 1%;
 }
+
 .main-container {
   margin-top: 40px;
   margin-bottom: 150px;
@@ -448,7 +512,211 @@ a.activeTab:hover {
   width: 120px;
 }
 
-/* Animaciones */
+.caki {
+  color: #dfd4a6;
+}
+
+.text-usco-red {
+  color: #8f141b;
+}
+
+.factores {
+  font-size: 20px;
+  height: 50px;
+  width: 600px;
+  border-radius: 15px 0px 15px 0px;
+  background-color: #8f141b;
+  padding: 10px;
+  color: #dfd4a6;
+}
+
+.claro2 {
+  background-color: rgb(167, 25, 32);
+  color: rgb(236, 224, 176);
+}
+
+.indice {
+  margin: 5px;
+  font-size: 30px;
+  background-color: #8f141b;
+}
+
+.navcon {
+  background-color: #dfd4a6;
+  color: #8f141b;
+  border-bottom-style: solid;
+  border-color: #ccc;
+  border-width: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.navlinkin {
+  background-color: #8f141b;
+  color: #dfd4a6;
+}
+
+.navlinkout {
+  background-color: #dfd4a6;
+  color: #8f141b;
+}
+
+.navlinkin:hover {
+  background-color: rgb(255, 242, 191);
+  color: rgb(179, 27, 34);
+}
+
+.navlinkout:hover {
+  color: #dfd4a6;
+  background-color: #8f141b;
+}
+
+.fondoTitulo {
+  background-color: rgb(72, 153, 228);
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  border: 2px solid;
+  border-radius: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+.inputPaciente {
+  border-radius: 50px;
+  width: 20%px;
+  margin-bottom: 15px;
+}
+
+.gray {
+  color: #626567;
+}
+
+.botonUsco {
+  background-color: #8f141b;
+  color: #dfd4a6;
+  width: 50%;
+  font-size: 2vw;
+}
+
+.botonUsco:hover {
+  background-color: rgb(179, 27, 34);
+  color: rgb(255, 242, 191);
+}
+
+.botonUscoPerfil {
+  background-color: #8f141b;
+  color: #dfd4a6;
+  width: 20%;
+  font-size: 12px;
+  margin: 5px;
+}
+
+.botonUscoPerfil:hover {
+  background-color: rgb(179, 27, 34);
+  color: rgb(255, 242, 191);
+}
+
+.pre {
+  word-wrap: break-word; /* IE 5.5-7 */
+  white-space: pre-wrap; /* Modern browsers */
+}
+
+.custom-file-input {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  margin: 0;
+  opacity: 0;
+}
+
+.custom-file-label::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: block;
+  height: calc(1.5em + 0.75rem);
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  color: #ffffff;
+  content: "Seleccionar";
+  background-color: #4d626c;
+  border-left: inherit;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.my-custom-class .tooltip-inner {
+  background-color: #8f141b;
+  color: white;
+  font-size: 125%;
+}
+
+.my-custom-class .arrow::before {
+  border-top-color: #8f141b;
+}
+
+/*SELECTORES ID*/
+
+#wrap {
+  width: 750px;
+  height: 1500px;
+  padding: 0;
+  overflow: hidden;
+}
+#scaled-frame {
+  width: 1000px;
+  height: 2000px;
+  border: 0px;
+}
+#scaled-frame {
+  zoom: 0.75;
+  -moz-transform: scale(0.75);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.75);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.75);
+  -webkit-transform-origin: 0 0;
+}
+
+#sp-logo-wrap {
+  padding: 37px 0;
+  background-color: #fff;
+}
+
+#sp-top-bar {
+  padding: 6px 0;
+  background: #4d626c;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+/*EDICION DE COMPONENTES FRAMEWORKS*/
+
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+  background-color: #8f141b !important;
+  border-top-style: none !important;
+  border-bottom-style: none !important;
+  border-left-style: none !important;
+  border-right-style: none !important;
+  color: #dfd4a6;
+  border-color: #dfd4a6;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+  background-color: #b62229 !important;
+  border-top-style: none !important;
+  border-bottom-style: none !important;
+  border-left-style: none !important;
+  border-right-style: none !important;
+  color: #f0e4b4;
+  border-color: #f0e4b4;
+}
+
+/*ANIMACIONES Y EFECTOS*/
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -505,146 +773,7 @@ a.activeTab:hover {
     opacity: 1;
   }
 }
-/* Animaciones */
-.caki {
-  color: #dfd4a6;
-}
-.text-usco-red {
-  color: #8f141b;
-}
-.factores {
-  font-size: 20px;
-  height: 50px;
-  width: 600px;
-  border-radius: 15px 0px 15px 0px;
-  background-color: #8f141b;
-  padding: 10px;
-  color: #dfd4a6;
-}
 
-.claro2 {
-  background-color: rgb(167, 25, 32);
-  color: rgb(236, 224, 176);
-}
-.indice {
-  margin: 5px;
-  font-size: 30px;
-  background-color: #8f141b;
-}
-.navcon {
-  background-color: #dfd4a6;
-  color: #8f141b;
-  border-bottom-style: solid;
-  border-color: #ccc;
-  border-width: 1px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-.navlinkin {
-  background-color: #8f141b;
-  color: #dfd4a6;
-}
-.navlinkout {
-  background-color: #dfd4a6;
-  color: #8f141b;
-}
-.navlinkin:hover {
-  background-color: rgb(255, 242, 191);
-  color: rgb(179, 27, 34);
-}
-.navlinkout:hover {
-  color: #dfd4a6;
-  background-color: #8f141b;
-}
-.fondoTitulo {
-  background-color: rgb(72, 153, 228);
-  color: white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  border: 2px solid;
-  border-radius: 20px;
-  padding: 10px;
-  width: 100%;
-}
-.inputPaciente {
-  border-radius: 50px;
-  width: 20%px;
-  margin-bottom: 15px;
-}
-.gray {
-  color: #626567;
-}
-.botonUsco {
-  background-color: #8f141b;
-  color: #dfd4a6;
-  width: 50%;
-  font-size: 2vw;
-}
-.botonUsco:hover {
-  background-color: rgb(179, 27, 34);
-  color: rgb(255, 242, 191);
-}
-.botonUscoPerfil {
-  background-color: #8f141b;
-  color: #dfd4a6;
-  width: 20%;
-  font-size: 12px;
-  margin: 5px;
-}
-.botonUscoPerfil:hover {
-  background-color: rgb(179, 27, 34);
-  color: rgb(255, 242, 191);
-}
-@media (min-width: 768px) {
-  .hugeModal > .modal-dialog {
-    width: 90%;
-    max-width: 1200px; /* or 90% or whatever */
-  }
-}
-.pre {
-  word-wrap: break-word; /* IE 5.5-7 */
-  white-space: pre-wrap; /* Modern browsers */
-}
-.custom-file-input {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: calc(1.5em + 0.75rem + 2px);
-  margin: 0;
-  opacity: 0;
-}
-.custom-file-label::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 3;
-  display: block;
-  height: calc(1.5em + 0.75rem);
-  padding: 0.375rem 0.75rem;
-  line-height: 1.5;
-  color: #ffffff;
-  content: "Seleccionar";
-  background-color: #4D626C;
-  border-left: inherit;
-  border-radius: 0 0.25rem 0.25rem 0;
-}
-.my-custom-class .tooltip-inner {
-  background-color: #8f141b;
-  color: white;
-  font-size: 125%;
-}
-.my-custom-class .arrow::before {
-  border-top-color: #8f141b;
-}
-#sp-top-bar {
-  padding: 6px 0;
-  background: #4d626c;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 12px;
-}
 /*CARDS FRONT AND BACKSIDE*/
 
 #gradiante {

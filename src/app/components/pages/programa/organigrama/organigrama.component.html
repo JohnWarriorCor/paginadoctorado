@@ -6,65 +6,100 @@
       style="height: auto"
     />
   </div>
-  <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-      <div class="row">
-        <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst">
-          <div id="print-section">
-            <h3 class="titleInstRed">Organigrama Universidad Surcolombiana</h3>
-            <hr class="lineInstRed" />
-            <br /><br />
-            <img
-              src="assets/organigrama1.jpg"
-              class="rounded img-fluid"
-            /><br /><br />
-            <h3 class="titleInstRed">
-              Estructura organizativa del Programa de Doctorado en Ciencias de
-              la Salud
-            </h3>
-            <hr class="lineInstRed" />
-            <br /><br />
-            <img src="assets/organigrama2.jpg" class="rounded img-fluid" />
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-sm-8 shadow fondodivleft">
+        <div id="print-section">
+          <div class="row mt-4">
+            <div class="col">
+              <h3 class="titleInstRed">
+                Organigrama Universidad Surcolombiana
+              </h3>
+              <hr class="lineInstRed" />
+              <br /><br />
+            </div>
           </div>
-          <hr />
-          <button
-            class="btn navlinkinSolid"
-            printSectionId="print-section"
-            [useExistingCss]="true"
-            printTitle="Organigrama Universidad Surcolombiana"
-            ngxPrint
-          >
-            <i class="fas fa-print"></i> Imprimir
-          </button>
+          <div class="row">
+            <div class="col">
+              <img
+                src="assets/organigrama1.jpg"
+                class="rounded img-fluid"
+              /><br /><br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h3 class="titleInstRed">
+                Estructura organizativa del Programa de Doctorado en Ciencias de
+                la Salud
+              </h3>
+              <hr class="lineInstRed" />
+              <br /><br />
+            </div>
+          </div>
+          <div class="row mb-4">
+            <div class="col">
+              <img src="assets/organigrama2.jpg" class="rounded img-fluid" />
+            </div>
+          </div>
         </div>
-        <div class="col-sm-auto fondodivright shadow">
-          <h3 class="titleInstRed">Universidad</h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-            width="100%"
-            height="500"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
-          <br /><br />
-          <h3 class="titleInstRed">Facultad de Salud</h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FFacSaludUsco&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"
-            width="100%"
-            height="500"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
+        <!--  <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-usco-vt"
+              printSectionId="print-section"
+              [useExistingCss]="true"
+              printTitle="Organigrama Universidad Surcolombiana"
+              ngxPrint
+            >
+              <i class="fas fa-print"></i> Imprimir
+            </button>
+          </div>
+        </div> -->
+      </div>
+      <div class="col-sm-auto fondodivright shadow">
+        <div class="row mt-4">
+          <div class="col">
+            <h3 class="titleInstRed">Universidad</h3>
+            <hr class="lineInstRed" />
+            <br />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+              width="100%"
+              height="400"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowTransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </div>
+        </div>
+        <br /><br />
+        <div class="row">
+          <div class="col">
+            <h3 class="titleInstRed">Facultad de Salud</h3>
+            <hr class="lineInstRed" />
+            <br />
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FFacSaludUsco&tabs=timeline&width=300&height=400&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=false&appId"
+              width="100%"
+              height="400"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowTransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>

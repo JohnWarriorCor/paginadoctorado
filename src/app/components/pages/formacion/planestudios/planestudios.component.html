@@ -7,157 +7,174 @@
       alt="Responsive image"
     />
   </div>
-  <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-      <div class="row">
-        <div
-          class="col-sm-8 shadow text-justify fondodivleft shadow grayinst"
-          *ngFor="let item of planEstudioResumen | keysfirebase"
-        >
-          <div id="print-section">
-            <h3 class="titleInstRed">Plan de Estudios</h3>
-            <hr class="lineInstRed" />
-            <br />
-            <table class="table table-bordered parinst">
-              <thead class="tablatit text-center">
-                <tr class="white">
-                  <th style="vertical-align: middle" scope="col">CURSOS</th>
-                  <th style="vertical-align: middle" scope="col">CRÉDITOS</th>
-                  <th style="vertical-align: middle" scope="col">PORCENTAJE</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <b>FUNDAMENTOS TEÓRICOS DE CIENCIAS DE LA SALUD. </b
-                    >(Ciencias de la Salud, Medicina Tropical, Salud de
-                    Poblaciones)
-                  </td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaUno }}
-                  </td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].porcentajeCasillaUno }}
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="2">
-                    <b>INVESTIGACIÓN</b><br />
-                    Metodología de la Investigación en CS
-                  </td>
-                  <td rowspan="2" class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaDos }}
-                  </td>
-                  <td
-                    rowspan="9"
-                    style="vertical-align: middle"
-                    class="text-center"
-                  >
-                    {{ planEstudioResumen[item].porcentajeCasillaDos }}
-                  </td>
-                </tr>
-                <tr></tr>
-                <tr>
-                  <td>Epistemología de la Salud</td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaTres }}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Proyecto Tesis I</td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaCuatro }}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Proyecto de Tesis II</td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaCinco }}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tesis</td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaSeis }}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Pasantía internacional</td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaSiete }}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Socialización productos Tesis</td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaOcho }}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Redacción y publicación científica</td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaNueve }}
-                  </td>
-                </tr>
-                <tr>
-                  <td><b>COMPONENTES FLEXIBLES</b></td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaDiez }}
-                  </td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].porcentajeCasillaTres }}
-                  </td>
-                </tr>
-                <tr>
-                  <td><b>TOTAL</b></td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].creditoCasillaTotal }}
-                  </td>
-                  <td class="text-center">
-                    {{ planEstudioResumen[item].porcentajeCasillaTotal }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <hr />
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div
+        class="col-sm-8 shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+        *ngFor="let item of planEstudioResumen | keysfirebase"
+      >
+        <div id="print-section">
           <div class="row">
             <div class="col">
-              <button
-                class="btn navlinkinSolid"
-                printSectionId="print-section"
-                [useExistingCss]="true"
-                printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
-                ngxPrint
-              >
-                <i class="fas fa-print"></i> Imprimir
-              </button>
+              <h3 class="titleInstRed">Plan de Estudios</h3>
+              <hr class="lineInstRed" />
+              <br />
             </div>
-            <div class="col text-right">
-              <button
-                *ngIf="auth.user | async"
-                class="btn navlinkinSolid"
-                [routerLink]="['/admi_plandeestudios', item]"
-              >
-                <i class="fas fa-pencil-alt"></i> Editar
-              </button>
+          </div>
+          <div class="row">
+            <div class="col">
+              <table class="table table-bordered parinst">
+                <thead class="tablatit text-center">
+                  <tr class="white">
+                    <th style="vertical-align: middle" scope="col">CURSOS</th>
+                    <th style="vertical-align: middle" scope="col">CRÉDITOS</th>
+                    <th style="vertical-align: middle" scope="col">
+                      PORCENTAJE
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <b>FUNDAMENTOS TEÓRICOS DE CIENCIAS DE LA SALUD. </b
+                      >(Ciencias de la Salud, Medicina Tropical, Salud de
+                      Poblaciones)
+                    </td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaUno }}
+                    </td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].porcentajeCasillaUno }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2">
+                      <b>INVESTIGACIÓN</b><br />
+                      Metodología de la Investigación en CS
+                    </td>
+                    <td rowspan="2" class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaDos }}
+                    </td>
+                    <td
+                      rowspan="9"
+                      style="vertical-align: middle"
+                      class="text-center"
+                    >
+                      {{ planEstudioResumen[item].porcentajeCasillaDos }}
+                    </td>
+                  </tr>
+                  <tr></tr>
+                  <tr>
+                    <td>Epistemología de la Salud</td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaTres }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Proyecto Tesis I</td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaCuatro }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Proyecto de Tesis II</td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaCinco }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Tesis</td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaSeis }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Pasantía internacional</td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaSiete }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Socialización productos Tesis</td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaOcho }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Redacción y publicación científica</td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaNueve }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>COMPONENTES FLEXIBLES</b></td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaDiez }}
+                    </td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].porcentajeCasillaTres }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>TOTAL</b></td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].creditoCasillaTotal }}
+                    </td>
+                    <td class="text-center">
+                      {{ planEstudioResumen[item].porcentajeCasillaTotal }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-        <div class="col-sm-auto fondodivright shadow">
-          <h3 class="titleInstRed">Infórmate</h3>
-          <hr class="lineInstRed" />
-          <br />
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-            width="100%"
-            height="600"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
+        <hr />
+        <div class="row">
+          <div class="col">
+            <button
+              class="btn btn-usco-vt"
+              printSectionId="print-section"
+              [useExistingCss]="true"
+              printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
+              ngxPrint
+            >
+              <i class="fas fa-print"></i> Imprimir
+            </button>
+          </div>
+          <div class="col text-right">
+            <button
+              *ngIf="auth.user | async"
+              class="btn btn-usco-vt"
+              [routerLink]="['/admi_plandeestudios', item]"
+            >
+              <i class="fas fa-pencil-alt"></i> Editar
+            </button>
+          </div>
+        </div>
+        <hr />
+      </div>
+      <div class="col-sm-auto fondodivright shadow pt-4 pb-4">
+        <div class="row">
+          <div class="col">
+            <h3 class="titleInstRed">Infórmate</h3>
+            <hr class="lineInstRed" />
+            <br />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FUSCOoficial%2F&tabs=timeline&width=300&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+              width="100%"
+              height="600"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowTransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>

@@ -6,352 +6,341 @@
       style="height: auto"
     />
   </div>
-  <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-      <div class="row">
-        <div class="col-sm-8 shadow text-justify fondodivleft shadow">
-          <h3 class="titleInstRed">Equipo Docente del Programa</h3>
-          <hr class="lineInstRed" />
-          <br />
-          <div class="container">
-            <div class="input-group mb-3 m-2">
-              <input
-                type="text"
-                class="form-control shadow"
-                style="border-radius: 50px 0px 0px 50px"
-                name="buscarEvento"
-                [(ngModel)]="filterpost"
-                placeholder="Digite palabras claves para buscar..."
-                aria-label="Recipient's username"
-                aria-describedby="button-addon2"
-              />
-              <div class="input-group-append">
-                <button
-                  class="btn navlinkinSolid shadow"
-                  type="button"
-                  id="button-addon2"
-                >
-                  <i class="fas fa-search"></i> Buscar
-                </button>
-              </div>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div
+        class="col-sm-8 shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+      >
+        <h3 class="titleInstRed">Equipo Docente del Programa</h3>
+        <hr class="lineInstRed" />
+        <br />
+        <div class="container">
+          <div class="input-group mb-3 m-2">
+            <input
+              type="text"
+              class="form-control shadow"
+              style="border-radius: 50px 0px 0px 50px"
+              name="buscarEvento"
+              [(ngModel)]="filterpost"
+              placeholder="Digite palabras claves para buscar..."
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-usco-vt shadow"
+                type="button"
+                id="button-addon2"
+              >
+                <i class="fas fa-search"></i> Buscar
+              </button>
             </div>
           </div>
-          <br />
-          <ngb-pagination
-            class="d-flex justify-content-end"
-            [collectionSize]="
-              (profesores | filtroprofesores: filterpost).length
-            "
-            [pageSize]="pageSize"
-            [(page)]="page"
-          ></ngb-pagination>
-          <div
-            *ngFor="
-              let profesor of sortDataDocentes
-                | filtroprofesores: filterpost
-                | listinvert
-                | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize;
-              let i = index
-            "
-            class="card brCard grayinst shadow-sm"
-            style="padding: 20px"
-            id="gradiante"
-          >
-            <div class="row">
-              <div class="col-md-4 text-center">
-                <img
-                  [src]="profesor.foto"
-                  [alt]="profesor.nombre"
-                  [title]="profesor.nombre"
-                  [routerLink]="['/docente', profesor.key]"
-                  class="w-100 perfilPro cursorSelect"
-                />
-                <small class="card-title grayinst">
-                  <strong
-                    ><i class="fas fa-envelope"></i>
-                    {{ profesor.correo }}</strong
+        </div>
+        <br />
+        <ngb-pagination
+          class="d-flex justify-content-end"
+          [collectionSize]="(profesores | filtroprofesores : filterpost).length"
+          [pageSize]="pageSize"
+          [(page)]="page"
+        ></ngb-pagination>
+        <div
+          *ngFor="
+            let profesor of sortDataDocentes
+              | filtroprofesores : filterpost
+              | listinvert
+              | slice
+                : (page - 1) * pageSize
+                : (page - 1) * pageSize + pageSize;
+            let i = index
+          "
+          class="card brCard grayinst shadow-sm"
+          style="padding: 20px"
+          id="gradiante"
+        >
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img
+                [src]="profesor.foto"
+                [alt]="profesor.nombre"
+                [title]="profesor.nombre"
+                [routerLink]="['/docente', profesor.key]"
+                class="card-img-top perfilPro cursor-select"
+                style="
+                  width: 200px;
+                  height: 200px;
+                  border: solid 5px white;
+                  border-radius: 100%;
+                "
+              />
+              <small class="card-title grayinst">
+                <strong
+                  ><i class="fas fa-envelope"></i> {{ profesor.correo }}</strong
+                >
+              </small>
+              <p class="card-title grayinst">
+                <strong
+                  >Artículos registrados:
+                  {{ profesor.fieldArrayArticulos.length }}</strong
+                >
+              </p>
+              <div class="row" *ngIf="auth.user | async">
+                <div class="col text-right">
+                  <a
+                    class="btn btn-usco-vt m-2"
+                    [routerLink]="['/admi_plantel', profesor.key]"
+                    ><i class="fas fa-pencil-alt"></i> Editar</a
                   >
-                </small>
-                <p class="card-title grayinst">
+                  <a (click)="openModal(confirmar)" class="btn btn-usco-vt m-2"
+                    ><i class="fas fa-trash"></i> Borrar</a
+                  ><br />
+                  <ng-template #confirmar let-modal>
+                    <div class="modal-header bgrojoycafe">
+                      <h4 class="modal-title">Confirmar acción</h4>
+                      <button
+                        type="button"
+                        class="close"
+                        aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"
+                      >
+                        <i class="fas fa-times" style="color: white"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div
+                        class="alert alert-warning text-center font-weight-bold"
+                        role="alert"
+                      >
+                        Está a punto de eliminar el perfil del Profesor.
+                        <br />
+                        ¿Desea continuar con la acción?
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btnColorFacultadSalud"
+                        ngbAutofocus
+                        (click)="borrarPlantel(profesor.key)"
+                      >
+                        Aceptar
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-usco-vt"
+                        (click)="modal.close('Close click')"
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8 px-3">
+              <div class="card-block px-3">
+                <h4
+                  class="card-title text-white font-weight-bold carnetTitulo cursor-select"
+                  [routerLink]="['/docente', profesor.key]"
+                >
+                  <i class="fas fa-chalkboard-teacher"></i>
+                  {{ profesor.nombre }}
+                </h4>
+                <br />
+                <p class="card-text">
                   <strong
-                    >Artículos registrados:
-                    {{ profesor.fieldArrayArticulos.length }}</strong
+                    ><i class="fas fa-info-circle"></i> Formación
+                    Académica:</strong
                   >
                 </p>
-                <div class="row" *ngIf="auth.user | async">
-                  <div class="col text-right">
-                    <a
-                      class="btn navlinkinSolid m-2"
-                      [routerLink]="['/admi_plantel', profesor.key]"
-                      ><i class="fas fa-pencil-alt"></i> Editar</a
-                    >
-                    <a
-                      (click)="openModal(confirmar)"
-                      class="btn navlinkinSolid m-2"
-                      ><i class="fas fa-trash"></i> Borrar</a
-                    ><br />
-                    <ng-template #confirmar let-modal>
-                      <div class="modal-header bgrojoycafe">
-                        <h4 class="modal-title">Confirmar acción</h4>
-                        <button
-                          type="button"
-                          class="close"
-                          aria-label="Close"
-                          (click)="modal.dismiss('Cross click')"
-                        >
-                          <i class="fas fa-times" style="color: white"></i>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div
-                          class="alert alert-warning text-center font-weight-bold"
-                          role="alert"
-                        >
-                          Está a punto de eliminar el perfil del Profesor.
-                          <br />
-                          ¿Desea continuar con la acción?
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btnColorFacultadSalud"
-                          ngbAutofocus
-                          (click)="borrarPlantel(profesor.key)"
-                        >
-                          Aceptar
-                        </button>
-                        <button
-                          type="button"
-                          class="btn navlinkinSolid"
-                          (click)="modal.close('Close click')"
-                        >
-                          Cancelar
-                        </button>
-                      </div>
-                    </ng-template>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-8 px-3">
-                <div class="card-block px-3">
-                  <h4
-                    class="card-title beigeInst carnetTitulo cursorSelect"
+                <p class="text-justify m-2">
+                  {{ profesor.sintesis | slice : 0 : 300 }}
+                  <a
                     [routerLink]="['/docente', profesor.key]"
+                    style="color: #8f141b"
+                    >... Ver más</a
                   >
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    {{ profesor.nombre }}
-                  </h4>
-                  <br />
-                  <p class="card-text">
-                    <strong
-                      ><i class="fas fa-info-circle"></i> Formación
-                      Académica:</strong
-                    >
-                  </p>
-                  <p class="text-justify m-2">
-                    {{ profesor.sintesis | slice: 0:300 }}
-                    <a
-                      [routerLink]="['/docente', profesor.key]"
-                      style="color: #8f141b"
-                      >... Ver más</a
-                    >
-                  </p>
-                  <div class="text-right">
-                    <a
-                      [href]="profesor.cvlac"
-                      target="blank_"
-                      class="btn navlinkinSolid"
-                      >CvLAC</a
-                    >
-                    <a
-                      style="margin-left: 10px"
-                      [href]="profesor.orcid"
-                      target="blank_"
-                      class="btn navlinkinSolid"
-                      >ORCID</a
-                    >
-                  </div>
+                </p>
+                <div class="text-right">
+                  <a
+                    [href]="profesor.cvlac"
+                    target="blank_"
+                    class="btn btn-usco-vt"
+                    >CvLAC</a
+                  >
+                  <a
+                    style="margin-left: 10px"
+                    [href]="profesor.orcid"
+                    target="blank_"
+                    class="btn btn-usco-vt"
+                    >ORCID</a
+                  >
                 </div>
               </div>
             </div>
           </div>
-          <br />
-          <div class="row">
-            <div class="col">
-              <ngb-pagination
-                class="d-flex justify-content-start"
-                [collectionSize]="
-                  (profesores | filtroprofesores: filterpost).length
-                "
-                [(page)]="page"
-                [pageSize]="pageSize"
-              ></ngb-pagination>
-            </div>
-            <div class="col text-right">
-              <div class="col text-right" *ngIf="auth.user | async">
-                <a
-                  class="btn navlinkinSolid"
-                  [routerLink]="['/admi_plantel', 'nuevo']"
-                  ><i class="fas fa-plus-circle"></i> Agregar nuevo Profesor</a
-                >
-              </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col">
+            <ngb-pagination
+              class="d-flex justify-content-start"
+              [collectionSize]="
+                (profesores | filtroprofesores : filterpost).length
+              "
+              [(page)]="page"
+              [pageSize]="pageSize"
+            ></ngb-pagination>
+          </div>
+          <div class="col text-right">
+            <div class="col text-right" *ngIf="auth.user | async">
+              <a
+                class="btn btn-usco-vt"
+                [routerLink]="['/admi_plantel', 'nuevo']"
+                ><i class="fas fa-plus-circle"></i> Agregar nuevo Profesor</a
+              >
             </div>
           </div>
-          <br />
         </div>
-        <div class="col-sm-auto shadow fondodivright">
-          <h3 class="titleInstRed">
-            <i class="far fa-newspaper"></i> Infórmate
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <!-- SLIDE AGENDA PROGRAMA-->
-          <div
-            id="carouselExampleControlsPrograma"
-            class="carousel slide"
-            data-ride="carousel"
-            style="width: 300px"
-          >
-            <div class="carousel-inner">
-              <div
-                [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-                *ngFor="let evento of sortDataPrograma; let i = index"
-              >
-                <div class="card-deck">
-                  <div class="card shadow">
-                    <img
-                      [src]="evento.img"
-                      class="card-img-top cursorSelect"
+        <br />
+      </div>
+      <div class="col-sm-auto shadow fondodivright pt-4 pb-4">
+        <h3 class="titleInstRed"><i class="far fa-newspaper"></i> Infórmate</h3>
+        <hr class="lineInstRed" />
+        <br />
+        <!-- SLIDE AGENDA PROGRAMA-->
+        <div
+          id="carouselExampleControlsPrograma"
+          class="carousel slide"
+          data-ride="carousel"
+          style="width: 300px"
+        >
+          <div class="carousel-inner">
+            <div
+              [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
+              *ngFor="let evento of sortDataPrograma; let i = index"
+            >
+              <div class="card-deck">
+                <div class="card shadow">
+                  <img
+                    [src]="evento.img"
+                    class="card-img-top cursor-select"
+                    [routerLink]="['/eventoPrograma', evento.key]"
+                    [alt]="evento.titulo"
+                    [title]="evento.titulo"
+                  />
+                  <div class="card-body">
+                    <h4
                       [routerLink]="['/eventoPrograma', evento.key]"
-                      [alt]="evento.titulo"
-                      [title]="evento.titulo"
-                    />
-                    <div class="card-body">
-                      <h4
-                        [routerLink]="['/eventoPrograma', evento.key]"
-                        class="subTituloRojoInstitucional cursorSelect"
-                      >
-                        {{ evento.titulo }}
-                      </h4>
-                      <small class="card-title subTituloRojoInstitucional">
-                        <i class="far fa-calendar-alt"></i>
-                        {{ evento.fechaEvento | date: "fullDate" | titlecase }}
-                      </small>
-                      <p class="card-text grayinst">
-                        {{ evento.resenia | slice: 0:80 }}...
-                      </p>
-                      <a [href]="evento.url" target="_blank" style="color: gray"
-                        ><b> LEER MÁS... </b></a
-                      >
-                    </div>
+                      class="subTituloRojoInstitucional cursor-select"
+                    >
+                      {{ evento.titulo }}
+                    </h4>
+                    <small class="card-title subTituloRojoInstitucional">
+                      <i class="far fa-calendar-alt"></i>
+                      {{ evento.fechaEvento | date : "fullDate" | titlecase }}
+                    </small>
+                    <p class="card-text grayinst">
+                      {{ evento.resenia | slice : 0 : 80 }}...
+                    </p>
+                    <a [href]="evento.url" target="_blank" style="color: gray"
+                      ><b> LEER MÁS... </b></a
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            <a
-              class="carousel-control-prev"
-              href="#carouselExampleControlsPrograma"
-              role="button"
-              data-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#carouselExampleControlsPrograma"
-              role="button"
-              data-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
-          <!-- /SLIDE AGENDA PROGRAMA-->
-          <hr />
-          <h3 class="titleInstRed">
-            <i class="far fa-calendar-alt"></i> Institucional
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <!-- SLIDE AGENDA INSTITUCIONAL-->
-          <div
-            id="carouselExampleControlsInstitucional"
-            class="carousel slide"
-            data-ride="carousel"
-            style="width: 300px"
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleControlsPrograma"
+            role="button"
+            data-slide="prev"
           >
-            <div class="carousel-inner">
-              <div
-                [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
-                *ngFor="let evento of sortDataInstitucional; let i = index"
-              >
-                <div class="card-deck">
-                  <div class="card shadow">
-                    <img
-                      [src]="evento.img"
-                      class="card-img-top cursorSelect"
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleControlsPrograma"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <!-- /SLIDE AGENDA PROGRAMA-->
+        <hr />
+        <h3 class="titleInstRed">
+          <i class="far fa-calendar-alt"></i> Institucional
+        </h3>
+        <hr class="lineInstRed" />
+        <br />
+        <!-- SLIDE AGENDA INSTITUCIONAL-->
+        <div
+          id="carouselExampleControlsInstitucional"
+          class="carousel slide"
+          data-ride="carousel"
+          style="width: 300px"
+        >
+          <div class="carousel-inner">
+            <div
+              [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'"
+              *ngFor="let evento of sortDataInstitucional; let i = index"
+            >
+              <div class="card-deck">
+                <div class="card shadow">
+                  <img
+                    [src]="evento.img"
+                    class="card-img-top cursor-select"
+                    [routerLink]="['/eventoInstitucional', evento.key]"
+                    [alt]="evento.titulo"
+                    [title]="evento.titulo"
+                  />
+                  <div class="card-body">
+                    <h4
                       [routerLink]="['/eventoInstitucional', evento.key]"
-                      [alt]="evento.titulo"
-                      [title]="evento.titulo"
-                    />
-                    <div class="card-body">
-                      <h4
-                        [routerLink]="['/eventoInstitucional', evento.key]"
-                        class="subTituloRojoInstitucional cursorSelect"
-                      >
-                        {{ evento.titulo }}
-                      </h4>
-                      <small class="card-title subTituloRojoInstitucional">
-                        <i class="far fa-calendar-alt"></i>
-                        {{ evento.fechaEvento | date: "fullDate" | titlecase }}
-                      </small>
-                      <p class="card-text grayinst">
-                        {{ evento.resenia | slice: 0:80 }}...
-                      </p>
-                      <a [href]="evento.url" target="_blank" style="color: gray"
-                        ><b> LEER MÁS... </b></a
-                      >
-                    </div>
+                      class="subTituloRojoInstitucional cursor-select"
+                    >
+                      {{ evento.titulo }}
+                    </h4>
+                    <small class="card-title subTituloRojoInstitucional">
+                      <i class="far fa-calendar-alt"></i>
+                      {{ evento.fechaEvento | date : "fullDate" | titlecase }}
+                    </small>
+                    <p class="card-text grayinst">
+                      {{ evento.resenia | slice : 0 : 80 }}...
+                    </p>
+                    <a [href]="evento.url" target="_blank" style="color: gray"
+                      ><b> LEER MÁS... </b></a
+                    >
                   </div>
                 </div>
               </div>
             </div>
-            <a
-              class="carousel-control-prev"
-              href="#carouselExampleControlsInstitucional"
-              role="button"
-              data-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a
-              class="carousel-control-next"
-              href="#carouselExampleControlsInstitucional"
-              role="button"
-              data-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
-          <!-- /SLIDE AGENDA INSTITUCIONAL-->
-          <br />
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleControlsInstitucional"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleControlsInstitucional"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
+        <!-- /SLIDE AGENDA INSTITUCIONAL-->
+        <br />
       </div>
     </div>
   </div>

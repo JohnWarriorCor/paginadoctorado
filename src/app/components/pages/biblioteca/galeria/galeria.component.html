@@ -7,9 +7,11 @@
     />
   </div>
   <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+    <div class="container mt-5 mb-5">
       <div class="row">
-        <div class="col-sm-8 shadow text-justify fondodivleft shadow grayinst">
+        <div
+          class="col-sm-8 shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+        >
           <div id="print-section">
             <h3 class="titleInstRed">Nuestros Estudiantes</h3>
             <hr class="lineInstRed" />
@@ -19,11 +21,12 @@
                 <div lightbox-group>
                   <img
                     *ngFor="let estudiante of estudiantes"
-                    placement="top" [ngbTooltip]="estudiante.nombre"
+                    placement="top"
+                    [ngbTooltip]="estudiante.nombre"
                     [src]="estudiante.foto"
                     class="img-thumbnail"
                     lightbox
-                    style="height: 100px;"
+                    style="height: 100px"
                     animationDuration="500"
                     animationTimingFunction="cubic-bezier(0.77, 0, 0.175, 1)"
                     [counter]="true"
@@ -32,8 +35,8 @@
                 </div>
               </div>
             </div>
-            <hr>
-            <br>
+            <hr />
+            <br />
             <h3 class="titleInstRed">Nuestros Docentes</h3>
             <hr class="lineInstRed" />
             <br />
@@ -42,11 +45,12 @@
                 <div lightbox-group>
                   <img
                     *ngFor="let profesor of profesores"
-                    placement="top" [ngbTooltip]="profesor.nombre"
+                    placement="top"
+                    [ngbTooltip]="profesor.nombre"
                     [src]="profesor.foto"
                     class="img-thumbnail"
                     lightbox
-                    style="height: 100px;"
+                    style="height: 100px"
                     animationDuration="500"
                     animationTimingFunction="cubic-bezier(0.77, 0, 0.175, 1)"
                     [counter]="true"
@@ -58,14 +62,14 @@
             <hr />
             <div class="row" *ngIf="auth.user | async">
               <div class="col text-right">
-                <button class="btn navlinkinSolid">
+                <button class="btn btn-usco-vt">
                   <i class="fas fa-pencil-alt"></i> Editar
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-sm-auto fondodivright shadow">
+        <div class="col-sm-auto fondodivright shadow pt-4 pb-4">
           <h3 class="titleInstRed">Infórmate</h3>
           <hr class="lineInstRed" />
           <br />

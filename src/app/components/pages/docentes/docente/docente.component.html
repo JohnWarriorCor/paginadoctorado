@@ -6,31 +6,55 @@
       style="height: auto"
     />
   </div>
-  <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-      <div id="">
-        <form #forma="ngForm">
-          <div class="row fondodivCenter shadow" id="print-section">
+  <div class="container mt-4 mb-4">
+    <form #forma="ngForm">
+      <div class="row fondodivCenter shadow" id="print-section">
+        <div class="col">
+          <div class="row text-right pt-2 pb-4" *ngIf="auth.user | async">
             <div class="col">
-              <div class="row">
-                <div
-                  class="col-md-4"
-                  style="
-                    background-color: #8f141b;
-                    padding: 20px;
-                    border-radius: 10px 10px 10px 10px;
-                    margin-bottom: 20px;
-                  "
-                >
+              <button
+                class="btn btn-usco-vt"
+                [routerLink]="['/admi_plantel', 'nuevo']"
+              >
+                <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col-md-4"
+              style="
+                background-color: #8f141b;
+                padding: 20px;
+                border-radius: 10px 10px 10px 10px;
+                margin-bottom: 20px;
+              "
+            >
+              <div class="row mb-4 text-center">
+                <div class="col">
                   <img
                     [src]="plantelProfesor.foto"
                     [alt]="plantelProfesor.nombre"
                     [title]="plantelProfesor.nombre"
-                    class="rounded mx-auto d-block"
-                    style="width: 100%; border: solid 5px white"
+                    class="img"
+                    style="
+                      width: 250px;
+                      height: 250px;
+                      border: solid 5px white;
+                      border-radius: 100%;
+                    "
                   />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col text-center">
+                  <h6 class="text-white">Docente Universidad Surcolombiana</h6>
+                  <h6 class="text-white">
+                    <i class="fas fa-envelope"></i>
+                    {{ plantelProfesor.correo }}
+                  </h6>
                   <br />
-                  <h6
+                  <small
                     class="text-center no-print"
                     style="
                       background-color: #b15b60;
@@ -43,71 +67,66 @@
                       style="color: white"
                       href="http://wsp.presidencia.gov.co/Normativa/Leyes/Documents/LEY%201712%20DEL%2006%20DE%20MARZO%20DE%202014.pdf"
                       target="_blank"
-                      >Ver Ley de Transparencia y acceso a la información</a
+                      >Ver ley de transparencia y acceso a la información</a
                     >
-                  </h6>
+                  </small>
                 </div>
-                <div class="col-md-8 text-justify" style="margin-bottom: 20px">
-                  <div
-                    style="
-                      background-color: #8f141b;
-                      color: white;
-                      padding: 20px;
-                      border-radius: 10px 10px 0px 0px;
-                    "
-                  >
-                    <h3>
-                      <i class="fas fa-user-circle"></i>
-                      {{ plantelProfesor.nombre }}
-                    </h3>
-                    <h5>Docente</h5>
-                    <h6>Universidad Surcolombiana</h6>
-                    <h6>
-                      <i class="fas fa-envelope"></i>
-                      {{ plantelProfesor.correo }}
-                    </h6>
-                  </div>
-                  <div
-                    style="
-                      background-color: #edeff0;
-                      padding: 20px;
-                      border-radius: 0px 0px 10px 10px;
-                      color: #1e262b;
-                    "
-                  >
-                    <h5>
-                      <i class="fas fa-user-tie"></i> Resumen perfil
-                      profesional:
-                    </h5>
-                    <p class="m-4">
-                      {{ plantelProfesor.sintesis }}
-                    </p>
-                    <!-- COLLAPSE START-->
-                    <div class="accordion" id="accordionExample">
-                      <div class="card">
-                        <div class="card-header" id="headingOne">
-                          <h5
-                            class="mb-0"
-                            data-toggle="collapse"
-                            aria-expanded="true"
-                            data-target="#collapseOne"
-                            aria-controls="collapseOne"
-                          >
-                            <i class="fas fa-list-ul"></i> Formación y logros
-                            académicos:
-                          </h5>
+              </div>
+            </div>
+            <div class="col-md-8 text-justify">
+              <div
+                style="
+                  background-color: #8f141b;
+                  color: white;
+                  padding: 20px;
+                  border-radius: 10px 10px 0px 0px;
+                "
+              >
+                <h3>
+                  <i class="fas fa-user-circle"></i>
+                  {{ plantelProfesor.nombre }}
+                </h3>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <ngb-tabset [justify]="currentJustify" class="tabset1">
+                    <ngb-tab>
+                      <ng-template ngbTabTitle
+                        ><i class="fas fa-user-tie"></i> Perfil</ng-template
+                      >
+                      <ng-template ngbTabContent>
+                        <div class="row p-4">
+                          <div class="col">
+                            <h4 class="titleInstRed">
+                              <i class="fas fa-user-tie"></i> Perfil
+                              profesional:
+                            </h4>
+                            <hr class="lineInstRed" />
+                            <br />
+                            <p class="p-2 h5">
+                              {{ plantelProfesor.sintesis }}
+                            </p>
+                          </div>
                         </div>
-
-                        <div
-                          id="collapseOne"
-                          class="collapse show"
-                          aria-labelledby="headingOne"
-                          data-parent="#accordionExample"
-                        >
-                          <div class="card-body">
-                            <ul class="text-left">
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                      <ng-template ngbTabTitle
+                        ><i class="fas fa-list-ul"></i> Logros
+                        Académicos</ng-template
+                      >
+                      <ng-template ngbTabContent>
+                        <div class="row p-4">
+                          <div class="col">
+                            <h4 class="titleInstRed">
+                              <i class="fas fa-list-ul"></i> Formación y logros
+                              académicos:
+                            </h4>
+                            <hr class="lineInstRed" />
+                            <br />
+                            <ul>
                               <li
-                                class="p-2"
+                                class="pre code"
                                 *ngFor="
                                   let field of plantelProfesor.fieldArray;
                                   let i = index
@@ -119,327 +138,360 @@
                             </ul>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <!--COLLAPSE END-->
-                    <div class="row no-print">
-                      <div class="col m-3">
-                        <a
-                          [href]="plantelProfesor.cvlac"
-                          target="blank_"
-                          class="btn navlinkinSolid btn-lg btn-block m-3"
-                          ><i class="fas fa-atom"></i> CvLAC</a
-                        >
-                      </div>
-                      <div class="col m-3">
-                        <a
-                          style="margin-left: 10px"
-                          [href]="plantelProfesor.orcid"
-                          target="blank_"
-                          class="btn navlinkinSolid btn-lg btn-block m-3"
-                          ><i class="fas fa-atlas"></i> ORCID</a
-                        >
-                      </div>
-                      <ng-template #confirmar let-modal>
-                        <div class="modal-header bgrojoycafe">
-                          <h4 class="modal-title">Confirmar acción</h4>
-                          <button
-                            type="button"
-                            class="close"
-                            aria-label="Close"
-                            (click)="modal.dismiss('Cross click')"
-                          >
-                            <i class="fas fa-times" style="color: white"></i>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <div
-                            class="alert alert-warning text-center font-weight-bold"
-                            role="alert"
-                          >
-                            Está a punto de guardar. <br />
-                            ¿Desea continuar con la acción?
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                      <ng-template ngbTabTitle
+                        ><i class="fab fa-readme"></i> Artículos</ng-template
+                      >
+                      <ng-template ngbTabContent>
+                        <div class="row p-4">
+                          <div class="col">
+                            <div class="row">
+                              <div class="col">
+                                <h4 class="titleInstRed">
+                                  <i class="fab fa-readme"></i>
+                                  Publicaciones
+                                </h4>
+                              </div>
+                              <div class="col">
+                                <ngb-pagination
+                                  class="d-flex justify-content-end"
+                                  [collectionSize]="
+                                    plantelProfesor.fieldArrayArticulos.length
+                                  "
+                                  [pageSize]="pageSizeArticulos"
+                                  [(page)]="pageArticulos"
+                                ></ngb-pagination>
+                              </div>
+                            </div>
+                            <hr class="lineInstRed" />
+                            <br />
+                            <table class="table table-hover books">
+                              <tbody>
+                                <tr
+                                  *ngFor="
+                                    let fieldArticulos of plantelProfesor.fieldArrayArticulos
+                                      | slice
+                                        : (pageArticulos - 1) *
+                                            pageSizeArticulos
+                                        : (pageArticulos - 1) *
+                                            pageSizeArticulos +
+                                            pageSizeArticulos;
+                                    let i = index
+                                  "
+                                >
+                                  <td width="100px">
+                                    <div class="img-intro-left cover">
+                                      <a
+                                        [routerLink]="[
+                                          '/articulo_docente',
+                                          link,
+                                          (pageArticulos - 1) *
+                                            pageSizeArticulos +
+                                            i
+                                        ]"
+                                        [title]="fieldArticulos.nombreArticulo"
+                                        ><img
+                                          class="img"
+                                          src="assets/PDF_file_icon.svg"
+                                          [alt]="fieldArticulos.nombreArticulo"
+                                      /></a>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <h5
+                                      class="card-title font-usco-vt font-weight-bold cursor-select text-left"
+                                      [routerLink]="[
+                                        '/articulo_docente',
+                                        link,
+                                        (pageArticulos - 1) *
+                                          pageSizeArticulos +
+                                          i
+                                      ]"
+                                    >
+                                      {{
+                                        (pageArticulos - 1) *
+                                          pageSizeArticulos +
+                                          (i + 1)
+                                      }}.
+                                      {{ fieldArticulos.nombreArticulo }}
+                                    </h5>
+                                    <div>
+                                      <strong
+                                        ><i class="fas fa-users"></i>
+                                        Autores:
+                                      </strong>
+                                      <a
+                                        [href]="
+                                          fieldArticulos.enlace
+                                            | domseguro
+                                              : 'https://drive.google.com/file/d/'
+                                        "
+                                        target="_blank"
+                                        >{{ fieldArticulos.autores }}</a
+                                      >
+                                    </div>
+                                    <dl>
+                                      <dd>
+                                        <strong
+                                          ><i class="fas fa-calendar-day"></i>
+                                          Año:
+                                        </strong>
+                                        {{
+                                          fieldArticulos.anio | date : "yyyy"
+                                        }}
+                                      </dd>
+                                      <dd>
+                                        <strong
+                                          ><i class="fab fa-readme"></i>
+                                          Resumen:
+                                        </strong>
+                                        {{
+                                          fieldArticulos.resumen
+                                            | slice : 0 : 280
+                                        }}
+                                        <a
+                                          [routerLink]="[
+                                            '/articulo_estudiante',
+                                            link,
+                                            (pageArticulos - 1) *
+                                              pageSizeArticulos +
+                                              i
+                                          ]"
+                                          style="color: #8f141b"
+                                          >... Ver más</a
+                                        >
+                                      </dd>
+                                    </dl>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <hr />
                           </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btnColorFacultadSalud"
-                            ngbAutofocus
-                            (click)="guardar()"
-                          >
-                            Aceptar
-                          </button>
-                          <button
-                            type="button"
-                            class="btn navlinkinSolid"
-                            (click)="modal.close('Close click')"
-                          >
-                            Cancelar
-                          </button>
                         </div>
                       </ng-template>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div
-                  class="col text-justify"
-                  style="margin-bottom: 20px; padding-left: 0px"
-                >
-                  <div
-                    style="
-                      background-color: #edeff0;
-                      padding: 20px;
-                      border-radius: 0px 0px 10px 10px;
-                      color: #1e262b;
-                    "
-                  >
-                    <div class="row">
-                      <div class="col-md-8">
-                        <h4 class="m-2">
-                          <strong
-                            ><i class="fas fa-scroll"></i> Publicaciones
-                            {{ plantelProfesor.nombre }} - #{{
-                              plantelProfesor.fieldArrayArticulos.length
-                            }}</strong
-                          >
-                        </h4>
-                      </div>
-                      <div class="col-md-4">
-                        <ngb-pagination
-                          class="d-flex justify-content-end"
-                          [collectionSize]="
-                            plantelProfesor.fieldArrayArticulos.length
-                          "
-                          [pageSize]="pageSizeArticulos"
-                          [(page)]="pageArticulos"
-                        ></ngb-pagination>
-                      </div>
-                    </div>
-                    <table class="table table-hover books">
-                      <tbody>
-                        <tr
-                          *ngFor="
-                            let fieldArticulos of plantelProfesor.fieldArrayArticulos
-                              | slice
-                                : (pageArticulos - 1) * pageSizeArticulos
-                                : (pageArticulos - 1) * pageSizeArticulos +
-                                    pageSizeArticulos;
-                            let i = index
-                          "
-                        >
-                          <td width="100px">
-                            <div class="img-intro-left cover">
-                              <a
-                                [routerLink]="[
-                                  '/articulo_docente',
-                                  link,
-                                  (pageArticulos - 1) * pageSizeArticulos + i
-                                ]"
-                                [title]="fieldArticulos.nombreArticulo"
-                                ><img
-                                  class="img-polaroid"
-                                  src="assets/PDF_file_icon.svg"
-                                  [alt]="fieldArticulos.nombreArticulo"
-                              /></a>
-                            </div>
-                          </td>
-                          <td>
-                            <h5
-                              class="card-title subTituloRojoInstitucional cursorSelect text-left"
-                              [routerLink]="[
-                                '/articulo_docente',
-                                link,
-                                (pageArticulos - 1) * pageSizeArticulos + i
-                              ]"
+                    </ngb-tab>
+                    <ngb-tab>
+                      <ng-template ngbTabTitle
+                        ><i class="fas fa-atom"></i> CVLAC</ng-template
+                      >
+                      <ng-template ngbTabContent>
+                        <div class="row mt-2 p-4">
+                          <div class="col">
+                            <h4 class="titleInstRed">
+                              <i class="fas fa-atom"></i> Minciencias
+                            </h4>
+                            <hr class="lineInstRed" />
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col" id="wrap">
+                            <iframe
+                              id="scaled-frame"
+                              sandbox
+                              allowfullscreen
+                              width="100%"
+                              height="500"
+                              [src]="
+                                plantelProfesor.cvlac
+                                  | domseguro
+                                    : 'https://scienti.minciencias.gov.co/cvlac/visualizador/'
+                              "
+                            ></iframe>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                      <ng-template ngbTabTitle
+                        ><i class="fas fa-atlas"></i> ORCID</ng-template
+                      >
+                      <ng-template ngbTabContent>
+                        <div class="row mt-2 p-4">
+                          <div class="col">
+                            <h4 class="titleInstRed">
+                              <i class="fas fa-atlas"></i> Minciencias
+                            </h4>
+                            <hr class="lineInstRed" />
+                            <br />
+                            <a class="h2 m-2" [href]="plantelProfesor.orcid"
+                              ><i class="fas fa-link"></i>
+                              {{ plantelProfesor.orcid }}</a
                             >
-                              {{
-                                (pageArticulos - 1) * pageSizeArticulos +
-                                  (i + 1)
-                              }}. {{ fieldArticulos.nombreArticulo }}
-                            </h5>
-                            <div>
-                              <strong
-                                ><i class="fas fa-users"></i> Autores:
-                              </strong>
-                              <a
-                                [href]="
-                                  fieldArticulos.enlace
-                                    | domseguro
-                                      : 'https://drive.google.com/file/d/'
-                                "
-                                target="_blank"
-                                >{{ fieldArticulos.autores }}</a
-                              >
-                            </div>
-                            <dl>
-                              <dd>
-                                <strong
-                                  ><i class="fas fa-calendar-day"></i> Año:
-                                </strong>
-                                {{ fieldArticulos.anio | date: "yyyy" }}
-                              </dd>
-                              <dd>
-                                <strong
-                                  ><i class="fab fa-readme"></i> Resumen:
-                                </strong>
-                                {{ fieldArticulos.resumen | slice: 0:280 }}
-                                <a
-                                  [routerLink]="[
-                                    '/articulo_docente',
-                                    link,
-                                    (pageArticulos - 1) * pageSizeArticulos + i
-                                  ]"
-                                  style="color: #8f141b"
-                                  >... Ver más</a
-                                >
-                              </dd>
-                            </dl>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <br />
-                  </div>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
                 </div>
               </div>
-              <hr />
-              <div class="row no-print">
-                <div class="col">
-                  <button
-                    class="btn navlinkinSolid"
-                    printSectionId="print-section"
-                    [useExistingCss]="true"
-                    printTitle="Perfil {{ plantelProfesor.nombre }}"
-                    ngxPrint
-                  >
-                    <i class="fas fa-print"></i> Imprimir
+              <div class="row" *ngIf="auth.user | async">
+                <div class="col text-right">
+                  <button class="btn btn-usco-vt m-2" (click)="nav()">
+                    <i class="fas fa-pencil-alt"></i> Editar
                   </button>
-                  <button
-                    class="btn navlinkinSolid m-1"
-                    [routerLink]="['/docentes']"
-                  >
-                    <i class="fas fa-sign-out-alt"></i> Regresar
+                  <button class="btn btn-usco-vt m-2" (click)="borrarPlantel()">
+                    <i class="fas fa-trash-alt"></i> Borrar
                   </button>
                 </div>
-                <div class="col text-right" *ngIf="auth.user | async">
-                  <button
-                    class="btn navlinkinSolid m-2"
-                    [routerLink]="['/admi_plantel', 'nuevo']"
-                  >
-                    <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
-                  </button>
-                  <button class="btn navlinkinSolid m-2" (click)="nav()">
-                    <i class="fas fa-user-edit"></i> Editar
-                  </button>
-                  <button
-                    class="btn navlinkinSolid m-2"
-                    (click)="borrarPlantel()"
-                  >
-                    <i class="fas fa-user-edit"></i> Borrar
-                  </button>
+              </div>
+              <div>
+                <div class="row no-print">
+                  <ng-template #confirmar let-modal>
+                    <div class="modal-header bgrojoycafe">
+                      <h4 class="modal-title">Confirmar acción</h4>
+                      <button
+                        type="button"
+                        class="close"
+                        aria-label="Close"
+                        (click)="modal.dismiss('Cross click')"
+                      >
+                        <i class="fas fa-times" style="color: white"></i>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div
+                        class="alert alert-warning text-center font-weight-bold"
+                        role="alert"
+                      >
+                        Está a punto de guardar. <br />
+                        ¿Desea continuar con la acción?
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btnColorFacultadSalud"
+                        ngbAutofocus
+                        (click)="guardar()"
+                      >
+                        Aceptar
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-usco-vt"
+                        (click)="modal.close('Close click')"
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </ng-template>
                 </div>
               </div>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="row fondodivCenter shadow" style="margin-top: 20px">
-        <div class="col">
-          <div class="row">
+          <div class="row no-print">
             <div class="col">
-              <h3
-                [routerLink]="['/docentes']"
-                class="titleInstRed cursorSelect"
+              <!-- <button
+                class="btn btn-usco-vt m-2"
+                printSectionId="print-section"
+                [useExistingCss]="true"
+                printTitle="Perfil {{ plantelProfesor.nombre }}"
+                ngxPrint
               >
-                <i class="fas fa-users"></i> Equipo Docente del Programa
-              </h3>
-              <br />
-            </div>
-            <div class="col text-rigth">
-              <ngb-pagination
-                class="d-flex justify-content-end"
-                [collectionSize]="(plantelProfesores | keysfirebase).length"
-                [pageSize]="pageSize"
-                [(page)]="page"
-              ></ngb-pagination>
+                <i class="fas fa-print"></i> Imprimir
+              </button> -->
+              <!-- <button
+                class="btn btn-usco-vt"
+                [routerLink]="['/estudiantes']"
+              >
+                <i class="fas fa-arrow-left"></i> Regresar
+              </button> -->
             </div>
           </div>
-          <div class="row">
-            <div class="col">
-              <section id="team" class="pb-5">
-                <div class="row">
-                  <!-- Team member -->
-                  <div
-                    class="col-xs-12 col-sm-6 col-md-4"
-                    style="margin-bottom: 10px"
-                    [routerLink]="['/docente', item]"
-                    (click)="up()"
-                    *ngFor="
-                      let item of plantelProfesores
-                        | keysfirebase
-                        | slice
-                          : (page - 1) * pageSize
-                          : (page - 1) * pageSize + pageSize;
-                      let i = index
-                    "
-                  >
-                    <div class="image-flip">
-                      <div class="mainflip flip-0">
-                        <div
-                          class="frontside"
-                          style="border: solid 1px #8f141b; border-radius: 2%"
-                        >
-                          <div class="card">
-                            <div class="card-body text-center">
-                              <p>
-                                <img
-                                  [routerLink]="['/docente', item]"
-                                  (click)="up()"
-                                  [src]="plantelProfesores[item].foto"
-                                  [alt]="plantelProfesores[item].nombre"
-                                  [title]="plantelProfesores[item].nombre"
-                                  class="card-img-top rounded cursorSelect"
-                                />
-                              </p>
-                              <h4 class="card-title">
-                                {{ plantelProfesores[item].nombre }}
-                              </h4>
-                            </div>
+        </div>
+      </div>
+    </form>
+    <div class="row fondodivCenter shadow" style="margin-top: 20px">
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <h3 [routerLink]="['/docentes']" class="titleInstRed cursor-select">
+              <i class="fas fa-users"></i> Equipo Docente del Programa
+            </h3>
+            <br />
+          </div>
+          <div class="col text-rigth">
+            <ngb-pagination
+              class="d-flex justify-content-end"
+              [collectionSize]="(plantelProfesores | keysfirebase).length"
+              [pageSize]="pageSize"
+              [(page)]="page"
+            ></ngb-pagination>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <section id="team" class="pb-5">
+              <div class="row">
+                <!-- Team member -->
+                <div
+                  class="col-xs-12 col-sm-6 col-md-4"
+                  style="margin-bottom: 10px"
+                  [routerLink]="['/docente', item]"
+                  (click)="up()"
+                  *ngFor="
+                    let item of plantelProfesores
+                      | keysfirebase
+                      | slice
+                        : (page - 1) * pageSize
+                        : (page - 1) * pageSize + pageSize;
+                    let i = index
+                  "
+                >
+                  <div class="image-flip">
+                    <div class="mainflip flip-0">
+                      <div
+                        class="frontside"
+                        style="border: solid 1px #8f141b; border-radius: 2%"
+                      >
+                        <div class="card">
+                          <div class="card-body text-center">
+                            <p>
+                              <img
+                                [routerLink]="['/docente', item]"
+                                (click)="up()"
+                                [src]="plantelProfesores[item].foto"
+                                [alt]="plantelProfesores[item].nombre"
+                                [title]="plantelProfesores[item].nombre"
+                                class="card-img-top rounded cursor-select"
+                              />
+                            </p>
+                            <h4 class="card-title">
+                              {{ plantelProfesores[item].nombre }}
+                            </h4>
                           </div>
                         </div>
-                        <div class="backside">
-                          <div class="card">
-                            <div
-                              class="card-body text-center mt-4 text-backside"
-                            >
-                              <br /><br />
-                              <h4 class="card-title">
-                                {{ plantelProfesores[item].nombre }}
-                              </h4>
-                              <p class="card-text text-justify">
-                                {{
-                                  plantelProfesores[item].sintesis
-                                    | slice: 0:200
-                                }}
-                                <a
-                                  [routerLink]="['/docente', item]"
-                                  style="color: #8f141b; font-size: 10px"
-                                  >... Ver más</a
-                                >
-                              </p>
-                            </div>
+                      </div>
+                      <div class="backside">
+                        <div class="card">
+                          <div class="card-body text-center mt-4 text-backside">
+                            <br /><br />
+                            <h4 class="card-title">
+                              {{ plantelProfesores[item].nombre }}
+                            </h4>
+                            <p class="card-text text-justify">
+                              {{
+                                plantelProfesores[item].sintesis
+                                  | slice : 0 : 200
+                              }}
+                              <a
+                                [routerLink]="['/docente', item]"
+                                style="color: #8f141b; font-size: 10px"
+                                >... Ver más</a
+                              >
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- ./Team member -->
                 </div>
-              </section>
-            </div>
+                <!-- ./Team member -->
+              </div>
+            </section>
           </div>
         </div>
       </div>

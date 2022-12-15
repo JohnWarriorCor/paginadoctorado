@@ -20,7 +20,7 @@ export class ArticulosprofesoresComponent implements OnInit {
   pageArticulos = 1;
   pageSizeArticulos = 2;
   pageArticulosProfesores = 1;
-  pageSizeArticulosProfesores = 8;
+  pageSizeArticulosProfesores = 6;
   agenda: any[] = [];
   plantelProfesores: any[] = [];
 

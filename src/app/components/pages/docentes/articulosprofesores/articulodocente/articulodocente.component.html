@@ -6,65 +6,79 @@
       style="height: auto"
     />
   </div>
-  <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+  <div class="container mt-5 mb-5">
     <form #forma="ngForm">
-      <div class="row fondodivCenter shadow" id="print-section">
+      <div class="row fondodivCenter shadow pt-4 pb-4" id="print-section">
         <div class="col">
           <div class="row">
             <div
-              class="col-md-4 text-center"
-              style="
-                background-color: #8f141b;
-                padding: 20px;
-                color: white;
-                border-radius: 10px 10px 10px 10px;
-                margin-bottom: 20px;
-              "
+              class="col-md-4 text-center bg-usco-vt-d1 text-white p-4"
+              style="border-radius: 10px 10px 10px 10px"
             >
-              <h3>
-                {{ plantelProfesor.nombre }}
-              </h3>
+              <div class="row">
+                <div class="col">
+                  <h3 class="font-weight-bold">
+                    {{ plantelProfesor.nombre }}
+                  </h3>
+                </div>
+              </div>
               <br />
-              <img
-                [src]="plantelProfesor.foto"
-                [alt]="plantelProfesor.nombre"
-                [title]="plantelProfesor.nombre"
-                class="rounded mx-auto d-block"
-                style="width: 100%; border: solid 5px white"
-              />
+              <div class="row">
+                <div class="col">
+                  <img
+                    [src]="plantelProfesor.foto"
+                    [alt]="plantelProfesor.nombre"
+                    [title]="plantelProfesor.nombre"
+                    class="img"
+                    style="
+                      width: 250px;
+                      height: 250px;
+                      border: solid 5px white;
+                      border-radius: 100%;
+                    "
+                  />
+                </div>
+              </div>
               <br />
-              <h5>Docente</h5>
-              <h6>Universidad Surcolombiana</h6>
-              <h6>
-                <i class="fas fa-envelope"></i>
-                {{ plantelProfesor.correo }}
-              </h6>
+              <div class="row">
+                <div class="col">
+                  <h5 class="font-weight-bold">Docente</h5>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h6 class="font-weight-bold">Universidad Surcolombiana</h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <h6 class="font-weight-bold">
+                    <i class="fas fa-envelope"></i>
+                    {{ plantelProfesor.correo }}
+                  </h6>
+                </div>
+              </div>
               <br />
-              <h6
-                class="text-center no-print"
-                style="
-                  background-color: #b15b60;
-                  color: white;
-                  padding: 10px;
-                  border-radius: 10px;
-                "
-              >
-                <a
-                  style="color: white"
-                  href="http://wsp.presidencia.gov.co/Normativa/Leyes/Documents/LEY%201712%20DEL%2006%20DE%20MARZO%20DE%202014.pdf"
-                  target="_blank"
-                  >Ver Ley de Transparencia y acceso a la información</a
-                >
-              </h6>
+              <div class="row">
+                <div class="col">
+                  <h6
+                    class="text-center no-print p-3"
+                    style="background-color: #b15b60; border-radius: 10px"
+                  >
+                    <a
+                      style="color: white"
+                      href="http://wsp.presidencia.gov.co/Normativa/Leyes/Documents/LEY%201712%20DEL%2006%20DE%20MARZO%20DE%202014.pdf"
+                      target="_blank"
+                      >Ver Ley de Transparencia y acceso a la información</a
+                    >
+                  </h6>
+                </div>
+              </div>
             </div>
-            <div class="col-md-8 text-justify" style="margin-bottom: 20px">
+            <div class="col-md-8 text-justify">
               <div
-                style="
-                  background-color: #8f141b;
-                  color: white;
-                  padding: 20px;
-                  border-radius: 10px 10px 0px 0px;
-                "
+                class="p-4 text-white bg-usco-vt-d1"
+                style="border-radius: 10px 10px 0px 0px"
               >
                 <h5>
                   <i class="fas fa-edit"></i>
@@ -76,91 +90,79 @@
                   {{ articuloDocente.autores }}
                 </p>
               </div>
-              <div
-                style="
-                  background-color: #f7f7f7;
-                  padding: 20px;
-                  border-radius: 0px 0px 10px 10px;
-                  color: #1e262b;
-                "
-              >
-                <div class="row">
-                  <div class="col">
-                    <h5>
-                      <strong
-                        ><i class="fas fa-bookmark"></i>
-                        Resumen/Abtract:</strong
+              <div class="row p-4">
+                <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      <h5>
+                        <strong
+                          ><i class="fas fa-bookmark"></i>
+                          Resumen/Abtract:</strong
+                        >
+                      </h5>
+                    </div>
+                    <div class="col text-right">
+                      <small
+                        >Fecha de publicación:
+                        {{ articuloDocente.anio | date }}</small
                       >
-                    </h5>
+                    </div>
                   </div>
-                  <div class="col text-right">
-                    <small
-                      >Fecha de publicación:
-                      {{ articuloDocente.anio | date }}</small
-                    >
-                  </div>
-                </div>
 
-                <p class="m-2">
-                  {{ articuloDocente.resumen }}
-                </p>
-                <br />
-                <div class="row">
-                  <div class="col">
-                    <h5>
-                      <strong
-                        ><i class="fab fa-readme"></i> Visualización del
-                        artículo:</strong
+                  <p class="m-2">
+                    {{ articuloDocente.resumen }}
+                  </p>
+                  <br />
+                  <div class="row">
+                    <div class="col">
+                      <h5>
+                        <strong
+                          ><i class="fab fa-readme"></i> Visualización del
+                          artículo:</strong
+                        >
+                      </h5>
+                    </div>
+                    <div class="col text-right">
+                      <small
+                        ><a [href]="plantelProfesor.cvlac" target="_blank"
+                          >CVLAC /</a
+                        ><a [href]="plantelProfesor.orcid" target="_blank">
+                          ORCID / </a
+                        ><a
+                          [href]="
+                            articuloDocente.enlace
+                              | domseguro : 'https://drive.google.com/file/d/'
+                          "
+                          target="_blank"
+                        >
+                          DRIVE</a
+                        ></small
                       >
-                    </h5>
+                    </div>
                   </div>
-                  <div class="col text-right">
-                    <small
-                      ><a [href]="plantelProfesor.cvlac" target="_blank"
-                        >CVLAC /</a
-                      ><a [href]="plantelProfesor.orcid" target="_blank">
-                        ORCID / </a
-                      ><a
-                        [href]="
-                          articuloDocente.enlace
-                            | domseguro: 'https://drive.google.com/file/d/'
-                        "
-                        target="_blank"
-                      >
-                        DRIVE</a
-                      ></small
-                    >
+                  <hr />
+                  <div class="container">
+                    <iframe
+                      [src]="
+                        articuloDocente.enlace
+                          | domseguro : 'https://drive.google.com/file/d/'
+                      "
+                      width="100%"
+                      height="480"
+                    ></iframe>
                   </div>
+                  <hr />
                 </div>
-                <hr />
-                <div class="container">
-                  <iframe
-                    [src]="
-                      articuloDocente.enlace
-                        | domseguro: 'https://drive.google.com/file/d/'
-                    "
-                    width="100%"
-                    height="480"
-                  ></iframe>
-                </div>
-                <hr />
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row font-usco-gr">
             <div
               class="col text-justify"
               style="margin-bottom: 20px; padding-left: 0px"
             >
-              <div
-                style="
-                  background-color: #edeff0;
-                  padding: 20px;
-                  border-radius: 0px 0px 10px 10px;
-                  color: #1e262b;
-                "
-              >
-                <div class="row">
+              <div>
+                <div class="row mt-4">
                   <div class="col-md-8">
                     <h4 class="m-2">
                       <strong
@@ -210,12 +212,7 @@
                       </td>
                       <td>
                         <h5
-                          class="
-                            card-title
-                            subTituloRojoInstitucional
-                            cursorSelect
-                            text-left
-                          "
+                          class="card-title font-usco-vt font-weight-bold cursor-select text-left"
                           (click)="up()"
                           [routerLink]="[
                             '/articulo_docente',
@@ -234,7 +231,7 @@
                           <a
                             [href]="
                               fieldArticulos.enlace
-                                | domseguro: 'https://drive.google.com/file/d/'
+                                | domseguro : 'https://drive.google.com/file/d/'
                             "
                             target="_blank"
                             >{{ fieldArticulos.autores }}</a
@@ -245,13 +242,13 @@
                             <strong
                               ><i class="fas fa-calendar-day"></i> Año:
                             </strong>
-                            {{ fieldArticulos.anio | date: "yyyy" }}
+                            {{ fieldArticulos.anio | date : "yyyy" }}
                           </dd>
                           <dd>
                             <strong
                               ><i class="fab fa-readme"></i> Resumen:
                             </strong>
-                            {{ fieldArticulos.resumen | slice: 0:280 }}
+                            {{ fieldArticulos.resumen | slice : 0 : 280 }}
                             <a
                               (click)="up()"
                               [routerLink]="[
@@ -276,7 +273,7 @@
           <div class="row no-print">
             <div class="col">
               <button
-                class="btn navlinkinSolid"
+                class="btn btn-usco-vt"
                 printSectionId="print-section"
                 [useExistingCss]="true"
                 printTitle="Perfil {{ plantelProfesor.nombre }}"
@@ -285,7 +282,7 @@
                 <i class="fas fa-print"></i> Imprimir
               </button>
               <button
-                class="btn navlinkinSolid m-1"
+                class="btn btn-usco-vt m-1"
                 [routerLink]="['/articulosProfesores']"
               >
                 <i class="fas fa-sign-out-alt"></i> Regresar
@@ -293,15 +290,15 @@
             </div>
             <div class="col text-right" *ngIf="auth.user | async">
               <button
-                class="btn navlinkinSolid m-2"
+                class="btn btn-usco-vt m-2"
                 [routerLink]="['/admi_plantel', 'nuevo']"
               >
                 <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
               </button>
-              <button class="btn navlinkinSolid m-2" (click)="nav()">
+              <button class="btn btn-usco-vt m-2" (click)="nav()">
                 <i class="fas fa-user-edit"></i> Editar
               </button>
-              <button class="btn navlinkinSolid m-2" (click)="borrarPlantel()">
+              <button class="btn btn-usco-vt m-2" (click)="borrarPlantel()">
                 <i class="fas fa-user-edit"></i> Borrar
               </button>
             </div>
