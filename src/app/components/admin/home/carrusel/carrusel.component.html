@@ -1,7 +1,7 @@
 <div class="wrapper fadeIn fast">
   <div class="container p-3 mt-4 mb-4">
     <div class="row">
-      <div class="col-sm shadow fondodivleft shadow grayinst">
+      <div class="col-sm shadow fondodivleft font-usco-gr pt-4 pb-4">
         <div class="row">
           <div class="col">
             <h3 class="titleInstRed text-center">
@@ -32,7 +32,7 @@
                     <div class="col text-center m-2">
                       <button
                         [routerLink]="['/admi_carruselEdit', carrusel.key]"
-                        class="btn navlinkinSolid m-1"
+                        class="btn btn-usco-vt m-1"
                         placement="top"
                         ngbTooltip="Editar {{ carrusel.titulo }}"
                       >
@@ -40,7 +40,7 @@
                         {{ i + 1 }}
                       </button>
                       <button
-                        class="btn navlinkinSolid m-1"
+                        class="btn btn-usco-vt m-1"
                         placement="top"
                         (click)="openModal(confirmar)"
                         ngbTooltip="Borrar {{ carrusel.titulo }}"
@@ -80,7 +80,7 @@
                           </button>
                           <button
                             type="button"
-                            class="btn navlinkinSolid"
+                            class="btn btn-usco-vt"
                             (click)="modal.close('Close click')"
                           >
                             Cancelar
@@ -131,7 +131,7 @@
               puede encontrar en el siguiente enlace:
               <a
                 href="https://www.usco.edu.co/imagen-institucional/"
-                class="colorRedInst"
+                class="font-usco-vt"
                 target="_blank"
                 >Guía Imágen Corporativa</a
               >
@@ -143,7 +143,7 @@
                 <a
                   href="/assets/PlantillaCarrusel.psd"
                   download
-                  class="colorRedInst"
+                  class="font-usco-vt"
                   ><i class="far fa-file-image"></i> Plantilla Photoshop.</a
                 >
               </li>
@@ -153,7 +153,7 @@
                 plantilla y aplicar el diseño deseado
                 <a
                   href="https://mega.nz/file/ZYI2hbCb#6amg-4tmD3GCOaNaGX1ECmw9s9-i680Ydd7aogKaOqA"
-                  class="colorRedInst"
+                  class="font-usco-vt"
                   target="_blank"
                   ><i class="fas fa-download"></i> Programa PhotoShop.</a
                 >
@@ -165,7 +165,7 @@
                 <a
                   href="/assets/pruebaCarrusel.jpg"
                   download
-                  class="colorRedInst"
+                  class="font-usco-vt"
                   ><i class="fas fa-expand"></i> Descargar Imágen de muestra.</a
                 >
               </li>
@@ -177,7 +177,7 @@
           <div class="col text-right">
             <button
               [routerLink]="['/admi_carruselEdit', 'nuevo']"
-              class="btn navlinkinSolid m-1"
+              class="btn btn-usco-vt m-1"
             >
               <i class="far fa-images"></i> Agregar Imágen al carrusel
             </button>

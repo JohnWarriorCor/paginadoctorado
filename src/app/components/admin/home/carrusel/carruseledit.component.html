@@ -1,7 +1,9 @@
 <div class="wrapper fadeIn fast">
   <div class="container p-3 mt-4">
     <div class="row">
-      <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+      <div
+        class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+      >
         <div class="row mb-4">
           <div class="col">
             <h3 class="titleInstRed">
@@ -17,7 +19,7 @@
                 <div class="col">
                   <div class="row">
                     <div class="col">
-                      <h6 class="text-left subTituloRojoInstitucional">
+                      <h6 class="text-left font-usco-vt font-weight-bold">
                         Título de la imágen:
                       </h6>
                       <input
@@ -29,7 +31,7 @@
                       />
                     </div>
                     <div class="col">
-                      <h6 class="text-left subTituloRojoInstitucional">
+                      <h6 class="text-left font-usco-vt font-weight-bold">
                         Cargar archivo de imágen:
                       </h6>
                       <form
@@ -68,7 +70,7 @@
                                   style="margin-left: 16px"
                                   for="customFileLang"
                                 >
-                                  {{ mensajeArchivo | slice: 0:25 }}...
+                                  {{ mensajeArchivo | slice : 0 : 25 }}...
                                 </span>
                               </span>
                             </label>
@@ -76,7 +78,7 @@
                           </div>
                           <div class="col col-lg-3 text-right">
                             <button
-                              class="btn navlinkinSolid"
+                              class="btn btn-usco-vt"
                               type="submit"
                               placement="top"
                               ngbTooltip="Subir archivo"
@@ -91,7 +93,7 @@
                   </div>
                   <div class="row">
                     <div class="col">
-                      <h6 class="subTituloRojoInstitucional text-left">
+                      <h6 class="font-usco-vt text-left font-weight-bold">
                         URL para información complementaria:
                       </h6>
                       <input
@@ -103,7 +105,7 @@
                       />
                     </div>
                     <div class="col">
-                      <h6 class="subTituloRojoInstitucional text-left">
+                      <h6 class="font-usco-vt text-left font-weight-bold">
                         Fecha publicación:
                       </h6>
                       <input
@@ -116,7 +118,7 @@
                   </div>
                   <div class="row">
                     <div class="col">
-                      <h6 class="subTituloRojoInstitucional text-left">
+                      <h6 class="font-usco-vt text-left font-weight-bold">
                         Reseña informativa:
                       </h6>
                       <textarea
@@ -136,14 +138,14 @@
                 <div class="col">
                   <button
                     [routerLink]="['/admi_carrusel']"
-                    class="btn navlinkinSolid m-1"
+                    class="btn btn-usco-vt m-1"
                   >
                     <i class="fas fa-arrow-left"></i> Salir
                   </button>
                   <a
                     href="https://console.firebase.google.com/u/1/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files/~2FCARRUSEL"
                     target="_blank"
-                    ><button class="btn navlinkinSolid m-1">
+                    ><button class="btn btn-usco-vt m-1">
                       <i class="fas fa-cloud-upload-alt"></i> Administrar
                       imagenes
                     </button></a
@@ -152,7 +154,7 @@
                 <div class="col text-right">
                   <button
                     (click)="openModal(confirmar)"
-                    class="btn navlinkinSolid m-1"
+                    class="btn btn-usco-vt m-1"
                   >
                     <i class="far fa-save"></i> Guardar
                   </button>
@@ -253,7 +255,7 @@
                   </button>
                   <button
                     type="button"
-                    class="btn navlinkinSolid"
+                    class="btn btn-usco-vt"
                     (click)="modal.close('Close click')"
                   >
                     Cancelar

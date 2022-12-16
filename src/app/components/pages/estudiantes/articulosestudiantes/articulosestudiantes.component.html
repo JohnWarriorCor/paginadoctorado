@@ -93,8 +93,8 @@
                         <h5
                           class="
                             card-title
-                            subTituloRojoInstitucional
-                            cursorSelect
+                            font-usco-vt font-weight-bold
+                            cursor-select
                             text-left
                           "
                           [routerLink]="[
@@ -187,7 +187,7 @@
                             ]"
                             [title]="articulo.nombreArticulo"
                             ><img
-                              class="img-polaroid"
+                              class="img"
                               src="assets/PDF_file_icon.svg"
                               [alt]="articulo.nombreArticulo"
                           /></a>
@@ -195,7 +195,7 @@
                       </td>
                       <td>
                         <h5
-                          class="card-title subTituloRojoInstitucional cursorSelect text-left"
+                          class="card-title font-usco-vt font-weight-bold cursor-select text-left"
                           [routerLink]="['/articulo_estudiante', articulo.key]"
                         >
                           {{ articulo.nombreArticulo }}

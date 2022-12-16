@@ -1,186 +1,177 @@
 <div class="wrapper fadeIn fast">
-  <div>
-    <div>
-      <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-        <div class="row">
-          <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
-            <h3 class="titleInstRed">
-              Formulario para administrar los Libros de la Biblioteca
-            </h3>
-            <hr class="lineInstRed" />
-            <br />
-            <form #forma="ngForm">
-              <table class="table table-bordered parinst text-center">
-                <thead class="tablatit">
-                  <tr class="white">
-                    <th style="vertical-align: middle" scope="col">Título</th>
-                    <th style="vertical-align: middle" scope="col">Autor</th>
-                    <th style="vertical-align: middle" scope="col">
-                      Editorial
-                    </th>
-                    <th style="vertical-align: middle" scope="col">
-                      Ejemplares
-                    </th>
-                    <th style="vertical-align: middle" scope="col">Opciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let field of libro.fieldArray; let i = index">
-                    <td>
-                      <input
-                        [(ngModel)]="field.titulo"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.titulo }}"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        [(ngModel)]="field.autor"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.autor }}"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        [(ngModel)]="field.editorial"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.editorial }}"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        [(ngModel)]="field.ejemplares"
-                        class="form-control inputTable"
-                        type="number"
-                        name="{{ field.ejemplares }}"
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="deleteFieldValue(i)"
-                        placement="top"
-                        ngbTooltip="Borrar"
-                      >
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeTitulo"
-                        [(ngModel)]="newAttribute.titulo"
-                        name="newAttributeTitulo"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeAutor"
-                        [(ngModel)]="newAttribute.autor"
-                        name="newAttributeAutor"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeEditorial"
-                        [(ngModel)]="newAttribute.editorial"
-                        name="newAttributeEditorial"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="number"
-                        id="newAttributeEjemplares"
-                        [(ngModel)]="newAttribute.ejemplares"
-                        name="newAttributeEjemplares"
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="addFieldValue()"
-                        placement="top"
-                        ngbTooltip="Agregar"
-                      >
-                        <i class="fas fa-plus-circle"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div
+        class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+      >
+        <h3 class="titleInstRed">
+          Formulario para administrar los Libros de la Biblioteca
+        </h3>
+        <hr class="lineInstRed" />
+        <br />
+        <form #forma="ngForm">
+          <table class="table table-bordered parinst text-center">
+            <thead class="tablatit">
+              <tr class="white">
+                <th style="vertical-align: middle" scope="col">Título</th>
+                <th style="vertical-align: middle" scope="col">Autor</th>
+                <th style="vertical-align: middle" scope="col">Editorial</th>
+                <th style="vertical-align: middle" scope="col">Ejemplares</th>
+                <th style="vertical-align: middle" scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let field of libro.fieldArray; let i = index">
+                <td>
+                  <input
+                    [(ngModel)]="field.titulo"
+                    class="form-control inputTable"
+                    type="text"
+                    name="{{ field.titulo }}"
+                  />
+                </td>
+                <td>
+                  <input
+                    [(ngModel)]="field.autor"
+                    class="form-control inputTable"
+                    type="text"
+                    name="{{ field.autor }}"
+                  />
+                </td>
+                <td>
+                  <input
+                    [(ngModel)]="field.editorial"
+                    class="form-control inputTable"
+                    type="text"
+                    name="{{ field.editorial }}"
+                  />
+                </td>
+                <td>
+                  <input
+                    [(ngModel)]="field.ejemplares"
+                    class="form-control inputTable"
+                    type="number"
+                    name="{{ field.ejemplares }}"
+                  />
+                </td>
+                <td>
+                  <button
+                    class="btn btn-default font-usco-vt"
+                    type="button"
+                    (click)="deleteFieldValue(i)"
+                    placement="top"
+                    ngbTooltip="Borrar"
+                  >
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    id="newAttributeTitulo"
+                    [(ngModel)]="newAttribute.titulo"
+                    name="newAttributeTitulo"
+                  />
+                </td>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    id="newAttributeAutor"
+                    [(ngModel)]="newAttribute.autor"
+                    name="newAttributeAutor"
+                  />
+                </td>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    id="newAttributeEditorial"
+                    [(ngModel)]="newAttribute.editorial"
+                    name="newAttributeEditorial"
+                  />
+                </td>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="number"
+                    id="newAttributeEjemplares"
+                    [(ngModel)]="newAttribute.ejemplares"
+                    name="newAttributeEjemplares"
+                  />
+                </td>
+                <td>
+                  <button
+                    class="btn btn-default font-usco-vt"
+                    type="button"
+                    (click)="addFieldValue()"
+                    placement="top"
+                    ngbTooltip="Agregar"
+                  >
+                    <i class="fas fa-plus-circle"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-usco-vt m-1" (click)="openModal(confirmar)">
+            <i class="far fa-save"></i> Guardar
+          </button>
+          <button
+            class="btn btn-usco-vt m-1"
+            [routerLink]="['/plandeestudios']"
+          >
+            <i class="fas fa-sign-out-alt"></i> Volver
+          </button>
+          <ng-template #confirmar let-modal>
+            <div class="modal-header bg-usco-vt text-white">
+              <h4 class="modal-title">Confirmar acción</h4>
               <button
-                class="btn navlinkinSolid m-1"
-                (click)="openModal(confirmar)"
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
               >
-                <i class="far fa-save"></i> Guardar
+                <i class="fas fa-times" style="color: white"></i>
               </button>
-              <button
-                class="btn navlinkinSolid m-1"
-                [routerLink]="['/plandeestudios']"
-              >
-                <i class="fas fa-sign-out-alt"></i> Volver
-              </button>
-              <ng-template #confirmar let-modal>
-                <div class="modal-header bgrojoycafe">
-                  <h4 class="modal-title">Confirmar acción</h4>
-                  <button
-                    type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="modal.dismiss('Cross click')"
-                  >
-                    <i class="fas fa-times" style="color: white"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div
-                    class="alert alert-warning text-center font-weight-bold"
-                    role="alert"
-                  >
-                    ¿Desea guardar y continuar con la acción?
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btnColorFacultadSalud"
-                    ngbAutofocus
-                    (click)="guardar()"
-                  >
-                    Aceptar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn navlinkinSolid"
-                    (click)="modal.close('Close click')"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </ng-template>
+            </div>
+            <div class="modal-body">
               <div
-                *ngIf="error != false"
-                class="alert alert-danger alert-dismissible fade show"
+                class="alert alert-warning text-center font-weight-bold"
                 role="alert"
               >
-                <strong>{{ passError }}</strong>
+                ¿Desea guardar y continuar con la acción?
               </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btnColorFacultadSalud"
+                ngbAutofocus
+                (click)="guardar()"
+              >
+                Aceptar
+              </button>
+              <button
+                type="button"
+                class="btn btn-usco-vt"
+                (click)="modal.close('Close click')"
+              >
+                Cancelar
+              </button>
+            </div>
+          </ng-template>
+          <div
+            *ngIf="error != false"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ passError }}</strong>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

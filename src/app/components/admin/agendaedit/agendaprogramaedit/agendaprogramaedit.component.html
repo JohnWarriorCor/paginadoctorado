@@ -7,26 +7,28 @@
     />
   </div>
   <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+    <div class="container mt-5 mb-5">
       <div class="row">
-        <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+        <div
+          class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+        >
           <h3 class="titleInstRed">
             Formulario para la publicación de un evento
           </h3>
           <hr class="lineInstRed" />
           <br />
-          <a
+          <!-- <a
             href="https://console.firebase.google.com/u/4/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
             target="_blank"
-            ><button class="btn navlinkinSolid">Cargar imagen</button></a
+            ><button class="btn btn-usco-vt">Cargar imagen</button></a
           >
-          <br /><br />
+          <br /><br /> -->
           <form #forma="ngForm" class="text-center">
             <div class="row animated fadeIn fast">
               <div class="col-md-12">
                 <div class="row">
                   <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">
+                    <h6 class="text-left font-usco-vt font-weight-bold">
                       Titulo del evento:
                     </h6>
                     <input
@@ -38,7 +40,7 @@
                     />
                     <div class="row">
                       <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
+                        <h6 class="font-usco-vt font-weight-bold text-left">
                           Fecha del evento:
                         </h6>
                         <input
@@ -49,7 +51,7 @@
                         />
                       </div>
                       <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
+                        <h6 class="font-usco-vt font-weight-bold text-left">
                           Fecha de publicación:
                         </h6>
                         <input
@@ -62,7 +64,7 @@
                     </div>
                     <div class="row">
                       <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
+                        <h6 class="font-usco-vt font-weight-bold text-left">
                           Imagen del evento:
                         </h6>
                         <input
@@ -77,7 +79,7 @@
                     </div>
                     <div class="row">
                       <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
+                        <h6 class="font-usco-vt font-weight-bold text-left">
                           Reseña:
                         </h6>
                         <textarea
@@ -93,7 +95,7 @@
                     <br />
                     <div class="row">
                       <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
+                        <h6 class="font-usco-vt font-weight-bold text-left">
                           Parrafo:
                         </h6>
                         <textarea
@@ -106,10 +108,10 @@
                         ></textarea>
                       </div>
                     </div>
-                    <br>
+                    <br />
                     <div class="row">
                       <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
+                        <h6 class="font-usco-vt font-weight-bold text-left">
                           Enlace información del evento:
                         </h6>
                         <input
@@ -123,7 +125,7 @@
                     </div>
                   </div>
                   <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">
+                    <h6 class="text-left font-usco-vt font-weight-bold">
                       Cargar imágen a publicar:
                     </h6>
                     <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
@@ -155,15 +157,11 @@
                             />
                             <span class="file-cta">
                               <span
-                                class="
-                                  custom-file-label
-                                  text-left
-                                  inputPaciente
-                                "
+                                class="custom-file-label text-left inputPaciente"
                                 style="margin-left: 16px"
                                 for="customFileLang"
                               >
-                                {{ mensajeArchivo | slice: 0:50 }}
+                                {{ mensajeArchivo | slice : 0 : 50 }}
                               </span>
                             </span>
                           </label>
@@ -194,7 +192,7 @@
                       </div>
                     </form>
                     <br />
-                    <h6 class="text-left subTituloRojoInstitucional">
+                    <h6 class="text-left font-usco-vt font-weight-bold">
                       Previsualización de la imágen:
                     </h6>
                     <img
@@ -216,7 +214,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <!--    <div class="row">
               <div class="col">
                 <h3 class="titleInstRed text-left">
                   Espacio para diseño del Blog
@@ -230,15 +228,12 @@
                   [(ngModel)]="agenda.parrafo"
                 ></angular-editor>
               </div>
-            </div>
+            </div> -->
             <div class="row text-right">
               <div class="col">
                 <br />
                 <hr />
-                <button
-                  (click)="openModal(confirmar)"
-                  class="btn navlinkinSolid"
-                >
+                <button (click)="openModal(confirmar)" class="btn btn-usco-vt">
                   <i class="far fa-save"></i> Guardar
                 </button>
                 <ng-template #confirmar let-modal>
@@ -273,7 +268,7 @@
                     </button>
                     <button
                       type="button"
-                      class="btn navlinkinSolid"
+                      class="btn btn-usco-vt"
                       (click)="modal.close('Close click')"
                     >
                       Cancelar

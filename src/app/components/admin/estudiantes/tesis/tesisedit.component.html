@@ -1,198 +1,200 @@
 <div class="wrapper fadeIn fast">
-  <div>
-    <div>
-      <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-        <div class="row">
-          <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
-            <h3 class="titleInstRed">
-              Formulario para administrar las Tesis elaboradas por los
-              Estudiantes del Doctorado
-            </h3>
-            <hr class="lineInstRed" />
-            <br />
-            <form #forma="ngForm">
-              <table class="table table-bordered parinst text-center">
-                <thead class="tablatit">
-                  <tr class="white">
-                    <th style="vertical-align: middle" scope="col">
-                      Título de Tesis
-                    </th>
-                    <th style="vertical-align: middle" scope="col">Estado</th>
-                    <th style="vertical-align: middle" scope="col">Autor</th>
-                    <th style="vertical-align: middle" scope="col">Archivo</th>
-                    <th style="vertical-align: middle" scope="col">Opciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let field of tesis.fieldArray; let i = index">
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.titulo }}"
-                        [(ngModel)]="field.titulo"
-                      />
-                    </td>
-                    <td>
-                      <select
-                        class="custom-select inputTable"
-                        id="preoceso"
-                        name="{{ field.proceso }}"
-                        [(ngModel)]="field.proceso"
-                      >
-                        <option value="" disabled="disabled">
-                          Elija el estado
-                        </option>
-                        <option value="En Desarrollo">En Desarrollo</option>
-                        <option value="Finalizado">Finalizado</option>
-                        <option value="En Definición">En Definición</option>
-                      </select>
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.autor }}"
-                        [(ngModel)]="field.autor"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.url }}"
-                        [(ngModel)]="field.url"
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="deleteFieldValue(i)"
-                        placement="top"
-                        ngbTooltip="Borrar"
-                      >
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeTitulo"
-                        [(ngModel)]="newAttribute.titulo"
-                        name="titulo"
-                      />
-                    </td>
-                    <td>
-                      <select
-                        class="custom-select inputTable"
-                        id="newAttributeProceso"
-                        [(ngModel)]="newAttribute.proceso"
-                        name="proceso"
-                      >
-                        <option value="" disabled="disabled">
-                          Elija el estado
-                        </option>
-                        <option value="En Desarrollo">En Desarrollo</option>
-                        <option value="Finalizado">Finalizado</option>
-                        <option value="En Definición">En Definición</option>
-                      </select>
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeAutor"
-                        [(ngModel)]="newAttribute.autor"
-                        name="autor"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeDirector"
-                        [(ngModel)]="newAttribute.url"
-                        name="url"
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="addFieldValue()"
-                        placement="top"
-                        ngbTooltip="Agregar"
-                      >
-                        <i class="fas fa-plus-circle"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div
+        class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+      >
+        <h3 class="titleInstRed">
+          Formulario para administrar las Tesis elaboradas por los Estudiantes
+          del Doctorado
+        </h3>
+        <hr class="lineInstRed" />
+        <br />
+        <form #forma="ngForm">
+          <table class="table table-bordered parinst text-center">
+            <thead class="tablatit">
+              <tr class="white">
+                <th style="vertical-align: middle" scope="col">
+                  Título de Tesis
+                </th>
+                <th style="vertical-align: middle" scope="col">Estado</th>
+                <th style="vertical-align: middle" scope="col">Autor</th>
+                <th style="vertical-align: middle" scope="col">Archivo</th>
+                <th style="vertical-align: middle" scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let field of tesis.fieldArray; let i = index">
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    name="{{ field.titulo }}"
+                    [(ngModel)]="field.titulo"
+                  />
+                </td>
+                <td>
+                  <select
+                    class="custom-select inputTable"
+                    id="preoceso"
+                    name="{{ field.proceso }}"
+                    [(ngModel)]="field.proceso"
+                  >
+                    <option value="" disabled="disabled">
+                      Elija el estado
+                    </option>
+                    <option value="En Desarrollo">En Desarrollo</option>
+                    <option value="Finalizado">Finalizado</option>
+                    <option value="En Definición">En Definición</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    name="{{ field.autor }}"
+                    [(ngModel)]="field.autor"
+                  />
+                </td>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    name="{{ field.url }}"
+                    [(ngModel)]="field.url"
+                  />
+                </td>
+                <td>
+                  <button
+                    class="btn btn-default font-usco-vt"
+                    type="button"
+                    (click)="deleteFieldValue(i)"
+                    placement="top"
+                    ngbTooltip="Borrar"
+                  >
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    id="newAttributeTitulo"
+                    [(ngModel)]="newAttribute.titulo"
+                    name="titulo"
+                  />
+                </td>
+                <td>
+                  <select
+                    class="custom-select inputTable"
+                    id="newAttributeProceso"
+                    [(ngModel)]="newAttribute.proceso"
+                    name="proceso"
+                  >
+                    <option value="" disabled="disabled">
+                      Elija el estado
+                    </option>
+                    <option value="En Desarrollo">En Desarrollo</option>
+                    <option value="Finalizado">Finalizado</option>
+                    <option value="En Definición">En Definición</option>
+                  </select>
+                </td>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    id="newAttributeAutor"
+                    [(ngModel)]="newAttribute.autor"
+                    name="autor"
+                  />
+                </td>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    id="newAttributeDirector"
+                    [(ngModel)]="newAttribute.url"
+                    name="url"
+                  />
+                </td>
+                <td>
+                  <button
+                    class="btn btn-default font-usco-vt"
+                    type="button"
+                    (click)="addFieldValue()"
+                    placement="top"
+                    ngbTooltip="Agregar"
+                  >
+                    <i class="fas fa-plus-circle"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr />
+          <div class="row">
+            <div class="col text-left">
+              <button class="btn btn-usco-vt m-1" [routerLink]="['/tesis']">
+                <i class="fas fa-arrow-left"></i> Volver
+              </button>
+            </div>
+            <div class="col text-right">
               <button
-                class="btn navlinkinSolid m-1"
+                class="btn btn-usco-vt m-1"
                 (click)="openModal(confirmar)"
               >
                 <i class="far fa-save"></i> Guardar
               </button>
+            </div>
+          </div>
+          <ng-template #confirmar let-modal>
+            <div class="modal-header bgrojoycafe">
+              <h4 class="modal-title">Confirmar acción</h4>
               <button
-                class="btn navlinkinSolid m-1"
-                [routerLink]="['/plandeestudios']"
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
               >
-                <i class="fas fa-sign-out-alt"></i> Volver
+                <i class="fas fa-times" style="color: white"></i>
               </button>
-              <ng-template #confirmar let-modal>
-                <div class="modal-header bgrojoycafe">
-                  <h4 class="modal-title">Confirmar acción</h4>
-                  <button
-                    type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="modal.dismiss('Cross click')"
-                  >
-                    <i class="fas fa-times" style="color: white"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div
-                    class="alert alert-warning text-center font-weight-bold"
-                    role="alert"
-                  >
-                    ¿Desea guardar y continuar con la acción?
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btnColorFacultadSalud"
-                    ngbAutofocus
-                    (click)="guardar()"
-                  >
-                    Aceptar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn navlinkinSolid"
-                    (click)="modal.close('Close click')"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </ng-template>
+            </div>
+            <div class="modal-body">
               <div
-                *ngIf="error != false"
-                class="alert alert-danger alert-dismissible fade show"
+                class="alert alert-warning text-center font-weight-bold"
                 role="alert"
               >
-                <strong>{{ passError }}</strong>
+                ¿Desea guardar y continuar con la acción?
               </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btnColorFacultadSalud"
+                ngbAutofocus
+                (click)="guardar()"
+              >
+                Aceptar
+              </button>
+              <button
+                type="button"
+                class="btn btn-usco-vt"
+                (click)="modal.close('Close click')"
+              >
+                Cancelar
+              </button>
+            </div>
+          </ng-template>
+          <div
+            *ngIf="error != false"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ passError }}</strong>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

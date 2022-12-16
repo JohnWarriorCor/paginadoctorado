@@ -1,7 +1,9 @@
 <div class="wrapper fadeIn fast">
-  <div class="container pt-4 mt-4">
+  <div class="container mt-5 mb-5">
     <div class="row">
-      <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
+      <div
+        class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+      >
         <div class="row">
           <div class="col">
             <h3 class="titleInstRed">
@@ -17,7 +19,7 @@
             <div class="col text-justify">
               <div class="row m-4">
                 <div class="col">
-                  <h6 class="text-left subTituloRojoInstitucional">
+                  <h6 class="text-left font-usco-vt font-weight-bold">
                     Nombre del artículo:
                   </h6>
                   <input
@@ -31,7 +33,9 @@
               </div>
               <div class="row m-4">
                 <div class="col">
-                  <h6 class="subTituloRojoInstitucional text-left">Autores:</h6>
+                  <h6 class="font-usco-vt font-weight-bold text-left">
+                    Autores:
+                  </h6>
                   <input
                     type="text"
                     name="autores"
@@ -40,7 +44,7 @@
                   />
                 </div>
                 <div class="col">
-                  <h6 class="subTituloRojoInstitucional text-left">
+                  <h6 class="font-usco-vt font-weight-bold text-left">
                     Fecha de publicación:
                   </h6>
                   <input
@@ -53,7 +57,9 @@
               </div>
               <div class="row m-4">
                 <div class="col">
-                  <h6 class="subTituloRojoInstitucional text-left">Reseña:</h6>
+                  <h6 class="font-usco-vt font-weight-bold text-left">
+                    Reseña:
+                  </h6>
                   <textarea
                     maxlength="6500"
                     name="resumen"
@@ -66,7 +72,7 @@
               </div>
               <div class="row m-4">
                 <div class="col">
-                  <h6 class="subTituloRojoInstitucional text-left">
+                  <h6 class="font-usco-vt font-weight-bold text-left">
                     Enlace del artículo:
                   </h6>
                   <input
@@ -78,7 +84,9 @@
                   />
                 </div>
                 <div class="col">
-                  <h6 class="subTituloRojoInstitucional text-left">Revista:</h6>
+                  <h6 class="font-usco-vt font-weight-bold text-left">
+                    Revista:
+                  </h6>
                   <input
                     name="revista"
                     [(ngModel)]="articulosPro.revista"
@@ -94,7 +102,7 @@
           <div class="row">
             <div class="col text-left">
               <button
-                class="btn navlinkinSolid ml-4"
+                class="btn btn-usco-vt ml-4"
                 [routerLink]="['/articulosProfesores']"
               >
                 <i class="fas fa-arrow-left"></i> Volver
@@ -102,7 +110,7 @@
             </div>
             <div class="col text-right">
               <button
-                class="btn navlinkinSolid mr-4"
+                class="btn btn-usco-vt mr-4"
                 (click)="openModal(confirmar)"
               >
                 <i class="far fa-save"></i> Guardar
@@ -110,7 +118,7 @@
             </div>
           </div>
           <ng-template #confirmar let-modal>
-            <div class="modal-header bgrojoycafe">
+            <div class="modal-header bg-usco-vt-d1 text-white">
               <h4 class="modal-title">Confirmar acción</h4>
               <button
                 type="button"
@@ -132,7 +140,7 @@
             <div class="modal-footer">
               <button
                 type="button"
-                class="btn btnColorFacultadSalud"
+                class="btn btn-usco-fac-salud"
                 ngbAutofocus
                 (click)="guardar()"
               >
@@ -140,7 +148,7 @@
               </button>
               <button
                 type="button"
-                class="btn navlinkinSolid"
+                class="btn btn-usco-vt"
                 (click)="modal.close('Close click')"
               >
                 Cancelar

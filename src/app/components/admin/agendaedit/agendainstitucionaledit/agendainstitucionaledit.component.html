@@ -6,272 +6,261 @@
       style="height: auto"
     />
   </div>
-  <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-      <div class="row">
-        <div class="col-sm shadow fondodivleft shadow grayinst">
-          <h3 class="titleInstRed">
-            Formulario para la publicación de un evento
-          </h3>
-          <hr class="lineInstRed" />
-          <br /><br />
-          <form #forma="ngForm">
-            <div class="row animated fadeIn fast">
-              <div class="col-md-12">
-                <div class="row">
-                  <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">
-                      Titulo del evento:
-                    </h6>
-                    <input
-                      type="text"
-                      name="titulo"
-                      [(ngModel)]="agenda.titulo"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Encabezado o título del evento"
-                    />
-                    <div class="row">
-                      <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
-                          Fecha del evento:
-                        </h6>
-                        <input
-                          type="date"
-                          name="fechaEvento"
-                          [(ngModel)]="agenda.fechaEvento"
-                          class="form-control shadow p-3 inputPaciente"
-                        />
-                      </div>
-                      <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
-                          Fecha de publicación:
-                        </h6>
-                        <input
-                          type="date"
-                          name="fechaPublicacion"
-                          [(ngModel)]="agenda.fechaPublicacion"
-                          class="form-control shadow p-3 inputPaciente"
-                        />
-                      </div>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-sm shadow fondodivleft font-usco-gr pt-4 pb-4">
+        <h3 class="titleInstRed">
+          Formulario para la publicación de un evento
+        </h3>
+        <hr class="lineInstRed" />
+        <br /><br />
+        <form #forma="ngForm">
+          <div class="row animated fadeIn fast">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col">
+                  <h6 class="text-left font-usco-vt font-weight-bold">
+                    Titulo del evento:
+                  </h6>
+                  <input
+                    type="text"
+                    name="titulo"
+                    [(ngModel)]="agenda.titulo"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Encabezado o título del evento"
+                  />
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="font-usco-vt font-weight-bold text-left">
+                        Fecha del evento:
+                      </h6>
+                      <input
+                        type="date"
+                        name="fechaEvento"
+                        [(ngModel)]="agenda.fechaEvento"
+                        class="form-control shadow p-3 inputPaciente"
+                      />
                     </div>
-                    <div class="row">
-                      <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
-                          Reseña:
-                        </h6>
-                        <textarea
-                          maxlength="6500"
-                          name="resenia"
-                          [(ngModel)]="agenda.resenia"
-                          class="form-control shadow p-3"
-                          placeholder="Síntesis o información relavante del evento ..."
-                          rows="8"
-                        ></textarea>
-                      </div>
-                    </div>
-                    <br />
-                    <div class="row">
-                      <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
-                          Parrafo:
-                        </h6>
-                        <textarea
-                          maxlength="6500"
-                          name="parrafo"
-                          [(ngModel)]="agenda.parrafo"
-                          class="form-control shadow p-3"
-                          placeholder="Información relavante del evento ..."
-                          rows="8"
-                        ></textarea>
-                      </div>
-                    </div>
-                    <br />
-                    <div class="row">
-                      <div class="col">
-                        <h6 class="subTituloRojoInstitucional text-left">
-                          Enlace información del evento:
-                        </h6>
-                        <input
-                          name="urlEvento"
-                          [(ngModel)]="agenda.url"
-                          type="url"
-                          class="form-control shadow p-3 inputPaciente"
-                          placeholder="Dirección URL para mayor información del evento o suscripción"
-                        />
-                      </div>
+                    <div class="col">
+                      <h6 class="font-usco-vt font-weight-bold text-left">
+                        Fecha de publicación:
+                      </h6>
+                      <input
+                        type="date"
+                        name="fechaPublicacion"
+                        [(ngModel)]="agenda.fechaPublicacion"
+                        class="form-control shadow p-3 inputPaciente"
+                      />
                     </div>
                   </div>
-                  <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">
-                      Cargar imágen a publicar:
-                    </h6>
-                    <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
-                      <div class="row">
-                        <div
-                          *ngIf="porcentaje > 1 && porcentaje < 101"
-                          class="col"
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="font-usco-vt font-weight-bold text-left">
+                        Reseña:
+                      </h6>
+                      <textarea
+                        maxlength="6500"
+                        name="resenia"
+                        [(ngModel)]="agenda.resenia"
+                        class="form-control shadow p-3"
+                        placeholder="Síntesis o información relavante del evento ..."
+                        rows="8"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="font-usco-vt font-weight-bold text-left">
+                        Parrafo:
+                      </h6>
+                      <textarea
+                        maxlength="6500"
+                        name="parrafo"
+                        [(ngModel)]="agenda.parrafo"
+                        class="form-control shadow p-3"
+                        placeholder="Información relavante del evento ..."
+                        rows="8"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="row">
+                    <div class="col">
+                      <h6 class="font-usco-vt font-weight-bold text-left">
+                        Enlace información del evento:
+                      </h6>
+                      <input
+                        name="urlEvento"
+                        [(ngModel)]="agenda.url"
+                        type="url"
+                        class="form-control shadow p-3 inputPaciente"
+                        placeholder="Dirección URL para mayor información del evento o suscripción"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <h6 class="text-left font-usco-vt font-weight-bold">
+                    Cargar imágen a publicar:
+                  </h6>
+                  <form [formGroup]="archivoForm" (ngSubmit)="subirArchivo()">
+                    <div class="row">
+                      <div
+                        *ngIf="porcentaje > 1 && porcentaje < 101"
+                        class="col"
+                      >
+                        <ngb-progressbar
+                          [showValue]="true"
+                          type="danger"
+                          [value]="porcentaje"
                         >
-                          <ngb-progressbar
-                            [showValue]="true"
-                            type="danger"
-                            [value]="porcentaje"
-                          >
-                          </ngb-progressbar
-                          ><br />
-                        </div>
+                        </ngb-progressbar
+                        ><br />
                       </div>
-                      <div class="row">
-                        <div class="col">
-                          <label class="file-label">
-                            <input
-                              type="file"
-                              class="custom-file-input"
-                              formControlName="archivo"
-                              (change)="cambioArchivo($event)"
-                              id="customFileLang"
-                              lang="es"
-                              required
-                            />
-                            <span class="file-cta">
-                              <span
-                                class="
-                                  custom-file-label
-                                  text-left
-                                  inputPaciente
-                                "
-                                style="margin-left: 16px"
-                                for="customFileLang"
-                              >
-                                {{ mensajeArchivo | slice: 0:50 }}
-                              </span>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <label class="file-label">
+                          <input
+                            type="file"
+                            class="custom-file-input"
+                            formControlName="archivo"
+                            (change)="cambioArchivo($event)"
+                            id="customFileLang"
+                            lang="es"
+                            required
+                          />
+                          <span class="file-cta">
+                            <span
+                              class="custom-file-label text-left inputPaciente"
+                              style="margin-left: 16px"
+                              for="customFileLang"
+                            >
+                              {{ mensajeArchivo | slice : 0 : 50 }}
                             </span>
-                          </label>
-                          <br />
-                        </div>
-                        <div class="col col-lg-2 text-right">
-                          <button
-                            class="btn navlinkin"
-                            type="submit"
-                            placement="top"
-                            ngbTooltip="Subir archivo"
-                            [disabled]="!archivoForm.valid"
-                          >
-                            <i class="fas fa-upload"></i>
-                          </button>
-                        </div>
+                          </span>
+                        </label>
+                        <br />
                       </div>
-                      <div class="row">
-                        <div class="col">
-                          <div
-                            *ngIf="porcentaje === 100"
-                            class="alert alert-success"
-                            role="alert"
-                          >
-                            Imágen cargada exitosamente
-                          </div>
-                        </div>
+                      <div class="col col-lg-2 text-right">
+                        <button
+                          class="btn navlinkin"
+                          type="submit"
+                          placement="top"
+                          ngbTooltip="Subir archivo"
+                          [disabled]="!archivoForm.valid"
+                        >
+                          <i class="fas fa-upload"></i>
+                        </button>
                       </div>
-                    </form>
-                    <br />
-                    <h6 class="text-left subTituloRojoInstitucional">
-                      Previsualización de la imágen:
-                    </h6>
-                    <img
-                      [src]="agenda.img"
-                      class="rounded img-fluid"
-                      [alt]="agenda.titulo"
-                      [title]="agenda.titulo"
-                      style="border: solid 1px black; width: 80%"
-                    />
-                    <br />
-                    <div
-                      *ngIf="alertBool != false"
-                      class="alert alert-danger alert-dismissible fade show"
-                      role="alert"
-                    >
-                      <strong>{{ imgError }}</strong>
                     </div>
+                    <div class="row">
+                      <div class="col">
+                        <div
+                          *ngIf="porcentaje === 100"
+                          class="alert alert-success"
+                          role="alert"
+                        >
+                          Imágen cargada exitosamente
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <br />
+                  <h6 class="text-left font-usco-vt font-weight-bold">
+                    Previsualización de la imágen:
+                  </h6>
+                  <img
+                    [src]="agenda.img"
+                    class="rounded img-fluid"
+                    [alt]="agenda.titulo"
+                    [title]="agenda.titulo"
+                    style="border: solid 1px black; width: 80%"
+                  />
+                  <div
+                    *ngIf="alertBool != false"
+                    class="alert alert-danger alert-dismissible fade show"
+                    role="alert"
+                  >
+                    <strong>{{ imgError }}</strong>
                   </div>
                 </div>
               </div>
             </div>
-            <br />
-            <div class="row">
-              <div class="col">
-                <h3 class="titleInstRed text-left">
-                  Espacio para diseño del Blog
-                </h3>
-                <hr class="lineInstRed" />
-                <br />
-                <angular-editor
-                  [placeholder]="'Diseña tu blog para publicar...'"
-                  [config]="config"
-                  name="parrafo"
-                  [(ngModel)]="agenda.parrafo"
-                ></angular-editor>
-              </div>
+          </div>
+          <!--  <div class="row">
+            <div class="col">
+              <h3 class="titleInstRed text-left">
+                Espacio para diseño del Blog
+              </h3>
+              <hr class="lineInstRed" />
+              <br />
+              <angular-editor
+                [placeholder]="'Diseña tu blog para publicar...'"
+                [config]="config"
+                name="parrafo"
+                [(ngModel)]="agenda.parrafo"
+              ></angular-editor>
             </div>
-            <div class="row text-right">
-              <div class="col">
-                <br />
-                <hr />
-                <button
-                  (click)="openModal(confirmar)"
-                  class="btn navlinkinSolid"
-                >
-                  <i class="far fa-save"></i> Guardar
-                </button>
-                <ng-template #confirmar let-modal>
-                  <div class="modal-header bgrojoycafe">
-                    <h4 class="modal-title">Confirmar acción</h4>
-                    <button
-                      type="button"
-                      class="close"
-                      aria-label="Close"
-                      (click)="modal.dismiss('Cross click')"
-                    >
-                      <i class="fas fa-times" style="color: white"></i>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div
-                      class="alert alert-warning text-center font-weight-bold"
-                      role="alert"
-                    >
-                      Está a punto de guardar el evento. <br />
-                      ¿Desea continuar con la acción?
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button
-                      type="button"
-                      class="btn btnColorFacultadSalud"
-                      ngbAutofocus
-                      (click)="guardar()"
-                    >
-                      Aceptar
-                    </button>
-                    <button
-                      type="button"
-                      class="btn navlinkinSolid"
-                      (click)="modal.close('Close click')"
-                    >
-                      Cancelar
-                    </button>
-                  </div>
-                </ng-template>
-                <br />
-                <div
-                  *ngIf="error != false"
-                  class="alert alert-danger alert-dismissible fade show"
-                  role="alert"
-                >
-                  <strong>{{ passError }}</strong>
+          </div> -->
+          <div class="row text-right">
+            <div class="col">
+              <br />
+              <hr />
+              <button (click)="openModal(confirmar)" class="btn btn-usco-vt">
+                <i class="far fa-save"></i> Guardar
+              </button>
+              <ng-template #confirmar let-modal>
+                <div class="modal-header bgrojoycafe">
+                  <h4 class="modal-title">Confirmar acción</h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"
+                  >
+                    <i class="fas fa-times" style="color: white"></i>
+                  </button>
                 </div>
+                <div class="modal-body">
+                  <div
+                    class="alert alert-warning text-center font-weight-bold"
+                    role="alert"
+                  >
+                    Está a punto de guardar el evento. <br />
+                    ¿Desea continuar con la acción?
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btnColorFacultadSalud"
+                    ngbAutofocus
+                    (click)="guardar()"
+                  >
+                    Aceptar
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-usco-vt"
+                    (click)="modal.close('Close click')"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </ng-template>
+              <br />
+              <div
+                *ngIf="error != false"
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                <strong>{{ passError }}</strong>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>

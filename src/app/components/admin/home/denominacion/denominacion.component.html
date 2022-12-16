@@ -1,229 +1,241 @@
 <div class="wrapper fadeIn fast">
-  <div>
-    <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-      <div class="row">
-        <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
-          <h3 class="titleInstRed">
-            Formulario para administrar la denominación del programa.
-          </h3>
-          <hr class="lineInstRed" />
-          <br />
-          <form #forma="ngForm">
-            <div class="row">
-              <div class="col">
-                <div class="row">
-                  <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">
-                      Titulo a otorgar:
-                    </h6>
-                    <input
-                      type="text"
-                      name="tituloOtorgar"
-                      [(ngModel)]="denominacion.tituloOtorgar"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de texto"
-                    />
-                  </div>
-                  <div class="col">
-                    <h6 class="text-left subTituloRojoInstitucional">
-                      Registro Calificado:
-                    </h6>
-                    <input
-                      type="text"
-                      name="registroCalificado"
-                      [(ngModel)]="denominacion.registroCalificado"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de texto"
-                    />
-                  </div>
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      URL del Registro Calificado:
-                    </h6>
-                    <input
-                      type="text"
-                      name="registroCalificadoUrl"
-                      [(ngModel)]="denominacion.registroCalificadoUrl"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de URL"
-                    />
-                  </div>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div
+        class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+      >
+        <h3 class="titleInstRed">
+          Formulario para administrar la denominación del programa.
+        </h3>
+        <hr class="lineInstRed" />
+        <br />
+        <form #forma="ngForm">
+          <div class="row">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <label class="text-left font-usco-vt font-weight-bold m-2">
+                    Titulo a otorgar:
+                  </label>
+                  <input
+                    type="text"
+                    name="tituloOtorgar"
+                    [(ngModel)]="denominacion.tituloOtorgar"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Campo de texto"
+                  />
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Periodo de admisión:
-                    </h6>
-                    <input
-                      type="text"
-                      name="perAdmision"
-                      [(ngModel)]="denominacion.perAdmision"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo alfanumérico"
-                    />
-                  </div>
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Número de créditos:
-                    </h6>
-                    <input
-                      type="text"
-                      name="numCreditos"
-                      [(ngModel)]="denominacion.numCreditos"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo alfanumérico"
-                    />
-                  </div>
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Duración:
-                    </h6>
-                    <input
-                      type="text"
-                      name="duracion"
-                      [(ngModel)]="denominacion.duracion"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo alfanumérico"
-                    />
-                  </div>
+                <div class="col">
+                  <label class="text-left font-usco-vt font-weight-bold m-2">
+                    Registro Calificado:
+                  </label>
+                  <input
+                    type="text"
+                    name="registroCalificado"
+                    [(ngModel)]="denominacion.registroCalificado"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Campo de texto"
+                  />
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Costo de matrícula:
-                    </h6>
-                    <input
-                      type="text"
-                      name="costoMatricula"
-                      [(ngModel)]="denominacion.costoMatricula"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo alfanumérico (SMMLV)"
-                    />
-                  </div>
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">Cupo:</h6>
-                    <input
-                      type="text"
-                      name="cupo"
-                      [(ngModel)]="denominacion.cupo"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo alfanumérico"
-                    />
-                  </div>
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Fecha de edición:
-                    </h6>
-                    <input
-                      type="date"
-                      name="fechaEdicion"
-                      [(ngModel)]="denominacion.fechaEdicion"
-                      class="form-control shadow p-3 inputPaciente"
-                    />
-                  </div>
+                <div class="col">
+                  <label class="font-usco-vt font-weight-bold text-left m-2">
+                    URL del Registro Calificado:
+                  </label>
+                  <input
+                    type="text"
+                    name="registroCalificadoUrl"
+                    [(ngModel)]="denominacion.registroCalificadoUrl"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Campo de URL"
+                  />
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Misión:
-                    </h6>
-                    <textarea
-                      maxlength="6500"
-                      name="mision"
-                      [(ngModel)]="denominacion.mision"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de texto"
-                      rows="3"
-                    ></textarea>
-                  </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label class="font-usco-vt font-weight-bold text-left m-2">
+                    Periodo de admisión:
+                  </label>
+                  <input
+                    type="text"
+                    name="perAdmision"
+                    [(ngModel)]="denominacion.perAdmision"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Campo alfanumérico"
+                  />
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Visión:
-                    </h6>
-                    <textarea
-                      maxlength="6500"
-                      name="vision"
-                      [(ngModel)]="denominacion.vision"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de texto"
-                      rows="3"
-                    ></textarea>
-                  </div>
+                <div class="col">
+                  <label class="font-usco-vt font-weight-bold text-left m-2">
+                    Número de créditos:
+                  </label>
+                  <input
+                    type="text"
+                    name="numCreditos"
+                    [(ngModel)]="denominacion.numCreditos"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Campo alfanumérico"
+                  />
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <h6 class="subTituloRojoInstitucional text-left">
-                      Propósito:
-                    </h6>
-                    <textarea
-                      maxlength="6500"
-                      name="proposito"
-                      [(ngModel)]="denominacion.proposito"
-                      class="form-control shadow p-3 inputPaciente"
-                      placeholder="Campo de texto"
-                      rows="3"
-                    ></textarea>
-                  </div>
+                <div class="col">
+                  <label class="font-usco-vt font-weight-bold text-left m-2">
+                    Duración:
+                  </label>
+                  <input
+                    type="text"
+                    name="duracion"
+                    [(ngModel)]="denominacion.duracion"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Campo alfanumérico"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label class="font-usco-vt font-weight-bold text-left m-2">
+                    Costo de matrícula:
+                  </label>
+                  <input
+                    type="text"
+                    name="costoMatricula"
+                    [(ngModel)]="denominacion.costoMatricula"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Campo alfanumérico (SMMLV)"
+                  />
+                </div>
+                <div class="col">
+                  <label class="font-usco-vt font-weight-bold text-left m-2"
+                    >Cupo:</label
+                  >
+                  <input
+                    type="text"
+                    name="cupo"
+                    [(ngModel)]="denominacion.cupo"
+                    class="form-control shadow p-3 inputPaciente"
+                    placeholder="Campo alfanumérico"
+                  />
+                </div>
+                <div class="col">
+                  <label class="font-usco-vt font-weight-bold text-left m-2">
+                    Fecha de edición:
+                  </label>
+                  <input
+                    type="date"
+                    name="fechaEdicion"
+                    [(ngModel)]="denominacion.fechaEdicion"
+                    class="form-control shadow p-3 inputPaciente"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label
+                    class="font-usco-vt font-weight-bold text-left mt-3 mb-3"
+                  >
+                    Misión:
+                  </label>
+                  <textarea
+                    maxlength="6500"
+                    name="mision"
+                    [(ngModel)]="denominacion.mision"
+                    class="form-control shadow p-3"
+                    placeholder="Campo de texto"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label
+                    class="font-usco-vt font-weight-bold text-left mt-3 mb-3"
+                  >
+                    Visión:
+                  </label>
+                  <textarea
+                    maxlength="6500"
+                    name="vision"
+                    [(ngModel)]="denominacion.vision"
+                    class="form-control shadow p-3"
+                    placeholder="Campo de texto"
+                    rows="6"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label
+                    class="font-usco-vt font-weight-bold text-left mt-3 mb-3"
+                  >
+                    Propósito:
+                  </label>
+                  <textarea
+                    maxlength="6500"
+                    name="proposito"
+                    [(ngModel)]="denominacion.proposito"
+                    class="form-control shadow p-3"
+                    placeholder="Campo de texto"
+                    rows="6"
+                  ></textarea>
                 </div>
               </div>
             </div>
-            <br />
-            <hr />
-            <div class="text-right">
+          </div>
+          <br />
+          <hr />
+          <div class="row">
+            <div class="col text-left">
+              <button [routerLink]="['/inicio']" class="btn btn-usco-vt">
+                <i class="fas fa-arrow-left"></i> Salir
+              </button>
+            </div>
+            <div class="col text-right">
               <button
                 (click)="openModal(confirmar)"
-                class="btn navlinkinSolid m-1"
+                class="btn btn-usco-vt m-1"
               >
                 <i class="far fa-save"></i> Guardar
               </button>
-              <button [routerLink]="['/inicio']" class="btn navlinkinSolid m-1">
-                <i class="fas fa-sign-out-alt"></i> Salir
+            </div>
+          </div>
+          <ng-template #confirmar let-modal>
+            <div class="modal-header bg-usco-vt-d1 text-white">
+              <h4 class="modal-title">Confirmar acción</h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <i class="fas fa-times" style="color: white"></i>
               </button>
             </div>
-            <ng-template #confirmar let-modal>
-              <div class="modal-header bgrojoycafe">
-                <h4 class="modal-title">Confirmar acción</h4>
-                <button
-                  type="button"
-                  class="close"
-                  aria-label="Close"
-                  (click)="modal.dismiss('Cross click')"
-                >
-                  <i class="fas fa-times" style="color: white"></i>
-                </button>
+            <div class="modal-body">
+              <div
+                class="alert alert-warning text-center font-weight-bold"
+                role="alert"
+              >
+                Está a punto de guardar. <br />
+                ¿Desea continuar con la acción?
               </div>
-              <div class="modal-body">
-                <div
-                  class="alert alert-warning text-center font-weight-bold"
-                  role="alert"
-                >
-                  Está a punto de guardar. <br />
-                  ¿Desea continuar con la acción?
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btnColorFacultadSalud"
-                  ngbAutofocus
-                  (click)="guardar()"
-                >
-                  Aceptar
-                </button>
-                <button
-                  type="button"
-                  class="btn navlinkinSolid"
-                  (click)="modal.close('Close click')"
-                >
-                  Cancelar
-                </button>
-              </div>
-            </ng-template>
-            <br />
-          </form>
-        </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-usco-fac-salud"
+                ngbAutofocus
+                (click)="guardar()"
+              >
+                Aceptar
+              </button>
+              <button
+                type="button"
+                class="btn btn-usco-vt"
+                (click)="modal.close('Close click')"
+              >
+                Cancelar
+              </button>
+            </div>
+          </ng-template>
+          <br />
+        </form>
       </div>
     </div>
   </div>

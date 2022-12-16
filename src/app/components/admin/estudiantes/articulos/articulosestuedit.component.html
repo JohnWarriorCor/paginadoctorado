@@ -1,161 +1,164 @@
 <div class="wrapper fadeIn fast">
-  <div>
-    <div>
-      <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-        <div class="row">
-          <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
-            <h3 class="titleInstRed">
-              <i class="fas fa-scroll"></i> Formulario para administrar los
-              Artículos de Estudiantes del Doctorado
-            </h3>
-            <hr class="lineInstRed" />
-            <br />
-            <form #forma="ngForm">
-              <div class="row">
-                <div class="col text-justify">
-                  <div class="row m-4">
-                    <div class="col">
-                      <h6 class="text-left subTituloRojoInstitucional">
-                        Nombre del artículo:
-                      </h6>
-                      <input
-                        type="text"
-                        name="nombreArticulo"
-                        [(ngModel)]="articulosEstu.nombreArticulo"
-                        class="form-control shadow p-3"
-                        placeholder="Encabezado o título del evento"
-                      />
-                    </div>
-                  </div>
-                  <div class="row m-4">
-                    <div class="col">
-                      <h6 class="subTituloRojoInstitucional text-left">
-                        Autores:
-                      </h6>
-                      <input
-                        type="text"
-                        name="autores"
-                        [(ngModel)]="articulosEstu.autores"
-                        class="form-control shadow p-3"
-                      />
-                    </div>
-                    <div class="col">
-                      <h6 class="subTituloRojoInstitucional text-left">
-                        Fecha de publicación:
-                      </h6>
-                      <input
-                        type="date"
-                        name="anio"
-                        [(ngModel)]="articulosEstu.anio"
-                        class="form-control shadow p-3"
-                      />
-                    </div>
-                  </div>
-                  <div class="row m-4">
-                    <div class="col">
-                      <h6 class="subTituloRojoInstitucional text-left">
-                        Reseña:
-                      </h6>
-                      <textarea
-                        maxlength="6500"
-                        name="resumen"
-                        [(ngModel)]="articulosEstu.resumen"
-                        class="form-control shadow p-1"
-                        placeholder="Síntesis o información relavante del evento ..."
-                        rows="7"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div class="row m-4">
-                    <div class="col">
-                      <h6 class="subTituloRojoInstitucional text-left">
-                        Enlace del artículo:
-                      </h6>
-                      <input
-                        name="enlace"
-                        [(ngModel)]="articulosEstu.enlace"
-                        type="text"
-                        class="form-control shadow p-3"
-                        placeholder="Dirección URL para mayor información del evento o suscripción"
-                      />
-                    </div>
-                    <div class="col">
-                      <h6 class="subTituloRojoInstitucional text-left">
-                        Revista:
-                      </h6>
-                      <input
-                        name="revista"
-                        [(ngModel)]="articulosEstu.revista"
-                        type="text"
-                        class="form-control shadow p-3"
-                        placeholder="Dirección URL para mayor información del evento o suscripción"
-                      />
-                    </div>
-                  </div>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div
+        class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+      >
+        <h3 class="titleInstRed">
+          <i class="fas fa-scroll"></i> Formulario para administrar los
+          Artículos de Estudiantes del Doctorado
+        </h3>
+        <hr class="lineInstRed" />
+        <br />
+        <form #forma="ngForm">
+          <div class="row">
+            <div class="col text-justify">
+              <div class="row m-4">
+                <div class="col">
+                  <h6 class="text-left font-usco-vt font-weight-bold">
+                    Nombre del artículo:
+                  </h6>
+                  <input
+                    type="text"
+                    name="nombreArticulo"
+                    [(ngModel)]="articulosEstu.nombreArticulo"
+                    class="form-control shadow p-3"
+                    placeholder="Encabezado o título del evento"
+                  />
                 </div>
               </div>
-              <hr />
-              <br />
+              <div class="row m-4">
+                <div class="col">
+                  <h6 class="font-usco-vt font-weight-bold text-left">
+                    Autores:
+                  </h6>
+                  <input
+                    type="text"
+                    name="autores"
+                    [(ngModel)]="articulosEstu.autores"
+                    class="form-control shadow p-3"
+                  />
+                </div>
+                <div class="col">
+                  <h6 class="font-usco-vt font-weight-bold text-left">
+                    Fecha de publicación:
+                  </h6>
+                  <input
+                    type="date"
+                    name="anio"
+                    [(ngModel)]="articulosEstu.anio"
+                    class="form-control shadow p-3"
+                  />
+                </div>
+              </div>
+              <div class="row m-4">
+                <div class="col">
+                  <h6 class="font-usco-vt font-weight-bold text-left">
+                    Reseña:
+                  </h6>
+                  <textarea
+                    maxlength="6500"
+                    name="resumen"
+                    [(ngModel)]="articulosEstu.resumen"
+                    class="form-control shadow p-1"
+                    placeholder="Síntesis o información relavante del evento ..."
+                    rows="7"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row m-4">
+                <div class="col">
+                  <h6 class="font-usco-vt font-weight-bold text-left">
+                    Enlace del artículo:
+                  </h6>
+                  <input
+                    name="enlace"
+                    [(ngModel)]="articulosEstu.enlace"
+                    type="text"
+                    class="form-control shadow p-3"
+                    placeholder="Dirección URL para mayor información del evento o suscripción"
+                  />
+                </div>
+                <div class="col">
+                  <h6 class="font-usco-vt font-weight-bold text-left">
+                    Revista:
+                  </h6>
+                  <input
+                    name="revista"
+                    [(ngModel)]="articulosEstu.revista"
+                    type="text"
+                    class="form-control shadow p-3"
+                    placeholder="Dirección URL para mayor información del evento o suscripción"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col text-left">
               <button
-                class="btn navlinkinSolid m-1"
+                class="btn btn-usco-vt m-1"
+                [routerLink]="['/articulosEstudiantes']"
+              >
+                <i class="fas fa-arrow-left"></i> Volver
+              </button>
+            </div>
+            <div class="col text-right">
+              <button
+                class="btn btn-usco-vt m-1"
                 (click)="openModal(confirmar)"
               >
                 <i class="far fa-save"></i> Guardar
               </button>
+            </div>
+          </div>
+          <ng-template #confirmar let-modal>
+            <div class="modal-header bgrojoycafe">
+              <h4 class="modal-title">Confirmar acción</h4>
               <button
-                class="btn navlinkinSolid m-1"
-                [routerLink]="['/articulosEstufesores']"
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
               >
-                <i class="fas fa-sign-out-alt"></i> Volver
+                <i class="fas fa-times" style="color: white"></i>
               </button>
-              <ng-template #confirmar let-modal>
-                <div class="modal-header bgrojoycafe">
-                  <h4 class="modal-title">Confirmar acción</h4>
-                  <button
-                    type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="modal.dismiss('Cross click')"
-                  >
-                    <i class="fas fa-times" style="color: white"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div
-                    class="alert alert-warning text-center font-weight-bold"
-                    role="alert"
-                  >
-                    ¿Desea guardar y continuar con la acción?
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btnColorFacultadSalud"
-                    ngbAutofocus
-                    (click)="guardar()"
-                  >
-                    Aceptar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn navlinkinSolid"
-                    (click)="modal.close('Close click')"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </ng-template>
+            </div>
+            <div class="modal-body">
               <div
-                *ngIf="error != false"
-                class="alert alert-danger alert-dismissible fade show"
+                class="alert alert-warning text-center font-weight-bold"
                 role="alert"
               >
-                <strong>{{ passError }}</strong>
+                ¿Desea guardar y continuar con la acción?
               </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btnColorFacultadSalud"
+                ngbAutofocus
+                (click)="guardar()"
+              >
+                Aceptar
+              </button>
+              <button
+                type="button"
+                class="btn btn-usco-vt"
+                (click)="modal.close('Close click')"
+              >
+                Cancelar
+              </button>
+            </div>
+          </ng-template>
+          <div
+            *ngIf="error != false"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ passError }}</strong>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

@@ -5,235 +5,232 @@
       class="d-block w-100"
       style="height: auto"
     />
-    <div>
-      <div class="container" style="padding-top: 30px; padding-bottom: 30px">
-        <div class="row">
-          <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
-            <h3 class="titleInstRed">
-              Formulario para administrar los Grupos de Investigación
-            </h3>
-            <hr class="lineInstRed" />
-            <br />
+    <div class="container mt-5 mb-5">
+      <div class="row">
+        <div
+          class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+        >
+          <h3 class="titleInstRed">
+            Formulario para administrar los Grupos de Investigación
+          </h3>
+          <hr class="lineInstRed" />
+          <br />
 
-            <form #forma="ngForm">
-              <table class="table table-bordered parinst text-center">
-                <thead class="tablatit">
-                  <tr class="white">
-                    <th style="vertical-align: middle" scope="col">
-                      Código de Grupo Colciencias
-                    </th>
-                    <th style="vertical-align: middle" scope="col">
-                      Nombre del Grupo:
-                    </th>
-                    <th style="vertical-align: middle" scope="col">
-                      Líder del Grupo
-                    </th>
-                    <th style="vertical-align: middle" scope="col">
-                      Clasificación
-                    </th>
-                    <th style="vertical-align: middle" scope="col">
-                      URL GrupLAC
-                    </th>
-                    <th style="vertical-align: middle" scope="col">Opciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    *ngFor="
-                      let field of grupoInvestigacion.fieldArray;
-                      let i = index
-                    "
-                  >
-                    <td>
-                      <input
-                        [(ngModel)]="field.codigo"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.codigo }}"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        [(ngModel)]="field.nombre"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.nombre }}"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        [(ngModel)]="field.lider"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.lider }}"
-                      />
-                    </td>
-                    <td>
-                      <select
-                        class="custom-select inputTable"
-                        id="clasificacion"
-                        name="{{ field.categoria }}"
-                        [(ngModel)]="field.categoria"
-                      >
-                        <option value="" disabled="disabled">
-                          Elija la clasificación
-                        </option>
-                        <option value="A1">A1</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="No reconocido">No reconocido</option>
-                      </select>
-                    </td>
-                    <td>
-                      <input
-                        [(ngModel)]="field.url"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.url }}"
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="deleteFieldValue(i)"
-                        placement="top"
-                        ngbTooltip="Borrar"
-                      >
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeCodigo"
-                        [(ngModel)]="newAttribute.codigo"
-                        name="newAttributeCodigo"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeNombre"
-                        [(ngModel)]="newAttribute.nombre"
-                        name="newAttributeNombre"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeLider"
-                        [(ngModel)]="newAttribute.lider"
-                        name="newAttributeLider"
-                      />
-                    </td>
-                    <td>
-                      <select
-                        class="custom-select inputTable"
-                        id="newAttributeCategoria"
-                        [(ngModel)]="newAttribute.categoria"
-                        name="newAttributeCategoria"
-                      >
-                        <option value="" disabled="disabled">
-                          Elija la clasificación
-                        </option>
-                        <option value="A1">A1</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="No reconocido">No reconocido</option>
-                      </select>
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeUrl"
-                        [(ngModel)]="newAttribute.url"
-                        name="newAttributeUrl"
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="addFieldValue()"
-                        placement="top"
-                        ngbTooltip="Agregar"
-                      >
-                        <i class="fas fa-plus-circle"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <button
-                class="btn navlinkinSolid m-1"
-                (click)="openModal(confirmar)"
-              >
-                <i class="far fa-save"></i> Guardar
-              </button>
-              <button
-                class="btn navlinkinSolid m-1"
-                [routerLink]="['/gruposInvestigacion']"
-              >
-                <i class="fas fa-sign-out-alt"></i> Volver
-              </button>
-              <ng-template #confirmar let-modal>
-                <div class="modal-header bgrojoycafe">
-                  <h4 class="modal-title">Confirmar acción</h4>
-                  <button
-                    type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="modal.dismiss('Cross click')"
-                  >
-                    <i class="fas fa-times" style="color: white"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div
-                    class="alert alert-warning text-center font-weight-bold"
-                    role="alert"
-                  >
-                    ¿Desea guardar y continuar con la acción?
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btnColorFacultadSalud"
-                    ngbAutofocus
-                    (click)="guardar()"
-                  >
-                    Aceptar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn navlinkinSolid"
-                    (click)="modal.close('Close click')"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </ng-template>
-              <div
-                *ngIf="error != false"
-                class="alert alert-danger alert-dismissible fade show"
-                role="alert"
-              >
-                <strong>{{ passError }}</strong>
+          <form #forma="ngForm">
+            <table class="table table-bordered parinst text-center">
+              <thead class="tablatit">
+                <tr class="white">
+                  <th style="vertical-align: middle" scope="col">
+                    Código de Grupo Colciencias
+                  </th>
+                  <th style="vertical-align: middle" scope="col">
+                    Nombre del Grupo:
+                  </th>
+                  <th style="vertical-align: middle" scope="col">
+                    Líder del Grupo
+                  </th>
+                  <th style="vertical-align: middle" scope="col">
+                    Clasificación
+                  </th>
+                  <th style="vertical-align: middle" scope="col">
+                    URL GrupLAC
+                  </th>
+                  <th style="vertical-align: middle" scope="col">Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="
+                    let field of grupoInvestigacion.fieldArray;
+                    let i = index
+                  "
+                >
+                  <td>
+                    <input
+                      [(ngModel)]="field.codigo"
+                      class="form-control inputTable"
+                      type="text"
+                      name="{{ field.codigo }}"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      [(ngModel)]="field.nombre"
+                      class="form-control inputTable"
+                      type="text"
+                      name="{{ field.nombre }}"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      [(ngModel)]="field.lider"
+                      class="form-control inputTable"
+                      type="text"
+                      name="{{ field.lider }}"
+                    />
+                  </td>
+                  <td>
+                    <select
+                      class="custom-select inputTable"
+                      id="clasificacion"
+                      name="{{ field.categoria }}"
+                      [(ngModel)]="field.categoria"
+                    >
+                      <option value="" disabled="disabled">
+                        Elija la clasificación
+                      </option>
+                      <option value="A1">A1</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="No reconocido">No reconocido</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      [(ngModel)]="field.url"
+                      class="form-control inputTable"
+                      type="text"
+                      name="{{ field.url }}"
+                    />
+                  </td>
+                  <td>
+                    <button
+                      class="btn btn-default font-usco-vt"
+                      type="button"
+                      (click)="deleteFieldValue(i)"
+                      placement="top"
+                      ngbTooltip="Borrar"
+                    >
+                      <i class="far fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      class="form-control inputTable"
+                      type="text"
+                      id="newAttributeCodigo"
+                      [(ngModel)]="newAttribute.codigo"
+                      name="newAttributeCodigo"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      class="form-control inputTable"
+                      type="text"
+                      id="newAttributeNombre"
+                      [(ngModel)]="newAttribute.nombre"
+                      name="newAttributeNombre"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      class="form-control inputTable"
+                      type="text"
+                      id="newAttributeLider"
+                      [(ngModel)]="newAttribute.lider"
+                      name="newAttributeLider"
+                    />
+                  </td>
+                  <td>
+                    <select
+                      class="custom-select inputTable"
+                      id="newAttributeCategoria"
+                      [(ngModel)]="newAttribute.categoria"
+                      name="newAttributeCategoria"
+                    >
+                      <option value="" disabled="disabled">
+                        Elija la clasificación
+                      </option>
+                      <option value="A1">A1</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="No reconocido">No reconocido</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      class="form-control inputTable"
+                      type="text"
+                      id="newAttributeUrl"
+                      [(ngModel)]="newAttribute.url"
+                      name="newAttributeUrl"
+                    />
+                  </td>
+                  <td>
+                    <button
+                      class="btn btn-default colorRedInst"
+                      type="button"
+                      (click)="addFieldValue()"
+                      placement="top"
+                      ngbTooltip="Agregar"
+                    >
+                      <i class="fas fa-plus-circle"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn btn-usco-vt m-1" (click)="openModal(confirmar)">
+              <i class="far fa-save"></i> Guardar
+            </button>
+            <button
+              class="btn btn-usco-vt m-1"
+              [routerLink]="['/gruposInvestigacion']"
+            >
+              <i class="fas fa-sign-out-alt"></i> Volver
+            </button>
+            <ng-template #confirmar let-modal>
+              <div class="modal-header bgrojoycafe">
+                <h4 class="modal-title">Confirmar acción</h4>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="modal.dismiss('Cross click')"
+                >
+                  <i class="fas fa-times" style="color: white"></i>
+                </button>
               </div>
-            </form>
-            <hr />
-            <br />
-          </div>
+              <div class="modal-body">
+                <div
+                  class="alert alert-warning text-center font-weight-bold"
+                  role="alert"
+                >
+                  ¿Desea guardar y continuar con la acción?
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btnColorFacultadSalud"
+                  ngbAutofocus
+                  (click)="guardar()"
+                >
+                  Aceptar
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-usco-vt"
+                  (click)="modal.close('Close click')"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </ng-template>
+            <div
+              *ngIf="error != false"
+              class="alert alert-danger alert-dismissible fade show"
+              role="alert"
+            >
+              <strong>{{ passError }}</strong>
+            </div>
+          </form>
+          <hr />
+          <br />
         </div>
       </div>
     </div>

@@ -157,7 +157,7 @@
       class="footer-copyright text-center py-3"
       style="background-color: #4d626c; color: #ededed"
     >
-      © {{ today | date: "yyyy" }} Doctorado en Ciencias de la Salud.
+      © {{ today | date : "yyyy" }} Doctorado en Ciencias de la Salud.
       Universidad Surcolombiana | <i class="fas fa-lock"></i
       ><a
         style="color: aliceblue"
@@ -174,7 +174,7 @@
     class="footer-copyright text-center py-3"
     style="background-color: #4d626c; color: #ededed"
   >
-    © {{ today | date: "yyyy" }} Doctorado en Ciencias de la Salud. Universidad
+    © {{ today | date : "yyyy" }} Doctorado en Ciencias de la Salud. Universidad
     Surcolombiana | <i class="fas fa-door-open"></i
     ><a style="color: aliceblue" class="cursorSelect" (click)="logout()">
       Salir</a
@@ -184,7 +184,7 @@
 </footer>
 <!-- Footer -->
 <ng-template #formAdmin let-modal>
-  <div class="modal-header bgrojoyblanco">
+  <div class="modal-header bg-usco-vt-d1 text-white">
     <h4 class="modal-title">
       <i class="fas fa-user-cog white"></i> Administrar:
     </h4>
@@ -229,7 +229,7 @@
               <button
                 placement="top"
                 ngbTooltip="Ver contraseña"
-                class="btn navlinkinSolid shadow"
+                class="btn btn-usco-vt shadow"
                 type="button"
                 id="button-addon2"
                 (click)="view()"
@@ -256,7 +256,7 @@
               <button
                 placement="top"
                 ngbTooltip="Ocultar contraseña"
-                class="btn navlinkinSolid shadow"
+                class="btn btn-usco-vt shadow"
                 type="button"
                 id="button-addon2"
                 (click)="hide()"
@@ -290,7 +290,7 @@
               <button
                 placement="top"
                 ngbTooltip="Enviar al correo"
-                class="btn navlinkinSolid shadow"
+                class="btn btn-usco-vt shadow"
                 type="button"
                 id="button-addon2"
                 (click)="passEmail()"
@@ -316,7 +316,7 @@
       margin-right: auto;
       margin-bottom: 20px;
     "
-    class="btn navlinkinSolid p-3"
+    class="btn btn-usco-vt p-3"
     ngbAutofocus
     (click)="customLogin()"
   >
