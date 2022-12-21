@@ -8,11 +8,9 @@
   </div>
   <div class="container mt-5 mb-5">
     <div class="row">
-      <div
-        class="col-sm-8 shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
-      >
+      <div class="col-sm-8 shadow text-justify div-left font-usco-gr pt-4 pb-4">
         <h3 class="titleInstRed">Egresados del Doctorado</h3>
-        <hr class="lineInstRed" />
+        <hr class="hr-usco-vt" />
         <br />
         <div class="container">
           <div class="input-group mb-3 m-2">
@@ -199,9 +197,9 @@
         </div>
         <br />
       </div>
-      <div class="col-sm-auto shadow fondodivright pt-4 pb-4">
+      <div class="col-sm-auto shadow div-right pt-4 pb-4">
         <h3 class="titleInstRed"><i class="far fa-newspaper"></i> Infórmate</h3>
-        <hr class="lineInstRed" />
+        <hr class="hr-usco-vt" />
         <br />
         <div
           id="carouselExampleControls"
@@ -225,10 +223,10 @@
                     [alt]="agenda[item].titulo"
                   />
                   <div class="card-body">
-                    <h4 class="subTituloRojoInstitucional">
+                    <h4 class="font-usco-vt font-weight-bold">
                       {{ agenda[item].titulo }}
                     </h4>
-                    <h6 class="card-title subTituloRojoInstitucional">
+                    <h6 class="card-title font-usco-vt">
                       <i class="far fa-calendar-alt"></i>
                       {{
                         agenda[item].fechaEvento | date : "fullDate" | titlecase

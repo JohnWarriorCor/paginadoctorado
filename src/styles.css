@@ -177,7 +177,7 @@ a.activeTab:hover {
   filter: grayscale(0%);
 }
 
-.fondodivleft {
+.div-left {
   background-color: white;
   border-radius: 12px;
   padding-left: 30px;
@@ -186,7 +186,7 @@ a.activeTab:hover {
   margin-right: 10px;
 }
 
-.fondodivright {
+.div-right {
   background-color: white;
   border-radius: 12px;
   padding-left: 30px;
@@ -194,7 +194,7 @@ a.activeTab:hover {
   margin-bottom: 10px;
 }
 
-.fondodivCenter {
+.div-center {
   background-color: white;
   border-radius: 12px;
   padding: 30px;
@@ -202,14 +202,7 @@ a.activeTab:hover {
   margin-right: 10px;
 }
 
-.fondodivcent {
-  background-color: white;
-  border-radius: 12px;
-  padding: 30px;
-  margin-bottom: 10px;
-}
-
-.fondodivlogin {
+.div-login {
   background-color: white;
   border-radius: 12px;
   width: 350px;
@@ -219,7 +212,7 @@ a.activeTab:hover {
   margin-bottom: 20px;
 }
 
-.lineInstRed {
+.hr-usco-vt {
   content: "";
   height: 2px;
   background: #8f141b;
