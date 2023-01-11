@@ -1,19 +1,19 @@
 <div class="wrapper fadeIn fast">
   <div>
     <div class="container mt-5 mb-5">
-      <div class="row fondodivCenter shadow font-usco-gr pt-4 pb-4">
+      <div class="row div-center shadow font-usco-gr pt-4 pb-4">
         <div class="col">
-          <h3 class="titleInstRed">
+          <h3 class="font-usco-vt font-weight-bold">
             Formulario para administrar el Plantel de estudiantees
           </h3>
-          <hr class="lineInstRed" />
+          <hr class="hr-usco-vt" />
           <br />
           <!-- COLLAPSE START-->
           <div class="accordion" id="accordionExample">
             <div class="card">
               <div class="card-header" id="headingOne">
                 <h5
-                  class="mb-0 titleInstRed text-justify"
+                  class="mb-0 font-usco-vt font-weight-bold text-justify"
                   data-toggle="collapse"
                   aria-expanded="true"
                   data-target="#collapseOne"
@@ -87,7 +87,7 @@
         </div>
       </div>
       <form #forma="ngForm">
-        <div class="row fondodivCenter shadow" id="print-section">
+        <div class="row div-center shadow" id="print-section">
           <div class="col">
             <div class="row">
               <div
@@ -311,7 +311,7 @@
                       />
                     </div>
                     <ng-template #confirmar let-modal>
-                      <div class="modal-header bgrojoycafe">
+                      <div class="modal-header bg-usco-vt-d1 text-white">
                         <h4 class="modal-title">Confirmar acción</h4>
                         <button
                           type="button"
@@ -319,7 +319,7 @@
                           aria-label="Close"
                           (click)="modal.dismiss('Cross click')"
                         >
-                          <i class="fas fa-times" style="color: white"></i>
+                          <i class="fas fa-times"></i>
                         </button>
                       </div>
                       <div class="modal-body">
@@ -334,7 +334,7 @@
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btnColorFacultadSalud"
+                          class="btn btn-usco-fac-salud"
                           ngbAutofocus
                           (click)="guardar()"
                         >

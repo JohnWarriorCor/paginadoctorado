@@ -55,7 +55,7 @@
       <div class="col div-left shadow">
         <div class="row mt-4 mb-4">
           <div class="col">
-            <h3 class="titleInstRed">
+            <h3 class="font-usco-vt font-weight-bold">
               <i class="fas fa-book-open"></i> Denominación del programa
             </h3>
             <hr class="hr-usco-vt" />
@@ -82,10 +82,12 @@
                       <thead>
                         <tr>
                           <td>
-                            <span class="redinst">Nombre del programa:</span>
+                            <span class="font-usco-vt"
+                              >Nombre del programa:</span
+                            >
                           </td>
                           <td style="width: 60%">
-                            <span class="grayinst">
+                            <span class="font-usco-gr">
                               Doctorado en Ciencias de la Salud</span
                             >
                           </td>
@@ -94,21 +96,23 @@
                       <tbody>
                         <tr>
                           <td>
-                            <span class="redinst">Título a otorgar:</span>
+                            <span class="font-usco-vt">Título a otorgar:</span>
                           </td>
                           <td style="width: 60%">
-                            <span class="grayinst">
+                            <span class="font-usco-gr">
                               {{ denominacion[den].tituloOtorgar }}</span
                             >
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="redinst">Registro Calificado:</span>
+                            <span class="font-usco-vt"
+                              >Registro Calificado:</span
+                            >
                           </td>
                           <td>
                             <a
-                              class="grayinst"
+                              class="font-usco-gr"
                               target="_blank"
                               [href]="denominacion[den].registroCalificadoUrl"
                             >
@@ -118,13 +122,13 @@
                         </tr>
                         <tr>
                           <td>
-                            <span class="redinst"
+                            <span class="font-usco-vt"
                               >Renovación Registro Calificado:</span
                             >
                           </td>
                           <td>
                             <a
-                              class="grayinst"
+                              class="font-usco-gr"
                               target="_blank"
                               href="https://firebasestorage.googleapis.com/v0/b/doctoradocienciasdelasaludusco.appspot.com/o/DOCUMENTOS%2FResoluci%C3%B3n%20011578%20del%2023%20de%20junio%20de%202022%20Renovaci%C3%B3n%20RC%202022.pdf?alt=media&token=871e7a29-7d56-4cd5-ba76-7caeb083d82d"
                             >
@@ -135,58 +139,62 @@
                         </tr>
                         <tr>
                           <td>
-                            <span class="redinst">Modalidad:</span>
+                            <span class="font-usco-vt">Modalidad:</span>
                           </td>
                           <td>
-                            <span class="grayinst"> Presencial</span>
+                            <span class="font-usco-gr"> Presencial</span>
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="redinst"
+                            <span class="font-usco-vt"
                               >Periodicidad de admisión:</span
                             >
                           </td>
                           <td>
-                            <span class="grayinst">
+                            <span class="font-usco-gr">
                               {{ denominacion[den].perAdmision }}</span
                             >
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="redinst">Número de créditos:</span>
+                            <span class="font-usco-vt"
+                              >Número de créditos:</span
+                            >
                           </td>
                           <td>
-                            <span class="grayinst">
+                            <span class="font-usco-gr">
                               {{ denominacion[den].numCreditos }}</span
                             >
                           </td>
                         </tr>
                         <tr>
-                          <td><span class="redinst">Duración:</span></td>
+                          <td><span class="font-usco-vt">Duración:</span></td>
                           <td>
-                            <span class="grayinst">
+                            <span class="font-usco-gr">
                               {{ denominacion[den].duracion }}</span
                             >
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="redinst">Costo de matrícula:</span>
+                            <span class="font-usco-vt"
+                              >Costo de matrícula:</span
+                            >
                           </td>
                           <td>
-                            <span class="grayinst">
+                            <span class="font-usco-gr">
                               {{ denominacion[den].costoMatricula }}</span
                             >
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <span class="redinst">Cupo por corte:</span>
+                            <span class="font-usco-vt">Cupo por corte:</span>
                           </td>
                           <td>
-                            <span class="grayinst">
+                            <span class="font-usco-gr">
                               {{ denominacion[den].cupo }}</span
                             >
                           </td>
@@ -210,16 +218,16 @@
                 <ng-template ngbTabContent>
                   <div class="row mt-4">
                     <div class="col">
-                      <h3 class="titleInstRed">Misión</h3>
+                      <h3 class="font-usco-vt font-weight-bold">Misión</h3>
                       <hr class="hr-usco-vt" />
                       <br />
-                      <p class="text-justify grayinst p-2">
+                      <p class="text-justify font-usco-gr p-2">
                         {{ denominacion[den].mision }}
                       </p>
-                      <h3 class="titleInstRed">Visión</h3>
+                      <h3 class="font-usco-vt font-weight-bold">Visión</h3>
                       <hr class="hr-usco-vt" />
                       <br />
-                      <p class="text-justify grayinst p-2">
+                      <p class="text-justify font-usco-gr p-2">
                         {{ denominacion[den].vision }}
                       </p>
                     </div>
@@ -242,18 +250,18 @@
                 >
                   <div class="row mt-4">
                     <div class="col">
-                      <h3 class="titleInstRed">Propósito</h3>
+                      <h3 class="font-usco-vt font-weight-bold">Propósito</h3>
                       <hr class="hr-usco-vt" />
                       <br />
-                      <p class="text-justify grayinst p-2">
+                      <p class="text-justify font-usco-gr p-2">
                         {{ denominacion[den].proposito }}
                       </p>
-                      <h3 class="titleInstRed">
+                      <h3 class="font-usco-vt font-weight-bold">
                         Áreas Académicas del Doctorado
                       </h3>
                       <hr class="hr-usco-vt" />
                       <br />
-                      <ul class="text-justify grayinst ml-4 p-2">
+                      <ul class="text-justify font-usco-gr ml-4 p-2">
                         <li>Salud de poblaciones</li>
                         <li>Medicina Tropical</li>
                       </ul>
@@ -272,7 +280,7 @@
           <div class="col">
             <h3
               [routerLink]="['/agendaPrograma']"
-              class="titleInstRed cursorSelect"
+              class="font-usco-vt font-weight-bold cursorSelect"
             >
               <i class="far fa-edit"></i> Agéndate
             </h3>
@@ -283,7 +291,7 @@
         <div class="row">
           <div class="col">
             <p
-              class="grayinst font-weight-bold cursorSelect"
+              class="font-usco-gr font-weight-bold cursorSelect"
               [routerLink]="['/agendaPrograma']"
             >
               <small
@@ -311,27 +319,47 @@
                         [title]="evento.titulo"
                       />
                       <div class="card-body">
-                        <h4
-                          [routerLink]="['/eventoPrograma', evento.key]"
-                          class="subTituloRojoInstitucional cursorSelect"
-                        >
-                          {{ evento.titulo }}
-                        </h4>
-                        <small class="card-title subTituloRojoInstitucional">
-                          <i class="far fa-calendar-alt"></i>
-                          {{
-                            evento.fechaEvento | date : "fullDate" | titlecase
-                          }}
-                        </small>
-                        <p class="card-text grayinst">
-                          {{ evento.resenia | slice : 0 : 80 }}...
-                        </p>
-                        <a
-                          [href]="evento.url"
-                          target="_blank"
-                          style="color: gray"
-                          ><b> LEER MÁS... </b></a
-                        >
+                        <div class="row">
+                          <div class="col">
+                            <h4
+                              [routerLink]="['/eventoPrograma', evento.key]"
+                              class="font-usco-vt font-weight-bold cursorSelect"
+                            >
+                              {{ evento.titulo }}
+                            </h4>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <small
+                              class="card-title font-usco-vt font-weight-bold"
+                            >
+                              <i class="far fa-calendar-alt"></i>
+                              {{
+                                evento.fechaEvento
+                                  | date : "fullDate"
+                                  | titlecase
+                              }}
+                            </small>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <p class="card-text font-usco-gr">
+                              {{ evento.resenia | slice : 0 : 80 }}...
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row text-right mt-4">
+                          <div class="col">
+                            <a
+                              [href]="evento.url"
+                              target="_blank"
+                              style="color: #8f141b"
+                              ><b> LEER MÁS... </b></a
+                            >
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -365,7 +393,7 @@
           </div>
           <div class="col">
             <p
-              class="grayinst font-weight-bold cursorSelect"
+              class="font-usco-gr font-weight-bold cursorSelect"
               [routerLink]="['/agendaInstitucional']"
             >
               <small
@@ -397,27 +425,50 @@
                         [title]="evento.titulo"
                       />
                       <div class="card-body">
-                        <h4
-                          [routerLink]="['/eventoInstitucional', evento.key]"
-                          class="subTituloRojoInstitucional cursorSelect"
-                        >
-                          {{ evento.titulo }}
-                        </h4>
-                        <small class="card-title subTituloRojoInstitucional">
-                          <i class="far fa-calendar-alt"></i>
-                          {{
-                            evento.fechaEvento | date : "fullDate" | titlecase
-                          }}
-                        </small>
-                        <p class="card-text grayinst">
-                          {{ evento.resenia | slice : 0 : 80 }}...
-                        </p>
-                        <a
-                          [href]="evento.url"
-                          target="_blank"
-                          style="color: gray"
-                          ><b> LEER MÁS... </b></a
-                        >
+                        <div class="row">
+                          <div class="col">
+                            <h4
+                              [routerLink]="[
+                                '/eventoInstitucional',
+                                evento.key
+                              ]"
+                              class="font-usco-vt font-weight-bold cursorSelect"
+                            >
+                              {{ evento.titulo }}
+                            </h4>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <small
+                              class="card-title font-usco-vt font-weight-bold"
+                            >
+                              <i class="far fa-calendar-alt"></i>
+                              {{
+                                evento.fechaEvento
+                                  | date : "fullDate"
+                                  | titlecase
+                              }}
+                            </small>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <p class="card-text font-usco-gr">
+                              {{ evento.resenia | slice : 0 : 80 }}...
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row text-right mt-4">
+                          <div class="col">
+                            <a
+                              [href]="evento.url"
+                              target="_blank"
+                              style="color: #8f141b"
+                              ><b> LEER MÁS... </b></a
+                            >
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -464,7 +515,7 @@
               <div class="col">
                 <h3
                   [routerLink]="['/docentes']"
-                  class="titleInstRed cursorSelect"
+                  class="font-usco-vt font-weight-bold cursorSelect"
                 >
                   <i class="fas fa-users"></i> Docentes del Programa
                 </h3>
@@ -557,7 +608,7 @@
               <div class="col">
                 <h3
                   [routerLink]="['/estudiantes']"
-                  class="titleInstRed cursorSelect"
+                  class="font-usco-vt font-weight-bold cursorSelect"
                 >
                   <i class="fas fa-users"></i> Nuestros Estudiantes
                 </h3>
@@ -659,7 +710,7 @@
               <div class="col">
                 <h3
                   [routerLink]="['/egresados']"
-                  class="titleInstRed cursorSelect"
+                  class="font-usco-vt font-weight-bold cursorSelect"
                 >
                   <i class="fas fa-users"></i> Nuestros Egresados
                 </h3>
@@ -754,7 +805,7 @@
         <div>
           <div class="row mt-4">
             <div class="col">
-              <h3 class="titleInstRed">
+              <h3 class="font-usco-vt font-weight-bold">
                 <i class="fas fa-rss"></i> Redes sociales
               </h3>
               <hr class="hr-usco-vt" />
@@ -773,7 +824,7 @@
           ></iframe>
           <hr />
           <br />
-          <h3 class="titleInstRed">
+          <h3 class="font-usco-vt font-weight-bold">
             <i class="fas fa-book-open"></i> Doctorados USCO
           </h3>
           <hr class="hr-usco-vt" />
@@ -799,7 +850,7 @@
           </div>
           <br />
           <hr />
-          <h3 class="titleInstRed">
+          <h3 class="font-usco-vt font-weight-bold">
             <i class="far fa-calendar-alt"></i> Calendario
           </h3>
           <hr class="hr-usco-vt" />

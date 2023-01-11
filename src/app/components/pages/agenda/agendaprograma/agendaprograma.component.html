@@ -11,7 +11,7 @@
       <div class="col-sm-8 shadow text-justify div-left pt-4 pb-4">
         <div class="row">
           <div class="col">
-            <h3 class="titleInstRed">
+            <h3 class="font-usco-vt font-weight-bold">
               <i class="far fa-calendar-alt"></i> Agenda
             </h3>
             <hr class="hr-usco-vt" />
@@ -123,7 +123,7 @@
               >
                 {{ evento.titulo }}
               </h5>
-              <h6 class="card-title subTituloRojoInstitucional">
+              <h6 class="card-title font-usco-vt font-weight-bold">
                 <i class="far fa-calendar-alt"></i>
                 {{ evento.fechaEvento | date : "fullDate" | titlecase }}
               </h6>
@@ -211,7 +211,7 @@
                 <div class="card-block px-3">
                   <h3
                     [routerLink]="['/eventoPrograma', evento.key]"
-                    class="card-title text-left subTituloRojoInstitucional cursor-select"
+                    class="card-title text-left font-usco-vt font-weight-bold cursor-select"
                   >
                     {{ evento.titulo }}
                   </h3>
@@ -219,9 +219,9 @@
                     {{ evento.resenia | slice : 0 : 150 }}
                     <a style="color: #8f141b">... Ver más</a>
                   </p>
-                  <p class="card-text subTituloRojoInstitucional">
+                  <small class="font-usco-vt font-weight-bold">
                     {{ evento.fechaEvento | date : "fullDate" | titlecase }}
-                  </p>
+                  </small>
                   <div class="row">
                     <a
                       [href]="evento.url"
@@ -313,7 +313,7 @@
         <br />
       </div>
       <div class="col-sm-auto div-right shadow pt-4 pb-4">
-        <h3 class="titleInstRed">
+        <h3 class="font-usco-vt font-weight-bold">
           <i class="far fa-calendar-alt"></i> Calendario
         </h3>
         <hr class="hr-usco-vt" />
@@ -328,7 +328,7 @@
         ></iframe
         ><br />
         <hr />
-        <h3 class="titleInstRed"><i class="fas fa-rss"></i> Universidad</h3>
+        <h3 class="font-usco-vt font-weight-bold"><i class="fas fa-rss"></i> Universidad</h3>
         <hr class="hr-usco-vt" />
         <br />
         <iframe

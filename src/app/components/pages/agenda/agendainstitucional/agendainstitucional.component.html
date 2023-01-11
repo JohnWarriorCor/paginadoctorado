@@ -11,7 +11,7 @@
       <div class="col-sm-8 shadow text-justify div-left pt-4 pb-4">
         <div class="row">
           <div class="col">
-            <h3 class="titleInstRed">
+            <h3 class="font-usco-vt font-weight-bold">
               <i class="far fa-calendar-alt"></i> Agenda
             </h3>
             <hr class="hr-usco-vt" />
@@ -123,10 +123,10 @@
               >
                 {{ evento.titulo }}
               </h5>
-              <h6 class="card-title font-usco-vt font-weight-bold">
+              <small class="card-title font-usco-vt font-weight-bold">
                 <i class="far fa-calendar-alt"></i>
                 {{ evento.fechaEvento | date : "fullDate" | titlecase }}
-              </h6>
+              </small>
               <p class="card-text grayinst">
                 {{ evento.resenia }}
               </p>
@@ -313,7 +313,7 @@
         <br />
       </div>
       <div class="col-sm-auto div-right shadow pt-4 pb-4">
-        <h3 class="titleInstRed">
+        <h3 class="font-usco-vt font-weight-bold">
           <i class="far fa-calendar-alt"></i> Calendario
         </h3>
         <hr class="hr-usco-vt" />
@@ -328,7 +328,7 @@
         ></iframe
         ><br />
         <hr />
-        <h3 class="titleInstRed"><i class="fas fa-rss"></i> Redes sociales</h3>
+        <h3 class="font-usco-vt font-weight-bold"><i class="fas fa-rss"></i> Redes sociales</h3>
         <hr class="hr-usco-vt" />
         <br />
         <iframe
