@@ -1,16 +1,20 @@
 <div class="wrapper fadeIn fast">
-  <div>
-    <div>
-      <div class="container" style="padding-top: 30px; padding-bottom: 30px">
+  <div class="container mb-5 mt-5">
+    <div class="row">
+      <div class="col-sm shadow text-justify div-center shadow font-usco-gr">
         <div class="row">
-          <div class="col-sm shadow text-justify fondodivleft shadow grayinst">
-            <h3 class="titleInstRed">
+          <div class="col">
+            <h3 class="font-usco-vt font-weight-bold">
               Formulario para administrar el Plan de Estudio
             </h3>
-            <hr class="lineInstRed" />
-            <br />
-            <form #forma="ngForm">
-              <!--NUEVA TABLA-->
+            <hr class="hr-usco-vt" />
+          </div>
+        </div>
+        <br />
+        <form #forma="ngForm">
+          <!--NUEVA TABLA-->
+          <div class="row">
+            <div class="col">
               <table class="table table-bordered parinst">
                 <thead class="tablatit text-center">
                   <tr class="white">
@@ -189,144 +193,151 @@
                   </tr>
                 </tbody>
               </table>
-              <!--<br /><br />
-              ANTIGUA TABLA
-              <table class="table table-bordered parinst text-center">
-                <thead class="tablatit">
-                  <tr class="white">
-                    <th style="vertical-align: middle" scope="col">
-                      Asignatura
-                    </th>
-                    <th style="vertical-align: middle" scope="col">Créditos</th>
-                    <th style="vertical-align: middle" scope="col">Opciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr
-                    *ngFor="let field of planEstudio.fieldArray; let i = index"
-                  >
-                    <td>
-                      <input
-                        [(ngModel)]="field.asignatura"
-                        class="form-control inputTable"
-                        type="text"
-                        name="{{ field.asignatura }}"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        [(ngModel)]="field.creditos"
-                        class="form-control inputTable"
-                        type="number"
-                        name="{{ field.creditos }}"
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="deleteFieldValue(i)"
-                        placement="top"
-                        ngbTooltip="Borrar"
-                      >
-                        <i class="far fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="text"
-                        id="newAttributeAsignatura"
-                        [(ngModel)]="newAttribute.asignatura"
-                        name="newAttributeAsignatura"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        class="form-control inputTable"
-                        type="number"
-                        id="newAttributeCreditos"
-                        [(ngModel)]="newAttribute.creditos"
-                        name="newAttributeCreditos"
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-default colorRedInst"
-                        type="button"
-                        (click)="addFieldValue()"
-                        placement="top"
-                        ngbTooltip="Agregar"
-                      >
-                        <i class="fas fa-plus-circle"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              -->
-              <button
-                class="btn navlinkinSolid m-1"
-                (click)="openModal(confirmar)"
+            </div>
+          </div>
+          <!--<br /><br />
+          ANTIGUA TABLA
+          <table class="table table-bordered parinst text-center">
+            <thead class="tablatit">
+              <tr class="white">
+                <th style="vertical-align: middle" scope="col">
+                  Asignatura
+                </th>
+                <th style="vertical-align: middle" scope="col">Créditos</th>
+                <th style="vertical-align: middle" scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let field of planEstudio.fieldArray; let i = index"
               >
-                <i class="far fa-save"></i> Guardar
-              </button>
+                <td>
+                  <input
+                    [(ngModel)]="field.asignatura"
+                    class="form-control inputTable"
+                    type="text"
+                    name="{{ field.asignatura }}"
+                  />
+                </td>
+                <td>
+                  <input
+                    [(ngModel)]="field.creditos"
+                    class="form-control inputTable"
+                    type="number"
+                    name="{{ field.creditos }}"
+                  />
+                </td>
+                <td>
+                  <button
+                    class="btn btn-default colorRedInst"
+                    type="button"
+                    (click)="deleteFieldValue(i)"
+                    placement="top"
+                    ngbTooltip="Borrar"
+                  >
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="text"
+                    id="newAttributeAsignatura"
+                    [(ngModel)]="newAttribute.asignatura"
+                    name="newAttributeAsignatura"
+                  />
+                </td>
+                <td>
+                  <input
+                    class="form-control inputTable"
+                    type="number"
+                    id="newAttributeCreditos"
+                    [(ngModel)]="newAttribute.creditos"
+                    name="newAttributeCreditos"
+                  />
+                </td>
+                <td>
+                  <button
+                    class="btn btn-default colorRedInst"
+                    type="button"
+                    (click)="addFieldValue()"
+                    placement="top"
+                    ngbTooltip="Agregar"
+                  >
+                    <i class="fas fa-plus-circle"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          -->
+          <hr />
+          <div class="row">
+            <div class="col text-left">
               <button
-                class="btn navlinkinSolid m-1"
+                class="btn btn-usco-vt"
                 [routerLink]="['/plandeestudios']"
               >
                 <i class="fas fa-sign-out-alt"></i> Volver
               </button>
-              <ng-template #confirmar let-modal>
-                <div class="modal-header bgrojoycafe">
-                  <h4 class="modal-title">Confirmar acción</h4>
-                  <button
-                    type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="modal.dismiss('Cross click')"
-                  >
-                    <i class="fas fa-times" style="color: white"></i>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div
-                    class="alert alert-warning text-center font-weight-bold"
-                    role="alert"
-                  >
-                    Está a punto de guardar. ¿Continuar con la acción?
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btnColorFacultadSalud"
-                    ngbAutofocus
-                    (click)="guardarResumen()"
-                  >
-                    Aceptar
-                  </button>
-                  <button
-                    type="button"
-                    class="btn navlinkinSolid"
-                    (click)="modal.close('Close click')"
-                  >
-                    Cancelar
-                  </button>
-                </div>
-              </ng-template>
+            </div>
+            <div class="col text-right">
+              <button
+                class="btn btn-usco-vt mr-2"
+                (click)="openModal(confirmar)"
+              >
+                <i class="far fa-save"></i> Guardar
+              </button>
+            </div>
+          </div>
+          <ng-template #confirmar let-modal>
+            <div class="modal-header bgrojoycafe">
+              <h4 class="modal-title">Confirmar acción</h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <i class="fas fa-times" style="color: white"></i>
+              </button>
+            </div>
+            <div class="modal-body">
               <div
-                *ngIf="error != false"
-                class="alert alert-danger alert-dismissible fade show"
+                class="alert alert-warning text-center font-weight-bold"
                 role="alert"
               >
-                <strong>{{ passError }}</strong>
+                Está a punto de guardar. ¿Continuar con la acción?
               </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btnColorFacultadSalud"
+                ngbAutofocus
+                (click)="guardarResumen()"
+              >
+                Aceptar
+              </button>
+              <button
+                type="button"
+                class="btn navlinkinSolid"
+                (click)="modal.close('Close click')"
+              >
+                Cancelar
+              </button>
+            </div>
+          </ng-template>
+          <div
+            *ngIf="error != false"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ passError }}</strong>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

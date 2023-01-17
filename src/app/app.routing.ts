@@ -44,6 +44,7 @@ import { ArticulodocenteComponent } from "./components/pages/docentes/articulosp
 import { ArticuloestudianteComponent } from "./components/pages/estudiantes/articulosestudiantes/articuloestudiante/articuloestudiante.component";
 import { ArticuloComponent } from "./components/pages/docentes/articulosprofesores/articulo/articulo.component";
 import { ArticuloeComponent } from "./components/pages/estudiantes/articulosestudiantes/articuloe/articuloe.component";
+import { ArticuloEgresadosComponent } from "./components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component";
 
 const routes: Routes = [
   // INICIO
@@ -79,6 +80,10 @@ const routes: Routes = [
   },
   { path: "articulo_estudiante/:id", component: ArticuloeComponent },
   { path: "egresados", component: EgresadosComponent },
+  {
+    path: "articulo_egresado/:id/:idx",
+    component: ArticuloEgresadosComponent,
+  },
   { path: "egresado/:id", component: EgresadoComponent },
   { path: "tesis", component: TesisComponent },
   // BIBLIOTECA

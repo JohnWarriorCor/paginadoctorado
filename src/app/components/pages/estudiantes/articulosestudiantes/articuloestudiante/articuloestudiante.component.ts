@@ -199,7 +199,7 @@ export class ArticuloestudianteComponent implements OnInit {
       if (respuesta) {
         console.error(respuesta);
       } else {
-        this.router.navigate(['/docentes']);
+        this.router.navigate(['/estudiantes']);
         // delete this.plantelProfesores[this.id];
         this.elementoEliminado();
         this.modalReference.close();

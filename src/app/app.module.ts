@@ -100,6 +100,7 @@ import { ArticuloComponent } from "./components/pages/docentes/articulosprofesor
 import { ArticuloeComponent } from "./components/pages/estudiantes/articulosestudiantes/articuloe/articuloe.component";
 import { FiltroarticulosprofesoresPipe } from "./pipes/filtroarticulosprofesores.pipe";
 import { FiltroarticulosestudiantesPipe } from "./pipes/filtroarticulosestudiantes.pipe";
+import { ArticuloEgresadosComponent } from './components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, "es-CO");
@@ -163,6 +164,7 @@ registerLocaleData(localeEsCO, "es-CO");
     ArticuloeComponent,
     FiltroarticulosprofesoresPipe,
     FiltroarticulosestudiantesPipe,
+    ArticuloEgresadosComponent,
   ],
   imports: [
     BrowserModule,

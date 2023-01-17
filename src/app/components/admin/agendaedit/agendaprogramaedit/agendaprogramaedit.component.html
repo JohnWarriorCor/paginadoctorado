@@ -10,18 +10,53 @@
     <div class="container mt-5 mb-5">
       <div class="row">
         <div
-          class="col-sm shadow text-justify fondodivleft font-usco-gr pt-4 pb-4"
+          class="col-sm shadow text-justify div-center font-usco-gr pt-4 pb-4"
         >
-          <h3 class="titleInstRed">
-            Formulario para la publicación de un evento
+          <h3 class="font-usco-vt font-weight-bold">
+            Publicar Evento del Programa
           </h3>
-          <hr class="lineInstRed" />
+          <hr class="hr-usco-vt" />
           <br />
           <!-- <a
             href="https://console.firebase.google.com/u/4/project/doctoradocienciasdelasaludusco/storage/doctoradocienciasdelasaludusco.appspot.com/files"
             target="_blank"
             ><button class="btn btn-usco-vt">Cargar imagen</button></a
           >
+          <div class="col-4 text-right">
+                          <button
+                            class="btn btn-usco-vt mr-2"
+                            type="submit"
+                            placement="top"
+                            ngbTooltip="Subir archivo"
+                            [disabled]="!archivoForm.valid"
+                          >
+                            <i class="fas fa-upload"></i>
+                          </button>
+                          <button
+                            class="btn btn-dark"
+                            placement="top"
+                            ngbTooltip="No hay imagen anexada"
+                          >
+                            <i class="fas fa-minus-circle"></i>
+                          </button>
+                          <button
+                            class="btn btn-primary"
+                            *ngIf="porcentaje > 1 && porcentaje < 101"
+                            placement="top"
+                            ngbTooltip="Cargando imagen"
+                          >
+                            <i class="fas fa-spinner"></i>
+                          </button>
+                          <button
+                            class="btn btn-success"
+                            *ngIf="porcentaje === 100"
+                            placement="top"
+                            ngbTooltip="Imagen cargada"
+                          >
+                            <i class="fas fa-check"></i>
+                          </button>
+                        </div>
+                        
           <br /><br /> -->
           <form #forma="ngForm" class="text-center">
             <div class="row animated fadeIn fast">
@@ -216,7 +251,7 @@
             </div>
             <!--    <div class="row">
               <div class="col">
-                <h3 class="titleInstRed text-left">
+                <h3 class="font-usco-vt font-weight-bold text-left">
                   Espacio para diseño del Blog
                 </h3>
                 <hr class="lineInstRed" />
