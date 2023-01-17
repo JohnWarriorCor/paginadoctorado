@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFireAuth } from '@angular/fire/auth';
-import 'firebase/auth';
-import { ToastrService } from 'ngx-toastr';
-import { DatePipe } from '@angular/common';
-import { map } from 'rxjs/operators';
-import { AgendaprogramaService } from '../../../../services/agenda/agendaprograma.service';
-import { FilesService } from '../../../../services/upload/file.service';
+import { Component, OnInit } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { AngularFireAuth } from "@angular/fire/auth";
+import "firebase/auth";
+import { ToastrService } from "ngx-toastr";
+import { DatePipe } from "@angular/common";
+import { map } from "rxjs/operators";
+import { AgendaprogramaService } from "../../../../services/agenda/agendaprograma.service";
+import { FilesService } from "../../../../services/upload/file.service";
 
 @Component({
-  selector: 'app-agendaprograma',
-  templateUrl: './agendaprograma.component.html',
-  styleUrls: ['./agendaprograma.component.css'],
+  selector: "app-agenda-programa",
+  templateUrl: "./agenda-programa.component.html",
+  styleUrls: ["./agenda-programa.component.css"],
   providers: [DatePipe],
 })
-export class AgendaprogramaComponent implements OnInit {
-  filterpost = '';
+export class AgendaProgramaComponent implements OnInit {
+  filterpost = "";
   page = 1;
   pageSize = 6;
   vistaEdicion = false;
@@ -33,58 +33,58 @@ export class AgendaprogramaComponent implements OnInit {
   list = false;
   mes: any[] = [
     {
-      id: '-01-',
-      name: 'Enero',
+      id: "-01-",
+      name: "Enero",
     },
     {
-      id: '-02-',
-      name: 'Febrero',
+      id: "-02-",
+      name: "Febrero",
     },
     {
-      id: '-03-',
-      name: 'Marzo',
+      id: "-03-",
+      name: "Marzo",
     },
     {
-      id: '-04-',
-      name: 'Abril',
+      id: "-04-",
+      name: "Abril",
     },
     {
-      id: '-05-',
-      name: 'Mayo',
+      id: "-05-",
+      name: "Mayo",
     },
     {
-      id: '-06-',
-      name: 'Junio',
+      id: "-06-",
+      name: "Junio",
     },
     {
-      id: '-07-',
-      name: 'Julio',
+      id: "-07-",
+      name: "Julio",
     },
     {
-      id: '-08-',
-      name: 'Agosto',
+      id: "-08-",
+      name: "Agosto",
     },
     {
-      id: '-09-',
-      name: 'Sptiembre',
+      id: "-09-",
+      name: "Sptiembre",
     },
     {
-      id: '-10-',
-      name: 'Octubre',
+      id: "-10-",
+      name: "Octubre",
     },
     {
-      id: '-11-',
-      name: 'Noviembre',
+      id: "-11-",
+      name: "Noviembre",
     },
     {
-      id: '-12-',
-      name: 'Diciemebre',
+      id: "-12-",
+      name: "Diciemebre",
     },
   ];
   eventos: any[] = [];
   actualEvento = null;
   actualIndex = -1;
-  public nombreArchivo = '';
+  public nombreArchivo = "";
   constructor(
     private firebaseStorage: FilesService,
     public datepipe: DatePipe,
@@ -102,7 +102,7 @@ export class AgendaprogramaComponent implements OnInit {
     return this.eventos.sort((a, b) => {
       // tslint:disable-next-line:whitespace
       // tslint:disable-next-line:no-angle-bracket-type-assertion
-      return <any> new Date(b.fechaEvento) - <any> new Date(a.fechaEvento);
+      return <any>new Date(b.fechaEvento) - <any>new Date(a.fechaEvento);
     });
   }
   changeList() {
@@ -114,12 +114,12 @@ export class AgendaprogramaComponent implements OnInit {
     this.list = false;
   }
   elementoEliminado() {
-    this.toastr.warning('', 'Elemento eliminado', {
+    this.toastr.warning("", "Elemento eliminado", {
       timeOut: 2500,
     });
   }
   showDanger() {
-    this.toastr.error('Intenten nuevamente', 'Error', {
+    this.toastr.error("Intenten nuevamente", "Error", {
       timeOut: 2500,
     });
   }
@@ -130,16 +130,16 @@ export class AgendaprogramaComponent implements OnInit {
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, {
       centered: true,
-      size: 'sm',
-      backdrop: 'static',
-      windowClass: 'fade-in',
+      size: "sm",
+      backdrop: "static",
+      windowClass: "fade-in",
     });
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {
-      size: 'sm',
+      size: "sm",
       centered: true,
-      backdrop: 'static',
+      backdrop: "static",
     });
   }
 
@@ -147,7 +147,7 @@ export class AgendaprogramaComponent implements OnInit {
     for (let index = 2016; index <= new Date().getFullYear(); index++) {
       this.anios.push(index.toString());
     }
-    this.fecha = this.datepipe.transform(this.today, 'yyyy-mm-dd');
+    this.fecha = this.datepipe.transform(this.today, "yyyy-mm-dd");
     for (let index = 1; index <= 31; index++) {
       this.dias.push(index.toString());
     }
@@ -180,8 +180,11 @@ export class AgendaprogramaComponent implements OnInit {
   }
 
   borrarAgenda(key$: string) {
-    this.nombreArchivo = 'EVENTOS/PROGRAMA/';
-    this.firebaseStorage.deleteFileStorage(this.nombreArchivo, this.agenda[key$].nameImg);
+    this.nombreArchivo = "EVENTOS/PROGRAMA/";
+    this.firebaseStorage.deleteFileStorage(
+      this.nombreArchivo,
+      this.agenda[key$].nameImg
+    );
     this.agendaService.borrarAgenda(key$).subscribe((respuesta) => {
       if (respuesta) {
         this.showDanger();

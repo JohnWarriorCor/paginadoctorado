@@ -112,13 +112,13 @@
             <img
               [src]="evento.img"
               class="card-img-top cursor-select"
-              [routerLink]="['/eventoInstitucional', evento.key]"
+              [routerLink]="['/evento-institucional', evento.key]"
               [alt]="evento.titulo"
               [title]="evento.titulo"
             />
             <div class="card-body">
               <h5
-                [routerLink]="['/eventoInstitucional', evento.key]"
+                [routerLink]="['/evento-institucional', evento.key]"
                 class="font-usco-vt font-weight-bold cursor-select text-left"
               >
                 {{ evento.titulo }}
@@ -203,14 +203,14 @@
                 <img
                   style="padding: 10px"
                   [src]="evento.img"
-                  [routerLink]="['/eventoInstitucional', evento.key]"
+                  [routerLink]="['/evento-institucional', evento.key]"
                   class="rounded w-100 cursor-select"
                 />
               </div>
               <div class="col-md-8 px-3" style="margin-top: 20px">
                 <div class="card-block px-3">
                   <h3
-                    [routerLink]="['/eventoInstitucional', evento.key]"
+                    [routerLink]="['/evento-institucional', evento.key]"
                     class="card-title text-left font-usco-vt font-weight-bold cursor-select"
                   >
                     {{ evento.titulo }}

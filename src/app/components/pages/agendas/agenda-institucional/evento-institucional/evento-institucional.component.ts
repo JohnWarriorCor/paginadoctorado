@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Agenda } from '../../../../../interfaces/agenda/agenda';
-import { AngularFireAuth } from '@angular/fire/auth';
-import 'firebase/auth';
-import { ToastrService } from 'ngx-toastr';
-import { AgendaprogramaService } from '../../../../../services/agenda/agendaprograma.service';
-import { FilesService } from '../../../../../services/upload/file.service';
+import { Component, OnInit } from "@angular/core";
+import { DatePipe } from "@angular/common";
+import { Router, ActivatedRoute } from "@angular/router";
+import { FormGroup, NgForm, FormControl, Validators } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { Agenda } from "../../../../../interfaces/agenda/agenda";
+import { AngularFireAuth } from "@angular/fire/auth";
+import "firebase/auth";
+import { ToastrService } from "ngx-toastr";
+import { AgendainstitucionalService } from "../../../../../services/agenda/agendainstitucional.service";
+import { FilesService } from "../../../../../services/upload/file.service";
 
 @Component({
-  selector: 'app-eventoprograma',
-  templateUrl: './eventoprograma.component.html',
-  styleUrls: ['./eventoprograma.component.css'],
+  selector: "app-evento-institucional",
+  templateUrl: "./evento-institucional.component.html",
+  styleUrls: ["./evento-institucional.component.css"],
   providers: [DatePipe],
 })
-export class EventoprogramaComponent implements OnInit {
+export class EventoInstitucionalComponent implements OnInit {
   today = new Date();
   fecha: any;
   closeResult: string;
@@ -25,28 +25,28 @@ export class EventoprogramaComponent implements OnInit {
   war: any;
   modalReference: any;
   error = false;
-  passError = '';
-  imgError = '';
+  passError = "";
+  imgError = "";
   alertBool = false;
   forma: FormGroup;
   controls: any;
   nuevo = false;
   id: string;
   agenda: Agenda = {
-    titulo: '',
-    img: '',
-    nameImg: '',
-    resenia: '',
-    parrafo: '',
-    fechaEvento: '',
-    fechaPublicacion: '',
-    url: '',
+    titulo: "",
+    img: "",
+    nameImg: "",
+    resenia: "",
+    parrafo: "",
+    fechaEvento: "",
+    fechaPublicacion: "",
+    url: "",
   };
   // CARGA DE ARCHIVOS A FIRESTORE CONTENIDO CURRICULAR
-  public mensajeArchivo = 'No hay un archivo';
+  public mensajeArchivo = "No hay un archivo";
   public datosFormulario = new FormData();
-  public nombreArchivo = '';
-  public URLPublica = '';
+  public nombreArchivo = "";
+  public URLPublica = "";
   public porcentaje = 0;
   public finalizado = false;
   public archivoForm = new FormGroup({
@@ -65,7 +65,7 @@ export class EventoprogramaComponent implements OnInit {
     public auth: AngularFireAuth,
     public datepipe: DatePipe,
     private modalService: NgbModal,
-    private agendaServices: AgendaprogramaService,
+    private agendaServices: AgendainstitucionalService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
@@ -75,7 +75,7 @@ export class EventoprogramaComponent implements OnInit {
     });
     this.activatedRoute.params.subscribe((parametros) => {
       this.id = parametros.id;
-      if (this.id !== 'nuevo') {
+      if (this.id !== "nuevo") {
         this.agendaServices
           .getAgenda(this.id)
           .subscribe((agenda) => (this.agenda = agenda));
@@ -83,37 +83,37 @@ export class EventoprogramaComponent implements OnInit {
     });
   }
   elementoEliminado() {
-    this.toastr.warning('', 'Elemento eliminado', {
+    this.toastr.warning("", "Elemento eliminado", {
       timeOut: 2500,
     });
   }
   showDanger() {
-    this.toastr.error('Intenten nuevamente', 'Error', {
+    this.toastr.error("Intenten nuevamente", "Error", {
       timeOut: 2500,
     });
   }
 
   ngOnInit() {
-    this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
+    this.fecha = this.datepipe.transform(this.today, "dd/MM/yyyy");
   }
 
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, {
       centered: true,
-      size: 'sm',
-      backdrop: 'static',
-      windowClass: 'fade-in',
+      size: "sm",
+      backdrop: "static",
+      windowClass: "fade-in",
     });
   }
 
   changeImg(urlimg) {
     console.log(urlimg);
     // tslint:disable-next-line:max-line-length
-    if (urlimg === '' || urlimg === null) {
+    if (urlimg === "" || urlimg === null) {
       this.defaultImgUrl = urlimg;
       this.alertBool = true;
       this.imgError =
-        'No puede dejar un evento sin imagen, por favor inserte un URL correspondiente';
+        "No puede dejar un evento sin imagen, por favor inserte un URL correspondiente";
     } else {
       this.alertBool = false;
       this.defaultImgUrl = urlimg;
@@ -122,13 +122,13 @@ export class EventoprogramaComponent implements OnInit {
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {
-      size: 'sm',
+      size: "sm",
       centered: true,
-      backdrop: 'static',
+      backdrop: "static",
     });
   }
   nav() {
-    this.router.navigate(['/admi_agendaPrograma', this.link]);
+    this.router.navigate(["/admi_agendaInstitucional", this.link]);
   }
   guardar() {
     if (this.agenda.titulo !== this.war || this.agenda.titulo !== this.war) {
@@ -136,10 +136,10 @@ export class EventoprogramaComponent implements OnInit {
       console.log(this.agenda.titulo);
       console.log(this.war);
       this.modalReference.close();
-      if (this.id === 'nuevo') {
+      if (this.id === "nuevo") {
         this.agendaServices.nuevoAgenda(this.agenda).subscribe(
           (data) => {
-            this.router.navigate(['/agendaPrograma']);
+            this.router.navigate(["/agendaInstitucional"]);
             this.modalReference.close();
           },
           (error) => console.error(error)
@@ -148,7 +148,7 @@ export class EventoprogramaComponent implements OnInit {
         this.modalReference.close();
         this.agendaServices.actualizarAgenda(this.agenda, this.id).subscribe(
           (data) => {
-            this.router.navigate(['/agendaPrograma']);
+            this.router.navigate(["/agendaInstitucional"]);
             this.modalReference.close();
           },
           (error) => console.error(error)
@@ -156,17 +156,17 @@ export class EventoprogramaComponent implements OnInit {
       }
     } else {
       this.error = true;
-      this.passError = 'Formulario incompleto.';
+      this.passError = "Formulario incompleto.";
       this.modalReference.close();
     }
   }
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(['/admi_agendaPrograma', 'nuevo']);
+    this.router.navigate(["/admi_agendaInstitucional", "nuevo"]);
     forma.reset({});
   }
 
   borrarAgenda() {
-    this.nombreArchivo = 'EVENTOS/PROGRAMA/';
+    this.nombreArchivo = "EVENTOS/INSTITUCIONALES/";
     this.firebaseStorage.deleteFileStorage(
       this.nombreArchivo,
       this.agenda[this.link].nameImg
@@ -179,7 +179,7 @@ export class EventoprogramaComponent implements OnInit {
         delete this.agenda[this.link];
         this.elementoEliminado();
         this.modalReference.close();
-        this.router.navigate(['/agendaPrograma']);
+        this.router.navigate(["/agendaInstitucional"]);
       }
     });
   }

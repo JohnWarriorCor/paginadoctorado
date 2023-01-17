@@ -84,10 +84,6 @@ import { EgresadoComponent } from "./components/pages/estudiantes/egresados/egre
 import { FiltroPipe } from "./pipes/filtro.pipe";
 import { FiltroprofesoresPipe } from "./pipes/filtroprofesores.pipe";
 import { FiltrogruposinvesPipe } from "./pipes/filtrogruposinves.pipe";
-import { AgendainstitucionalComponent } from "./components/pages/agenda/agendainstitucional/agendainstitucional.component";
-import { EventoinstitucionalComponent } from "./components/pages/agenda/agendainstitucional/eventoinstitucional/eventoinstitucional.component";
-import { AgendaprogramaComponent } from "./components/pages/agenda/agendaprograma/agendaprograma.component";
-import { EventoprogramaComponent } from "./components/pages/agenda/agendaprograma/eventoprograma/eventoprograma.component";
 import { AgendaprogramaeditComponent } from "./components/admin/agendaedit/agendaprogramaedit/agendaprogramaedit.component";
 import { AgendainstitucionaleditComponent } from "./components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component";
 import { FiltrobibliotecaPipe } from "./pipes/filtrobiblioteca.pipe";
@@ -101,6 +97,10 @@ import { ArticuloeComponent } from "./components/pages/estudiantes/articulosestu
 import { FiltroarticulosprofesoresPipe } from "./pipes/filtroarticulosprofesores.pipe";
 import { FiltroarticulosestudiantesPipe } from "./pipes/filtroarticulosestudiantes.pipe";
 import { ArticuloEgresadosComponent } from './components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component';
+import { AgendaProgramaComponent } from './components/pages/agendas/agenda-programa/agenda-programa.component';
+import { AgendaInstitucionalComponent } from './components/pages/agendas/agenda-institucional/agenda-institucional.component';
+import { EventoInstitucionalComponent } from './components/pages/agendas/agenda-institucional/evento-institucional/evento-institucional.component';
+import { EventoProgramaComponent } from './components/pages/agendas/agenda-programa/evento-programa/evento-programa.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, "es-CO");
@@ -148,10 +148,6 @@ registerLocaleData(localeEsCO, "es-CO");
     FiltroPipe,
     FiltroprofesoresPipe,
     FiltrogruposinvesPipe,
-    AgendainstitucionalComponent,
-    EventoinstitucionalComponent,
-    AgendaprogramaComponent,
-    EventoprogramaComponent,
     AgendaprogramaeditComponent,
     AgendainstitucionaleditComponent,
     FiltrobibliotecaPipe,
@@ -165,6 +161,10 @@ registerLocaleData(localeEsCO, "es-CO");
     FiltroarticulosprofesoresPipe,
     FiltroarticulosestudiantesPipe,
     ArticuloEgresadosComponent,
+    AgendaProgramaComponent,
+    AgendaInstitucionalComponent,
+    EventoInstitucionalComponent,
+    EventoProgramaComponent,
   ],
   imports: [
     BrowserModule,

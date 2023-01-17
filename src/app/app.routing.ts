@@ -33,10 +33,6 @@ import { EgresadoComponent } from "./components/pages/estudiantes/egresados/egre
 import { ListadoeditComponent } from "./components/admin/estudiantes/listado/listadoedit.component";
 
 import { AuthGuard } from "./guards/auth.guard";
-import { EventoprogramaComponent } from "./components/pages/agenda/agendaprograma/eventoprograma/eventoprograma.component";
-import { EventoinstitucionalComponent } from "./components/pages/agenda/agendainstitucional/eventoinstitucional/eventoinstitucional.component";
-import { AgendaprogramaComponent } from "./components/pages/agenda/agendaprograma/agendaprograma.component";
-import { AgendainstitucionalComponent } from "./components/pages/agenda/agendainstitucional/agendainstitucional.component";
 import { AgendaprogramaeditComponent } from "./components/admin/agendaedit/agendaprogramaedit/agendaprogramaedit.component";
 import { AgendainstitucionaleditComponent } from "./components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component";
 import { GaleriaComponent } from "./components/pages/biblioteca/galeria/galeria.component";
@@ -45,6 +41,10 @@ import { ArticuloestudianteComponent } from "./components/pages/estudiantes/arti
 import { ArticuloComponent } from "./components/pages/docentes/articulosprofesores/articulo/articulo.component";
 import { ArticuloeComponent } from "./components/pages/estudiantes/articulosestudiantes/articuloe/articuloe.component";
 import { ArticuloEgresadosComponent } from "./components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component";
+import { EventoInstitucionalComponent } from "./components/pages/agendas/agenda-institucional/evento-institucional/evento-institucional.component";
+import { EventoProgramaComponent } from "./components/pages/agendas/agenda-programa/evento-programa/evento-programa.component";
+import { AgendaProgramaComponent } from "./components/pages/agendas/agenda-programa/agenda-programa.component";
+import { AgendaInstitucionalComponent } from './components/pages/agendas/agenda-institucional/agenda-institucional.component';
 
 const routes: Routes = [
   // INICIO
@@ -64,10 +64,10 @@ const routes: Routes = [
   { path: "articulo_docente/:id/:idx", component: ArticulodocenteComponent },
   { path: "articulo_docente/:id", component: ArticuloComponent },
   // ACTIVDADES
-  { path: "agendaPrograma", component: AgendaprogramaComponent },
-  { path: "agendaInstitucional", component: AgendainstitucionalComponent },
-  { path: "eventoPrograma/:id", component: EventoprogramaComponent },
-  { path: "eventoInstitucional/:id", component: EventoinstitucionalComponent },
+  { path: "agenda-programa", component: AgendaProgramaComponent },
+  { path: "agenda-institucional", component: AgendaInstitucionalComponent },
+  { path: "evento-programa/:id", component: EventoProgramaComponent },
+  { path: "evento-institucional/:id", component: EventoInstitucionalComponent },
   // INVESTIGACION
   { path: "gruposInvestigacion", component: GruposinvesComponent },
   // ESTUDIANDTES

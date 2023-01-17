@@ -279,7 +279,7 @@
         <div class="row mt-4">
           <div class="col">
             <h3
-              [routerLink]="['/agendaPrograma']"
+              [routerLink]="['/agenda-programa']"
               class="font-usco-vt font-weight-bold cursorSelect"
             >
               <i class="far fa-edit"></i> Agéndate
@@ -292,7 +292,7 @@
           <div class="col">
             <p
               class="font-usco-gr font-weight-bold cursorSelect"
-              [routerLink]="['/agendaPrograma']"
+              [routerLink]="['/agenda-programa']"
             >
               <small
                 ><i class="fas fa-newspaper"></i> Actividades de Programa</small
@@ -314,7 +314,7 @@
                       <img
                         [src]="evento.img"
                         class="card-img-top cursorSelect"
-                        [routerLink]="['/eventoPrograma', evento.key]"
+                        [routerLink]="['/evento-programa', evento.key]"
                         [alt]="evento.titulo"
                         [title]="evento.titulo"
                       />
@@ -322,7 +322,7 @@
                         <div class="row">
                           <div class="col">
                             <h4
-                              [routerLink]="['/eventoPrograma', evento.key]"
+                              [routerLink]="['/evento-programa', evento.key]"
                               class="font-usco-vt font-weight-bold cursorSelect"
                             >
                               {{ evento.titulo }}
@@ -394,7 +394,7 @@
           <div class="col">
             <p
               class="font-usco-gr font-weight-bold cursorSelect"
-              [routerLink]="['/agendaInstitucional']"
+              [routerLink]="['/agenda-institucional']"
             >
               <small
                 ><i class="fas fa-rss-square"></i> Actividades
@@ -420,7 +420,7 @@
                       <img
                         [src]="evento.img"
                         class="card-img-top cursorSelect"
-                        [routerLink]="['/eventoInstitucional', evento.key]"
+                        [routerLink]="['/evento-institucional', evento.key]"
                         [alt]="evento.titulo"
                         [title]="evento.titulo"
                       />
@@ -429,7 +429,7 @@
                           <div class="col">
                             <h4
                               [routerLink]="[
-                                '/eventoInstitucional',
+                                '/evento-institucional',
                                 evento.key
                               ]"
                               class="font-usco-vt font-weight-bold cursorSelect"

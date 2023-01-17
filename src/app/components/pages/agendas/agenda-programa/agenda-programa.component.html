@@ -112,13 +112,13 @@
             <img
               [src]="evento.img"
               class="card-img-top cursor-select"
-              [routerLink]="['/eventoPrograma', evento.key]"
+              [routerLink]="['/evento-programa', evento.key]"
               [alt]="evento.titulo"
               [title]="evento.titulo"
             />
             <div class="card-body">
               <h5
-                [routerLink]="['/eventoPrograma', evento.key]"
+                [routerLink]="['/evento-programa', evento.key]"
                 class="font-usco-vt cursor-select text-left font-weight-bold"
               >
                 {{ evento.titulo }}
@@ -328,7 +328,9 @@
         ></iframe
         ><br />
         <hr />
-        <h3 class="font-usco-vt font-weight-bold"><i class="fas fa-rss"></i> Universidad</h3>
+        <h3 class="font-usco-vt font-weight-bold">
+          <i class="fas fa-rss"></i> Universidad
+        </h3>
         <hr class="hr-usco-vt" />
         <br />
         <iframe
