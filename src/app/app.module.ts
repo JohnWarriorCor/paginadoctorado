@@ -55,7 +55,6 @@ import { LoginComponent } from "./components/admin/login/login.component";
 import { GruposinveseditComponent } from "./components/admin/gruposinvesedit/gruposinvesedit.component";
 import { HistoriaComponent } from "./components/pages/programa/historia/historia.component";
 import { UbicacionComponent } from "./components/pages/programa/ubicacion/ubicacion.component";
-import { PlanestudiosComponent } from "./components/pages/formacion/planestudios/planestudios.component";
 import { CompetenciasComponent } from "./components/pages/formacion/competencias/competencias.component";
 import { PerfilComponent } from "./components/pages/formacion/perfil/perfil.component";
 import { OrganigramaComponent } from "./components/pages/programa/organigrama/organigrama.component";
@@ -101,6 +100,7 @@ import { AgendaProgramaComponent } from './components/pages/agendas/agenda-progr
 import { AgendaInstitucionalComponent } from './components/pages/agendas/agenda-institucional/agenda-institucional.component';
 import { EventoInstitucionalComponent } from './components/pages/agendas/agenda-institucional/evento-institucional/evento-institucional.component';
 import { EventoProgramaComponent } from './components/pages/agendas/agenda-programa/evento-programa/evento-programa.component';
+import { PlanEstudiosComponent } from './components/pages/formacion/plan-estudios/plan-estudios.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, "es-CO");
@@ -120,7 +120,6 @@ registerLocaleData(localeEsCO, "es-CO");
     GruposinveseditComponent,
     HistoriaComponent,
     UbicacionComponent,
-    PlanestudiosComponent,
     CompetenciasComponent,
     PerfilComponent,
     OrganigramaComponent,
@@ -165,6 +164,7 @@ registerLocaleData(localeEsCO, "es-CO");
     AgendaInstitucionalComponent,
     EventoInstitucionalComponent,
     EventoProgramaComponent,
+    PlanEstudiosComponent,
   ],
   imports: [
     BrowserModule,
