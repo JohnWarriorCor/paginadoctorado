@@ -221,10 +221,6 @@ a.activeTab:hover {
   width: 20%;
 }
 
-.mgText {
-  margin-top: 50px;
-}
-
 .ir-arriba {
   display: inline-block;
   padding: 10px;
@@ -239,23 +235,15 @@ a.activeTab:hover {
   border-radius: 100px;
 }
 
-.inicio {
-  margin-top: 20px;
-}
-
-.fuenteUsco {
+.font-usco {
   font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
-.centro {
+.mid {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-}
-
-.txtcenter {
-  text-align: center;
 }
 
 .footer {
@@ -283,7 +271,7 @@ a.activeTab:hover {
   border-radius: 0.25rem;
 }
 
-.card-uscoHeader {
+.card-usco-header {
   background-color: #8f141b;
   border-color: #707070;
   border-width: 1px;
@@ -292,7 +280,7 @@ a.activeTab:hover {
   text-align: center;
 }
 
-.card-uscoContent {
+.card-usco-content {
   background-color: #f9e4e4;
   color: #000;
   border-color: #8f141b;
@@ -302,7 +290,7 @@ a.activeTab:hover {
   flex: 1 1 auto;
 }
 
-.uscoInputs {
+.inputs-usco {
   width: 100%;
   border-radius: 20px;
   background-color: #fff;
@@ -317,17 +305,7 @@ a.activeTab:hover {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.uscoButton {
-  background-color: #8f141b;
-  border-color: #707070;
-  border-width: 1px;
-  color: #dfd4a6;
-  padding: 0.375rem 0.75rem;
-  margin: 1em 1em 1em 1em;
-  cursor: pointer;
-}
-
-.uscolink {
+.link-usco-vt {
   color: #8f141b;
   text-decoration: none;
 }
@@ -338,7 +316,7 @@ a.activeTab:hover {
   border-color: red;
 }
 
-.uscoSearchTitulo {
+.search-usco {
   width: 100%;
   border-radius: 20px;
   background-color: #fff;
@@ -495,14 +473,6 @@ a.activeTab:hover {
   cursor: pointer;
 }
 
-.w120 {
-  width: 120px;
-}
-
-.caki {
-  color: #dfd4a6;
-}
-
 .text-usco-red {
   color: #8f141b;
 }
@@ -515,11 +485,6 @@ a.activeTab:hover {
   background-color: #8f141b;
   padding: 10px;
   color: #dfd4a6;
-}
-
-.claro2 {
-  background-color: rgb(167, 25, 32);
-  color: rgb(236, 224, 176);
 }
 
 .indice {
@@ -540,37 +505,7 @@ a.activeTab:hover {
   padding-bottom: 0px;
 }
 
-.navlinkin {
-  background-color: #8f141b;
-  color: #dfd4a6;
-}
-
-.navlinkout {
-  background-color: #dfd4a6;
-  color: #8f141b;
-}
-
-.navlinkin:hover {
-  background-color: rgb(255, 242, 191);
-  color: rgb(179, 27, 34);
-}
-
-.navlinkout:hover {
-  color: #dfd4a6;
-  background-color: #8f141b;
-}
-
-.fondoTitulo {
-  background-color: rgb(72, 153, 228);
-  color: white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  border: 2px solid;
-  border-radius: 20px;
-  padding: 10px;
-  width: 100%;
-}
-
-.inputPaciente {
+.input-usco-round {
   border-radius: 50px;
   width: 20%px;
   margin-bottom: 15px;
@@ -578,31 +513,6 @@ a.activeTab:hover {
 
 .gray {
   color: #626567;
-}
-
-.botonUsco {
-  background-color: #8f141b;
-  color: #dfd4a6;
-  width: 50%;
-  font-size: 2vw;
-}
-
-.botonUsco:hover {
-  background-color: rgb(179, 27, 34);
-  color: rgb(255, 242, 191);
-}
-
-.botonUscoPerfil {
-  background-color: #8f141b;
-  color: #dfd4a6;
-  width: 20%;
-  font-size: 12px;
-  margin: 5px;
-}
-
-.botonUscoPerfil:hover {
-  background-color: rgb(179, 27, 34);
-  color: rgb(255, 242, 191);
 }
 
 .pre {
