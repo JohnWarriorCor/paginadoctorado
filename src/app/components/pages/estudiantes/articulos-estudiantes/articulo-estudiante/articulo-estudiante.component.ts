@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, NgForm } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Listado } from '../../../../../interfaces/estudiantes/listado/listado';
-import { ListadoService } from '../../../../../services/estudiantes/listado/listado.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import 'firebase/auth';
-import { ToastrService } from 'ngx-toastr';
-import { Articulo } from '../../../../../interfaces/profesores/articulo';
-
+import { Component, OnInit } from "@angular/core";
+import { DatePipe } from "@angular/common";
+import { Router, ActivatedRoute } from "@angular/router";
+import { FormGroup, NgForm } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { Listado } from "../../../../../interfaces/estudiantes/listado/listado";
+import { ListadoService } from "../../../../../services/estudiantes/listado/listado.service";
+import { AngularFireAuth } from "@angular/fire/auth";
+import "firebase/auth";
+import { ToastrService } from "ngx-toastr";
+import { Articulo } from "../../../../../interfaces/profesores/articulo";
 
 @Component({
-  selector: 'app-articuloestudiante',
-  templateUrl: './articuloestudiante.component.html',
-  styleUrls: ['./articuloestudiante.component.css'],
+  selector: "app-articulo-estudiante",
+  templateUrl: "./articulo-estudiante.component.html",
+  styleUrls: ["./articulo-estudiante.component.css"],
   providers: [DatePipe],
 })
-export class ArticuloestudianteComponent implements OnInit {
-  pdfSource = 'https://drive.google.com/file/d/1unOARuer2zVmdsWISIXgDH-kDgVtgOdg/preview';
+export class ArticuloEstudianteComponent implements OnInit {
+  pdfSource =
+    "https://drive.google.com/file/d/1unOARuer2zVmdsWISIXgDH-kDgVtgOdg/preview";
   page = 1;
   pageSize = 3;
   pageArticulos = 1;
@@ -31,8 +31,8 @@ export class ArticuloestudianteComponent implements OnInit {
   war: any;
   modalReference: any;
   error = false;
-  passError = '';
-  imgError = '';
+  passError = "";
+  imgError = "";
   alertBool = false;
   forma: FormGroup;
   controls: any;
@@ -42,24 +42,24 @@ export class ArticuloestudianteComponent implements OnInit {
   newAttribute: any = {};
   articulos: any = [];
   articuloEstudiante: Articulo = {
-    anio: '',
-    autores: '',
-    enlace: '',
-    nombreArticulo: '',
-    resumen: '',
-    revista: '',
+    anio: "",
+    autores: "",
+    enlace: "",
+    nombreArticulo: "",
+    resumen: "",
+    revista: "",
   };
   listadoEstudiantes: Listado = {
-    foto: '',
+    foto: "",
     codigo: 0,
-    nombre: '',
-    sintesis: '',
+    nombre: "",
+    sintesis: "",
     fieldArray: [],
     fieldArrayArticulos: [],
-    correo: '',
-    fecha: '',
-    cvlac: '',
-    orcid: '',
+    correo: "",
+    fecha: "",
+    cvlac: "",
+    orcid: "",
     estado: 0,
   };
   slides: any = [[]];
@@ -84,73 +84,74 @@ export class ArticuloestudianteComponent implements OnInit {
       this.id = parametros.id;
       this.idx = parametros.idx;
       this.link = parametros.id;
-      if (this.id !== 'nuevo') {
+      if (this.id !== "nuevo") {
         this.listadoService
           .getListado(this.id)
           .subscribe(
-            (listadoEstudiantes) => (this.listadoEstudiantes = listadoEstudiantes)
+            (listadoEstudiantes) =>
+              (this.listadoEstudiantes = listadoEstudiantes)
           );
       }
       this.listadoService
-          .getArticuloEstudiante(this.id, this.idx)
-          .subscribe(
-            (articuloEstudiante) => (this.articuloEstudiante = articuloEstudiante)
-          );
+        .getArticuloEstudiante(this.id, this.idx)
+        .subscribe(
+          (articuloEstudiante) => (this.articuloEstudiante = articuloEstudiante)
+        );
     });
   }
   nav() {
-    this.router.navigate(['/admi_plantel', this.link]);
+    this.router.navigate(["/admi_plantel", this.link]);
   }
   ngOnInit() {
-    this.fecha = this.datepipe.transform(this.today, 'dd/MM/yyyy');
+    this.fecha = this.datepipe.transform(this.today, "dd/MM/yyyy");
   }
   showSuccess() {
-    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+    this.toastr.success("Acción exitosa", "Elemento guardado", {
       timeOut: 2500,
     });
   }
   showDanger() {
-    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+    this.toastr.error("Intenten nuevamente", "Error al guardar", {
       timeOut: 2500,
     });
   }
   showInfo() {
-    this.toastr.info('', 'Elemento actualizado', {
+    this.toastr.info("", "Elemento actualizado", {
       timeOut: 2500,
     });
   }
   showWarning() {
-    this.toastr.warning('Intenten nuevamente', 'Error al actualizar', {
+    this.toastr.warning("Intenten nuevamente", "Error al actualizar", {
       timeOut: 2500,
     });
   }
   elementoAgregado() {
-    this.toastr.info('', 'Elemento agregado', {
+    this.toastr.info("", "Elemento agregado", {
       timeOut: 2500,
     });
   }
   elementoEliminado() {
-    this.toastr.warning('', 'Elemento eliminado', {
+    this.toastr.warning("", "Elemento eliminado", {
       timeOut: 2500,
     });
   }
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, {
       centered: true,
-      size: 'sm',
-      backdrop: 'static',
-      windowClass: 'fade-in',
+      size: "sm",
+      backdrop: "static",
+      windowClass: "fade-in",
     });
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {
-      size: 'sm',
+      size: "sm",
       centered: true,
-      backdrop: 'static',
+      backdrop: "static",
     });
   }
   verProfesor(idx: number) {
-    this.router.navigate(['/docente', idx]);
+    this.router.navigate(["/docente", idx]);
   }
   up() {
     window.scroll(0, 400);
@@ -164,10 +165,10 @@ export class ArticuloestudianteComponent implements OnInit {
       console.log(this.listadoEstudiantes.nombre);
       console.log(this.war);
       this.modalReference.close();
-      if (this.id === 'nuevo') {
+      if (this.id === "nuevo") {
         this.listadoService.nuevoListado(this.listadoEstudiantes).subscribe(
           (data) => {
-            this.router.navigate(['/docentes']);
+            this.router.navigate(["/docentes"]);
             this.modalReference.close();
           },
           (error) => console.error(error)
@@ -178,7 +179,7 @@ export class ArticuloestudianteComponent implements OnInit {
           .actualizarListado(this.listadoEstudiantes, this.id)
           .subscribe(
             (data) => {
-              this.router.navigate(['/docentes']);
+              this.router.navigate(["/docentes"]);
               this.modalReference.close();
             },
             (error) => console.error(error)
@@ -186,12 +187,12 @@ export class ArticuloestudianteComponent implements OnInit {
       }
     } else {
       this.error = true;
-      this.passError = 'Formulario incompleto.';
+      this.passError = "Formulario incompleto.";
       this.modalReference.close();
     }
   }
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(['/admi_plantel', 'nuevo']);
+    this.router.navigate(["/admi_plantel", "nuevo"]);
     forma.reset({});
   }
   borrarPlantel() {
@@ -199,7 +200,7 @@ export class ArticuloestudianteComponent implements OnInit {
       if (respuesta) {
         console.error(respuesta);
       } else {
-        this.router.navigate(['/estudiantes']);
+        this.router.navigate(["/estudiantes"]);
         // delete this.plantelProfesores[this.id];
         this.elementoEliminado();
         this.modalReference.close();

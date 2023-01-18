@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home.component";
 import { DocentesComponent } from "./components/pages/docentes/docentes.component";
-import { GruposinvesComponent } from "./components/pages/gruposinves/gruposinves.component";
 import { EstudiantesComponent } from "./components/pages/estudiantes/estudiantes.component";
 import { LoginComponent } from "./components/admin/login/login.component";
 import { EgresadosComponent } from "./components/pages/estudiantes/egresados/egresados.component";
@@ -13,7 +12,6 @@ import { PerfilComponent } from "./components/pages/formacion/perfil/perfil.comp
 import { OrganigramaComponent } from "./components/pages/programa/organigrama/organigrama.component";
 import { DocenteComponent } from "./components/pages/docentes/docente/docente.component";
 import { BibliotecaComponent } from "./components/pages/biblioteca/biblioteca.component";
-import { ArticulosestudiantesComponent } from "./components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component";
 import { ArticulosprofesoresComponent } from "./components/pages/docentes/articulosprofesores/articulosprofesores.component";
 import { EstudianteComponent } from "./components/pages/estudiantes/estudiante/estudiante.component";
 import { HistoriaeditComponent } from "./components/admin/programa/historiaedit/historiaedit.component";
@@ -36,15 +34,17 @@ import { AgendaprogramaeditComponent } from "./components/admin/agendaedit/agend
 import { AgendainstitucionaleditComponent } from "./components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component";
 import { GaleriaComponent } from "./components/pages/biblioteca/galeria/galeria.component";
 import { ArticulodocenteComponent } from "./components/pages/docentes/articulosprofesores/articulodocente/articulodocente.component";
-import { ArticuloestudianteComponent } from "./components/pages/estudiantes/articulosestudiantes/articuloestudiante/articuloestudiante.component";
-import { ArticuloComponent } from "./components/pages/docentes/articulosprofesores/articulo/articulo.component";
-import { ArticuloeComponent } from "./components/pages/estudiantes/articulosestudiantes/articuloe/articuloe.component";
 import { ArticuloEgresadosComponent } from "./components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component";
 import { EventoInstitucionalComponent } from "./components/pages/agendas/agenda-institucional/evento-institucional/evento-institucional.component";
 import { EventoProgramaComponent } from "./components/pages/agendas/agenda-programa/evento-programa/evento-programa.component";
 import { AgendaProgramaComponent } from "./components/pages/agendas/agenda-programa/agenda-programa.component";
-import { AgendaInstitucionalComponent } from './components/pages/agendas/agenda-institucional/agenda-institucional.component';
-import { PlanEstudiosComponent } from './components/pages/formacion/plan-estudios/plan-estudios.component';
+import { AgendaInstitucionalComponent } from "./components/pages/agendas/agenda-institucional/agenda-institucional.component";
+import { PlanEstudiosComponent } from "./components/pages/formacion/plan-estudios/plan-estudios.component";
+import { GrupoInvestigacionComponent } from "./components/pages/grupo-investigacion/grupo-investigacion.component";
+import { ArticuloEstudianteComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulo-estudiante/articulo-estudiante.component";
+import { ArticulosEstudiantesComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulos-estudiantes.component";
+import { ArticuloDetalladoEstudianteComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulo-detallado-estudiante/articulo-detallado-estudiante.component";
+import { ArticuloComponent } from "./components/pages/docentes/articulosprofesores/articulo/articulo.component";
 
 const routes: Routes = [
   // INICIO
@@ -69,16 +69,19 @@ const routes: Routes = [
   { path: "evento-programa/:id", component: EventoProgramaComponent },
   { path: "evento-institucional/:id", component: EventoInstitucionalComponent },
   // INVESTIGACION
-  { path: "gruposInvestigacion", component: GruposinvesComponent },
+  { path: "grupos-investigacion", component: GrupoInvestigacionComponent },
   // ESTUDIANDTES
   { path: "estudiantes", component: EstudiantesComponent },
   { path: "estudiante/:id", component: EstudianteComponent },
-  { path: "articulosEstudiantes", component: ArticulosestudiantesComponent },
+  { path: "articulos-estudiantes", component: ArticulosEstudiantesComponent },
   {
-    path: "articulo_estudiante/:id/:idx",
-    component: ArticuloestudianteComponent,
+    path: "articulo-estudiante/:id/:idx",
+    component: ArticuloEstudianteComponent,
   },
-  { path: "articulo_estudiante/:id", component: ArticuloeComponent },
+  {
+    path: "articulo-estudiante/:id",
+    component: ArticuloDetalladoEstudianteComponent,
+  },
   { path: "egresados", component: EgresadosComponent },
   {
     path: "articulo_egresado/:id/:idx",

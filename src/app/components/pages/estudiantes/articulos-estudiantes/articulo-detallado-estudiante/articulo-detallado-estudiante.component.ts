@@ -13,12 +13,12 @@ import { map } from "rxjs/operators";
 import { ArticulosestuService } from "../../../../../services/estudiantes/articulos/articulosestu.service";
 
 @Component({
-  selector: "app-articuloe",
-  templateUrl: "./articuloe.component.html",
-  styleUrls: ["./articuloe.component.css"],
+  selector: "app-articulo-detallado-estudiante",
+  templateUrl: "./articulo-detallado-estudiante.component.html",
+  styleUrls: ["./articulo-detallado-estudiante.component.css"],
   providers: [DatePipe],
 })
-export class ArticuloeComponent implements OnInit {
+export class ArticuloDetalladoEstudianteComponent implements OnInit {
   pdfSource =
     "https://drive.google.com/file/d/1unOARuer2zVmdsWISIXgDH-kDgVtgOdg/preview";
   page = 1;

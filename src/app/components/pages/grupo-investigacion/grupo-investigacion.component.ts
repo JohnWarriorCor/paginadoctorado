@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { GruposinvestigacionService } from '../../../services/grupoinvesti/gruposinvestigacion.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import 'firebase/auth';
-import { map } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { GruposinvestigacionService } from "../../../services/grupoinvesti/gruposinvestigacion.service";
+import { AngularFireAuth } from "@angular/fire/auth";
+import "firebase/auth";
+import { map } from "rxjs/operators";
 
 @Component({
-  selector: 'app-gruposinves',
-  templateUrl: './gruposinves.component.html',
-  styleUrls: ['./gruposinves.component.css'],
+  selector: "app-grupo-investigacion",
+  templateUrl: "./grupo-investigacion.component.html",
+  styleUrls: ["./grupo-investigacion.component.css"],
 })
-
-// tslint:disable-next-line:directive-class-suffix
-export class GruposinvesComponent implements OnInit {
+export class GrupoInvestigacionComponent implements OnInit {
   page = 1;
   pageSize = 4;
   vistaEdicion = false;
@@ -23,7 +21,7 @@ export class GruposinvesComponent implements OnInit {
   comodinAcum = 0;
   grupoInvestigacion: Array<any> = [];
   loading = true;
-  filterpost = '';
+  filterpost = "";
   grupos: any[] = [];
   actualProfesor = null;
 
@@ -43,9 +41,9 @@ export class GruposinvesComponent implements OnInit {
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, {
       centered: true,
-      size: 'sm',
-      backdrop: 'static',
-      windowClass: 'fade-in',
+      size: "sm",
+      backdrop: "static",
+      windowClass: "fade-in",
     });
   }
   obtenerGrupos(): void {
@@ -68,9 +66,9 @@ export class GruposinvesComponent implements OnInit {
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {
-      size: 'sm',
+      size: "sm",
       centered: true,
-      backdrop: 'static',
+      backdrop: "static",
     });
   }
 

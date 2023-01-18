@@ -48,7 +48,6 @@ import { AngularEditorModule } from "@kolkov/angular-editor";
 import localeEsCO from "@angular/common/locales/es-CO";
 import { DocentesComponent } from "./components/pages/docentes/docentes.component";
 import { EstudiantesComponent } from "./components/pages/estudiantes/estudiantes.component";
-import { GruposinvesComponent } from "./components/pages/gruposinves/gruposinves.component";
 import { EgresadosComponent } from "./components/pages/estudiantes/egresados/egresados.component";
 import { TesisComponent } from "./components/pages/estudiantes/tesis/tesis.component";
 import { LoginComponent } from "./components/admin/login/login.component";
@@ -65,7 +64,6 @@ import { ListinvertPipe } from "./pipes/listinvert.pipe";
 import { DocenteComponent } from "./components/pages/docentes/docente/docente.component";
 import { BibliotecaComponent } from "./components/pages/biblioteca/biblioteca.component";
 import { ArticulosprofesoresComponent } from "./components/pages/docentes/articulosprofesores/articulosprofesores.component";
-import { ArticulosestudiantesComponent } from "./components/pages/estudiantes/articulosestudiantes/articulosestudiantes.component";
 import { EstudianteComponent } from "./components/pages/estudiantes/estudiante/estudiante.component";
 import { HistoriaeditComponent } from "./components/admin/programa/historiaedit/historiaedit.component";
 import { DenominacionComponent } from "./components/admin/home/denominacion/denominacion.component";
@@ -90,17 +88,19 @@ import { GaleriaComponent } from "./components/pages/biblioteca/galeria/galeria.
 import { ArticulodocenteComponent } from "./components/pages/docentes/articulosprofesores/articulodocente/articulodocente.component";
 import { NoSanitizePipe } from "./pipes/no-sanitize.pipe";
 import { FiltrotesisPipe } from "./pipes/filtrotesis.pipe";
-import { ArticuloestudianteComponent } from "./components/pages/estudiantes/articulosestudiantes/articuloestudiante/articuloestudiante.component";
 import { ArticuloComponent } from "./components/pages/docentes/articulosprofesores/articulo/articulo.component";
-import { ArticuloeComponent } from "./components/pages/estudiantes/articulosestudiantes/articuloe/articuloe.component";
 import { FiltroarticulosprofesoresPipe } from "./pipes/filtroarticulosprofesores.pipe";
 import { FiltroarticulosestudiantesPipe } from "./pipes/filtroarticulosestudiantes.pipe";
-import { ArticuloEgresadosComponent } from './components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component';
-import { AgendaProgramaComponent } from './components/pages/agendas/agenda-programa/agenda-programa.component';
-import { AgendaInstitucionalComponent } from './components/pages/agendas/agenda-institucional/agenda-institucional.component';
-import { EventoInstitucionalComponent } from './components/pages/agendas/agenda-institucional/evento-institucional/evento-institucional.component';
-import { EventoProgramaComponent } from './components/pages/agendas/agenda-programa/evento-programa/evento-programa.component';
-import { PlanEstudiosComponent } from './components/pages/formacion/plan-estudios/plan-estudios.component';
+import { ArticuloEgresadosComponent } from "./components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component";
+import { AgendaProgramaComponent } from "./components/pages/agendas/agenda-programa/agenda-programa.component";
+import { AgendaInstitucionalComponent } from "./components/pages/agendas/agenda-institucional/agenda-institucional.component";
+import { EventoInstitucionalComponent } from "./components/pages/agendas/agenda-institucional/evento-institucional/evento-institucional.component";
+import { EventoProgramaComponent } from "./components/pages/agendas/agenda-programa/evento-programa/evento-programa.component";
+import { PlanEstudiosComponent } from "./components/pages/formacion/plan-estudios/plan-estudios.component";
+import { GrupoInvestigacionComponent } from "./components/pages/grupo-investigacion/grupo-investigacion.component";
+import { ArticulosEstudiantesComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulos-estudiantes.component";
+import { ArticuloEstudianteComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulo-estudiante/articulo-estudiante.component";
+import { ArticuloDetalladoEstudianteComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulo-detallado-estudiante/articulo-detallado-estudiante.component";
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, "es-CO");
@@ -113,7 +113,6 @@ registerLocaleData(localeEsCO, "es-CO");
     HeaderComponent,
     DocentesComponent,
     EstudiantesComponent,
-    GruposinvesComponent,
     EgresadosComponent,
     TesisComponent,
     LoginComponent,
@@ -129,7 +128,6 @@ registerLocaleData(localeEsCO, "es-CO");
     DocenteComponent,
     BibliotecaComponent,
     ArticulosprofesoresComponent,
-    ArticulosestudiantesComponent,
     EstudianteComponent,
     HistoriaeditComponent,
     DenominacionComponent,
@@ -154,9 +152,7 @@ registerLocaleData(localeEsCO, "es-CO");
     ArticulodocenteComponent,
     NoSanitizePipe,
     FiltrotesisPipe,
-    ArticuloestudianteComponent,
     ArticuloComponent,
-    ArticuloeComponent,
     FiltroarticulosprofesoresPipe,
     FiltroarticulosestudiantesPipe,
     ArticuloEgresadosComponent,
@@ -165,6 +161,10 @@ registerLocaleData(localeEsCO, "es-CO");
     EventoInstitucionalComponent,
     EventoProgramaComponent,
     PlanEstudiosComponent,
+    GrupoInvestigacionComponent,
+    ArticulosEstudiantesComponent,
+    ArticuloEstudianteComponent,
+    ArticuloDetalladoEstudianteComponent,
   ],
   imports: [
     BrowserModule,

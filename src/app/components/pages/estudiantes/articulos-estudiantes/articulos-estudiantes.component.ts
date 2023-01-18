@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ArticulosestuService } from '../../../../services/estudiantes/articulos/articulosestu.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import 'firebase/auth';
-import { ToastrService } from 'ngx-toastr';
-import { ListadoService } from '../../../../services/estudiantes/listado/listado.service';
-import { map } from 'rxjs/operators';
-
+import { Component, OnInit } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ArticulosestuService } from "../../../../services/estudiantes/articulos/articulosestu.service";
+import { AngularFireAuth } from "@angular/fire/auth";
+import "firebase/auth";
+import { ToastrService } from "ngx-toastr";
+import { ListadoService } from "../../../../services/estudiantes/listado/listado.service";
+import { map } from "rxjs/operators";
 
 @Component({
-  selector: 'app-articulosestudiantes',
-  templateUrl: './articulosestudiantes.component.html',
-  styleUrls: ['./articulosestudiantes.component.css'],
+  selector: "app-articulos-estudiantes",
+  templateUrl: "./articulos-estudiantes.component.html",
+  styleUrls: ["./articulos-estudiantes.component.css"],
 })
-export class ArticulosestudiantesComponent implements OnInit {
-  filterpost = '';
-  indicador = '-';
+export class ArticulosEstudiantesComponent implements OnInit {
+  filterpost = "";
+  indicador = "-";
   page = 1;
   pageSize = 4;
   pageArticulosProfesores = 1;
@@ -46,7 +45,7 @@ export class ArticulosestudiantesComponent implements OnInit {
     return this.articulos.sort((a, b) => {
       // tslint:disable-next-line:whitespace
       // tslint:disable-next-line:no-angle-bracket-type-assertion
-      return <any> new Date(b.anio) - <any> new Date(a.anio);
+      return <any>new Date(b.anio) - <any>new Date(a.anio);
     });
   }
   refresh() {
@@ -56,43 +55,43 @@ export class ArticulosestudiantesComponent implements OnInit {
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, {
       centered: true,
-      size: 'sm',
-      backdrop: 'static',
-      windowClass: 'fade-in',
+      size: "sm",
+      backdrop: "static",
+      windowClass: "fade-in",
     });
   }
   showSuccess() {
-    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+    this.toastr.success("Acción exitosa", "Elemento guardado", {
       timeOut: 2500,
     });
   }
 
   showDanger() {
-    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+    this.toastr.error("Intenten nuevamente", "Error al guardar", {
       timeOut: 2500,
     });
   }
 
   showInfo() {
-    this.toastr.info('', 'Elemento actualizado', {
+    this.toastr.info("", "Elemento actualizado", {
       timeOut: 2500,
     });
   }
 
   showWarning() {
-    this.toastr.warning('Intenten nuevamente', 'Error al actualizar', {
+    this.toastr.warning("Intenten nuevamente", "Error al actualizar", {
       timeOut: 2500,
     });
   }
 
   elementoAgregado() {
-    this.toastr.info('', 'Elemento agregado', {
+    this.toastr.info("", "Elemento agregado", {
       timeOut: 2500,
     });
   }
 
   elementoEliminado() {
-    this.toastr.warning('', 'Elemento eliminado', {
+    this.toastr.warning("", "Elemento eliminado", {
       timeOut: 2500,
     });
   }
@@ -115,22 +114,20 @@ export class ArticulosestudiantesComponent implements OnInit {
   }
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {
-      size: 'sm',
+      size: "sm",
       centered: true,
-      backdrop: 'static',
+      backdrop: "static",
     });
   }
 
   borrarGrupo(key$: string) {
-    this.lsitadoEstuService
-      .borrarListado(key$)
-      .subscribe((respuesta) => {
-        if (respuesta) {
-          console.error(respuesta);
-        } else {
-          delete this.articuloEstudiante[key$];
-          this.modalReference.close();
-        }
-      });
+    this.lsitadoEstuService.borrarListado(key$).subscribe((respuesta) => {
+      if (respuesta) {
+        console.error(respuesta);
+      } else {
+        delete this.articuloEstudiante[key$];
+        this.modalReference.close();
+      }
+    });
   }
 }

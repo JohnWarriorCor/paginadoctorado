@@ -180,7 +180,7 @@
                         <div class="img-intro-left cover">
                           <a
                             [routerLink]="[
-                              '/articulo_estudiante',
+                              '/articulo-estudiante',
                               articulo.key
                             ]"
                             [title]="articulo.nombreArticulo"
@@ -194,7 +194,7 @@
                       <td>
                         <h5
                           class="card-title font-usco-vt font-weight-bold cursor-select text-left"
-                          [routerLink]="['/articulo_estudiante', articulo.key]"
+                          [routerLink]="['/articulo-estudiante', articulo.key]"
                         >
                           {{ articulo.nombreArticulo }}
                         </h5>
@@ -225,7 +225,7 @@
                             {{ articulo.resumen | slice : 0 : 280 }}
                             <a
                               [routerLink]="[
-                                '/articulo_estudiante',
+                                '/articulo-estudiante',
                                 articulo.key
                               ]"
                               routerLinkActive="router-link-active"
@@ -256,7 +256,7 @@
                 class="btn btn-usco-vt"
                 printSectionId="print-section"
                 [useExistingCss]="true"
-                printTitle="Plan de estudios Doctorado en Ciencias de la Salud"
+                printTitle="Listado de artículos"
                 ngxPrint
               >
                 <i class="fas fa-print"></i> Imprimir
