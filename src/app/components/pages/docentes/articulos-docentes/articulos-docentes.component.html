@@ -179,7 +179,7 @@
                       <td width="100px">
                         <div class="img-intro-left cover">
                           <a
-                            [routerLink]="['/articulo_docente', articulo.key]"
+                            [routerLink]="['/articulo-docente', articulo.key]"
                             [title]="articulo.nombreArticulo"
                             ><img
                               class="img"
@@ -191,7 +191,7 @@
                       <td>
                         <h5
                           class="card-title font-usco-vt font-weight-bold cursor-select text-left"
-                          [routerLink]="['/articulo_docente', articulo.key]"
+                          [routerLink]="['/articulo-docente', articulo.key]"
                         >
                           {{ articulo.nombreArticulo }}
                         </h5>
@@ -221,7 +221,7 @@
                             </strong>
                             {{ articulo.resumen | slice : 0 : 280 }}
                             <a
-                              [routerLink]="['/articulo_docente', articulo.key]"
+                              [routerLink]="['/articulo-docente', articulo.key]"
                               routerLinkActive="router-link-active"
                               style="color: #8f141b"
                               >... Ver más</a

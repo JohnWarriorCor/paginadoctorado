@@ -6,9 +6,9 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AngularFireAuth } from "@angular/fire/auth";
 import "firebase/auth";
 import { ToastrService } from "ngx-toastr";
-import { Articulo } from "../../../../../../interfaces/profesores/articulo";
-import { Egresados } from "./../../../../../../interfaces/estudiantes/egresados/egresados";
-import { EgresadosService } from "../../../../../../services/estudiantes/egresados/egresados.service";
+import { Articulo } from "../../../../../interfaces/profesores/articulo";
+import { Egresados } from "../../../../../interfaces/estudiantes/egresados/egresados";
+import { EgresadosService } from "../../../../../services/estudiantes/egresados/egresados.service";
 
 @Component({
   selector: "app-articulo-egresados",

@@ -226,25 +226,28 @@
                   <img
                     [src]="evento.img"
                     class="card-img-top cursor-select"
-                    [routerLink]="['/eventoPrograma', evento.key]"
+                    [routerLink]="['/evento-programa', evento.key]"
                     [alt]="evento.titulo"
                     [title]="evento.titulo"
                   />
                   <div class="card-body">
                     <h4
-                      [routerLink]="['/eventoPrograma', evento.key]"
-                      class="subTituloRojoInstitucional cursor-select"
+                      [routerLink]="['/evento-programa', evento.key]"
+                      class="font-usco-vt font-weight-bold cursor-select"
                     >
                       {{ evento.titulo }}
                     </h4>
-                    <small class="card-title subTituloRojoInstitucional">
+                    <small class="card-title font-usco-vt font-weight-bold">
                       <i class="far fa-calendar-alt"></i>
                       {{ evento.fechaEvento | date : "fullDate" | titlecase }}
                     </small>
-                    <p class="card-text grayinst">
+                    <p class="card-text font-usco-gr">
                       {{ evento.resenia | slice : 0 : 80 }}...
                     </p>
-                    <a [href]="evento.url" target="_blank" style="color: gray"
+                    <a
+                      [href]="evento.url"
+                      target="_blank"
+                      class="font-usco-vt font-weight-bold"
                       ><b> LEER MÁS... </b></a
                     >
                   </div>
@@ -295,25 +298,28 @@
                   <img
                     [src]="evento.img"
                     class="card-img-top cursor-select"
-                    [routerLink]="['/eventoInstitucional', evento.key]"
+                    [routerLink]="['/evento-institucional', evento.key]"
                     [alt]="evento.titulo"
                     [title]="evento.titulo"
                   />
                   <div class="card-body">
                     <h4
-                      [routerLink]="['/eventoInstitucional', evento.key]"
-                      class="subTituloRojoInstitucional cursor-select"
+                      [routerLink]="['/evento-institucional', evento.key]"
+                      class="font-usco-vt font-weight-bold cursor-select"
                     >
                       {{ evento.titulo }}
                     </h4>
-                    <small class="card-title subTituloRojoInstitucional">
+                    <small class="card-title font-usco-vt font-weight-bold">
                       <i class="far fa-calendar-alt"></i>
                       {{ evento.fechaEvento | date : "fullDate" | titlecase }}
                     </small>
-                    <p class="card-text grayinst">
+                    <p class="card-text font-usco-gr">
                       {{ evento.resenia | slice : 0 : 80 }}...
                     </p>
-                    <a [href]="evento.url" target="_blank" style="color: gray"
+                    <a
+                      [href]="evento.url"
+                      target="_blank"
+                      class="font-usco-vt font-weight-bold"
                       ><b> LEER MÁS... </b></a
                     >
                   </div>

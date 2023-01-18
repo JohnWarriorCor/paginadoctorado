@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ArticulosproService } from '../../../../services/profesores/articulospro/articulospro.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import 'firebase/auth';
-import { ToastrService } from 'ngx-toastr';
-import { PlantelService } from '../../../../services/profesores/plantel/plantel.service';
-import { map } from 'rxjs/operators';
+import { Component, OnInit } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ArticulosproService } from "../../../../services/profesores/articulospro/articulospro.service";
+import { AngularFireAuth } from "@angular/fire/auth";
+import "firebase/auth";
+import { ToastrService } from "ngx-toastr";
+import { PlantelService } from "../../../../services/profesores/plantel/plantel.service";
+import { map } from "rxjs/operators";
 
 @Component({
-  selector: 'app-articulosprofesores',
-  templateUrl: './articulosprofesores.component.html',
-  styleUrls: ['./articulosprofesores.component.css'],
+  selector: "app-articulos-docentes",
+  templateUrl: "./articulos-docentes.component.html",
+  styleUrls: ["./articulos-docentes.component.css"],
 })
-export class ArticulosprofesoresComponent implements OnInit {
-  filterpost = '';
-  indicador = '-';
+export class ArticulosDocentesComponent implements OnInit {
+  filterpost = "";
+  indicador = "-";
   page = 1;
   pageSize = 2;
   pageArticulos = 1;
@@ -56,42 +56,42 @@ export class ArticulosprofesoresComponent implements OnInit {
     return this.articulos.sort((a, b) => {
       // tslint:disable-next-line:whitespace
       // tslint:disable-next-line:no-angle-bracket-type-assertion
-      return <any> new Date(b.anio) - <any> new Date(a.anio);
+      return <any>new Date(b.anio) - <any>new Date(a.anio);
     });
   }
 
   showSuccess() {
-    this.toastr.success('Acción exitosa', 'Elemento guardado', {
+    this.toastr.success("Acción exitosa", "Elemento guardado", {
       timeOut: 2500,
     });
   }
 
   showDanger() {
-    this.toastr.error('Intenten nuevamente', 'Error al guardar', {
+    this.toastr.error("Intenten nuevamente", "Error al guardar", {
       timeOut: 2500,
     });
   }
 
   showInfo() {
-    this.toastr.info('', 'Elemento actualizado', {
+    this.toastr.info("", "Elemento actualizado", {
       timeOut: 2500,
     });
   }
 
   showWarning() {
-    this.toastr.warning('Intenten nuevamente', 'Error al actualizar', {
+    this.toastr.warning("Intenten nuevamente", "Error al actualizar", {
       timeOut: 2500,
     });
   }
 
   elementoAgregado() {
-    this.toastr.info('', 'Elemento agregado', {
+    this.toastr.info("", "Elemento agregado", {
       timeOut: 2500,
     });
   }
 
   elementoEliminado() {
-    this.toastr.warning('', 'Elemento eliminado', {
+    this.toastr.warning("", "Elemento eliminado", {
       timeOut: 2500,
     });
   }
@@ -103,9 +103,9 @@ export class ArticulosprofesoresComponent implements OnInit {
   openModal(confirmar) {
     this.modalReference = this.modalService.open(confirmar, {
       centered: true,
-      size: 'sm',
-      backdrop: 'static',
-      windowClass: 'fade-in',
+      size: "sm",
+      backdrop: "static",
+      windowClass: "fade-in",
     });
   }
 
@@ -151,9 +151,9 @@ export class ArticulosprofesoresComponent implements OnInit {
 
   openSm(formAdmin) {
     this.modalReference = this.modalService.open(formAdmin, {
-      size: 'sm',
+      size: "sm",
       centered: true,
-      backdrop: 'static',
+      backdrop: "static",
     });
   }
 

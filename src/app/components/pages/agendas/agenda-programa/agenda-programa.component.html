@@ -137,7 +137,7 @@
             <div class="card-footer text-center" *ngIf="auth.user | async">
               <a
                 class="btn btn-usco-vt mr-2"
-                [routerLink]="['/admi_agendaPrograma', evento.key]"
+                [routerLink]="['/admi-evento-programa', evento.key]"
                 ><i class="fas fa-pencil-alt"></i> Editar</a
               >
               <a (click)="openModal(confirmar)" class="btn btn-usco-vt m-2"
@@ -250,7 +250,7 @@
               <div class="col text-right">
                 <a
                   class="btn btn-usco-vt m-2"
-                  [routerLink]="['/admi_agendaPrograma', evento.key]"
+                  [routerLink]="['/admi-evento-programa', evento.key]"
                   ><i class="fas fa-pencil-alt"></i> Editar</a
                 >
                 <a (click)="openModal(confirmar)" class="btn btn-usco-vt m-2"

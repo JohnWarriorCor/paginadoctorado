@@ -63,7 +63,6 @@ import { KeysfirebasePipe } from "./pipes/keysfirebase.pipe";
 import { ListinvertPipe } from "./pipes/listinvert.pipe";
 import { DocenteComponent } from "./components/pages/docentes/docente/docente.component";
 import { BibliotecaComponent } from "./components/pages/biblioteca/biblioteca.component";
-import { ArticulosprofesoresComponent } from "./components/pages/docentes/articulosprofesores/articulosprofesores.component";
 import { EstudianteComponent } from "./components/pages/estudiantes/estudiante/estudiante.component";
 import { HistoriaeditComponent } from "./components/admin/programa/historiaedit/historiaedit.component";
 import { DenominacionComponent } from "./components/admin/home/denominacion/denominacion.component";
@@ -81,17 +80,13 @@ import { EgresadoComponent } from "./components/pages/estudiantes/egresados/egre
 import { FiltroPipe } from "./pipes/filtro.pipe";
 import { FiltroprofesoresPipe } from "./pipes/filtroprofesores.pipe";
 import { FiltrogruposinvesPipe } from "./pipes/filtrogruposinves.pipe";
-import { AgendaprogramaeditComponent } from "./components/admin/agendaedit/agendaprogramaedit/agendaprogramaedit.component";
-import { AgendainstitucionaleditComponent } from "./components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component";
 import { FiltrobibliotecaPipe } from "./pipes/filtrobiblioteca.pipe";
 import { GaleriaComponent } from "./components/pages/biblioteca/galeria/galeria.component";
-import { ArticulodocenteComponent } from "./components/pages/docentes/articulosprofesores/articulodocente/articulodocente.component";
 import { NoSanitizePipe } from "./pipes/no-sanitize.pipe";
 import { FiltrotesisPipe } from "./pipes/filtrotesis.pipe";
-import { ArticuloComponent } from "./components/pages/docentes/articulosprofesores/articulo/articulo.component";
 import { FiltroarticulosprofesoresPipe } from "./pipes/filtroarticulosprofesores.pipe";
 import { FiltroarticulosestudiantesPipe } from "./pipes/filtroarticulosestudiantes.pipe";
-import { ArticuloEgresadosComponent } from "./components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component";
+import { ArticuloEgresadosComponent } from "./components/pages/estudiantes/egresados/articulo-egresados/articulo-egresados.component";
 import { AgendaProgramaComponent } from "./components/pages/agendas/agenda-programa/agenda-programa.component";
 import { AgendaInstitucionalComponent } from "./components/pages/agendas/agenda-institucional/agenda-institucional.component";
 import { EventoInstitucionalComponent } from "./components/pages/agendas/agenda-institucional/evento-institucional/evento-institucional.component";
@@ -101,6 +96,11 @@ import { GrupoInvestigacionComponent } from "./components/pages/grupo-investigac
 import { ArticulosEstudiantesComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulos-estudiantes.component";
 import { ArticuloEstudianteComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulo-estudiante/articulo-estudiante.component";
 import { ArticuloDetalladoEstudianteComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulo-detallado-estudiante/articulo-detallado-estudiante.component";
+import { ArticulosDocentesComponent } from "./components/pages/docentes/articulos-docentes/articulos-docentes.component";
+import { ArticuloDocenteComponent } from "./components/pages/docentes/articulos-docentes/articulo-docente/articulo-docente.component";
+import { ArticuloDetalladoDocenteComponent } from "./components/pages/docentes/articulos-docentes/articulo-detallado-docente/articulo-detallado-docente.component";
+import { EventoInstitucionalAdminComponent } from './components/admin/agendas-admin/evento-institucional-admin/evento-institucional-admin.component';
+import { EventoProgramaAdminComponent } from './components/admin/agendas-admin/evento-programa-admin/evento-programa-admin.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, "es-CO");
@@ -127,7 +127,6 @@ registerLocaleData(localeEsCO, "es-CO");
     ListinvertPipe,
     DocenteComponent,
     BibliotecaComponent,
-    ArticulosprofesoresComponent,
     EstudianteComponent,
     HistoriaeditComponent,
     DenominacionComponent,
@@ -145,14 +144,10 @@ registerLocaleData(localeEsCO, "es-CO");
     FiltroPipe,
     FiltroprofesoresPipe,
     FiltrogruposinvesPipe,
-    AgendaprogramaeditComponent,
-    AgendainstitucionaleditComponent,
     FiltrobibliotecaPipe,
     GaleriaComponent,
-    ArticulodocenteComponent,
     NoSanitizePipe,
     FiltrotesisPipe,
-    ArticuloComponent,
     FiltroarticulosprofesoresPipe,
     FiltroarticulosestudiantesPipe,
     ArticuloEgresadosComponent,
@@ -165,6 +160,11 @@ registerLocaleData(localeEsCO, "es-CO");
     ArticulosEstudiantesComponent,
     ArticuloEstudianteComponent,
     ArticuloDetalladoEstudianteComponent,
+    ArticulosDocentesComponent,
+    ArticuloDocenteComponent,
+    ArticuloDetalladoDocenteComponent,
+    EventoProgramaAdminComponent,
+    EventoInstitucionalAdminComponent,
   ],
   imports: [
     BrowserModule,

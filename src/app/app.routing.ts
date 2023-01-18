@@ -12,7 +12,6 @@ import { PerfilComponent } from "./components/pages/formacion/perfil/perfil.comp
 import { OrganigramaComponent } from "./components/pages/programa/organigrama/organigrama.component";
 import { DocenteComponent } from "./components/pages/docentes/docente/docente.component";
 import { BibliotecaComponent } from "./components/pages/biblioteca/biblioteca.component";
-import { ArticulosprofesoresComponent } from "./components/pages/docentes/articulosprofesores/articulosprofesores.component";
 import { EstudianteComponent } from "./components/pages/estudiantes/estudiante/estudiante.component";
 import { HistoriaeditComponent } from "./components/admin/programa/historiaedit/historiaedit.component";
 import { GruposinveseditComponent } from "./components/admin/gruposinvesedit/gruposinvesedit.component";
@@ -30,11 +29,8 @@ import { EgresadoComponent } from "./components/pages/estudiantes/egresados/egre
 import { ListadoeditComponent } from "./components/admin/estudiantes/listado/listadoedit.component";
 
 import { AuthGuard } from "./guards/auth.guard";
-import { AgendaprogramaeditComponent } from "./components/admin/agendaedit/agendaprogramaedit/agendaprogramaedit.component";
-import { AgendainstitucionaleditComponent } from "./components/admin/agendaedit/agendainstitucionaledit/agendainstitucionaledit.component";
 import { GaleriaComponent } from "./components/pages/biblioteca/galeria/galeria.component";
-import { ArticulodocenteComponent } from "./components/pages/docentes/articulosprofesores/articulodocente/articulodocente.component";
-import { ArticuloEgresadosComponent } from "./components/pages/estudiantes/egresados/articulo/articulo-egresados/articulo-egresados.component";
+import { ArticuloEgresadosComponent } from "./components/pages/estudiantes/egresados/articulo-egresados/articulo-egresados.component";
 import { EventoInstitucionalComponent } from "./components/pages/agendas/agenda-institucional/evento-institucional/evento-institucional.component";
 import { EventoProgramaComponent } from "./components/pages/agendas/agenda-programa/evento-programa/evento-programa.component";
 import { AgendaProgramaComponent } from "./components/pages/agendas/agenda-programa/agenda-programa.component";
@@ -44,7 +40,11 @@ import { GrupoInvestigacionComponent } from "./components/pages/grupo-investigac
 import { ArticuloEstudianteComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulo-estudiante/articulo-estudiante.component";
 import { ArticulosEstudiantesComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulos-estudiantes.component";
 import { ArticuloDetalladoEstudianteComponent } from "./components/pages/estudiantes/articulos-estudiantes/articulo-detallado-estudiante/articulo-detallado-estudiante.component";
-import { ArticuloComponent } from "./components/pages/docentes/articulosprofesores/articulo/articulo.component";
+import { ArticulosDocentesComponent } from "./components/pages/docentes/articulos-docentes/articulos-docentes.component";
+import { ArticuloDocenteComponent } from "./components/pages/docentes/articulos-docentes/articulo-docente/articulo-docente.component";
+import { ArticuloDetalladoDocenteComponent } from "./components/pages/docentes/articulos-docentes/articulo-detallado-docente/articulo-detallado-docente.component";
+import { EventoInstitucionalAdminComponent } from './components/admin/agendas-admin/evento-institucional-admin/evento-institucional-admin.component';
+import { EventoProgramaAdminComponent } from './components/admin/agendas-admin/evento-programa-admin/evento-programa-admin.component';
 
 const routes: Routes = [
   // INICIO
@@ -59,10 +59,13 @@ const routes: Routes = [
   { path: "perfil", component: PerfilComponent },
   // PROFESORES
   { path: "docentes", component: DocentesComponent },
-  { path: "articulosProfesores", component: ArticulosprofesoresComponent },
+  { path: "articulos-docentes", component: ArticulosDocentesComponent },
   { path: "docente/:id", component: DocenteComponent },
-  { path: "articulo_docente/:id/:idx", component: ArticulodocenteComponent },
-  { path: "articulo_docente/:id", component: ArticuloComponent },
+  { path: "articulo-docente/:id/:idx", component: ArticuloDocenteComponent },
+  {
+    path: "articulo-docente/:id",
+    component: ArticuloDetalladoDocenteComponent,
+  },
   // ACTIVDADES
   { path: "agenda-programa", component: AgendaProgramaComponent },
   { path: "agenda-institucional", component: AgendaInstitucionalComponent },
@@ -84,14 +87,14 @@ const routes: Routes = [
   },
   { path: "egresados", component: EgresadosComponent },
   {
-    path: "articulo_egresado/:id/:idx",
+    path: "articulo-egresado/:id/:idx",
     component: ArticuloEgresadosComponent,
   },
   { path: "egresado/:id", component: EgresadoComponent },
   { path: "tesis", component: TesisComponent },
   // BIBLIOTECA
   { path: "biblioteca", component: BibliotecaComponent },
-  { path: "galeria_imagenes", component: GaleriaComponent },
+  { path: "galeria-imagenes", component: GaleriaComponent },
 
   // -------------------------------------SECCIÓN ADMINSITRADOR------------------------------------------------------
 
@@ -160,13 +163,13 @@ const routes: Routes = [
   },
   // ACTIVDADES
   {
-    path: "admi_agendaInstitucional/:id",
-    component: AgendainstitucionaleditComponent,
+    path: "admi-evento-institucinal/:id",
+    component: EventoInstitucionalAdminComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: "admi_agendaPrograma/:id",
-    component: AgendaprogramaeditComponent,
+    path: "admi-evento-programa/:id",
+    component: EventoProgramaAdminComponent,
     canActivate: [AuthGuard],
   },
   // INVESTIGACION
