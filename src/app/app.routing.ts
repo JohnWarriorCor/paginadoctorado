@@ -22,7 +22,6 @@ import { PlanestudioseditComponent } from "./components/admin/formacion/planestu
 import { ArticulosestueditComponent } from "./components/admin/estudiantes/articulos/articulosestuedit.component";
 import { EgresadoseditComponent } from "./components/admin/estudiantes/agresados/egresadosedit.component";
 import { TesiseditComponent } from "./components/admin/estudiantes/tesis/tesisedit.component";
-import { LibroseditComponent } from "./components/admin/biblioteca/libros/librosedit.component";
 import { ArticulosproeditComponent } from "./components/admin/profesores/articulos/articulosproedit.component";
 import { PlanteleditComponent } from "./components/admin/profesores/plantel/planteledit.component";
 import { EgresadoComponent } from "./components/pages/estudiantes/egresados/egresado/egresado.component";
@@ -45,6 +44,7 @@ import { ArticuloDocenteComponent } from "./components/pages/docentes/articulos-
 import { ArticuloDetalladoDocenteComponent } from "./components/pages/docentes/articulos-docentes/articulo-detallado-docente/articulo-detallado-docente.component";
 import { EventoInstitucionalAdminComponent } from './components/admin/agendas-admin/evento-institucional-admin/evento-institucional-admin.component';
 import { EventoProgramaAdminComponent } from './components/admin/agendas-admin/evento-programa-admin/evento-programa-admin.component';
+import { BibliotecaAdminComponent } from './components/admin/biblioteca-admin/biblioteca-admin.component';
 
 const routes: Routes = [
   // INICIO
@@ -206,8 +206,8 @@ const routes: Routes = [
   },
   // BIBLIOTECA
   {
-    path: "admi_biblioteca/:id",
-    component: LibroseditComponent,
+    path: "admi-biblioteca/:id",
+    component: BibliotecaAdminComponent,
     canActivate: [AuthGuard],
   },
   // ROOT

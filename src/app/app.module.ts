@@ -73,7 +73,6 @@ import { ListadoeditComponent } from "./components/admin/estudiantes/listado/lis
 import { EgresadoseditComponent } from "./components/admin/estudiantes/agresados/egresadosedit.component";
 import { ArticulosestueditComponent } from "./components/admin/estudiantes/articulos/articulosestuedit.component";
 import { TesiseditComponent } from "./components/admin/estudiantes/tesis/tesisedit.component";
-import { LibroseditComponent } from "./components/admin/biblioteca/libros/librosedit.component";
 import { PlanteleditComponent } from "./components/admin/profesores/plantel/planteledit.component";
 import { ArticulosproeditComponent } from "./components/admin/profesores/articulos/articulosproedit.component";
 import { EgresadoComponent } from "./components/pages/estudiantes/egresados/egresado/egresado.component";
@@ -101,6 +100,7 @@ import { ArticuloDocenteComponent } from "./components/pages/docentes/articulos-
 import { ArticuloDetalladoDocenteComponent } from "./components/pages/docentes/articulos-docentes/articulo-detallado-docente/articulo-detallado-docente.component";
 import { EventoInstitucionalAdminComponent } from './components/admin/agendas-admin/evento-institucional-admin/evento-institucional-admin.component';
 import { EventoProgramaAdminComponent } from './components/admin/agendas-admin/evento-programa-admin/evento-programa-admin.component';
+import { BibliotecaAdminComponent } from './components/admin/biblioteca-admin/biblioteca-admin.component';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, "es-CO");
@@ -137,7 +137,6 @@ registerLocaleData(localeEsCO, "es-CO");
     EgresadoseditComponent,
     ArticulosestueditComponent,
     TesiseditComponent,
-    LibroseditComponent,
     PlanteleditComponent,
     ArticulosproeditComponent,
     EgresadoComponent,
@@ -165,6 +164,7 @@ registerLocaleData(localeEsCO, "es-CO");
     ArticuloDetalladoDocenteComponent,
     EventoProgramaAdminComponent,
     EventoInstitucionalAdminComponent,
+    BibliotecaAdminComponent,
   ],
   imports: [
     BrowserModule,
