@@ -205,7 +205,7 @@
                             <a
                               (click)="up()"
                               [routerLink]="[
-                                '/articulo_egresado',
+                                '/articulo-egresado',
                                 link,
                                 (pageArticulos - 1) * pageSizeArticulos + i
                               ]"
@@ -221,7 +221,7 @@
                             class="card-title font-usco-vt font-weight-bold cursor-select text-left"
                             (click)="up()"
                             [routerLink]="[
-                              '/articulo_egresado',
+                              '/articulo-egresado',
                               link,
                               (pageArticulos - 1) * pageSizeArticulos + i
                             ]"
@@ -259,7 +259,7 @@
                               <a
                                 (click)="up()"
                                 [routerLink]="[
-                                  '/articulo_egresado',
+                                  '/articulo-egresado',
                                   link,
                                   (pageArticulos - 1) * pageSizeArticulos + i
                                 ]"
@@ -290,7 +290,7 @@
               </button>
               <button
                 class="btn btn-usco-vt m-1"
-                [routerLink]="['/articulosEstudiantes']"
+                [routerLink]="['/articulos-estudiantes']"
               >
                 <i class="fas fa-sign-out-alt"></i> Regresar
               </button>
@@ -298,7 +298,7 @@
             <div class="col text-right" *ngIf="auth.user | async">
               <button
                 class="btn btn-usco-vt m-2"
-                [routerLink]="['/admi_plantel', 'nuevo']"
+                [routerLink]="['/admi-', 'nuevo']"
               >
                 <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
               </button>

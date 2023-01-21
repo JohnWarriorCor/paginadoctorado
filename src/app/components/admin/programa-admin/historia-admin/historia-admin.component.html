@@ -1,0 +1,86 @@
+<div class="wrapper fadeIn fast">
+  <div>
+    <img
+      src="/assets/slide-historia-programa.png"
+      class="d-block w-100"
+      style="height: auto"
+    />
+  </div>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-sm shadow text-justify div-center font-usco-gr pt-4 pb-4">
+        <h3 class="font-usco-vt font-weight-bold">
+          Formulario para editar la Historia del Prorgama
+        </h3>
+        <hr class="hr-usco-vt" />
+        <br />
+        <form #forma="ngForm">
+          <textarea
+            [(ngModel)]="historia.reseniaHistorica"
+            maxlength="6500"
+            name="reseniaHist"
+            class="form-control shadow p-3"
+            placeholder="Digite en esta área la historía del programa ..."
+            rows="30"
+          ></textarea
+          ><br />
+          <hr />
+          <div class="row text-right">
+            <div class="col">
+              <button (click)="openModal(confirmar)" class="btn btn-usco-vt">
+                <i class="far fa-save"></i> Guardar
+              </button>
+            </div>
+          </div>
+          <ng-template #confirmar let-modal>
+            <div class="modal-header bg-usco-vt-d1 text-white font-weight-bold">
+              <h4 class="modal-title">Confirmar acción</h4>
+              <button
+                type="button"
+                class="close"
+                aria-label="Close"
+                (click)="modal.dismiss('Cross click')"
+              >
+                <i class="fas fa-times" style="color: white"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div
+                class="alert alert-warning text-center font-weight-bold"
+                role="alert"
+              >
+                Está a punto de editar la historía. <br />
+                ¿Desea continuar con la acción?
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-usco-fac-salud"
+                ngbAutofocus
+                (click)="guardar()"
+              >
+                Aceptar
+              </button>
+              <button
+                type="button"
+                class="btn btn-usco-vt"
+                (click)="modal.close('Close click')"
+              >
+                Cancelar
+              </button>
+            </div>
+          </ng-template>
+          <br />
+          <div
+            *ngIf="error != false"
+            class="alert alert-danger alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{{ passError }}</strong>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

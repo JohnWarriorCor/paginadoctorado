@@ -16,7 +16,7 @@
                 <div class="col">
                   <button
                     class="btn btn-usco-vt"
-                    [routerLink]="['/admi_egresado', 'nuevo']"
+                    [routerLink]="['/admi-egresado', 'nuevo']"
                   >
                     <i class="fas fa-plus-circle"></i> Agregar nuevo Egresado
                   </button>
@@ -356,8 +356,10 @@
                   <div>
                     <div class="row no-print">
                       <ng-template #confirmar let-modal>
-                        <div class="modal-header bgrojoycafe">
-                          <h4 class="modal-title">Confirmar acción</h4>
+                        <div class="modal-header bg-usco-vt-d1">
+                          <h4 class="modal-title text-white">
+                            Confirmar acción
+                          </h4>
                           <button
                             type="button"
                             class="close"
@@ -379,7 +381,7 @@
                         <div class="modal-footer">
                           <button
                             type="button"
-                            class="btn btnColorFacultadSalud"
+                            class="btn btn-usco-fac-salud"
                             ngbAutofocus
                             (click)="guardar()"
                           >
@@ -421,13 +423,13 @@
           </div>
         </form>
       </div>
-      <div class="row fondodivCenter shadow" style="margin-top: 20px">
+      <div class="row div-center shadow" style="margin-top: 20px">
         <div class="col">
           <div class="row">
             <div class="col">
               <h3
                 [routerLink]="['/egresados']"
-                class="titleInstRed cursor-select"
+                class="font-usco-vt cursor-select"
               >
                 <i class="fas fa-users"></i> Nuestros Egresados
               </h3>

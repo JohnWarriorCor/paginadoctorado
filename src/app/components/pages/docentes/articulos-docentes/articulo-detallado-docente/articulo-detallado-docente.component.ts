@@ -118,7 +118,7 @@ export class ArticuloDetalladoDocenteComponent implements OnInit {
   }
 
   nav() {
-    this.router.navigate(["/admi_articulosProfesores", this.link]);
+    this.router.navigate(["/admi-articulos-docentes", this.link]);
   }
 
   ngOnInit() {
@@ -224,7 +224,7 @@ export class ArticuloDetalladoDocenteComponent implements OnInit {
   }
 
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(["/admi_plantel", "nuevo"]);
+    this.router.navigate(["/admi-docentes", "nuevo"]);
     forma.reset({});
   }
 

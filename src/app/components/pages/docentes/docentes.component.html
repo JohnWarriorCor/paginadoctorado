@@ -72,12 +72,12 @@
                   border-radius: 100%;
                 "
               />
-              <small class="card-title grayinst">
+              <small class="card-title font-usco-gr">
                 <strong
                   ><i class="fas fa-envelope"></i> {{ profesor.correo }}</strong
                 >
               </small>
-              <p class="card-title grayinst">
+              <p class="card-title font-usco-gr">
                 <strong
                   >Artículos registrados:
                   {{ profesor.fieldArrayArticulos.length }}</strong
@@ -87,7 +87,7 @@
                 <div class="col text-right">
                   <a
                     class="btn btn-usco-vt m-2"
-                    [routerLink]="['/admi_plantel', profesor.key]"
+                    [routerLink]="['/admi-docentes', profesor.key]"
                     ><i class="fas fa-pencil-alt"></i> Editar</a
                   >
                   <a (click)="openModal(confirmar)" class="btn btn-usco-vt m-2"
@@ -118,7 +118,7 @@
                     <div class="modal-footer">
                       <button
                         type="button"
-                        class="btn btnColorFacultadSalud"
+                        class="btn btn-usco-fac-salud"
                         ngbAutofocus
                         (click)="borrarPlantel(profesor.key)"
                       >
@@ -195,7 +195,7 @@
             <div class="col text-right" *ngIf="auth.user | async">
               <a
                 class="btn btn-usco-vt"
-                [routerLink]="['/admi_plantel', 'nuevo']"
+                [routerLink]="['/admi-docentes', 'nuevo']"
                 ><i class="fas fa-plus-circle"></i> Agregar nuevo Profesor</a
               >
             </div>

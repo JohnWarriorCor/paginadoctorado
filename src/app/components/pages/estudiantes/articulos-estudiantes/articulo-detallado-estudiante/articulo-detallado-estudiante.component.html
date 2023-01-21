@@ -154,7 +154,7 @@
                             <div class="img-intro-left cover">
                               <a
                                 [routerLink]="[
-                                  '/articulo_estudiante',
+                                  '/articulo-estudiante',
                                   articulo.key
                                 ]"
                                 (click)="up()"
@@ -170,7 +170,7 @@
                             <h5
                               class="card-title font-usco-vt font-weight-bold cursor-select text-left"
                               [routerLink]="[
-                                '/articulo_estudiante',
+                                '/articulo-estudiante',
                                 articulo.key
                               ]"
                             >
@@ -204,7 +204,7 @@
                                 {{ articulo.resumen | slice : 0 : 280 }}
                                 <a
                                   [routerLink]="[
-                                    '/articulo_estudiante',
+                                    '/articulo-estudiante',
                                     articulo.key
                                   ]"
                                   routerLinkActive="router-link-active"
@@ -250,9 +250,9 @@
             <div class="col text-right" *ngIf="auth.user | async">
               <button
                 class="btn btn-usco-vt m-2"
-                [routerLink]="['/admi_plantel', 'nuevo']"
+                [routerLink]="['/admi-estudiantes', 'nuevo']"
               >
-                <i class="fas fa-plus-circle"></i> Agregar nuevo Profesor
+                <i class="fas fa-plus-circle"></i> Agregar nuevo Artículo
               </button>
               <button class="btn btn-usco-vt m-2" (click)="nav()">
                 <i class="fas fa-user-edit"></i> Editar

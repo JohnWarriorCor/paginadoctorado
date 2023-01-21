@@ -117,7 +117,7 @@ export class ArticuloDetalladoEstudianteComponent implements OnInit {
       });
   }
   nav() {
-    this.router.navigate(["/admi_articulosEstudiantes", this.link]);
+    this.router.navigate(["/admi-articulos-estudiantes", this.link]);
   }
   ngOnInit() {
     this.fecha = this.datepipe.transform(this.today, "dd/MM/yyyy");
@@ -210,7 +210,7 @@ export class ArticuloDetalladoEstudianteComponent implements OnInit {
     }
   }
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(["/admi_plantel", "nuevo"]);
+    this.router.navigate(["/admi-articulo-estudiantes", "nuevo"]);
     forma.reset({});
   }
   borrarPlantel() {

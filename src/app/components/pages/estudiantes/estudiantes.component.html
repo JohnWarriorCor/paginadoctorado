@@ -99,7 +99,7 @@
                 <div class="col text-right">
                   <a
                     class="btn btn-usco-vt m-2"
-                    [routerLink]="['/admi_estudiante', estudiante.key]"
+                    [routerLink]="['/admi-estudiante', estudiante.key]"
                     ><i class="fas fa-pencil-alt"></i> Editar</a
                   >
                   <a (click)="openModal(confirmar)" class="btn btn-usco-vt m-2"
@@ -208,7 +208,7 @@
             <div class="col text-right" *ngIf="auth.user | async">
               <a
                 class="btn btn-usco-vt"
-                [routerLink]="['/admi_estudiante', 'nuevo']"
+                [routerLink]="['/admi-estudiante', 'nuevo']"
                 ><i class="fas fa-plus-circle"></i> Agregar nuevo Estudiante</a
               >
             </div>
@@ -242,10 +242,10 @@
                     [alt]="evento.titulo"
                   />
                   <div class="card-body">
-                    <h4 class="subTituloRojoInstitucional">
+                    <h4 class="font-usco-vt font-weight-bold">
                       {{ evento.titulo }}
                     </h4>
-                    <h6 class="card-title subTituloRojoInstitucional">
+                    <h6 class="card-title font-usco-vt font-weight-bold">
                       <i class="far fa-calendar-alt"></i>
                       {{ evento.fechaEvento | date : "fullDate" | titlecase }}
                     </h6>
@@ -330,10 +330,10 @@
                     [alt]="evento.titulo"
                   />
                   <div class="card-body">
-                    <h4 class="subTituloRojoInstitucional">
+                    <h4 class="font-usco-vt font-weight-bold">
                       {{ evento.titulo }}
                     </h4>
-                    <h6 class="card-title subTituloRojoInstitucional">
+                    <h6 class="card-title font-usco-vt font-weight-bold">
                       <i class="far fa-calendar-alt"></i>
                       {{ evento.fechaEvento | date : "fullDate" | titlecase }}
                     </h6>

@@ -19,7 +19,7 @@
           <div class="col text-right" *ngIf="auth.user | async">
             <a
               class="btn btn-usco-vt"
-              [routerLink]="['/admi_agendaPrograma', 'nuevo']"
+              [routerLink]="['/admi-evento-programa', 'nuevo']"
               ><i class="fas fa-plus-circle"></i> Publicar evento</a
             >
           </div>
@@ -130,9 +130,13 @@
               <p class="card-text grayinst">
                 {{ evento.resenia }}
               </p>
-              <a [href]="evento.url" target="_blank" style="color: #8f141b"
-                ><b> LEER MÁS... </b></a
-              >
+              <div class="row text-right">
+                <div class="col">
+                  <a [href]="evento.url" target="_blank" class="font-usco-vt"
+                    ><b> LEER MÁS... </b></a
+                  >
+                </div>
+              </div>
             </div>
             <div class="card-footer text-center" *ngIf="auth.user | async">
               <a
@@ -144,8 +148,8 @@
                 ><i class="fas fa-trash"></i> Borrar</a
               ><br />
               <ng-template #confirmar let-modal>
-                <div class="modal-header bgrojoycafe">
-                  <h4 class="modal-title">Confirmar acción</h4>
+                <div class="modal-header bg-usco-vt-d1">
+                  <h4 class="modal-title text-white">Confirmar acción</h4>
                   <button
                     type="button"
                     class="close"
@@ -167,7 +171,7 @@
                 <div class="modal-footer">
                   <button
                     type="button"
-                    class="btn btnColorFacultadSalud"
+                    class="btn btn-usco-fac-salud"
                     ngbAutofocus
                     (click)="borrarAgenda(evento.key)"
                   >
@@ -203,14 +207,14 @@
                 <img
                   style="padding: 10px"
                   [src]="evento.img"
-                  [routerLink]="['/eventoPrograma', evento.key]"
+                  [routerLink]="['/evento-programa', evento.key]"
                   class="rounded w-100 cursor-select"
                 />
               </div>
               <div class="col-md-8 px-3" style="margin-top: 20px">
                 <div class="card-block px-3">
                   <h3
-                    [routerLink]="['/eventoPrograma', evento.key]"
+                    [routerLink]="['/evento-programa', evento.key]"
                     class="card-title text-left font-usco-vt font-weight-bold cursor-select"
                   >
                     {{ evento.titulo }}
@@ -230,7 +234,7 @@
                       ><i class="fas fa-info-circle"></i> Más información</a
                     >
                     <a
-                      [routerLink]="['/eventoPrograma', evento.key]"
+                      [routerLink]="['/evento-programa', evento.key]"
                       class="btn btn-usco-vt m-3"
                       ><i class="fas fa-search"></i> Ver evento</a
                     >
@@ -257,8 +261,8 @@
                   ><i class="fas fa-trash"></i> Borrar</a
                 ><br />
                 <ng-template #confirmar let-modal>
-                  <div class="modal-header bgrojoycafe">
-                    <h4 class="modal-title">Confirmar acción</h4>
+                  <div class="modal-header bg-usco-vt-d1">
+                    <h4 class="modal-title text-white">Confirmar acción</h4>
                     <button
                       type="button"
                       class="close"
@@ -280,7 +284,7 @@
                   <div class="modal-footer">
                     <button
                       type="button"
-                      class="btn btnColorFacultadSalud"
+                      class="btn btn-usco-fac-salud"
                       ngbAutofocus
                       (click)="borrarAgenda(evento.key)"
                     >

@@ -94,7 +94,7 @@
             <div class="col text-right" *ngIf="auth.user | async">
               <button
                 class="btn btn-usco-vt m-2"
-                [routerLink]="['/admi_agendaInstitucional', 'nuevo']"
+                [routerLink]="['/admi-agenda-institucional', 'nuevo']"
               >
                 <i class="fas fa-plus-circle"></i> Agregar nueva Publicación
               </button>
@@ -108,8 +108,8 @@
                 <i class="fas fa-trash"></i> Borrar
               </button>
               <ng-template #confirmar let-modal>
-                <div class="modal-header bgrojoycafe">
-                  <h4 class="modal-title">Confirmar acción</h4>
+                <div class="modal-header bg-usco-vt-d1">
+                  <h4 class="modal-title text-white">Confirmar acción</h4>
                   <button
                     type="button"
                     class="close"
@@ -131,7 +131,7 @@
                 <div class="modal-footer">
                   <button
                     type="button"
-                    class="btn btnColorFacultadSalud"
+                    class="btn btn-usco-fac-salud"
                     ngbAutofocus
                     (click)="borrarAgenda()"
                   >

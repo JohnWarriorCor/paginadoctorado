@@ -78,7 +78,7 @@ export class EgresadoComponent implements OnInit {
     });
   }
   nav() {
-    this.router.navigate(["/admi_egresados", this.link]);
+    this.router.navigate(["/admi-egresados", this.link]);
   }
   ngOnInit() {
     this.fecha = this.datepipe.transform(this.today, "dd/MM/yyyy");
@@ -152,7 +152,7 @@ export class EgresadoComponent implements OnInit {
     }
   }
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(["/admi_egresados", "nuevo"]);
+    this.router.navigate(["/admi-egresados", "nuevo"]);
     forma.reset({});
   }
 }
