@@ -34,6 +34,7 @@
     "ng-search-filter": "^1.1.0",
     "ng-uikit-pro-standard": "^1.0.0",
     "ng2-pdf-viewer": "^6.4.1",
+    "ngx-countup": "^7.3.3",
     "ngx-lightbox": "^1.2.0",
     "ngx-print": "^1.2.0-beta.5",
     "ngx-toastr": "^10.1.0",

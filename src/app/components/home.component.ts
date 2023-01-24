@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -14,6 +14,7 @@ import "firebase/auth";
 import { map } from "rxjs/operators";
 import { AgendaprogramaService } from "../services/agenda/agendaprograma.service";
 import { AgendainstitucionalService } from "../services/agenda/agendainstitucional.service";
+import { CountUp } from "countup.js";
 
 // tslint:disable-next-line:prefer-const
 
@@ -50,9 +51,12 @@ export class HomeComponent implements OnInit {
   actualEvento = null;
   actualIndex = -1;
   estudiantes: any[] = [];
+  //countUp = new CountUp('countEst', 1000, { enableScrollSpy: true });
 
-  count = 200;
-  duration = 5000;
+  countEst: number;
+  countDoc: number;
+  countEgr: number;
+  countCre: number;
 
   // tslint:disable-next-line:no-shadowed-variable
   constructor(
@@ -73,9 +77,9 @@ export class HomeComponent implements OnInit {
     this.agendaProgramaService.getAgendas().subscribe((data) => {
       this.agenda = data;
     });
-    this.denominaciionService.getDenominaciones().subscribe((data) => {
+    /* this.denominaciionService.getDenominaciones().subscribe((data) => {
       this.denominacion = data;
-    });
+    }); */
     /* this.carruselServices.getCarruseles().subscribe((data) => {
       this.carrusel = data;
     }); */
@@ -85,7 +89,7 @@ export class HomeComponent implements OnInit {
     this.articulosProService.getArticuloProfesores().subscribe((data) => {
       this.articulosPro = data;
     });
-    this.listadoService.getListados().subscribe((data) => {
+   /*  this.listadoService.getListados().subscribe((data) => {
       this.listados = data;
     });
     this.plantelService.getPlanteles().subscribe((data) => {
@@ -93,7 +97,7 @@ export class HomeComponent implements OnInit {
     });
     this.egresadosService.getEgresados().subscribe((data) => {
       this.egresadosPrograma = data;
-    });
+    }); */
   }
 
   ngOnInit() {
@@ -102,6 +106,8 @@ export class HomeComponent implements OnInit {
     this.obtenerEstudiantes();
     this.obtenerProfesores();
     this.obtenerCarrusel();
+    this.obtenerDenominacion();
+    this.obtenerEgresados();
   }
 
   obtenerCarrusel(): void {
@@ -115,6 +121,24 @@ export class HomeComponent implements OnInit {
       )
       .subscribe((data) => {
         this.carrusel = data;
+      });
+  }
+
+  obtenerDenominacion() {
+    this.denominaciionService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.denominacion = data;
+        setTimeout(() => {
+          let temp: number =+data[0].numCreditos;
+          this.countCre = temp;
+        }, 2000);
       });
   }
 
@@ -135,6 +159,10 @@ export class HomeComponent implements OnInit {
       )
       .subscribe((data) => {
         this.profesores = data;
+        setTimeout(() => {
+          this.countDoc = data.length;
+        }, 2000);
+        console.log(data.length);
       });
   }
 
@@ -155,6 +183,26 @@ export class HomeComponent implements OnInit {
       )
       .subscribe((data) => {
         this.estudiantes = data;
+        setTimeout(() => {
+          this.countEst = data.length;
+        }, 2000);
+      });
+  }
+
+  obtenerEgresados(): void {
+    this.egresadosService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      )
+      .subscribe((data) => {
+        this.egresadosPrograma = data;
+        setTimeout(() => {
+          this.countEgr = data.length;
+        }, 2000);
       });
   }
 

@@ -63,12 +63,12 @@
             <ngb-tabset
               [justify]="currentJustify"
               class="tabset1"
-              *ngFor="let den of denominacion | keysfirebase"
+              *ngFor="let den of denominacion"
             >
               <button
                 *ngIf="auth.user | async"
                 class="btn btn-usco-vt m-2 btn-lg btn-block"
-                [routerLink]="['/admi-denominacion', den]"
+                [routerLink]="['/admi-denominacion', den.key]"
               >
                 <i class="fas fa-pencil-alt"></i> Editar
               </button>
@@ -100,7 +100,7 @@
                           </td>
                           <td style="width: 60%">
                             <span class="font-usco-gr">
-                              {{ denominacion[den].tituloOtorgar }}</span
+                              {{ den.tituloOtorgar }}</span
                             >
                           </td>
                         </tr>
@@ -114,9 +114,9 @@
                             <a
                               class="font-usco-gr"
                               target="_blank"
-                              [href]="denominacion[den].registroCalificadoUrl"
+                              [href]="den.registroCalificadoUrl"
                             >
-                              {{ denominacion[den].registroCalificado }}</a
+                              {{ den.registroCalificado }}</a
                             >
                           </td>
                         </tr>
@@ -153,7 +153,7 @@
                           </td>
                           <td>
                             <span class="font-usco-gr">
-                              {{ denominacion[den].perAdmision }}</span
+                              {{ den.perAdmision }}</span
                             >
                           </td>
                         </tr>
@@ -165,7 +165,7 @@
                           </td>
                           <td>
                             <span class="font-usco-gr">
-                              {{ denominacion[den].numCreditos }}</span
+                              {{ den.numCreditos }}</span
                             >
                           </td>
                         </tr>
@@ -173,7 +173,7 @@
                           <td><span class="font-usco-vt">Duración:</span></td>
                           <td>
                             <span class="font-usco-gr">
-                              {{ denominacion[den].duracion }}</span
+                              {{ den.duracion }}</span
                             >
                           </td>
                         </tr>
@@ -185,7 +185,7 @@
                           </td>
                           <td>
                             <span class="font-usco-gr">
-                              {{ denominacion[den].costoMatricula }}</span
+                              {{ den.costoMatricula }}</span
                             >
                           </td>
                         </tr>
@@ -194,9 +194,7 @@
                             <span class="font-usco-vt">Cupo por corte:</span>
                           </td>
                           <td>
-                            <span class="font-usco-gr">
-                              {{ denominacion[den].cupo }}</span
-                            >
+                            <span class="font-usco-gr"> {{ den.cupo }}</span>
                           </td>
                         </tr>
                       </tbody>
@@ -205,7 +203,7 @@
                   <button
                     *ngIf="auth.user | async"
                     class="btn btn-usco-vt m-2 btn-lg btn-block"
-                    [routerLink]="['/admi-denominacion', den]"
+                    [routerLink]="['/admi-denominacion', den.key]"
                   >
                     <i class="fas fa-pencil-alt"></i> Editar
                   </button>
@@ -222,13 +220,13 @@
                       <hr class="hr-usco-vt" />
                       <br />
                       <p class="text-justify font-usco-gr p-2">
-                        {{ denominacion[den].mision }}
+                        {{ den.mision }}
                       </p>
                       <h3 class="font-usco-vt font-weight-bold">Visión</h3>
                       <hr class="hr-usco-vt" />
                       <br />
                       <p class="text-justify font-usco-gr p-2">
-                        {{ denominacion[den].vision }}
+                        {{ den.vision }}
                       </p>
                     </div>
                   </div>
@@ -246,7 +244,7 @@
                 >
                 <ng-template
                   ngbTabContent
-                  *ngFor="let den of denominacion | keysfirebase"
+                  *ngFor="let den of denominacion"
                 >
                   <div class="row mt-4">
                     <div class="col">
@@ -254,7 +252,7 @@
                       <hr class="hr-usco-vt" />
                       <br />
                       <p class="text-justify font-usco-gr p-2">
-                        {{ denominacion[den].proposito }}
+                        {{ den.proposito }}
                       </p>
                       <h5 class="font-usco-vt font-weight-bold">
                         Necesidades del País y la Región Surcolombiana
@@ -517,11 +515,107 @@
       </div>
       <!-- FIN CONTENIDO PRIMERA COLUMNA DERECHA -->
     </div>
-    <br />
-    <hr />
-    <br />
+    <div class="row div-center shadow mt-3 mb-3">
+      <div class="col">
+        <div class="row mb-4">
+          <div class="col">
+            <h3 class="font-usco-vt font-weight-bold">
+              <i class="fa-solid fa-chart-simple"></i> Cifras
+            </h3>
+            <hr class="hr-usco-vt" />
+          </div>
+          <div class="col"></div>
+        </div>
+        <div class="row text-center">
+          <div class="col text-white">
+            <div class="row">
+              <div class="col">
+                <div
+                  class="container bg-usco-gr-d1 pt-4 pb-4"
+                  style="border-radius: 20px"
+                >
+                  <i class="fa-solid fa-people-group fa-3x"></i>
+                  <h1
+                    class="font-weight-bold"
+                    [countUp]="countEst"
+                    [options]="{ enableScrollSpy: true }"
+                    [reanimateOnClick]="false"
+                  >
+                    0
+                  </h1>
+                  <h5 class="font-weight-bold">ESTUDIANTES</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col text-white">
+            <div class="row">
+              <div class="col">
+                <div
+                  class="container bg-usco-gr-d1 pt-4 pb-4"
+                  style="border-radius: 20px"
+                >
+                  <i class="fa-solid fa-user-tie fa-3x"></i>
+                  <h1
+                    class="font-weight-bold"
+                    [countUp]="countDoc"
+                    [options]="{ enableScrollSpy: true }"
+                    [reanimateOnClick]="false"
+                  >
+                    0
+                  </h1>
+                  <h5 class="font-weight-bold">DOCENTES</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col text-white">
+            <div class="row">
+              <div class="col">
+                <div
+                  class="container bg-usco-gr-d1 pt-4 pb-4"
+                  style="border-radius: 20px"
+                >
+                  <i class="fa-solid fa-user-graduate fa-3x"></i>
+                  <h1
+                    class="font-weight-bold"
+                    [countUp]="countEgr"
+                    [options]="{ enableScrollSpy: true }"
+                    [reanimateOnClick]="false"
+                  >
+                    0
+                  </h1>
+                  <h5 class="font-weight-bold">GRADUADOS</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col text-white">
+            <div class="row">
+              <div class="col">
+                <div
+                  class="container bg-usco-gr-d1 pt-4 pb-4"
+                  style="border-radius: 20px"
+                >
+                  <i class="fa-solid fa-building-columns fa-3x"></i>
+                  <h1
+                    class="font-weight-bold"
+                    [countUp]="countCre"
+                    [options]="{ enableScrollSpy: true }"
+                    [reanimateOnClick]="false"
+                  >
+                    0
+                  </h1>
+                  <h5 class="font-weight-bold">CRÉDITOS</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-sm-8 div-left shadow">
+      <div class="col div-left shadow">
         <div class="row">
           <div class="col">
             <div class="row mt-4">
@@ -815,118 +909,108 @@
         </div>
       </div>
       <div class="col-sm-auto div-right shadow">
-        <div>
-          <div class="row mt-4">
-            <div class="col">
-              <h3 class="font-usco-vt font-weight-bold">
-                <i class="fas fa-rss"></i> Redes sociales
-              </h3>
-              <hr class="hr-usco-vt" />
-              <br />
+        <div class="row mt-4">
+          <div class="col">
+            <h3 class="font-usco-vt font-weight-bold">
+              <i class="fas fa-rss"></i> Redes sociales
+            </h3>
+            <hr class="hr-usco-vt" />
+            <br />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
+              width="300"
+              height="500"
+              style="border: none; overflow: hidden"
+              scrolling="no"
+              frameborder="0"
+              allowTransparency="true"
+              allow="encrypted-media"
+            ></iframe>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col">
+            <h3 class="font-usco-vt font-weight-bold">
+              <i class="fas fa-book-open"></i> Doctorados USCO
+            </h3>
+            <hr class="hr-usco-vt" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="list-group" style="width: 300px">
+              <a
+                href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-pregrado/facultad-de-ingenieria/doctorado-en-agroindustria-y-desarrollo-agricola-sostenible/"
+                target="_blank"
+                type="button"
+                class="list-group-item list-group-item-action btn-usco-vt"
+                aria-current="true"
+              >
+                Doctorado en Agroindustria y Desarrollo Agrícola Sostenible
+              </a>
+              <a
+                href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-postgrado/facultad-de-educacion/doctorado-en-educacion-y-cultura-ambiental/"
+                target="_blank"
+                type="button"
+                class="list-group-item list-group-item-action btn-usco-vt"
+              >
+                Doctorado en Educación y Cultura Ambiental
+              </a>
             </div>
           </div>
-          <iframe
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDoctoradoEnCienciasDeLaSalud&tabs=timeline&width=300&height=200&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId"
-            width="300"
-            height="200"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowTransparency="true"
-            allow="encrypted-media"
-          ></iframe>
-          <hr />
-          <br />
-          <h3 class="font-usco-vt font-weight-bold">
-            <i class="fas fa-book-open"></i> Doctorados USCO
-          </h3>
-          <hr class="hr-usco-vt" />
-          <br />
-          <div class="list-group" style="width: 300px">
-            <a
-              href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-pregrado/facultad-de-ingenieria/doctorado-en-agroindustria-y-desarrollo-agricola-sostenible/"
-              target="_blank"
-              type="button"
-              class="list-group-item list-group-item-action btn-usco-vt"
-              aria-current="true"
-            >
-              Doctorado en Agroindustria y Desarrollo Agrícola Sostenible
-            </a>
-            <a
-              href="https://www.usco.edu.co/es/estudia-en-la-usco/programas-postgrado/facultad-de-educacion/doctorado-en-educacion-y-cultura-ambiental/"
-              target="_blank"
-              type="button"
-              class="list-group-item list-group-item-action btn-usco-vt"
-            >
-              Doctorado en Educación y Cultura Ambiental
-            </a>
-          </div>
-          <br />
-          <hr />
-          <h3 class="font-usco-vt font-weight-bold">
-            <i class="far fa-calendar-alt"></i> Calendario
-          </h3>
-          <hr class="hr-usco-vt" />
-          <br />
-          <iframe
-            src="https://calendar.google.com/calendar/embed?src=docencienciasdelasaludusco%40gmail.com&ctz=America%2FBogota"
-            style="border: 0"
-            width="300"
-            height="400"
-            frameborder="0"
-            scrolling="no"
-          ></iframe>
         </div>
-      </div>
-    </div>
-    <hr />
-    <div class="row">
-      <div class="col div-center shadow mt-3 mb-3">
-        <h3 class="font-usco-vt font-weight-bold">
-          <i class="fa-solid fa-circle-info"></i> Informes
-        </h3>
-        <hr class="hr-usco-vt" />
+        <hr />
         <div class="row">
-          <div class="col p-4" style="border-right: solid 1px gray">
-            <h4 class="font-usco-gr font-weight-bold">Dolly Arias Torres</h4>
-            <ul class="text-justify font-usco-gr ml-4 p-2">
-              <li>Coordinadora Doctorado</li>
-              <li>Doctora en Ciencias de la Salud</li>
-              <li><i class="fa-solid fa-envelope"></i> dolaria@usco.edu.co</li>
-            </ul>
+          <div class="col">
+            <h3 class="font-usco-vt font-weight-bold">
+              <i class="fa-solid fa-circle-info"></i> Informes
+            </h3>
+            <hr class="hr-usco-vt" />
           </div>
+        </div>
+        <div class="row">
           <div class="col p-4">
-            <h4 class="font-usco-gr font-weight-bold">
-              Karen Jorelly Penagos Ramirez
-            </h4>
-            <ul class="text-justify font-usco-gr ml-4 p-2">
-              <li>Profesional de Apoyo</li>
-              <li>
-                Gestión Administrativa, Financiera y Académica del Programa
-              </li>
-              <li>
-                <i class="fa-solid fa-envelope"></i>
-                doctoradoencienciasdelasalud@usco.edu.co
-              </li>
-            </ul>
+            <div class="row">
+              <div class="col">
+                <h4 class="font-usco-gr font-weight-bold">
+                  Dolly Arias Torres
+                </h4>
+                <ul class="text-justify font-usco-gr ml-4 p-2">
+                  <li>Coordinadora Doctorado</li>
+                  <li>Doctora en Ciencias de la Salud</li>
+                  <li>
+                    <i class="fa-solid fa-envelope"></i> dolaria@usco.edu.co
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <hr />
+            <div class="row">
+              <div class="col">
+                <h4 class="font-usco-gr font-weight-bold">
+                  Karen Jorelly <br />
+                  Penagos Ramirez
+                </h4>
+                <ul class="text-justify font-usco-gr ml-4 p-2">
+                  <li>Profesional de Apoyo</li>
+                  <li>
+                    Gestión Administrativa, Financiera y <br />
+                    Académica del Programa
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <small> doctoradoencienciasdelasalud@usco.edu.co</small>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <div>
-          <div>
-            <label>Count: </label>
-            <input type="number" [(ngModel)]="count" />
-          </div>
-        
-          <div>
-            <label>Duration: </label>
-            <input type="number" [(ngModel)]="duration" />
-          </div>
-        </div>
-        <h1 [countUp]="count" [duration]="duration"></h1>
       </div>
     </div>
   </div>
