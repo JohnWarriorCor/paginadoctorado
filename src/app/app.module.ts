@@ -102,6 +102,7 @@ import { HistoriaAdminComponent } from "./components/admin/programa-admin/histor
 import { DenominacionAdminComponent } from "./components/admin/home-admin/denominacion-admin/denominacion-admin.component";
 import { CarruselAdminComponent } from "./components/admin/home-admin/carrusel-admin/carrusel-admin.component";
 import { PlanEstudiosAdminComponent } from "./components/admin/formacion-admin/plan-estudios-admin/plan-estudios-admin.component";
+import { CountUpDirective } from './components/count-up.directive';
 
 // registrar los locales con el nombre que quieras utilizar a la hora de proveer
 registerLocaleData(localeEsCO, "es-CO");
@@ -166,6 +167,7 @@ registerLocaleData(localeEsCO, "es-CO");
     EgresadosAdminComponent,
     TesisAdminComponent,
     ArticuloEstudiantesAdminComponent,
+    CountUpDirective,
   ],
   imports: [
     BrowserModule,

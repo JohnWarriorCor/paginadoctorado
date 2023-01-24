@@ -12,7 +12,7 @@
       >
         <a [href]="carrusel.urlInfo" target="_blank"
           ><img
-            class="d-block w-100 cursorSelect"
+            class="d-block w-100 cursor-select"
             [src]="carrusel.urlImg"
             [alt]="carrusel.titulo"
             [title]="carrusel.titulo"
@@ -293,7 +293,7 @@
           <div class="col">
             <h3
               [routerLink]="['/agenda-programa']"
-              class="font-usco-vt font-weight-bold cursorSelect"
+              class="font-usco-vt font-weight-bold cursor-select"
             >
               <i class="far fa-edit"></i> Agéndate
             </h3>
@@ -304,7 +304,7 @@
         <div class="row mb-5">
           <div class="col">
             <p
-              class="font-usco-gr font-weight-bold cursorSelect"
+              class="font-usco-gr font-weight-bold cursor-select"
               [routerLink]="['/agenda-programa']"
             >
               <small
@@ -326,7 +326,7 @@
                     <div class="card shadow">
                       <img
                         [src]="evento.img"
-                        class="card-img-top cursorSelect"
+                        class="card-img-top cursor-select"
                         [routerLink]="['/evento-programa', evento.key]"
                         [alt]="evento.titulo"
                         [title]="evento.titulo"
@@ -336,7 +336,7 @@
                           <div class="col">
                             <h4
                               [routerLink]="['/evento-programa', evento.key]"
-                              class="font-usco-vt font-weight-bold cursorSelect"
+                              class="font-usco-vt font-weight-bold cursor-select"
                             >
                               {{ evento.titulo }}
                             </h4>
@@ -406,7 +406,7 @@
           </div>
           <div class="col">
             <p
-              class="font-usco-gr font-weight-bold cursorSelect"
+              class="font-usco-gr font-weight-bold cursor-select"
               [routerLink]="['/agenda-institucional']"
             >
               <small
@@ -432,7 +432,7 @@
                     <div class="card shadow">
                       <img
                         [src]="evento.img"
-                        class="card-img-top cursorSelect"
+                        class="card-img-top cursor-select"
                         [routerLink]="['/evento-institucional', evento.key]"
                         [alt]="evento.titulo"
                         [title]="evento.titulo"
@@ -445,7 +445,7 @@
                                 '/evento-institucional',
                                 evento.key
                               ]"
-                              class="font-usco-vt font-weight-bold cursorSelect"
+                              class="font-usco-vt font-weight-bold cursor-select"
                             >
                               {{ evento.titulo }}
                             </h4>
@@ -528,7 +528,7 @@
               <div class="col">
                 <h3
                   [routerLink]="['/docentes']"
-                  class="font-usco-vt font-weight-bold cursorSelect"
+                  class="font-usco-vt font-weight-bold cursor-select"
                 >
                   <i class="fas fa-users"></i> Docentes del Programa
                 </h3>
@@ -575,7 +575,7 @@
                                     [src]="profesor.foto"
                                     [alt]="profesor.nombre"
                                     [title]="profesor.nombre"
-                                    class="card-img-top rounded cursorSelect"
+                                    class="card-img-top rounded cursor-select"
                                   />
                                 </p>
                                 <h4 class="card-title" style="color: #d5ba7f">
@@ -585,7 +585,7 @@
                             </div>
                           </div>
                           <div class="backside">
-                            <div class="card cursorSelect">
+                            <div class="card cursor-select">
                               <div
                                 class="card-body text-center mt-4 text-backside"
                               >
@@ -621,7 +621,7 @@
               <div class="col">
                 <h3
                   [routerLink]="['/estudiantes']"
-                  class="font-usco-vt font-weight-bold cursorSelect"
+                  class="font-usco-vt font-weight-bold cursor-select"
                 >
                   <i class="fas fa-users"></i> Nuestros Estudiantes
                 </h3>
@@ -671,7 +671,7 @@
                                     [src]="estudiante.foto"
                                     [alt]="estudiante.nombre"
                                     [title]="estudiante.nombre"
-                                    class="card-img-top rounded cursorSelect"
+                                    class="card-img-top rounded cursor-select"
                                   />
                                 </p>
                                 <h4 class="card-title">
@@ -682,7 +682,7 @@
                           </div>
                           <div class="backside">
                             <div
-                              class="card cursorSelect"
+                              class="card cursor-select"
                               [routerLink]="['/estudiante', estudiante.key]"
                             >
                               <div
@@ -723,7 +723,7 @@
               <div class="col">
                 <h3
                   [routerLink]="['/egresados']"
-                  class="font-usco-vt font-weight-bold cursorSelect"
+                  class="font-usco-vt font-weight-bold cursor-select"
                 >
                   <i class="fas fa-users"></i> Nuestros Egresados
                 </h3>
@@ -771,7 +771,7 @@
                                     [src]="egresadosPrograma[item].foto"
                                     [alt]="egresadosPrograma[item].nombre"
                                     [title]="egresadosPrograma[item].nombre"
-                                    class="card-img-top rounded cursorSelect"
+                                    class="card-img-top rounded cursor-select"
                                   />
                                 </p>
                                 <h4 class="card-title">
@@ -781,7 +781,7 @@
                             </div>
                           </div>
                           <div class="backside">
-                            <div class="card cursorSelect">
+                            <div class="card cursor-select">
                               <div
                                 class="card-body text-center mt-4 text-backside"
                               >
@@ -911,6 +911,22 @@
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div>
+          <div>
+            <label>Count: </label>
+            <input type="number" [(ngModel)]="count" />
+          </div>
+        
+          <div>
+            <label>Duration: </label>
+            <input type="number" [(ngModel)]="duration" />
+          </div>
+        </div>
+        <h1 [countUp]="count" [duration]="duration"></h1>
       </div>
     </div>
   </div>

@@ -50,6 +50,10 @@ export class HomeComponent implements OnInit {
   actualEvento = null;
   actualIndex = -1;
   estudiantes: any[] = [];
+
+  count = 200;
+  duration = 5000;
+
   // tslint:disable-next-line:no-shadowed-variable
   constructor(
     public auth: AngularFireAuth,
