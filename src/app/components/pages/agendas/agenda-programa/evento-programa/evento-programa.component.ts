@@ -128,7 +128,7 @@ export class EventoProgramaComponent implements OnInit {
     });
   }
   nav() {
-    this.router.navigate(["/admi_agendaPrograma", this.link]);
+    this.router.navigate(["/admi-evento-programa", this.link]);
   }
   guardar() {
     if (this.agenda.titulo !== this.war || this.agenda.titulo !== this.war) {
@@ -139,7 +139,7 @@ export class EventoProgramaComponent implements OnInit {
       if (this.id === "nuevo") {
         this.agendaServices.nuevoAgenda(this.agenda).subscribe(
           (data) => {
-            this.router.navigate(["/agendaPrograma"]);
+            this.router.navigate(["/evento-programa"]);
             this.modalReference.close();
           },
           (error) => console.error(error)
@@ -148,7 +148,7 @@ export class EventoProgramaComponent implements OnInit {
         this.modalReference.close();
         this.agendaServices.actualizarAgenda(this.agenda, this.id).subscribe(
           (data) => {
-            this.router.navigate(["/agendaPrograma"]);
+            this.router.navigate(["/evento-programa"]);
             this.modalReference.close();
           },
           (error) => console.error(error)
@@ -161,7 +161,7 @@ export class EventoProgramaComponent implements OnInit {
     }
   }
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(["/admi_agendaPrograma", "nuevo"]);
+    this.router.navigate(["/admi-evento-programa", "nuevo"]);
     forma.reset({});
   }
 
@@ -179,7 +179,7 @@ export class EventoProgramaComponent implements OnInit {
         delete this.agenda[this.link];
         this.elementoEliminado();
         this.modalReference.close();
-        this.router.navigate(["/agendaPrograma"]);
+        this.router.navigate(["/evento-programa"]);
       }
     });
   }
